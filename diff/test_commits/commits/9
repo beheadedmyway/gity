@@ -1,0 +1,41 @@
+commit a19f101e3f31234db23bd1eb24994db6e4caa443
+tree 9774d35837562f4ccba2cc67db672dd958e1b3fb
+parent e74f43f9b702ccb88ee83e28de13ccfaebc4abf2
+parent 41fe87fa49cbeec8f05c3e51d6ffd9c57f6c754c
+author Junio C Hamano <gitster@pobox.com> 1261864997 -0800
+committer Junio C Hamano <gitster@pobox.com> 1261864997 -0800
+
+    Merge branch 'jc/1.7.0-send-email-no-thread-default'
+    
+    * jc/1.7.0-send-email-no-thread-default:
+      send-email: make --no-chain-reply-to the default
+    
+    Conflicts:
+    	git-send-email.perl
+
+diff --cc git-send-email.perl
+index 319b535,c1d0930..e05455f
+--- a/git-send-email.perl
++++ b/git-send-email.perl
+@@@ -216,19 -213,6 +216,19 @@@ my %config_settings = 
+      "from" => \$sender,
+  );
+  
+ +# Help users prepare for 1.7.0
+ +sub chain_reply_to {
+ +	if (defined $chain_reply_to &&
+ +	    $chain_reply_to eq $not_set_by_user) {
+ +		print STDERR
+- 		    "In git 1.7.0, the default will be changed to --no-chain-reply-to\n" .
+++		    "In git 1.7.0, the default has changed to --no-chain-reply-to\n" .
+ +		    "Set sendemail.chainreplyto configuration variable to true if\n" .
+ +		    "you want to keep --chain-reply-to as your default.\n";
+- 		$chain_reply_to = 1;
+++		$chain_reply_to = 0;
+ +	}
+ +	return $chain_reply_to;
+ +}
+ +
+  # Handle Uncouth Termination
+  sub signal_handler {
+  

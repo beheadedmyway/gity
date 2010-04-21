@@ -1,0 +1,44 @@
+\hypertarget{interface_g_d_base_operation}{
+\section{GDBaseOperation Class Reference}
+\label{interface_g_d_base_operation}\index{GDBaseOperation@{GDBaseOperation}}
+}
+
+
+The \hyperlink{interface_g_d_base_operation}{GDBaseOperation} is a base NSOperation that sets up some common properties for children operations.  
+
+
+{\ttfamily \#import $<$GDBaseOperation.h$>$}Inheritance diagram for GDBaseOperation::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{interface_g_d_base_operation}
+\end{center}
+\end{figure}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_operation_ad31ede5ba4937dcf61b7093f4c9bbb84}{
+BOOL \hyperlink{interface_g_d_base_operation_ad31ede5ba4937dcf61b7093f4c9bbb84}{done}}
+\label{interface_g_d_base_operation_ad31ede5ba4937dcf61b7093f4c9bbb84}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this operation is done. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_operation_affa9ae27043a84effe3cde90571d8cb4}{
+BOOL \hyperlink{interface_g_d_base_operation_affa9ae27043a84effe3cde90571d8cb4}{canceled}}
+\label{interface_g_d_base_operation_affa9ae27043a84effe3cde90571d8cb4}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this operation is canceled. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_operation_ad5c65bc7e08b40bfbccff9da18b70876}{
+\hyperlink{interface_g_d_callback}{GDCallback} $\ast$ \hyperlink{interface_g_d_base_operation_ad5c65bc7e08b40bfbccff9da18b70876}{callback}}
+\label{interface_g_d_base_operation_ad5c65bc7e08b40bfbccff9da18b70876}
+
+\begin{DoxyCompactList}\small\item\em An optional callback object you can use at any time. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_base_operation}{GDBaseOperation} is a base NSOperation that sets up some common properties for children operations. {\bfseries WARNING} NSOperation and NSOperationQueue behave differently between 10.5 and 10.6. If you're creating concurency with those classes in an app that will run on both 10.5 and 10.6, you definitely need to thoroughly test your code. 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_base_operation_8h}{GDBaseOperation.h}\end{DoxyCompactItemize}

@@ -1,0 +1,85 @@
+\hypertarget{interface_g_d_base_object}{
+\section{GDBaseObject Class Reference}
+\label{interface_g_d_base_object}\index{GDBaseObject@{GDBaseObject}}
+}
+
+
+The \hyperlink{interface_g_d_base_object}{GDBaseObject} is a base object in GDKit that contains methods and properties you'll always be using.  
+
+
+{\ttfamily \#import $<$GDBaseObject.h$>$}Inheritance diagram for GDBaseObject::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=11cm]{interface_g_d_base_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_object_ae78c37cd75eff85b5e71ab3daa7deae0}{
+(void) -\/ \hyperlink{interface_g_d_base_object_ae78c37cd75eff85b5e71ab3daa7deae0}{setGDRefs}}
+\label{interface_g_d_base_object_ae78c37cd75eff85b5e71ab3daa7deae0}
+
+\begin{DoxyCompactList}\small\item\em A hook you can use to set references to properties on a \char`\"{}gd\char`\"{} instance. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_object_a5a8c3d322aa160d7dc572d17c928b56e}{lazyInit}
+\begin{DoxyCompactList}\small\item\em A hook you can override to do some lazy initialization. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_object_a5c80c746c3a6a2455d43aa12cf87a423}{lazyInitWithGD:}
+\begin{DoxyCompactList}\small\item\em Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item\end{DoxyCompactList}\item 
+(id) -\/ \hyperlink{interface_g_d_base_object_a6cdf46de7ef7fd88ef83a827385ae816}{initWithGD:}
+\begin{DoxyCompactList}\small\item\em Init this object with a \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_object_aecadafc7688fb23a60f6223fcc51163a}{
+IBOutlet id \hyperlink{interface_g_d_base_object_aecadafc7688fb23a60f6223fcc51163a}{gd}}
+\label{interface_g_d_base_object_aecadafc7688fb23a60f6223fcc51163a}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_application_controller}{GDApplicationController} or a \hyperlink{interface_g_d_document}{GDDocument}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_object_a6bab2a171deda916eb92e0826a9456fb}{
+IBOutlet id \hyperlink{interface_g_d_base_object_a6bab2a171deda916eb92e0826a9456fb}{externalNibController}}
+\label{interface_g_d_base_object_a6bab2a171deda916eb92e0826a9456fb}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_external_nib_controller}{GDExternalNibController}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_base_object}{GDBaseObject} is a base object in GDKit that contains methods and properties you'll always be using. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_base_object_a6cdf46de7ef7fd88ef83a827385ae816}{
+\index{GDBaseObject@{GDBaseObject}!initWithGD:@{initWithGD:}}
+\index{initWithGD:@{initWithGD:}!GDBaseObject@{GDBaseObject}}
+\subsubsection[{initWithGD:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithGD: (id) {\em \_\-gd}}}
+\label{interface_g_d_base_object_a6cdf46de7ef7fd88ef83a827385ae816}
+
+
+Init this object with a \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. This can be used for true alloc/init combinations.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \end{DoxyParams}
+\hypertarget{interface_g_d_base_object_a5a8c3d322aa160d7dc572d17c928b56e}{
+\index{GDBaseObject@{GDBaseObject}!lazyInit@{lazyInit}}
+\index{lazyInit@{lazyInit}!GDBaseObject@{GDBaseObject}}
+\subsubsection[{lazyInit}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInit }}
+\label{interface_g_d_base_object_a5a8c3d322aa160d7dc572d17c928b56e}
+
+
+A hook you can override to do some lazy initialization. This is called last after any lazyInitWith(...) method is called. \hypertarget{interface_g_d_base_object_a5c80c746c3a6a2455d43aa12cf87a423}{
+\index{GDBaseObject@{GDBaseObject}!lazyInitWithGD:@{lazyInitWithGD:}}
+\index{lazyInitWithGD:@{lazyInitWithGD:}!GDBaseObject@{GDBaseObject}}
+\subsubsection[{lazyInitWithGD:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInitWithGD: (id) {\em \_\-gd}}}
+\label{interface_g_d_base_object_a5c80c746c3a6a2455d43aa12cf87a423}
+
+
+Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. This just sets the \char`\"{}gd\char`\"{} property.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_base_object_8h}{GDBaseObject.h}\item 
+source/GDBaseObject.m\end{DoxyCompactItemize}

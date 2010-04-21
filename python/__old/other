@@ -1,0 +1,10 @@
+#RENAMED IN STAGE
+#gitcommand = "diff-index HEAD --cached --name-status -M | grep '^R'"
+#command = "%s %s" % (options.git,gitcommand)
+#rcode,stout,sterr = run_command(command)
+#rcode_for_git_exit(rcode,sterr)
+#files = re.split("\n",stout)
+#for c in range(0,len(files)):
+#	files[c] = re.sub("R.*\t","",files[c])
+#	if files[c] == "":files.pop(c)
+#allfiles['stage_renamed']=files

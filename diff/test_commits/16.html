@@ -1,0 +1,3022 @@
+<html>
+<head>
+<style>
+a{color:#444;}a:hover{color:#000;}a.index{color:white;}a.index:hover{color:#efefef;}a.archive{color:#5f7489;//color:#275b8f;//color:#f06;//color:#895f7b;}a.archive:hover{color:#324659;}a.file{color:#555;}a.file:hover{color:#000;}.hidden{display:none;}.lineNumberColumr{border-right:solid 1px #444;padding:0 2px;}#lineNoWrapper{position:absolute;background-color:#ddd;}#actualLineNumbers{background-color:#ddd;float:left;position:relative;display:none;top:0;}body{margin:0;padding:0;width:100%;font-family:Monaco;font-size:11px;}.line{padding-left:8px;}.longline{background-color:#fad7ff;color:#ae00c8;}.difftextarea{display:none;width:1px;height:1px;}.delline,.oldfile{background-color:#fef3f3;color:#B00;}.addline,.newfile{background-color:#eafee9;color:#080;}table,table tr,table tr td{margin:0;padding:0;border-spacing:0;}.fileHeader,.firstFileHeader{height:21px;line-height:22px;color:white;display:block;padding-left:8px;background-color:#2b2b2b;}.fileHeader{margin-top:15px;border-top:solid 1px #ddd;}code .firsthunkheader,code .hunkheader{height:17px;line-height:18px;font-size:9px;color:#111;padding-left:9px;margin-bottom:8px;background-color:#f7f7f7;border-top:solid 1px #ddd;border-bottom:solid 1px #ddd;}code .hunkheader{margin-top:8px;}pre{width:100%;font-family:Monaco;font-size:11px;line-height:16px;}.addedWhitespace{background-color:rgba(0,255,0,0.8);}.removedWhitespace{background-color:rgba(255,0,0,0.5);}.binaryChange{height:17px;line-height:18px;font-size:9px;color:#111;padding-left:8px;margin-bottom:8px;background-color:#f7f7f7;border-top:solid 1px #ddd;border-bottom:solid 1px #ddd;}td.detailItemLabel{width:73px;text-align:right;}td.detailItem{padding-left:10px;}table.commitDetails{width:100%;margin-top:3px;margin-bottom:5px;font:11px Monaco;}tr.author{background-color:#ebfff0;}tr.sha{background-color:#eafeff;}table.commitDetails tr td{padding-top:2px;}#diffpre{margin-top:5px;}div.sep{display:block;height:1px;background-color:#eee;}table.monaco{font:11px Monaco;}#fileStatuses{margin-top:8px;margin-left:9px;}.fileStatus{display:block;text-align:right;padding:1px;padding-left:3px;padding-right:3px;line-height:14px;width:70px;text-align:center;color:#555;}#spacer{height:4px;}.changedFileStatus{background-color:#ffe8b6;border:solid 1px #d58301;color:#a1640e;}.changedFileStatus{background-color:#f3e6ff;border:solid 1px #651ca8;color:#651ca8;}.newFileStatus{background-color:#eafee8;border:solid 1px #709a15;color:#3c8700;}.removedFileStatus{background-color:#fef3f3;border:solid 1px #bd0e00;color:#bd0e00;}.renamedFileStatus{background-color:#e6f8ff;border:solid 1px #0185bc;color:#0185bc;}.statusFile{padding-left:18px;}.fileStatusList{list-style:none;margin:0;padding:0;margin-left:15px;}.fileStatusList li{margin-bottom:3px;}#commitMessageContainer{margin-left:9px;}span.renameFrom{color:#444;}
+</style>
+<script type="text/javascript" charset="utf-8">
+(function(){var l=this,g,y=l.jQuery,p=l.$,o=l.jQuery=l.$=function(E,F){return new o.fn.init(E,F)},D=/^[^<]*(<(.|\s)+>)[^>]*$|^#([\w-]+)$/,f=/^.[^:#\[\.,]*$/;o.fn=o.prototype={init:function(E,H){E=E||document;if(E.nodeType){this[0]=E;this.length=1;this.context=E;return this}if(typeof E==="string"){var G=D.exec(E);if(G&&(G[1]||!H)){if(G[1]){E=o.clean([G[1]],H)}else{var I=document.getElementById(G[3]);if(I&&I.id!=G[3]){return o().find(E)}var F=o(I||[]);F.context=document;F.selector=E;return F}}else{return o(H).find(E)}}else{if(o.isFunction(E)){return o(document).ready(E)}}if(E.selector&&E.context){this.selector=E.selector;this.context=E.context}return this.setArray(o.isArray(E)?E:o.makeArray(E))},selector:"",jquery:"1.3.2",size:function(){return this.length},get:function(E){return E===g?Array.prototype.slice.call(this):this[E]},pushStack:function(F,H,E){var G=o(F);G.prevObject=this;G.context=this.context;if(H==="find"){G.selector=this.selector+(this.selector?" ":"")+E}else{if(H){G.selector=this.selector+"."+H+"("+E+")"}}return G},setArray:function(E){this.length=0;Array.prototype.push.apply(this,E);return this},each:function(F,E){return o.each(this,F,E)},index:function(E){return o.inArray(E&&E.jquery?E[0]:E,this)},attr:function(F,H,G){var E=F;if(typeof F==="string"){if(H===g){return this[0]&&o[G||"attr"](this[0],F)}else{E={};E[F]=H}}return this.each(function(I){for(F in E){o.attr(G?this.style:this,F,o.prop(this,E[F],G,I,F))}})},css:function(E,F){if((E=="width"||E=="height")&&parseFloat(F)<0){F=g}return this.attr(E,F,"curCSS")},text:function(F){if(typeof F!=="object"&&F!=null){return this.empty().append((this[0]&&this[0].ownerDocument||document).createTextNode(F))}var E="";o.each(F||this,function(){o.each(this.childNodes,function(){if(this.nodeType!=8){E+=this.nodeType!=1?this.nodeValue:o.fn.text([this])}})});return E},wrapAll:function(E){if(this[0]){var F=o(E,this[0].ownerDocument).clone();if(this[0].parentNode){F.insertBefore(this[0])}F.map(function(){var G=this;while(G.firstChild){G=G.firstChild}return G}).append(this)}return this},wrapInner:function(E){return this.each(function(){o(this).contents().wrapAll(E)})},wrap:function(E){return this.each(function(){o(this).wrapAll(E)})},append:function(){return this.domManip(arguments,true,function(E){if(this.nodeType==1){this.appendChild(E)}})},prepend:function(){return this.domManip(arguments,true,function(E){if(this.nodeType==1){this.insertBefore(E,this.firstChild)}})},before:function(){return this.domManip(arguments,false,function(E){this.parentNode.insertBefore(E,this)})},after:function(){return this.domManip(arguments,false,function(E){this.parentNode.insertBefore(E,this.nextSibling)})},end:function(){return this.prevObject||o([])},push:[].push,sort:[].sort,splice:[].splice,find:function(E){if(this.length===1){var F=this.pushStack([],"find",E);F.length=0;o.find(E,this[0],F);return F}else{return this.pushStack(o.unique(o.map(this,function(G){return o.find(E,G)})),"find",E)}},clone:function(G){var E=this.map(function(){if(!o.support.noCloneEvent&&!o.isXMLDoc(this)){var I=this.outerHTML;if(!I){var J=this.ownerDocument.createElement("div");J.appendChild(this.cloneNode(true));I=J.innerHTML}return o.clean([I.replace(/ jQuery\d+="(?:\d+|null)"/g,"").replace(/^\s*/,"")])[0]}else{return this.cloneNode(true)}});if(G===true){var H=this.find("*").andSelf(),F=0;E.find("*").andSelf().each(function(){if(this.nodeName!==H[F].nodeName){return}var I=o.data(H[F],"events");for(var K in I){for(var J in I[K]){o.event.add(this,K,I[K][J],I[K][J].data)}}F++})}return E},filter:function(E){return this.pushStack(o.isFunction(E)&&o.grep(this,function(G,F){return E.call(G,F)})||o.multiFilter(E,o.grep(this,function(F){return F.nodeType===1})),"filter",E)},closest:function(E){var G=o.expr.match.POS.test(E)?o(E):null,F=0;return this.map(function(){var H=this;while(H&&H.ownerDocument){if(G?G.index(H)>-1:o(H).is(E)){o.data(H,"closest",F);return H}H=H.parentNode;F++}})},not:function(E){if(typeof E==="string"){if(f.test(E)){return this.pushStack(o.multiFilter(E,this,true),"not",E)}else{E=o.multiFilter(E,this)}}var F=E.length&&E[E.length-1]!==g&&!E.nodeType;return this.filter(function(){return F?o.inArray(this,E)<0:this!=E})},add:function(E){return this.pushStack(o.unique(o.merge(this.get(),typeof E==="string"?o(E):o.makeArray(E))))},is:function(E){return !!E&&o.multiFilter(E,this).length>0},hasClass:function(E){return !!E&&this.is("."+E)},val:function(K){if(K===g){var E=this[0];if(E){if(o.nodeName(E,"option")){return(E.attributes.value||{}).specified?E.value:E.text}if(o.nodeName(E,"select")){var I=E.selectedIndex,L=[],M=E.options,H=E.type=="select-one";if(I<0){return null}for(var F=H?I:0,J=H?I+1:M.length;F<J;F++){var G=M[F];if(G.selected){K=o(G).val();if(H){return K}L.push(K)}}return L}return(E.value||"").replace(/\r/g,"")}return g}if(typeof K==="number"){K+=""}return this.each(function(){if(this.nodeType!=1){return}if(o.isArray(K)&&/radio|checkbox/.test(this.type)){this.checked=(o.inArray(this.value,K)>=0||o.inArray(this.name,K)>=0)}else{if(o.nodeName(this,"select")){var N=o.makeArray(K);o("option",this).each(function(){this.selected=(o.inArray(this.value,N)>=0||o.inArray(this.text,N)>=0)});if(!N.length){this.selectedIndex=-1}}else{this.value=K}}})},html:function(E){return E===g?(this[0]?this[0].innerHTML.replace(/ jQuery\d+="(?:\d+|null)"/g,""):null):this.empty().append(E)},replaceWith:function(E){return this.after(E).remove()},eq:function(E){return this.slice(E,+E+1)},slice:function(){return this.pushStack(Array.prototype.slice.apply(this,arguments),"slice",Array.prototype.slice.call(arguments).join(","))},map:function(E){return this.pushStack(o.map(this,function(G,F){return E.call(G,F,G)}))},andSelf:function(){return this.add(this.prevObject)},domManip:function(J,M,L){if(this[0]){var I=(this[0].ownerDocument||this[0]).createDocumentFragment(),F=o.clean(J,(this[0].ownerDocument||this[0]),I),H=I.firstChild;if(H){for(var G=0,E=this.length;G<E;G++){L.call(K(this[G],H),this.length>1||G>0?I.cloneNode(true):I)}}if(F){o.each(F,z)}}return this;function K(N,O){return M&&o.nodeName(N,"table")&&o.nodeName(O,"tr")?(N.getElementsByTagName("tbody")[0]||N.appendChild(N.ownerDocument.createElement("tbody"))):N}}};o.fn.init.prototype=o.fn;function z(E,F){if(F.src){o.ajax({url:F.src,async:false,dataType:"script"})}else{o.globalEval(F.text||F.textContent||F.innerHTML||"")}if(F.parentNode){F.parentNode.removeChild(F)}}function e(){return +new Date}o.extend=o.fn.extend=function(){var J=arguments[0]||{},H=1,I=arguments.length,E=false,G;if(typeof J==="boolean"){E=J;J=arguments[1]||{};H=2}if(typeof J!=="object"&&!o.isFunction(J)){J={}}if(I==H){J=this;--H}for(;H<I;H++){if((G=arguments[H])!=null){for(var F in G){var K=J[F],L=G[F];if(J===L){continue}if(E&&L&&typeof L==="object"&&!L.nodeType){J[F]=o.extend(E,K||(L.length!=null?[]:{}),L)}else{if(L!==g){J[F]=L}}}}}return J};var b=/z-?index|font-?weight|opacity|zoom|line-?height/i,q=document.defaultView||{},s=Object.prototype.toString;o.extend({noConflict:function(E){l.$=p;if(E){l.jQuery=y}return o},isFunction:function(E){return s.call(E)==="[object Function]"},isArray:function(E){return s.call(E)==="[object Array]"},isXMLDoc:function(E){return E.nodeType===9&&E.documentElement.nodeName!=="HTML"||!!E.ownerDocument&&o.isXMLDoc(E.ownerDocument)},globalEval:function(G){if(G&&/\S/.test(G)){var F=document.getElementsByTagName("head")[0]||document.documentElement,E=document.createElement("script");E.type="text/javascript";if(o.support.scriptEval){E.appendChild(document.createTextNode(G))}else{E.text=G}F.insertBefore(E,F.firstChild);F.removeChild(E)}},nodeName:function(F,E){return F.nodeName&&F.nodeName.toUpperCase()==E.toUpperCase()},each:function(G,K,F){var E,H=0,I=G.length;if(F){if(I===g){for(E in G){if(K.apply(G[E],F)===false){break}}}else{for(;H<I;){if(K.apply(G[H++],F)===false){break}}}}else{if(I===g){for(E in G){if(K.call(G[E],E,G[E])===false){break}}}else{for(var J=G[0];H<I&&K.call(J,H,J)!==false;J=G[++H]){}}}return G},prop:function(H,I,G,F,E){if(o.isFunction(I)){I=I.call(H,F)}return typeof I==="number"&&G=="curCSS"&&!b.test(E)?I+"px":I},className:{add:function(E,F){o.each((F||"").split(/\s+/),function(G,H){if(E.nodeType==1&&!o.className.has(E.className,H)){E.className+=(E.className?" ":"")+H}})},remove:function(E,F){if(E.nodeType==1){E.className=F!==g?o.grep(E.className.split(/\s+/),function(G){return !o.className.has(F,G)}).join(" "):""}},has:function(F,E){return F&&o.inArray(E,(F.className||F).toString().split(/\s+/))>-1}},swap:function(H,G,I){var E={};for(var F in G){E[F]=H.style[F];H.style[F]=G[F]}I.call(H);for(var F in G){H.style[F]=E[F]}},css:function(H,F,J,E){if(F=="width"||F=="height"){var L,G={position:"absolute",visibility:"hidden",display:"block"},K=F=="width"?["Left","Right"]:["Top","Bottom"];function I(){L=F=="width"?H.offsetWidth:H.offsetHeight;if(E==="border"){return}o.each(K,function(){if(!E){L-=parseFloat(o.curCSS(H,"padding"+this,true))||0}if(E==="margin"){L+=parseFloat(o.curCSS(H,"margin"+this,true))||0}else{L-=parseFloat(o.curCSS(H,"border"+this+"Width",true))||0}})}if(H.offsetWidth!==0){I()}else{o.swap(H,G,I)}return Math.max(0,Math.round(L))}return o.curCSS(H,F,J)},curCSS:function(I,F,G){var L,E=I.style;if(F=="opacity"&&!o.support.opacity){L=o.attr(E,"opacity");return L==""?"1":L}if(F.match(/float/i)){F=w}if(!G&&E&&E[F]){L=E[F]}else{if(q.getComputedStyle){if(F.match(/float/i)){F="float"}F=F.replace(/([A-Z])/g,"-$1").toLowerCase();var M=q.getComputedStyle(I,null);if(M){L=M.getPropertyValue(F)}if(F=="opacity"&&L==""){L="1"}}else{if(I.currentStyle){var J=F.replace(/\-(\w)/g,function(N,O){return O.toUpperCase()});L=I.currentStyle[F]||I.currentStyle[J];if(!/^\d+(px)?$/i.test(L)&&/^\d/.test(L)){var H=E.left,K=I.runtimeStyle.left;I.runtimeStyle.left=I.currentStyle.left;E.left=L||0;L=E.pixelLeft+"px";E.left=H;I.runtimeStyle.left=K}}}}return L},clean:function(F,K,I){K=K||document;if(typeof K.createElement==="undefined"){K=K.ownerDocument||K[0]&&K[0].ownerDocument||document}if(!I&&F.length===1&&typeof F[0]==="string"){var H=/^<(\w+)\s*\/?>$/.exec(F[0]);if(H){return[K.createElement(H[1])]}}var G=[],E=[],L=K.createElement("div");o.each(F,function(P,S){if(typeof S==="number"){S+=""}if(!S){return}if(typeof S==="string"){S=S.replace(/(<(\w+)[^>]*?)\/>/g,function(U,V,T){return T.match(/^(abbr|br|col|img|input|link|meta|param|hr|area|embed)$/i)?U:V+"></"+T+">"});var O=S.replace(/^\s+/,"").substring(0,10).toLowerCase();var Q=!O.indexOf("<opt")&&[1,"<select multiple='multiple'>","</select>"]||!O.indexOf("<leg")&&[1,"<fieldset>","</fieldset>"]||O.match(/^<(thead|tbody|tfoot|colg|cap)/)&&[1,"<table>","</table>"]||!O.indexOf("<tr")&&[2,"<table><tbody>","</tbody></table>"]||(!O.indexOf("<td")||!O.indexOf("<th"))&&[3,"<table><tbody><tr>","</tr></tbody></table>"]||!O.indexOf("<col")&&[2,"<table><tbody></tbody><colgroup>","</colgroup></table>"]||!o.support.htmlSerialize&&[1,"div<div>","</div>"]||[0,"",""];L.innerHTML=Q[1]+S+Q[2];while(Q[0]--){L=L.lastChild}if(!o.support.tbody){var R=/<tbody/i.test(S),N=!O.indexOf("<table")&&!R?L.firstChild&&L.firstChild.childNodes:Q[1]=="<table>"&&!R?L.childNodes:[];for(var M=N.length-1;M>=0;--M){if(o.nodeName(N[M],"tbody")&&!N[M].childNodes.length){N[M].parentNode.removeChild(N[M])}}}if(!o.support.leadingWhitespace&&/^\s/.test(S)){L.insertBefore(K.createTextNode(S.match(/^\s*/)[0]),L.firstChild)}S=o.makeArray(L.childNodes)}if(S.nodeType){G.push(S)}else{G=o.merge(G,S)}});if(I){for(var J=0;G[J];J++){if(o.nodeName(G[J],"script")&&(!G[J].type||G[J].type.toLowerCase()==="text/javascript")){E.push(G[J].parentNode?G[J].parentNode.removeChild(G[J]):G[J])}else{if(G[J].nodeType===1){G.splice.apply(G,[J+1,0].concat(o.makeArray(G[J].getElementsByTagName("script"))))}I.appendChild(G[J])}}return E}return G},attr:function(J,G,K){if(!J||J.nodeType==3||J.nodeType==8){return g}var H=!o.isXMLDoc(J),L=K!==g;G=H&&o.props[G]||G;if(J.tagName){var F=/href|src|style/.test(G);if(G=="selected"&&J.parentNode){J.parentNode.selectedIndex}if(G in J&&H&&!F){if(L){if(G=="type"&&o.nodeName(J,"input")&&J.parentNode){throw"type property can't be changed"}J[G]=K}if(o.nodeName(J,"form")&&J.getAttributeNode(G)){return J.getAttributeNode(G).nodeValue}if(G=="tabIndex"){var I=J.getAttributeNode("tabIndex");return I&&I.specified?I.value:J.nodeName.match(/(button|input|object|select|textarea)/i)?0:J.nodeName.match(/^(a|area)$/i)&&J.href?0:g}return J[G]}if(!o.support.style&&H&&G=="style"){return o.attr(J.style,"cssText",K)}if(L){J.setAttribute(G,""+K)}var E=!o.support.hrefNormalized&&H&&F?J.getAttribute(G,2):J.getAttribute(G);return E===null?g:E}if(!o.support.opacity&&G=="opacity"){if(L){J.zoom=1;J.filter=(J.filter||"").replace(/alpha\([^)]*\)/,"")+(parseInt(K)+""=="NaN"?"":"alpha(opacity="+K*100+")")}return J.filter&&J.filter.indexOf("opacity=")>=0?(parseFloat(J.filter.match(/opacity=([^)]*)/)[1])/100)+"":""}G=G.replace(/-([a-z])/ig,function(M,N){return N.toUpperCase()});if(L){J[G]=K}return J[G]},trim:function(E){return(E||"").replace(/^\s+|\s+$/g,"")},makeArray:function(G){var E=[];if(G!=null){var F=G.length;if(F==null||typeof G==="string"||o.isFunction(G)||G.setInterval){E[0]=G}else{while(F){E[--F]=G[F]}}}return E},inArray:function(G,H){for(var E=0,F=H.length;E<F;E++){if(H[E]===G){return E}}return -1},merge:function(H,E){var F=0,G,I=H.length;if(!o.support.getAll){while((G=E[F++])!=null){if(G.nodeType!=8){H[I++]=G}}}else{while((G=E[F++])!=null){H[I++]=G}}return H},unique:function(K){var F=[],E={};try{for(var G=0,H=K.length;G<H;G++){var J=o.data(K[G]);if(!E[J]){E[J]=true;F.push(K[G])}}}catch(I){F=K}return F},grep:function(F,J,E){var G=[];for(var H=0,I=F.length;H<I;H++){if(!E!=!J(F[H],H)){G.push(F[H])}}return G},map:function(E,J){var F=[];for(var G=0,H=E.length;G<H;G++){var I=J(E[G],G);if(I!=null){F[F.length]=I}}return F.concat.apply([],F)}});var C=navigator.userAgent.toLowerCase();o.browser={version:(C.match(/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/)||[0,"0"])[1],safari:/webkit/.test(C),opera:/opera/.test(C),msie:/msie/.test(C)&&!/opera/.test(C),mozilla:/mozilla/.test(C)&&!/(compatible|webkit)/.test(C)};o.each({parent:function(E){return E.parentNode},parents:function(E){return o.dir(E,"parentNode")},next:function(E){return o.nth(E,2,"nextSibling")},prev:function(E){return o.nth(E,2,"previousSibling")},nextAll:function(E){return o.dir(E,"nextSibling")},prevAll:function(E){return o.dir(E,"previousSibling")},siblings:function(E){return o.sibling(E.parentNode.firstChild,E)},children:function(E){return o.sibling(E.firstChild)},contents:function(E){return o.nodeName(E,"iframe")?E.contentDocument||E.contentWindow.document:o.makeArray(E.childNodes)}},function(E,F){o.fn[E]=function(G){var H=o.map(this,F);if(G&&typeof G=="string"){H=o.multiFilter(G,H)}return this.pushStack(o.unique(H),E,G)}});o.each({appendTo:"append",prependTo:"prepend",insertBefore:"before",insertAfter:"after",replaceAll:"replaceWith"},function(E,F){o.fn[E]=function(G){var J=[],L=o(G);for(var K=0,H=L.length;K<H;K++){var I=(K>0?this.clone(true):this).get();o.fn[F].apply(o(L[K]),I);J=J.concat(I)}return this.pushStack(J,E,G)}});o.each({removeAttr:function(E){o.attr(this,E,"");if(this.nodeType==1){this.removeAttribute(E)}},addClass:function(E){o.className.add(this,E)},removeClass:function(E){o.className.remove(this,E)},toggleClass:function(F,E){if(typeof E!=="boolean"){E=!o.className.has(this,F)}o.className[E?"add":"remove"](this,F)},remove:function(E){if(!E||o.filter(E,[this]).length){o("*",this).add([this]).each(function(){o.event.remove(this);o.removeData(this)});if(this.parentNode){this.parentNode.removeChild(this)}}},empty:function(){o(this).children().remove();while(this.firstChild){this.removeChild(this.firstChild)}}},function(E,F){o.fn[E]=function(){return this.each(F,arguments)}});function j(E,F){return E[0]&&parseInt(o.curCSS(E[0],F,true),10)||0}var h="jQuery"+e(),v=0,A={};o.extend({cache:{},data:function(F,E,G){F=F==l?A:F;var H=F[h];if(!H){H=F[h]=++v}if(E&&!o.cache[H]){o.cache[H]={}}if(G!==g){o.cache[H][E]=G}return E?o.cache[H][E]:H},removeData:function(F,E){F=F==l?A:F;var H=F[h];if(E){if(o.cache[H]){delete o.cache[H][E];E="";for(E in o.cache[H]){break}if(!E){o.removeData(F)}}}else{try{delete F[h]}catch(G){if(F.removeAttribute){F.removeAttribute(h)}}delete o.cache[H]}},queue:function(F,E,H){if(F){E=(E||"fx")+"queue";var G=o.data(F,E);if(!G||o.isArray(H)){G=o.data(F,E,o.makeArray(H))}else{if(H){G.push(H)}}}return G},dequeue:function(H,G){var E=o.queue(H,G),F=E.shift();if(!G||G==="fx"){F=E[0]}if(F!==g){F.call(H)}}});o.fn.extend({data:function(E,G){var H=E.split(".");H[1]=H[1]?"."+H[1]:"";if(G===g){var F=this.triggerHandler("getData"+H[1]+"!",[H[0]]);if(F===g&&this.length){F=o.data(this[0],E)}return F===g&&H[1]?this.data(H[0]):F}else{return this.trigger("setData"+H[1]+"!",[H[0],G]).each(function(){o.data(this,E,G)})}},removeData:function(E){return this.each(function(){o.removeData(this,E)})},queue:function(E,F){if(typeof E!=="string"){F=E;E="fx"}if(F===g){return o.queue(this[0],E)}return this.each(function(){var G=o.queue(this,E,F);if(E=="fx"&&G.length==1){G[0].call(this)}})},dequeue:function(E){return this.each(function(){o.dequeue(this,E)})}});
+(function(){var R=/((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^[\]]*\]|['"][^'"]*['"]|[^[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?/g,L=0,H=Object.prototype.toString;var F=function(Y,U,ab,ac){ab=ab||[];U=U||document;if(U.nodeType!==1&&U.nodeType!==9){return[]}if(!Y||typeof Y!=="string"){return ab}var Z=[],W,af,ai,T,ad,V,X=true;R.lastIndex=0;while((W=R.exec(Y))!==null){Z.push(W[1]);if(W[2]){V=RegExp.rightContext;break}}if(Z.length>1&&M.exec(Y)){if(Z.length===2&&I.relative[Z[0]]){af=J(Z[0]+Z[1],U)}else{af=I.relative[Z[0]]?[U]:F(Z.shift(),U);while(Z.length){Y=Z.shift();if(I.relative[Y]){Y+=Z.shift()}af=J(Y,af)}}}else{var ae=ac?{expr:Z.pop(),set:E(ac)}:F.find(Z.pop(),Z.length===1&&U.parentNode?U.parentNode:U,Q(U));af=F.filter(ae.expr,ae.set);if(Z.length>0){ai=E(af)}else{X=false}while(Z.length){var ah=Z.pop(),ag=ah;if(!I.relative[ah]){ah=""}else{ag=Z.pop()}if(ag==null){ag=U}I.relative[ah](ai,ag,Q(U))}}if(!ai){ai=af}if(!ai){throw"Syntax error, unrecognized expression: "+(ah||Y)}if(H.call(ai)==="[object Array]"){if(!X){ab.push.apply(ab,ai)}else{if(U.nodeType===1){for(var aa=0;ai[aa]!=null;aa++){if(ai[aa]&&(ai[aa]===true||ai[aa].nodeType===1&&K(U,ai[aa]))){ab.push(af[aa])}}}else{for(var aa=0;ai[aa]!=null;aa++){if(ai[aa]&&ai[aa].nodeType===1){ab.push(af[aa])}}}}}else{E(ai,ab)}if(V){F(V,U,ab,ac);if(G){hasDuplicate=false;ab.sort(G);if(hasDuplicate){for(var aa=1;aa<ab.length;aa++){if(ab[aa]===ab[aa-1]){ab.splice(aa--,1)}}}}}return ab};F.matches=function(T,U){return F(T,null,null,U)};F.find=function(aa,T,ab){var Z,X;if(!aa){return[]}for(var W=0,V=I.order.length;W<V;W++){var Y=I.order[W],X;if((X=I.match[Y].exec(aa))){var U=RegExp.leftContext;if(U.substr(U.length-1)!=="\\"){X[1]=(X[1]||"").replace(/\\/g,"");Z=I.find[Y](X,T,ab);if(Z!=null){aa=aa.replace(I.match[Y],"");break}}}}if(!Z){Z=T.getElementsByTagName("*")}return{set:Z,expr:aa}};F.filter=function(ad,ac,ag,W){var V=ad,ai=[],aa=ac,Y,T,Z=ac&&ac[0]&&Q(ac[0]);while(ad&&ac.length){for(var ab in I.filter){if((Y=I.match[ab].exec(ad))!=null){var U=I.filter[ab],ah,af;T=false;if(aa==ai){ai=[]}if(I.preFilter[ab]){Y=I.preFilter[ab](Y,aa,ag,ai,W,Z);if(!Y){T=ah=true}else{if(Y===true){continue}}}if(Y){for(var X=0;(af=aa[X])!=null;X++){if(af){ah=U(af,Y,X,aa);var ae=W^!!ah;if(ag&&ah!=null){if(ae){T=true}else{aa[X]=false}}else{if(ae){ai.push(af);T=true}}}}}if(ah!==g){if(!ag){aa=ai}ad=ad.replace(I.match[ab],"");if(!T){return[]}break}}}if(ad==V){if(T==null){throw"Syntax error, unrecognized expression: "+ad}else{break}}V=ad}return aa};var I=F.selectors={order:["ID","NAME","TAG"],match:{ID:/#((?:[\w\u00c0-\uFFFF_-]|\\.)+)/,CLASS:/\.((?:[\w\u00c0-\uFFFF_-]|\\.)+)/,NAME:/\[name=['"]*((?:[\w\u00c0-\uFFFF_-]|\\.)+)['"]*\]/,ATTR:/\[\s*((?:[\w\u00c0-\uFFFF_-]|\\.)+)\s*(?:(\S?=)\s*(['"]*)(.*?)\3|)\s*\]/,TAG:/^((?:[\w\u00c0-\uFFFF\*_-]|\\.)+)/,CHILD:/:(only|nth|last|first)-child(?:\((even|odd|[\dn+-]*)\))?/,POS:/:(nth|eq|gt|lt|first|last|even|odd)(?:\((\d*)\))?(?=[^-]|$)/,PSEUDO:/:((?:[\w\u00c0-\uFFFF_-]|\\.)+)(?:\((['"]*)((?:\([^\)]+\)|[^\2\(\)]*)+)\2\))?/},attrMap:{"class":"className","for":"htmlFor"},attrHandle:{href:function(T){return T.getAttribute("href")}},relative:{"+":function(aa,T,Z){var X=typeof T==="string",ab=X&&!/\W/.test(T),Y=X&&!ab;if(ab&&!Z){T=T.toUpperCase()}for(var W=0,V=aa.length,U;W<V;W++){if((U=aa[W])){while((U=U.previousSibling)&&U.nodeType!==1){}aa[W]=Y||U&&U.nodeName===T?U||false:U===T}}if(Y){F.filter(T,aa,true)}},">":function(Z,U,aa){var X=typeof U==="string";if(X&&!/\W/.test(U)){U=aa?U:U.toUpperCase();for(var V=0,T=Z.length;V<T;V++){var Y=Z[V];if(Y){var W=Y.parentNode;Z[V]=W.nodeName===U?W:false}}}else{for(var V=0,T=Z.length;V<T;V++){var Y=Z[V];if(Y){Z[V]=X?Y.parentNode:Y.parentNode===U}}if(X){F.filter(U,Z,true)}}},"":function(W,U,Y){var V=L++,T=S;if(!U.match(/\W/)){var X=U=Y?U:U.toUpperCase();T=P}T("parentNode",U,V,W,X,Y)},"~":function(W,U,Y){var V=L++,T=S;if(typeof U==="string"&&!U.match(/\W/)){var X=U=Y?U:U.toUpperCase();T=P}T("previousSibling",U,V,W,X,Y)}},find:{ID:function(U,V,W){if(typeof V.getElementById!=="undefined"&&!W){var T=V.getElementById(U[1]);return T?[T]:[]}},NAME:function(V,Y,Z){if(typeof Y.getElementsByName!=="undefined"){var U=[],X=Y.getElementsByName(V[1]);for(var W=0,T=X.length;W<T;W++){if(X[W].getAttribute("name")===V[1]){U.push(X[W])}}return U.length===0?null:U}},TAG:function(T,U){return U.getElementsByTagName(T[1])}},preFilter:{CLASS:function(W,U,V,T,Z,aa){W=" "+W[1].replace(/\\/g,"")+" ";if(aa){return W}for(var X=0,Y;(Y=U[X])!=null;X++){if(Y){if(Z^(Y.className&&(" "+Y.className+" ").indexOf(W)>=0)){if(!V){T.push(Y)}}else{if(V){U[X]=false}}}}return false},ID:function(T){return T[1].replace(/\\/g,"")},TAG:function(U,T){for(var V=0;T[V]===false;V++){}return T[V]&&Q(T[V])?U[1]:U[1].toUpperCase()},CHILD:function(T){if(T[1]=="nth"){var U=/(-?)(\d*)n((?:\+|-)?\d*)/.exec(T[2]=="even"&&"2n"||T[2]=="odd"&&"2n+1"||!/\D/.test(T[2])&&"0n+"+T[2]||T[2]);T[2]=(U[1]+(U[2]||1))-0;T[3]=U[3]-0}T[0]=L++;return T},ATTR:function(X,U,V,T,Y,Z){var W=X[1].replace(/\\/g,"");if(!Z&&I.attrMap[W]){X[1]=I.attrMap[W]}if(X[2]==="~="){X[4]=" "+X[4]+" "}return X},PSEUDO:function(X,U,V,T,Y){if(X[1]==="not"){if(X[3].match(R).length>1||/^\w/.test(X[3])){X[3]=F(X[3],null,null,U)}else{var W=F.filter(X[3],U,V,true^Y);if(!V){T.push.apply(T,W)}return false}}else{if(I.match.POS.test(X[0])||I.match.CHILD.test(X[0])){return true}}return X},POS:function(T){T.unshift(true);return T}},filters:{enabled:function(T){return T.disabled===false&&T.type!=="hidden"},disabled:function(T){return T.disabled===true},checked:function(T){return T.checked===true},selected:function(T){T.parentNode.selectedIndex;return T.selected===true},parent:function(T){return !!T.firstChild},empty:function(T){return !T.firstChild},has:function(V,U,T){return !!F(T[3],V).length},header:function(T){return/h\d/i.test(T.nodeName)},text:function(T){return"text"===T.type},radio:function(T){return"radio"===T.type},checkbox:function(T){return"checkbox"===T.type},file:function(T){return"file"===T.type},password:function(T){return"password"===T.type},submit:function(T){return"submit"===T.type},image:function(T){return"image"===T.type},reset:function(T){return"reset"===T.type},button:function(T){return"button"===T.type||T.nodeName.toUpperCase()==="BUTTON"},input:function(T){return/input|select|textarea|button/i.test(T.nodeName)}},setFilters:{first:function(U,T){return T===0},last:function(V,U,T,W){return U===W.length-1},even:function(U,T){return T%2===0},odd:function(U,T){return T%2===1},lt:function(V,U,T){return U<T[3]-0},gt:function(V,U,T){return U>T[3]-0},nth:function(V,U,T){return T[3]-0==U},eq:function(V,U,T){return T[3]-0==U}},filter:{PSEUDO:function(Z,V,W,aa){var U=V[1],X=I.filters[U];if(X){return X(Z,W,V,aa)}else{if(U==="contains"){return(Z.textContent||Z.innerText||"").indexOf(V[3])>=0}else{if(U==="not"){var Y=V[3];for(var W=0,T=Y.length;W<T;W++){if(Y[W]===Z){return false}}return true}}}},CHILD:function(T,W){var Z=W[1],U=T;switch(Z){case"only":case"first":while(U=U.previousSibling){if(U.nodeType===1){return false}}if(Z=="first"){return true}U=T;case"last":while(U=U.nextSibling){if(U.nodeType===1){return false}}return true;case"nth":var V=W[2],ac=W[3];if(V==1&&ac==0){return true}var Y=W[0],ab=T.parentNode;if(ab&&(ab.sizcache!==Y||!T.nodeIndex)){var X=0;for(U=ab.firstChild;U;U=U.nextSibling){if(U.nodeType===1){U.nodeIndex=++X}}ab.sizcache=Y}var aa=T.nodeIndex-ac;if(V==0){return aa==0}else{return(aa%V==0&&aa/V>=0)}}},ID:function(U,T){return U.nodeType===1&&U.getAttribute("id")===T},TAG:function(U,T){return(T==="*"&&U.nodeType===1)||U.nodeName===T},CLASS:function(U,T){return(" "+(U.className||U.getAttribute("class"))+" ").indexOf(T)>-1},ATTR:function(Y,W){var V=W[1],T=I.attrHandle[V]?I.attrHandle[V](Y):Y[V]!=null?Y[V]:Y.getAttribute(V),Z=T+"",X=W[2],U=W[4];return T==null?X==="!=":X==="="?Z===U:X==="*="?Z.indexOf(U)>=0:X==="~="?(" "+Z+" ").indexOf(U)>=0:!U?Z&&T!==false:X==="!="?Z!=U:X==="^="?Z.indexOf(U)===0:X==="$="?Z.substr(Z.length-U.length)===U:X==="|="?Z===U||Z.substr(0,U.length+1)===U+"-":false},POS:function(X,U,V,Y){var T=U[2],W=I.setFilters[T];if(W){return W(X,V,U,Y)}}}};var M=I.match.POS;for(var O in I.match){I.match[O]=RegExp(I.match[O].source+/(?![^\[]*\])(?![^\(]*\))/.source)}var E=function(U,T){U=Array.prototype.slice.call(U);if(T){T.push.apply(T,U);return T}return U};try{Array.prototype.slice.call(document.documentElement.childNodes)}catch(N){E=function(X,W){var U=W||[];if(H.call(X)==="[object Array]"){Array.prototype.push.apply(U,X)}else{if(typeof X.length==="number"){for(var V=0,T=X.length;V<T;V++){U.push(X[V])}}else{for(var V=0;X[V];V++){U.push(X[V])}}}return U}}var G;if(document.documentElement.compareDocumentPosition){G=function(U,T){var V=U.compareDocumentPosition(T)&4?-1:U===T?0:1;if(V===0){hasDuplicate=true}return V}}else{if("sourceIndex" in document.documentElement){G=function(U,T){var V=U.sourceIndex-T.sourceIndex;if(V===0){hasDuplicate=true}return V}}else{if(document.createRange){G=function(W,U){var V=W.ownerDocument.createRange(),T=U.ownerDocument.createRange();V.selectNode(W);V.collapse(true);T.selectNode(U);T.collapse(true);var X=V.compareBoundaryPoints(Range.START_TO_END,T);if(X===0){hasDuplicate=true}return X}}}}(function(){var U=document.createElement("form"),V="script"+(new Date).getTime();U.innerHTML="<input name='"+V+"'/>";var T=document.documentElement;T.insertBefore(U,T.firstChild);if(!!document.getElementById(V)){I.find.ID=function(X,Y,Z){if(typeof Y.getElementById!=="undefined"&&!Z){var W=Y.getElementById(X[1]);return W?W.id===X[1]||typeof W.getAttributeNode!=="undefined"&&W.getAttributeNode("id").nodeValue===X[1]?[W]:g:[]}};I.filter.ID=function(Y,W){var X=typeof Y.getAttributeNode!=="undefined"&&Y.getAttributeNode("id");return Y.nodeType===1&&X&&X.nodeValue===W}}T.removeChild(U)})();(function(){var T=document.createElement("div");T.appendChild(document.createComment(""));if(T.getElementsByTagName("*").length>0){I.find.TAG=function(U,Y){var X=Y.getElementsByTagName(U[1]);if(U[1]==="*"){var W=[];for(var V=0;X[V];V++){if(X[V].nodeType===1){W.push(X[V])}}X=W}return X}}T.innerHTML="<a href='#'></a>";if(T.firstChild&&typeof T.firstChild.getAttribute!=="undefined"&&T.firstChild.getAttribute("href")!=="#"){I.attrHandle.href=function(U){return U.getAttribute("href",2)}}})();if(document.querySelectorAll){(function(){var T=F,U=document.createElement("div");U.innerHTML="<p class='TEST'></p>";if(U.querySelectorAll&&U.querySelectorAll(".TEST").length===0){return}F=function(Y,X,V,W){X=X||document;if(!W&&X.nodeType===9&&!Q(X)){try{return E(X.querySelectorAll(Y),V)}catch(Z){}}return T(Y,X,V,W)};F.find=T.find;F.filter=T.filter;F.selectors=T.selectors;F.matches=T.matches})()}if(document.getElementsByClassName&&document.documentElement.getElementsByClassName){(function(){var T=document.createElement("div");T.innerHTML="<div class='test e'></div><div class='test'></div>";if(T.getElementsByClassName("e").length===0){return}T.lastChild.className="e";if(T.getElementsByClassName("e").length===1){return}I.order.splice(1,0,"CLASS");I.find.CLASS=function(U,V,W){if(typeof V.getElementsByClassName!=="undefined"&&!W){return V.getElementsByClassName(U[1])}}})()}function P(U,Z,Y,ad,aa,ac){var ab=U=="previousSibling"&&!ac;for(var W=0,V=ad.length;W<V;W++){var T=ad[W];if(T){if(ab&&T.nodeType===1){T.sizcache=Y;T.sizset=W}T=T[U];var X=false;while(T){if(T.sizcache===Y){X=ad[T.sizset];break}if(T.nodeType===1&&!ac){T.sizcache=Y;T.sizset=W}if(T.nodeName===Z){X=T;break}T=T[U]}ad[W]=X}}}function S(U,Z,Y,ad,aa,ac){var ab=U=="previousSibling"&&!ac;for(var W=0,V=ad.length;W<V;W++){var T=ad[W];if(T){if(ab&&T.nodeType===1){T.sizcache=Y;T.sizset=W}T=T[U];var X=false;while(T){if(T.sizcache===Y){X=ad[T.sizset];break}if(T.nodeType===1){if(!ac){T.sizcache=Y;T.sizset=W}if(typeof Z!=="string"){if(T===Z){X=true;break}}else{if(F.filter(Z,[T]).length>0){X=T;break}}}T=T[U]}ad[W]=X}}}var K=document.compareDocumentPosition?function(U,T){return U.compareDocumentPosition(T)&16}:function(U,T){return U!==T&&(U.contains?U.contains(T):true)};var Q=function(T){return T.nodeType===9&&T.documentElement.nodeName!=="HTML"||!!T.ownerDocument&&Q(T.ownerDocument)};var J=function(T,aa){var W=[],X="",Y,V=aa.nodeType?[aa]:aa;while((Y=I.match.PSEUDO.exec(T))){X+=Y[0];T=T.replace(I.match.PSEUDO,"")}T=I.relative[T]?T+"*":T;for(var Z=0,U=V.length;Z<U;Z++){F(T,V[Z],W)}return F.filter(X,W)};o.find=F;o.filter=F.filter;o.expr=F.selectors;o.expr[":"]=o.expr.filters;F.selectors.filters.hidden=function(T){return T.offsetWidth===0||T.offsetHeight===0};F.selectors.filters.visible=function(T){return T.offsetWidth>0||T.offsetHeight>0};F.selectors.filters.animated=function(T){return o.grep(o.timers,function(U){return T===U.elem}).length};o.multiFilter=function(V,T,U){if(U){V=":not("+V+")"}return F.matches(V,T)};o.dir=function(V,U){var T=[],W=V[U];while(W&&W!=document){if(W.nodeType==1){T.push(W)}W=W[U]}return T};o.nth=function(X,T,V,W){T=T||1;var U=0;for(;X;X=X[V]){if(X.nodeType==1&&++U==T){break}}return X};o.sibling=function(V,U){var T=[];for(;V;V=V.nextSibling){if(V.nodeType==1&&V!=U){T.push(V)}}return T};return;l.Sizzle=F})();o.event={add:function(I,F,H,K){if(I.nodeType==3||I.nodeType==8){return}if(I.setInterval&&I!=l){I=l}if(!H.guid){H.guid=this.guid++}if(K!==g){var G=H;H=this.proxy(G);H.data=K}var E=o.data(I,"events")||o.data(I,"events",{}),J=o.data(I,"handle")||o.data(I,"handle",function(){return typeof o!=="undefined"&&!o.event.triggered?o.event.handle.apply(arguments.callee.elem,arguments):g});J.elem=I;o.each(F.split(/\s+/),function(M,N){var O=N.split(".");N=O.shift();H.type=O.slice().sort().join(".");var L=E[N];if(o.event.specialAll[N]){o.event.specialAll[N].setup.call(I,K,O)}if(!L){L=E[N]={};if(!o.event.special[N]||o.event.special[N].setup.call(I,K,O)===false){if(I.addEventListener){I.addEventListener(N,J,false)}else{if(I.attachEvent){I.attachEvent("on"+N,J)}}}}L[H.guid]=H;o.event.global[N]=true});I=null},guid:1,global:{},remove:function(K,H,J){if(K.nodeType==3||K.nodeType==8){return}var G=o.data(K,"events"),F,E;if(G){if(H===g||(typeof H==="string"&&H.charAt(0)==".")){for(var I in G){this.remove(K,I+(H||""))}}else{if(H.type){J=H.handler;H=H.type}o.each(H.split(/\s+/),function(M,O){var Q=O.split(".");O=Q.shift();var N=RegExp("(^|\\.)"+Q.slice().sort().join(".*\\.")+"(\\.|$)");if(G[O]){if(J){delete G[O][J.guid]}else{for(var P in G[O]){if(N.test(G[O][P].type)){delete G[O][P]}}}if(o.event.specialAll[O]){o.event.specialAll[O].teardown.call(K,Q)}for(F in G[O]){break}if(!F){if(!o.event.special[O]||o.event.special[O].teardown.call(K,Q)===false){if(K.removeEventListener){K.removeEventListener(O,o.data(K,"handle"),false)}else{if(K.detachEvent){K.detachEvent("on"+O,o.data(K,"handle"))}}}F=null;delete G[O]}}})}for(F in G){break}if(!F){var L=o.data(K,"handle");if(L){L.elem=null}o.removeData(K,"events");o.removeData(K,"handle")}}},trigger:function(I,K,H,E){var G=I.type||I;if(!E){I=typeof I==="object"?I[h]?I:o.extend(o.Event(G),I):o.Event(G);if(G.indexOf("!")>=0){I.type=G=G.slice(0,-1);I.exclusive=true}if(!H){I.stopPropagation();if(this.global[G]){o.each(o.cache,function(){if(this.events&&this.events[G]){o.event.trigger(I,K,this.handle.elem)}})}}if(!H||H.nodeType==3||H.nodeType==8){return g}I.result=g;I.target=H;K=o.makeArray(K);K.unshift(I)}I.currentTarget=H;var J=o.data(H,"handle");if(J){J.apply(H,K)}if((!H[G]||(o.nodeName(H,"a")&&G=="click"))&&H["on"+G]&&H["on"+G].apply(H,K)===false){I.result=false}if(!E&&H[G]&&!I.isDefaultPrevented()&&!(o.nodeName(H,"a")&&G=="click")){this.triggered=true;try{H[G]()}catch(L){}}this.triggered=false;if(!I.isPropagationStopped()){var F=H.parentNode||H.ownerDocument;if(F){o.event.trigger(I,K,F,true)}}},handle:function(K){var J,E;K=arguments[0]=o.event.fix(K||l.event);K.currentTarget=this;var L=K.type.split(".");K.type=L.shift();J=!L.length&&!K.exclusive;var I=RegExp("(^|\\.)"+L.slice().sort().join(".*\\.")+"(\\.|$)");E=(o.data(this,"events")||{})[K.type];for(var G in E){var H=E[G];if(J||I.test(H.type)){K.handler=H;K.data=H.data;var F=H.apply(this,arguments);if(F!==g){K.result=F;if(F===false){K.preventDefault();K.stopPropagation()}}if(K.isImmediatePropagationStopped()){break}}}},props:"altKey attrChange attrName bubbles button cancelable charCode clientX clientY ctrlKey currentTarget data detail eventPhase fromElement handler keyCode metaKey newValue originalTarget pageX pageY prevValue relatedNode relatedTarget screenX screenY shiftKey srcElement target toElement view wheelDelta which".split(" "),fix:function(H){if(H[h]){return H}var F=H;H=o.Event(F);for(var G=this.props.length,J;G;){J=this.props[--G];H[J]=F[J]}if(!H.target){H.target=H.srcElement||document}if(H.target.nodeType==3){H.target=H.target.parentNode}if(!H.relatedTarget&&H.fromElement){H.relatedTarget=H.fromElement==H.target?H.toElement:H.fromElement}if(H.pageX==null&&H.clientX!=null){var I=document.documentElement,E=document.body;H.pageX=H.clientX+(I&&I.scrollLeft||E&&E.scrollLeft||0)-(I.clientLeft||0);H.pageY=H.clientY+(I&&I.scrollTop||E&&E.scrollTop||0)-(I.clientTop||0)}if(!H.which&&((H.charCode||H.charCode===0)?H.charCode:H.keyCode)){H.which=H.charCode||H.keyCode}if(!H.metaKey&&H.ctrlKey){H.metaKey=H.ctrlKey}if(!H.which&&H.button){H.which=(H.button&1?1:(H.button&2?3:(H.button&4?2:0)))}return H},proxy:function(F,E){E=E||function(){return F.apply(this,arguments)};E.guid=F.guid=F.guid||E.guid||this.guid++;return E},special:{ready:{setup:B,teardown:function(){}}},specialAll:{live:{setup:function(E,F){o.event.add(this,F[0],c)},teardown:function(G){if(G.length){var E=0,F=RegExp("(^|\\.)"+G[0]+"(\\.|$)");o.each((o.data(this,"events").live||{}),function(){if(F.test(this.type)){E++}});if(E<1){o.event.remove(this,G[0],c)}}}}}};o.Event=function(E){if(!this.preventDefault){return new o.Event(E)}if(E&&E.type){this.originalEvent=E;this.type=E.type}else{this.type=E}this.timeStamp=e();this[h]=true};function k(){return false}function u(){return true}o.Event.prototype={preventDefault:function(){this.isDefaultPrevented=u;var E=this.originalEvent;if(!E){return}if(E.preventDefault){E.preventDefault()}E.returnValue=false},stopPropagation:function(){this.isPropagationStopped=u;var E=this.originalEvent;if(!E){return}if(E.stopPropagation){E.stopPropagation()}E.cancelBubble=true},stopImmediatePropagation:function(){this.isImmediatePropagationStopped=u;this.stopPropagation()},isDefaultPrevented:k,isPropagationStopped:k,isImmediatePropagationStopped:k};var a=function(F){var E=F.relatedTarget;while(E&&E!=this){try{E=E.parentNode}catch(G){E=this}}if(E!=this){F.type=F.data;o.event.handle.apply(this,arguments)}};o.each({mouseover:"mouseenter",mouseout:"mouseleave"},function(F,E){o.event.special[E]={setup:function(){o.event.add(this,F,a,E)},teardown:function(){o.event.remove(this,F,a)}}});o.fn.extend({bind:function(F,G,E){return F=="unload"?this.one(F,G,E):this.each(function(){o.event.add(this,F,E||G,E&&G)})},one:function(G,H,F){var E=o.event.proxy(F||H,function(I){o(this).unbind(I,E);return(F||H).apply(this,arguments)});return this.each(function(){o.event.add(this,G,E,F&&H)})},unbind:function(F,E){return this.each(function(){o.event.remove(this,F,E)})},trigger:function(E,F){return this.each(function(){o.event.trigger(E,F,this)})},triggerHandler:function(E,G){if(this[0]){var F=o.Event(E);F.preventDefault();F.stopPropagation();o.event.trigger(F,G,this[0]);return F.result}},toggle:function(G){var E=arguments,F=1;while(F<E.length){o.event.proxy(G,E[F++])}return this.click(o.event.proxy(G,function(H){this.lastToggle=(this.lastToggle||0)%F;H.preventDefault();return E[this.lastToggle++].apply(this,arguments)||false}))},hover:function(E,F){return this.mouseenter(E).mouseleave(F)},ready:function(E){B();if(o.isReady){E.call(document,o)}else{o.readyList.push(E)}return this},live:function(G,F){var E=o.event.proxy(F);E.guid+=this.selector+G;o(document).bind(i(G,this.selector),this.selector,E);return this},die:function(F,E){o(document).unbind(i(F,this.selector),E?{guid:E.guid+this.selector+F}:null);return this}});function c(H){var E=RegExp("(^|\\.)"+H.type+"(\\.|$)"),G=true,F=[];o.each(o.data(this,"events").live||[],function(I,J){if(E.test(J.type)){var K=o(H.target).closest(J.data)[0];if(K){F.push({elem:K,fn:J})}}});F.sort(function(J,I){return o.data(J.elem,"closest")-o.data(I.elem,"closest")});o.each(F,function(){if(this.fn.call(this.elem,H,this.fn.data)===false){return(G=false)}});return G}function i(F,E){return["live",F,E.replace(/\./g,"`").replace(/ /g,"|")].join(".")}o.extend({isReady:false,readyList:[],ready:function(){if(!o.isReady){o.isReady=true;if(o.readyList){o.each(o.readyList,function(){this.call(document,o)});o.readyList=null}o(document).triggerHandler("ready")}}});var x=false;function B(){if(x){return}x=true;if(document.addEventListener){document.addEventListener("DOMContentLoaded",function(){document.removeEventListener("DOMContentLoaded",arguments.callee,false);o.ready()},false)}else{if(document.attachEvent){document.attachEvent("onreadystatechange",function(){if(document.readyState==="complete"){document.detachEvent("onreadystatechange",arguments.callee);o.ready()}});if(document.documentElement.doScroll&&l==l.top){(function(){if(o.isReady){return}try{document.documentElement.doScroll("left")}catch(E){setTimeout(arguments.callee,0);return}o.ready()})()}}}o.event.add(l,"load",o.ready)}o.each(("blur,focus,load,resize,scroll,unload,click,dblclick,mousedown,mouseup,mousemove,mouseover,mouseout,mouseenter,mouseleave,change,select,submit,keydown,keypress,keyup,error").split(","),function(F,E){o.fn[E]=function(G){return G?this.bind(E,G):this.trigger(E)}});o(l).bind("unload",function(){for(var E in o.cache){if(E!=1&&o.cache[E].handle){o.event.remove(o.cache[E].handle.elem)}}});(function(){o.support={};var F=document.documentElement,G=document.createElement("script"),K=document.createElement("div"),J="script"+(new Date).getTime();K.style.display="none";K.innerHTML='   <link/><table></table><a href="/a" style="color:red;float:left;opacity:.5;">a</a><select><option>text</option></select><object><param/></object>';var H=K.getElementsByTagName("*"),E=K.getElementsByTagName("a")[0];if(!H||!H.length||!E){return}o.support={leadingWhitespace:K.firstChild.nodeType==3,tbody:!K.getElementsByTagName("tbody").length,objectAll:!!K.getElementsByTagName("object")[0].getElementsByTagName("*").length,htmlSerialize:!!K.getElementsByTagName("link").length,style:/red/.test(E.getAttribute("style")),hrefNormalized:E.getAttribute("href")==="/a",opacity:E.style.opacity==="0.5",cssFloat:!!E.style.cssFloat,scriptEval:false,noCloneEvent:true,boxModel:null};G.type="text/javascript";try{G.appendChild(document.createTextNode("window."+J+"=1;"))}catch(I){}F.insertBefore(G,F.firstChild);if(l[J]){o.support.scriptEval=true;delete l[J]}F.removeChild(G);if(K.attachEvent&&K.fireEvent){K.attachEvent("onclick",function(){o.support.noCloneEvent=false;K.detachEvent("onclick",arguments.callee)});K.cloneNode(true).fireEvent("onclick")}o(function(){var L=document.createElement("div");L.style.width=L.style.paddingLeft="1px";document.body.appendChild(L);o.boxModel=o.support.boxModel=L.offsetWidth===2;document.body.removeChild(L).style.display="none"})})();var w=o.support.cssFloat?"cssFloat":"styleFloat";o.props={"for":"htmlFor","class":"className","float":w,cssFloat:w,styleFloat:w,readonly:"readOnly",maxlength:"maxLength",cellspacing:"cellSpacing",rowspan:"rowSpan",tabindex:"tabIndex"};o.fn.extend({_load:o.fn.load,load:function(G,J,K){if(typeof G!=="string"){return this._load(G)}var I=G.indexOf(" ");if(I>=0){var E=G.slice(I,G.length);G=G.slice(0,I)}var H="GET";if(J){if(o.isFunction(J)){K=J;J=null}else{if(typeof J==="object"){J=o.param(J);H="POST"}}}var F=this;o.ajax({url:G,type:H,dataType:"html",data:J,complete:function(M,L){if(L=="success"||L=="notmodified"){F.html(E?o("<div/>").append(M.responseText.replace(/<script(.|\s)*?\/script>/g,"")).find(E):M.responseText)}if(K){F.each(K,[M.responseText,L,M])}}});return this},serialize:function(){return o.param(this.serializeArray())},serializeArray:function(){return this.map(function(){return this.elements?o.makeArray(this.elements):this}).filter(function(){return this.name&&!this.disabled&&(this.checked||/select|textarea/i.test(this.nodeName)||/text|hidden|password|search/i.test(this.type))}).map(function(E,F){var G=o(this).val();return G==null?null:o.isArray(G)?o.map(G,function(I,H){return{name:F.name,value:I}}):{name:F.name,value:G}}).get()}});o.each("ajaxStart,ajaxStop,ajaxComplete,ajaxError,ajaxSuccess,ajaxSend".split(","),function(E,F){o.fn[F]=function(G){return this.bind(F,G)}});var r=e();o.extend({get:function(E,G,H,F){if(o.isFunction(G)){H=G;G=null}return o.ajax({type:"GET",url:E,data:G,success:H,dataType:F})},getScript:function(E,F){return o.get(E,null,F,"script")},getJSON:function(E,F,G){return o.get(E,F,G,"json")},post:function(E,G,H,F){if(o.isFunction(G)){H=G;G={}}return o.ajax({type:"POST",url:E,data:G,success:H,dataType:F})},ajaxSetup:function(E){o.extend(o.ajaxSettings,E)},ajaxSettings:{url:location.href,global:true,type:"GET",contentType:"application/x-www-form-urlencoded",processData:true,async:true,xhr:function(){return l.ActiveXObject?new ActiveXObject("Microsoft.XMLHTTP"):new XMLHttpRequest()},accepts:{xml:"application/xml, text/xml",html:"text/html",script:"text/javascript, application/javascript",json:"application/json, text/javascript",text:"text/plain",_default:"*/*"}},lastModified:{},ajax:function(M){M=o.extend(true,M,o.extend(true,{},o.ajaxSettings,M));var W,F=/=\?(&|$)/g,R,V,G=M.type.toUpperCase();if(M.data&&M.processData&&typeof M.data!=="string"){M.data=o.param(M.data)}if(M.dataType=="jsonp"){if(G=="GET"){if(!M.url.match(F)){M.url+=(M.url.match(/\?/)?"&":"?")+(M.jsonp||"callback")+"=?"}}else{if(!M.data||!M.data.match(F)){M.data=(M.data?M.data+"&":"")+(M.jsonp||"callback")+"=?"}}M.dataType="json"}if(M.dataType=="json"&&(M.data&&M.data.match(F)||M.url.match(F))){W="jsonp"+r++;if(M.data){M.data=(M.data+"").replace(F,"="+W+"$1")}M.url=M.url.replace(F,"="+W+"$1");M.dataType="script";l[W]=function(X){V=X;I();L();l[W]=g;try{delete l[W]}catch(Y){}if(H){H.removeChild(T)}}}if(M.dataType=="script"&&M.cache==null){M.cache=false}if(M.cache===false&&G=="GET"){var E=e();var U=M.url.replace(/(\?|&)_=.*?(&|$)/,"$1_="+E+"$2");M.url=U+((U==M.url)?(M.url.match(/\?/)?"&":"?")+"_="+E:"")}if(M.data&&G=="GET"){M.url+=(M.url.match(/\?/)?"&":"?")+M.data;M.data=null}if(M.global&&!o.active++){o.event.trigger("ajaxStart")}var Q=/^(\w+:)?\/\/([^\/?#]+)/.exec(M.url);if(M.dataType=="script"&&G=="GET"&&Q&&(Q[1]&&Q[1]!=location.protocol||Q[2]!=location.host)){var H=document.getElementsByTagName("head")[0];var T=document.createElement("script");T.src=M.url;if(M.scriptCharset){T.charset=M.scriptCharset}if(!W){var O=false;T.onload=T.onreadystatechange=function(){if(!O&&(!this.readyState||this.readyState=="loaded"||this.readyState=="complete")){O=true;I();L();T.onload=T.onreadystatechange=null;H.removeChild(T)}}}H.appendChild(T);return g}var K=false;var J=M.xhr();if(M.username){J.open(G,M.url,M.async,M.username,M.password)}else{J.open(G,M.url,M.async)}try{if(M.data){J.setRequestHeader("Content-Type",M.contentType)}if(M.ifModified){J.setRequestHeader("If-Modified-Since",o.lastModified[M.url]||"Thu, 01 Jan 1970 00:00:00 GMT")}J.setRequestHeader("X-Requested-With","XMLHttpRequest");J.setRequestHeader("Accept",M.dataType&&M.accepts[M.dataType]?M.accepts[M.dataType]+", */*":M.accepts._default)}catch(S){}if(M.beforeSend&&M.beforeSend(J,M)===false){if(M.global&&!--o.active){o.event.trigger("ajaxStop")}J.abort();return false}if(M.global){o.event.trigger("ajaxSend",[J,M])}var N=function(X){if(J.readyState==0){if(P){clearInterval(P);P=null;if(M.global&&!--o.active){o.event.trigger("ajaxStop")}}}else{if(!K&&J&&(J.readyState==4||X=="timeout")){K=true;if(P){clearInterval(P);P=null}R=X=="timeout"?"timeout":!o.httpSuccess(J)?"error":M.ifModified&&o.httpNotModified(J,M.url)?"notmodified":"success";if(R=="success"){try{V=o.httpData(J,M.dataType,M)}catch(Z){R="parsererror"}}if(R=="success"){var Y;try{Y=J.getResponseHeader("Last-Modified")}catch(Z){}if(M.ifModified&&Y){o.lastModified[M.url]=Y}if(!W){I()}}else{o.handleError(M,J,R)}L();if(X){J.abort()}if(M.async){J=null}}}};if(M.async){var P=setInterval(N,13);if(M.timeout>0){setTimeout(function(){if(J&&!K){N("timeout")}},M.timeout)}}try{J.send(M.data)}catch(S){o.handleError(M,J,null,S)}if(!M.async){N()}function I(){if(M.success){M.success(V,R)}if(M.global){o.event.trigger("ajaxSuccess",[J,M])}}function L(){if(M.complete){M.complete(J,R)}if(M.global){o.event.trigger("ajaxComplete",[J,M])}if(M.global&&!--o.active){o.event.trigger("ajaxStop")}}return J},handleError:function(F,H,E,G){if(F.error){F.error(H,E,G)}if(F.global){o.event.trigger("ajaxError",[H,F,G])}},active:0,httpSuccess:function(F){try{return !F.status&&location.protocol=="file:"||(F.status>=200&&F.status<300)||F.status==304||F.status==1223}catch(E){}return false},httpNotModified:function(G,E){try{var H=G.getResponseHeader("Last-Modified");return G.status==304||H==o.lastModified[E]}catch(F){}return false},httpData:function(J,H,G){var F=J.getResponseHeader("content-type"),E=H=="xml"||!H&&F&&F.indexOf("xml")>=0,I=E?J.responseXML:J.responseText;if(E&&I.documentElement.tagName=="parsererror"){throw"parsererror"}if(G&&G.dataFilter){I=G.dataFilter(I,H)}if(typeof I==="string"){if(H=="script"){o.globalEval(I)}if(H=="json"){I=l["eval"]("("+I+")")}}return I},param:function(E){var G=[];function H(I,J){G[G.length]=encodeURIComponent(I)+"="+encodeURIComponent(J)}if(o.isArray(E)||E.jquery){o.each(E,function(){H(this.name,this.value)})}else{for(var F in E){if(o.isArray(E[F])){o.each(E[F],function(){H(F,this)})}else{H(F,o.isFunction(E[F])?E[F]():E[F])}}}return G.join("&").replace(/%20/g,"+")}});var m={},n,d=[["height","marginTop","marginBottom","paddingTop","paddingBottom"],["width","marginLeft","marginRight","paddingLeft","paddingRight"],["opacity"]];function t(F,E){var G={};o.each(d.concat.apply([],d.slice(0,E)),function(){G[this]=F});return G}o.fn.extend({show:function(J,L){if(J){return this.animate(t("show",3),J,L)}else{for(var H=0,F=this.length;H<F;H++){var E=o.data(this[H],"olddisplay");this[H].style.display=E||"";if(o.css(this[H],"display")==="none"){var G=this[H].tagName,K;if(m[G]){K=m[G]}else{var I=o("<"+G+" />").appendTo("body");K=I.css("display");if(K==="none"){K="block"}I.remove();m[G]=K}o.data(this[H],"olddisplay",K)}}for(var H=0,F=this.length;H<F;H++){this[H].style.display=o.data(this[H],"olddisplay")||""}return this}},hide:function(H,I){if(H){return this.animate(t("hide",3),H,I)}else{for(var G=0,F=this.length;G<F;G++){var E=o.data(this[G],"olddisplay");if(!E&&E!=="none"){o.data(this[G],"olddisplay",o.css(this[G],"display"))}}for(var G=0,F=this.length;G<F;G++){this[G].style.display="none"}return this}},_toggle:o.fn.toggle,toggle:function(G,F){var E=typeof G==="boolean";return o.isFunction(G)&&o.isFunction(F)?this._toggle.apply(this,arguments):G==null||E?this.each(function(){var H=E?G:o(this).is(":hidden");o(this)[H?"show":"hide"]()}):this.animate(t("toggle",3),G,F)},fadeTo:function(E,G,F){return this.animate({opacity:G},E,F)},animate:function(I,F,H,G){var E=o.speed(F,H,G);return this[E.queue===false?"each":"queue"](function(){var K=o.extend({},E),M,L=this.nodeType==1&&o(this).is(":hidden"),J=this;for(M in I){if(I[M]=="hide"&&L||I[M]=="show"&&!L){return K.complete.call(this)}if((M=="height"||M=="width")&&this.style){K.display=o.css(this,"display");K.overflow=this.style.overflow}}if(K.overflow!=null){this.style.overflow="hidden"}K.curAnim=o.extend({},I);o.each(I,function(O,S){var R=new o.fx(J,K,O);if(/toggle|show|hide/.test(S)){R[S=="toggle"?L?"show":"hide":S](I)}else{var Q=S.toString().match(/^([+-]=)?([\d+-.]+)(.*)$/),T=R.cur(true)||0;if(Q){var N=parseFloat(Q[2]),P=Q[3]||"px";if(P!="px"){J.style[O]=(N||1)+P;T=((N||1)/R.cur(true))*T;J.style[O]=T+P}if(Q[1]){N=((Q[1]=="-="?-1:1)*N)+T}R.custom(T,N,P)}else{R.custom(T,S,"")}}});return true})},stop:function(F,E){var G=o.timers;if(F){this.queue([])}this.each(function(){for(var H=G.length-1;H>=0;H--){if(G[H].elem==this){if(E){G[H](true)}G.splice(H,1)}}});if(!E){this.dequeue()}return this}});o.each({slideDown:t("show",1),slideUp:t("hide",1),slideToggle:t("toggle",1),fadeIn:{opacity:"show"},fadeOut:{opacity:"hide"}},function(E,F){o.fn[E]=function(G,H){return this.animate(F,G,H)}});o.extend({speed:function(G,H,F){var E=typeof G==="object"?G:{complete:F||!F&&H||o.isFunction(G)&&G,duration:G,easing:F&&H||H&&!o.isFunction(H)&&H};E.duration=o.fx.off?0:typeof E.duration==="number"?E.duration:o.fx.speeds[E.duration]||o.fx.speeds._default;E.old=E.complete;E.complete=function(){if(E.queue!==false){o(this).dequeue()}if(o.isFunction(E.old)){E.old.call(this)}};return E},easing:{linear:function(G,H,E,F){return E+F*G},swing:function(G,H,E,F){return((-Math.cos(G*Math.PI)/2)+0.5)*F+E}},timers:[],fx:function(F,E,G){this.options=E;this.elem=F;this.prop=G;if(!E.orig){E.orig={}}}});o.fx.prototype={update:function(){if(this.options.step){this.options.step.call(this.elem,this.now,this)}(o.fx.step[this.prop]||o.fx.step._default)(this);if((this.prop=="height"||this.prop=="width")&&this.elem.style){this.elem.style.display="block"}},cur:function(F){if(this.elem[this.prop]!=null&&(!this.elem.style||this.elem.style[this.prop]==null)){return this.elem[this.prop]}var E=parseFloat(o.css(this.elem,this.prop,F));return E&&E>-10000?E:parseFloat(o.curCSS(this.elem,this.prop))||0},custom:function(I,H,G){this.startTime=e();this.start=I;this.end=H;this.unit=G||this.unit||"px";this.now=this.start;this.pos=this.state=0;var E=this;function F(J){return E.step(J)}F.elem=this.elem;if(F()&&o.timers.push(F)&&!n){n=setInterval(function(){var K=o.timers;for(var J=0;J<K.length;J++){if(!K[J]()){K.splice(J--,1)}}if(!K.length){clearInterval(n);n=g}},13)}},show:function(){this.options.orig[this.prop]=o.attr(this.elem.style,this.prop);this.options.show=true;this.custom(this.prop=="width"||this.prop=="height"?1:0,this.cur());o(this.elem).show()},hide:function(){this.options.orig[this.prop]=o.attr(this.elem.style,this.prop);this.options.hide=true;this.custom(this.cur(),0)},step:function(H){var G=e();if(H||G>=this.options.duration+this.startTime){this.now=this.end;this.pos=this.state=1;this.update();this.options.curAnim[this.prop]=true;var E=true;for(var F in this.options.curAnim){if(this.options.curAnim[F]!==true){E=false}}if(E){if(this.options.display!=null){this.elem.style.overflow=this.options.overflow;this.elem.style.display=this.options.display;if(o.css(this.elem,"display")=="none"){this.elem.style.display="block"}}if(this.options.hide){o(this.elem).hide()}if(this.options.hide||this.options.show){for(var I in this.options.curAnim){o.attr(this.elem.style,I,this.options.orig[I])}}this.options.complete.call(this.elem)}return false}else{var J=G-this.startTime;this.state=J/this.options.duration;this.pos=o.easing[this.options.easing||(o.easing.swing?"swing":"linear")](this.state,J,0,1,this.options.duration);this.now=this.start+((this.end-this.start)*this.pos);this.update()}return true}};o.extend(o.fx,{speeds:{slow:600,fast:200,_default:400},step:{opacity:function(E){o.attr(E.elem.style,"opacity",E.now)},_default:function(E){if(E.elem.style&&E.elem.style[E.prop]!=null){E.elem.style[E.prop]=E.now+E.unit}else{E.elem[E.prop]=E.now}}}});if(document.documentElement.getBoundingClientRect){o.fn.offset=function(){if(!this[0]){return{top:0,left:0}}if(this[0]===this[0].ownerDocument.body){return o.offset.bodyOffset(this[0])}var G=this[0].getBoundingClientRect(),J=this[0].ownerDocument,F=J.body,E=J.documentElement,L=E.clientTop||F.clientTop||0,K=E.clientLeft||F.clientLeft||0,I=G.top+(self.pageYOffset||o.boxModel&&E.scrollTop||F.scrollTop)-L,H=G.left+(self.pageXOffset||o.boxModel&&E.scrollLeft||F.scrollLeft)-K;return{top:I,left:H}}}else{o.fn.offset=function(){if(!this[0]){return{top:0,left:0}}if(this[0]===this[0].ownerDocument.body){return o.offset.bodyOffset(this[0])}o.offset.initialized||o.offset.initialize();var J=this[0],G=J.offsetParent,F=J,O=J.ownerDocument,M,H=O.documentElement,K=O.body,L=O.defaultView,E=L.getComputedStyle(J,null),N=J.offsetTop,I=J.offsetLeft;while((J=J.parentNode)&&J!==K&&J!==H){M=L.getComputedStyle(J,null);N-=J.scrollTop,I-=J.scrollLeft;if(J===G){N+=J.offsetTop,I+=J.offsetLeft;if(o.offset.doesNotAddBorder&&!(o.offset.doesAddBorderForTableAndCells&&/^t(able|d|h)$/i.test(J.tagName))){N+=parseInt(M.borderTopWidth,10)||0,I+=parseInt(M.borderLeftWidth,10)||0}F=G,G=J.offsetParent}if(o.offset.subtractsBorderForOverflowNotVisible&&M.overflow!=="visible"){N+=parseInt(M.borderTopWidth,10)||0,I+=parseInt(M.borderLeftWidth,10)||0}E=M}if(E.position==="relative"||E.position==="static"){N+=K.offsetTop,I+=K.offsetLeft}if(E.position==="fixed"){N+=Math.max(H.scrollTop,K.scrollTop),I+=Math.max(H.scrollLeft,K.scrollLeft)}return{top:N,left:I}}}o.offset={initialize:function(){if(this.initialized){return}var L=document.body,F=document.createElement("div"),H,G,N,I,M,E,J=L.style.marginTop,K='<div style="position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;"><div></div></div><table style="position:absolute;top:0;left:0;margin:0;border:5px solid #000;padding:0;width:1px;height:1px;" cellpadding="0" cellspacing="0"><tr><td></td></tr></table>';M={position:"absolute",top:0,left:0,margin:0,border:0,width:"1px",height:"1px",visibility:"hidden"};for(E in M){F.style[E]=M[E]}F.innerHTML=K;L.insertBefore(F,L.firstChild);H=F.firstChild,G=H.firstChild,I=H.nextSibling.firstChild.firstChild;this.doesNotAddBorder=(G.offsetTop!==5);this.doesAddBorderForTableAndCells=(I.offsetTop===5);H.style.overflow="hidden",H.style.position="relative";this.subtractsBorderForOverflowNotVisible=(G.offsetTop===-5);L.style.marginTop="1px";this.doesNotIncludeMarginInBodyOffset=(L.offsetTop===0);L.style.marginTop=J;L.removeChild(F);this.initialized=true},bodyOffset:function(E){o.offset.initialized||o.offset.initialize();var G=E.offsetTop,F=E.offsetLeft;if(o.offset.doesNotIncludeMarginInBodyOffset){G+=parseInt(o.curCSS(E,"marginTop",true),10)||0,F+=parseInt(o.curCSS(E,"marginLeft",true),10)||0}return{top:G,left:F}}};o.fn.extend({position:function(){var I=0,H=0,F;if(this[0]){var G=this.offsetParent(),J=this.offset(),E=/^body|html$/i.test(G[0].tagName)?{top:0,left:0}:G.offset();J.top-=j(this,"marginTop");J.left-=j(this,"marginLeft");E.top+=j(G,"borderTopWidth");E.left+=j(G,"borderLeftWidth");F={top:J.top-E.top,left:J.left-E.left}}return F},offsetParent:function(){var E=this[0].offsetParent||document.body;while(E&&(!/^body|html$/i.test(E.tagName)&&o.css(E,"position")=="static")){E=E.offsetParent}return o(E)}});o.each(["Left","Top"],function(F,E){var G="scroll"+E;o.fn[G]=function(H){if(!this[0]){return null}return H!==g?this.each(function(){this==l||this==document?l.scrollTo(!F?H:o(l).scrollLeft(),F?H:o(l).scrollTop()):this[G]=H}):this[0]==l||this[0]==document?self[F?"pageYOffset":"pageXOffset"]||o.boxModel&&document.documentElement[G]||document.body[G]:this[0][G]}});o.each(["Height","Width"],function(I,G){var E=I?"Left":"Top",H=I?"Right":"Bottom",F=G.toLowerCase();o.fn["inner"+G]=function(){return this[0]?o.css(this[0],F,false,"padding"):null};o.fn["outer"+G]=function(K){return this[0]?o.css(this[0],F,false,K?"margin":"border"):null};var J=G.toLowerCase();o.fn[J]=function(K){return this[0]==l?document.compatMode=="CSS1Compat"&&document.documentElement["client"+G]||document.body["client"+G]:this[0]==document?Math.max(document.documentElement["client"+G],document.body["scroll"+G],document.documentElement["scroll"+G],document.body["offset"+G],document.documentElement["offset"+G]):K===g?(this.length?o.css(this[0],J):null):this.css(J,typeof K==="string"?K:K+"px")}})})();
+</script>
+<script type="text/javascript" charset="utf-8">
+var months=["January","February","March","April","May","June","July","August","September","October","November","December"];var lines;var l;var nl;var nnl;var nnnl;var k=0;var i=0;var linkCount=0;var isCommitDetails=false;var commitDetails={};var commitDetailsTable;var commitDetailFiles={};function startDiff(){var b=$("#diff");var a=b.val().replace(/\&/g,"&amp;");a=a.replace(/</g,"&lt;");$("#updateddiff").html(a);highlightDiffs()}function startCommit(){commitDetailFiles.changed=[];commitDetailFiles.removed=[];commitDetailFiles["new"]=[];commitDetailFiles.renamed=[];commitDetailsTable=$("#commitDetailsTable");commitRawMessageDiv=$("#commitMessageContainer");isCommitDetails=true;parseCommitDetails();addAuthor();addDate();addSubject();addRefs();addSHA();addTree();addParents();addRawMessage();startDiff();updateCommitFiles()}function exportTar(){if(window.historyDetailsView){window.historyDetailsView.exportTar()}}function exportZip(a){if(window.historyDetailsView){window.historyDetailsView.exportZip()}}function loadParent(a){if(window.historyDetailsView){window.historyDetailsView.loadParent_(a)}}function loadTree(a){if(window.historyDetailsView){window.historyDetailsView.loadTree_(a)}}function nextLineIsAllSpaces(){if(!nl){return false}if(nl.match(/^\s{0,}$/)){return true}return false}function isLineIsAllSpaces(){var a=lines[i];if(a.match(/^\s{0,}$/)){return true}return false}function isNewFile(a){if(!a){return false}return(a.match("^[a-zA-Z0-9_]*")[0].toLowerCase()=="new")}function isDeletedFile(a){if(!a){return false}return(a.match("^[a-zA-Z0-9_]*")[0].toLowerCase()=="deleted")}function stepOverALine(){var a=i+2;if(lines.length-1<a){return null}return lines[a]}function isNextLineNewFile(){if(!nl){return false}return isNewFile(nl)}function isNextLineDeletedFile(){if(!nl){return false}return isDeletedFile(nl)}function isThisFileBinary(){if(!nnl){return false}return(nnl.match("^[a-zA-Z0-9_]*")[0].toLowerCase()=="binary")}function isNewBinaryFile(){if(!nnnl){return false}return(nnnl.match("^[a-zA-Z0-9_]*")[0].toLowerCase()=="binary")}function isFileNoContent(){if(!nnl){return false}if(nnl.match("^diff")||nnnl.match("^diff")){return true}if(nnnl==""){return true}return false}function isRenamedFile(){if(nnl.match("^rename from")&&nnnl.match("^rename to")){return true}return false}function isLineTooLong(){return(l.length>24887)}function parseCommitDetails(){var a=$("#commitDetails");var e=a.val().replace(/\&/g,"&amp;");e=e.replace(/</g,"&lt;");var h=e.indexOf("\ndiff ");var c=e.indexOf("\n\n")+2;if(h==-1){h=e.length}var n=e.substring(h);$("#diff").html(n);var g=e.substring(0,h);var f=g.match(/\nauthor (.*) \&lt\;(.*@.*|.*)> ([0-9].*)/);if(!(f[2].match(/@[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/))){commitDetails.authorEmail=f[2]}commitDetails.authorDate=new Date(parseInt(f[3])*1000);f=g.match(/\ncommitter (.*) \&lt\;(.*@.*|.*)> ([0-9].*)/);commitDetails.name=f[1];commitDetails.email=f[2];commitDetails.date=new Date(parseInt(f[3])*1000);f=g.match("^commit ([a-zA-Z0-9]*)\n");commitDetails.sha=f[1].substring(0,10);f=g.match("tree ([a-zA-Z0-9]*)\n");commitDetails.tree=f[1];f=g.match(/^parent ([a-zA-Z0-9]*)\n/gm);commitDetails.parents=[];if(f){var d=0;var b=f.length;var j="";for(d;d<b;d++){j=f[d].split(" ")[1];commitDetails.parents.push(j)}}var o=e.substring(c,h).replace(/^    /gm,"");commitDetails.rawMessage=o;commitDetails.subject=o.split("\n\n")[0].replace(/^    /gm,"")}function updateCommitFiles(){var c=0;var a;var f;var d;var b=false;var e=commitDetailFiles["new"].length+commitDetailFiles.renamed.length+commitDetailFiles.changed.length+commitDetailFiles.removed.length;if(commitDetails.rawMessage.match("^Merge branch")&&e<1){b=true;$("#commitIndex").html("")}if(e<1&&!b){$("#commitIndex").html("");return}if(commitDetailFiles["new"].length>0){c=0;f=[];a=commitDetailFiles["new"].length;f.push("<table id='fileStatuses' class='monaco'><tr><td><span class='fileStatus newFileStatus'>New</span><div id='spacer'>&nbsp;</div></td></tr>");f.push("<tr><td><ul class='fileStatusList'>");for(c;c<a;c++){d=commitDetailFiles["new"][c];if(!d.binary){f.push("<li><a href='#"+d.linkCount+"' title='go to "+d.file+"' class='file'>"+d.file+"</a></li>")}else{f.push("<li><a href='#"+d.linkCount+"' title='go to "+d.file+"' class='file'>"+d.file+"</a> (binary)</li>")}}f.push("</ul></td></tr></table>");$("#fileStatusesContainer").append(f.join(""))}if(commitDetailFiles.renamed.length>0){c=0;f=[];a=commitDetailFiles.renamed.length;f.push("<table id='fileStatuses' class='monaco'><tr><td><span class='fileStatus renamedFileStatus'>Renamed</span><div id='spacer'>&nbsp;</div></td></tr>");f.push("<tr><td><ul class='fileStatusList'>");for(c;c<a;c++){d=commitDetailFiles.renamed[c];if(!d.binary){f.push("<li><span class='renameFrom'>"+d.from+"</span> -> "+d.to+"</li>")}else{f.push("<li><span class='renameFrom'>"+d.from+"</span> -> "+d.to+" (binary)</li>")}}f.push("</ul></td></tr></table>");$("#fileStatusesContainer").append(f.join(""))}if(commitDetailFiles.changed.length>0){c=0;f=[];a=commitDetailFiles.changed.length;f.push("<table id='fileStatuses' class='monaco'><tr><td><span class='fileStatus changedFileStatus'>Modified</span><div id='spacer'>&nbsp;</div></td></tr>");f.push("<tr><td><ul class='fileStatusList'>");for(c;c<a;c++){d=commitDetailFiles.changed[c];if(!d.binary){f.push("<li><a href='#"+d.linkCount+"' title='go to "+d.file+"' class='file'>"+d.file+"</a></li>")}else{f.push("<li><a href='#"+d.linkCount+"' title='go to "+d.file+"' class='file'>"+d.file+"</a> (binary)</li>")}}f.push("</ul></td></tr></table>");$("#fileStatusesContainer").append(f.join(""))}if(commitDetailFiles.removed.length>0){c=0;f=[];a=commitDetailFiles.removed.length;f.push("<table id='fileStatuses' class='monaco'><tr><td><span class='fileStatus removedFileStatus'>Removed</span><div id='spacer'>&nbsp;</div></td></tr>");f.push("<tr><td><ul class='fileStatusList'>");for(c;c<a;c++){d=commitDetailFiles.removed[c];if(!d.binary){f.push("<li><a href='#"+d.linkCount+"' title='go to "+d.file+"'>"+d.file+"</a></li>")}else{f.push("<li><a href='#"+d.linkCount+"' title='go to "+d.file+"'>"+d.file+"</a> (binary)</li>")}}f.push("</ul></td></tr></table>");$("#fileStatusesContainer").append(f.join(""))}}function addAuthor(){if(commitDetails.authorEmail){commitDetailsTable.append("<tr><td class='detailItemLabel'>Author:</td><td class='detailItem'>"+commitDetails.name+" (<a href='mailto:"+commitDetails.authorEmail+"'>"+commitDetails.authorEmail+"</a>)</td></tr>")}else{commitDetailsTable.append("<tr><td class='detailItemLabel'>Author:</td><td class='detailItem'>"+commitDetails.name+"</td></tr>")}}function addDate(){var a=commitDetails.date.format("ddd mmmm dS yyyy @ hh:MM:sstt ('GMT'o Z)");commitDetailsTable.append("<tr><td class='detailItemLabel'>Date:</td><td class='detailItem'>"+a+"</td></tr>")}function addSubject(){if(!commitDetails.subject){return}commitDetailsTable.append("<tr><td class='detailItemLabel' valign='top'>Subject:</td><td class='detailItem subjectItem'><b>"+commitDetails.subject+"</b></td></tr>")}function clearExtendedMessage(){$("#extendedMessageContainer").html("")}function addRawMessage(){if(!commitDetails.rawMessage){clearExtendedMessage();return}if(commitDetails.rawMessage.trim()==commitDetails.subject.trim()){clearExtendedMessage();return}var a=commitDetails.rawMessage;a=a.replace(/\n/gm,"<br/>");commitRawMessageDiv.append(a)}function addSHA(){if(!commitDetails.sha){return}commitDetailsTable.append("<tr><td class='detailItemLabel'>SHA:</td><td class='detailItem'>"+commitDetails.sha+" <a href='javascript:exportTar();' class='archive' title='Export a tar of this commit'>tar</a> <a href='javascript:exportZip();' class='archive' title='Export a zip of this commit'>zip</a></td></tr>")}function addTree(){var a=commitDetails.tree;var b=a.substring(0,10);commitDetailsTable.append("<tr><td class='detailItemLabel'>Tree:</td><td class='detailItem'><a href='javascript:loadTree(\""+a+"\")' title='Inspect this tree'>"+b+"</a></td></tr>")}function addRefs(){}function addParents(){var e;var c;var b=commitDetails.parents;var d=0;var a=b.length;if(a<1){return}for(d;d<a;d++){e=b[d];c=e.substring(0,10);commitDetailsTable.append("<tr><td class='detailItemLabel'>Parent:</td><td class='detailItem'><a href='javascript:loadParent(\""+e+"\")' title='Load this parent commit'>"+c+"</a></td></tr>")}}function highlightDiffs(){var s=$("#updateddiff")[0];var u=s.innerHTML.replace(/\t/g,"  ");lines=u.split("\n");var q="";var p="";var b="";var j=-1;var h=-1;var w=true;var n=true;var B=false;var t=false;var v=false;k=lines.length;for(i;i<k;i++){l=lines[i];var A=l.charAt(0);var y=l.match("^[a-zA-Z0-9_]*")[0].toLowerCase();if(A=="\\"){continue}try{nl=lines[i+1]}catch(z){nl=null}try{nnl=lines[i+2]}catch(z){nnl=null}try{nnnl=lines[i+3]}catch(z){nnnl=null}if(v){if(A=="+"||A=="-"){if(nl.match("^diff --")||nl==""){b+='<div class="line binaryChange">No diff content</div>'}continue}}if(y=="index"){continue}if(v&&y=="binary"){msg=l;m=l.match("Binary files a/(.*) and");if(m.length==2){msg=msg="Binary file "+m[1]+" has changed"}b+='<div class="line binaryChange">'+msg+"</div>";v=false;continue}if(B){b+='<div class="line binaryChange">New binary file</div>';B=false;continue}if(t){b+='<div class="line binaryChange">Deleted binary file</div>';t=false;continue}if(y=="diff"){v=true;var d;var c=false;var C=false;var D=false;var a=false;var g=false;var x=false;l=l.replace("--cc ","");l=l.replace("--c","");if(isRenamedFile()){x=true}if(isNextLineNewFile()){c=true}if(isThisFileBinary()){a=true}if(isNextLineDeletedFile()){C=true}if(isNewBinaryFile()){B=true;if(C){D=true;C=false;t=true;B=false}v=false;g=true}if(l.match("b/")){pieces=l.split("b/")}else{pieces=l.split(" ")}file=pieces[pieces.length-1];w=true;linkCount++;if(isCommitDetails){var r={};r.file=file;r.linkCount=linkCount;if(x){var o=nnl.match("^rename from (t/)?(.*)");var f=nnnl.match("^rename to (t/)?(.*)");r.from=o[2];r.to=f[2];commitDetailFiles.renamed.push(r);continue}if(a||D||g){r.binary=true}if(D||C){commitDetailFiles.removed.push(r)}else{if(g||c){commitDetailFiles["new"].push(r)}else{commitDetailFiles.changed.push(r)}}if(D&&n&&!isCommitDetails){d='<div class="firstFileHeader"><a name="'+linkCount+'"></a>'+file+' (binary) <a href="#index" class="index">index</a></div>'}else{if(D){d='<div class="fileHeader"><a name="'+linkCount+'"></a>'+file+' (binary) <a href="#index" class="index">index</a></div>'}else{if(C&&n&&!isCommitDetails){d='<div class="firstFileHeader"><a name="'+linkCount+'"></a>'+file+' (deleted file) <a href="#index" class="index">index</a></div>'}else{if(C){d='<div class="fileHeader"><a name="'+linkCount+'"></a>'+file+' (deleted file) <a href="#index" class="index">index</a></div>'}else{if(g&&n&&!isCommitDetails){d='<div class="firstFileHeader"><a name="'+linkCount+'"></a>'+file+' (binary) <a href="#index" class="index">index</a></div>'}else{if(g){d='<div class="fileHeader"><a name="'+linkCount+'"></a>'+file+' (binary) <a href="#index" class="index">index</a></div>'}else{if(a&&n&&!isCommitDetails){d='<div class="firstFileHeader"><a name="'+linkCount+'"></a>'+file+' (binary) <a href="#index" class="index">index</a></div>'}else{if(a){d='<div class="fileHeader"><a name="'+linkCount+'"></a>'+file+' (binary) <a href="#index" class="index">index</a></div>'}else{if(c&&n&&!isCommitDetails){d='<div class="firstFileHeader"><a name="'+linkCount+'"></a>'+file+' (new file) <a href="#index" class="index">index</a></div>'}else{if(c){d='<div class="fileHeader"><a name="'+linkCount+'"></a>'+file+' (new file) <a href="#index" class="index">index</a></div>'}else{if(n&&!isCommitDetails){d='<div class="firstFileHeader"><a name="'+linkCount+'"></a>'+file+' | <a href="#index" class="index">index</a></div>'}else{d='<div class="fileHeader"><a name="'+linkCount+'"></a>'+file+' | <a href="#index" class="index">index</a></div>'}}}}}}}}}}}}else{if(D&&n&&!isCommitDetails){d='<div class="firstFileHeader">'+file+" (binary)</div>"}else{if(D){d='<div class="fileHeader">'+file+" (binary)</div>"}else{if(C&&n&&!isCommitDetails){d='<div class="firstFileHeader">'+file+" (deleted file)</div>"}else{if(C){d='<div class="fileHeader">'+file+" (deleted file)</div>"}else{if(g&&n&&!isCommitDetails){d='<div class="firstFileHeader">'+file+" (binary)</div>"}else{if(g){d='<div class="fileHeader">'+file+" (binary)</div>"}else{if(a&&n&&!isCommitDetails){d='<div class="firstFileHeader">'+file+" (binary)</div>"}else{if(a){d='<div class="fileHeader">'+file+" (binary)</div>"}else{if(c&&n&&!isCommitDetails){d='<div class="firstFileHeader">'+file+" (new file)</div>"}else{if(c){d='<div class="fileHeader">'+file+" (new file)</div>"}else{if(n&&!isCommitDetails){d='<div class="firstFileHeader">'+file+"</div>"}else{d='<div class="fileHeader">'+file+"</div>"}}}}}}}}}}}}b+=d;if(((g||c)||(D||C))&&isFileNoContent()){b+='<div class="line binaryChange">Empty file</div>'}n=false;q+="\n";p+="\n";continue}if(isLineTooLong()){if(A=="+"){b+="<div class='longline line'>+ This line is too long to display. Lines cannot exceed 24,500 characters.</div>";q+="\n";p+=++h+"\n"}else{if(A=="-"){b+="<div class='longline line'>- This line is too long to display. Lines cannot exceed 24,500 characters.</div>";q+=++j+"\n";p+="\n"}else{b+="<div class='longline line'> This line is too long to display. Lines cannot exceed 24,500 characters.</div>";q+="\n";p+="\n"}}}else{if(A=="+"){b+="<div class='addline line'>"+l+"</div>";q+="\n";p+=++h+"\n"}else{if(A=="-"){b+="<div class='delline line'>"+l+"</div>";q+=++j+"\n";p+="\n"}else{if(A=="@"){q="";p="";if(m=l.match(/@@ \-([0-9]+),\d+ \+(\d+),\d+ @@/)){j=parseInt(m[1])-1;h=parseInt(m[2])-1}l=l.replace(/@ ?/g,"");if(w){b+="<div class='firsthunkheader'>"+l+"</div>"}else{b+="<div class='hunkheader'>"+l+"</div>"}w=false;v=false;q+="\n";p+="\n";if(nextLineIsAllSpaces()){i+=1;continue}}else{if(A==" "){b+="<span class='line'>"+l+"</span>\n";q+=++j+"\n";p+=++h+"\n"}}}}}}s.innerHTML="<table width='100%'><td><pre>"+b+"</pre></td></tr></table>"}var dateFormat=function(){var a=/d{1,4}|m{1,4}|yy(?:yy)?|([HhMsTt])\1?|[LloSZ]|"[^"]*"|'[^']*'/g,b=/\b(?:[PMCEA][SDP]T|(?:Pacific|Mountain|Central|Eastern|Atlantic) (?:Standard|Daylight|Prevailing) Time|(?:GMT|UTC)(?:[-+]\d{4})?)\b/g,d=/[^-+\dA-Z]/g,c=function(f,e){f=String(f);e=e||2;while(f.length<e){f="0"+f}return f};return function(j,z,u){var g=dateFormat;if(arguments.length==1&&Object.prototype.toString.call(j)=="[object String]"&&!/\d/.test(j)){z=j;j=undefined}j=j?new Date(j):new Date;if(isNaN(j)){throw SyntaxError("invalid date")}z=String(g.masks[z]||z||g.masks["default"]);if(z.slice(0,4)=="UTC:"){z=z.slice(4);u=true}var w=u?"getUTC":"get",q=j[w+"Date"](),e=j[w+"Day"](),n=j[w+"Month"](),t=j[w+"FullYear"](),v=j[w+"Hours"](),p=j[w+"Minutes"](),x=j[w+"Seconds"](),r=j[w+"Milliseconds"](),f=u?0:j.getTimezoneOffset(),h={d:q,dd:c(q),ddd:g.i18n.dayNames[e],dddd:g.i18n.dayNames[e+7],m:n+1,mm:c(n+1),mmm:g.i18n.monthNames[n],mmmm:g.i18n.monthNames[n+12],yy:String(t).slice(2),yyyy:t,h:v%12||12,hh:c(v%12||12),H:v,HH:c(v),M:p,MM:c(p),s:x,ss:c(x),l:c(r,3),L:c(r>99?Math.round(r/10):r),t:v<12?"a":"p",tt:v<12?"am":"pm",T:v<12?"A":"P",TT:v<12?"AM":"PM",Z:u?"UTC":(String(j).match(b)||[""]).pop().replace(d,""),o:(f>0?"-":"+")+c(Math.floor(Math.abs(f)/60)*100+Math.abs(f)%60,4),S:["th","st","nd","rd"][q%10>3?0:(q%100-q%10!=10)*q%10]};return z.replace(a,function(o){return o in h?h[o]:o.slice(1,o.length-1)})}}();dateFormat.masks={"default":"ddd mmm dd yyyy HH:MM:ss",shortDate:"m/d/yy",mediumDate:"mmm d, yyyy",longDate:"mmmm d, yyyy",fullDate:"dddd, mmmm d, yyyy",shortTime:"h:MM TT",mediumTime:"h:MM:ss TT",longTime:"h:MM:ss TT Z",isoDate:"yyyy-mm-dd",isoTime:"HH:MM:ss",isoDateTime:"yyyy-mm-dd'T'HH:MM:ss",isoUtcDateTime:"UTC:yyyy-mm-dd'T'HH:MM:ss'Z'"};dateFormat.i18n={dayNames:["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],monthNames:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec","January","February","March","April","May","June","July","August","September","October","November","December"]};Date.prototype.format=function(a,b){return dateFormat(this,a,b)};String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g,"")};String.prototype.ltrim=function(){return this.replace(/^\s+/,"")};String.prototype.rtrim=function(){return this.replace(/\s+$/,"")};
+</script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(startCommit);
+</script>
+</head>
+<body>
+	<div class="firstFileHeader" style="border-bottom:solid 1px #DDD;">
+		commit details
+	</div>
+	<div id="commitDetailsContainer" style="margin-top:10px">
+		<table class="commitDetails" id="commitDetailsTable">
+		</table>
+	</div>
+	<div id="extendedMessageContainer">
+		<div class="fileHeader" style="padding-left:9px;background-color:#F7F7F7;color:black;border-bottom:solid 1px #DDD;font-size:9px;line-height:18px;height:18px;">
+			commit message
+		</div>
+		<div id="commitMessageContainer" style="margin-top:10px">
+		</div>
+	</div>
+	<a name="index"></a>
+	<div id="commitIndex">
+	<div class="fileHeader" style="padding-left:9px;background-color:#F7F7F7;color:black;border-bottom:solid 1px #DDD;font-size:9px;line-height:18px;height:18px;">
+		affected files
+	</div>
+	</div>
+<div id="fileStatusesContainer" style="margin-top:10px;">
+</div>
+<textarea id="commitDetails" class="hidden">
+commit 679d22d20cf456c6384e077487dea82d623b8441
+tree 4866645a0efaed5cccaefc3a741a3302a5c47a8b
+parent 6fddfe5dae5b964e29b5d594311b4ab3c963b711
+author Junio C Hamano <junio@hera.kernel.org> 1180818824 +0000
+committer Junio C Hamano <junio@hera.kernel.org> 1180818824 +0000
+
+    Autogenerated HTML docs for v1.5.2-167-g4bc70
+
+diff --git a/config.txt b/config.txt
+index 3d8f03d..5868d58 100644
+--- a/config.txt
++++ b/config.txt
+@@ -259,7 +259,8 @@ Common unit suffixes of 'k', 'm', or 'g' are supported.
+ core.excludeFile::
+ 	In addition to '.gitignore' (per-directory) and
+ 	'.git/info/exclude', git looks into this file for patterns
+-	of files which are not meant to be tracked.
++	of files which are not meant to be tracked.  See
++	gitlink:gitignore[5].
+ 
+ alias.*::
+ 	Command aliases for the gitlink:git[1] command wrapper - e.g.
+@@ -567,6 +568,15 @@ pack.compression::
+ 	slowest.  If not set,  defaults to core.compression.  If that is
+ 	not set,  defaults to -1.
+ 
++pack.deltaCacheSize::
++	The maxium memory in bytes used for caching deltas in
++	gitlink:git-pack-objects[1].
++	A value of 0 means no limit. Defaults to 0.
++
++pack.deltaCacheLimit::
++	The maxium size of a delta, that is cached in
++	gitlink:git-pack-objects[1]. Defaults to 1000.
++
+ pull.octopus::
+ 	The default merge strategy to use when pulling multiple branches
+ 	at once.
+diff --git a/core-tutorial.html b/core-tutorial.html
+index 7daeca4..0735fb2 100644
+--- a/core-tutorial.html
++++ b/core-tutorial.html
+@@ -1968,7 +1968,7 @@ to follow, not easier.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 26-Apr-2007 07:19:27 UTC
++Last updated 02-Jun-2007 21:10:20 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/cvs-migration.html b/cvs-migration.html
+index ec56363..58b27d3 100644
+--- a/cvs-migration.html
++++ b/cvs-migration.html
+@@ -416,7 +416,7 @@ repositories without the need for a central maintainer.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:42 UTC
++Last updated 02-Jun-2007 21:10:20 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/diffcore.html b/diffcore.html
+index c48f702..d88be97 100644
+--- a/diffcore.html
++++ b/diffcore.html
+@@ -541,7 +541,7 @@ t</tt></pre>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:43 UTC
++Last updated 02-Jun-2007 21:10:21 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/everyday.html b/everyday.html
+index 1648f09..e8e4683 100644
+--- a/everyday.html
++++ b/everyday.html
+@@ -1069,7 +1069,7 @@ upload to public HTTP server hosted by your ISP.
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:46 UTC
++Last updated 02-Jun-2007 21:10:22 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-add.html b/git-add.html
+index 7b7725d..183f2b1 100644
+--- a/git-add.html
++++ b/git-add.html
+@@ -555,7 +555,7 @@ diff
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 18-May-2007 15:54:21 UTC
++Last updated 02-Jun-2007 21:09:21 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-am.html b/git-am.html
+index 1d643e2..c96c821 100644
+--- a/git-am.html
++++ b/git-am.html
+@@ -276,8 +276,8 @@ git-am(1) Manual Page
+ <div class="content"><em>git-am</em> [--signoff] [--dotest=&lt;dir&gt;] [--keep] [--utf8 | --no-utf8]
+          [--3way] [--interactive] [--binary]
+          [--whitespace=&lt;option&gt;] [-C&lt;n&gt;] [-p&lt;n&gt;]
+-         &lt;mbox&gt;|&lt;Maildir&gt;&#8230;</div></div>
+-<p><em>git-am</em> [--skip | --resolved]</p>
++         &lt;mbox&gt;|&lt;Maildir&gt;&#8230;
++<em>git-am</em> [--skip | --resolved]</div></div>
+ </div>
+ <h2>DESCRIPTION</h2>
+ <div class="sectionbody">
+@@ -510,7 +510,7 @@ names.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 25-May-2007 05:01:02 UTC
++Last updated 02-Jun-2007 21:09:21 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-am.txt b/git-am.txt
+index 25cf84a..f78e5dc 100644
+--- a/git-am.txt
++++ b/git-am.txt
+@@ -13,7 +13,6 @@ SYNOPSIS
+          [--3way] [--interactive] [--binary]
+          [--whitespace=<option>] [-C<n>] [-p<n>]
+          <mbox>|<Maildir>...
+-
+ 'git-am' [--skip | --resolved]
+ 
+ DESCRIPTION
+diff --git a/git-annotate.html b/git-annotate.html
+index 3043a74..57f5a83 100644
+--- a/git-annotate.html
++++ b/git-annotate.html
+@@ -460,7 +460,7 @@ commit.</tt></pre>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 27-Apr-2007 08:21:39 UTC
++Last updated 02-Jun-2007 21:09:22 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-apply.html b/git-apply.html
+index 7034768..a8ee071 100644
+--- a/git-apply.html
++++ b/git-apply.html
+@@ -584,7 +584,7 @@ apply.whitespace
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 17-Apr-2007 08:27:40 UTC
++Last updated 02-Jun-2007 21:09:23 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-applymbox.html b/git-applymbox.html
+index 06e0791..15ef7a1 100644
+--- a/git-applymbox.html
++++ b/git-applymbox.html
+@@ -401,7 +401,7 @@ conversion, even with this flag.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 15-May-2007 03:12:36 UTC
++Last updated 02-Jun-2007 21:09:23 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-applypatch.html b/git-applypatch.html
+index ecc4cca..f16f377 100644
+--- a/git-applypatch.html
++++ b/git-applypatch.html
+@@ -331,7 +331,7 @@ information.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:24 UTC
++Last updated 02-Jun-2007 21:09:23 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-archimport.html b/git-archimport.html
+index b0d2fae..ed2b1b9 100644
+--- a/git-archimport.html
++++ b/git-archimport.html
+@@ -422,7 +422,7 @@ patches that have been traded out-of-sequence between the branches.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:24 UTC
++Last updated 02-Jun-2007 21:09:24 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-archive.html b/git-archive.html
+index f5bebdf..989b768 100644
+--- a/git-archive.html
++++ b/git-archive.html
+@@ -454,7 +454,7 @@ git archive --format=zip --prefix=git-docs/ HEAD:Documentation/ &gt; git-1.4.0-d
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:25 UTC
++Last updated 02-Jun-2007 21:09:24 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-bisect.html b/git-bisect.html
+index 6896794..9a3efda 100644
+--- a/git-bisect.html
++++ b/git-bisect.html
+@@ -431,7 +431,7 @@ know the outcome.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 07-Apr-2007 10:17:28 UTC
++Last updated 02-Jun-2007 21:09:24 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-blame.html b/git-blame.html
+index 122f184..d836835 100644
+--- a/git-blame.html
++++ b/git-blame.html
+@@ -683,7 +683,7 @@ commit commentary), a blame viewer won't ever care.</td>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-Apr-2007 18:29:50 UTC
++Last updated 02-Jun-2007 21:09:24 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-branch.html b/git-branch.html
+index f1803a7..7a36e14 100644
+--- a/git-branch.html
++++ b/git-branch.html
+@@ -526,7 +526,7 @@ a branch and check it out with a single command.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 16-May-2007 22:46:13 UTC
++Last updated 02-Jun-2007 21:09:25 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-bundle.html b/git-bundle.html
+index 1d22be9..527776f 100644
+--- a/git-bundle.html
++++ b/git-bundle.html
+@@ -424,7 +424,7 @@ network.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:25 UTC
++Last updated 02-Jun-2007 21:09:25 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-cat-file.html b/git-cat-file.html
+index db4cdd9..6bb31dc 100644
+--- a/git-cat-file.html
++++ b/git-cat-file.html
+@@ -366,7 +366,7 @@ be returned.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:28 UTC
++Last updated 02-Jun-2007 21:09:26 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-check-attr.html b/git-check-attr.html
+index 0dc323e..80b6133 100644
+--- a/git-check-attr.html
++++ b/git-check-attr.html
+@@ -308,7 +308,7 @@ git-check-attr(1) Manual Page
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 22-Apr-2007 05:47:49 UTC
++Last updated 02-Jun-2007 21:09:26 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-check-ref-format.html b/git-check-ref-format.html
+index 25e7a99..10e9221 100644
+--- a/git-check-ref-format.html
++++ b/git-check-ref-format.html
+@@ -343,7 +343,7 @@ colon <tt>:</tt> is used as in <tt>srcref:dstref</tt> to mean "use srcref's
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:32 UTC
++Last updated 02-Jun-2007 21:09:27 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-checkout-index.html b/git-checkout-index.html
+index 5f5456d..e685340 100644
+--- a/git-checkout-index.html
++++ b/git-checkout-index.html
+@@ -511,7 +511,7 @@ Junio C Hamano and the git-list &lt;git@vger.kernel.org&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:29 UTC
++Last updated 02-Jun-2007 21:09:26 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-checkout.html b/git-checkout.html
+index 12ca850..7fea38d 100644
+--- a/git-checkout.html
++++ b/git-checkout.html
+@@ -537,7 +537,7 @@ $ git add frotz</tt></pre>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 24-Apr-2007 07:34:15 UTC
++Last updated 02-Jun-2007 21:09:27 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-cherry-pick.html b/git-cherry-pick.html
+index 1ee2b69..40e5c5b 100644
+--- a/git-cherry-pick.html
++++ b/git-cherry-pick.html
+@@ -362,7 +362,7 @@ effect to your working tree in a row.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 20-Apr-2007 07:19:54 UTC
++Last updated 02-Jun-2007 21:09:27 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-cherry.html b/git-cherry.html
+index 80a4703..4f9a597 100644
+--- a/git-cherry.html
++++ b/git-cherry.html
+@@ -348,7 +348,7 @@ than pushing or pulling commits directly.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:32 UTC
++Last updated 02-Jun-2007 21:09:28 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-clean.html b/git-clean.html
+index 7ff3d73..38741be 100644
+--- a/git-clean.html
++++ b/git-clean.html
+@@ -353,7 +353,7 @@ affected are further limited to those that match them.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 08-May-2007 00:32:26 UTC
++Last updated 02-Jun-2007 21:09:28 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-clone.html b/git-clone.html
+index 6d6882b..13a7fdb 100644
+--- a/git-clone.html
++++ b/git-clone.html
+@@ -521,7 +521,7 @@ Create a repository on the kernel.org machine that borrows from Linus
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 12-May-2007 20:49:27 UTC
++Last updated 02-Jun-2007 21:09:28 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-commit-tree.html b/git-commit-tree.html
+index 398b2e1..7c7c16b 100644
+--- a/git-commit-tree.html
++++ b/git-commit-tree.html
+@@ -482,7 +482,7 @@ reversible operation.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-Apr-2007 18:29:50 UTC
++Last updated 02-Jun-2007 21:09:28 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-commit.html b/git-commit.html
+index dd7e58c..49a3a70 100644
+--- a/git-commit.html
++++ b/git-commit.html
+@@ -664,7 +664,7 @@ Junio C Hamano &lt;junkio@cox.net&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:34 UTC
++Last updated 02-Jun-2007 21:09:29 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-config.html b/git-config.html
+index ee533da..e8762d7 100644
+--- a/git-config.html
++++ b/git-config.html
+@@ -964,7 +964,8 @@ core.excludeFile
+ <p>
+         In addition to <em>.gitignore</em> (per-directory) and
+         <em>.git/info/exclude</em>, git looks into this file for patterns
+-        of files which are not meant to be tracked.
++        of files which are not meant to be tracked.  See
++        <a href="gitignore.html">gitignore(5)</a>.
+ </p>
+ </dd>
+ <dt>
+@@ -1526,6 +1527,25 @@ pack.compression
+ </p>
+ </dd>
+ <dt>
++pack.deltaCacheSize
++</dt>
++<dd>
++<p>
++        The maxium memory in bytes used for caching deltas in
++        <a href="git-pack-objects.html">git-pack-objects(1)</a>.
++        A value of 0 means no limit. Defaults to 0.
++</p>
++</dd>
++<dt>
++pack.deltaCacheLimit
++</dt>
++<dd>
++<p>
++        The maxium size of a delta, that is cached in
++        <a href="git-pack-objects.html">git-pack-objects(1)</a>. Defaults to 1000.
++</p>
++</dd>
++<dt>
+ pull.octopus
+ </dt>
+ <dd>
+@@ -1757,7 +1777,7 @@ transfer.unpackLimit
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 31-May-2007 07:37:48 UTC
++Last updated 02-Jun-2007 21:09:29 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-convert-objects.html b/git-convert-objects.html
+index e1011b7..f8c7733 100644
+--- a/git-convert-objects.html
++++ b/git-convert-objects.html
+@@ -292,7 +292,7 @@ git-convert-objects(1) Manual Page
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:35 UTC
++Last updated 02-Jun-2007 21:09:29 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-count-objects.html b/git-count-objects.html
+index f57dde8..9159082 100644
+--- a/git-count-objects.html
++++ b/git-count-objects.html
+@@ -309,7 +309,7 @@ them, to help you decide when it is a good time to repack.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:35 UTC
++Last updated 02-Jun-2007 21:09:30 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-cvsexportcommit.html b/git-cvsexportcommit.html
+index 5033823..8d05499 100644
+--- a/git-cvsexportcommit.html
++++ b/git-cvsexportcommit.html
+@@ -412,7 +412,7 @@ $ git-cherry cvshead myhead | sed -n 's/^+ //p' | xargs -l1 git-cvsexportcommit
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-May-2007 09:17:38 UTC
++Last updated 02-Jun-2007 21:09:30 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-cvsimport.html b/git-cvsimport.html
+index 89383fe..35afcbf 100644
+--- a/git-cvsimport.html
++++ b/git-cvsimport.html
+@@ -511,7 +511,7 @@ various participants of the git-list &lt;git@vger.kernel.org&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 07-Apr-2007 10:17:28 UTC
++Last updated 02-Jun-2007 21:09:30 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-cvsserver.html b/git-cvsserver.html
+index 13581ca..cd57ab3 100644
+--- a/git-cvsserver.html
++++ b/git-cvsserver.html
+@@ -624,7 +624,7 @@ Martin Langhoff &lt;martin@catalyst.net.nz&gt;
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-May-2007 09:17:38 UTC
++Last updated 02-Jun-2007 21:09:31 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-daemon.html b/git-daemon.html
+index 03c3353..e9eb77f 100644
+--- a/git-daemon.html
++++ b/git-daemon.html
+@@ -624,7 +624,7 @@ they correspond to these IP addresses.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:37 UTC
++Last updated 02-Jun-2007 21:09:32 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-describe.html b/git-describe.html
+index d1ff5bd..23d43fb 100644
+--- a/git-describe.html
++++ b/git-describe.html
+@@ -428,7 +428,7 @@ updated by Shawn Pearce &lt;spearce@spearce.org&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 22-May-2007 07:23:05 UTC
++Last updated 02-Jun-2007 21:09:32 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-diff-files.html b/git-diff-files.html
+index 1696cdd..7141b67 100644
+--- a/git-diff-files.html
++++ b/git-diff-files.html
+@@ -1069,7 +1069,7 @@ two unresolved merge parents with the working tree file
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 06-May-2007 08:52:33 UTC
++Last updated 02-Jun-2007 21:09:33 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-diff-index.html b/git-diff-index.html
+index 513e8c1..bb50f6e 100644
+--- a/git-diff-index.html
++++ b/git-diff-index.html
+@@ -1151,7 +1151,7 @@ always have the special all-zero sha1.</td>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 06-May-2007 08:52:33 UTC
++Last updated 02-Jun-2007 21:09:33 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-diff-tree.html b/git-diff-tree.html
+index 6de23cf..d514850 100644
+--- a/git-diff-tree.html
++++ b/git-diff-tree.html
+@@ -1516,7 +1516,7 @@ two unresolved merge parents with the working tree file
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 15-May-2007 03:12:36 UTC
++Last updated 02-Jun-2007 21:09:34 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-diff.html b/git-diff.html
+index ffdb4bb..91b667a 100644
+--- a/git-diff.html
++++ b/git-diff.html
+@@ -860,7 +860,7 @@ output diff in reverse.
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:40 UTC
++Last updated 02-Jun-2007 21:09:35 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-fast-import.html b/git-fast-import.html
+index f92cf9a..eb126f4 100644
+--- a/git-fast-import.html
++++ b/git-fast-import.html
+@@ -1203,7 +1203,7 @@ memory footprint (less than 2.7 MiB per active branch).</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 10-May-2007 23:24:40 UTC
++Last updated 02-Jun-2007 21:09:36 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-fetch-pack.html b/git-fetch-pack.html
+index 7c1e075..0bfafed 100644
+--- a/git-fetch-pack.html
++++ b/git-fetch-pack.html
+@@ -420,7 +420,7 @@ have a common ancestor commit.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:41 UTC
++Last updated 02-Jun-2007 21:09:36 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-fetch.html b/git-fetch.html
+index ccb343f..4f14d0d 100644
+--- a/git-fetch.html
++++ b/git-fetch.html
+@@ -651,7 +651,7 @@ Junio C Hamano &lt;junkio@cox.net&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 27-Apr-2007 08:21:40 UTC
++Last updated 02-Jun-2007 21:09:37 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-fmt-merge-msg.html b/git-fmt-merge-msg.html
+index 5d1d62e..ef74ff5 100644
+--- a/git-fmt-merge-msg.html
++++ b/git-fmt-merge-msg.html
+@@ -349,7 +349,7 @@ merge.summary
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:26 UTC
++Last updated 02-Jun-2007 21:09:38 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-for-each-ref.html b/git-for-each-ref.html
+index ed89ad6..cddabb5 100644
+--- a/git-for-each-ref.html
++++ b/git-for-each-ref.html
+@@ -491,7 +491,7 @@ eval "$eval"</tt></pre>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:26 UTC
++Last updated 02-Jun-2007 21:09:38 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-format-patch.html b/git-format-patch.html
+index d367f3c..82587c9 100644
+--- a/git-format-patch.html
++++ b/git-format-patch.html
+@@ -889,7 +889,7 @@ git-format-patch -3
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 12-Apr-2007 05:02:29 UTC
++Last updated 02-Jun-2007 21:09:39 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-fsck-objects.html b/git-fsck-objects.html
+index 89e176a..5939d8e 100644
+--- a/git-fsck-objects.html
++++ b/git-fsck-objects.html
+@@ -281,7 +281,7 @@ documentation of that command.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:43 UTC
++Last updated 02-Jun-2007 21:09:40 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-fsck.html b/git-fsck.html
+index 0b549c2..b469e78 100644
+--- a/git-fsck.html
++++ b/git-fsck.html
+@@ -502,7 +502,7 @@ GIT_ALTERNATE_OBJECT_DIRECTORIES
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 06-Apr-2007 00:51:16 UTC
++Last updated 02-Jun-2007 21:09:40 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-gc.html b/git-gc.html
+index 541cdaa..95fc83d 100644
+--- a/git-gc.html
++++ b/git-gc.html
+@@ -309,10 +309,10 @@ operating performance.</p>
+ <dd>
+ <p>
+         Usually <em>git-gc</em> runs very quickly while providing good disk
+-        space utilization and performance.   This option will cause
+-        git-gc to more aggressive optimize the repository at the expense
++        space utilization and performance.  This option will cause
++        git-gc to more aggressively optimize the repository at the expense
+         of taking much more time.  The effects of this optimization are
+-        persistent, so this option only needs to be sporadically; every
++        persistent, so this option only needs to be used occasionally; every
+         few hundred changesets or so.
+ </p>
+ </dd>
+@@ -367,7 +367,7 @@ more details.  This defaults to 10.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 20-May-2007 19:11:25 UTC
++Last updated 02-Jun-2007 21:09:41 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-gc.txt b/git-gc.txt
+index 4ac839f..c7742ca 100644
+--- a/git-gc.txt
++++ b/git-gc.txt
+@@ -37,10 +37,10 @@ OPTIONS
+ 
+ --aggressive::
+ 	Usually 'git-gc' runs very quickly while providing good disk
+-	space utilization and performance.   This option will cause
+-	git-gc to more aggressive optimize the repository at the expense
++	space utilization and performance.  This option will cause
++	git-gc to more aggressively optimize the repository at the expense
+ 	of taking much more time.  The effects of this optimization are
+-	persistent, so this option only needs to be sporadically; every
++	persistent, so this option only needs to be used occasionally; every
+ 	few hundred changesets or so.
+ 
+ Configuration
+diff --git a/git-get-tar-commit-id.html b/git-get-tar-commit-id.html
+index 63eadbc..2c42439 100644
+--- a/git-get-tar-commit-id.html
++++ b/git-get-tar-commit-id.html
+@@ -298,7 +298,7 @@ a tree ID instead of a commit ID or tag.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:44 UTC
++Last updated 02-Jun-2007 21:09:41 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-grep.html b/git-grep.html
+index 0c07ee6..9ba233f 100644
+--- a/git-grep.html
++++ b/git-grep.html
+@@ -528,7 +528,7 @@ revamped by Junio C Hamano.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 27-Apr-2007 08:21:41 UTC
++Last updated 02-Jun-2007 21:09:41 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-hash-object.html b/git-hash-object.html
+index a60ddc7..8fb62d0 100644
+--- a/git-hash-object.html
++++ b/git-hash-object.html
+@@ -327,7 +327,7 @@ specified, it defaults to "blob".</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:45 UTC
++Last updated 02-Jun-2007 21:09:42 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-http-fetch.html b/git-http-fetch.html
+index 3abae83..a3221f2 100644
+--- a/git-http-fetch.html
++++ b/git-http-fetch.html
+@@ -369,7 +369,7 @@ commit-id
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 27-Apr-2007 08:21:42 UTC
++Last updated 02-Jun-2007 21:09:41 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-http-push.html b/git-http-push.html
+index 3fd7de5..ae8008f 100644
+--- a/git-http-push.html
++++ b/git-http-push.html
+@@ -412,7 +412,7 @@ to disable the fast-forward check only on that ref.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 27-Apr-2007 08:21:43 UTC
++Last updated 02-Jun-2007 21:09:42 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-imap-send.html b/git-imap-send.html
+index 301fc4c..32115ac 100644
+--- a/git-imap-send.html
++++ b/git-imap-send.html
+@@ -320,7 +320,7 @@ configuration file (shown with examples):</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:46 UTC
++Last updated 02-Jun-2007 21:09:42 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-index-pack.html b/git-index-pack.html
+index f7662f5..0c7d4c6 100644
+--- a/git-index-pack.html
++++ b/git-index-pack.html
+@@ -398,7 +398,7 @@ mentioned above.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:26 UTC
++Last updated 02-Jun-2007 21:09:43 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-init-db.html b/git-init-db.html
+index d413923..2876ce0 100644
+--- a/git-init-db.html
++++ b/git-init-db.html
+@@ -281,7 +281,7 @@ documentation of that command.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:46 UTC
++Last updated 02-Jun-2007 21:09:42 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-init.html b/git-init.html
+index 6add5d9..9137a65 100644
+--- a/git-init.html
++++ b/git-init.html
+@@ -395,7 +395,7 @@ add all existing file to the index
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:47 UTC
++Last updated 02-Jun-2007 21:09:43 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-instaweb.html b/git-instaweb.html
+index 1557270..df9bfd3 100644
+--- a/git-instaweb.html
++++ b/git-instaweb.html
+@@ -390,7 +390,7 @@ repository.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:26 UTC
++Last updated 02-Jun-2007 21:09:43 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-local-fetch.html b/git-local-fetch.html
+index 1655ac2..43c1c3d 100644
+--- a/git-local-fetch.html
++++ b/git-local-fetch.html
+@@ -390,7 +390,7 @@ git-local-fetch(1) Manual Page
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:26 UTC
++Last updated 02-Jun-2007 21:09:44 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-log.html b/git-log.html
+index 95955ff..b7b12eb 100644
+--- a/git-log.html
++++ b/git-log.html
+@@ -787,7 +787,7 @@ reversible operation.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 15-May-2007 03:12:36 UTC
++Last updated 02-Jun-2007 21:09:44 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-lost-found.html b/git-lost-found.html
+index eb8ec61..2d23925 100644
+--- a/git-lost-found.html
++++ b/git-lost-found.html
+@@ -338,7 +338,7 @@ $ git rev-parse not-lost-anymore
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 17-Apr-2007 08:27:41 UTC
++Last updated 02-Jun-2007 21:09:44 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-ls-files.html b/git-ls-files.html
+index 57acf37..05024be 100644
+--- a/git-ls-files.html
++++ b/git-ls-files.html
+@@ -551,128 +551,43 @@ respectively.</p>
+ <div class="sectionbody">
+ <p><em>git-ls-files</em> can use a list of "exclude patterns" when
+ traversing the directory tree and finding files to show when the
+-flags --others or --ignored are specified.</p>
+-<p>These exclude patterns come from these places:</p>
++flags --others or --ignored are specified.  <a href="gitignore.html">gitignore(5)</a>
++specifies the format of exclude patterns.</p>
++<p>These exclude patterns come from these places, in order:</p>
+ <ol>
+ <li>
+ <p>
+-command line flag --exclude=&lt;pattern&gt; specifies a single
+-     pattern.
++The command line flag --exclude=&lt;pattern&gt; specifies a
++     single pattern.  Patterns are ordered in the same order
++     they appear in the command line.
+ </p>
+ </li>
+ <li>
+ <p>
+-command line flag --exclude-from=&lt;file&gt; specifies a list of
+-     patterns stored in a file.
++The command line flag --exclude-from=&lt;file&gt; specifies a
++     file containing a list of patterns.  Patterns are ordered
++     in the same order they appear in the file.
+ </p>
+ </li>
+ <li>
+ <p>
+ command line flag --exclude-per-directory=&lt;name&gt; specifies
+      a name of the file in each directory <em>git-ls-files</em>
+-     examines, and if exists, its contents are used as an
+-     additional list of patterns.
++     examines, normally <tt>.gitignore</tt>.  Files in deeper
++     directories take precedence.  Patterns are ordered in the
++     same order they appear in the files.
+ </p>
+ </li>
+ </ol>
+-<p>An exclude pattern file used by (2) and (3) contains one pattern
+-per line.  A line that starts with a <em>#</em> can be used as comment
+-for readability.</p>
+-<p>There are three lists of patterns that are in effect at a given
+-time.  They are built and ordered in the following way:</p>
+-<ul>
+-<li>
+-<p>
+---exclude=&lt;pattern&gt; from the command line; patterns are
+-   ordered in the same order as they appear on the command line.
+-</p>
+-</li>
+-<li>
+-<p>
+-lines read from --exclude-from=&lt;file&gt;; patterns are ordered
+-   in the same order as they appear in the file.
+-</p>
+-</li>
+-<li>
+-<p>
+-When --exclude-per-directory=&lt;name&gt; is specified, upon
+-   entering a directory that has such a file, its contents are
+-   appended at the end of the current "list of patterns".  They
+-   are popped off when leaving the directory.
+-</p>
+-</li>
+-</ul>
+-<p>Each pattern in the pattern list specifies "a match pattern" and
+-optionally the fate; either a file that matches the pattern is
+-considered excluded or included.  A filename is matched against
+-the patterns in the three lists; the --exclude-from list is
+-checked first, then the --exclude-per-directory list, and then
+-finally the --exclude list. The last match determines its fate.
+-If there is no match in the three lists, the fate is "included".</p>
+ <p>A pattern specified on the command line with --exclude or read
+ from the file specified with --exclude-from is relative to the
+ top of the directory tree.  A pattern read from a file specified
+ by --exclude-per-directory is relative to the directory that the
+ pattern file appears in.</p>
+-<p>An exclude pattern is of the following format:</p>
+-<ul>
+-<li>
+-<p>
+-an optional prefix <em>!</em> which means that the fate this pattern
+-   specifies is "include", not the usual "exclude"; the
+-   remainder of the pattern string is interpreted according to
+-   the following rules.
+-</p>
+-</li>
+-<li>
+-<p>
+-if it does not contain a slash <em>/</em>, it is a shell glob
+-   pattern and used to match against the filename without
+-   leading directories.
+-</p>
+-</li>
+-<li>
+-<p>
+-otherwise, it is a shell glob pattern, suitable for
+-   consumption by fnmatch(3) with FNM_PATHNAME flag.  I.e. a
+-   slash in the pattern must match a slash in the pathname.
+-   "Documentation/*.html" matches "Documentation/git.html" but
+-   not "ppc/ppc.html".  As a natural exception, "/*.c" matches
+-   "cat-file.c" but not "mozilla-sha1/sha1.c".
+-</p>
+-</li>
+-</ul>
+-<p>An example:</p>
+-<div class="listingblock">
+-<div class="content">
+-<pre><tt>    $ cat .git/info/exclude
+-    # ignore objects and archives, anywhere in the tree.
+-    *.[oa]
+-    $ cat Documentation/.gitignore
+-    # ignore generated html files,
+-    *.html
+-    # except foo.html which is maintained by hand
+-    !foo.html
+-    $ git-ls-files --ignored \
+-        --exclude='Documentation/*.[0-9]' \
+-        --exclude-from=.git/info/exclude \
+-        --exclude-per-directory=.gitignore</tt></pre>
+-</div></div>
+-<p>Another example:</p>
+-<div class="listingblock">
+-<div class="content">
+-<pre><tt>    $ cat .gitignore
+-    vmlinux*
+-    $ ls arch/foo/kernel/vm*
+-    arch/foo/kernel/vmlinux.lds.S
+-    $ echo '!/vmlinux*' &gt;arch/foo/kernel/.gitignore</tt></pre>
+-</div></div>
+-<p>The second .gitignore keeps <tt>arch/foo/kernel/vmlinux.lds.S</tt> file
+-from getting ignored.</p>
+ </div>
+ <h2>See Also</h2>
+ <div class="sectionbody">
+-<p><a href="git-read-tree.html">git-read-tree(1)</a></p>
++<p><a href="git-read-tree.html">git-read-tree(1)</a>, <a href="gitignore.html">gitignore(5)</a></p>
+ </div>
+ <h2>Author</h2>
+ <div class="sectionbody">
+@@ -680,7 +595,7 @@ from getting ignored.</p>
+ </div>
+ <h2>Documentation</h2>
+ <div class="sectionbody">
+-<p>Documentation by David Greaves, Junio C Hamano and the git-list &lt;git@vger.kernel.org&gt;.</p>
++<p>Documentation by David Greaves, Junio C Hamano, Josh Triplett, and the git-list &lt;git@vger.kernel.org&gt;.</p>
+ </div>
+ <h2>GIT</h2>
+ <div class="sectionbody">
+@@ -688,7 +603,7 @@ from getting ignored.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 27-May-2007 04:28:37 UTC
++Last updated 02-Jun-2007 21:09:44 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-ls-files.txt b/git-ls-files.txt
+index 43e0d22..a78a9ff 100644
+--- a/git-ls-files.txt
++++ b/git-ls-files.txt
+@@ -139,46 +139,24 @@ Exclude Patterns
+ 
+ 'git-ls-files' can use a list of "exclude patterns" when
+ traversing the directory tree and finding files to show when the
+-flags --others or --ignored are specified.
++flags --others or --ignored are specified.  gitlink:gitignore[5]
++specifies the format of exclude patterns.
+ 
+-These exclude patterns come from these places:
++These exclude patterns come from these places, in order:
+ 
+-  1. command line flag --exclude=<pattern> specifies a single
+-     pattern.
++  1. The command line flag --exclude=<pattern> specifies a
++     single pattern.  Patterns are ordered in the same order
++     they appear in the command line.
+ 
+-  2. command line flag --exclude-from=<file> specifies a list of
+-     patterns stored in a file.
++  2. The command line flag --exclude-from=<file> specifies a
++     file containing a list of patterns.  Patterns are ordered
++     in the same order they appear in the file.
+ 
+   3. command line flag --exclude-per-directory=<name> specifies
+      a name of the file in each directory 'git-ls-files'
+-     examines, and if exists, its contents are used as an
+-     additional list of patterns.
+-
+-An exclude pattern file used by (2) and (3) contains one pattern
+-per line.  A line that starts with a '#' can be used as comment
+-for readability.
+-
+-There are three lists of patterns that are in effect at a given
+-time.  They are built and ordered in the following way:
+-
+- * --exclude=<pattern> from the command line; patterns are
+-   ordered in the same order as they appear on the command line.
+-
+- * lines read from --exclude-from=<file>; patterns are ordered
+-   in the same order as they appear in the file.
+-
+- * When --exclude-per-directory=<name> is specified, upon
+-   entering a directory that has such a file, its contents are
+-   appended at the end of the current "list of patterns".  They
+-   are popped off when leaving the directory.
+-
+-Each pattern in the pattern list specifies "a match pattern" and
+-optionally the fate; either a file that matches the pattern is
+-considered excluded or included.  A filename is matched against
+-the patterns in the three lists; the --exclude-from list is
+-checked first, then the --exclude-per-directory list, and then
+-finally the --exclude list. The last match determines its fate.
+-If there is no match in the three lists, the fate is "included".
++     examines, normally `.gitignore`.  Files in deeper
++     directories take precedence.  Patterns are ordered in the
++     same order they appear in the files.
+ 
+ A pattern specified on the command line with --exclude or read
+ from the file specified with --exclude-from is relative to the
+@@ -186,58 +164,9 @@ top of the directory tree.  A pattern read from a file specified
+ by --exclude-per-directory is relative to the directory that the
+ pattern file appears in.
+ 
+-An exclude pattern is of the following format:
+-
+- - an optional prefix '!' which means that the fate this pattern
+-   specifies is "include", not the usual "exclude"; the
+-   remainder of the pattern string is interpreted according to
+-   the following rules.
+-
+- - if it does not contain a slash '/', it is a shell glob
+-   pattern and used to match against the filename without
+-   leading directories.
+-
+- - otherwise, it is a shell glob pattern, suitable for
+-   consumption by fnmatch(3) with FNM_PATHNAME flag.  I.e. a
+-   slash in the pattern must match a slash in the pathname.
+-   "Documentation/\*.html" matches "Documentation/git.html" but
+-   not "ppc/ppc.html".  As a natural exception, "/*.c" matches
+-   "cat-file.c" but not "mozilla-sha1/sha1.c".
+-
+-An example:
+-
+---------------------------------------------------------------
+-    $ cat .git/info/exclude
+-    # ignore objects and archives, anywhere in the tree.
+-    *.[oa]
+-    $ cat Documentation/.gitignore
+-    # ignore generated html files,
+-    *.html
+-    # except foo.html which is maintained by hand
+-    !foo.html
+-    $ git-ls-files --ignored \
+-        --exclude='Documentation/*.[0-9]' \
+-        --exclude-from=.git/info/exclude \
+-        --exclude-per-directory=.gitignore
+---------------------------------------------------------------
+-
+-Another example:
+-
+---------------------------------------------------------------
+-    $ cat .gitignore
+-    vmlinux*
+-    $ ls arch/foo/kernel/vm*
+-    arch/foo/kernel/vmlinux.lds.S
+-    $ echo '!/vmlinux*' >arch/foo/kernel/.gitignore
+---------------------------------------------------------------
+-
+-The second .gitignore keeps `arch/foo/kernel/vmlinux.lds.S` file
+-from getting ignored.
+-
+-
+ See Also
+ --------
+-gitlink:git-read-tree[1]
++gitlink:git-read-tree[1], gitlink:gitignore[5]
+ 
+ 
+ Author
+@@ -246,7 +175,7 @@ Written by Linus Torvalds <torvalds@osdl.org>
+ 
+ Documentation
+ --------------
+-Documentation by David Greaves, Junio C Hamano and the git-list <git@vger.kernel.org>.
++Documentation by David Greaves, Junio C Hamano, Josh Triplett, and the git-list <git@vger.kernel.org>.
+ 
+ GIT
+ ---
+diff --git a/git-ls-remote.html b/git-ls-remote.html
+index 72cb406..2afe062 100644
+--- a/git-ls-remote.html
++++ b/git-ls-remote.html
+@@ -361,7 +361,7 @@ c5db5456ae3b0873fc659c19fafdde22313cc441        refs/tags/v0.99.2
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:49 UTC
++Last updated 02-Jun-2007 21:09:45 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-ls-tree.html b/git-ls-tree.html
+index 07c521a..334185b 100644
+--- a/git-ls-tree.html
++++ b/git-ls-tree.html
+@@ -416,7 +416,7 @@ another major rewrite by Linus Torvalds &lt;torvalds@osdl.org&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 23-May-2007 21:46:09 UTC
++Last updated 02-Jun-2007 21:09:45 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-mailinfo.html b/git-mailinfo.html
+index 5b24f53..f74ee53 100644
+--- a/git-mailinfo.html
++++ b/git-mailinfo.html
+@@ -357,7 +357,7 @@ Junio C Hamano &lt;junkio@cox.net&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 15-May-2007 03:12:37 UTC
++Last updated 02-Jun-2007 21:09:46 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-mailsplit.html b/git-mailsplit.html
+index 9586257..1e2c057 100644
+--- a/git-mailsplit.html
++++ b/git-mailsplit.html
+@@ -362,7 +362,7 @@ and Junio C Hamano &lt;junkio@cox.net&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 25-May-2007 05:01:02 UTC
++Last updated 02-Jun-2007 21:09:45 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-merge-base.html b/git-merge-base.html
+index 0c2f4a6..fa54cff 100644
+--- a/git-merge-base.html
++++ b/git-merge-base.html
+@@ -312,7 +312,7 @@ relied on to decide in any particular way.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:50 UTC
++Last updated 02-Jun-2007 21:09:46 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-merge-file.html b/git-merge-file.html
+index 5db3b82..347e5cd 100644
+--- a/git-merge-file.html
++++ b/git-merge-file.html
+@@ -377,7 +377,7 @@ with parts copied from the original documentation of RCS merge.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:50 UTC
++Last updated 02-Jun-2007 21:09:46 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-merge-index.html b/git-merge-index.html
+index ed0fbbc..93ee1a9 100644
+--- a/git-merge-index.html
++++ b/git-merge-index.html
+@@ -372,7 +372,7 @@ One-shot merge by Petr Baudis &lt;pasky@ucw.cz&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:51 UTC
++Last updated 02-Jun-2007 21:09:46 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-merge-one-file.html b/git-merge-one-file.html
+index b5ea8ca..70b2e8f 100644
+--- a/git-merge-one-file.html
++++ b/git-merge-one-file.html
+@@ -294,7 +294,7 @@ Junio C Hamano &lt;junkio@cox.net&gt; and Petr Baudis &lt;pasky@suse.cz&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:51 UTC
++Last updated 02-Jun-2007 21:09:47 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-merge-tree.html b/git-merge-tree.html
+index 06d48df..03e7100 100644
+--- a/git-merge-tree.html
++++ b/git-merge-tree.html
+@@ -300,7 +300,7 @@ entries that match &lt;branch1&gt; tree.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:51 UTC
++Last updated 02-Jun-2007 21:09:47 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-merge.html b/git-merge.html
+index f056cef..fe792c4 100644
+--- a/git-merge.html
++++ b/git-merge.html
+@@ -579,7 +579,7 @@ Resolve the conflicts.  <tt>git-diff</tt> would report only the
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-May-2007 09:17:39 UTC
++Last updated 02-Jun-2007 21:09:48 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-mergetool.html b/git-mergetool.html
+index 0601ca6..8a90225 100644
+--- a/git-mergetool.html
++++ b/git-mergetool.html
+@@ -316,7 +316,7 @@ will pick a suitable default.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-May-2007 07:07:21 UTC
++Last updated 02-Jun-2007 21:09:47 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-mktag.html b/git-mktag.html
+index 81c187d..ce4f83e 100644
+--- a/git-mktag.html
++++ b/git-mktag.html
+@@ -309,7 +309,7 @@ size, you're doing something wrong)</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:52 UTC
++Last updated 02-Jun-2007 21:09:48 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-mktree.html b/git-mktree.html
+index 3caef59..fd3d5b7 100644
+--- a/git-mktree.html
++++ b/git-mktree.html
+@@ -307,7 +307,7 @@ built is written to the standard output.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:52 UTC
++Last updated 02-Jun-2007 21:09:51 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-mv.html b/git-mv.html
+index fecfe08..8afdb6f 100644
+--- a/git-mv.html
++++ b/git-mv.html
+@@ -337,7 +337,7 @@ Move functionality added by Josef Weidendorfer &lt;Josef.Weidendorfer@gmx.de&gt;
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:53 UTC
++Last updated 02-Jun-2007 21:09:50 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-name-rev.html b/git-name-rev.html
+index 80b261b..e893944 100644
+--- a/git-name-rev.html
++++ b/git-name-rev.html
+@@ -364,7 +364,7 @@ not the context.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 22-May-2007 07:23:07 UTC
++Last updated 02-Jun-2007 21:09:51 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-p4import.html b/git-p4import.html
+index 558f487..47b8076 100644
+--- a/git-p4import.html
++++ b/git-p4import.html
+@@ -463,7 +463,7 @@ of mappings with each line containing one mapping in the format:</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:27 UTC
++Last updated 02-Jun-2007 21:09:52 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-pack-objects.html b/git-pack-objects.html
+index 8579d4f..88ca8fc 100644
+--- a/git-pack-objects.html
++++ b/git-pack-objects.html
+@@ -538,7 +538,7 @@ base-name
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-May-2007 09:17:39 UTC
++Last updated 02-Jun-2007 21:09:51 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-pack-redundant.html b/git-pack-redundant.html
+index 9e4b7c6..18963e8 100644
+--- a/git-pack-redundant.html
++++ b/git-pack-redundant.html
+@@ -335,7 +335,7 @@ objects.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:54 UTC
++Last updated 02-Jun-2007 21:09:52 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-pack-refs.html b/git-pack-refs.html
+index fff7c4c..8b3731a 100644
+--- a/git-pack-refs.html
++++ b/git-pack-refs.html
+@@ -336,7 +336,7 @@ hierarchy after packing them.  This option tells it not to.
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:55 UTC
++Last updated 02-Jun-2007 21:09:52 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-parse-remote.html b/git-parse-remote.html
+index da421fa..d30acaf 100644
+--- a/git-parse-remote.html
++++ b/git-parse-remote.html
+@@ -326,7 +326,7 @@ get_remote_refs_for_push
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:55 UTC
++Last updated 02-Jun-2007 21:09:53 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-patch-id.html b/git-patch-id.html
+index dac1a2a..00dc530 100644
+--- a/git-patch-id.html
++++ b/git-patch-id.html
+@@ -314,7 +314,7 @@ This can be used to make a mapping from patch ID to commit ID.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:55 UTC
++Last updated 02-Jun-2007 21:09:53 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-peek-remote.html b/git-peek-remote.html
+index d5c264f..2f6b2f4 100644
+--- a/git-peek-remote.html
++++ b/git-peek-remote.html
+@@ -341,7 +341,7 @@ stores them in the local repository under the same name.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:56 UTC
++Last updated 02-Jun-2007 21:09:53 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-prune-packed.html b/git-prune-packed.html
+index e55ebbb..f418322 100644
+--- a/git-prune-packed.html
++++ b/git-prune-packed.html
+@@ -325,7 +325,7 @@ disk storage, etc.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:56 UTC
++Last updated 02-Jun-2007 21:09:54 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-prune.html b/git-prune.html
+index 4e10ef6..27902f9 100644
+--- a/git-prune.html
++++ b/git-prune.html
+@@ -340,7 +340,7 @@ borrows from your repository via its
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:56 UTC
++Last updated 02-Jun-2007 21:09:54 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-pull.html b/git-pull.html
+index 87c54b7..0ada484 100644
+--- a/git-pull.html
++++ b/git-pull.html
+@@ -896,7 +896,7 @@ Junio C Hamano and the git-list &lt;git@vger.kernel.org&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-May-2007 09:17:40 UTC
++Last updated 02-Jun-2007 21:09:54 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-push.html b/git-push.html
+index b1721ac..e334d1c 100644
+--- a/git-push.html
++++ b/git-push.html
+@@ -554,7 +554,7 @@ by Linus Torvalds &lt;torvalds@osdl.org&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:27 UTC
++Last updated 02-Jun-2007 21:09:54 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-quiltimport.html b/git-quiltimport.html
+index b7473a7..a202a9d 100644
+--- a/git-quiltimport.html
++++ b/git-quiltimport.html
+@@ -339,7 +339,7 @@ variable.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:33:58 UTC
++Last updated 02-Jun-2007 21:09:55 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-read-tree.html b/git-read-tree.html
+index 860ef47..24d8f15 100644
+--- a/git-read-tree.html
++++ b/git-read-tree.html
+@@ -683,7 +683,8 @@ have finished your work-in-progress), attempt the merge again.</p>
+ </div>
+ <h2>See Also</h2>
+ <div class="sectionbody">
+-<p><a href="git-write-tree.html">git-write-tree(1)</a>; <a href="git-ls-files.html">git-ls-files(1)</a></p>
++<p><a href="git-write-tree.html">git-write-tree(1)</a>; <a href="git-ls-files.html">git-ls-files(1)</a>;
++<a href="gitignore.html">gitignore(5)</a></p>
+ </div>
+ <h2>Author</h2>
+ <div class="sectionbody">
+@@ -699,7 +700,7 @@ have finished your work-in-progress), attempt the merge again.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 07-Apr-2007 10:17:29 UTC
++Last updated 02-Jun-2007 21:09:55 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-read-tree.txt b/git-read-tree.txt
+index 019c8be..acb5744 100644
+--- a/git-read-tree.txt
++++ b/git-read-tree.txt
+@@ -341,7 +341,8 @@ have finished your work-in-progress), attempt the merge again.
+ 
+ See Also
+ --------
+-gitlink:git-write-tree[1]; gitlink:git-ls-files[1]
++gitlink:git-write-tree[1]; gitlink:git-ls-files[1];
++gitlink:gitignore[5]
+ 
+ 
+ Author
+diff --git a/git-rebase.html b/git-rebase.html
+index 90bc456..e00b89c 100644
+--- a/git-rebase.html
++++ b/git-rebase.html
+@@ -596,7 +596,7 @@ a rebase.  Upon completion, &lt;branch&gt; will be the current branch.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-May-2007 04:51:27 UTC
++Last updated 02-Jun-2007 21:09:55 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-receive-pack.html b/git-receive-pack.html
+index 7089037..dd6d574 100644
+--- a/git-receive-pack.html
++++ b/git-receive-pack.html
+@@ -425,7 +425,7 @@ exec git-update-server-info</tt></pre>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:05 UTC
++Last updated 02-Jun-2007 21:09:59 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-reflog.html b/git-reflog.html
+index 83da0f3..a3a8318 100644
+--- a/git-reflog.html
++++ b/git-reflog.html
+@@ -343,7 +343,7 @@ the current branch. It is basically an alias for <em>git log -g --abbrev-commit
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:06 UTC
++Last updated 02-Jun-2007 21:10:01 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-relink.html b/git-relink.html
+index 32b72d2..f4672ed 100644
+--- a/git-relink.html
++++ b/git-relink.html
+@@ -315,7 +315,7 @@ if they are hardlinked, and replace one with a hardlink to the other if not.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:07 UTC
++Last updated 02-Jun-2007 21:10:02 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-remote.html b/git-remote.html
+index 6d157b5..ef2fadc 100644
+--- a/git-remote.html
++++ b/git-remote.html
+@@ -410,7 +410,7 @@ $ git merge origin</tt></pre>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 06-May-2007 08:52:36 UTC
++Last updated 02-Jun-2007 21:10:02 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-repack.html b/git-repack.html
+index e3b1294..5a57a58 100644
+--- a/git-repack.html
++++ b/git-repack.html
+@@ -404,7 +404,7 @@ that way can try to use older git with it).</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-May-2007 09:17:40 UTC
++Last updated 02-Jun-2007 21:10:04 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-repo-config.html b/git-repo-config.html
+index ae3a0ba..6ded6d1 100644
+--- a/git-repo-config.html
++++ b/git-repo-config.html
+@@ -281,7 +281,7 @@ documentation of that command.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:10 UTC
++Last updated 02-Jun-2007 21:10:04 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-request-pull.html b/git-request-pull.html
+index 1cd996a..d40bf77 100644
+--- a/git-request-pull.html
++++ b/git-request-pull.html
+@@ -322,7 +322,7 @@ the given URL in the generated summary.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:10 UTC
++Last updated 02-Jun-2007 21:10:05 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-rerere.html b/git-rerere.html
+index e9d6132..6da3469 100644
+--- a/git-rerere.html
++++ b/git-rerere.html
+@@ -481,7 +481,7 @@ conflict.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:11 UTC
++Last updated 02-Jun-2007 21:10:05 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-reset.html b/git-reset.html
+index f5ab326..aae51cb 100644
+--- a/git-reset.html
++++ b/git-reset.html
+@@ -567,7 +567,7 @@ At this point the index file still has all the WIP changes you
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 24-Apr-2007 07:34:16 UTC
++Last updated 02-Jun-2007 21:10:06 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-rev-list.html b/git-rev-list.html
+index 7292dc3..74407a0 100644
+--- a/git-rev-list.html
++++ b/git-rev-list.html
+@@ -1074,7 +1074,7 @@ and the git-list &lt;git@vger.kernel.org&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 21-May-2007 06:13:41 UTC
++Last updated 02-Jun-2007 21:10:07 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-rev-parse.html b/git-rev-parse.html
+index 20bbf50..f7aaa51 100644
+--- a/git-rev-parse.html
++++ b/git-rev-parse.html
+@@ -709,7 +709,7 @@ Junio C Hamano &lt;junkio@cox.net&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 10-May-2007 23:24:42 UTC
++Last updated 02-Jun-2007 21:10:08 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-revert.html b/git-revert.html
+index e02c040..1c9a20a 100644
+--- a/git-revert.html
++++ b/git-revert.html
+@@ -345,7 +345,7 @@ effect to your working tree in a row.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:12 UTC
++Last updated 02-Jun-2007 21:10:07 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-rm.html b/git-rm.html
+index 65b7e3e..f43147f 100644
+--- a/git-rm.html
++++ b/git-rm.html
+@@ -414,7 +414,7 @@ git-rm -f git-*.sh
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 18-Apr-2007 04:57:05 UTC
++Last updated 02-Jun-2007 21:10:10 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-runstatus.html b/git-runstatus.html
+index 5315520..6689e0a 100644
+--- a/git-runstatus.html
++++ b/git-runstatus.html
+@@ -355,7 +355,7 @@ of git-commit, and later rewritten in C by Jeff King.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:15 UTC
++Last updated 02-Jun-2007 21:10:10 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-send-email.html b/git-send-email.html
+index 4d364aa..1178c41 100644
+--- a/git-send-email.html
++++ b/git-send-email.html
+@@ -496,7 +496,7 @@ send_lots_of_email.pl by Greg Kroah-Hartman.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 01-May-2007 03:05:35 UTC
++Last updated 02-Jun-2007 21:10:11 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-send-pack.html b/git-send-pack.html
+index 42106e9..ec2a342 100644
+--- a/git-send-pack.html
++++ b/git-send-pack.html
+@@ -443,7 +443,7 @@ to disable the fast-forward check only on that ref.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:17 UTC
++Last updated 02-Jun-2007 21:10:11 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-sh-setup.html b/git-sh-setup.html
+index e5e5edd..c1f98d4 100644
+--- a/git-sh-setup.html
++++ b/git-sh-setup.html
+@@ -364,7 +364,7 @@ require_work_tree
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:24 UTC
++Last updated 02-Jun-2007 21:10:13 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-shell.html b/git-shell.html
+index a581a0d..0a2188d 100644
+--- a/git-shell.html
++++ b/git-shell.html
+@@ -298,7 +298,7 @@ are permitted to be called, with a single required argument.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:18 UTC
++Last updated 02-Jun-2007 21:10:11 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-shortlog.html b/git-shortlog.html
+index fed7bf5..c1f1a78 100644
+--- a/git-shortlog.html
++++ b/git-shortlog.html
+@@ -344,7 +344,7 @@ Eve Jones &lt;eve@laptop.(none)&gt;</tt></pre>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 29-Apr-2007 18:29:50 UTC
++Last updated 02-Jun-2007 21:10:12 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-show-branch.html b/git-show-branch.html
+index 4a70a02..b1f44ab 100644
+--- a/git-show-branch.html
++++ b/git-show-branch.html
+@@ -521,7 +521,7 @@ topologically related with each other.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:20 UTC
++Last updated 02-Jun-2007 21:10:12 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-show-index.html b/git-show-index.html
+index 621b8cf..f0826b0 100644
+--- a/git-show-index.html
++++ b/git-show-index.html
+@@ -296,7 +296,7 @@ offset and SHA1 of each object.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:21 UTC
++Last updated 02-Jun-2007 21:10:12 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-show-ref.html b/git-show-ref.html
+index 45c2cc3..e22e8b0 100644
+--- a/git-show-ref.html
++++ b/git-show-ref.html
+@@ -460,7 +460,7 @@ Man page by Jonas Fonseca &lt;fonseca@diku.dk&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 10-Apr-2007 21:31:10 UTC
++Last updated 02-Jun-2007 21:10:12 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-show.html b/git-show.html
+index 2731ef5..78323e7 100644
+--- a/git-show.html
++++ b/git-show.html
+@@ -739,7 +739,7 @@ Johannes Schindelin &lt;Johannes.Schindelin@gmx.de&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 15-May-2007 03:12:38 UTC
++Last updated 02-Jun-2007 21:10:13 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-ssh-fetch.html b/git-ssh-fetch.html
+index 46f3bed..38bfd1b 100644
+--- a/git-ssh-fetch.html
++++ b/git-ssh-fetch.html
+@@ -349,7 +349,7 @@ commit-id
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:25 UTC
++Last updated 02-Jun-2007 21:10:13 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-ssh-upload.html b/git-ssh-upload.html
+index 49448a0..4b85f7c 100644
+--- a/git-ssh-upload.html
++++ b/git-ssh-upload.html
+@@ -348,7 +348,7 @@ commit-id
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:26 UTC
++Last updated 02-Jun-2007 21:10:13 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-status.html b/git-status.html
+index 50dd9cd..01dda6d 100644
+--- a/git-status.html
++++ b/git-status.html
+@@ -300,10 +300,10 @@ template comments, and all the output lines are prefixed with <em>#</em>.</p>
+ mean the same thing and the latter is kept for backward
+ compatibility) and <tt>color.status.&lt;slot&gt;</tt> configuration variables
+ to colorize its output.</p>
+-<p>As for <a href="git-add.html">git-add(1)</a>, the configuration variable
+-<em>core.excludesfile</em> can indicate a path to a file containing patterns
+-of file names to exclude, in addition to patterns given in
+-<em>info/exclude</em> and <em>.gitignore</em>.</p>
++</div>
++<h2>See Also</h2>
++<div class="sectionbody">
++<p><a href="gitignore.html">gitignore(5)</a></p>
+ </div>
+ <h2>Author</h2>
+ <div class="sectionbody">
+@@ -320,7 +320,7 @@ Junio C Hamano &lt;junkio@cox.net&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 22-May-2007 07:23:07 UTC
++Last updated 02-Jun-2007 21:10:13 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-status.txt b/git-status.txt
+index d701538..1fd1af1 100644
+--- a/git-status.txt
++++ b/git-status.txt
+@@ -42,11 +42,9 @@ mean the same thing and the latter is kept for backward
+ compatibility) and `color.status.<slot>` configuration variables
+ to colorize its output.
+ 
+-As for gitlink:git-add[1], the configuration variable
+-'core.excludesfile' can indicate a path to a file containing patterns
+-of file names to exclude, in addition to patterns given in
+-'info/exclude' and '.gitignore'.
+-
++See Also
++--------
++gitlink:gitignore[5]
+ 
+ Author
+ ------
+diff --git a/git-stripspace.html b/git-stripspace.html
+index 543e039..4fe1435 100644
+--- a/git-stripspace.html
++++ b/git-stripspace.html
+@@ -305,7 +305,7 @@ git-stripspace(1) Manual Page
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:27 UTC
++Last updated 02-Jun-2007 21:10:14 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-svn.html b/git-svn.html
+index 72e459b..69acb9c 100644
+--- a/git-svn.html
++++ b/git-svn.html
+@@ -1003,7 +1003,7 @@ should be manually entered with a text-editor or using
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 06-May-2007 08:52:37 UTC
++Last updated 02-Jun-2007 21:10:14 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-svnimport.html b/git-svnimport.html
+index ce35868..845c555 100644
+--- a/git-svnimport.html
++++ b/git-svnimport.html
+@@ -534,7 +534,7 @@ various participants of the git-list &lt;git@vger.kernel.org&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:27 UTC
++Last updated 02-Jun-2007 21:10:14 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-symbolic-ref.html b/git-symbolic-ref.html
+index 5b6300f..90c2421 100644
+--- a/git-symbolic-ref.html
++++ b/git-symbolic-ref.html
+@@ -336,7 +336,7 @@ name is not a symbolic ref, or 128 if another error occurs.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:29 UTC
++Last updated 02-Jun-2007 21:10:14 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-tag.html b/git-tag.html
+index 80358e0..1298a31 100644
+--- a/git-tag.html
++++ b/git-tag.html
+@@ -521,7 +521,7 @@ Junio C Hamano &lt;junkio@cox.net&gt; and Chris Wright &lt;chrisw@osdl.org&gt;.<
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-May-2007 07:07:21 UTC
++Last updated 02-Jun-2007 21:10:15 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-tar-tree.html b/git-tar-tree.html
+index e01a646..ab8b37d 100644
+--- a/git-tar-tree.html
++++ b/git-tar-tree.html
+@@ -395,7 +395,7 @@ git tar-tree HEAD:Documentation/ git-docs &gt; git-1.4.0-docs.tar
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 19-Apr-2007 02:58:27 UTC
++Last updated 02-Jun-2007 21:10:15 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-tools.html b/git-tools.html
+index c496401..3d6a4ec 100644
+--- a/git-tools.html
++++ b/git-tools.html
+@@ -433,7 +433,7 @@ comprehensive list.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:46 UTC
++Last updated 02-Jun-2007 21:10:22 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-unpack-file.html b/git-unpack-file.html
+index 9e6fc92..7e90abd 100644
+--- a/git-unpack-file.html
++++ b/git-unpack-file.html
+@@ -307,7 +307,7 @@ returns the name of the temporary file in the following format:
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:31 UTC
++Last updated 02-Jun-2007 21:10:15 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-unpack-objects.html b/git-unpack-objects.html
+index 7f20d43..c365786 100644
+--- a/git-unpack-objects.html
++++ b/git-unpack-objects.html
+@@ -333,7 +333,7 @@ new packs and replace existing ones.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:31 UTC
++Last updated 02-Jun-2007 21:10:15 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-update-index.html b/git-update-index.html
+index d25f189..3a993ed 100644
+--- a/git-update-index.html
++++ b/git-update-index.html
+@@ -721,7 +721,7 @@ from symbolic link to regular file.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 08-May-2007 00:32:27 UTC
++Last updated 02-Jun-2007 21:10:15 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-update-ref.html b/git-update-ref.html
+index 046d819..536d155 100644
+--- a/git-update-ref.html
++++ b/git-update-ref.html
+@@ -360,7 +360,7 @@ or does not have committer information available.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 20-May-2007 19:11:27 UTC
++Last updated 02-Jun-2007 21:10:16 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-update-server-info.html b/git-update-server-info.html
+index 392c1c4..5cd030a 100644
+--- a/git-update-server-info.html
++++ b/git-update-server-info.html
+@@ -332,7 +332,7 @@ info/refs file unless <tt>--force</tt> flag is given.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:33 UTC
++Last updated 02-Jun-2007 21:10:16 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-upload-archive.html b/git-upload-archive.html
+index 1e14a2e..794d0b8 100644
+--- a/git-upload-archive.html
++++ b/git-upload-archive.html
+@@ -309,7 +309,7 @@ is meant to be used to get an archive from a remote repository.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:35 UTC
++Last updated 02-Jun-2007 21:10:16 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-upload-pack.html b/git-upload-pack.html
+index 96fe094..f58a983 100644
+--- a/git-upload-pack.html
++++ b/git-upload-pack.html
+@@ -326,7 +326,7 @@ repository.  For push operations, see <em>git-send-pack</em>.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:34 UTC
++Last updated 02-Jun-2007 21:10:16 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-var.html b/git-var.html
+index 5ae49b9..8267662 100644
+--- a/git-var.html
++++ b/git-var.html
+@@ -372,7 +372,7 @@ Your sysadmin must hate you!
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:35 UTC
++Last updated 02-Jun-2007 21:10:16 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-verify-pack.html b/git-verify-pack.html
+index 8c14125..01c04c3 100644
+--- a/git-verify-pack.html
++++ b/git-verify-pack.html
+@@ -338,7 +338,7 @@ corresponding pack file.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:36 UTC
++Last updated 02-Jun-2007 21:10:17 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-verify-tag.html b/git-verify-tag.html
+index 2cb6215..a59c3e0 100644
+--- a/git-verify-tag.html
++++ b/git-verify-tag.html
+@@ -305,7 +305,7 @@ git-verify-tag(1) Manual Page
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:36 UTC
++Last updated 02-Jun-2007 21:10:17 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-whatchanged.html b/git-whatchanged.html
+index 198ac74..b1ccc58 100644
+--- a/git-whatchanged.html
++++ b/git-whatchanged.html
+@@ -384,7 +384,7 @@ Junio C Hamano &lt;junkio@cox.net&gt;</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:37 UTC
++Last updated 02-Jun-2007 21:10:17 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git-write-tree.html b/git-write-tree.html
+index 3d17ce2..dad541c 100644
+--- a/git-write-tree.html
++++ b/git-write-tree.html
+@@ -323,7 +323,7 @@ now, you need to have done a <tt>git-update-index</tt> phase before you did the
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:37 UTC
++Last updated 02-Jun-2007 21:10:17 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/git.html b/git.html
+index 2eeef12..057b752 100644
+--- a/git.html
++++ b/git.html
+@@ -2333,7 +2333,7 @@ contributors on the git-list &lt;git@vger.kernel.org&gt;.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 20-May-2007 09:08:17 UTC
++Last updated 02-Jun-2007 21:10:18 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/gitattributes.html b/gitattributes.html
+index 46825d9..13e9bc8 100644
+--- a/gitattributes.html
++++ b/gitattributes.html
+@@ -658,7 +658,7 @@ frotz   unspecified</tt></pre>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 15-May-2007 03:12:38 UTC
++Last updated 02-Jun-2007 21:10:17 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/gitignore.html b/gitignore.html
+new file mode 100644
+index 0000000..71d43f2
+--- /dev/null
++++ b/gitignore.html
+@@ -0,0 +1,410 @@
++<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
++    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
++<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
++<head>
++<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
++<meta name="generator" content="AsciiDoc 7.0.2" />
++<style type="text/css">
++/* Debug borders */
++p, li, dt, dd, div, pre, h1, h2, h3, h4, h5, h6 {
++/*
++  border: 1px solid red;
++*/
++}
++
++body {
++  margin: 1em 5% 1em 5%;
++}
++
++a { color: blue; }
++a:visited { color: fuchsia; }
++
++em {
++  font-style: italic;
++}
++
++strong {
++  font-weight: bold;
++}
++
++tt {
++  color: navy;
++}
++
++h1, h2, h3, h4, h5, h6 {
++  color: #527bbd;
++  font-family: sans-serif;
++  margin-top: 1.2em;
++  margin-bottom: 0.5em;
++  line-height: 1.3;
++}
++
++h1 {
++  border-bottom: 2px solid silver;
++}
++h2 {
++  border-bottom: 2px solid silver;
++  padding-top: 0.5em;
++}
++
++div.sectionbody {
++  font-family: serif;
++  margin-left: 0;
++}
++
++hr {
++  border: 1px solid silver;
++}
++
++p {
++  margin-top: 0.5em;
++  margin-bottom: 0.5em;
++}
++
++pre {
++  padding: 0;
++  margin: 0;
++}
++
++span#author {
++  color: #527bbd;
++  font-family: sans-serif;
++  font-weight: bold;
++  font-size: 1.2em;
++}
++span#email {
++}
++span#revision {
++  font-family: sans-serif;
++}
++
++div#footer {
++  font-family: sans-serif;
++  font-size: small;
++  border-top: 2px solid silver;
++  padding-top: 0.5em;
++  margin-top: 4.0em;
++}
++div#footer-text {
++  float: left;
++  padding-bottom: 0.5em;
++}
++div#footer-badges {
++  float: right;
++  padding-bottom: 0.5em;
++}
++
++div#preamble,
++div.tableblock, div.imageblock, div.exampleblock, div.verseblock,
++div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
++div.admonitionblock {
++  margin-right: 10%;
++  margin-top: 1.5em;
++  margin-bottom: 1.5em;
++}
++div.admonitionblock {
++  margin-top: 2.5em;
++  margin-bottom: 2.5em;
++}
++
++div.content { /* Block element content. */
++  padding: 0;
++}
++
++/* Block element titles. */
++div.title, caption.title {
++  font-family: sans-serif;
++  font-weight: bold;
++  text-align: left;
++  margin-top: 1.0em;
++  margin-bottom: 0.5em;
++}
++div.title + * {
++  margin-top: 0;
++}
++
++td div.title:first-child {
++  margin-top: 0.0em;
++}
++div.content div.title:first-child {
++  margin-top: 0.0em;
++}
++div.content + div.title {
++  margin-top: 0.0em;
++}
++
++div.sidebarblock > div.content {
++  background: #ffffee;
++  border: 1px solid silver;
++  padding: 0.5em;
++}
++
++div.listingblock > div.content {
++  border: 1px solid silver;
++  background: #f4f4f4;
++  padding: 0.5em;
++}
++
++div.quoteblock > div.content {
++  padding-left: 2.0em;
++}
++div.quoteblock .attribution {
++  text-align: right;
++}
++
++div.admonitionblock .icon {
++  vertical-align: top;
++  font-size: 1.1em;
++  font-weight: bold;
++  text-decoration: underline;
++  color: #527bbd;
++  padding-right: 0.5em;
++}
++div.admonitionblock td.content {
++  padding-left: 0.5em;
++  border-left: 2px solid silver;
++}
++
++div.exampleblock > div.content {
++  border-left: 2px solid silver;
++  padding: 0.5em;
++}
++
++div.verseblock div.content {
++  white-space: pre;
++}
++
++div.imageblock div.content { padding-left: 0; }
++div.imageblock img { border: 1px solid silver; }
++span.image img { border-style: none; }
++
++dl {
++  margin-top: 0.8em;
++  margin-bottom: 0.8em;
++}
++dt {
++  margin-top: 0.5em;
++  margin-bottom: 0;
++  font-style: italic;
++}
++dd > *:first-child {
++  margin-top: 0;
++}
++
++ul, ol {
++    list-style-position: outside;
++}
++ol.olist2 {
++  list-style-type: lower-alpha;
++}
++
++div.tableblock > table {
++  border-color: #527bbd;
++  border-width: 3px;
++}
++thead {
++  font-family: sans-serif;
++  font-weight: bold;
++}
++tfoot {
++  font-weight: bold;
++}
++
++div.hlist {
++  margin-top: 0.8em;
++  margin-bottom: 0.8em;
++}
++td.hlist1 {
++  vertical-align: top;
++  font-style: italic;
++  padding-right: 0.8em;
++}
++td.hlist2 {
++  vertical-align: top;
++}
++
++@media print {
++  div#footer-badges { display: none; }
++}
++include::./stylesheets/xhtml11-manpage.css[]
++/* Workarounds for IE6's broken and incomplete CSS2. */
++
++div.sidebar-content {
++  background: #ffffee;
++  border: 1px solid silver;
++  padding: 0.5em;
++}
++div.sidebar-title, div.image-title {
++  font-family: sans-serif;
++  font-weight: bold;
++  margin-top: 0.0em;
++  margin-bottom: 0.5em;
++}
++
++div.listingblock div.content {
++  border: 1px solid silver;
++  background: #f4f4f4;
++  padding: 0.5em;
++}
++
++div.quoteblock-content {
++  padding-left: 2.0em;
++}
++
++div.exampleblock-content {
++  border-left: 2px solid silver;
++  padding-left: 0.5em;
++}
++</style>
++<title>gitignore(5)</title>
++</head>
++<body>
++<div id="header">
++<h1>
++gitignore(5) Manual Page
++</h1>
++<h2>NAME</h2>
++<div class="sectionbody">
++<p>gitignore -
++   Specifies intentionally untracked files to ignore
++</p>
++</div>
++</div>
++<h2>SYNOPSIS</h2>
++<div class="sectionbody">
++<p>$GIT_DIR/info/exclude, .gitignore</p>
++</div>
++<h2>DESCRIPTION</h2>
++<div class="sectionbody">
++<p>A <tt>gitignore</tt> file specifies intentionally untracked files that
++git should ignore.  Each line in a <tt>gitignore</tt> file specifies a
++pattern.</p>
++<p>When deciding whether to ignore a path, git normally checks
++<tt>gitignore</tt> patterns from multiple sources, with the following
++order of precedence:</p>
++<ul>
++<li>
++<p>
++Patterns read from the file specified by the configuration
++   variable <em>core.excludesfile</em>.
++</p>
++</li>
++<li>
++<p>
++Patterns read from <tt>$GIT_DIR/info/exclude</tt>.
++</p>
++</li>
++<li>
++<p>
++Patterns read from a <tt>.gitignore</tt> file in the same directory
++   as the path, or in any parent directory, ordered from the
++   deepest such file to a file in the root of the repository.
++   These patterns match relative to the location of the
++   <tt>.gitignore</tt> file.  A project normally includes such
++   <tt>.gitignore</tt> files in its repository, containing patterns for
++   files generated as part of the project build.
++</p>
++</li>
++</ul>
++<p>The underlying git plumbing tools, such as
++<a href="git-ls-files.html">git-ls-files(1)</a> and <a href="git-read-tree.html">git-read-tree(1)</a>, read
++<tt>gitignore</tt> patterns specified by command-line options, or from
++files specified by command-line options.  Higher-level git
++tools, such as <a href="git-status.html">git-status(1)</a> and <a href="git-add.html">git-add(1)</a>,
++use patterns from the sources specified above.</p>
++<p>Patterns have the following format:</p>
++<ul>
++<li>
++<p>
++A blank line matches no files, so it can serve as a separator
++   for readability.
++</p>
++</li>
++<li>
++<p>
++A line starting with # serves as a comment.
++</p>
++</li>
++<li>
++<p>
++An optional prefix <em>!</em> which negates the pattern; any
++   matching file excluded by a previous pattern will become
++   included again.
++</p>
++</li>
++<li>
++<p>
++If the pattern does not contain a slash <em>/</em>, git treats it as
++   a shell glob pattern and checks for a match against the
++   pathname without leading directories.
++</p>
++</li>
++<li>
++<p>
++Otherwise, git treats the pattern as a shell glob suitable
++   for consumption by fnmatch(3) with the FNM_PATHNAME flag:
++   wildcards in the pattern will not match a / in the pathname.
++   For example, "Documentation/*.html" matches
++   "Documentation/git.html" but not
++   "Documentation/ppc/ppc.html".  A leading slash matches the
++   beginning of the pathname; for example, "/*.c" matches
++   "cat-file.c" but not "mozilla-sha1/sha1.c".
++</p>
++</li>
++</ul>
++<p>An example:</p>
++<div class="listingblock">
++<div class="content">
++<pre><tt>    $ git-status
++    [...]
++    # Untracked files:
++    [...]
++    #       Documentation/foo.html
++    #       Documentation/gitignore.html
++    #       file.o
++    #       lib.a
++    #       src/internal.o
++    [...]
++    $ cat .git/info/exclude
++    # ignore objects and archives, anywhere in the tree.
++    *.[oa]
++    $ cat Documentation/.gitignore
++    # ignore generated html files,
++    *.html
++    # except foo.html which is maintained by hand
++    !foo.html
++    $ git-status
++    [...]
++    # Untracked files:
++    [...]
++    #       Documentation/foo.html
++    [...]</tt></pre>
++</div></div>
++<p>Another example:</p>
++<div class="listingblock">
++<div class="content">
++<pre><tt>    $ cat .gitignore
++    vmlinux*
++    $ ls arch/foo/kernel/vm*
++    arch/foo/kernel/vmlinux.lds.S
++    $ echo '!/vmlinux*' &gt;arch/foo/kernel/.gitignore</tt></pre>
++</div></div>
++<p>The second .gitignore prevents git from ignoring
++<tt>arch/foo/kernel/vmlinux.lds.S</tt>.</p>
++</div>
++<h2>Documentation</h2>
++<div class="sectionbody">
++<p>Documentation by David Greaves, Junio C Hamano, Josh Triplett,
++Frank Lichtenheld, and the git-list &lt;git@vger.kernel.org&gt;.</p>
++</div>
++<h2>GIT</h2>
++<div class="sectionbody">
++<p>Part of the <a href="git.html">git(7)</a> suite</p>
++</div>
++<div id="footer">
++<div id="footer-text">
++Last updated 02-Jun-2007 21:10:18 UTC
++</div>
++</div>
++</body>
++</html>
+diff --git a/gitignore.txt b/gitignore.txt
+new file mode 100644
+index 0000000..ea79d74
+--- /dev/null
++++ b/gitignore.txt
+@@ -0,0 +1,116 @@
++gitignore(5)
++============
++
++NAME
++----
++gitignore - Specifies intentionally untracked files to ignore
++
++SYNOPSIS
++--------
++$GIT_DIR/info/exclude, .gitignore
++
++DESCRIPTION
++-----------
++
++A `gitignore` file specifies intentionally untracked files that
++git should ignore.  Each line in a `gitignore` file specifies a
++pattern.
++
++When deciding whether to ignore a path, git normally checks
++`gitignore` patterns from multiple sources, with the following
++order of precedence:
++
++ * Patterns read from the file specified by the configuration
++   variable 'core.excludesfile'.
++
++ * Patterns read from `$GIT_DIR/info/exclude`.
++
++ * Patterns read from a `.gitignore` file in the same directory
++   as the path, or in any parent directory, ordered from the
++   deepest such file to a file in the root of the repository.
++   These patterns match relative to the location of the
++   `.gitignore` file.  A project normally includes such
++   `.gitignore` files in its repository, containing patterns for
++   files generated as part of the project build.
++
++The underlying git plumbing tools, such as
++gitlink:git-ls-files[1] and gitlink:git-read-tree[1], read
++`gitignore` patterns specified by command-line options, or from
++files specified by command-line options.  Higher-level git
++tools, such as gitlink:git-status[1] and gitlink:git-add[1],
++use patterns from the sources specified above.
++
++Patterns have the following format:
++
++ - A blank line matches no files, so it can serve as a separator
++   for readability.
++
++ - A line starting with # serves as a comment.
++
++ - An optional prefix '!' which negates the pattern; any
++   matching file excluded by a previous pattern will become
++   included again.
++
++ - If the pattern does not contain a slash '/', git treats it as
++   a shell glob pattern and checks for a match against the
++   pathname without leading directories.
++
++ - Otherwise, git treats the pattern as a shell glob suitable
++   for consumption by fnmatch(3) with the FNM_PATHNAME flag:
++   wildcards in the pattern will not match a / in the pathname.
++   For example, "Documentation/\*.html" matches
++   "Documentation/git.html" but not
++   "Documentation/ppc/ppc.html".  A leading slash matches the
++   beginning of the pathname; for example, "/*.c" matches
++   "cat-file.c" but not "mozilla-sha1/sha1.c".
++
++An example:
++
++--------------------------------------------------------------
++    $ git-status
++    [...]
++    # Untracked files:
++    [...]
++    #       Documentation/foo.html
++    #       Documentation/gitignore.html
++    #       file.o
++    #       lib.a
++    #       src/internal.o
++    [...]
++    $ cat .git/info/exclude
++    # ignore objects and archives, anywhere in the tree.
++    *.[oa]
++    $ cat Documentation/.gitignore
++    # ignore generated html files,
++    *.html
++    # except foo.html which is maintained by hand
++    !foo.html
++    $ git-status
++    [...]
++    # Untracked files:
++    [...]
++    #       Documentation/foo.html
++    [...]
++--------------------------------------------------------------
++
++Another example:
++
++--------------------------------------------------------------
++    $ cat .gitignore
++    vmlinux*
++    $ ls arch/foo/kernel/vm*
++    arch/foo/kernel/vmlinux.lds.S
++    $ echo '!/vmlinux*' >arch/foo/kernel/.gitignore
++--------------------------------------------------------------
++
++The second .gitignore prevents git from ignoring
++`arch/foo/kernel/vmlinux.lds.S`.
++
++Documentation
++-------------
++Documentation by David Greaves, Junio C Hamano, Josh Triplett,
++Frank Lichtenheld, and the git-list <git@vger.kernel.org>.
++
++GIT
++---
++Part of the gitlink:git[7] suite
+diff --git a/gitk.html b/gitk.html
+index b98260f..72241c1 100644
+--- a/gitk.html
++++ b/gitk.html
+@@ -425,7 +425,7 @@ gitk --max-count=100 --all &#8212; Makefile
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:38 UTC
++Last updated 02-Jun-2007 21:10:17 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/glossary.html b/glossary.html
+index 970458b..9faac49 100644
+--- a/glossary.html
++++ b/glossary.html
+@@ -1069,7 +1069,7 @@ This commit is referred to as a "merge commit", or sometimes just a
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 27-May-2007 04:28:37 UTC
++Last updated 02-Jun-2007 21:10:22 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/hooks.html b/hooks.html
+index 9ddbedd..2f910a9 100644
+--- a/hooks.html
++++ b/hooks.html
+@@ -459,7 +459,7 @@ for the user.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 13-May-2007 22:18:55 UTC
++Last updated 02-Jun-2007 21:10:22 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/howto-index.html b/howto-index.html
+index 5a6d48c..a15d10b 100644
+--- a/howto-index.html
++++ b/howto-index.html
+@@ -380,7 +380,7 @@ as a Linux subsystem maintainer.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:44 UTC
++Last updated 02-Jun-2007 21:10:21 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/howto/revert-branch-rebase.html b/howto/revert-branch-rebase.html
+index ab77e21..938189f 100644
+--- a/howto/revert-branch-rebase.html
++++ b/howto/revert-branch-rebase.html
+@@ -434,7 +434,7 @@ Committed merge 7fb9b7262a1d1e0a47bbfdcbbcf50ce0635d3f8f
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:48 UTC
++Last updated 02-Jun-2007 21:10:23 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/repository-layout.html b/repository-layout.html
+index f85d6f0..5d03f20 100644
+--- a/repository-layout.html
++++ b/repository-layout.html
+@@ -528,8 +528,7 @@ info/exclude
+         exclude pattern list. <tt>.gitignore</tt> is the per-directory
+         ignore file.  <tt>git status</tt>, <tt>git add</tt>, <tt>git rm</tt> and <tt>git
+         clean</tt> look at it but the core git commands do not look
+-        at it.  See also: <a href="git-ls-files.html">git-ls-files(1)</a> <tt>&#8212;exclude-from</tt>
+-        and <tt>&#8212;exclude-per-directory</tt>.
++        at it.  See also: <a href="gitignore.html">gitignore(5)</a>.
+ </p>
+ </dd>
+ <dt>
+@@ -583,7 +582,7 @@ shallow
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 04-Apr-2007 18:34:45 UTC
++Last updated 02-Jun-2007 21:10:21 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/repository-layout.txt b/repository-layout.txt
+index 0459bd9..15221b5 100644
+--- a/repository-layout.txt
++++ b/repository-layout.txt
+@@ -155,8 +155,7 @@ info/exclude::
+ 	exclude pattern list. `.gitignore` is the per-directory
+ 	ignore file.  `git status`, `git add`, `git rm` and `git
+ 	clean` look at it but the core git commands do not look
+-	at it.  See also: gitlink:git-ls-files[1] `--exclude-from`
+-	and `--exclude-per-directory`.
++	at it.  See also: gitlink:gitignore[5].
+ 
+ remotes::
+ 	Stores shorthands to be used to give URL and default
+diff --git a/tutorial-2.html b/tutorial-2.html
+index 2301733..b7719ae 100644
+--- a/tutorial-2.html
++++ b/tutorial-2.html
+@@ -647,7 +647,7 @@ example, creating a new commit.</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 20-May-2007 09:08:18 UTC
++Last updated 02-Jun-2007 21:10:19 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/tutorial.html b/tutorial.html
+index 064de68..d3d6938 100644
+--- a/tutorial.html
++++ b/tutorial.html
+@@ -786,7 +786,7 @@ digressions that may be interesting at this point are:</p>
+ </div>
+ <div id="footer">
+ <div id="footer-text">
+-Last updated 20-May-2007 09:08:17 UTC
++Last updated 02-Jun-2007 21:10:18 UTC
+ </div>
+ </div>
+ </body>
+diff --git a/user-manual.html b/user-manual.html
+index 97d1612..a17980d 100644
+--- a/user-manual.html
++++ b/user-manual.html
+@@ -441,12 +441,12 @@ annoying to have these untracked files lying around; e.g. they make
+ "<code class="literal">git add .</code>" and "<code class="literal">git commit -a</code>" practically useless, and they keep
+ showing up in the output of "<code class="literal">git status</code>", etc.</p><p>Git therefore provides "exclude patterns" for telling git which files to
+ actively ignore. Exclude patterns are thoroughly explained in the
+-"Exclude Patterns" section of the <a href="git-ls-files.html" target="_top">git-ls-files(1)</a> manual page,
+-but the heart of the concept is simply a list of files which git should
+-ignore. Entries in the list may contain globs to specify multiple files,
+-or may be prefixed by "<code class="literal">!</code>" to explicitly include (un-ignore) a previously
+-excluded (ignored) file (i.e. later exclude patterns override earlier ones).
+-The following example should illustrate such patterns:</p><div class="literallayout"><p># Lines starting with '#' are considered comments.<br>
++<a href="gitignore.html" target="_top">gitignore(5)</a> manual page, but the heart of the concept is simply
++a list of files which git should ignore. Entries in the list may contain
++globs to specify multiple files, or may be prefixed by "<code class="literal">!</code>" to
++explicitly include (un-ignore) a previously excluded (ignored) file
++(i.e. later exclude patterns override earlier ones).  The following
++example should illustrate such patterns:</p><div class="literallayout"><p># Lines starting with '#' are considered comments.<br>
+ # Ignore foo.txt.<br>
+ foo.txt<br>
+ # Ignore (generated) html files,<br>
+diff --git a/user-manual.txt b/user-manual.txt
+index 4fabb8e..7eaafa8 100644
+--- a/user-manual.txt
++++ b/user-manual.txt
+@@ -1103,12 +1103,12 @@ showing up in the output of "`git status`", etc.
+ 
+ Git therefore provides "exclude patterns" for telling git which files to
+ actively ignore. Exclude patterns are thoroughly explained in the
+-"Exclude Patterns" section of the gitlink:git-ls-files[1] manual page,
+-but the heart of the concept is simply a list of files which git should
+-ignore. Entries in the list may contain globs to specify multiple files,
+-or may be prefixed by "`!`" to explicitly include (un-ignore) a previously
+-excluded (ignored) file (i.e. later exclude patterns override earlier ones).
+-The following example should illustrate such patterns:
++gitlink:gitignore[5] manual page, but the heart of the concept is simply
++a list of files which git should ignore. Entries in the list may contain
++globs to specify multiple files, or may be prefixed by "`!`" to
++explicitly include (un-ignore) a previously excluded (ignored) file
++(i.e. later exclude patterns override earlier ones).  The following
++example should illustrate such patterns:
+ 
+ -------------------------------------------------
+ # Lines starting with '#' are considered comments.
+
+</textarea>
+<textarea id="diff" class="difftextarea">
+</textarea>
+<pre id="diffpre"><code id='updateddiff'></code></pre>
+</body>

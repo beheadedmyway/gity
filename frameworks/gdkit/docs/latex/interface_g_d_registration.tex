@@ -1,0 +1,158 @@
+\hypertarget{interface_g_d_registration}{
+\section{GDRegistration Class Reference}
+\label{interface_g_d_registration}\index{GDRegistration@{GDRegistration}}
+}
+
+
+The \hyperlink{interface_g_d_registration}{GDRegistration} helps with application registration.  
+
+
+{\ttfamily \#import $<$GDRegistration.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{interface_g_d_registration_a2aab3c30ff8931c4ce11159ecb3b830c}{sendLicenseHome}
+\begin{DoxyCompactList}\small\item\em Sends a GET request to a URL. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_registration_acc5044a15435a573919d7f6c68a70ff0}{saveRegistrationIntoUserDefaults:licenseStorageKey:name:license:}
+\begin{DoxyCompactList}\small\item\em Saves registration into user defaults. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_registration_a4ce808c5e052ea5080329c56b89df626}{saveRegistrationLicense:forName:}
+\begin{DoxyCompactList}\small\item\em Saves registration information into user defaults using default storage keys. \item\end{DoxyCompactList}\item 
+(\hyperlink{class_n_s_string}{NSString} $\ast$) -\/ \hyperlink{interface_g_d_registration_ad8830b56a002a550f28c095233078aba}{getLicense}
+\begin{DoxyCompactList}\small\item\em The license code. \item\end{DoxyCompactList}\item 
+(\hyperlink{class_n_s_string}{NSString} $\ast$) -\/ \hyperlink{interface_g_d_registration_a748a7113b6adcf0337c820aa56bb01ed}{getName}
+\begin{DoxyCompactList}\small\item\em The registrant name. \item\end{DoxyCompactList}\item 
+(Boolean) -\/ \hyperlink{interface_g_d_registration_aff2e80860b72d462954323dd0203834f}{isValidForName:andLicense:}
+\begin{DoxyCompactList}\small\item\em Whether or not a registration is valid. \item\end{DoxyCompactList}\item 
+(Boolean) -\/ \hyperlink{interface_g_d_registration_a172ffae07aff61343bf35bd93d50d9f2}{isValid}
+\begin{DoxyCompactList}\small\item\em Checks that the registered license is valid. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_registration_aee73dceb1eb6c134f2a3a6dbfdd682d4}{
+(Boolean) -\/ \hyperlink{interface_g_d_registration_aee73dceb1eb6c134f2a3a6dbfdd682d4}{hasSavedRegistration}}
+\label{interface_g_d_registration_aee73dceb1eb6c134f2a3a6dbfdd682d4}
+
+\begin{DoxyCompactList}\small\item\em Whether or not a saved registration exists in user defaults. \item\end{DoxyCompactList}\item 
+(Boolean) -\/ \hyperlink{interface_g_d_registration_a4b3b036fb9260a31cc1eca5bb436d27e}{isLicenseBlacklisted:}
+\begin{DoxyCompactList}\small\item\em Check whether or not a license is blacklisted. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_registration_a1f2a4f7f7d77a633ea6348813a2596ea}{
+(Boolean) -\/ \hyperlink{interface_g_d_registration_a1f2a4f7f7d77a633ea6348813a2596ea}{isRegisteredLicenseBlacklisted}}
+\label{interface_g_d_registration_a1f2a4f7f7d77a633ea6348813a2596ea}
+
+\begin{DoxyCompactList}\small\item\em Whether or not the license that is saved in user defaults is blacklisted. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_registration_a7b212d406ecc9f8dc9dc19714baac7f8}{addLicenseToBlacklist:}
+\begin{DoxyCompactList}\small\item\em Add a license that's considered blacklisted. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_registration_a951a74df6032c61bdc6215df98dfc10f}{
+\hyperlink{class_n_s_user_defaults}{NSUserDefaults} $\ast$ \hyperlink{interface_g_d_registration_a951a74df6032c61bdc6215df98dfc10f}{defaults}}
+\label{interface_g_d_registration_a951a74df6032c61bdc6215df98dfc10f}
+
+\begin{DoxyCompactList}\small\item\em User defaults instance. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_registration_a2cec9ccef516bf4ecbf55de00bf0dbda}{
+NSMutableArray $\ast$ \hyperlink{interface_g_d_registration_a2cec9ccef516bf4ecbf55de00bf0dbda}{blacklist}}
+\label{interface_g_d_registration_a2cec9ccef516bf4ecbf55de00bf0dbda}
+
+\begin{DoxyCompactList}\small\item\em Blacklisted licenses. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_registration_a8b801d18afbdb3062e0a79f39d0aee66}{homeURL}
+\begin{DoxyCompactList}\small\item\em A url that the license get's \char`\"{}sent home\char`\"{} to. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_registration}{GDRegistration} helps with application registration. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_registration_a7b212d406ecc9f8dc9dc19714baac7f8}{
+\index{GDRegistration@{GDRegistration}!addLicenseToBlacklist:@{addLicenseToBlacklist:}}
+\index{addLicenseToBlacklist:@{addLicenseToBlacklist:}!GDRegistration@{GDRegistration}}
+\subsubsection[{addLicenseToBlacklist:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) addLicenseToBlacklist: ({\bf NSString} $\ast$) {\em license}}}
+\label{interface_g_d_registration_a7b212d406ecc9f8dc9dc19714baac7f8}
+
+
+Add a license that's considered blacklisted. 
+\begin{DoxyParams}{Parameters}
+\item[{\em license}]The license to blacklist. \end{DoxyParams}
+\hypertarget{interface_g_d_registration_ad8830b56a002a550f28c095233078aba}{
+\index{GDRegistration@{GDRegistration}!getLicense@{getLicense}}
+\index{getLicense@{getLicense}!GDRegistration@{GDRegistration}}
+\subsubsection[{getLicense}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf NSString} $\ast$) getLicense }}
+\label{interface_g_d_registration_ad8830b56a002a550f28c095233078aba}
+
+
+The license code. The license has to have been saved with the default license storage key. \hypertarget{interface_g_d_registration_a748a7113b6adcf0337c820aa56bb01ed}{
+\index{GDRegistration@{GDRegistration}!getName@{getName}}
+\index{getName@{getName}!GDRegistration@{GDRegistration}}
+\subsubsection[{getName}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf NSString} $\ast$) getName }}
+\label{interface_g_d_registration_a748a7113b6adcf0337c820aa56bb01ed}
+
+
+The registrant name. The name has to have been saved with the default name storage key. \hypertarget{interface_g_d_registration_a4b3b036fb9260a31cc1eca5bb436d27e}{
+\index{GDRegistration@{GDRegistration}!isLicenseBlacklisted:@{isLicenseBlacklisted:}}
+\index{isLicenseBlacklisted:@{isLicenseBlacklisted:}!GDRegistration@{GDRegistration}}
+\subsubsection[{isLicenseBlacklisted:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (Boolean) isLicenseBlacklisted: ({\bf NSString} $\ast$) {\em license}}}
+\label{interface_g_d_registration_a4b3b036fb9260a31cc1eca5bb436d27e}
+
+
+Check whether or not a license is blacklisted. 
+\begin{DoxyParams}{Parameters}
+\item[{\em license}]The license to check. \end{DoxyParams}
+\hypertarget{interface_g_d_registration_a172ffae07aff61343bf35bd93d50d9f2}{
+\index{GDRegistration@{GDRegistration}!isValid@{isValid}}
+\index{isValid@{isValid}!GDRegistration@{GDRegistration}}
+\subsubsection[{isValid}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (Boolean) isValid }}
+\label{interface_g_d_registration_a172ffae07aff61343bf35bd93d50d9f2}
+
+
+Checks that the registered license is valid. A license has to already have been saved in user defaults. \hypertarget{interface_g_d_registration_aff2e80860b72d462954323dd0203834f}{
+\index{GDRegistration@{GDRegistration}!isValidForName:andLicense:@{isValidForName:andLicense:}}
+\index{isValidForName:andLicense:@{isValidForName:andLicense:}!GDRegistration@{GDRegistration}}
+\subsubsection[{isValidForName:andLicense:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (Boolean) isValidForName: ({\bf NSString} $\ast$) {\em name}\/ andLicense: ({\bf NSString} $\ast$) {\em license}}}
+\label{interface_g_d_registration_aff2e80860b72d462954323dd0203834f}
+
+
+Whether or not a registration is valid. 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The registrant name. \item[{\em license}]The license. \end{DoxyParams}
+\hypertarget{interface_g_d_registration_acc5044a15435a573919d7f6c68a70ff0}{
+\index{GDRegistration@{GDRegistration}!saveRegistrationIntoUserDefaults:licenseStorageKey:name:license:@{saveRegistrationIntoUserDefaults:licenseStorageKey:name:license:}}
+\index{saveRegistrationIntoUserDefaults:licenseStorageKey:name:license:@{saveRegistrationIntoUserDefaults:licenseStorageKey:name:license:}!GDRegistration@{GDRegistration}}
+\subsubsection[{saveRegistrationIntoUserDefaults:licenseStorageKey:name:license:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) saveRegistrationIntoUserDefaults: ({\bf NSString} $\ast$) {\em nameStorageKey}\/ licenseStorageKey: ({\bf NSString} $\ast$) {\em licenseStorageKey}\/ name: ({\bf NSString} $\ast$) {\em name}\/ license: ({\bf NSString} $\ast$) {\em license}}}
+\label{interface_g_d_registration_acc5044a15435a573919d7f6c68a70ff0}
+
+
+Saves registration into user defaults. 
+\begin{DoxyParams}{Parameters}
+\item[{\em nameStorageKey}]The registrant name storage key. \item[{\em licenseStorageKey}]The license storage key. \item[{\em name}]The registrant name. \item[{\em license}]The license. \end{DoxyParams}
+\hypertarget{interface_g_d_registration_a4ce808c5e052ea5080329c56b89df626}{
+\index{GDRegistration@{GDRegistration}!saveRegistrationLicense:forName:@{saveRegistrationLicense:forName:}}
+\index{saveRegistrationLicense:forName:@{saveRegistrationLicense:forName:}!GDRegistration@{GDRegistration}}
+\subsubsection[{saveRegistrationLicense:forName:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) saveRegistrationLicense: ({\bf NSString} $\ast$) {\em license}\/ forName: ({\bf NSString} $\ast$) {\em name}}}
+\label{interface_g_d_registration_a4ce808c5e052ea5080329c56b89df626}
+
+
+Saves registration information into user defaults using default storage keys. 
+\begin{DoxyParams}{Parameters}
+\item[{\em license}]The license key. \item[{\em name}]The registrant name. \end{DoxyParams}
+\hypertarget{interface_g_d_registration_a2aab3c30ff8931c4ce11159ecb3b830c}{
+\index{GDRegistration@{GDRegistration}!sendLicenseHome@{sendLicenseHome}}
+\index{sendLicenseHome@{sendLicenseHome}!GDRegistration@{GDRegistration}}
+\subsubsection[{sendLicenseHome}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) sendLicenseHome }}
+\label{interface_g_d_registration_a2aab3c30ff8931c4ce11159ecb3b830c}
+
+
+Sends a GET request to a URL. You need a key in your Info.plist file called \char`\"{}GDLicenseHomeURL\char`\"{} -\/ the license is appended onto that url. 
+
+\subsection{Property Documentation}
+\hypertarget{interface_g_d_registration_a8b801d18afbdb3062e0a79f39d0aee66}{
+\index{GDRegistration@{GDRegistration}!homeURL@{homeURL}}
+\index{homeURL@{homeURL}!GDRegistration@{GDRegistration}}
+\subsubsection[{homeURL}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf NSString} $\ast$) homeURL\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, copy\mbox{]}}}}
+\label{interface_g_d_registration_a8b801d18afbdb3062e0a79f39d0aee66}
+
+
+A url that the license get's \char`\"{}sent home\char`\"{} to. The license is appended onto this url. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_registration_8h}{GDRegistration.h}\item 
+source/GDRegistration.m\end{DoxyCompactItemize}

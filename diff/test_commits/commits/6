@@ -1,0 +1,15 @@
+commit 0e098b6d79fbcab763874f2b6fde5aa82144d150
+tree a712e575ee5d30c44d1318246d078b4d02c29873
+parent 90b1994170900514a1ce7a3345e25cb7216915cc
+author Johannes Sixt <j6t@kdbg.org> 1251358707 +0200
+committer Junio C Hamano <gitster@pobox.com> 1251416712 -0700
+
+    Make test case number unique
+    
+    Signed-off-by: Johannes Sixt <j6t@kdbg.org>
+    Signed-off-by: Junio C Hamano <gitster@pobox.com>
+
+diff --git a/t/t4037-whitespace-status.sh b/t/t4040-whitespace-status.sh
+similarity index 100%
+rename from t/t4037-whitespace-status.sh
+rename to t/t4040-whitespace-status.sh

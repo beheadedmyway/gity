@@ -1,0 +1,117 @@
+diff --git a/diff/diff.css b/diff/diff.css
+index 73eaf9c..f9552a3 100755
+--- a/diff/diff.css
++++ b/diff/diff.css
+@@ -7,6 +7,11 @@ body {
+ 	padding-left:8px;
+ }
+ 
++td.lineNumbersOver {
++	display:block;
++	width:200px;
++}
++
+ .longline {
+ 	background-color:#fad7ff;
+   color:#ae00c8;
+@@ -28,7 +33,7 @@ code .addline, code .newfile {
+   color:#080;
+ }
+ 
+-table,table tr,table tr td {
++table,table tr,table tr td,table tr td table {
+ 	margin:0;
+ 	padding:0;
+ 	border-spacing: 0;
+diff --git a/diff/gity2.js b/diff/gity2.js
+index 551daea..5462573 100644
+--- a/diff/gity2.js
++++ b/diff/gity2.js
+@@ -228,8 +228,8 @@ function highlightDiffs()
+ 		{
+ 			if(line1!="")
+ 			{
+-				alert(line1)
+-				diffContent += "<table><tr><td><table><tr><td>"+line1+"</td></tr>"+"<tr><td>"+line2+"</td></tr></table></td><td rowspan>"+hunkContent+"</td></tr></table>"
++				//alert(line1)
++				diffContent += "<table border=1 width='100%'><tr><td><table id='lineNumbers'><tr><td class='lineNumbersOver'>&nbsp;</td><td><pre class='lines'>"+line1+"</pre></td>"+"<td><pre class='lines'>"+line2+"</pre></td></tr></table></td><td>"+hunkContent+"</td></tr></table>"
+ 			}
+ 			hunkContent=""
+ 			line1="";
+diff --git a/diff/src.html b/diff/src.html
+index ad82660..9518622 100644
+--- a/diff/src.html
++++ b/diff/src.html
+@@ -2,6 +2,7 @@
+ <head>
+ 	<link rel="stylesheet" href="diff.css" type="text/css" media="screen" charset="utf-8">
+ 	<script type="text/javascript" charset="utf-8" src="gity.js"></script>
++	<!--<script type="text/javascript" charset="utf-8" src="gity2.js"></script>-->
+ 	<script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+ 	<script type="text/javascript" charset="utf-8">
+ 	$(document).ready(startDiff);
+@@ -31,51 +32,6 @@ index b27216b..2f07884 100644
+  	GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+  	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+  	[o setCompletionBlock:^{
+-
+-diff --git a/versioning/_version b/versioning/_version
+-index bfb53fd..b38dd1f 100755
+---- a/versioning/_version
+-+++ b/versioning/_version
+-@@ -1,4 +1,4 @@
+- 0
+- 1
+- 7
+--2345
+-\ No newline at end of file
+-+2347
+-\ No newline at end of file
+-
+-diff --git a/src/GTOperationsController.m b/src/GTOperationsController.m
+-index b27216b..2f07884 100644
+---- a/src/GTOperationsController.m
+-+++ b/src/GTOperationsController.m
+-@@ -740,7 +740,7 @@ static GTModalController * modals;
+-
+- - (void) runSubmoduleSyncForSubmodule:(NSString *) _submodule {
+- 	if(allCanceled || networkOpsCancelled) return;
+--	[status showStatusIndicatorWithLabel:@"Syncing submodule, please wait"];
+-+	[status showStatusIndicatorWithLabel:@"Synchronizing submodule, please wait"];
+- 	GTOpSubmoduleSync * o = [[[GTOpSubmoduleSync alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+- 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+- 	[o setCompletionBlock:^{
+-@@ -773,7 +773,7 @@ static GTModalController * modals;
+-
+- - (void) runSubmoduleUpdateAll {
+- 	if(allCanceled || networkOpsCancelled) return;
+--	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
+-+	[status showStatusIndicatorWithLabel:@"Updating all submodules, please wait"];
+- 	GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+- 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+- 	[o setCompletionBlock:^{
+-@@ -784,7 +784,7 @@ static GTModalController * modals;
+-
+- - (void) runSubmoduleInitAll {
+- 	if(allCanceled || networkOpsCancelled) return;
+--	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
+-+	[status showStatusIndicatorWithLabel:@"Initializing all submodules, please wait"];
+- 	GTOpInitializeSubs * o = [[[GTOpInitializeSubs alloc] initWithGD:gd] autorelease];
+- 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+- 	[o setCompletionBlock:^{
+ </textarea>
+ <pre><code id='updateddiff'></code></pre>
+ </body>
+\ No newline at end of file
+diff --git a/plain/TODO b/plain/TODO
+index 3e22eca..bd5da66 100644
+--- a/plain/TODO
++++ b/plain/TODO
+@@ -2,6 +2,7 @@
+ -set base references in GTBaseExternalNibController.. remove [[gd xxx] ].
+ -fix diffing in Release build. For some reason --cached is always in the command.
+ -go through source again. I made it through views, but need to hit the rest again
++-redo the line numbers in the diff view.. just about got it.
+ 
+ -add more rebasing options?
+ -patch commands

@@ -1,0 +1,9 @@
+79 - not on branch
+84 - trigger the unknown error dialog
+Any exit code > 84 triggers the run modal for error code.
+85 - server hung up
+86 - server unreachable
+87 - permission was denied for clone
+88 - needs host verification for clone
+89 - branch does not point to a commit
+90 - you cant push to the remote

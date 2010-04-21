@@ -1,0 +1,15 @@
+commit 529f8c6ea6c13d85178d4ed10ed60ed8fd6f6c19
+tree 4d4f9f8a8de0c0a3bc618873fc91d399dd1a712d
+parent 47344eee9b980a7cf2a08d040ff3dd38c6cd82ec
+parent 60204ddb99187dd329000864a618e57742372d74
+author Junio C Hamano <gitster@pobox.com> 1260401931 -0800
+committer Junio C Hamano <gitster@pobox.com> 1260401931 -0800
+
+    Merge git://repo.or.cz/git-gui
+    
+    * git://repo.or.cz/git-gui:
+      git-gui: suppress RenderBadPicture X error caused by Tk bug
+      git-gui: Increase blame viewer usability on MacOS.
+      git-gui: search 4 directories to improve statistic of gc hint
+      git gui: make current branch default in "remote delete branch" merge check
+

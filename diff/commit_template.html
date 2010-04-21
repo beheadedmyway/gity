@@ -1,0 +1,45 @@
+<html>
+<head>
+<style>
+{css}
+</style>
+<script type="text/javascript" charset="utf-8">
+@jquery@
+</script>
+<script type="text/javascript" charset="utf-8">
+@gity@
+</script>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(startCommit);
+</script>
+</head>
+<body>
+	<a name="index"></a>
+	<div class="firstFileHeader" style="border-bottom:solid 1px #DDD;">
+		commit details
+	</div>
+	<div id="commitDetailsContainer" style="margin-top:10px">
+		<table class="commitDetails" id="commitDetailsTable">
+		</table>
+	</div>
+	<div id="extendedMessageContainer">
+		<div class="fileHeader" style="padding-left:9px;background-color:#F7F7F7;color:black;border-bottom:solid 1px #DDD;font-size:9px;line-height:18px;height:18px;">
+			commit message
+		</div>
+		<div id="commitMessageContainer" style="margin-top:10px">
+		</div>
+	</div>
+	<div id="commitIndex">
+	<div class="fileHeader" style="padding-left:9px;background-color:#F7F7F7;color:black;border-bottom:solid 1px #DDD;font-size:9px;line-height:18px;height:18px;">
+		affected files
+	</div>
+	</div>
+<div id="fileStatusesContainer" style="margin-top:10px;">
+</div>
+<textarea id="commitDetails" class="hidden">
+@content@
+</textarea>
+<textarea id="diff" class="difftextarea">
+</textarea>
+<pre id="diffpre"><code id='updateddiff'></code></pre>
+</body>

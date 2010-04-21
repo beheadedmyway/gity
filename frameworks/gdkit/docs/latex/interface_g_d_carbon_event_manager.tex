@@ -1,0 +1,235 @@
+\hypertarget{interface_g_d_carbon_event_manager}{
+\section{GDCarbonEventManager Class Reference}
+\label{interface_g_d_carbon_event_manager}\index{GDCarbonEventManager@{GDCarbonEventManager}}
+}
+
+
+The \hyperlink{interface_g_d_carbon_event_manager}{GDCarbonEventManager} manages multiple GDCarbonEvents.  
+
+
+{\ttfamily \#import $<$GDCarbonEventManager.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a1eddf82bb8d798147c3fcde4aa81ed34}{queueForInstall:unique:}
+\begin{DoxyCompactList}\small\item\em Queues a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to install. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_acd4af2477bd18676f423097a0f4e802b}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_acd4af2477bd18676f423097a0f4e802b}{queueForInstall:intoGroup:unique:}}
+\label{interface_g_d_carbon_event_manager_acd4af2477bd18676f423097a0f4e802b}
+
+\begin{DoxyCompactList}\small\item\em Queues a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to install in a group. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a4f55b9d19e99d98b3cbb62ed47daabfb}{registerGDCarbonEvent:uninstallIfExists:}
+\begin{DoxyCompactList}\small\item\em Register a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with the manager. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_ab5c5be29227c0ac1ff709cf46bb44246}{registerAndInstallGDCarbonEvent:uninstallIfExists:}
+\begin{DoxyCompactList}\small\item\em Register a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with the manager and install the event. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_ac96cda5cbfaed699354a96a76b2e0fcd}{registerGDCarbonEvent:inGroup:uninstallIfExists:}
+\begin{DoxyCompactList}\small\item\em Register a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with a group. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a5bb7116bfbb92eb5bf5651192c855611}{registerAndInstallGDCarbonEvent:inGroup:uninstallIfExists:}
+\begin{DoxyCompactList}\small\item\em Register a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with a group and install the event. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a786c5f3fb13179cec26b22d240c5cc53}{unregisterGDCarbonEvent:shouldUninstall:}
+\begin{DoxyCompactList}\small\item\em Unregister a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} from the manager. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a7959c7e44bc31f132278d2d5f10054cf}{releaseGroup:}
+\begin{DoxyCompactList}\small\item\em Releases a group but doesn't uninstall it. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a55aff4d0cf08eecbf6cb5f85eb93993c}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a55aff4d0cf08eecbf6cb5f85eb93993c}{uninstallAndReleaseGroup:}}
+\label{interface_g_d_carbon_event_manager_a55aff4d0cf08eecbf6cb5f85eb93993c}
+
+\begin{DoxyCompactList}\small\item\em Uninstalls all GDCarbonEvents in a group then releases the group. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a36c8cbdc86cd80d562aa1d2b9f528ae8}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a36c8cbdc86cd80d562aa1d2b9f528ae8}{registerAndInstallQueuedEvents}}
+\label{interface_g_d_carbon_event_manager_a36c8cbdc86cd80d562aa1d2b9f528ae8}
+
+\begin{DoxyCompactList}\small\item\em Registers and installs all queued events. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a8257489f6076112b4aff9a656e28f083}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a8257489f6076112b4aff9a656e28f083}{registerAndInstallQueuedEventsForGroup:}}
+\label{interface_g_d_carbon_event_manager_a8257489f6076112b4aff9a656e28f083}
+
+\begin{DoxyCompactList}\small\item\em Registers and installs all queued events in a group queue. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a54967798bd49ab40351020b72d9b5daf}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a54967798bd49ab40351020b72d9b5daf}{flushQueuedInstall}}
+\label{interface_g_d_carbon_event_manager_a54967798bd49ab40351020b72d9b5daf}
+
+\begin{DoxyCompactList}\small\item\em Flushes the queue for installing GDCarbonEvents. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a88f2451e02706edb8034b946d6bc25be}{flushQueuedInstallForGroup:}
+\begin{DoxyCompactList}\small\item\em Flushes the queue for a group of GDCarbonEvents. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_ac303f0701a16d99b7f2d901a557e91da}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_ac303f0701a16d99b7f2d901a557e91da}{flushAllQueuedGroupInstalls}}
+\label{interface_g_d_carbon_event_manager_ac303f0701a16d99b7f2d901a557e91da}
+
+\begin{DoxyCompactList}\small\item\em Flushes all queued group installs. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a02ef933692cbd8d55d8ddff9e1729040}{releaseAll}
+\begin{DoxyCompactList}\small\item\em Releases all GDCarbonEvents registered. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_ab4b42a2fa05a8c48d8d99733f265d2c6}{uninstallAndReleaseAll}
+\begin{DoxyCompactList}\small\item\em Uninstalls all GDCarbonEvents. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a93216262ded2fae014a25d010271b4b2}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_a93216262ded2fae014a25d010271b4b2}{uninstallAll}}
+\label{interface_g_d_carbon_event_manager_a93216262ded2fae014a25d010271b4b2}
+
+\begin{DoxyCompactList}\small\item\em Uninstalls all registered GDCarbonEvents, but does not dispose of or release any of them from the manager. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_abf0b5fb6eee060a130cfef0bad396e66}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_manager_abf0b5fb6eee060a130cfef0bad396e66}{installAll}}
+\label{interface_g_d_carbon_event_manager_abf0b5fb6eee060a130cfef0bad396e66}
+
+\begin{DoxyCompactList}\small\item\em Installs all registered GDCarbonEvents. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_carbon_event_manager_a89ecaf8c7c3124a8337c2e082747a59a}{
+(\hyperlink{interface_g_d_carbon_event_manager}{GDCarbonEventManager} $\ast$) + \hyperlink{interface_g_d_carbon_event_manager_a89ecaf8c7c3124a8337c2e082747a59a}{sharedInstance}}
+\label{interface_g_d_carbon_event_manager_a89ecaf8c7c3124a8337c2e082747a59a}
+
+\begin{DoxyCompactList}\small\item\em Singleton instance. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a196290f015b9a59450f954f619610b8e}{
+(NSUInteger) + \hyperlink{interface_g_d_carbon_event_manager_a196290f015b9a59450f954f619610b8e}{carbonToCocoaModifierFlags:}}
+\label{interface_g_d_carbon_event_manager_a196290f015b9a59450f954f619610b8e}
+
+\begin{DoxyCompactList}\small\item\em Class method to convert carbon to cocoa key modifiers. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a993aa366c07f264a428bceb650073d11}{
+(NSUInteger) + \hyperlink{interface_g_d_carbon_event_manager_a993aa366c07f264a428bceb650073d11}{cocoaToCarbonModifierFlags:}}
+\label{interface_g_d_carbon_event_manager_a993aa366c07f264a428bceb650073d11}
+
+\begin{DoxyCompactList}\small\item\em Class method to convert cocoa to carbon key modifiers. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_carbon_event_manager_abf0e9578e6f0fc2785ebd54aec3a2434}{
+NSMutableDictionary $\ast$ \hyperlink{interface_g_d_carbon_event_manager_abf0e9578e6f0fc2785ebd54aec3a2434}{eventsLookup}}
+\label{interface_g_d_carbon_event_manager_abf0e9578e6f0fc2785ebd54aec3a2434}
+
+\begin{DoxyCompactList}\small\item\em A lookup for non-\/group GDCarbonEvents. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_acbede9e9b2a73fccc030af8ee20d30d6}{
+NSMutableDictionary $\ast$ \hyperlink{interface_g_d_carbon_event_manager_acbede9e9b2a73fccc030af8ee20d30d6}{eventGroups}}
+\label{interface_g_d_carbon_event_manager_acbede9e9b2a73fccc030af8ee20d30d6}
+
+\begin{DoxyCompactList}\small\item\em A lookup for event groups. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a663013a18d5f3690a29f1d099995aedb}{
+NSMutableDictionary $\ast$ \hyperlink{interface_g_d_carbon_event_manager_a663013a18d5f3690a29f1d099995aedb}{eventInstallQueueDict}}
+\label{interface_g_d_carbon_event_manager_a663013a18d5f3690a29f1d099995aedb}
+
+\begin{DoxyCompactList}\small\item\em A lookup for non group queued installs. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a921afd56238f8c2c50df64a166d257bd}{
+NSMutableArray $\ast$ \hyperlink{interface_g_d_carbon_event_manager_a921afd56238f8c2c50df64a166d257bd}{eventInstallQueueArray}}
+\label{interface_g_d_carbon_event_manager_a921afd56238f8c2c50df64a166d257bd}
+
+\begin{DoxyCompactList}\small\item\em The queue for non group queued installs. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_af3a7570b80b6678d5b88dcb4ee139357}{
+NSMutableDictionary $\ast$ \hyperlink{interface_g_d_carbon_event_manager_af3a7570b80b6678d5b88dcb4ee139357}{eventInstallQueueForGroupDict}}
+\label{interface_g_d_carbon_event_manager_af3a7570b80b6678d5b88dcb4ee139357}
+
+\begin{DoxyCompactList}\small\item\em A lookup for group queued installs. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_manager_a46b6eb173c9eaf13f9f64af8bce78d5b}{
+NSMutableDictionary $\ast$ \hyperlink{interface_g_d_carbon_event_manager_a46b6eb173c9eaf13f9f64af8bce78d5b}{eventInstallQueueForGroups}}
+\label{interface_g_d_carbon_event_manager_a46b6eb173c9eaf13f9f64af8bce78d5b}
+
+\begin{DoxyCompactList}\small\item\em A lookup of group queue arrays for installation. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_carbon_event_manager}{GDCarbonEventManager} manages multiple GDCarbonEvents. This is useful for handling multiple GDCarbonEvents that potentially listen for the same event, but are unique how the callbacks react.
+
+As an example, suppose you have two GDCarbonEvents that are hotkey events for the key shortcut cmd+shft+F. Both can't be installed at the same time, so you can use this manager to do the installation for you, which gives you some options about how to install them. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_carbon_event_manager_a88f2451e02706edb8034b946d6bc25be}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!flushQueuedInstallForGroup:@{flushQueuedInstallForGroup:}}
+\index{flushQueuedInstallForGroup:@{flushQueuedInstallForGroup:}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{flushQueuedInstallForGroup:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) flushQueuedInstallForGroup: ({\bf NSString} $\ast$) {\em groupName}}}
+\label{interface_g_d_carbon_event_manager_a88f2451e02706edb8034b946d6bc25be}
+
+
+Flushes the queue for a group of GDCarbonEvents. 
+\begin{DoxyParams}{Parameters}
+\item[{\em groupName}]The group name's queue to flush. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_manager_a1eddf82bb8d798147c3fcde4aa81ed34}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!queueForInstall:unique:@{queueForInstall:unique:}}
+\index{queueForInstall:unique:@{queueForInstall:unique:}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{queueForInstall:unique:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) queueForInstall: ({\bf GDCarbonEvent} $\ast$) {\em event}\/ unique: (Boolean) {\em unique}}}
+\label{interface_g_d_carbon_event_manager_a1eddf82bb8d798147c3fcde4aa81ed34}
+
+
+Queues a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to install. 
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]The \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to enqueue. \item[{\em unique}]Whether or not the event has to be unique. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_manager_a5bb7116bfbb92eb5bf5651192c855611}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!registerAndInstallGDCarbonEvent:inGroup:uninstallIfExists:@{registerAndInstallGDCarbonEvent:inGroup:uninstallIfExists:}}
+\index{registerAndInstallGDCarbonEvent:inGroup:uninstallIfExists:@{registerAndInstallGDCarbonEvent:inGroup:uninstallIfExists:}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{registerAndInstallGDCarbonEvent:inGroup:uninstallIfExists:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) registerAndInstallGDCarbonEvent: ({\bf GDCarbonEvent} $\ast$) {\em event}\/ inGroup: ({\bf NSString} $\ast$) {\em groupName}\/ uninstallIfExists: (Boolean) {\em uninstall}}}
+\label{interface_g_d_carbon_event_manager_a5bb7116bfbb92eb5bf5651192c855611}
+
+
+Register a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with a group and install the event. 
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]The \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to register. \item[{\em groupName}]A group name that the event will be registered with. \item[{\em uninstall}]Whether or not to uninstall the same event if it already exists in the group. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_manager_ab5c5be29227c0ac1ff709cf46bb44246}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!registerAndInstallGDCarbonEvent:uninstallIfExists:@{registerAndInstallGDCarbonEvent:uninstallIfExists:}}
+\index{registerAndInstallGDCarbonEvent:uninstallIfExists:@{registerAndInstallGDCarbonEvent:uninstallIfExists:}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{registerAndInstallGDCarbonEvent:uninstallIfExists:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) registerAndInstallGDCarbonEvent: ({\bf GDCarbonEvent} $\ast$) {\em event}\/ uninstallIfExists: (Boolean) {\em uninstall}}}
+\label{interface_g_d_carbon_event_manager_ab5c5be29227c0ac1ff709cf46bb44246}
+
+
+Register a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with the manager and install the event. 
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]The \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to register. \item[{\em uninstall}]Whether or not to uninstall the same event if it already exists in the manager. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_manager_ac96cda5cbfaed699354a96a76b2e0fcd}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!registerGDCarbonEvent:inGroup:uninstallIfExists:@{registerGDCarbonEvent:inGroup:uninstallIfExists:}}
+\index{registerGDCarbonEvent:inGroup:uninstallIfExists:@{registerGDCarbonEvent:inGroup:uninstallIfExists:}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{registerGDCarbonEvent:inGroup:uninstallIfExists:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) registerGDCarbonEvent: ({\bf GDCarbonEvent} $\ast$) {\em event}\/ inGroup: ({\bf NSString} $\ast$) {\em groupName}\/ uninstallIfExists: (Boolean) {\em uninstall}}}
+\label{interface_g_d_carbon_event_manager_ac96cda5cbfaed699354a96a76b2e0fcd}
+
+
+Register a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with a group. 
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]The \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to register. \item[{\em groupName}]A group name that the event will be registered with. \item[{\em uninstall}]Whether or not to uninstall the same event if it already exists in the group. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_manager_a4f55b9d19e99d98b3cbb62ed47daabfb}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!registerGDCarbonEvent:uninstallIfExists:@{registerGDCarbonEvent:uninstallIfExists:}}
+\index{registerGDCarbonEvent:uninstallIfExists:@{registerGDCarbonEvent:uninstallIfExists:}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{registerGDCarbonEvent:uninstallIfExists:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) registerGDCarbonEvent: ({\bf GDCarbonEvent} $\ast$) {\em event}\/ uninstallIfExists: (Boolean) {\em uninstall}}}
+\label{interface_g_d_carbon_event_manager_a4f55b9d19e99d98b3cbb62ed47daabfb}
+
+
+Register a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with the manager. This does not install the event.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]The \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to register. \item[{\em uninstall}]Whether or not to uninstall the same event if it already exists in the manager. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_manager_a02ef933692cbd8d55d8ddff9e1729040}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!releaseAll@{releaseAll}}
+\index{releaseAll@{releaseAll}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{releaseAll}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) releaseAll }}
+\label{interface_g_d_carbon_event_manager_a02ef933692cbd8d55d8ddff9e1729040}
+
+
+Releases all GDCarbonEvents registered. This does not uninstall the events.
+
+This does not guarantee that a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} is disposed of -\/ if you have a reference to it from somewhere else it won't be deallocated. \hypertarget{interface_g_d_carbon_event_manager_a7959c7e44bc31f132278d2d5f10054cf}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!releaseGroup:@{releaseGroup:}}
+\index{releaseGroup:@{releaseGroup:}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{releaseGroup:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) releaseGroup: ({\bf NSString} $\ast$) {\em groupName}}}
+\label{interface_g_d_carbon_event_manager_a7959c7e44bc31f132278d2d5f10054cf}
+
+
+Releases a group but doesn't uninstall it. 
+\begin{DoxyParams}{Parameters}
+\item[{\em groupName}]The group name to release. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_manager_ab4b42a2fa05a8c48d8d99733f265d2c6}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!uninstallAndReleaseAll@{uninstallAndReleaseAll}}
+\index{uninstallAndReleaseAll@{uninstallAndReleaseAll}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{uninstallAndReleaseAll}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) uninstallAndReleaseAll }}
+\label{interface_g_d_carbon_event_manager_ab4b42a2fa05a8c48d8d99733f265d2c6}
+
+
+Uninstalls all GDCarbonEvents. This uninstalls all GDCarbonEvents, then releases the dictionary used to store them. \hypertarget{interface_g_d_carbon_event_manager_a786c5f3fb13179cec26b22d240c5cc53}{
+\index{GDCarbonEventManager@{GDCarbonEventManager}!unregisterGDCarbonEvent:shouldUninstall:@{unregisterGDCarbonEvent:shouldUninstall:}}
+\index{unregisterGDCarbonEvent:shouldUninstall:@{unregisterGDCarbonEvent:shouldUninstall:}!GDCarbonEventManager@{GDCarbonEventManager}}
+\subsubsection[{unregisterGDCarbonEvent:shouldUninstall:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) unregisterGDCarbonEvent: ({\bf GDCarbonEvent} $\ast$) {\em event}\/ shouldUninstall: (Boolean) {\em uninstall}}}
+\label{interface_g_d_carbon_event_manager_a786c5f3fb13179cec26b22d240c5cc53}
+
+
+Unregister a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} from the manager. 
+\begin{DoxyParams}{Parameters}
+\item[{\em event}]The \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} to unregister. \item[{\em uninstall}]Whether or not to uninstall the event. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_carbon_event_manager_8h}{GDCarbonEventManager.h}\item 
+source/GDCarbonEventManager.m\end{DoxyCompactItemize}

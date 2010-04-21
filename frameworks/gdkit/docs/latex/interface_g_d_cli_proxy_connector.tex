@@ -1,0 +1,90 @@
+\hypertarget{interface_g_d_cli_proxy_connector}{
+\section{GDCliProxyConnector Class Reference}
+\label{interface_g_d_cli_proxy_connector}\index{GDCliProxyConnector@{GDCliProxyConnector}}
+}
+
+
+The \hyperlink{interface_g_d_cli_proxy_connector}{GDCliProxyConnector} wraps up the distributed object (NSDistantObject) logic, needed to connect to a registered application and give you back the root proxy.  
+
+
+{\ttfamily \#import $<$GDCliProxyConnector.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(NSDistantObject $\ast$) -\/ \hyperlink{interface_g_d_cli_proxy_connector_a4a9943173a516e776d4b8c7dfad1e3df}{getDistantObjectInApplication:withConnectionName:andLaunchAppIfNotAvailable:}
+\begin{DoxyCompactList}\small\item\em Get an NSDistantObject from a connection name. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_cli_proxy_connector_a0c52ccb54528284c3cc164ce5019232a}{setDistantProtocol:}
+\begin{DoxyCompactList}\small\item\em Set the protocol on the NSDistantObject. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_cli_proxy_connector_a0661c0b89e7e650e08b1340be9c5da7f}{
+(NSDistantObject $\ast$) -\/ \hyperlink{interface_g_d_cli_proxy_connector_a0661c0b89e7e650e08b1340be9c5da7f}{connectWithName:}}
+\label{interface_g_d_cli_proxy_connector_a0661c0b89e7e650e08b1340be9c5da7f}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_cli_proxy_connector_a59f48e81ccdc1ce15d3f0274910e13c6}{
+Protocol $\ast$ \hyperlink{interface_g_d_cli_proxy_connector_a59f48e81ccdc1ce15d3f0274910e13c6}{distantProtocol}}
+\label{interface_g_d_cli_proxy_connector_a59f48e81ccdc1ce15d3f0274910e13c6}
+
+\begin{DoxyCompactList}\small\item\em The NSDistantObjects' protocol. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_cli_proxy_connector}{GDCliProxyConnector} wraps up the distributed object (NSDistantObject) logic, needed to connect to a registered application and give you back the root proxy. This class is used inside of a commandline tool to connect to a \hyperlink{interface_g_d_cli_proxy}{GDCliProxy} and call methods that it exposes.
+
+Example usage: 
+\begin{DoxyCode}
+ //mytool.m:
+ 
+ #import "GDCliProxyConnector.m"
+ void main(int argc, char * argv[]) {
+     NSAutoReleasePool * pool = [[NSAutoReleasePool alloc] init];
+     GDCliProxyConnector * connector = [[[GDCliProxyConnector alloc] init];
+     [connector setDistantProtocol:@protocol(MyProtocol)];
+     
+     //get the distant object. this will launch the application if the
+     //connection is not available, and keep trying to connect.
+     //it will attempt 50 connections.
+     NSDistantObject * proxy = [connector getDistantObjectInApplication:@"com.myc
+      ompany.MyApplication" withConnectionName:@"cliConnection" andLaunchAppIfNotAvaila
+      ble:true];
+     
+     //call a method on the distant object to do something
+     //from within your application.
+     [proxy myMethod];
+     [pool drain];
+ }
+\end{DoxyCode}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_cli_proxy_connector_a4a9943173a516e776d4b8c7dfad1e3df}{
+\index{GDCliProxyConnector@{GDCliProxyConnector}!getDistantObjectInApplication:withConnectionName:andLaunchAppIfNotAvailable:@{getDistantObjectInApplication:withConnectionName:andLaunchAppIfNotAvailable:}}
+\index{getDistantObjectInApplication:withConnectionName:andLaunchAppIfNotAvailable:@{getDistantObjectInApplication:withConnectionName:andLaunchAppIfNotAvailable:}!GDCliProxyConnector@{GDCliProxyConnector}}
+\subsubsection[{getDistantObjectInApplication:withConnectionName:andLaunchAppIfNotAvailable:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (NSDistantObject $\ast$) getDistantObjectInApplication: ({\bf NSString} $\ast$) {\em \_\-bundleIdentifier}\/ withConnectionName: ({\bf NSString} $\ast$) {\em \_\-connectionName}\/ andLaunchAppIfNotAvailable: (BOOL) {\em \_\-launch}}}
+\label{interface_g_d_cli_proxy_connector_a4a9943173a516e776d4b8c7dfad1e3df}
+
+
+Get an NSDistantObject from a connection name. If the connection is not available the application will be launched, and 50 connection attempt will be made after it's launched or the distant object will be returned if it's connected sooner.
+
+This returns nil after all attempts to connect to the object have been exhausted.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-bundleIdentifier}]The application's bundle identifier. \item[{\em \_\-connectionName}]The connection name used to connect a \hyperlink{interface_g_d_cli_proxy}{GDCliProxy}. \item[{\em \_\-launch}]Whether or not to launch the application if no connection can be made. \end{DoxyParams}
+\hypertarget{interface_g_d_cli_proxy_connector_a0c52ccb54528284c3cc164ce5019232a}{
+\index{GDCliProxyConnector@{GDCliProxyConnector}!setDistantProtocol:@{setDistantProtocol:}}
+\index{setDistantProtocol:@{setDistantProtocol:}!GDCliProxyConnector@{GDCliProxyConnector}}
+\subsubsection[{setDistantProtocol:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setDistantProtocol: (id) {\em \_\-protocol}}}
+\label{interface_g_d_cli_proxy_connector_a0c52ccb54528284c3cc164ce5019232a}
+
+
+Set the protocol on the NSDistantObject. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-protocol}]The protocol. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_cli_proxy_connector_8h}{GDCliProxyConnector.h}\item 
+source/GDCliProxyConnector.m\end{DoxyCompactItemize}

@@ -1,0 +1,92 @@
+\hypertarget{interface_g_d_a_s_l_log_manager}{
+\section{GDASLLogManager Class Reference}
+\label{interface_g_d_a_s_l_log_manager}\index{GDASLLogManager@{GDASLLogManager}}
+}
+
+
+The \hyperlink{interface_g_d_a_s_l_log_manager}{GDASLLogManager} manages \hyperlink{interface_g_d_a_s_l_log}{GDASLLog} objects.  
+
+
+{\ttfamily \#import $<$GDASLLogManager.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_manager_a8c4c1b87584a9091f02c263ef2396937}{setLog:forKey:}
+\begin{DoxyCompactList}\small\item\em Set a log object for key. \item\end{DoxyCompactList}\item 
+(\hyperlink{interface_g_d_a_s_l_log}{GDASLLog} $\ast$) -\/ \hyperlink{interface_g_d_a_s_l_log_manager_ab8b36b60188da8c5faa9bfaccbeeafae}{getLogForKey:}
+\begin{DoxyCompactList}\small\item\em Get a log object by key. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_a_s_l_log_manager_a915d6653d37a1494c519eccdcd605e9b}{
+(\hyperlink{interface_g_d_a_s_l_log_manager}{GDASLLogManager} $\ast$) + \hyperlink{interface_g_d_a_s_l_log_manager_a915d6653d37a1494c519eccdcd605e9b}{sharedInstance}}
+\label{interface_g_d_a_s_l_log_manager_a915d6653d37a1494c519eccdcd605e9b}
+
+\begin{DoxyCompactList}\small\item\em Singleton instance. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_a_s_l_log_manager_a6505dba9527376aa268841aac15478e8}{
+NSMutableDictionary $\ast$ \hyperlink{interface_g_d_a_s_l_log_manager_a6505dba9527376aa268841aac15478e8}{logs}}
+\label{interface_g_d_a_s_l_log_manager_a6505dba9527376aa268841aac15478e8}
+
+\begin{DoxyCompactList}\small\item\em Lookup for any stored log objects. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Boolean \hyperlink{interface_g_d_a_s_l_log_manager_ad294e2a3caeb036f104d65b4c477820a}{enabled}
+\begin{DoxyCompactList}\small\item\em Whether or not logging is enabled. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_a_s_l_log_manager}{GDASLLogManager} manages \hyperlink{interface_g_d_a_s_l_log}{GDASLLog} objects. Here's an extracted example: 
+\begin{DoxyCode}
+ GDASLLogManager * logManager = [GDASLLogManager sharedInstance];
+ GDASLLog * log = [[GDASLLog alloc] initWithSender:@"MyAppName" facility:@"my.com
+      pany.AppName" connectImmediately:TRUE];
+ [log setLogFile:@"/var/log/MyApp"];
+ [log info:@"TEST"];
+ [logManager setLog:log forKey:@"main"];
+
+ //pull out the log:
+ GDASLLog * mainLog = [GDASLLogManager getLogForKey:@"main"];
+ [mainLog info:@"TEST2"];
+\end{DoxyCode}
+ 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_a_s_l_log_manager_ab8b36b60188da8c5faa9bfaccbeeafae}{
+\index{GDASLLogManager@{GDASLLogManager}!getLogForKey:@{getLogForKey:}}
+\index{getLogForKey:@{getLogForKey:}!GDASLLogManager@{GDASLLogManager}}
+\subsubsection[{getLogForKey:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf GDASLLog} $\ast$) getLogForKey: ({\bf NSString} $\ast$) {\em key}}}
+\label{interface_g_d_a_s_l_log_manager_ab8b36b60188da8c5faa9bfaccbeeafae}
+
+
+Get a log object by key. 
+\begin{DoxyParams}{Parameters}
+\item[{\em key}]The key the log was saved with. \end{DoxyParams}
+\hypertarget{interface_g_d_a_s_l_log_manager_a8c4c1b87584a9091f02c263ef2396937}{
+\index{GDASLLogManager@{GDASLLogManager}!setLog:forKey:@{setLog:forKey:}}
+\index{setLog:forKey:@{setLog:forKey:}!GDASLLogManager@{GDASLLogManager}}
+\subsubsection[{setLog:forKey:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setLog: ({\bf GDASLLog} $\ast$) {\em log}\/ forKey: ({\bf NSString} $\ast$) {\em key}}}
+\label{interface_g_d_a_s_l_log_manager_a8c4c1b87584a9091f02c263ef2396937}
+
+
+Set a log object for key. 
+\begin{DoxyParams}{Parameters}
+\item[{\em log}]The \hyperlink{interface_g_d_a_s_l_log}{GDASLLog} to save. \item[{\em key}]The key to store it with. \end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{interface_g_d_a_s_l_log_manager_ad294e2a3caeb036f104d65b4c477820a}{
+\index{GDASLLogManager@{GDASLLogManager}!enabled@{enabled}}
+\index{enabled@{enabled}!GDASLLogManager@{GDASLLogManager}}
+\subsubsection[{enabled}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (Boolean) enabled\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_g_d_a_s_l_log_manager_ad294e2a3caeb036f104d65b4c477820a}
+
+
+Whether or not logging is enabled. You can toggle this to disable or enable all \hyperlink{interface_g_d_a_s_l_log}{GDASLLog} instances -\/ they're just disabled, not destroyed. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_a_s_l_log_manager_8h}{GDASLLogManager.h}\item 
+source/GDASLLogManager.m\end{DoxyCompactItemize}

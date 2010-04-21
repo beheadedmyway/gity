@@ -1,0 +1,249 @@
+diff --git a/src/GTOperationsController.m b/src/GTOperationsController.m
+index b27216b..2f07884 100644
+--- a/src/GTOperationsController.m
++++ b/src/GTOperationsController.m
+@@ -740,7 +740,7 @@ static GTModalController * modals;
+
+ - (void) runSubmoduleSyncForSubmodule:(NSString *) _submodule {
+ 	if(allCanceled || networkOpsCancelled) return;
+-	[status showStatusIndicatorWithLabel:@"Syncing submodule, please wait"];
++	[status showStatusIndicatorWithLabel:@"Synchronizing submodule, please wait"];
+ 	GTOpSubmoduleSync * o = [[[GTOpSubmoduleSync alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+ 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+ 	[o setCompletionBlock:^{
+@@ -773,7 +773,7 @@ static GTModalController * modals;
+
+ - (void) runSubmoduleUpdateAll {
+ 	if(allCanceled || networkOpsCancelled) return;
+-	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
++	[status showStatusIndicatorWithLabel:@"Updating all submodules, please wait"];
+ 	GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+ 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+ 	[o setCompletionBlock:^{
+@@ -784,7 +784,7 @@ static GTModalController * modals;
+
+ - (void) runSubmoduleInitAll {
+ 	if(allCanceled || networkOpsCancelled) return;
+-	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
++	[status showStatusIndicatorWithLabel:@"Initializing all submodules, please wait"];
+ 	GTOpInitializeSubs * o = [[[GTOpInitializeSubs alloc] initWithGD:gd] autorelease];
+ 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+ 	[o setCompletionBlock:^{
+
+diff --git a/diff/__others/v1/css/GitX.css b/diff/__others/v1/css/GitX.css
+new file mode 100755
+index 0000000..c8a03f3
+--- /dev/null
++++ b/diff/__others/v1/css/GitX.css
+@@ -0,0 +1,9 @@
++@import url("diff.css");
++@import url("notification.css");
++
++body {
++	margin: 0;
++	margin-top: 5px;
++	width: 100%;
++	font-family: 'Lucida Grande', Arial;
++}
+diff --git a/diff/__others/v1/dragtest.html b/diff/__others/v1/dragtest.html
+new file mode 100755
+index 0000000..d64faf6
+--- /dev/null
++++ b/diff/__others/v1/dragtest.html
+@@ -0,0 +1,195 @@
++&lt;html>
++	&lt;head>
++		
++		&lt;link rel="stylesheet" href="css/GitX.css" type="text/css" media="screen" title="no title" charset="utf-8">
++		&lt;link rel="stylesheet" href="css/diff.css" type="text/css" media="screen" title="no title" charset="utf-8">
++		&lt;script src="lib/GitX.js" type="text/javascript" charset="utf-8">&lt;/script>
++		&lt;script src="lib/diffHighlighter.js" type="text/javascript" charset="utf-8">&lt;/script>
++		
++		&lt;style type="text/css" media="screen">
++			#lijstmetdingen {
++				font-size: 50%;
++			}
++			.line {
++			}
++			#selected {
++				background-color: #B5D5FE !important;
++				-webkit-border-radius: 3px;
++				-webkit-box-sizing: border-box;
++				width: 100%;
++/*				border: 1px solid red;*/
++				padding-left: 3px !important;
++				padding-right: 3px !important;
++/*				margin-left: -3px !important;
++				margin-right: -3px !important;
++*/			}
++			
++			#selected div {
++				background-color: #B5D5FE;
++			}
++
++			#stageButton {
++				float: right;
++
++				display: block;
++				height: 12px;
++				padding: 4px;
++				-webkit-border-radius: 4px;
++				background-color: white !important;
++				border: 1px solid blue;
++				margin-top: 4px;
++				z-index: -100;
++			}
++			
++		&lt;/style>
++
++		&lt;script type="text/javascript" charset="utf-8">
++			var nodeIndex = function(list, element)
++			{
++				for (i = 0; i &lt; list.childNodes.length; ++i)
++					if (list.childNodes[i] == element)
++						return i;
++				return -1
++			}
++
++			var deselect = function()
++			{
++				var selection = document.getElementById("selected");
++				if (selection) {
++					while (selection.childNodes[1])
++						selection.parentNode.insertBefore(selection.childNodes[1], selection);
++					selection.parentNode.removeChild(selection);
++				}
++			}
++
++			var showSelection = function(list, from, to)
++			{
++				deselect();
++				var startIndex = nodeIndex(list, from);
++				var endIndex = nodeIndex(list, to);
++				
++				if (startIndex == -1 || endIndex == -1)
++					return;
++
++				if (startIndex > endIndex)
++				{
++					var tmp = endIndex;
++					endIndex = startIndex;
++					startIndex = tmp;
++					tmp = to;
++					to = from;
++					from = tmp;
++				}
++
++				// new Array().slice() doesn't work with elementnodes :(
++				// So we create an array ourselves
++				var elementList = [];
++				for (i = startIndex; i &lt;= endIndex; ++i)
++					elementList.push(from.parentNode.childNodes[i]);
++
++				var selection = document.createElement("div");
++				selection.setAttribute("id", "selected");
++				var button = document.createElement("div");
++				button.setAttribute("id", "stageButton");
++				button.appendChild(document.createTextNode("Stage lines"));
++				button.onmousedown = function() {
++					while (selection.firstChild)
++						selection.removeChild(selection.firstChild);
++					return false;
++				}
++				selection.appendChild(button);
++				list.insertBefore(selection, from);
++
++				var element;
++				for (i = 0; i &lt; elementList.length; i++)
++					selection.appendChild(elementList[i]);
++			}
++
++			var load = function()
++			{
++				/*document.onmousedown = function(event) {
++					var cur = event.target;
++					while (cur) {
++						if (cur.getAttribute && cur.getAttribute("class") && cur.getAttribute("class").indexOf("lines") != -1)
++							return;
++						cur = cur.parentNode;
++					}
++					deselect();
++				}*/
++
++				highlightDiff($("orig_diff").value,
++					$("lijstmetdingen"),
++					{ }
++				);
++
++				var list = document.getElementsByClassName("lines");
++				
++				for (i = 0; i &lt; list.length; ++i) {
++					file = list[i];
++					file.onmousedown = function(event) {
++						file.onmouseover = function(event2) {
++							showSelection(file, event.srcElement, event2.target);
++							return false;
++						};
++
++						file.onmouseup = function(event2) {
++							file.onmouseover = null;
++							file.onmouseup = null;
++						};
++
++						showSelection(file, event.srcElement, event.srcElement);
++						return false;
++					}
++				}
++			}
++		&lt;/script>
++	&lt;/head>
++	&lt;body onload="load()">
++		&lt;textarea style='display:none' id="orig_diff" rows="8" cols="40">
++diff --git a/.gitignore b/.gitignore
++index b89b7b7..3367a4e 100644
++--- a/.gitignore
+++++ b/.gitignore
++@@ -1,4 +1,5 @@
++ build
+++build/revision
++ *.xcodeproj/*.pbxuser
++ *.xcodeproj/*.perspectivev3
++ *.xcodeproj/*.mode1v3
++diff --git a/ApplicationController.m b/ApplicationController.m
++index 86252cd..3a86d38 100644
++--- a/ApplicationController.m
+++++ b/ApplicationController.m
++@@ -21,7 +21,7 @@ @implementation ApplicationController
++
++ - (ApplicationController*)init
++ {
++-#ifndef NDEBUG
+++#ifdef DEBUG_BUILD
++ 	[NSApp activateIgnoringOtherApps:YES];
++ #endif
++
++@@ -92,12 +92,16 @@ - (IBAction)openPreferencesWindow:(id)sender
++ - (IBAction)installCliTool:(id)sender;
++ {
++ 	BOOL success               = NO;
++-	NSString* installationPath = @"/usr/local/bin/gitx";
+++	NSString* installationPath = @"/usr/local/bin/";
+++	NSString* installationName = @"gitx";
++ 	NSString* toolPath         = [[NSBundle mainBundle] pathForResource:@"gitx" ofType:@""];
++ 	if (toolPath) {
++ 		AuthorizationRef auth;
++ 		if (AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment, kAuthorizationFlagDefaults, &auth) == errAuthorizationSuccess) {
++-			char const* arguments[] = { "-f", "-s", [toolPath UTF8String], [installationPath UTF8String], NULL };
+++			char const* mkdir_arg[] = { "-p", [installationPath UTF8String], NULL};
+++			char const* mkdir	= "/bin/mkdir";
+++			AuthorizationExecuteWithPrivileges(auth, mkdir, kAuthorizationFlagDefaults, (char**)mkdir_arg, NULL);
+++			char const* arguments[] = { "-f", "-s", [toolPath UTF8String], [[installationPath stringByAppendingString: installationName] UTF8String],  NULL };
++ 			char const* helperTool  = "/bin/ln";
++ 			if (AuthorizationExecuteWithPrivileges(auth, helperTool, kAuthorizationFlagDefaults, (char**)arguments, NULL) == errAuthorizationSuccess) {
++ 				int status;
++			&lt;/textarea>
++			&lt;div id='lijstmetdingen'>&lt;/div>
++		&lt;/body>
++	&lt;/body>
++&lt;/html>
+\ No newline at end of file

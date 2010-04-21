@@ -1,0 +1,142 @@
+\hypertarget{interface_g_d_accessibility_observer}{
+\section{GDAccessibilityObserver Class Reference}
+\label{interface_g_d_accessibility_observer}\index{GDAccessibilityObserver@{GDAccessibilityObserver}}
+}
+
+
+The \hyperlink{interface_g_d_accessibility_observer}{GDAccessibilityObserver} is an object oriented wrapper around accessibility notifications.  
+
+
+{\ttfamily \#import $<$GDAccessibilityObserver.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_g_d_accessibility_observer_a38b7e5cbcdd5a9d4ff0e61fef5fede37}{initWithNotification:forAXUIElementRef:callsAction:onTarget:withUserInfo:}
+\begin{DoxyCompactList}\small\item\em Designated initializer -\/ init with required parameters. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_accessibility_observer_ab9b0204ed91cd778aa64448b84ca4ba0}{
+pid\_\-t \hyperlink{interface_g_d_accessibility_observer_ab9b0204ed91cd778aa64448b84ca4ba0}{app\_\-pid}}
+\label{interface_g_d_accessibility_observer_ab9b0204ed91cd778aa64448b84ca4ba0}
+
+\begin{DoxyCompactList}\small\item\em The application's pid. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_a9be1e08269fb68f3cffcaa12bbd29782}{
+id \hyperlink{interface_g_d_accessibility_observer_a9be1e08269fb68f3cffcaa12bbd29782}{actionTarget}}
+\label{interface_g_d_accessibility_observer_a9be1e08269fb68f3cffcaa12bbd29782}
+
+\begin{DoxyCompactList}\small\item\em The target for the notification callback. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_a49160ae5c8f93bc3c78e90d200d554a8}{
+SEL \hyperlink{interface_g_d_accessibility_observer_a49160ae5c8f93bc3c78e90d200d554a8}{actionSelector}}
+\label{interface_g_d_accessibility_observer_a49160ae5c8f93bc3c78e90d200d554a8}
+
+\begin{DoxyCompactList}\small\item\em The selector on the callback target. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_ab2deb2cb27fb2ec61257a1edad2f4321}{
+AXObserverRef \hyperlink{interface_g_d_accessibility_observer_ab2deb2cb27fb2ec61257a1edad2f4321}{observer}}
+\label{interface_g_d_accessibility_observer_ab2deb2cb27fb2ec61257a1edad2f4321}
+
+\begin{DoxyCompactList}\small\item\em An accessibility observer reference. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_aaa92f7f43137f4448745843d2c707c56}{
+AXUIElementRef \hyperlink{interface_g_d_accessibility_observer_aaa92f7f43137f4448745843d2c707c56}{element}}
+\label{interface_g_d_accessibility_observer_aaa92f7f43137f4448745843d2c707c56}
+
+\begin{DoxyCompactList}\small\item\em The accessibility element reference. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_a774accc02652787c3b86155670f429d0}{
+NSInvocation $\ast$ \hyperlink{interface_g_d_accessibility_observer_a774accc02652787c3b86155670f429d0}{invoker}}
+\label{interface_g_d_accessibility_observer_a774accc02652787c3b86155670f429d0}
+
+\begin{DoxyCompactList}\small\item\em An invoker that calls the target/selector when the accessibility notification occurs. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_a2e79126b8de057ec798c5239121d5e1f}{
+NSMethodSignature $\ast$ \hyperlink{interface_g_d_accessibility_observer_a2e79126b8de057ec798c5239121d5e1f}{selectorSignature}}
+\label{interface_g_d_accessibility_observer_a2e79126b8de057ec798c5239121d5e1f}
+
+\begin{DoxyCompactList}\small\item\em Method signature for the callback selector. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_a312f2dcd2e9adc830363f237d56b45e8}{
+NSDictionary $\ast$ \hyperlink{interface_g_d_accessibility_observer_a312f2dcd2e9adc830363f237d56b45e8}{userInfo}}
+\label{interface_g_d_accessibility_observer_a312f2dcd2e9adc830363f237d56b45e8}
+
+\begin{DoxyCompactList}\small\item\em User info dictionary passed on notification. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_a273d26e83f52937320762c53857c6db1}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_accessibility_observer_a273d26e83f52937320762c53857c6db1}{notification}}
+\label{interface_g_d_accessibility_observer_a273d26e83f52937320762c53857c6db1}
+
+\begin{DoxyCompactList}\small\item\em The notification name. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_a719a5c28d6ad27bbcab4b864868291fa}{
+\hyperlink{interface_g_d_accessibility_manager}{GDAccessibilityManager} $\ast$ \hyperlink{interface_g_d_accessibility_observer_a719a5c28d6ad27bbcab4b864868291fa}{accessManager}}
+\label{interface_g_d_accessibility_observer_a719a5c28d6ad27bbcab4b864868291fa}
+
+\begin{DoxyCompactList}\small\item\em Singleton instance of the \hyperlink{interface_g_d_accessibility_manager}{GDAccessibilityManager}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_observer_ac10d3d1ce12d457cf53ac6bb3d86c380}{
+\hyperlink{interface_g_d_accessibility_notification}{GDAccessibilityNotification} $\ast$ \hyperlink{interface_g_d_accessibility_observer_ac10d3d1ce12d457cf53ac6bb3d86c380}{notify}}
+\label{interface_g_d_accessibility_observer_ac10d3d1ce12d457cf53ac6bb3d86c380}
+
+\begin{DoxyCompactList}\small\item\em An instance of an \hyperlink{interface_g_d_accessibility_notification}{GDAccessibilityNotification}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_accessibility_observer}{GDAccessibilityObserver} is an object oriented wrapper around accessibility notifications. It wraps a few function calls that create an accessibility observer: AXObserverCreate(), CFRunLoopAddSource(), AXObserverAddNotification() and AXObserverGetRunLoopSource().
+
+Use this for notifications that post from accessibility objects. Accessibility notifications don't post from NSNotificationCenters, they post from the NSAccessibilityPostNotification() function.
+
+Here's an extracted example of how you use it: 
+\begin{DoxyCode}
+ @implementation MyObject : NSObject
+ - (id) initWithAppInfo:(NSDictionary *) appinfo {
+        GDAccessibilityObserver * activated; //should be an instance variable if 
+      it needs to hang around in memory.
+        GDAccessibilityManager * accessManager; //should be instance variable
+        if(self = [self init]) {
+                appInfo = [appinfo retain];
+                appPid = (pid_t)[[appInfo valueForKey:@"NSApplicationProcessIdent
+      ifier"] intValue];
+                GDAccessibilityOperationResult * appres = [accessManager 
+      applicationRefFromPid:appPid];
+                if([appres wasSuccess]) {
+                        appRef = (AXUIElementRef)[appres result];
+                        CFRetain((CFTypeRef)appRef);
+                        activated = [[GDAccessibilityObserver alloc] initWithNoti
+      fication:NSAccessibilityApplicationActivatedNotification forAXUIElementRef:appRef
+       \
+                                                callsAction:@selector(application
+      DidActivate:) onTarget:self withUserInfo:appInfo];
+                } else {
+                        return nil;
+                }
+        }
+        return self;
+ }
+ @end
+\end{DoxyCode}
+
+
+The important thing to remember is that it can subscribe to notifications from any AXUIElementRef. Use the \hyperlink{interface_g_d_accessibility_manager}{GDAccessibilityManager} to get the right reference you need.
+
+\begin{DoxySeeAlso}{See also}
+\href{http://developer.apple.com/mac/library/documentation/Accessibility/Reference/AccessibilityLowlevel/AXUIElement_h/CompositePage.html#//apple_ref/c/func/AXObserverCreate}{\tt http://developer.apple.com/mac/library/documentation/Accessibility/Reference/AccessibilityLowlevel/AXUIElement\_\-h/CompositePage.html\#//apple\_\-ref/c/func/AXObserverCreate} 
+
+\href{http://developer.apple.com/mac/library/documentation/Accessibility/Reference/AccessibilityLowlevel/AXUIElement_h/CompositePage.html#//apple_ref/c/func/AXObserverAddNotification}{\tt http://developer.apple.com/mac/library/documentation/Accessibility/Reference/AccessibilityLowlevel/AXUIElement\_\-h/CompositePage.html\#//apple\_\-ref/c/func/AXObserverAddNotification} 
+
+\href{http://developer.apple.com/mac/library/documentation/Accessibility/Reference/AccessibilityLowlevel/AXUIElement_h/CompositePage.html#//apple_ref/c/func/AXObserverGetRunLoopSource}{\tt http://developer.apple.com/mac/library/documentation/Accessibility/Reference/AccessibilityLowlevel/AXUIElement\_\-h/CompositePage.html\#//apple\_\-ref/c/func/AXObserverGetRunLoopSource} 
+
+\href{http://developer.apple.com/mac/library/documentation/Cocoa/Reference/ApplicationKit/Miscellaneous/AppKit_Functions/Reference/reference.html#//apple_ref/c/func/NSAccessibilityPostNotification}{\tt http://developer.apple.com/mac/library/documentation/Cocoa/Reference/ApplicationKit/Miscellaneous/AppKit\_\-Functions/Reference/reference.html\#//apple\_\-ref/c/func/NSAccessibilityPostNotification} 
+
+Also see carbon run loops and CFRunLoopAddSource(). 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_accessibility_observer_a38b7e5cbcdd5a9d4ff0e61fef5fede37}{
+\index{GDAccessibilityObserver@{GDAccessibilityObserver}!initWithNotification:forAXUIElementRef:callsAction:onTarget:withUserInfo:@{initWithNotification:forAXUIElementRef:callsAction:onTarget:withUserInfo:}}
+\index{initWithNotification:forAXUIElementRef:callsAction:onTarget:withUserInfo:@{initWithNotification:forAXUIElementRef:callsAction:onTarget:withUserInfo:}!GDAccessibilityObserver@{GDAccessibilityObserver}}
+\subsubsection[{initWithNotification:forAXUIElementRef:callsAction:onTarget:withUserInfo:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithNotification: ({\bf NSString} $\ast$) {\em notification}\/ forAXUIElementRef: (AXUIElementRef) {\em element}\/ callsAction: (SEL) {\em action}\/ onTarget: (id) {\em target}\/ withUserInfo: (NSDictionary $\ast$) {\em userInpho}}}
+\label{interface_g_d_accessibility_observer_a38b7e5cbcdd5a9d4ff0e61fef5fede37}
+
+
+Designated initializer -\/ init with required parameters. 
+\begin{DoxyParams}{Parameters}
+\item[{\em notification}]The notification to subscribe to. \item[{\em element}]The AXUIElementRef to listen for posted notifications from. \item[{\em action}]A callback selector. \item[{\em target}]A callback target object. \item[{\em userInpho}]A user info dictionary. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_accessibility_observer_8h}{GDAccessibilityObserver.h}\item 
+source/GDAccessibilityObserver.m\end{DoxyCompactItemize}

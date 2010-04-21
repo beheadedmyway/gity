@@ -1,0 +1,125 @@
+\hypertarget{macros_8h}{
+\section{source/macros.h File Reference}
+\label{macros_8h}\index{source/macros.h@{source/macros.h}}
+}
+
+
+Header file that contains macros, and other c definitions.  
+{\ttfamily \#import $<$Foundation/Foundation.h$>$}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{macros_8h_a339a611d7f9dc3a59c359f0da7beaf3c}{
+\#define {\bfseries or}~$|$$|$}
+\label{macros_8h_a339a611d7f9dc3a59c359f0da7beaf3c}
+
+\item 
+\hypertarget{macros_8h_aa3d7d535cf450b91b9cb6d9cee2edbb9}{
+\#define {\bfseries and}~\&\&}
+\label{macros_8h_aa3d7d535cf450b91b9cb6d9cee2edbb9}
+
+\item 
+\hypertarget{macros_8h_a31739c27bdcfdac9faae7bf7a5df49e4}{
+\#define {\bfseries not}~!}
+\label{macros_8h_a31739c27bdcfdac9faae7bf7a5df49e4}
+
+\item 
+\hypertarget{macros_8h_acd8c7af31595d38113a4a9aa2bf4f493}{
+\#define {\bfseries eq}~==}
+\label{macros_8h_acd8c7af31595d38113a4a9aa2bf4f493}
+
+\item 
+\hypertarget{macros_8h_a9870e0caa2f8e3e5700c4cbb21d73c07}{
+\#define {\bfseries is}~==}
+\label{macros_8h_a9870e0caa2f8e3e5700c4cbb21d73c07}
+
+\item 
+\hypertarget{macros_8h_a6c15ef389cc76fe9e9b2e01234ac5ac2}{
+\#define {\bfseries neq}~!=}
+\label{macros_8h_a6c15ef389cc76fe9e9b2e01234ac5ac2}
+
+\item 
+\hypertarget{macros_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{
+\#define {\bfseries NULL}~(void $\ast$) 0}
+\label{macros_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}
+
+\item 
+\hypertarget{macros_8h_a7a7ca81d2a85873283b5ec82953b1b25}{
+\#define {\bfseries nil}~NULL}
+\label{macros_8h_a7a7ca81d2a85873283b5ec82953b1b25}
+
+\item 
+\#define \hyperlink{macros_8h_a117bee10d874e1f3ae077f522dec71b8}{GDRelease}(x)
+\begin{DoxyCompactList}\small\item\em Releases and nils out any id object. \item\end{DoxyCompactList}\item 
+\hypertarget{macros_8h_ac82b8e41c46b7e7199a9a4ea4e6892e7}{
+\#define \hyperlink{macros_8h_ac82b8e41c46b7e7199a9a4ea4e6892e7}{gdflog}(s,...)~NSLog(@\char`\"{}$<$\%p \%@:(\%d)$>$ \%@\char`\"{},self,\mbox{[}\mbox{[}\hyperlink{class_n_s_string}{NSString} stringWithUTF8String:\_\-\_\-FILE\_\-\_\-\mbox{]} lastPathComponent\mbox{]},\_\-\_\-LINE\_\-\_\-,\mbox{[}\hyperlink{class_n_s_string}{NSString} stringWithFormat:(s), \#\#\_\-\_\-VA\_\-ARGS\_\-\_\-\mbox{]})}
+\label{macros_8h_ac82b8e41c46b7e7199a9a4ea4e6892e7}
+
+\begin{DoxyCompactList}\small\item\em A shortcut for NSLog which will include \_\-\_\-FILE\_\-\_\- and \_\-\_\-LINE\_\-\_\- that the NSLog is on. \item\end{DoxyCompactList}\item 
+\#define \hyperlink{macros_8h_a3a3c5f4173bdafed9ddfed833ce2ea84}{gdlog}(s,...)~NSLog(@\char`\"{}\%@\char`\"{},\mbox{[}\hyperlink{class_n_s_string}{NSString} stringWithFormat:(s),\#\#\_\-\_\-VA\_\-ARGS\_\-\_\-\mbox{]})
+\begin{DoxyCompactList}\small\item\em A shortcut for NSLog(@\char`\"{}\char`\"{},. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{macros_8h_aa5d55f93cd1140ae9acbabbd5b9f46fc}{
+NS\_\-INLINE void \hyperlink{macros_8h_aa5d55f93cd1140ae9acbabbd5b9f46fc}{GDPrintNSTask} (NSTask $\ast$task)}
+\label{macros_8h_aa5d55f93cd1140ae9acbabbd5b9f46fc}
+
+\begin{DoxyCompactList}\small\item\em Prints an NSTask and it's arguments. \item\end{DoxyCompactList}\item 
+\hypertarget{macros_8h_a73d4b98484ea306a59e3fefc3893d9b6}{
+NS\_\-INLINE void \hyperlink{macros_8h_a73d4b98484ea306a59e3fefc3893d9b6}{GDPrintNSRect} (NSRect rect)}
+\label{macros_8h_a73d4b98484ea306a59e3fefc3893d9b6}
+
+\begin{DoxyCompactList}\small\item\em Prints an NSRect formatted like: NSRect(x:g, y:g, w:g, h:g). \item\end{DoxyCompactList}\item 
+\hypertarget{macros_8h_aa8acb60e4d52647b6524b236a5e1693b}{
+NS\_\-INLINE void \hyperlink{macros_8h_aa8acb60e4d52647b6524b236a5e1693b}{GDPrintNSRectWithLabel} (\hyperlink{class_n_s_string}{NSString} $\ast$label, NSRect rect)}
+\label{macros_8h_aa8acb60e4d52647b6524b236a5e1693b}
+
+\begin{DoxyCompactList}\small\item\em Prints an NSRect prefixed with some label: \char`\"{}\mbox{[}label\mbox{]} NSRect(x:\%g, y:\%g, w:\%g, h:\%g)\char`\"{}. \item\end{DoxyCompactList}\item 
+\hypertarget{macros_8h_a51058c157114d408537592ab7c498d31}{
+NS\_\-INLINE void \hyperlink{macros_8h_a51058c157114d408537592ab7c498d31}{GDPrintNSPoint} (NSPoint point)}
+\label{macros_8h_a51058c157114d408537592ab7c498d31}
+
+\begin{DoxyCompactList}\small\item\em Prints an NSPoint formatted like: NSPoint(x:g,y:g). \item\end{DoxyCompactList}\item 
+\hypertarget{macros_8h_a8b9c0b4d60aba6292b623023573247b9}{
+NS\_\-INLINE void \hyperlink{macros_8h_a8b9c0b4d60aba6292b623023573247b9}{GDPrintNSPointWithLabel} (\hyperlink{class_n_s_string}{NSString} $\ast$label, NSPoint point)}
+\label{macros_8h_a8b9c0b4d60aba6292b623023573247b9}
+
+\begin{DoxyCompactList}\small\item\em Prints an NSPoint prefixed with some label: \char`\"{}\mbox{[}label\mbox{]} NSPoint(x:\%g,y:\%g)\char`\"{}. \item\end{DoxyCompactList}\item 
+\hypertarget{macros_8h_a7667aca7419e546c9b7743afb54d7e76}{
+NS\_\-INLINE void \hyperlink{macros_8h_a7667aca7419e546c9b7743afb54d7e76}{GDPrintNSSize} (NSSize size)}
+\label{macros_8h_a7667aca7419e546c9b7743afb54d7e76}
+
+\begin{DoxyCompactList}\small\item\em Prints an NSSize formatted like: NSSize(w:g,h:g). \item\end{DoxyCompactList}\item 
+\hypertarget{macros_8h_adb61171d85304a3cba6b802e8167d5b3}{
+NS\_\-INLINE void \hyperlink{macros_8h_adb61171d85304a3cba6b802e8167d5b3}{GDPrintNSSizeWithLabel} (\hyperlink{class_n_s_string}{NSString} $\ast$label, NSSize size)}
+\label{macros_8h_adb61171d85304a3cba6b802e8167d5b3}
+
+\begin{DoxyCompactList}\small\item\em Prints an NSSize prefixed with some label: \char`\"{}\mbox{[}label\mbox{]} NSSize(w:\%g,h:\%g)\char`\"{}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header file that contains macros, and other c definitions. 
+
+\subsection{Define Documentation}
+\hypertarget{macros_8h_a3a3c5f4173bdafed9ddfed833ce2ea84}{
+\index{macros.h@{macros.h}!gdlog@{gdlog}}
+\index{gdlog@{gdlog}!macros.h@{macros.h}}
+\subsubsection[{gdlog}]{\setlength{\rightskip}{0pt plus 5cm}\#define gdlog(s, \/   {\em ...})~NSLog(@\char`\"{}\%@\char`\"{},\mbox{[}{\bf NSString} stringWithFormat:(s),\#\#\_\-\_\-VA\_\-ARGS\_\-\_\-\mbox{]})}}
+\label{macros_8h_a3a3c5f4173bdafed9ddfed833ce2ea84}
+
+
+A shortcut for NSLog(@\char`\"{}\char`\"{},. ..). \hypertarget{macros_8h_a117bee10d874e1f3ae077f522dec71b8}{
+\index{macros.h@{macros.h}!GDRelease@{GDRelease}}
+\index{GDRelease@{GDRelease}!macros.h@{macros.h}}
+\subsubsection[{GDRelease}]{\setlength{\rightskip}{0pt plus 5cm}\#define GDRelease(x)}}
+\label{macros_8h_a117bee10d874e1f3ae077f522dec71b8}
+{\bfseries Value:}
+\begin{DoxyCode}
+do{ \
+        if((x)==nil){break;} \
+        [(x) release];(x)=nil;} while(0)
+\end{DoxyCode}
+
+
+Releases and nils out any id object. 

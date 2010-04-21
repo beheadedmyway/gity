@@ -1,0 +1,32 @@
+\hypertarget{_g_d_quartz_display_8h}{
+\section{source/GDQuartzDisplay.h File Reference}
+\label{_g_d_quartz_display_8h}\index{source/GDQuartzDisplay.h@{source/GDQuartzDisplay.h}}
+}
+
+
+Header file for \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay}.  
+{\ttfamily \#import $<$Cocoa/Cocoa.h$>$}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} represents a display and wraps Core Graphics quartz display functions. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_g_d_quartz_display_8h_a079c52f2077a46f45655512bf0afa92b}{kGDMaxDisplays}~12
+\begin{DoxyCompactList}\small\item\em Maximum online or active displays. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header file for \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay}. 
+
+\subsection{Define Documentation}
+\hypertarget{_g_d_quartz_display_8h_a079c52f2077a46f45655512bf0afa92b}{
+\index{GDQuartzDisplay.h@{GDQuartzDisplay.h}!kGDMaxDisplays@{kGDMaxDisplays}}
+\index{kGDMaxDisplays@{kGDMaxDisplays}!GDQuartzDisplay.h@{GDQuartzDisplay.h}}
+\subsubsection[{kGDMaxDisplays}]{\setlength{\rightskip}{0pt plus 5cm}\#define kGDMaxDisplays~12}}
+\label{_g_d_quartz_display_8h_a079c52f2077a46f45655512bf0afa92b}
+
+
+Maximum online or active displays. \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} uses the core graphics API to get online/active displays by calling CGGetActiveDisplayList() and CGGetOnlineDisplayList(), this definition is the count that will be used when calling those functions. 

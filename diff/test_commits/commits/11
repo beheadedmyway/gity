@@ -1,0 +1,49 @@
+commit 5c30b8f7dd2640a1b75fcbcdd3e175329c5b7bbe
+tree 3dd41869a6847564828ec508a356cec213b13a18
+parent 389e0baa942c4548c5baa60541045b8900113378
+parent e2ced7de19c85f3b246480bfacdcc934c98c08ca
+author Junio C Hamano <gitster@pobox.com> 1260340943 -0800
+committer Junio C Hamano <gitster@pobox.com> 1260340943 -0800
+
+    Merge branch 'mm/maint-merge-ff-error-message-fix' into maint
+    
+    * mm/maint-merge-ff-error-message-fix:
+      builtin-merge: show user-friendly error messages for fast-forward too.
+      merge-recursive: make the error-message generation an extern function
+    
+    Conflicts:
+    	merge-recursive.c
+
+diff --cc merge-recursive.c
+index 1870448,72bfbaf..cd3628c
+--- a/merge-recursive.c
++++ b/merge-recursive.c
+@@@ -1186,6 -1168,23 +1169,28 @@@ static int process_entry(struct merge_o
+  	return clean_merge;
+  }
+  
++ struct unpack_trees_error_msgs get_porcelain_error_msgs(void)
++ {
++ 	struct unpack_trees_error_msgs msgs = {
++ 		/* would_overwrite */
++ 		"Your local changes to '%s' would be overwritten by merge.  Aborting.",
++ 		/* not_uptodate_file */
++ 		"Your local changes to '%s' would be overwritten by merge.  Aborting.",
++ 		/* not_uptodate_dir */
++ 		"Updating '%s' would lose untracked files in it.  Aborting.",
++ 		/* would_lose_untracked */
++ 		"Untracked working tree file '%s' would be %s by merge.  Aborting",
++ 		/* bind_overlap -- will not happen here */
++ 		NULL,
++ 	};
+++	if (advice_commit_before_merge) {
+++		msgs.would_overwrite = msgs.not_uptodate_file =
+++			"Your local changes to '%s' would be overwritten by merge.  Aborting.\n"
+++			"Please, commit your changes or stash them before you can merge.";
+++	}
++ 	return msgs;
++ }
++ 
+  int merge_trees(struct merge_options *o,
+  		struct tree *head,
+  		struct tree *merge,

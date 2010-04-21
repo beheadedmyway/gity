@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+	<title>Gity Changelog</title>
+	<link>http://sparkle.macendeavor.com/gity/appcast.xml</link>
+	<description>Most recent changes with links to updates.</description>
+	<language>en</language>
+	<item>
+		<title>Version 0.3.1</title>
+		<pubDate>Wed, 24 Mar 2010 20:59:24 -0700</pubDate>
+		<sparkle:releaseNotesLink>http://static.macendeavor.com/support/gity/releasenotes.html</sparkle:releaseNotesLink>
+		<enclosure 
+			url="http://sparkle.macendeavor.com/gity/download/Gity 0.3.1.6685.zip"
+			sparkle:version="6685"
+			sparkle:shortVersionString="0.3.1"
+			type="application/octet-stream"
+			length="2675737"
+			sparkle:dsaSignature="MC0CFHsxlZbWytDvLC3D8kb+B/SXZmOJAhUAlUJ2APqaBWwJBudFa+y0igprY40="
+		/>
+	</item>
+</channel>
+</rss>

@@ -1,0 +1,113 @@
+// Copyright Aaron Smith 2009
+// 
+// This file is part of Gity.
+// 
+// Gity is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// Gity is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with Gity. If not, see <http://www.gnu.org/licenses/>.
+
+#import "GTBaseOp.h"
+#import "GittyDocument.h"
+#import "GTDocumentController.h"
+
+static NSDictionary * environ;
+
+@implementation GTBaseOp
+
+- (void) setArguments{}
+- (void) taskComplete{}
+- (void) initializeTask{}
+- (void) validateResult{}
+- (void) wasCancelled{}
+
+- (id) initWithGD:(GittyDocument *) _gd {
+	self=[self init];
+	done=false;
+	canceled=false;
+	readsSTDERR=false;
+	readsSTDOUT=false;
+	[self setEnviron];
+	if(![self isCancelled]) {
+		if(_gd) {
+			gd=_gd;
+			git=[gd git];
+			gitd=[gd gitd];
+		}
+		fileManager=[NSFileManager defaultManager];
+	}
+	return self;
+}
+
+- (void) readSTDOUT {
+	NSFileHandle * s = [[task standardOutput] fileHandleForReading];
+	if([s fileDescriptor] == -1) {
+		done=true;
+		return;
+	}
+	NSData * content = [s readDataToEndOfFile];
+	if(!stoutEncoding) stoutEncoding = NSUTF8StringEncoding;
+	stout = [[NSString alloc] initWithData:content encoding:stoutEncoding];
+}
+
+- (void) readSTDERR {
+	NSFileHandle * s = [[task standardError] fileHandleForReading];
+	if([s fileDescriptor] == -1) {
+		done=true;
+		return;
+	}
+	NSData * content = [s readDataToEndOfFile];
+	sterr = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+}
+
+- (void) updateArguments {
+	[task setArguments:args];
+}
+
+- (void) setEnviron {
+	if(environ == nil) environ = [[[NSProcessInfo processInfo] environment] retain];
+}
+
+- (BOOL) isFinished {
+	return done;
+}
+
+- (BOOL) isCancelled {
+	return canceled;
+}
+
+- (NSDictionary *) environment {
+	return environ;
+}
+
+- (void) cancel	{
+	canceled=true;
+	[super cancel];
+}
+
+- (void) dealloc {
+	#ifdef GT_PRINT_DEALLOCS
+	printf("DEALLOC GTBaseOp\n");
+	#endif
+	GDRelease(stout);
+	GDRelease(sterr);
+	GDRelease(error);
+	readsSTDERR = false;
+	readsSTDOUT = false;
+	gd=nil;
+	git=nil;
+	gitd=nil;
+	done=false;
+	fileManager=nil;
+	[super dealloc];
+}
+
+@end

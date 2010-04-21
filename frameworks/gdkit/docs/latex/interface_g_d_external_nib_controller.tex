@@ -1,0 +1,192 @@
+\hypertarget{interface_g_d_external_nib_controller}{
+\section{GDExternalNibController Class Reference}
+\label{interface_g_d_external_nib_controller}\index{GDExternalNibController@{GDExternalNibController}}
+}
+
+
+The \hyperlink{interface_g_d_external_nib_controller}{GDExternalNibController} is a controller used to manage an external nib.  
+
+
+{\ttfamily \#import $<$GDExternalNibController.h$>$}Inheritance diagram for GDExternalNibController::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{interface_g_d_external_nib_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_external_nib_controller_a6003f538a059b050deef0dd471f5d418}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_a6003f538a059b050deef0dd471f5d418}{close:}}
+\label{interface_g_d_external_nib_controller_a6003f538a059b050deef0dd471f5d418}
+
+\begin{DoxyCompactList}\small\item\em Disposes nibs. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a44ea451af6038aeec7642d6d010eefb0}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_a44ea451af6038aeec7642d6d010eefb0}{closeWindows}}
+\label{interface_g_d_external_nib_controller_a44ea451af6038aeec7642d6d010eefb0}
+
+\begin{DoxyCompactList}\small\item\em A hook you can use to close any windows other than \mbox{[}windows mainWindow\mbox{]}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a660d18349789a52e303e4460e80999bf}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_a660d18349789a52e303e4460e80999bf}{disposeNibs}}
+\label{interface_g_d_external_nib_controller_a660d18349789a52e303e4460e80999bf}
+
+\begin{DoxyCompactList}\small\item\em Dispose of the nibs that were loaded for this controller. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_afbf8e576d3002582a58fe45aef1ddb83}{lazyInitWithGD:andNibName:}
+\begin{DoxyCompactList}\small\item\em Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or a \hyperlink{interface_g_d_application_controller}{GDApplicationController} and the nib name to manage. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_adfdd072ce438169e09f1ee61d227222c}{lazyInitWithGD:andNibName:andCallback:}
+\begin{DoxyCompactList}\small\item\em Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or a \hyperlink{interface_g_d_application_controller}{GDApplicationController} the nib name to manage and a callback. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a6a973011a86b0d38e853eb66b938f648}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_a6a973011a86b0d38e853eb66b938f648}{loadNibs}}
+\label{interface_g_d_external_nib_controller_a6a973011a86b0d38e853eb66b938f648}
+
+\begin{DoxyCompactList}\small\item\em Loads the nib this controller is managing. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_a362ec726c2ae1d8239f8ea966b2d40b0}{prepare}
+\begin{DoxyCompactList}\small\item\em Loads the nib this controller is managing. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_ad9f8f2f835f58689b83c6aa4a3497539}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_ad9f8f2f835f58689b83c6aa4a3497539}{resetSwitchFlags}}
+\label{interface_g_d_external_nib_controller_ad9f8f2f835f58689b83c6aa4a3497539}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]} \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a37d6a495f93eb26b57e0bbc99c3ecda1}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_a37d6a495f93eb26b57e0bbc99c3ecda1}{setDisposesNibsOnEscapeKey:andDisposesNibsOnWindowClose:}}
+\label{interface_g_d_external_nib_controller_a37d6a495f93eb26b57e0bbc99c3ecda1}
+
+\begin{DoxyCompactList}\small\item\em Shortcut to set disposesNibsOnEscapeKey and disposesNibsOnWindowClose. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_afa6bc7a0541ded35b2db361ba8ab6a7c}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_afa6bc7a0541ded35b2db361ba8ab6a7c}{setNibName:andCallback:}}
+\label{interface_g_d_external_nib_controller_afa6bc7a0541ded35b2db361ba8ab6a7c}
+
+\begin{DoxyCompactList}\small\item\em Shortcut to set the nib name and callback. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a077f73b3a74be990e38c58c7ecd78195}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_a077f73b3a74be990e38c58c7ecd78195}{show}}
+\label{interface_g_d_external_nib_controller_a077f73b3a74be990e38c58c7ecd78195}
+
+\begin{DoxyCompactList}\small\item\em Loads nibs and sends \mbox{[}\mbox{[}windows mainWindow\mbox{]} makeKeyAndOrderFront:nil\mbox{]}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_ad1a338656bde42271062169374736fe8}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_ad1a338656bde42271062169374736fe8}{showAsSheetForWindow:}}
+\label{interface_g_d_external_nib_controller_ad1a338656bde42271062169374736fe8}
+
+\begin{DoxyCompactList}\small\item\em Loads nibs and sends \mbox{[}\mbox{[}NSApplication sharedApplication\mbox{]} beginSheet:\mbox{[}windows mainWindow\mbox{]} modalForWindow:\_\-window modalDelegate:self didEndSelector:(sheetEnded) contextInfo:nil\mbox{]}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a6341c0d960fa2ba117df3f844c277d85}{
+(void) -\/ \hyperlink{interface_g_d_external_nib_controller_a6341c0d960fa2ba117df3f844c277d85}{sheetEnded}}
+\label{interface_g_d_external_nib_controller_a6341c0d960fa2ba117df3f844c277d85}
+
+\begin{DoxyCompactList}\small\item\em When then sheet has ended. \item\end{DoxyCompactList}\item 
+(id) -\/ \hyperlink{interface_g_d_external_nib_controller_aa8f4b18ce32d633eaa55944b497161f3}{initWithGD:andNibName:}
+\begin{DoxyCompactList}\small\item\em Init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or a \hyperlink{interface_g_d_application_controller}{GDApplicationController} and a nib name. \item\end{DoxyCompactList}\item 
+(id) -\/ \hyperlink{interface_g_d_external_nib_controller_a404eb67212e861a74c1a3cc254489663}{initWithGD:andNibName:andCallback:}
+\begin{DoxyCompactList}\small\item\em Init this object with a \hyperlink{interface_g_d_document}{GDDocument}, nib name, and callback. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_external_nib_controller_a18cc1869bd259980388c1874e73a9427}{
+BOOL \hyperlink{interface_g_d_external_nib_controller_a18cc1869bd259980388c1874e73a9427}{isSheet}}
+\label{interface_g_d_external_nib_controller_a18cc1869bd259980388c1874e73a9427}
+
+\begin{DoxyCompactList}\small\item\em Whether or not the managed nib was shown as a sheet. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a2f228beb6ac6e742cd9130493da38838}{
+BOOL \hyperlink{interface_g_d_external_nib_controller_a2f228beb6ac6e742cd9130493da38838}{available}}
+\label{interface_g_d_external_nib_controller_a2f228beb6ac6e742cd9130493da38838}
+
+\begin{DoxyCompactList}\small\item\em Whether or not nib resources are available. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a2e535a2768d394211c1e27705b3b251f}{
+BOOL \hyperlink{interface_g_d_external_nib_controller_a2e535a2768d394211c1e27705b3b251f}{switchingToWindow}}
+\label{interface_g_d_external_nib_controller_a2e535a2768d394211c1e27705b3b251f}
+
+\begin{DoxyCompactList}\small\item\em A flag used to manage when a switch from sheet to window is made. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_afb68255184b36a7c0d5d7e85217e5963}{
+BOOL \hyperlink{interface_g_d_external_nib_controller_afb68255184b36a7c0d5d7e85217e5963}{switchingToSheet}}
+\label{interface_g_d_external_nib_controller_afb68255184b36a7c0d5d7e85217e5963}
+
+\begin{DoxyCompactList}\small\item\em A flag used to manage when a switch from window to sheet is made. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_external_nib_controller_ac2584e757ad6b7eaa904ff76fe0df045}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_external_nib_controller_ac2584e757ad6b7eaa904ff76fe0df045}{nibName}}
+\label{interface_g_d_external_nib_controller_ac2584e757ad6b7eaa904ff76fe0df045}
+
+\begin{DoxyCompactList}\small\item\em The nib name to load. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a351a4c9c5de180492de625d03cefcd1b}{
+IBOutlet \hyperlink{interface_g_d_window_controller}{GDWindowController} $\ast$ \hyperlink{interface_g_d_external_nib_controller_a351a4c9c5de180492de625d03cefcd1b}{windows}}
+\label{interface_g_d_external_nib_controller_a351a4c9c5de180492de625d03cefcd1b}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_window_controller}{GDWindowController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_ae246403e91a5ec8366789981bc006806}{
+BOOL \hyperlink{interface_g_d_external_nib_controller_ae246403e91a5ec8366789981bc006806}{disposesNibsOnWindowClose}}
+\label{interface_g_d_external_nib_controller_ae246403e91a5ec8366789981bc006806}
+
+\begin{DoxyCompactList}\small\item\em Whether or not to dispose of nibs when a window closes. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_ad5294163181c5c386e76b4b47a20cc0d}{
+BOOL \hyperlink{interface_g_d_external_nib_controller_ad5294163181c5c386e76b4b47a20cc0d}{disposesNibsOnEscapeKey}}
+\label{interface_g_d_external_nib_controller_ad5294163181c5c386e76b4b47a20cc0d}
+
+\begin{DoxyCompactList}\small\item\em Whether or not to dispose of nibs when the escape key is pressed. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_external_nib_controller_a0168e63238b0e749c720ef096ef2eb9f}{
+\hyperlink{interface_g_d_callback}{GDCallback} $\ast$ \hyperlink{interface_g_d_external_nib_controller_a0168e63238b0e749c720ef096ef2eb9f}{callback}}
+\label{interface_g_d_external_nib_controller_a0168e63238b0e749c720ef096ef2eb9f}
+
+\begin{DoxyCompactList}\small\item\em A callback object to use for anything -\/ generally when you \char`\"{}finish\char`\"{} some type of input nib; you'd trigger this callback, and the object that got the callback would handle what was chosen from the nib. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_external_nib_controller}{GDExternalNibController} is a controller used to manage an external nib. It has shortcuts for showing the nib, or showing it as a sheet, and can auto dispose of the nib resources when it's closed. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_external_nib_controller_aa8f4b18ce32d633eaa55944b497161f3}{
+\index{GDExternalNibController@{GDExternalNibController}!initWithGD:andNibName:@{initWithGD:andNibName:}}
+\index{initWithGD:andNibName:@{initWithGD:andNibName:}!GDExternalNibController@{GDExternalNibController}}
+\subsubsection[{initWithGD:andNibName:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithGD: (id) {\em \_\-gd}\/ andNibName: ({\bf NSString} $\ast$) {\em \_\-nibName}}}
+\label{interface_g_d_external_nib_controller_aa8f4b18ce32d633eaa55944b497161f3}
+
+
+Init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or a \hyperlink{interface_g_d_application_controller}{GDApplicationController} and a nib name. This is for a true alloc/init combination.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item[{\em \_\-nibName}]The managed nib name. \end{DoxyParams}
+\hypertarget{interface_g_d_external_nib_controller_a404eb67212e861a74c1a3cc254489663}{
+\index{GDExternalNibController@{GDExternalNibController}!initWithGD:andNibName:andCallback:@{initWithGD:andNibName:andCallback:}}
+\index{initWithGD:andNibName:andCallback:@{initWithGD:andNibName:andCallback:}!GDExternalNibController@{GDExternalNibController}}
+\subsubsection[{initWithGD:andNibName:andCallback:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithGD: (id) {\em \_\-gd}\/ andNibName: ({\bf NSString} $\ast$) {\em \_\-nibName}\/ andCallback: ({\bf GDCallback} $\ast$) {\em \_\-callback}}}
+\label{interface_g_d_external_nib_controller_a404eb67212e861a74c1a3cc254489663}
+
+
+Init this object with a \hyperlink{interface_g_d_document}{GDDocument}, nib name, and callback. This is for a true alloc/init combination.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item[{\em \_\-nibName}]The managed nib name. \item[{\em \_\-callback}]A \hyperlink{interface_g_d_callback}{GDCallback}. \end{DoxyParams}
+\hypertarget{interface_g_d_external_nib_controller_afbf8e576d3002582a58fe45aef1ddb83}{
+\index{GDExternalNibController@{GDExternalNibController}!lazyInitWithGD:andNibName:@{lazyInitWithGD:andNibName:}}
+\index{lazyInitWithGD:andNibName:@{lazyInitWithGD:andNibName:}!GDExternalNibController@{GDExternalNibController}}
+\subsubsection[{lazyInitWithGD:andNibName:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInitWithGD: (id) {\em \_\-gd}\/ andNibName: ({\bf NSString} $\ast$) {\em \_\-nibName}}}
+\label{interface_g_d_external_nib_controller_afbf8e576d3002582a58fe45aef1ddb83}
+
+
+Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or a \hyperlink{interface_g_d_application_controller}{GDApplicationController} and the nib name to manage. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item[{\em \_\-nibName}]The nib name to manage. \end{DoxyParams}
+\hypertarget{interface_g_d_external_nib_controller_adfdd072ce438169e09f1ee61d227222c}{
+\index{GDExternalNibController@{GDExternalNibController}!lazyInitWithGD:andNibName:andCallback:@{lazyInitWithGD:andNibName:andCallback:}}
+\index{lazyInitWithGD:andNibName:andCallback:@{lazyInitWithGD:andNibName:andCallback:}!GDExternalNibController@{GDExternalNibController}}
+\subsubsection[{lazyInitWithGD:andNibName:andCallback:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInitWithGD: (id) {\em \_\-gd}\/ andNibName: ({\bf NSString} $\ast$) {\em \_\-nibName}\/ andCallback: ({\bf GDCallback} $\ast$) {\em \_\-callback}}}
+\label{interface_g_d_external_nib_controller_adfdd072ce438169e09f1ee61d227222c}
+
+
+Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or a \hyperlink{interface_g_d_application_controller}{GDApplicationController} the nib name to manage and a callback. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item[{\em \_\-nibName}]The nib name to manage. \item[{\em \_\-callback}]A \hyperlink{interface_g_d_callback}{GDCallback}. \end{DoxyParams}
+\hypertarget{interface_g_d_external_nib_controller_a362ec726c2ae1d8239f8ea966b2d40b0}{
+\index{GDExternalNibController@{GDExternalNibController}!prepare@{prepare}}
+\index{prepare@{prepare}!GDExternalNibController@{GDExternalNibController}}
+\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) prepare }}
+\label{interface_g_d_external_nib_controller_a362ec726c2ae1d8239f8ea966b2d40b0}
+
+
+Loads the nib this controller is managing. This is a hook you can use to do something after the nibs have loaded, to \char`\"{}prepare\char`\"{} them; but generally you probably won't need this. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_external_nib_controller_8h}{GDExternalNibController.h}\item 
+source/GDExternalNibController.m\end{DoxyCompactItemize}

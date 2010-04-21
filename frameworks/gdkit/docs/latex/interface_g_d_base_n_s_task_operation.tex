@@ -1,0 +1,147 @@
+\hypertarget{interface_g_d_base_n_s_task_operation}{
+\section{GDBaseNSTaskOperation Class Reference}
+\label{interface_g_d_base_n_s_task_operation}\index{GDBaseNSTaskOperation@{GDBaseNSTaskOperation}}
+}
+
+
+The \hyperlink{interface_g_d_base_n_s_task_operation}{GDBaseNSTaskOperation} is a base operation class that executes an NSTask, and can read and store the stdout, and stderr for use after the task executes.  
+
+
+{\ttfamily \#import $<$GDBaseNSTaskOperation.h$>$}Inheritance diagram for GDBaseNSTaskOperation::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{interface_g_d_base_n_s_task_operation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_adb6d8c62141862d38fc552ab774919e4}{
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_adb6d8c62141862d38fc552ab774919e4}{initializeTask}}
+\label{interface_g_d_base_n_s_task_operation_adb6d8c62141862d38fc552ab774919e4}
+
+\begin{DoxyCompactList}\small\item\em Creates the NSTask and stores it into the task property. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a362b39899b535294caef074f2908e55c}{
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_a362b39899b535294caef074f2908e55c}{main}}
+\label{interface_g_d_base_n_s_task_operation_a362b39899b535294caef074f2908e55c}
+
+\begin{DoxyCompactList}\small\item\em Thread entry point. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a97a8c1fc80d87967f3bb9db1afbcd693}{
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_a97a8c1fc80d87967f3bb9db1afbcd693}{readSTDERR}}
+\label{interface_g_d_base_n_s_task_operation_a97a8c1fc80d87967f3bb9db1afbcd693}
+
+\begin{DoxyCompactList}\small\item\em Reads the standard error from the NSTask. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_adc0ff21c37dfe2fad5d1ca283e912fe3}{
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_adc0ff21c37dfe2fad5d1ca283e912fe3}{readSTDOUT}}
+\label{interface_g_d_base_n_s_task_operation_adc0ff21c37dfe2fad5d1ca283e912fe3}
+
+\begin{DoxyCompactList}\small\item\em Reads the standard out from the NSTask. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a244ac6e14accbefe686206c5d5656dab}{
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_a244ac6e14accbefe686206c5d5656dab}{writeFileForInput}}
+\label{interface_g_d_base_n_s_task_operation_a244ac6e14accbefe686206c5d5656dab}
+
+\begin{DoxyCompactList}\small\item\em Writes the file contents to the desired file. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_ade347d56a2348f7c1259d859759e6417}{
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_ade347d56a2348f7c1259d859759e6417}{prepareTask}}
+\label{interface_g_d_base_n_s_task_operation_ade347d56a2348f7c1259d859759e6417}
+
+\begin{DoxyCompactList}\small\item\em A hook you should override to prepate the task instance with it's launch path, arguments, etc. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_afc56ea01eb11b30932f054a482b9c1e0}{updateArguments}
+\begin{DoxyCompactList}\small\item\em A helper to update the arguments. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_adaa42759ac0e0af2598864b895ecad09}{
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_adaa42759ac0e0af2598864b895ecad09}{validateTerminationStatus}}
+\label{interface_g_d_base_n_s_task_operation_adaa42759ac0e0af2598864b895ecad09}
+
+\begin{DoxyCompactList}\small\item\em A hook you can use to do something with the taskTerminationStatus variable. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_n_s_task_operation_acd63f4b69b6774566cee0b95ffc1c71a}{taskComplete}
+\begin{DoxyCompactList}\small\item\em A hook you should override to do something when this task is complete. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_afa260ac4d2b63a4b5e1febce15963f78}{
+BOOL \hyperlink{interface_g_d_base_n_s_task_operation_afa260ac4d2b63a4b5e1febce15963f78}{writesFileForTaskInput}}
+\label{interface_g_d_base_n_s_task_operation_afa260ac4d2b63a4b5e1febce15963f78}
+
+\begin{DoxyCompactList}\small\item\em Whether or not a file should be written before the task (not operation) executes. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a8a6b5048cd0c4d92da16333426faa423}{
+BOOL \hyperlink{interface_g_d_base_n_s_task_operation_a8a6b5048cd0c4d92da16333426faa423}{readsSTOUT}}
+\label{interface_g_d_base_n_s_task_operation_a8a6b5048cd0c4d92da16333426faa423}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this task should read standard out. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a68e6b8393aad9f7f7f09b0413af9deb4}{
+BOOL \hyperlink{interface_g_d_base_n_s_task_operation_a68e6b8393aad9f7f7f09b0413af9deb4}{readsSTERR}}
+\label{interface_g_d_base_n_s_task_operation_a68e6b8393aad9f7f7f09b0413af9deb4}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this task should read standard error. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_afc2b35a42f37a89d1b0a532a5049cea7}{
+int \hyperlink{interface_g_d_base_n_s_task_operation_afc2b35a42f37a89d1b0a532a5049cea7}{taskTerminationStatus}}
+\label{interface_g_d_base_n_s_task_operation_afc2b35a42f37a89d1b0a532a5049cea7}
+
+\begin{DoxyCompactList}\small\item\em The task's termination status. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a8eb3d1e61308cd3ead705035a6aef306}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_base_n_s_task_operation_a8eb3d1e61308cd3ead705035a6aef306}{writeFileContents}}
+\label{interface_g_d_base_n_s_task_operation_a8eb3d1e61308cd3ead705035a6aef306}
+
+\begin{DoxyCompactList}\small\item\em The file contents to write if writesFileForTaskInput is needed. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a31470388b00262e45dd010d759ab9db2}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_base_n_s_task_operation_a31470388b00262e45dd010d759ab9db2}{filePathToWriteTo}}
+\label{interface_g_d_base_n_s_task_operation_a31470388b00262e45dd010d759ab9db2}
+
+\begin{DoxyCompactList}\small\item\em The filepath to write to if writesFileForTaskInput is needed. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a0adb5999833989523a2da778672feb96}{
+NSStringEncoding \hyperlink{interface_g_d_base_n_s_task_operation_a0adb5999833989523a2da778672feb96}{stringEncoding}}
+\label{interface_g_d_base_n_s_task_operation_a0adb5999833989523a2da778672feb96}
+
+\begin{DoxyCompactList}\small\item\em The file content encoding. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a16d2ce9720bf88f5e6abb5a760e800d8}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_base_n_s_task_operation_a16d2ce9720bf88f5e6abb5a760e800d8}{stout}}
+\label{interface_g_d_base_n_s_task_operation_a16d2ce9720bf88f5e6abb5a760e800d8}
+
+\begin{DoxyCompactList}\small\item\em UTF8 String container for the standard out contents. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a65ec6548ae07a9ba2f79e1e152820ea3}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_base_n_s_task_operation_a65ec6548ae07a9ba2f79e1e152820ea3}{sterr}}
+\label{interface_g_d_base_n_s_task_operation_a65ec6548ae07a9ba2f79e1e152820ea3}
+
+\begin{DoxyCompactList}\small\item\em UTF8 String container for the standard error contents. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_aeff37228f09ccb97d76f5ff2b5c24b25}{
+NSMutableArray $\ast$ \hyperlink{interface_g_d_base_n_s_task_operation_aeff37228f09ccb97d76f5ff2b5c24b25}{args}}
+\label{interface_g_d_base_n_s_task_operation_aeff37228f09ccb97d76f5ff2b5c24b25}
+
+\begin{DoxyCompactList}\small\item\em Task arguments. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_n_s_task_operation_a5690c4baddbbea9f0d998be626746251}{
+NSTask $\ast$ \hyperlink{interface_g_d_base_n_s_task_operation_a5690c4baddbbea9f0d998be626746251}{task}}
+\label{interface_g_d_base_n_s_task_operation_a5690c4baddbbea9f0d998be626746251}
+
+\begin{DoxyCompactList}\small\item\em The NSTask instance used to execute this task. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_base_n_s_task_operation}{GDBaseNSTaskOperation} is a base operation class that executes an NSTask, and can read and store the stdout, and stderr for use after the task executes. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_base_n_s_task_operation_acd63f4b69b6774566cee0b95ffc1c71a}{
+\index{GDBaseNSTaskOperation@{GDBaseNSTaskOperation}!taskComplete@{taskComplete}}
+\index{taskComplete@{taskComplete}!GDBaseNSTaskOperation@{GDBaseNSTaskOperation}}
+\subsubsection[{taskComplete}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) taskComplete }}
+\label{interface_g_d_base_n_s_task_operation_acd63f4b69b6774566cee0b95ffc1c71a}
+
+
+A hook you should override to do something when this task is complete. This method is still executing as part of the operation but after this method finishes the thread will exit. \hypertarget{interface_g_d_base_n_s_task_operation_afc56ea01eb11b30932f054a482b9c1e0}{
+\index{GDBaseNSTaskOperation@{GDBaseNSTaskOperation}!updateArguments@{updateArguments}}
+\index{updateArguments@{updateArguments}!GDBaseNSTaskOperation@{GDBaseNSTaskOperation}}
+\subsubsection[{updateArguments}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) updateArguments }}
+\label{interface_g_d_base_n_s_task_operation_afc56ea01eb11b30932f054a482b9c1e0}
+
+
+A helper to update the arguments. All this does is set args on the task.
+
+
+\begin{DoxyCode}
+ [task setArguments:args];
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_base_n_s_task_operation_8h}{GDBaseNSTaskOperation.h}\item 
+source/GDBaseNSTaskOperation.m\end{DoxyCompactItemize}

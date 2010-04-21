@@ -1,0 +1,50 @@
+\hypertarget{interface_g_d_main_menu_controller}{
+\section{GDMainMenuController Class Reference}
+\label{interface_g_d_main_menu_controller}\index{GDMainMenuController@{GDMainMenuController}}
+}
+
+
+The \hyperlink{interface_g_d_main_menu_controller}{GDMainMenuController} is controller you can use to manage the main menu in the application.  
+
+
+{\ttfamily \#import $<$GDMainMenuController.h$>$}Inheritance diagram for GDMainMenuController::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{interface_g_d_main_menu_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{interface_g_d_main_menu_controller_aa1a7ba88d3c69ffc38b7ee617f9fc551}{invalidate}
+\begin{DoxyCompactList}\small\item\em A hook to invalidate the main menu. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_main_menu_controller_aa57dce90a510259aed26ec8fb047de01}{
+NSMenu $\ast$ \hyperlink{interface_g_d_main_menu_controller_aa57dce90a510259aed26ec8fb047de01}{mainMenu}}
+\label{interface_g_d_main_menu_controller_aa57dce90a510259aed26ec8fb047de01}
+
+\begin{DoxyCompactList}\small\item\em A reference to the applications main menu. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_main_menu_controller}{GDMainMenuController} is controller you can use to manage the main menu in the application. When your application changes, or intoduces some state that requires the menu to update, you should trigger an \char`\"{}invalidate\char`\"{} call. This controller should then ask views, controllers, etc in the app about their state, and update the main menu as needed. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_main_menu_controller_aa1a7ba88d3c69ffc38b7ee617f9fc551}{
+\index{GDMainMenuController@{GDMainMenuController}!invalidate@{invalidate}}
+\index{invalidate@{invalidate}!GDMainMenuController@{GDMainMenuController}}
+\subsubsection[{invalidate}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) invalidate }}
+\label{interface_g_d_main_menu_controller_aa1a7ba88d3c69ffc38b7ee617f9fc551}
+
+
+A hook to invalidate the main menu. \begin{DoxySeeAlso}{See also}
+\hyperlink{interface_g_d_document}{GDDocument} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_main_menu_controller_8h}{GDMainMenuController.h}\item 
+source/GDMainMenuController.m\end{DoxyCompactItemize}

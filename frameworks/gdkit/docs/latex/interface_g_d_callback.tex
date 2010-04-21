@@ -1,0 +1,118 @@
+\hypertarget{interface_g_d_callback}{
+\section{GDCallback Class Reference}
+\label{interface_g_d_callback}\index{GDCallback@{GDCallback}}
+}
+
+
+The \hyperlink{interface_g_d_callback}{GDCallback} wraps an NSInvocation and NSMethodSignature to simplify creating callbacks using those two classes.  
+
+
+{\ttfamily \#import $<$GDCallback.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_callback_a24e1f455a7fba1d23c7cb51f1b2222cd}{
+(void) -\/ \hyperlink{interface_g_d_callback_a24e1f455a7fba1d23c7cb51f1b2222cd}{execute}}
+\label{interface_g_d_callback_a24e1f455a7fba1d23c7cb51f1b2222cd}
+
+\begin{DoxyCompactList}\small\item\em Execute's this callback. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_callback_aada3f0360fa4c8124ef94749d53fb0e8}{
+(void) -\/ \hyperlink{interface_g_d_callback_aada3f0360fa4c8124ef94749d53fb0e8}{executeOnMainThread}}
+\label{interface_g_d_callback_aada3f0360fa4c8124ef94749d53fb0e8}
+
+\begin{DoxyCompactList}\small\item\em Execute's this callback on the main thread. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_callback_ae28d4341944ea3135a41d16039bfc6f9}{getReturnValue:}
+\begin{DoxyCompactList}\small\item\em Get's the return value from the internal NSInvocation object. \item\end{DoxyCompactList}\item 
+(id) -\/ \hyperlink{interface_g_d_callback_a7109227882adc61abf44c14e2b2064c4}{initWithTarget:andAction:}
+\begin{DoxyCompactList}\small\item\em Initialize this with a target and action. \item\end{DoxyCompactList}\item 
+(id) -\/ \hyperlink{interface_g_d_callback_a733709d0c0a9d9506a46a24b240ac51c}{initWithTarget:andAction:andArgs:}
+\begin{DoxyCompactList}\small\item\em Initialize this with a target, action and arguments. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_callback_a0df25513490a2d52916fb51a96e3313d}{
+(void) -\/ \hyperlink{interface_g_d_callback_a0df25513490a2d52916fb51a96e3313d}{setupInvoker}}
+\label{interface_g_d_callback_a0df25513490a2d52916fb51a96e3313d}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]} \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_callback_a00bc26d522517d27696421319a1ca34e}{
+NSInvocation $\ast$ \hyperlink{interface_g_d_callback_a00bc26d522517d27696421319a1ca34e}{invoker}}
+\label{interface_g_d_callback_a00bc26d522517d27696421319a1ca34e}
+
+\begin{DoxyCompactList}\small\item\em An NSInvocation. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_callback_a8c87fdaef8c21220d3a1dff085ddf659}{
+NSMethodSignature $\ast$ \hyperlink{interface_g_d_callback_a8c87fdaef8c21220d3a1dff085ddf659}{signature}}
+\label{interface_g_d_callback_a8c87fdaef8c21220d3a1dff085ddf659}
+
+\begin{DoxyCompactList}\small\item\em An NSMethodSignature. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+NSArray $\ast$ \hyperlink{interface_g_d_callback_a96dccd3a137501fccc5465f088330df1}{args}
+\begin{DoxyCompactList}\small\item\em Arguments to send to the target/selector. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_callback_a9eacabccf60b055b82863379ba975d98}{
+id \hyperlink{interface_g_d_callback_a9eacabccf60b055b82863379ba975d98}{target}}
+\label{interface_g_d_callback_a9eacabccf60b055b82863379ba975d98}
+
+\begin{DoxyCompactList}\small\item\em The callback target. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_callback_aa8d10c06e2d114d717f5ef94f589a053}{
+BOOL \hyperlink{interface_g_d_callback_aa8d10c06e2d114d717f5ef94f589a053}{executesOnMainThread}}
+\label{interface_g_d_callback_aa8d10c06e2d114d717f5ef94f589a053}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this callback executes on the main thread. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_callback_aaecc54f9a928ff69fce347c80734726e}{
+SEL \hyperlink{interface_g_d_callback_aaecc54f9a928ff69fce347c80734726e}{action}}
+\label{interface_g_d_callback_aaecc54f9a928ff69fce347c80734726e}
+
+\begin{DoxyCompactList}\small\item\em The selector. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_callback}{GDCallback} wraps an NSInvocation and NSMethodSignature to simplify creating callbacks using those two classes. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_callback_ae28d4341944ea3135a41d16039bfc6f9}{
+\index{GDCallback@{GDCallback}!getReturnValue:@{getReturnValue:}}
+\index{getReturnValue:@{getReturnValue:}!GDCallback@{GDCallback}}
+\subsubsection[{getReturnValue:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) getReturnValue: (void $\ast$) {\em \_\-resultAddress}}}
+\label{interface_g_d_callback_ae28d4341944ea3135a41d16039bfc6f9}
+
+
+Get's the return value from the internal NSInvocation object. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-resultAddress}]A pointer to the storage where you want the results delivered to. \end{DoxyParams}
+\hypertarget{interface_g_d_callback_a7109227882adc61abf44c14e2b2064c4}{
+\index{GDCallback@{GDCallback}!initWithTarget:andAction:@{initWithTarget:andAction:}}
+\index{initWithTarget:andAction:@{initWithTarget:andAction:}!GDCallback@{GDCallback}}
+\subsubsection[{initWithTarget:andAction:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithTarget: (id) {\em \_\-target}\/ andAction: (SEL) {\em \_\-action}}}
+\label{interface_g_d_callback_a7109227882adc61abf44c14e2b2064c4}
+
+
+Initialize this with a target and action. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-target}]The target to call on. \item[{\em \_\-action}]The selector to send. \end{DoxyParams}
+\hypertarget{interface_g_d_callback_a733709d0c0a9d9506a46a24b240ac51c}{
+\index{GDCallback@{GDCallback}!initWithTarget:andAction:andArgs:@{initWithTarget:andAction:andArgs:}}
+\index{initWithTarget:andAction:andArgs:@{initWithTarget:andAction:andArgs:}!GDCallback@{GDCallback}}
+\subsubsection[{initWithTarget:andAction:andArgs:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithTarget: (id) {\em \_\-target}\/ andAction: (SEL) {\em \_\-action}\/ andArgs: (NSArray $\ast$) {\em \_\-args}}}
+\label{interface_g_d_callback_a733709d0c0a9d9506a46a24b240ac51c}
+
+
+Initialize this with a target, action and arguments. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-target}]The target to call on. \item[{\em \_\-action}]The selector to send. \item[{\em \_\-args}]The arguments to send to the callback. \end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\hypertarget{interface_g_d_callback_a96dccd3a137501fccc5465f088330df1}{
+\index{GDCallback@{GDCallback}!args@{args}}
+\index{args@{args}!GDCallback@{GDCallback}}
+\subsubsection[{args}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (NSArray $\ast$) args\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, retain\mbox{]}}}}
+\label{interface_g_d_callback_a96dccd3a137501fccc5465f088330df1}
+
+
+Arguments to send to the target/selector. The arguments for the target/selector. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_callback_8h}{GDCallback.h}\item 
+source/GDCallback.m\end{DoxyCompactItemize}

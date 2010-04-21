@@ -1,0 +1,60 @@
+\hypertarget{_g_d_accessibility_manager_8h}{
+\section{source/GDAccessibilityManager.h File Reference}
+\label{_g_d_accessibility_manager_8h}\index{source/GDAccessibilityManager.h@{source/GDAccessibilityManager.h}}
+}
+
+
+Header file for \hyperlink{interface_g_d_accessibility_manager}{GDAccessibilityManager}.  
+{\ttfamily \#import $<$Cocoa/Cocoa.h$>$}\par
+{\ttfamily \#import \char`\"{}GDAccessibilityOperationResult.h\char`\"{}}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{interface_g_d_accessibility_manager}{GDAccessibilityManager}
+\begin{DoxyCompactList}\small\item\em The \hyperlink{interface_g_d_accessibility_manager}{GDAccessibilityManager} handles a working with the ApplicationServices/‍HIServices API for you. \item\end{DoxyCompactList}\item 
+class {\bfseries GDAccessibilityManager(Private)}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447}{GDAccessibilityManagerErrorConstant} \{ \hyperlink{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a5ebe7ed55f0a01e0282cf07ef10e5eb1}{kAMIncorrectRole} =  -\/25215, 
+\hyperlink{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a5941e556dfca79d4685d24cf5d7fd710}{kAMAttributeNotSettable} =  -\/25216, 
+\hyperlink{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a4c92229705a101ad751f6bd73fde223c}{kAMIncorrectValue} =  -\/25217, 
+\hyperlink{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a777363a6b8d0509ff1f35e5cce5a9671}{kAMCouldNotSetValue} =  -\/25218
+ \}
+\begin{DoxyCompactList}\small\item\em Additional error result codes for GDAccessibilityOperationResults. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header file for \hyperlink{interface_g_d_accessibility_manager}{GDAccessibilityManager}. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447}{
+\index{GDAccessibilityManager.h@{GDAccessibilityManager.h}!GDAccessibilityManagerErrorConstant@{GDAccessibilityManagerErrorConstant}}
+\index{GDAccessibilityManagerErrorConstant@{GDAccessibilityManagerErrorConstant}!GDAccessibilityManager.h@{GDAccessibilityManager.h}}
+\subsubsection[{GDAccessibilityManagerErrorConstant}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf GDAccessibilityManagerErrorConstant}}}
+\label{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447}
+
+
+Additional error result codes for GDAccessibilityOperationResults. \begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{kAMIncorrectRole@{kAMIncorrectRole}!GDAccessibilityManager.h@{GDAccessibilityManager.h}}\index{GDAccessibilityManager.h@{GDAccessibilityManager.h}!kAMIncorrectRole@{kAMIncorrectRole}}\item[{\em 
+\hypertarget{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a5ebe7ed55f0a01e0282cf07ef10e5eb1}{
+kAMIncorrectRole}
+\label{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a5ebe7ed55f0a01e0282cf07ef10e5eb1}
+}]Result code for a \hyperlink{interface_g_d_accessibility_operation_result}{GDAccessibilityOperationResult} indicating that the AXUIElementRef isn't the right role for whichever operation is performed. \index{kAMAttributeNotSettable@{kAMAttributeNotSettable}!GDAccessibilityManager.h@{GDAccessibilityManager.h}}\index{GDAccessibilityManager.h@{GDAccessibilityManager.h}!kAMAttributeNotSettable@{kAMAttributeNotSettable}}\item[{\em 
+\hypertarget{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a5941e556dfca79d4685d24cf5d7fd710}{
+kAMAttributeNotSettable}
+\label{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a5941e556dfca79d4685d24cf5d7fd710}
+}]Result code for a \hyperlink{interface_g_d_accessibility_operation_result}{GDAccessibilityOperationResult} indicating that the AXUIElementRef's attribute isn't writable. \index{kAMIncorrectValue@{kAMIncorrectValue}!GDAccessibilityManager.h@{GDAccessibilityManager.h}}\index{GDAccessibilityManager.h@{GDAccessibilityManager.h}!kAMIncorrectValue@{kAMIncorrectValue}}\item[{\em 
+\hypertarget{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a4c92229705a101ad751f6bd73fde223c}{
+kAMIncorrectValue}
+\label{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a4c92229705a101ad751f6bd73fde223c}
+}]Result code for a \hyperlink{interface_g_d_accessibility_operation_result}{GDAccessibilityOperationResult} indicating that an incorrect value tried to be set on an AXUIElementRef's attribute. \index{kAMCouldNotSetValue@{kAMCouldNotSetValue}!GDAccessibilityManager.h@{GDAccessibilityManager.h}}\index{GDAccessibilityManager.h@{GDAccessibilityManager.h}!kAMCouldNotSetValue@{kAMCouldNotSetValue}}\item[{\em 
+\hypertarget{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a777363a6b8d0509ff1f35e5cce5a9671}{
+kAMCouldNotSetValue}
+\label{_g_d_accessibility_manager_8h_a1cf9bc9ec4eecaee07b29bbe26b51447a777363a6b8d0509ff1f35e5cce5a9671}
+}]Result code for a \hyperlink{interface_g_d_accessibility_operation_result}{GDAccessibilityOperationResult} indicating that the value set operation didn't complete. \end{description}
+\end{Desc}
+

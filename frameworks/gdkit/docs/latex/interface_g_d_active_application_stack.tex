@@ -1,0 +1,125 @@
+\hypertarget{interface_g_d_active_application_stack}{
+\section{GDActiveApplicationStack Class Reference}
+\label{interface_g_d_active_application_stack}\index{GDActiveApplicationStack@{GDActiveApplicationStack}}
+}
+
+
+The \hyperlink{interface_g_d_active_application_stack}{GDActiveApplicationStack} keeps a stack of application info dictionaries.  
+
+
+{\ttfamily \#import $<$GDActiveApplicationStack.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_g_d_active_application_stack_a691da7b73f204f9431b96ffa53783bc6}{init}
+\begin{DoxyCompactList}\small\item\em Default init method. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_a51fa9794d729046db9561631d4e2dc33}{
+(NSDictionary $\ast$) -\/ \hyperlink{interface_g_d_active_application_stack_a51fa9794d729046db9561631d4e2dc33}{top}}
+\label{interface_g_d_active_application_stack_a51fa9794d729046db9561631d4e2dc33}
+
+\begin{DoxyCompactList}\small\item\em Returns the top item in the stack. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_a5c475dbd5059fe0bb8a70c7fe4f6c396}{
+(NSDictionary $\ast$) -\/ \hyperlink{interface_g_d_active_application_stack_a5c475dbd5059fe0bb8a70c7fe4f6c396}{bottom}}
+\label{interface_g_d_active_application_stack_a5c475dbd5059fe0bb8a70c7fe4f6c396}
+
+\begin{DoxyCompactList}\small\item\em Returns the bottom item in the stack. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_a3a2dbff7e4b5278d599e4e3ed8abb60b}{
+(void) -\/ \hyperlink{interface_g_d_active_application_stack_a3a2dbff7e4b5278d599e4e3ed8abb60b}{popAndBringForward}}
+\label{interface_g_d_active_application_stack_a3a2dbff7e4b5278d599e4e3ed8abb60b}
+
+\begin{DoxyCompactList}\small\item\em Pops an application off the stack, then brings the the bottom application forward. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_ade441263784486ef6b06992b51d0b7bd}{
+(void) -\/ \hyperlink{interface_g_d_active_application_stack_ade441263784486ef6b06992b51d0b7bd}{bringTopForward}}
+\label{interface_g_d_active_application_stack_ade441263784486ef6b06992b51d0b7bd}
+
+\begin{DoxyCompactList}\small\item\em Brings the top application forward. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_a160fa1a7f45df169168c7c1aebd98290}{
+(void) -\/ \hyperlink{interface_g_d_active_application_stack_a160fa1a7f45df169168c7c1aebd98290}{bringBottomForward}}
+\label{interface_g_d_active_application_stack_a160fa1a7f45df169168c7c1aebd98290}
+
+\begin{DoxyCompactList}\small\item\em Brings the bottom application forward. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_a8686d384529748f578fdc1b82d829656}{
+(void) -\/ \hyperlink{interface_g_d_active_application_stack_a8686d384529748f578fdc1b82d829656}{initWorkspaceAndListeners}}
+\label{interface_g_d_active_application_stack_a8686d384529748f578fdc1b82d829656}
+
+\begin{DoxyCompactList}\small\item\em Initializes the workspace and listeners. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_aa5c4c884f50cf0e1d18dc909ed7af8e7}{
+(void) -\/ \hyperlink{interface_g_d_active_application_stack_aa5c4c884f50cf0e1d18dc909ed7af8e7}{onApplicationActivate}}
+\label{interface_g_d_active_application_stack_aa5c4c884f50cf0e1d18dc909ed7af8e7}
+
+\begin{DoxyCompactList}\small\item\em When the workspace changes active applications. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(Boolean) + \hyperlink{interface_g_d_active_application_stack_a10055d2ffec472e9413a8d84a7d8dd67}{isAvailable}
+\begin{DoxyCompactList}\small\item\em Check whether or not you can use this class. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_active_application_stack_a6461f1d93e707a9d3ac8c777f81f7ff5}{
+NSMutableArray $\ast$ \hyperlink{interface_g_d_active_application_stack_a6461f1d93e707a9d3ac8c777f81f7ff5}{stack}}
+\label{interface_g_d_active_application_stack_a6461f1d93e707a9d3ac8c777f81f7ff5}
+
+\begin{DoxyCompactList}\small\item\em The stack used to keep track of active applications. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_a89a029b69eb31e0575e9148542f897cb}{
+\hyperlink{class_n_s_workspace}{NSWorkspace} $\ast$ \hyperlink{interface_g_d_active_application_stack_a89a029b69eb31e0575e9148542f897cb}{workspace}}
+\label{interface_g_d_active_application_stack_a89a029b69eb31e0575e9148542f897cb}
+
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_n_s_workspace}{NSWorkspace} reference. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_active_application_stack_a31c378be10427e3297886c016b5df980}{
+NSNotificationCenter $\ast$ \hyperlink{interface_g_d_active_application_stack_a31c378be10427e3297886c016b5df980}{center}}
+\label{interface_g_d_active_application_stack_a31c378be10427e3297886c016b5df980}
+
+\begin{DoxyCompactList}\small\item\em The notification center from the workspace. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_active_application_stack_a1e2c66f799b40713777d4e0ce37821d4}{
+short \hyperlink{interface_g_d_active_application_stack_a1e2c66f799b40713777d4e0ce37821d4}{limit}}
+\label{interface_g_d_active_application_stack_a1e2c66f799b40713777d4e0ce37821d4}
+
+\begin{DoxyCompactList}\small\item\em The application stack limit. \item\end{DoxyCompactList}\item 
+BOOL \hyperlink{interface_g_d_active_application_stack_a5714844d3e17a156cca14b1f383b3dbe}{onlyBringActiveApplicationsForward}
+\begin{DoxyCompactList}\small\item\em Only bring applications that are active forward. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_active_application_stack}{GDActiveApplicationStack} keeps a stack of application info dictionaries. When application focus changes, an entry is added into the stack. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_active_application_stack_a691da7b73f204f9431b96ffa53783bc6}{
+\index{GDActiveApplicationStack@{GDActiveApplicationStack}!init@{init}}
+\index{init@{init}!GDActiveApplicationStack@{GDActiveApplicationStack}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) init }}
+\label{interface_g_d_active_application_stack_a691da7b73f204f9431b96ffa53783bc6}
+
+
+Default init method. If you don't want to risk an exception being thrown, first check the +isAvailable method.
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em NSException}]If the obj-\/c runtime is running on 10.5 (Leopard) or less. \end{DoxyExceptions}
+\hypertarget{interface_g_d_active_application_stack_a10055d2ffec472e9413a8d84a7d8dd67}{
+\index{GDActiveApplicationStack@{GDActiveApplicationStack}!isAvailable@{isAvailable}}
+\index{isAvailable@{isAvailable}!GDActiveApplicationStack@{GDActiveApplicationStack}}
+\subsubsection[{isAvailable}]{\setlength{\rightskip}{0pt plus 5cm}+ (Boolean) isAvailable }}
+\label{interface_g_d_active_application_stack_a10055d2ffec472e9413a8d84a7d8dd67}
+
+
+Check whether or not you can use this class. This is available because the only SDK this class will work with is 10.6. 
+
+\subsection{Property Documentation}
+\hypertarget{interface_g_d_active_application_stack_a5714844d3e17a156cca14b1f383b3dbe}{
+\index{GDActiveApplicationStack@{GDActiveApplicationStack}!onlyBringActiveApplicationsForward@{onlyBringActiveApplicationsForward}}
+\index{onlyBringActiveApplicationsForward@{onlyBringActiveApplicationsForward}!GDActiveApplicationStack@{GDActiveApplicationStack}}
+\subsubsection[{onlyBringActiveApplicationsForward}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (BOOL) onlyBringActiveApplicationsForward\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, assign\mbox{]}}}}
+\label{interface_g_d_active_application_stack_a5714844d3e17a156cca14b1f383b3dbe}
+
+
+Only bring applications that are active forward. If a call is made to bringTopForward, but the application that was saved in the stack isn't active, it will pop(), and try again.
+
+If this isn't on, a call to bringTopForward will cause the application to launch if it's not open. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_active_application_stack_8h}{GDActiveApplicationStack.h}\item 
+source/GDActiveApplicationStack.m\end{DoxyCompactItemize}

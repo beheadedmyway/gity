@@ -1,0 +1,2017 @@
+diff --git a/Info.plist b/Info.plist
+index ae624fc..5a1065c 100644
+--- a/Info.plist
++++ b/Info.plist
+@@ -42,7 +42,7 @@
+ 	&lt;key>CFBundleSignature&lt;/key>
+ 	&lt;string>????&lt;/string>
+ 	&lt;key>CFBundleVersion&lt;/key>
+-	&lt;string>2380&lt;/string>
++	&lt;string>2389&lt;/string>
+ 	&lt;key>LSMinimumSystemVersion&lt;/key>
+ 	&lt;string>${MACOSX_DEPLOYMENT_TARGET}&lt;/string>
+ 	&lt;key>NSMainNibFile&lt;/key>
+diff --git a/diff/tests/test.html b/diff/tests/test.html
+deleted file mode 100755
+index abb36dc..0000000
+--- a/diff/tests/test.html
++++ /dev/null
+@@ -1,862 +0,0 @@
+-&lt;html>
+-&lt;head>
+-	&lt;title>Details for commit&lt;/title>
+-	&lt;link rel="stylesheet" href="commits.css" type="text/css" media="screen" title="no title" charset="utf-8">
+-	&lt;link rel="stylesheet" href="diff_style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+-	&lt;!--&lt;script src="prototype.js" type="text/javascript" charset="utf-8">&lt;/script>-->
+-	&lt;script src="jquery.js" type="text/javascript" charset="utf-8">&lt;/script>
+-	&lt;script src="diffHighlighter.js" type="text/javascript" charset="utf-8">&lt;/script>
+-	&lt;script type="text/javascript" charset="utf-8">
+-
+-	var doeHet = function() {
+-		document.getElementById("details").innerHTML = document.getElementById("diff").value.replace(/&lt;/g, "&lt;");
+-		highlightDiffs();
+-	}
+-	&lt;/script>
+-&lt;/head>
+-&lt;body style="padding: 0px; border: 0px" onLoad="doeHet()">
+-	&lt;textarea style='display:none' id="diff" rows="8" cols="40">
+-diff --git a/English.lproj/RepositoryWindow.xib b/English.lproj/RepositoryWindow.xib
+-index 6cd49fa..7474752 100644
+---- a/English.lproj/RepositoryWindow.xib
+-+++ b/English.lproj/RepositoryWindow.xib
+-@@ -538,55 +538,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes>
+- 				&lt;string key="NSMaxSize"&gt;{3.40282e+38, 3.40282e+38}&lt;/string&gt;
+- 				&lt;string key="NSFrameAutosaveName"&gt;GitX&lt;/string&gt;
+- 			&lt;/object&gt;
+--			&lt;object class="NSToolbarItem" id="562497830"&gt;
+--				&lt;object class="NSMutableString" key="NSToolbarItemIdentifier"&gt;
+--					&lt;characters key="NS.bytes"&gt;B6D80172-2D01-49BD-8E3A-2F1D9F672390&lt;/characters&gt;
+--				&lt;/object&gt;
+--				&lt;string key="NSToolbarItemLabel"&gt;View&lt;/string&gt;
+--				&lt;string key="NSToolbarItemPaletteLabel"&gt;View selector&lt;/string&gt;
+--				&lt;nil key="NSToolbarItemToolTip"/&gt;
+--				&lt;object class="NSSegmentedControl" key="NSToolbarItemView" id="469221894"&gt;
+--					&lt;nil key="NSNextResponder"/&gt;
+--					&lt;int key="NSvFlags"&gt;268&lt;/int&gt;
+--					&lt;string key="NSFrame"&gt;{{0, 14}, {142, 25}}&lt;/string&gt;
+--					&lt;int key="NSTag"&gt;3&lt;/int&gt;
+--					&lt;bool key="NSEnabled"&gt;YES&lt;/bool&gt;
+--					&lt;object class="NSSegmentedCell" key="NSCell" id="1071657361"&gt;
+--						&lt;int key="NSCellFlags"&gt;67239424&lt;/int&gt;
+--						&lt;int key="NSCellFlags2"&gt;0&lt;/int&gt;
+--						&lt;object class="NSFont" key="NSSupport"&gt;
+--							&lt;string key="NSName"&gt;LucidaGrande&lt;/string&gt;
+--							&lt;double key="NSSize"&gt;1.300000e+01&lt;/double&gt;
+--							&lt;int key="NSfFlags"&gt;1044&lt;/int&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="NSControlView" ref="469221894"/&gt;
+--						&lt;object class="NSMutableArray" key="NSSegmentImages"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;object class="NSSegmentItem"&gt;
+--								&lt;string key="NSSegmentItemLabel"&gt;History&lt;/string&gt;
+--								&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+--							&lt;/object&gt;
+--							&lt;object class="NSSegmentItem"&gt;
+--								&lt;string key="NSSegmentItemLabel"&gt;Commit&lt;/string&gt;
+--								&lt;bool key="NSSegmentItemSelected"&gt;YES&lt;/bool&gt;
+--								&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+--							&lt;/object&gt;
+--						&lt;/object&gt;
+--						&lt;int key="NSSelectedSegment"&gt;1&lt;/int&gt;
+--						&lt;int key="NSSegmentStyle"&gt;2&lt;/int&gt;
+--					&lt;/object&gt;
+--				&lt;/object&gt;
+--				&lt;nil key="NSToolbarItemImage"/&gt;
+--				&lt;nil key="NSToolbarItemTarget"/&gt;
+--				&lt;nil key="NSToolbarItemAction"/&gt;
+--				&lt;string key="NSToolbarItemMinSize"&gt;{142, 25}&lt;/string&gt;
+--				&lt;string key="NSToolbarItemMaxSize"&gt;{142, 25}&lt;/string&gt;
+--				&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+--				&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+--				&lt;int key="NSToolbarItemTag"&gt;3&lt;/int&gt;
+--				&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+--				&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+--			&lt;/object&gt;
+- 		&lt;/object&gt;
+- 		&lt;object class="IBObjectContainer" key="IBDocument.Objects"&gt;
+- 			&lt;object class="NSMutableArray" key="connectionRecords"&gt;
+-@@ -607,30 +558,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 					&lt;/object&gt;
+- 					&lt;int key="connectionID"&gt;292&lt;/int&gt;
+- 				&lt;/object&gt;
+--				&lt;object class="IBConnectionRecord"&gt;
+--					&lt;object class="IBBindingConnection" key="connection"&gt;
+--						&lt;string key="label"&gt;selectedIndex: selectedViewIndex&lt;/string&gt;
+--						&lt;reference key="source" ref="469221894"/&gt;
+--						&lt;reference key="destination" ref="1001"/&gt;
+--						&lt;object class="NSNibBindingConnector" key="connector"&gt;
+--							&lt;reference key="NSSource" ref="469221894"/&gt;
+--							&lt;reference key="NSDestination" ref="1001"/&gt;
+--							&lt;string key="NSLabel"&gt;selectedIndex: selectedViewIndex&lt;/string&gt;
+--							&lt;string key="NSBinding"&gt;selectedIndex&lt;/string&gt;
+--							&lt;string key="NSKeyPath"&gt;selectedViewIndex&lt;/string&gt;
+--							&lt;int key="NSNibBindingConnectorVersion"&gt;2&lt;/int&gt;
+--						&lt;/object&gt;
+--					&lt;/object&gt;
+--					&lt;int key="connectionID"&gt;329&lt;/int&gt;
+--				&lt;/object&gt;
+--				&lt;object class="IBConnectionRecord"&gt;
+--					&lt;object class="IBOutletConnection" key="connection"&gt;
+--						&lt;string key="label"&gt;viewSelector&lt;/string&gt;
+--						&lt;reference key="source" ref="1001"/&gt;
+--						&lt;reference key="destination" ref="562497830"/&gt;
+--					&lt;/object&gt;
+--					&lt;int key="connectionID"&gt;350&lt;/int&gt;
+--				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;object class="IBMutableOrderedSet" key="objectRecords"&gt;
+- 				&lt;object class="NSArray" key="orderedObjects"&gt;
+-@@ -681,29 +608,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 						&lt;reference key="parent" ref="491121796"/&gt;
+- 					&lt;/object&gt;
+- 					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;324&lt;/int&gt;
+--						&lt;reference key="object" ref="562497830"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="469221894"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="1002"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;325&lt;/int&gt;
+--						&lt;reference key="object" ref="469221894"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="1071657361"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="562497830"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;326&lt;/int&gt;
+--						&lt;reference key="object" ref="1071657361"/&gt;
+--						&lt;reference key="parent" ref="469221894"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+- 						&lt;int key="objectID"&gt;342&lt;/int&gt;
+- 						&lt;reference key="object" ref="283658631"/&gt;
+- 						&lt;object class="NSMutableArray" key="children"&gt;
+-@@ -772,8 +676,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 					&lt;string&gt;3.windowTemplate.hasMinSize&lt;/string&gt;
+- 					&lt;string&gt;3.windowTemplate.maxSize&lt;/string&gt;
+- 					&lt;string&gt;3.windowTemplate.minSize&lt;/string&gt;
+--					&lt;string&gt;325.IBPluginDependency&lt;/string&gt;
+--					&lt;string&gt;326.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;342.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;343.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;344.IBPluginDependency&lt;/string&gt;
+-@@ -790,9 +692,9 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilderKit&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilderKit&lt;/string&gt;
+--					&lt;string&gt;{{312, 315}, {850, 418}}&lt;/string&gt;
+-+					&lt;string&gt;{{1047, -144}, {850, 418}}&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+--					&lt;string&gt;{{312, 315}, {850, 418}}&lt;/string&gt;
+-+					&lt;string&gt;{{1047, -144}, {850, 418}}&lt;/string&gt;
+- 					&lt;integer value="1" id="9"/&gt;
+- 					&lt;reference ref="9"/&gt;
+- 					&lt;string&gt;{{15, 196}, {850, 418}}&lt;/string&gt;
+-@@ -809,8 +711,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+--					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+--					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;reference ref="9"/&gt;
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+-diff --git a/PBGitCommitView.xib b/PBGitCommitView.xib
+-index 0260e41..007010b 100644
+---- a/PBGitCommitView.xib
+-+++ b/PBGitCommitView.xib
+-@@ -898,6 +898,120 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 			&lt;object class="NSCustomObject" id="1007648253"&gt;
+- 				&lt;string key="NSClassName"&gt;PBWebChangesController&lt;/string&gt;
+- 			&lt;/object&gt;
+-+			&lt;object class="NSToolbar" id="570289088"&gt;
+-+				&lt;object class="NSMutableString" key="NSToolbarIdentifier"&gt;
+-+					&lt;characters key="NS.bytes"&gt;F94591D2-A188-4B08-A8B2-8C8CEC03CB14&lt;/characters&gt;
+-+				&lt;/object&gt;
+-+				&lt;nil key="NSToolbarDelegate"/&gt;
+-+				&lt;bool key="NSToolbarPrefersToBeShown"&gt;YES&lt;/bool&gt;
+-+				&lt;bool key="NSToolbarShowsBaselineSeparator"&gt;YES&lt;/bool&gt;
+-+				&lt;bool key="NSToolbarAllowsUserCustomization"&gt;NO&lt;/bool&gt;
+-+				&lt;bool key="NSToolbarAutosavesConfiguration"&gt;NO&lt;/bool&gt;
+-+				&lt;int key="NSToolbarDisplayMode"&gt;1&lt;/int&gt;
+-+				&lt;int key="NSToolbarSizeMode"&gt;1&lt;/int&gt;
+-+				&lt;object class="NSMutableDictionary" key="NSToolbarIBIdentifiedItems"&gt;
+-+					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;object class="NSMutableArray" key="dict.sortedKeys"&gt;
+-+						&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+						&lt;string&gt;1E431E79-1591-49E7-9E17-49497CA4622A&lt;/string&gt;
+-+						&lt;string&gt;NSToolbarSeparatorItem&lt;/string&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="NSMutableArray" key="dict.values"&gt;
+-+						&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+						&lt;object class="NSToolbarItem" id="271300712"&gt;
+-+							&lt;object class="NSMutableString" key="NSToolbarItemIdentifier"&gt;
+-+								&lt;characters key="NS.bytes"&gt;1E431E79-1591-49E7-9E17-49497CA4622A&lt;/characters&gt;
+-+							&lt;/object&gt;
+-+							&lt;string key="NSToolbarItemLabel"&gt;View&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemPaletteLabel"&gt;View selector&lt;/string&gt;
+-+							&lt;nil key="NSToolbarItemToolTip"/&gt;
+-+							&lt;object class="NSSegmentedControl" key="NSToolbarItemView" id="20026036"&gt;
+-+								&lt;nil key="NSNextResponder"/&gt;
+-+								&lt;int key="NSvFlags"&gt;268&lt;/int&gt;
+-+								&lt;string key="NSFrame"&gt;{{0, 14}, {142, 25}}&lt;/string&gt;
+-+								&lt;int key="NSTag"&gt;3&lt;/int&gt;
+-+								&lt;bool key="NSEnabled"&gt;YES&lt;/bool&gt;
+-+								&lt;object class="NSSegmentedCell" key="NSCell" id="796615469"&gt;
+-+									&lt;int key="NSCellFlags"&gt;67239424&lt;/int&gt;
+-+									&lt;int key="NSCellFlags2"&gt;0&lt;/int&gt;
+-+									&lt;reference key="NSSupport" ref="554612341"/&gt;
+-+									&lt;reference key="NSControlView" ref="20026036"/&gt;
+-+									&lt;object class="NSMutableArray" key="NSSegmentImages"&gt;
+-+										&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+										&lt;object class="NSSegmentItem"&gt;
+-+											&lt;string key="NSSegmentItemLabel"&gt;History&lt;/string&gt;
+-+											&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+-+										&lt;/object&gt;
+-+										&lt;object class="NSSegmentItem"&gt;
+-+											&lt;string key="NSSegmentItemLabel"&gt;Commit&lt;/string&gt;
+-+											&lt;bool key="NSSegmentItemSelected"&gt;YES&lt;/bool&gt;
+-+											&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+-+										&lt;/object&gt;
+-+									&lt;/object&gt;
+-+									&lt;int key="NSSelectedSegment"&gt;1&lt;/int&gt;
+-+									&lt;int key="NSSegmentStyle"&gt;2&lt;/int&gt;
+-+								&lt;/object&gt;
+-+							&lt;/object&gt;
+-+							&lt;nil key="NSToolbarItemImage"/&gt;
+-+							&lt;nil key="NSToolbarItemTarget"/&gt;
+-+							&lt;nil key="NSToolbarItemAction"/&gt;
+-+							&lt;string key="NSToolbarItemMinSize"&gt;{142, 25}&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemMaxSize"&gt;{142, 25}&lt;/string&gt;
+-+							&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+-+							&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemTag"&gt;3&lt;/int&gt;
+-+							&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+-+						&lt;/object&gt;
+-+						&lt;object class="NSToolbarSeparatorItem" id="354340151"&gt;
+-+							&lt;string key="NSToolbarItemIdentifier"&gt;NSToolbarSeparatorItem&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemLabel"/&gt;
+-+							&lt;string key="NSToolbarItemPaletteLabel"&gt;Separator&lt;/string&gt;
+-+							&lt;nil key="NSToolbarItemToolTip"/&gt;
+-+							&lt;nil key="NSToolbarItemView"/&gt;
+-+							&lt;nil key="NSToolbarItemImage"/&gt;
+-+							&lt;nil key="NSToolbarItemTarget"/&gt;
+-+							&lt;nil key="NSToolbarItemAction"/&gt;
+-+							&lt;string key="NSToolbarItemMinSize"&gt;{12, 5}&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemMaxSize"&gt;{12, 1000}&lt;/string&gt;
+-+							&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+-+							&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemTag"&gt;-1&lt;/int&gt;
+-+							&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+-+							&lt;object class="NSMenuItem" key="NSToolbarItemMenuFormRepresentation"&gt;
+-+								&lt;bool key="NSIsDisabled"&gt;YES&lt;/bool&gt;
+-+								&lt;bool key="NSIsSeparator"&gt;YES&lt;/bool&gt;
+-+								&lt;string key="NSTitle"/&gt;
+-+								&lt;string key="NSKeyEquiv"/&gt;
+-+								&lt;int key="NSKeyEquivModMask"&gt;1048576&lt;/int&gt;
+-+								&lt;int key="NSMnemonicLoc"&gt;2147483647&lt;/int&gt;
+-+								&lt;object class="NSCustomResource" key="NSOnImage"&gt;
+-+									&lt;string key="NSClassName"&gt;NSImage&lt;/string&gt;
+-+									&lt;string key="NSResourceName"&gt;NSMenuCheckmark&lt;/string&gt;
+-+								&lt;/object&gt;
+-+								&lt;object class="NSCustomResource" key="NSMixedImage"&gt;
+-+									&lt;string key="NSClassName"&gt;NSImage&lt;/string&gt;
+-+									&lt;string key="NSResourceName"&gt;NSMenuMixedState&lt;/string&gt;
+-+								&lt;/object&gt;
+-+							&lt;/object&gt;
+-+						&lt;/object&gt;
+-+					&lt;/object&gt;
+-+				&lt;/object&gt;
+-+				&lt;object class="NSArray" key="NSToolbarIBAllowedItems"&gt;
+-+					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;reference ref="271300712"/&gt;
+-+					&lt;reference ref="354340151"/&gt;
+-+				&lt;/object&gt;
+-+				&lt;object class="NSMutableArray" key="NSToolbarIBDefaultItems"&gt;
+-+					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;reference ref="271300712"/&gt;
+-+					&lt;reference ref="354340151"/&gt;
+-+				&lt;/object&gt;
+-+				&lt;object class="NSMutableArray" key="NSToolbarIBSelectableItems"&gt;
+-+					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+				&lt;/object&gt;
+-+			&lt;/object&gt;
+- 		&lt;/object&gt;
+- 		&lt;object class="IBObjectContainer" key="IBDocument.Objects"&gt;
+- 			&lt;object class="NSMutableArray" key="connectionRecords"&gt;
+-@@ -1126,6 +1240,14 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 					&lt;/object&gt;
+- 					&lt;int key="connectionID"&gt;224&lt;/int&gt;
+- 				&lt;/object&gt;
+-+				&lt;object class="IBConnectionRecord"&gt;
+-+					&lt;object class="IBOutletConnection" key="connection"&gt;
+-+						&lt;string key="label"&gt;viewToolbar&lt;/string&gt;
+-+						&lt;reference key="source" ref="1001"/&gt;
+-+						&lt;reference key="destination" ref="570289088"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;int key="connectionID"&gt;241&lt;/int&gt;
+-+				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;object class="IBMutableOrderedSet" key="objectRecords"&gt;
+- 				&lt;object class="NSArray" key="orderedObjects"&gt;
+-@@ -1419,6 +1541,45 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 						&lt;reference key="object" ref="221814497"/&gt;
+- 						&lt;reference key="parent" ref="750704519"/&gt;
+- 					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;225&lt;/int&gt;
+-+						&lt;reference key="object" ref="570289088"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="271300712"/&gt;
+-+							&lt;reference ref="354340151"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="1002"/&gt;
+-+						&lt;string key="objectName"&gt;Commit Toolbar&lt;/string&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;226&lt;/int&gt;
+-+						&lt;reference key="object" ref="271300712"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="20026036"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="570289088"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;227&lt;/int&gt;
+-+						&lt;reference key="object" ref="354340151"/&gt;
+-+						&lt;reference key="parent" ref="570289088"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;239&lt;/int&gt;
+-+						&lt;reference key="object" ref="20026036"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="796615469"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="271300712"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;240&lt;/int&gt;
+-+						&lt;reference key="object" ref="796615469"/&gt;
+-+						&lt;reference key="parent" ref="20026036"/&gt;
+-+					&lt;/object&gt;
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;object class="NSMutableDictionary" key="flattenedProperties"&gt;
+-@@ -1446,6 +1607,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 					&lt;string&gt;164.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;2.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;217.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;225.IBEditorWindowLastContentRect&lt;/string&gt;
+-+					&lt;string&gt;225.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;225.editorWindowContentRectSynchronizationRect&lt;/string&gt;
+-+					&lt;string&gt;227.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;239.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;240.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;42.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;45.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;46.IBPluginDependency&lt;/string&gt;
+-@@ -1482,6 +1649,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;{{341, 837}, {616, 169}}&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;{{132, 614}, {616, 0}}&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-@@ -1516,7 +1689,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;nil key="sourceID"/&gt;
+--			&lt;int key="maxID"&gt;224&lt;/int&gt;
+-+			&lt;int key="maxID"&gt;241&lt;/int&gt;
+- 		&lt;/object&gt;
+- 		&lt;object class="IBClassDescriber" key="IBDocument.Classes"&gt;
+- 			&lt;object class="NSMutableArray" key="referencedPartialClassDescriptions"&gt;
+-diff --git a/PBGitHistoryView.xib b/PBGitHistoryView.xib
+-index e008bb9..4df97b3 100644
+---- a/PBGitHistoryView.xib
+-+++ b/PBGitHistoryView.xib
+-@@ -95,7 +95,7 @@
+- 			&lt;/object&gt;
+- 			&lt;object class="NSToolbar" id="65173285"&gt;
+- 				&lt;object class="NSMutableString" key="NSToolbarIdentifier"&gt;
+--					&lt;characters key="NS.bytes"&gt;B9F1B847-0DC3-4C13-A685-5F5A2D64BC93&lt;/characters&gt;
+-+					&lt;characters key="NS.bytes"&gt;F94591D2-A188-4B08-A8B2-8C8CEC03CB14&lt;/characters&gt;
+- 				&lt;/object&gt;
+- 				&lt;nil key="NSToolbarDelegate"/&gt;
+- 				&lt;bool key="NSToolbarPrefersToBeShown"&gt;YES&lt;/bool&gt;
+-@@ -108,12 +108,63 @@
+- 					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+- 					&lt;object class="NSMutableArray" key="dict.sortedKeys"&gt;
+- 						&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+						&lt;string&gt;1E431E79-1591-49E7-9E17-49497CA4622A&lt;/string&gt;
+- 						&lt;string&gt;7FFB691C-2D2F-49A9-997F-AE1AE8BFF3F1&lt;/string&gt;
+- 						&lt;string&gt;99C2C9EB-AE16-42A9-BE52-46CE903E9AF9&lt;/string&gt;
+- 						&lt;string&gt;NSToolbarFlexibleSpaceItem&lt;/string&gt;
+-+						&lt;string&gt;NSToolbarSeparatorItem&lt;/string&gt;
+- 					&lt;/object&gt;
+- 					&lt;object class="NSMutableArray" key="dict.values"&gt;
+- 						&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+						&lt;object class="NSToolbarItem" id="215578734"&gt;
+-+							&lt;object class="NSMutableString" key="NSToolbarItemIdentifier"&gt;
+-+								&lt;characters key="NS.bytes"&gt;1E431E79-1591-49E7-9E17-49497CA4622A&lt;/characters&gt;
+-+							&lt;/object&gt;
+-+							&lt;string key="NSToolbarItemLabel"&gt;View&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemPaletteLabel"&gt;View selector&lt;/string&gt;
+-+							&lt;nil key="NSToolbarItemToolTip"/&gt;
+-+							&lt;object class="NSSegmentedControl" key="NSToolbarItemView" id="764711234"&gt;
+-+								&lt;nil key="NSNextResponder"/&gt;
+-+								&lt;int key="NSvFlags"&gt;268&lt;/int&gt;
+-+								&lt;string key="NSFrame"&gt;{{0, 14}, {142, 25}}&lt;/string&gt;
+-+								&lt;int key="NSTag"&gt;3&lt;/int&gt;
+-+								&lt;bool key="NSEnabled"&gt;YES&lt;/bool&gt;
+-+								&lt;object class="NSSegmentedCell" key="NSCell" id="266464607"&gt;
+-+									&lt;int key="NSCellFlags"&gt;67239424&lt;/int&gt;
+-+									&lt;int key="NSCellFlags2"&gt;0&lt;/int&gt;
+-+									&lt;object class="NSFont" key="NSSupport" id="924107556"&gt;
+-+										&lt;string key="NSName"&gt;LucidaGrande&lt;/string&gt;
+-+										&lt;double key="NSSize"&gt;1.300000e+01&lt;/double&gt;
+-+										&lt;int key="NSfFlags"&gt;1044&lt;/int&gt;
+-+									&lt;/object&gt;
+-+									&lt;reference key="NSControlView" ref="764711234"/&gt;
+-+									&lt;object class="NSMutableArray" key="NSSegmentImages"&gt;
+-+										&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+										&lt;object class="NSSegmentItem"&gt;
+-+											&lt;string key="NSSegmentItemLabel"&gt;History&lt;/string&gt;
+-+											&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+-+										&lt;/object&gt;
+-+										&lt;object class="NSSegmentItem"&gt;
+-+											&lt;string key="NSSegmentItemLabel"&gt;Commit&lt;/string&gt;
+-+											&lt;bool key="NSSegmentItemSelected"&gt;YES&lt;/bool&gt;
+-+											&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+-+										&lt;/object&gt;
+-+									&lt;/object&gt;
+-+									&lt;int key="NSSelectedSegment"&gt;1&lt;/int&gt;
+-+									&lt;int key="NSSegmentStyle"&gt;2&lt;/int&gt;
+-+								&lt;/object&gt;
+-+							&lt;/object&gt;
+-+							&lt;nil key="NSToolbarItemImage"/&gt;
+-+							&lt;nil key="NSToolbarItemTarget"/&gt;
+-+							&lt;nil key="NSToolbarItemAction"/&gt;
+-+							&lt;string key="NSToolbarItemMinSize"&gt;{142, 25}&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemMaxSize"&gt;{142, 25}&lt;/string&gt;
+-+							&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+-+							&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemTag"&gt;3&lt;/int&gt;
+-+							&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+-+						&lt;/object&gt;
+- 						&lt;object class="NSToolbarItem" id="479447135"&gt;
+- 							&lt;object class="NSMutableString" key="NSToolbarItemIdentifier"&gt;
+- 								&lt;characters key="NS.bytes"&gt;7FFB691C-2D2F-49A9-997F-AE1AE8BFF3F1&lt;/characters&gt;
+-@@ -131,11 +182,7 @@
+- 								&lt;object class="NSSearchFieldCell" key="NSCell" id="449521666"&gt;
+- 									&lt;int key="NSCellFlags"&gt;343014976&lt;/int&gt;
+- 									&lt;int key="NSCellFlags2"&gt;268436480&lt;/int&gt;
+--									&lt;object class="NSFont" key="NSSupport" id="924107556"&gt;
+--										&lt;string key="NSName"&gt;LucidaGrande&lt;/string&gt;
+--										&lt;double key="NSSize"&gt;1.300000e+01&lt;/double&gt;
+--										&lt;int key="NSfFlags"&gt;1044&lt;/int&gt;
+--									&lt;/object&gt;
+-+									&lt;reference key="NSSupport" ref="924107556"/&gt;
+- 									&lt;string key="NSPlaceholderString"&gt;Subject&lt;/string&gt;
+- 									&lt;reference key="NSControlView" ref="845792858"/&gt;
+- 									&lt;bool key="NSDrawsBackground"&gt;YES&lt;/bool&gt;
+-@@ -330,16 +377,47 @@
+- 								&lt;reference key="NSMixedImage" ref="746375230"/&gt;
+- 							&lt;/object&gt;
+- 						&lt;/object&gt;
+-+						&lt;object class="NSToolbarSeparatorItem" id="776753395"&gt;
+-+							&lt;string key="NSToolbarItemIdentifier"&gt;NSToolbarSeparatorItem&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemLabel"/&gt;
+-+							&lt;string key="NSToolbarItemPaletteLabel"&gt;Separator&lt;/string&gt;
+-+							&lt;nil key="NSToolbarItemToolTip"/&gt;
+-+							&lt;nil key="NSToolbarItemView"/&gt;
+-+							&lt;nil key="NSToolbarItemImage"/&gt;
+-+							&lt;nil key="NSToolbarItemTarget"/&gt;
+-+							&lt;nil key="NSToolbarItemAction"/&gt;
+-+							&lt;string key="NSToolbarItemMinSize"&gt;{12, 5}&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemMaxSize"&gt;{12, 1000}&lt;/string&gt;
+-+							&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+-+							&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemTag"&gt;-1&lt;/int&gt;
+-+							&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+-+							&lt;object class="NSMenuItem" key="NSToolbarItemMenuFormRepresentation"&gt;
+-+								&lt;bool key="NSIsDisabled"&gt;YES&lt;/bool&gt;
+-+								&lt;bool key="NSIsSeparator"&gt;YES&lt;/bool&gt;
+-+								&lt;string key="NSTitle"/&gt;
+-+								&lt;string key="NSKeyEquiv"/&gt;
+-+								&lt;int key="NSKeyEquivModMask"&gt;1048576&lt;/int&gt;
+-+								&lt;int key="NSMnemonicLoc"&gt;2147483647&lt;/int&gt;
+-+								&lt;reference key="NSOnImage" ref="908677745"/&gt;
+-+								&lt;reference key="NSMixedImage" ref="746375230"/&gt;
+-+							&lt;/object&gt;
+-+						&lt;/object&gt;
+- 					&lt;/object&gt;
+- 				&lt;/object&gt;
+- 				&lt;object class="NSArray" key="NSToolbarIBAllowedItems"&gt;
+- 					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;reference ref="215578734"/&gt;
+-+					&lt;reference ref="776753395"/&gt;
+- 					&lt;reference ref="455812118"/&gt;
+- 					&lt;reference ref="633367776"/&gt;
+- 					&lt;reference ref="479447135"/&gt;
+- 				&lt;/object&gt;
+- 				&lt;object class="NSMutableArray" key="NSToolbarIBDefaultItems"&gt;
+- 					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;reference ref="215578734"/&gt;
+-+					&lt;reference ref="776753395"/&gt;
+- 					&lt;reference ref="455812118"/&gt;
+- 					&lt;reference ref="633367776"/&gt;
+- 					&lt;reference ref="479447135"/&gt;
+-@@ -2053,6 +2131,93 @@
+- 						&lt;reference key="parent" ref="555671215"/&gt;
+- 					&lt;/object&gt;
+- 					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;3&lt;/int&gt;
+-+						&lt;reference key="object" ref="663765878"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="942510576"/&gt;
+-+							&lt;reference ref="452331733"/&gt;
+-+							&lt;reference ref="152625445"/&gt;
+-+							&lt;reference ref="254268962"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="202620420"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;30&lt;/int&gt;
+-+						&lt;reference key="object" ref="942510576"/&gt;
+-+						&lt;reference key="parent" ref="663765878"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;29&lt;/int&gt;
+-+						&lt;reference key="object" ref="452331733"/&gt;
+-+						&lt;reference key="parent" ref="663765878"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;28&lt;/int&gt;
+-+						&lt;reference key="object" ref="152625445"/&gt;
+-+						&lt;reference key="parent" ref="663765878"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;27&lt;/int&gt;
+-+						&lt;reference key="object" ref="254268962"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="976830280"/&gt;
+-+							&lt;reference ref="1025472344"/&gt;
+-+							&lt;reference ref="792589327"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="663765878"/&gt;
+-+						&lt;string key="objectName"&gt;Commit List&lt;/string&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;33&lt;/int&gt;
+-+						&lt;reference key="object" ref="976830280"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="853819733"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="254268962"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;32&lt;/int&gt;
+-+						&lt;reference key="object" ref="1025472344"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="977219207"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="254268962"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;31&lt;/int&gt;
+-+						&lt;reference key="object" ref="792589327"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="746918365"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="254268962"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;36&lt;/int&gt;
+-+						&lt;reference key="object" ref="746918365"/&gt;
+-+						&lt;reference key="parent" ref="792589327"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;35&lt;/int&gt;
+-+						&lt;reference key="object" ref="977219207"/&gt;
+-+						&lt;reference key="parent" ref="1025472344"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;34&lt;/int&gt;
+-+						&lt;reference key="object" ref="853819733"/&gt;
+-+						&lt;reference key="parent" ref="976830280"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;190&lt;/int&gt;
+-+						&lt;reference key="object" ref="886549521"/&gt;
+-+						&lt;reference key="parent" ref="1002"/&gt;
+-+						&lt;string key="objectName"&gt;Branches Controller&lt;/string&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+- 						&lt;int key="objectID"&gt;113&lt;/int&gt;
+- 						&lt;reference key="object" ref="65173285"/&gt;
+- 						&lt;object class="NSMutableArray" key="children"&gt;
+-@@ -2060,6 +2225,8 @@
+- 							&lt;reference ref="455812118"/&gt;
+- 							&lt;reference ref="633367776"/&gt;
+- 							&lt;reference ref="479447135"/&gt;
+-+							&lt;reference ref="776753395"/&gt;
+-+							&lt;reference ref="215578734"/&gt;
+- 						&lt;/object&gt;
+- 						&lt;reference key="parent" ref="1002"/&gt;
+- 						&lt;string key="objectName"&gt;History Toolbar&lt;/string&gt;
+-@@ -2088,6 +2255,34 @@
+- 						&lt;reference key="parent" ref="65173285"/&gt;
+- 					&lt;/object&gt;
+- 					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;222&lt;/int&gt;
+-+						&lt;reference key="object" ref="776753395"/&gt;
+-+						&lt;reference key="parent" ref="65173285"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;223&lt;/int&gt;
+-+						&lt;reference key="object" ref="215578734"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="764711234"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="65173285"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;224&lt;/int&gt;
+-+						&lt;reference key="object" ref="764711234"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="266464607"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="215578734"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;225&lt;/int&gt;
+-+						&lt;reference key="object" ref="266464607"/&gt;
+-+						&lt;reference key="parent" ref="764711234"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+- 						&lt;int key="objectID"&gt;117&lt;/int&gt;
+- 						&lt;reference key="object" ref="845792858"/&gt;
+- 						&lt;object class="NSMutableArray" key="children"&gt;
+-@@ -2145,93 +2340,6 @@
+- 						&lt;reference key="object" ref="882172208"/&gt;
+- 						&lt;reference key="parent" ref="604026377"/&gt;
+- 					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;3&lt;/int&gt;
+--						&lt;reference key="object" ref="663765878"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="942510576"/&gt;
+--							&lt;reference ref="452331733"/&gt;
+--							&lt;reference ref="152625445"/&gt;
+--							&lt;reference ref="254268962"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="202620420"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;30&lt;/int&gt;
+--						&lt;reference key="object" ref="942510576"/&gt;
+--						&lt;reference key="parent" ref="663765878"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;29&lt;/int&gt;
+--						&lt;reference key="object" ref="452331733"/&gt;
+--						&lt;reference key="parent" ref="663765878"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;28&lt;/int&gt;
+--						&lt;reference key="object" ref="152625445"/&gt;
+--						&lt;reference key="parent" ref="663765878"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;27&lt;/int&gt;
+--						&lt;reference key="object" ref="254268962"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="976830280"/&gt;
+--							&lt;reference ref="1025472344"/&gt;
+--							&lt;reference ref="792589327"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="663765878"/&gt;
+--						&lt;string key="objectName"&gt;Commit List&lt;/string&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;33&lt;/int&gt;
+--						&lt;reference key="object" ref="976830280"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="853819733"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="254268962"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;32&lt;/int&gt;
+--						&lt;reference key="object" ref="1025472344"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="977219207"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="254268962"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;31&lt;/int&gt;
+--						&lt;reference key="object" ref="792589327"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="746918365"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="254268962"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;36&lt;/int&gt;
+--						&lt;reference key="object" ref="746918365"/&gt;
+--						&lt;reference key="parent" ref="792589327"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;35&lt;/int&gt;
+--						&lt;reference key="object" ref="977219207"/&gt;
+--						&lt;reference key="parent" ref="1025472344"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;34&lt;/int&gt;
+--						&lt;reference key="object" ref="853819733"/&gt;
+--						&lt;reference key="parent" ref="976830280"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;190&lt;/int&gt;
+--						&lt;reference key="object" ref="886549521"/&gt;
+--						&lt;reference key="parent" ref="1002"/&gt;
+--						&lt;string key="objectName"&gt;Branches Controller&lt;/string&gt;
+--					&lt;/object&gt;
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;object class="NSMutableDictionary" key="flattenedProperties"&gt;
+-@@ -2272,6 +2380,9 @@
+- 					&lt;string&gt;2.ImportedFromIB2&lt;/string&gt;
+- 					&lt;string&gt;21.IBAttributePlaceholdersKey&lt;/string&gt;
+- 					&lt;string&gt;21.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;222.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;224.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;225.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;23.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;24.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;25.IBPluginDependency&lt;/string&gt;
+-@@ -2319,7 +2430,7 @@
+- 					&lt;string&gt;com.apple.InterfaceBuilderKit&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+--					&lt;string&gt;{{244, 901}, {616, 0}}&lt;/string&gt;
+-+					&lt;string&gt;{{341, 957}, {616, 0}}&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;{{132, 614}, {616, 0}}&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-@@ -2360,6 +2471,9 @@
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;PBCommitList&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;integer value="0" id="8"/&gt;
+-@@ -2425,7 +2539,7 @@
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;nil key="sourceID"/&gt;
+--			&lt;int key="maxID"&gt;217&lt;/int&gt;
+-+			&lt;int key="maxID"&gt;225&lt;/int&gt;
+- 		&lt;/object&gt;
+- 		&lt;object class="IBClassDescriber" key="IBDocument.Classes"&gt;
+- 			&lt;object class="NSMutableArray" key="referencedPartialClassDescriptions"&gt;
+-diff --git a/PBGitWindowController.h b/PBGitWindowController.h
+-index accde05..d243a37 100644
+---- a/PBGitWindowController.h
+-+++ b/PBGitWindowController.h
+-@@ -14,8 +14,6 @@
+- 	int selectedViewIndex;
+- 	IBOutlet NSView* contentView;
+- 	NSViewController* viewController;
+--
+--	IBOutlet NSToolbarItem *viewSelector;
+- }
+-
+- @property (assign) __weak PBGitRepository *repository;
+-diff --git a/PBGitWindowController.m b/PBGitWindowController.m
+-index db530c0..18c2393 100644
+---- a/PBGitWindowController.m
+-+++ b/PBGitWindowController.m
+-@@ -87,41 +87,11 @@
+-
+- #pragma mark -
+- #pragma mark Toolbar Delegates
+--- (NSToolbarItem *) toolbar:(NSToolbar *)toolbar
+--      itemForItemIdentifier:(NSString *)itemIdentifier
+--  willBeInsertedIntoToolbar:(BOOL)flag
+--{
+--	if ([itemIdentifier isEqualToString:[viewSelector itemIdentifier]])
+--		return viewSelector;
+--
+--	return nil;
+--}
+--
+--- (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar
+--{
+--	NSMutableArray *array = [NSMutableArray array];
+--	for (NSToolbarItem *item in [toolbar items])
+--		[array addObject:[item itemIdentifier]];
+--	return array;
+--}
+--
+--- (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar
+--{
+--	NSMutableArray *array = [NSMutableArray array];
+--	for (NSToolbarItem *item in [toolbar items])
+--		[array addObject:[item itemIdentifier]];
+--	return array;
+--}
+-
+- - (void) useToolbar:(NSToolbar *)toolbar
+- {
+--	[toolbar setDelegate:self];
+--
+--	[toolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:0];
+--	[toolbar insertItemWithItemIdentifier:[viewSelector itemIdentifier] atIndex:0];
+--
+--	NSSegmentedControl *viewSelect = (NSSegmentedControl *)[[[toolbar items] objectAtIndex:0] view];
+--	[viewSelect bind:@"selectedIndex" toObject:self withKeyPath:@"selectedViewIndex" options:0];
+-+	NSSegmentedControl *item = (NSSegmentedControl *)[[[toolbar items] objectAtIndex:0] view];
+-+	[item bind:@"selectedIndex" toObject:self withKeyPath:@"selectedViewIndex" options:0];
+-
+- 	[self.window setToolbar:toolbar];
+- }
+-	&lt;/textarea>
+-	&lt;pre>&lt;code class="diffcode" id='details'>&lt;/code>&lt;/pre>
+-&lt;/body>
+diff --git a/diff/tests/test2.html b/diff/tests/test2.html
+deleted file mode 100644
+index 2133d56..0000000
+--- a/diff/tests/test2.html
++++ /dev/null
+@@ -1,81 +0,0 @@
+-&lt;html>
+-&lt;head>
+-	&lt;link rel="stylesheet" href="../content/diff.css" type="text/css" media="screen" charset="utf-8">
+-	&lt;script src="../content/jquery.js" type="text/javascript" charset="utf-8">&lt;/script>
+-	&lt;script src="../content/gity.js" type="text/javascript" charset="utf-8">&lt;/script>
+-	&lt;script type="text/javascript" charset="utf-8">
+-		$(document).ready(startDiff);
+-	&lt;/script>
+-&lt;/head>
+-&lt;body>
+-	&lt;textarea id="diff" class="difftextarea">
+-diff --git a/src/GTOperationsController.m b/src/GTOperationsController.m
+-index b27216b..2f07884 100644
+---- a/src/GTOperationsController.m
+-+++ b/src/GTOperationsController.m
+-@@ -740,7 +740,7 @@ static GTModalController * modals;
+-
+- - (void) runSubmoduleSyncForSubmodule:(NSString *) _submodule {
+- 	if(allCanceled || networkOpsCancelled) return;
+--	[status showStatusIndicatorWithLabel:@"Syncing submodule, please wait"];
+-+	[status showStatusIndicatorWithLabel:@"Synchronizing submodule, please wait"];
+- 	GTOpSubmoduleSync * o = [[[GTOpSubmoduleSync alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+- 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+- 	[o setCompletionBlock:^{
+-@@ -773,7 +773,7 @@ static GTModalController * modals;
+-
+- - (void) runSubmoduleUpdateAll {
+- 	if(allCanceled || networkOpsCancelled) return;
+--	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
+-+	[status showStatusIndicatorWithLabel:@"Updating all submodules, please wait"];
+- 	GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+- 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+- 	[o setCompletionBlock:^{
+-
+-diff --git a/versioning/_version b/versioning/_version
+-index bfb53fd..b38dd1f 100755
+---- a/versioning/_version
+-+++ b/versioning/_version
+-@@ -1,4 +1,4 @@
+- 0
+- 1
+- 7
+--2345
+-\ No newline at end of file
+-+2347
+-\ No newline at end of file
+-
+-diff --git a/src/GTOperationsController.m b/src/GTOperationsController.m
+-index b27216b..2f07884 100644
+---- a/src/GTOperationsController.m
+-+++ b/src/GTOperationsController.m
+-@@ -740,7 +740,7 @@ static GTModalController * modals;
+-
+- - (void) runSubmoduleSyncForSubmodule:(NSString *) _submodule {
+- 	if(allCanceled || networkOpsCancelled) return;
+--	[status showStatusIndicatorWithLabel:@"Syncing submodule, please wait"];
+-+	[status showStatusIndicatorWithLabel:@"Synchronizing submodule, please wait"];
+- 	GTOpSubmoduleSync * o = [[[GTOpSubmoduleSync alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+- 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+- 	[o setCompletionBlock:^{
+-@@ -773,7 +773,7 @@ static GTModalController * modals;
+-
+- - (void) runSubmoduleUpdateAll {
+- 	if(allCanceled || networkOpsCancelled) return;
+--	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
+-+	[status showStatusIndicatorWithLabel:@"Updating all submodules, please wait"];
+- 	GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+- 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+- 	[o setCompletionBlock:^{
+-@@ -784,7 +784,7 @@ static GTModalController * modals;
+-
+- - (void) runSubmoduleInitAll {
+- 	if(allCanceled || networkOpsCancelled) return;
+--	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
+-+	[status showStatusIndicatorWithLabel:@"Initializing all submodules, please wait"];
+- 	GTOpInitializeSubs * o = [[[GTOpInitializeSubs alloc] initWithGD:gd] autorelease];
+- 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+- 	[o setCompletionBlock:^{
+-	&lt;/textarea>
+-	&lt;pre>&lt;code id='updateddiff'>&lt;/code>&lt;/pre>
+-&lt;/body>
+\ No newline at end of file
+diff --git a/diff/tests/test3.html b/diff/tests/test3.html
+deleted file mode 100644
+index 47fc312..0000000
+--- a/diff/tests/test3.html
++++ /dev/null
+@@ -1,856 +0,0 @@
+-&lt;html>
+-&lt;head>
+-	&lt;link rel="stylesheet" href="diff.css" type="text/css" media="screen" charset="utf-8">
+-	&lt;script src="jquery.js" type="text/javascript" charset="utf-8">&lt;/script>
+-	&lt;script src="gity.js" type="text/javascript" charset="utf-8">&lt;/script>
+-	&lt;script type="text/javascript" charset="utf-8">
+-		$(document).ready(startDiff);
+-	&lt;/script>
+-&lt;/head>
+-&lt;body>
+-	&lt;textarea id="diff" class="difftextarea">
+-diff --git a/English.lproj/RepositoryWindow.xib b/English.lproj/RepositoryWindow.xib
+-index 6cd49fa..7474752 100644
+---- a/English.lproj/RepositoryWindow.xib
+-+++ b/English.lproj/RepositoryWindow.xib
+-@@ -538,55 +538,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes>
+- 				&lt;string key="NSMaxSize"&gt;{3.40282e+38, 3.40282e+38}&lt;/string&gt;
+- 				&lt;string key="NSFrameAutosaveName"&gt;GitX&lt;/string&gt;
+- 			&lt;/object&gt;
+--			&lt;object class="NSToolbarItem" id="562497830"&gt;
+--				&lt;object class="NSMutableString" key="NSToolbarItemIdentifier"&gt;
+--					&lt;characters key="NS.bytes"&gt;B6D80172-2D01-49BD-8E3A-2F1D9F672390&lt;/characters&gt;
+--				&lt;/object&gt;
+--				&lt;string key="NSToolbarItemLabel"&gt;View&lt;/string&gt;
+--				&lt;string key="NSToolbarItemPaletteLabel"&gt;View selector&lt;/string&gt;
+--				&lt;nil key="NSToolbarItemToolTip"/&gt;
+--				&lt;object class="NSSegmentedControl" key="NSToolbarItemView" id="469221894"&gt;
+--					&lt;nil key="NSNextResponder"/&gt;
+--					&lt;int key="NSvFlags"&gt;268&lt;/int&gt;
+--					&lt;string key="NSFrame"&gt;{{0, 14}, {142, 25}}&lt;/string&gt;
+--					&lt;int key="NSTag"&gt;3&lt;/int&gt;
+--					&lt;bool key="NSEnabled"&gt;YES&lt;/bool&gt;
+--					&lt;object class="NSSegmentedCell" key="NSCell" id="1071657361"&gt;
+--						&lt;int key="NSCellFlags"&gt;67239424&lt;/int&gt;
+--						&lt;int key="NSCellFlags2"&gt;0&lt;/int&gt;
+--						&lt;object class="NSFont" key="NSSupport"&gt;
+--							&lt;string key="NSName"&gt;LucidaGrande&lt;/string&gt;
+--							&lt;double key="NSSize"&gt;1.300000e+01&lt;/double&gt;
+--							&lt;int key="NSfFlags"&gt;1044&lt;/int&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="NSControlView" ref="469221894"/&gt;
+--						&lt;object class="NSMutableArray" key="NSSegmentImages"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;object class="NSSegmentItem"&gt;
+--								&lt;string key="NSSegmentItemLabel"&gt;History&lt;/string&gt;
+--								&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+--							&lt;/object&gt;
+--							&lt;object class="NSSegmentItem"&gt;
+--								&lt;string key="NSSegmentItemLabel"&gt;Commit&lt;/string&gt;
+--								&lt;bool key="NSSegmentItemSelected"&gt;YES&lt;/bool&gt;
+--								&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+--							&lt;/object&gt;
+--						&lt;/object&gt;
+--						&lt;int key="NSSelectedSegment"&gt;1&lt;/int&gt;
+--						&lt;int key="NSSegmentStyle"&gt;2&lt;/int&gt;
+--					&lt;/object&gt;
+--				&lt;/object&gt;
+--				&lt;nil key="NSToolbarItemImage"/&gt;
+--				&lt;nil key="NSToolbarItemTarget"/&gt;
+--				&lt;nil key="NSToolbarItemAction"/&gt;
+--				&lt;string key="NSToolbarItemMinSize"&gt;{142, 25}&lt;/string&gt;
+--				&lt;string key="NSToolbarItemMaxSize"&gt;{142, 25}&lt;/string&gt;
+--				&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+--				&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+--				&lt;int key="NSToolbarItemTag"&gt;3&lt;/int&gt;
+--				&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+--				&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+--			&lt;/object&gt;
+- 		&lt;/object&gt;
+- 		&lt;object class="IBObjectContainer" key="IBDocument.Objects"&gt;
+- 			&lt;object class="NSMutableArray" key="connectionRecords"&gt;
+-@@ -607,30 +558,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 					&lt;/object&gt;
+- 					&lt;int key="connectionID"&gt;292&lt;/int&gt;
+- 				&lt;/object&gt;
+--				&lt;object class="IBConnectionRecord"&gt;
+--					&lt;object class="IBBindingConnection" key="connection"&gt;
+--						&lt;string key="label"&gt;selectedIndex: selectedViewIndex&lt;/string&gt;
+--						&lt;reference key="source" ref="469221894"/&gt;
+--						&lt;reference key="destination" ref="1001"/&gt;
+--						&lt;object class="NSNibBindingConnector" key="connector"&gt;
+--							&lt;reference key="NSSource" ref="469221894"/&gt;
+--							&lt;reference key="NSDestination" ref="1001"/&gt;
+--							&lt;string key="NSLabel"&gt;selectedIndex: selectedViewIndex&lt;/string&gt;
+--							&lt;string key="NSBinding"&gt;selectedIndex&lt;/string&gt;
+--							&lt;string key="NSKeyPath"&gt;selectedViewIndex&lt;/string&gt;
+--							&lt;int key="NSNibBindingConnectorVersion"&gt;2&lt;/int&gt;
+--						&lt;/object&gt;
+--					&lt;/object&gt;
+--					&lt;int key="connectionID"&gt;329&lt;/int&gt;
+--				&lt;/object&gt;
+--				&lt;object class="IBConnectionRecord"&gt;
+--					&lt;object class="IBOutletConnection" key="connection"&gt;
+--						&lt;string key="label"&gt;viewSelector&lt;/string&gt;
+--						&lt;reference key="source" ref="1001"/&gt;
+--						&lt;reference key="destination" ref="562497830"/&gt;
+--					&lt;/object&gt;
+--					&lt;int key="connectionID"&gt;350&lt;/int&gt;
+--				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;object class="IBMutableOrderedSet" key="objectRecords"&gt;
+- 				&lt;object class="NSArray" key="orderedObjects"&gt;
+-@@ -681,29 +608,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 						&lt;reference key="parent" ref="491121796"/&gt;
+- 					&lt;/object&gt;
+- 					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;324&lt;/int&gt;
+--						&lt;reference key="object" ref="562497830"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="469221894"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="1002"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;325&lt;/int&gt;
+--						&lt;reference key="object" ref="469221894"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="1071657361"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="562497830"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;326&lt;/int&gt;
+--						&lt;reference key="object" ref="1071657361"/&gt;
+--						&lt;reference key="parent" ref="469221894"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+- 						&lt;int key="objectID"&gt;342&lt;/int&gt;
+- 						&lt;reference key="object" ref="283658631"/&gt;
+- 						&lt;object class="NSMutableArray" key="children"&gt;
+-@@ -772,8 +676,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 					&lt;string&gt;3.windowTemplate.hasMinSize&lt;/string&gt;
+- 					&lt;string&gt;3.windowTemplate.maxSize&lt;/string&gt;
+- 					&lt;string&gt;3.windowTemplate.minSize&lt;/string&gt;
+--					&lt;string&gt;325.IBPluginDependency&lt;/string&gt;
+--					&lt;string&gt;326.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;342.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;343.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;344.IBPluginDependency&lt;/string&gt;
+-@@ -790,9 +692,9 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilderKit&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilderKit&lt;/string&gt;
+--					&lt;string&gt;{{312, 315}, {850, 418}}&lt;/string&gt;
+-+					&lt;string&gt;{{1047, -144}, {850, 418}}&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+--					&lt;string&gt;{{312, 315}, {850, 418}}&lt;/string&gt;
+-+					&lt;string&gt;{{1047, -144}, {850, 418}}&lt;/string&gt;
+- 					&lt;integer value="1" id="9"/&gt;
+- 					&lt;reference ref="9"/&gt;
+- 					&lt;string&gt;{{15, 196}, {850, 418}}&lt;/string&gt;
+-@@ -809,8 +711,6 @@ ELIAAAAAAAgACAAIAAgAAQABAAEAAQ&lt;/bytes&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+--					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+--					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;reference ref="9"/&gt;
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+-diff --git a/PBGitCommitView.xib b/PBGitCommitView.xib
+-index 0260e41..007010b 100644
+---- a/PBGitCommitView.xib
+-+++ b/PBGitCommitView.xib
+-@@ -898,6 +898,120 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 			&lt;object class="NSCustomObject" id="1007648253"&gt;
+- 				&lt;string key="NSClassName"&gt;PBWebChangesController&lt;/string&gt;
+- 			&lt;/object&gt;
+-+			&lt;object class="NSToolbar" id="570289088"&gt;
+-+				&lt;object class="NSMutableString" key="NSToolbarIdentifier"&gt;
+-+					&lt;characters key="NS.bytes"&gt;F94591D2-A188-4B08-A8B2-8C8CEC03CB14&lt;/characters&gt;
+-+				&lt;/object&gt;
+-+				&lt;nil key="NSToolbarDelegate"/&gt;
+-+				&lt;bool key="NSToolbarPrefersToBeShown"&gt;YES&lt;/bool&gt;
+-+				&lt;bool key="NSToolbarShowsBaselineSeparator"&gt;YES&lt;/bool&gt;
+-+				&lt;bool key="NSToolbarAllowsUserCustomization"&gt;NO&lt;/bool&gt;
+-+				&lt;bool key="NSToolbarAutosavesConfiguration"&gt;NO&lt;/bool&gt;
+-+				&lt;int key="NSToolbarDisplayMode"&gt;1&lt;/int&gt;
+-+				&lt;int key="NSToolbarSizeMode"&gt;1&lt;/int&gt;
+-+				&lt;object class="NSMutableDictionary" key="NSToolbarIBIdentifiedItems"&gt;
+-+					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;object class="NSMutableArray" key="dict.sortedKeys"&gt;
+-+						&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+						&lt;string&gt;1E431E79-1591-49E7-9E17-49497CA4622A&lt;/string&gt;
+-+						&lt;string&gt;NSToolbarSeparatorItem&lt;/string&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="NSMutableArray" key="dict.values"&gt;
+-+						&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+						&lt;object class="NSToolbarItem" id="271300712"&gt;
+-+							&lt;object class="NSMutableString" key="NSToolbarItemIdentifier"&gt;
+-+								&lt;characters key="NS.bytes"&gt;1E431E79-1591-49E7-9E17-49497CA4622A&lt;/characters&gt;
+-+							&lt;/object&gt;
+-+							&lt;string key="NSToolbarItemLabel"&gt;View&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemPaletteLabel"&gt;View selector&lt;/string&gt;
+-+							&lt;nil key="NSToolbarItemToolTip"/&gt;
+-+							&lt;object class="NSSegmentedControl" key="NSToolbarItemView" id="20026036"&gt;
+-+								&lt;nil key="NSNextResponder"/&gt;
+-+								&lt;int key="NSvFlags"&gt;268&lt;/int&gt;
+-+								&lt;string key="NSFrame"&gt;{{0, 14}, {142, 25}}&lt;/string&gt;
+-+								&lt;int key="NSTag"&gt;3&lt;/int&gt;
+-+								&lt;bool key="NSEnabled"&gt;YES&lt;/bool&gt;
+-+								&lt;object class="NSSegmentedCell" key="NSCell" id="796615469"&gt;
+-+									&lt;int key="NSCellFlags"&gt;67239424&lt;/int&gt;
+-+									&lt;int key="NSCellFlags2"&gt;0&lt;/int&gt;
+-+									&lt;reference key="NSSupport" ref="554612341"/&gt;
+-+									&lt;reference key="NSControlView" ref="20026036"/&gt;
+-+									&lt;object class="NSMutableArray" key="NSSegmentImages"&gt;
+-+										&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+										&lt;object class="NSSegmentItem"&gt;
+-+											&lt;string key="NSSegmentItemLabel"&gt;History&lt;/string&gt;
+-+											&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+-+										&lt;/object&gt;
+-+										&lt;object class="NSSegmentItem"&gt;
+-+											&lt;string key="NSSegmentItemLabel"&gt;Commit&lt;/string&gt;
+-+											&lt;bool key="NSSegmentItemSelected"&gt;YES&lt;/bool&gt;
+-+											&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+-+										&lt;/object&gt;
+-+									&lt;/object&gt;
+-+									&lt;int key="NSSelectedSegment"&gt;1&lt;/int&gt;
+-+									&lt;int key="NSSegmentStyle"&gt;2&lt;/int&gt;
+-+								&lt;/object&gt;
+-+							&lt;/object&gt;
+-+							&lt;nil key="NSToolbarItemImage"/&gt;
+-+							&lt;nil key="NSToolbarItemTarget"/&gt;
+-+							&lt;nil key="NSToolbarItemAction"/&gt;
+-+							&lt;string key="NSToolbarItemMinSize"&gt;{142, 25}&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemMaxSize"&gt;{142, 25}&lt;/string&gt;
+-+							&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+-+							&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemTag"&gt;3&lt;/int&gt;
+-+							&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+-+						&lt;/object&gt;
+-+						&lt;object class="NSToolbarSeparatorItem" id="354340151"&gt;
+-+							&lt;string key="NSToolbarItemIdentifier"&gt;NSToolbarSeparatorItem&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemLabel"/&gt;
+-+							&lt;string key="NSToolbarItemPaletteLabel"&gt;Separator&lt;/string&gt;
+-+							&lt;nil key="NSToolbarItemToolTip"/&gt;
+-+							&lt;nil key="NSToolbarItemView"/&gt;
+-+							&lt;nil key="NSToolbarItemImage"/&gt;
+-+							&lt;nil key="NSToolbarItemTarget"/&gt;
+-+							&lt;nil key="NSToolbarItemAction"/&gt;
+-+							&lt;string key="NSToolbarItemMinSize"&gt;{12, 5}&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemMaxSize"&gt;{12, 1000}&lt;/string&gt;
+-+							&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+-+							&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemTag"&gt;-1&lt;/int&gt;
+-+							&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+-+							&lt;object class="NSMenuItem" key="NSToolbarItemMenuFormRepresentation"&gt;
+-+								&lt;bool key="NSIsDisabled"&gt;YES&lt;/bool&gt;
+-+								&lt;bool key="NSIsSeparator"&gt;YES&lt;/bool&gt;
+-+								&lt;string key="NSTitle"/&gt;
+-+								&lt;string key="NSKeyEquiv"/&gt;
+-+								&lt;int key="NSKeyEquivModMask"&gt;1048576&lt;/int&gt;
+-+								&lt;int key="NSMnemonicLoc"&gt;2147483647&lt;/int&gt;
+-+								&lt;object class="NSCustomResource" key="NSOnImage"&gt;
+-+									&lt;string key="NSClassName"&gt;NSImage&lt;/string&gt;
+-+									&lt;string key="NSResourceName"&gt;NSMenuCheckmark&lt;/string&gt;
+-+								&lt;/object&gt;
+-+								&lt;object class="NSCustomResource" key="NSMixedImage"&gt;
+-+									&lt;string key="NSClassName"&gt;NSImage&lt;/string&gt;
+-+									&lt;string key="NSResourceName"&gt;NSMenuMixedState&lt;/string&gt;
+-+								&lt;/object&gt;
+-+							&lt;/object&gt;
+-+						&lt;/object&gt;
+-+					&lt;/object&gt;
+-+				&lt;/object&gt;
+-+				&lt;object class="NSArray" key="NSToolbarIBAllowedItems"&gt;
+-+					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;reference ref="271300712"/&gt;
+-+					&lt;reference ref="354340151"/&gt;
+-+				&lt;/object&gt;
+-+				&lt;object class="NSMutableArray" key="NSToolbarIBDefaultItems"&gt;
+-+					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;reference ref="271300712"/&gt;
+-+					&lt;reference ref="354340151"/&gt;
+-+				&lt;/object&gt;
+-+				&lt;object class="NSMutableArray" key="NSToolbarIBSelectableItems"&gt;
+-+					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+				&lt;/object&gt;
+-+			&lt;/object&gt;
+- 		&lt;/object&gt;
+- 		&lt;object class="IBObjectContainer" key="IBDocument.Objects"&gt;
+- 			&lt;object class="NSMutableArray" key="connectionRecords"&gt;
+-@@ -1126,6 +1240,14 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 					&lt;/object&gt;
+- 					&lt;int key="connectionID"&gt;224&lt;/int&gt;
+- 				&lt;/object&gt;
+-+				&lt;object class="IBConnectionRecord"&gt;
+-+					&lt;object class="IBOutletConnection" key="connection"&gt;
+-+						&lt;string key="label"&gt;viewToolbar&lt;/string&gt;
+-+						&lt;reference key="source" ref="1001"/&gt;
+-+						&lt;reference key="destination" ref="570289088"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;int key="connectionID"&gt;241&lt;/int&gt;
+-+				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;object class="IBMutableOrderedSet" key="objectRecords"&gt;
+- 				&lt;object class="NSArray" key="orderedObjects"&gt;
+-@@ -1419,6 +1541,45 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 						&lt;reference key="object" ref="221814497"/&gt;
+- 						&lt;reference key="parent" ref="750704519"/&gt;
+- 					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;225&lt;/int&gt;
+-+						&lt;reference key="object" ref="570289088"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="271300712"/&gt;
+-+							&lt;reference ref="354340151"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="1002"/&gt;
+-+						&lt;string key="objectName"&gt;Commit Toolbar&lt;/string&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;226&lt;/int&gt;
+-+						&lt;reference key="object" ref="271300712"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="20026036"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="570289088"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;227&lt;/int&gt;
+-+						&lt;reference key="object" ref="354340151"/&gt;
+-+						&lt;reference key="parent" ref="570289088"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;239&lt;/int&gt;
+-+						&lt;reference key="object" ref="20026036"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="796615469"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="271300712"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;240&lt;/int&gt;
+-+						&lt;reference key="object" ref="796615469"/&gt;
+-+						&lt;reference key="parent" ref="20026036"/&gt;
+-+					&lt;/object&gt;
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;object class="NSMutableDictionary" key="flattenedProperties"&gt;
+-@@ -1446,6 +1607,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 					&lt;string&gt;164.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;2.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;217.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;225.IBEditorWindowLastContentRect&lt;/string&gt;
+-+					&lt;string&gt;225.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;225.editorWindowContentRectSynchronizationRect&lt;/string&gt;
+-+					&lt;string&gt;227.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;239.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;240.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;42.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;45.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;46.IBPluginDependency&lt;/string&gt;
+-@@ -1482,6 +1649,12 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;{{341, 837}, {616, 169}}&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;{{132, 614}, {616, 0}}&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-@@ -1516,7 +1689,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA&lt;/bytes&gt;
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;nil key="sourceID"/&gt;
+--			&lt;int key="maxID"&gt;224&lt;/int&gt;
+-+			&lt;int key="maxID"&gt;241&lt;/int&gt;
+- 		&lt;/object&gt;
+- 		&lt;object class="IBClassDescriber" key="IBDocument.Classes"&gt;
+- 			&lt;object class="NSMutableArray" key="referencedPartialClassDescriptions"&gt;
+-diff --git a/PBGitHistoryView.xib b/PBGitHistoryView.xib
+-index e008bb9..4df97b3 100644
+---- a/PBGitHistoryView.xib
+-+++ b/PBGitHistoryView.xib
+-@@ -95,7 +95,7 @@
+- 			&lt;/object&gt;
+- 			&lt;object class="NSToolbar" id="65173285"&gt;
+- 				&lt;object class="NSMutableString" key="NSToolbarIdentifier"&gt;
+--					&lt;characters key="NS.bytes"&gt;B9F1B847-0DC3-4C13-A685-5F5A2D64BC93&lt;/characters&gt;
+-+					&lt;characters key="NS.bytes"&gt;F94591D2-A188-4B08-A8B2-8C8CEC03CB14&lt;/characters&gt;
+- 				&lt;/object&gt;
+- 				&lt;nil key="NSToolbarDelegate"/&gt;
+- 				&lt;bool key="NSToolbarPrefersToBeShown"&gt;YES&lt;/bool&gt;
+-@@ -108,12 +108,63 @@
+- 					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+- 					&lt;object class="NSMutableArray" key="dict.sortedKeys"&gt;
+- 						&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+						&lt;string&gt;1E431E79-1591-49E7-9E17-49497CA4622A&lt;/string&gt;
+- 						&lt;string&gt;7FFB691C-2D2F-49A9-997F-AE1AE8BFF3F1&lt;/string&gt;
+- 						&lt;string&gt;99C2C9EB-AE16-42A9-BE52-46CE903E9AF9&lt;/string&gt;
+- 						&lt;string&gt;NSToolbarFlexibleSpaceItem&lt;/string&gt;
+-+						&lt;string&gt;NSToolbarSeparatorItem&lt;/string&gt;
+- 					&lt;/object&gt;
+- 					&lt;object class="NSMutableArray" key="dict.values"&gt;
+- 						&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+						&lt;object class="NSToolbarItem" id="215578734"&gt;
+-+							&lt;object class="NSMutableString" key="NSToolbarItemIdentifier"&gt;
+-+								&lt;characters key="NS.bytes"&gt;1E431E79-1591-49E7-9E17-49497CA4622A&lt;/characters&gt;
+-+							&lt;/object&gt;
+-+							&lt;string key="NSToolbarItemLabel"&gt;View&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemPaletteLabel"&gt;View selector&lt;/string&gt;
+-+							&lt;nil key="NSToolbarItemToolTip"/&gt;
+-+							&lt;object class="NSSegmentedControl" key="NSToolbarItemView" id="764711234"&gt;
+-+								&lt;nil key="NSNextResponder"/&gt;
+-+								&lt;int key="NSvFlags"&gt;268&lt;/int&gt;
+-+								&lt;string key="NSFrame"&gt;{{0, 14}, {142, 25}}&lt;/string&gt;
+-+								&lt;int key="NSTag"&gt;3&lt;/int&gt;
+-+								&lt;bool key="NSEnabled"&gt;YES&lt;/bool&gt;
+-+								&lt;object class="NSSegmentedCell" key="NSCell" id="266464607"&gt;
+-+									&lt;int key="NSCellFlags"&gt;67239424&lt;/int&gt;
+-+									&lt;int key="NSCellFlags2"&gt;0&lt;/int&gt;
+-+									&lt;object class="NSFont" key="NSSupport" id="924107556"&gt;
+-+										&lt;string key="NSName"&gt;LucidaGrande&lt;/string&gt;
+-+										&lt;double key="NSSize"&gt;1.300000e+01&lt;/double&gt;
+-+										&lt;int key="NSfFlags"&gt;1044&lt;/int&gt;
+-+									&lt;/object&gt;
+-+									&lt;reference key="NSControlView" ref="764711234"/&gt;
+-+									&lt;object class="NSMutableArray" key="NSSegmentImages"&gt;
+-+										&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+										&lt;object class="NSSegmentItem"&gt;
+-+											&lt;string key="NSSegmentItemLabel"&gt;History&lt;/string&gt;
+-+											&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+-+										&lt;/object&gt;
+-+										&lt;object class="NSSegmentItem"&gt;
+-+											&lt;string key="NSSegmentItemLabel"&gt;Commit&lt;/string&gt;
+-+											&lt;bool key="NSSegmentItemSelected"&gt;YES&lt;/bool&gt;
+-+											&lt;int key="NSSegmentItemImageScaling"&gt;0&lt;/int&gt;
+-+										&lt;/object&gt;
+-+									&lt;/object&gt;
+-+									&lt;int key="NSSelectedSegment"&gt;1&lt;/int&gt;
+-+									&lt;int key="NSSegmentStyle"&gt;2&lt;/int&gt;
+-+								&lt;/object&gt;
+-+							&lt;/object&gt;
+-+							&lt;nil key="NSToolbarItemImage"/&gt;
+-+							&lt;nil key="NSToolbarItemTarget"/&gt;
+-+							&lt;nil key="NSToolbarItemAction"/&gt;
+-+							&lt;string key="NSToolbarItemMinSize"&gt;{142, 25}&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemMaxSize"&gt;{142, 25}&lt;/string&gt;
+-+							&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+-+							&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemTag"&gt;3&lt;/int&gt;
+-+							&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+-+						&lt;/object&gt;
+- 						&lt;object class="NSToolbarItem" id="479447135"&gt;
+- 							&lt;object class="NSMutableString" key="NSToolbarItemIdentifier"&gt;
+- 								&lt;characters key="NS.bytes"&gt;7FFB691C-2D2F-49A9-997F-AE1AE8BFF3F1&lt;/characters&gt;
+-@@ -131,11 +182,7 @@
+- 								&lt;object class="NSSearchFieldCell" key="NSCell" id="449521666"&gt;
+- 									&lt;int key="NSCellFlags"&gt;343014976&lt;/int&gt;
+- 									&lt;int key="NSCellFlags2"&gt;268436480&lt;/int&gt;
+--									&lt;object class="NSFont" key="NSSupport" id="924107556"&gt;
+--										&lt;string key="NSName"&gt;LucidaGrande&lt;/string&gt;
+--										&lt;double key="NSSize"&gt;1.300000e+01&lt;/double&gt;
+--										&lt;int key="NSfFlags"&gt;1044&lt;/int&gt;
+--									&lt;/object&gt;
+-+									&lt;reference key="NSSupport" ref="924107556"/&gt;
+- 									&lt;string key="NSPlaceholderString"&gt;Subject&lt;/string&gt;
+- 									&lt;reference key="NSControlView" ref="845792858"/&gt;
+- 									&lt;bool key="NSDrawsBackground"&gt;YES&lt;/bool&gt;
+-@@ -330,16 +377,47 @@
+- 								&lt;reference key="NSMixedImage" ref="746375230"/&gt;
+- 							&lt;/object&gt;
+- 						&lt;/object&gt;
+-+						&lt;object class="NSToolbarSeparatorItem" id="776753395"&gt;
+-+							&lt;string key="NSToolbarItemIdentifier"&gt;NSToolbarSeparatorItem&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemLabel"/&gt;
+-+							&lt;string key="NSToolbarItemPaletteLabel"&gt;Separator&lt;/string&gt;
+-+							&lt;nil key="NSToolbarItemToolTip"/&gt;
+-+							&lt;nil key="NSToolbarItemView"/&gt;
+-+							&lt;nil key="NSToolbarItemImage"/&gt;
+-+							&lt;nil key="NSToolbarItemTarget"/&gt;
+-+							&lt;nil key="NSToolbarItemAction"/&gt;
+-+							&lt;string key="NSToolbarItemMinSize"&gt;{12, 5}&lt;/string&gt;
+-+							&lt;string key="NSToolbarItemMaxSize"&gt;{12, 1000}&lt;/string&gt;
+-+							&lt;bool key="NSToolbarItemEnabled"&gt;YES&lt;/bool&gt;
+-+							&lt;bool key="NSToolbarItemAutovalidates"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemTag"&gt;-1&lt;/int&gt;
+-+							&lt;bool key="NSToolbarIsUserRemovable"&gt;YES&lt;/bool&gt;
+-+							&lt;int key="NSToolbarItemVisibilityPriority"&gt;0&lt;/int&gt;
+-+							&lt;object class="NSMenuItem" key="NSToolbarItemMenuFormRepresentation"&gt;
+-+								&lt;bool key="NSIsDisabled"&gt;YES&lt;/bool&gt;
+-+								&lt;bool key="NSIsSeparator"&gt;YES&lt;/bool&gt;
+-+								&lt;string key="NSTitle"/&gt;
+-+								&lt;string key="NSKeyEquiv"/&gt;
+-+								&lt;int key="NSKeyEquivModMask"&gt;1048576&lt;/int&gt;
+-+								&lt;int key="NSMnemonicLoc"&gt;2147483647&lt;/int&gt;
+-+								&lt;reference key="NSOnImage" ref="908677745"/&gt;
+-+								&lt;reference key="NSMixedImage" ref="746375230"/&gt;
+-+							&lt;/object&gt;
+-+						&lt;/object&gt;
+- 					&lt;/object&gt;
+- 				&lt;/object&gt;
+- 				&lt;object class="NSArray" key="NSToolbarIBAllowedItems"&gt;
+- 					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;reference ref="215578734"/&gt;
+-+					&lt;reference ref="776753395"/&gt;
+- 					&lt;reference ref="455812118"/&gt;
+- 					&lt;reference ref="633367776"/&gt;
+- 					&lt;reference ref="479447135"/&gt;
+- 				&lt;/object&gt;
+- 				&lt;object class="NSMutableArray" key="NSToolbarIBDefaultItems"&gt;
+- 					&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+					&lt;reference ref="215578734"/&gt;
+-+					&lt;reference ref="776753395"/&gt;
+- 					&lt;reference ref="455812118"/&gt;
+- 					&lt;reference ref="633367776"/&gt;
+- 					&lt;reference ref="479447135"/&gt;
+-@@ -2053,6 +2131,93 @@
+- 						&lt;reference key="parent" ref="555671215"/&gt;
+- 					&lt;/object&gt;
+- 					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;3&lt;/int&gt;
+-+						&lt;reference key="object" ref="663765878"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="942510576"/&gt;
+-+							&lt;reference ref="452331733"/&gt;
+-+							&lt;reference ref="152625445"/&gt;
+-+							&lt;reference ref="254268962"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="202620420"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;30&lt;/int&gt;
+-+						&lt;reference key="object" ref="942510576"/&gt;
+-+						&lt;reference key="parent" ref="663765878"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;29&lt;/int&gt;
+-+						&lt;reference key="object" ref="452331733"/&gt;
+-+						&lt;reference key="parent" ref="663765878"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;28&lt;/int&gt;
+-+						&lt;reference key="object" ref="152625445"/&gt;
+-+						&lt;reference key="parent" ref="663765878"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;27&lt;/int&gt;
+-+						&lt;reference key="object" ref="254268962"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="976830280"/&gt;
+-+							&lt;reference ref="1025472344"/&gt;
+-+							&lt;reference ref="792589327"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="663765878"/&gt;
+-+						&lt;string key="objectName"&gt;Commit List&lt;/string&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;33&lt;/int&gt;
+-+						&lt;reference key="object" ref="976830280"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="853819733"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="254268962"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;32&lt;/int&gt;
+-+						&lt;reference key="object" ref="1025472344"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="977219207"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="254268962"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;31&lt;/int&gt;
+-+						&lt;reference key="object" ref="792589327"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="746918365"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="254268962"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;36&lt;/int&gt;
+-+						&lt;reference key="object" ref="746918365"/&gt;
+-+						&lt;reference key="parent" ref="792589327"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;35&lt;/int&gt;
+-+						&lt;reference key="object" ref="977219207"/&gt;
+-+						&lt;reference key="parent" ref="1025472344"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;34&lt;/int&gt;
+-+						&lt;reference key="object" ref="853819733"/&gt;
+-+						&lt;reference key="parent" ref="976830280"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;190&lt;/int&gt;
+-+						&lt;reference key="object" ref="886549521"/&gt;
+-+						&lt;reference key="parent" ref="1002"/&gt;
+-+						&lt;string key="objectName"&gt;Branches Controller&lt;/string&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+- 						&lt;int key="objectID"&gt;113&lt;/int&gt;
+- 						&lt;reference key="object" ref="65173285"/&gt;
+- 						&lt;object class="NSMutableArray" key="children"&gt;
+-@@ -2060,6 +2225,8 @@
+- 							&lt;reference ref="455812118"/&gt;
+- 							&lt;reference ref="633367776"/&gt;
+- 							&lt;reference ref="479447135"/&gt;
+-+							&lt;reference ref="776753395"/&gt;
+-+							&lt;reference ref="215578734"/&gt;
+- 						&lt;/object&gt;
+- 						&lt;reference key="parent" ref="1002"/&gt;
+- 						&lt;string key="objectName"&gt;History Toolbar&lt;/string&gt;
+-@@ -2088,6 +2255,34 @@
+- 						&lt;reference key="parent" ref="65173285"/&gt;
+- 					&lt;/object&gt;
+- 					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;222&lt;/int&gt;
+-+						&lt;reference key="object" ref="776753395"/&gt;
+-+						&lt;reference key="parent" ref="65173285"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;223&lt;/int&gt;
+-+						&lt;reference key="object" ref="215578734"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="764711234"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="65173285"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;224&lt;/int&gt;
+-+						&lt;reference key="object" ref="764711234"/&gt;
+-+						&lt;object class="NSMutableArray" key="children"&gt;
+-+							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+-+							&lt;reference ref="266464607"/&gt;
+-+						&lt;/object&gt;
+-+						&lt;reference key="parent" ref="215578734"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+-+						&lt;int key="objectID"&gt;225&lt;/int&gt;
+-+						&lt;reference key="object" ref="266464607"/&gt;
+-+						&lt;reference key="parent" ref="764711234"/&gt;
+-+					&lt;/object&gt;
+-+					&lt;object class="IBObjectRecord"&gt;
+- 						&lt;int key="objectID"&gt;117&lt;/int&gt;
+- 						&lt;reference key="object" ref="845792858"/&gt;
+- 						&lt;object class="NSMutableArray" key="children"&gt;
+-@@ -2145,93 +2340,6 @@
+- 						&lt;reference key="object" ref="882172208"/&gt;
+- 						&lt;reference key="parent" ref="604026377"/&gt;
+- 					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;3&lt;/int&gt;
+--						&lt;reference key="object" ref="663765878"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="942510576"/&gt;
+--							&lt;reference ref="452331733"/&gt;
+--							&lt;reference ref="152625445"/&gt;
+--							&lt;reference ref="254268962"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="202620420"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;30&lt;/int&gt;
+--						&lt;reference key="object" ref="942510576"/&gt;
+--						&lt;reference key="parent" ref="663765878"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;29&lt;/int&gt;
+--						&lt;reference key="object" ref="452331733"/&gt;
+--						&lt;reference key="parent" ref="663765878"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;28&lt;/int&gt;
+--						&lt;reference key="object" ref="152625445"/&gt;
+--						&lt;reference key="parent" ref="663765878"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;27&lt;/int&gt;
+--						&lt;reference key="object" ref="254268962"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="976830280"/&gt;
+--							&lt;reference ref="1025472344"/&gt;
+--							&lt;reference ref="792589327"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="663765878"/&gt;
+--						&lt;string key="objectName"&gt;Commit List&lt;/string&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;33&lt;/int&gt;
+--						&lt;reference key="object" ref="976830280"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="853819733"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="254268962"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;32&lt;/int&gt;
+--						&lt;reference key="object" ref="1025472344"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="977219207"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="254268962"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;31&lt;/int&gt;
+--						&lt;reference key="object" ref="792589327"/&gt;
+--						&lt;object class="NSMutableArray" key="children"&gt;
+--							&lt;bool key="EncodedWithXMLCoder"&gt;YES&lt;/bool&gt;
+--							&lt;reference ref="746918365"/&gt;
+--						&lt;/object&gt;
+--						&lt;reference key="parent" ref="254268962"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;36&lt;/int&gt;
+--						&lt;reference key="object" ref="746918365"/&gt;
+--						&lt;reference key="parent" ref="792589327"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;35&lt;/int&gt;
+--						&lt;reference key="object" ref="977219207"/&gt;
+--						&lt;reference key="parent" ref="1025472344"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;34&lt;/int&gt;
+--						&lt;reference key="object" ref="853819733"/&gt;
+--						&lt;reference key="parent" ref="976830280"/&gt;
+--					&lt;/object&gt;
+--					&lt;object class="IBObjectRecord"&gt;
+--						&lt;int key="objectID"&gt;190&lt;/int&gt;
+--						&lt;reference key="object" ref="886549521"/&gt;
+--						&lt;reference key="parent" ref="1002"/&gt;
+--						&lt;string key="objectName"&gt;Branches Controller&lt;/string&gt;
+--					&lt;/object&gt;
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;object class="NSMutableDictionary" key="flattenedProperties"&gt;
+-@@ -2272,6 +2380,9 @@
+- 					&lt;string&gt;2.ImportedFromIB2&lt;/string&gt;
+- 					&lt;string&gt;21.IBAttributePlaceholdersKey&lt;/string&gt;
+- 					&lt;string&gt;21.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;222.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;224.IBPluginDependency&lt;/string&gt;
+-+					&lt;string&gt;225.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;23.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;24.IBPluginDependency&lt;/string&gt;
+- 					&lt;string&gt;25.IBPluginDependency&lt;/string&gt;
+-@@ -2319,7 +2430,7 @@
+- 					&lt;string&gt;com.apple.InterfaceBuilderKit&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+--					&lt;string&gt;{{244, 901}, {616, 0}}&lt;/string&gt;
+-+					&lt;string&gt;{{341, 957}, {616, 0}}&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;{{132, 614}, {616, 0}}&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-@@ -2360,6 +2471,9 @@
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+-+					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;string&gt;PBCommitList&lt;/string&gt;
+- 					&lt;string&gt;com.apple.InterfaceBuilder.CocoaPlugin&lt;/string&gt;
+- 					&lt;integer value="0" id="8"/&gt;
+-@@ -2425,7 +2539,7 @@
+- 				&lt;/object&gt;
+- 			&lt;/object&gt;
+- 			&lt;nil key="sourceID"/&gt;
+--			&lt;int key="maxID"&gt;217&lt;/int&gt;
+-+			&lt;int key="maxID"&gt;225&lt;/int&gt;
+- 		&lt;/object&gt;
+- 		&lt;object class="IBClassDescriber" key="IBDocument.Classes"&gt;
+- 			&lt;object class="NSMutableArray" key="referencedPartialClassDescriptions"&gt;
+-diff --git a/PBGitWindowController.h b/PBGitWindowController.h
+-index accde05..d243a37 100644
+---- a/PBGitWindowController.h
+-+++ b/PBGitWindowController.h
+-@@ -14,8 +14,6 @@
+- 	int selectedViewIndex;
+- 	IBOutlet NSView* contentView;
+- 	NSViewController* viewController;
+--
+--	IBOutlet NSToolbarItem *viewSelector;
+- }
+-
+- @property (assign) __weak PBGitRepository *repository;
+-diff --git a/PBGitWindowController.m b/PBGitWindowController.m
+-index db530c0..18c2393 100644
+---- a/PBGitWindowController.m
+-+++ b/PBGitWindowController.m
+-@@ -87,41 +87,11 @@
+-
+- #pragma mark -
+- #pragma mark Toolbar Delegates
+--- (NSToolbarItem *) toolbar:(NSToolbar *)toolbar
+--      itemForItemIdentifier:(NSString *)itemIdentifier
+--  willBeInsertedIntoToolbar:(BOOL)flag
+--{
+--	if ([itemIdentifier isEqualToString:[viewSelector itemIdentifier]])
+--		return viewSelector;
+--
+--	return nil;
+--}
+--
+--- (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar
+--{
+--	NSMutableArray *array = [NSMutableArray array];
+--	for (NSToolbarItem *item in [toolbar items])
+--		[array addObject:[item itemIdentifier]];
+--	return array;
+--}
+--
+--- (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar
+--{
+--	NSMutableArray *array = [NSMutableArray array];
+--	for (NSToolbarItem *item in [toolbar items])
+--		[array addObject:[item itemIdentifier]];
+--	return array;
+--}
+-
+- - (void) useToolbar:(NSToolbar *)toolbar
+- {
+--	[toolbar setDelegate:self];
+--
+--	[toolbar insertItemWithItemIdentifier:NSToolbarSeparatorItemIdentifier atIndex:0];
+--	[toolbar insertItemWithItemIdentifier:[viewSelector itemIdentifier] atIndex:0];
+--
+--	NSSegmentedControl *viewSelect = (NSSegmentedControl *)[[[toolbar items] objectAtIndex:0] view];
+--	[viewSelect bind:@"selectedIndex" toObject:self withKeyPath:@"selectedViewIndex" options:0];
+-+	NSSegmentedControl *item = (NSSegmentedControl *)[[[toolbar items] objectAtIndex:0] view];
+-+	[item bind:@"selectedIndex" toObject:self withKeyPath:@"selectedViewIndex" options:0];
+-
+- 	[self.window setToolbar:toolbar];
+- }
+-
+-	&lt;/textarea>
+-	&lt;pre>&lt;code id='updateddiff'>&lt;/code>&lt;/pre>
+-&lt;/body>
+\ No newline at end of file
+diff --git a/diff/tests/test4.html b/diff/tests/test4.html
+deleted file mode 100644
+index 2fb9f64..0000000
+--- a/diff/tests/test4.html
++++ /dev/null
+@@ -1,39 +0,0 @@
+-&lt;html>
+-&lt;head>
+-	&lt;link rel="stylesheet" href="../content/diff.css" type="text/css" media="screen" charset="utf-8">
+-	&lt;script src="../content/jquery.js" type="text/javascript" charset="utf-8">&lt;/script>
+-	&lt;script src="../content/gity.js" type="text/javascript" charset="utf-8">&lt;/script>
+-	&lt;script type="text/javascript" charset="utf-8">
+-		$(document).ready(startDiff);
+-	&lt;/script>
+-&lt;/head>
+-&lt;body>
+-	&lt;textarea id="diff" class="difftextarea">
+-diff --git a/Info.plist b/Info.plist
+-index 1b9c694..be545f3 100644
+---- a/Info.plist
+-+++ b/Info.plist
+-@@ -42,7 +42,7 @@
+- 	&lt;key>CFBundleSignature&lt;/key>
+- 	&lt;string>????&lt;/string>
+- 	&lt;key>CFBundleVersion&lt;/key>
+--	&lt;string>2345&lt;/string>
+-+	&lt;string>2347&lt;/string>
+- 	&lt;key>LSMinimumSystemVersion&lt;/key>
+- 	&lt;string>${MACOSX_DEPLOYMENT_TARGET}&lt;/string>
+- 	&lt;key>NSMainNibFile&lt;/key>
+-diff --git a/versioning/_version b/versioning/_version
+-index bfb53fd..b38dd1f 100755
+---- a/versioning/_version
+-+++ b/versioning/_version
+-@@ -1,4 +1,4 @@
+- 0
+- 1
+- 7
+--2345
+-\ No newline at end of file
+-+2347
+-\ No newline at end of file
+-	&lt;/textarea>
+-	&lt;pre>&lt;code id='updateddiff'>&lt;/code>&lt;/pre>
+-&lt;/body>
+\ No newline at end of file
+diff --git a/gitty.xcodeproj/project.pbxproj b/gitty.xcodeproj/project.pbxproj
+index d840751..656b63a 100644
+--- a/gitty.xcodeproj/project.pbxproj
++++ b/gitty.xcodeproj/project.pbxproj
+@@ -266,7 +266,6 @@
+ 		07D23BD810AE98FA007BB68A /* GTDiffBarSelectStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D23BD710AE98FA007BB68A /* GTDiffBarSelectStateView.m */; };
+ 		07D23C7910AE9F67007BB68A /* GTDiffBarLoadCommitsProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D23C7810AE9F67007BB68A /* GTDiffBarLoadCommitsProgressView.m */; };
+ 		07D23CD610AEA5E4007BB68A /* copyright in Resources */ = {isa = PBXBuildFile; fileRef = 07D23CD510AEA5E4007BB68A /* copyright */; };
+-		07D23CD810AEA70D007BB68A /* license in Resources */ = {isa = PBXBuildFile; fileRef = 07D23CD710AEA70D007BB68A /* license */; };
+ 		07D23CF010AEACDA007BB68A /* diffSelectorDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D23CED10AEACDA007BB68A /* diffSelectorDown.png */; };
+ 		07D23CF110AEACDA007BB68A /* diffSelectorNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D23CEE10AEACDA007BB68A /* diffSelectorNormal.png */; };
+ 		07D23CF210AEACDA007BB68A /* diffSelectorOver.png in Resources */ = {isa = PBXBuildFile; fileRef = 07D23CEF10AEACDA007BB68A /* diffSelectorOver.png */; };
+@@ -736,7 +735,6 @@
+ 		07D23C7710AE9F67007BB68A /* GTDiffBarLoadCommitsProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTDiffBarLoadCommitsProgressView.h; path = src/GTDiffBarLoadCommitsProgressView.h; sourceTree = "&lt;group>"; };
+ 		07D23C7810AE9F67007BB68A /* GTDiffBarLoadCommitsProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTDiffBarLoadCommitsProgressView.m; path = src/GTDiffBarLoadCommitsProgressView.m; sourceTree = "&lt;group>"; };
+ 		07D23CD510AEA5E4007BB68A /* copyright */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copyright; sourceTree = "&lt;group>"; };
+-		07D23CD710AEA70D007BB68A /* license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license; sourceTree = "&lt;group>"; };
+ 		07D23CED10AEACDA007BB68A /* diffSelectorDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diffSelectorDown.png; path = assets/diffSelectorDown.png; sourceTree = "&lt;group>"; };
+ 		07D23CEE10AEACDA007BB68A /* diffSelectorNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diffSelectorNormal.png; path = assets/diffSelectorNormal.png; sourceTree = "&lt;group>"; };
+ 		07D23CEF10AEACDA007BB68A /* diffSelectorOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diffSelectorOver.png; path = assets/diffSelectorOver.png; sourceTree = "&lt;group>"; };
+@@ -1672,7 +1670,6 @@
+ 				07C422E8109699A500D3F494 /* icon.icns */,
+ 				8D15AC360486D014006FF6A4 /* Info.plist */,
+ 				089C165FFE840EACC02AAC07 /* InfoPlist.strings */,
+-				07D23CD710AEA70D007BB68A /* license */,
+ 				07C4224810968B3A00D3F494 /* Localized.strings */,
+ 				1DDD582A0DA1D0D100B32029 /* MainMenu.xib */,
+ 				077147C41060BE3500D6230C /* NewBranch.xib */,
+@@ -1879,7 +1876,6 @@
+ 				078510F110A3DF4E0049D7CB /* cancelOver.png in Resources */,
+ 				07DA8C1010A8033400864A22 /* SimpleCommits.xib in Resources */,
+ 				07D23CD610AEA5E4007BB68A /* copyright in Resources */,
+-				07D23CD810AEA70D007BB68A /* license in Resources */,
+ 				07D23CF010AEACDA007BB68A /* diffSelectorDown.png in Resources */,
+ 				07D23CF110AEACDA007BB68A /* diffSelectorNormal.png in Resources */,
+ 				07D23CF210AEACDA007BB68A /* diffSelectorOver.png in Resources */,
+@@ -1961,7 +1957,7 @@
+ 			);
+ 			runOnlyForDeploymentPostprocessing = 0;
+ 			shellPath = /bin/sh;
+-			shellScript = "mkdir -p \"$BUILD_ROOT/$CONFIGURATION/$WRAPPER_NAME/Contents/Resources/diff/\"\ncp -R diff/* \"$BUILD_ROOT/$CONFIGURATION/$WRAPPER_NAME/Contents/Resources/diff/\"";
++			shellScript = "mkdir -p \"$BUILD_ROOT/$CONFIGURATION/$WRAPPER_NAME/Contents/Resources/diff/\"\ncp -R diff/* \"$BUILD_ROOT/$CONFIGURATION/$WRAPPER_NAME/Contents/Resources/diff/\"\ncp -R diff/parsed_template.html \"$BUILD_ROOT/$CONFIGURATION/$WRAPPER_NAME/Contents/Resources/cancelDown.png\"";
+ 		};
+ 		07CDE204109FFB9E00B0A99A /* Archive and Sparkle */ = {
+ 			isa = PBXShellScriptBuildPhase;
+diff --git a/license b/license
+deleted file mode 100644
+index e69de29..0000000
+diff --git a/python/_util.pyc b/python/_util.pyc
+index b0c7dfe..1b2974a 100644
+Binary files a/python/_util.pyc and b/python/_util.pyc differ
+diff --git a/python/diff.py b/python/diff.py
+index 2071ade..d171b0c 100644
+--- a/python/diff.py
++++ b/python/diff.py
+@@ -10,10 +10,21 @@ try:
+ 	from _argv import *
+ 	#if not options.misc: raise Exception("Gitty Error: The diff command requires extra parameters.")
+ 	#command="%s %s %s"%(options.git,"checkout",sanitize_str(str(options.misc[0])))
+-	command = "%s diff" % (options.git)
++	make_vendor_tmp_dir()
++	if(options.changedir): resources="assets"
++	else: resources=resources_dir()
++	template=open(resources+"/cancelDown.png","r")
++	template_content=template.read()
++	template.close()
++	command="%s diff" % (options.git)
+ 	rcode,stout,sterr=run_command(command)
+ 	rcode_for_git_exit(rcode,sterr)
+-	
++	a=template_content.split("@content@")
++	final=stout.join(a)
++	#need to do an HTML encode on the diff output
++	tmp=open(".git/vendor/gity/tmp/diff.html","w")
++	tmp.write(final)
++	tmp.close()
+ 	exit(0)
+ except Exception, e:
+ 	sys.stderr.write("The checkout branch command through this error: " + str(e))
+diff --git a/python/diff.pyc b/python/diff.pyc
+index d8ed079..59c93aa 100644
+Binary files a/python/diff.pyc and b/python/diff.pyc differ
+diff --git a/src/GTDiffContentView.m b/src/GTDiffContentView.m
+index 53e9aef..9300f09 100644
+--- a/src/GTDiffContentView.m
++++ b/src/GTDiffContentView.m
+@@ -31,8 +31,14 @@
+ - (void) invalidate {
+ 	[self setNeedsDisplay:true];
+ 	//NSString * test = [NSBundle pathForResource:@"test2" ofType:@"html" inDirectory:@"diff/tests"];
+-	NSString * test = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/diff/tests/test2.html"];
+-	NSURL * u = [NSURL fileURLWithPath:test];
++	NSString * test = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/diff/src.html"];
++	NSString * gitPath = [[gd git] gitProjectPath];
++	NSString * diffFile = [gitPath stringByAppendingString:[GTJSONFiles diff]];
++	NSLog(@"%@",diffFile);
++	NSURL * u = [NSURL fileURLWithPath:diffFile];
++	NSURL * u2 = [NSURL fileURLWithPath:test];
++	NSLog(@"%@",u);
++	NSLog(@"%@",u2);
+ 	[[webView mainFrame] loadRequest:[NSURLRequest requestWithURL:u]];
+ }
+ 
+diff --git a/src/GTJSONFiles.h b/src/GTJSONFiles.h
+index bbb8edc..0b7f8fd 100644
+--- a/src/GTJSONFiles.h
++++ b/src/GTJSONFiles.h
+@@ -18,5 +18,6 @@
+ + (NSString *) metaStatusFile;
+ + (NSString *) configsFile;
+ + (NSString *) globalConfigsFile;
+++ (NSString *) diff;
+ 
+ @end
+diff --git a/src/GTJSONFiles.m b/src/GTJSONFiles.m
+index aad5f67..b17a58b 100644
+--- a/src/GTJSONFiles.m
++++ b/src/GTJSONFiles.m
+@@ -52,4 +52,8 @@
+ 	return @"/.git/vendor/gity/tmp/globalconfigs.json";
+ }
+ 
+++ (NSString *) diff {
++	return @"/.git/vendor/gity/tmp/diff.html";
++}
++
+ @end
+diff --git a/versioning/_version b/versioning/_version
+index ce41ef8..54eaa73 100755
+--- a/versioning/_version
++++ b/versioning/_version
+@@ -1,4 +1,4 @@
+ 0
+ 1
+ 7
+-2380
+\ No newline at end of file
++2389
+\ No newline at end of file

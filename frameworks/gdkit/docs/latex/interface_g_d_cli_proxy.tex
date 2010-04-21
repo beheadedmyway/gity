@@ -1,0 +1,50 @@
+\hypertarget{interface_g_d_cli_proxy}{
+\section{GDCliProxy Class Reference}
+\label{interface_g_d_cli_proxy}\index{GDCliProxy@{GDCliProxy}}
+}
+
+
+The \hyperlink{interface_g_d_cli_proxy}{GDCliProxy} is the host proxy you use inside of your application that needs to expose some usage from the commandline.  
+
+
+{\ttfamily \#import $<$GDCliProxy.h$>$}Inheritance diagram for GDCliProxy::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{interface_g_d_cli_proxy}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{interface_g_d_cli_proxy_a85ab4f8aa2ea3b04acde87809e2b3c96}{connectWithConnectionName:}
+\begin{DoxyCompactList}\small\item\em Connect the NSConnection using connection name. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_cli_proxy_a6ba18cd87de0edbe5e3226b6d09626a1}{
+NSConnection $\ast$ \hyperlink{interface_g_d_cli_proxy_a6ba18cd87de0edbe5e3226b6d09626a1}{connection}}
+\label{interface_g_d_cli_proxy_a6ba18cd87de0edbe5e3226b6d09626a1}
+
+\begin{DoxyCompactList}\small\item\em An NSConnection for distributed objects. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_cli_proxy}{GDCliProxy} is the host proxy you use inside of your application that needs to expose some usage from the commandline. You use this class inside of your app, then use \hyperlink{interface_g_d_cli_proxy_connector}{GDCliProxyConnector} inside of your commandline tool to connect to this proxy. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_cli_proxy_a85ab4f8aa2ea3b04acde87809e2b3c96}{
+\index{GDCliProxy@{GDCliProxy}!connectWithConnectionName:@{connectWithConnectionName:}}
+\index{connectWithConnectionName:@{connectWithConnectionName:}!GDCliProxy@{GDCliProxy}}
+\subsubsection[{connectWithConnectionName:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) connectWithConnectionName: ({\bf NSString} $\ast$) {\em connectionName}}}
+\label{interface_g_d_cli_proxy_a85ab4f8aa2ea3b04acde87809e2b3c96}
+
+
+Connect the NSConnection using connection name. 
+\begin{DoxyParams}{Parameters}
+\item[{\em connectionName}]The connection name to use when the NSConnection connects. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_cli_proxy_8h}{GDCliProxy.h}\item 
+source/GDCliProxy.m\end{DoxyCompactItemize}

@@ -1,0 +1,11 @@
+commit 4cb51a65a478ff005630d8806d01cd76a8889faf
+tree cbf6a55e2d516ef719ccbead2ec030ce13386f42
+parent 80d93611c55fec171e0d9aba98db079952f9d7aa
+parent 9861b644e045b5ee0e16dea65b44419205090960
+author Junio C Hamano <gitster@pobox.com> 1260490859 -0800
+committer Junio C Hamano <gitster@pobox.com> 1260490859 -0800
+
+    Sync with 1.6.5.6
+    
+    Signed-off-by: Junio C Hamano <gitster@pobox.com>
+

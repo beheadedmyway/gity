@@ -1,0 +1,208 @@
+\hypertarget{interface_g_d_crash_reporter}{
+\section{GDCrashReporter Class Reference}
+\label{interface_g_d_crash_reporter}\index{GDCrashReporter@{GDCrashReporter}}
+}
+
+
+The \hyperlink{interface_g_d_crash_reporter}{GDCrashReporter} is a controller that implements post-\/trauma-\/pre-\/usage crash reporting.  
+
+
+{\ttfamily \#import $<$GDCrashReporter.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_crash_reporter_a4e95cdc41dd4f481189b71c9fda090fb}{
+(id) -\/ \hyperlink{interface_g_d_crash_reporter_a4e95cdc41dd4f481189b71c9fda090fb}{initWithUserDefaultsPrefix:}}
+\label{interface_g_d_crash_reporter_a4e95cdc41dd4f481189b71c9fda090fb}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}Designated initializer\mbox{]} Inititlize this crash reporter with a user defaults prefix. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_af6f95de8115474758ebb0ff3bfa634f9}{
+(\hyperlink{class_n_s_string}{NSString} $\ast$) -\/ \hyperlink{interface_g_d_crash_reporter_af6f95de8115474758ebb0ff3bfa634f9}{applicationName}}
+\label{interface_g_d_crash_reporter_af6f95de8115474758ebb0ff3bfa634f9}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]} The application name. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a278a856e8c3d8a33d27f3225249560ed}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_a278a856e8c3d8a33d27f3225249560ed}{addCrashSearchPath:}}
+\label{interface_g_d_crash_reporter_a278a856e8c3d8a33d27f3225249560ed}
+
+\begin{DoxyCompactList}\small\item\em Add a crash report (core dump) file search path. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_acc2e41dd6225c980814136d2ae8bd06b}{
+(IBAction) -\/ \hyperlink{interface_g_d_crash_reporter_acc2e41dd6225c980814136d2ae8bd06b}{oncancel:}}
+\label{interface_g_d_crash_reporter_acc2e41dd6225c980814136d2ae8bd06b}
+
+\begin{DoxyCompactList}\small\item\em IBAction for a cancel button. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a158c55e9fcb94a54f9acdce4e7a5f4b3}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_a158c55e9fcb94a54f9acdce4e7a5f4b3}{forceCrash}}
+\label{interface_g_d_crash_reporter_a158c55e9fcb94a54f9acdce4e7a5f4b3}
+
+\begin{DoxyCompactList}\small\item\em Force crash any app that is using this crash reporter (for testing). \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a82f5c0d8a23756974dc1e785f35c3d80}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_a82f5c0d8a23756974dc1e785f35c3d80}{initSearchPaths}}
+\label{interface_g_d_crash_reporter_a82f5c0d8a23756974dc1e785f35c3d80}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]} Initializes default search paths. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a4a47e15671fdce961d8a0e6d8f2f8fe2}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_a4a47e15671fdce961d8a0e6d8f2f8fe2}{initUI}}
+\label{interface_g_d_crash_reporter_a4a47e15671fdce961d8a0e6d8f2f8fe2}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]} Initializes UI components from the nib. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a7b264001f728746dc5e6305552941c8d}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_a7b264001f728746dc5e6305552941c8d}{performCrashReporterDidFinishOnDelegate}}
+\label{interface_g_d_crash_reporter_a7b264001f728746dc5e6305552941c8d}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]}; \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_af0f657c24d0664dee501add962783021}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_af0f657c24d0664dee501add962783021}{performCrashReporterDidSendOnDelegate}}
+\label{interface_g_d_crash_reporter_af0f657c24d0664dee501add962783021}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]}; \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_acf9393be1beaf9df4c85a4cb066290b9}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_acf9393be1beaf9df4c85a4cb066290b9}{performCrashReporterDidCancelOnDelegate}}
+\label{interface_g_d_crash_reporter_acf9393be1beaf9df4c85a4cb066290b9}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]}; \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a730c1f3d371f6bdbfa99b61cab0d53e3}{
+(IBAction) -\/ \hyperlink{interface_g_d_crash_reporter_a730c1f3d371f6bdbfa99b61cab0d53e3}{onsend:}}
+\label{interface_g_d_crash_reporter_a730c1f3d371f6bdbfa99b61cab0d53e3}
+
+\begin{DoxyCompactList}\small\item\em IBAction for a send button. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a794c06768e5a4043ce788f772d1f51f1}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_a794c06768e5a4043ce788f772d1f51f1}{searchForCrashReports}}
+\label{interface_g_d_crash_reporter_a794c06768e5a4043ce788f772d1f51f1}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]} Searches for crash reports and finds the latest one. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a7503824e3464d1bebbe49b572b41b2b8}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_a7503824e3464d1bebbe49b572b41b2b8}{\_\-deleteCrashReport}}
+\label{interface_g_d_crash_reporter_a7503824e3464d1bebbe49b572b41b2b8}
+
+\begin{DoxyCompactList}\small\item\em \mbox{[}internal\mbox{]} Used to delete a crash report. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a0afcd3473af618da01df046cf9a82711}{
+(void) -\/ \hyperlink{interface_g_d_crash_reporter_a0afcd3473af618da01df046cf9a82711}{show}}
+\label{interface_g_d_crash_reporter_a0afcd3473af618da01df046cf9a82711}
+
+\begin{DoxyCompactList}\small\item\em Shows the crash report nib. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_crash_reporter_a361d828b4c2be746b9f3af8c540c8783}{
+id$<$ \hyperlink{protocol_g_d_crash_reporter_delegate-p}{GDCrashReporterDelegate} $>$ {\bfseries delegate}}
+\label{interface_g_d_crash_reporter_a361d828b4c2be746b9f3af8c540c8783}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_a4163a934fc54bfd941c88466c8aa3119}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ {\bfseries placeHolderComm}}
+\label{interface_g_d_crash_reporter_a4163a934fc54bfd941c88466c8aa3119}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_af2e412a66d56341f386c0a4857e70692}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ {\bfseries crashFile}}
+\label{interface_g_d_crash_reporter_af2e412a66d56341f386c0a4857e70692}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_a0d9bcf4ad79589e4e97171b6d8f64cfe}{
+NSTask $\ast$ {\bfseries task}}
+\label{interface_g_d_crash_reporter_a0d9bcf4ad79589e4e97171b6d8f64cfe}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_a1996cf83ef0f805d3b2a388180c4edb7}{
+NSMutableArray $\ast$ {\bfseries searchPaths}}
+\label{interface_g_d_crash_reporter_a1996cf83ef0f805d3b2a388180c4edb7}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_aa5cadf563ca96435ae93811507ac11d3}{
+IBOutlet NSWindow $\ast$ {\bfseries window}}
+\label{interface_g_d_crash_reporter_aa5cadf563ca96435ae93811507ac11d3}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_a5658d8c28b96de69684fa9f5201e0b60}{
+IBOutlet NSButton $\ast$ {\bfseries send}}
+\label{interface_g_d_crash_reporter_a5658d8c28b96de69684fa9f5201e0b60}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_a425059c78a92c7b7f46af3bd6685143e}{
+IBOutlet NSButton $\ast$ {\bfseries cancel}}
+\label{interface_g_d_crash_reporter_a425059c78a92c7b7f46af3bd6685143e}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_a63b769bc2c75d7643d7b85637cff1173}{
+IBOutlet NSTextView $\ast$ {\bfseries comments}}
+\label{interface_g_d_crash_reporter_a63b769bc2c75d7643d7b85637cff1173}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_adcbf634a6a43038ef961c4c591949633}{
+IBOutlet NSTextView $\ast$ {\bfseries details}}
+\label{interface_g_d_crash_reporter_adcbf634a6a43038ef961c4c591949633}
+
+\item 
+\hypertarget{interface_g_d_crash_reporter_af2f0dc7a41038bac75f4d504ef9e75af}{
+IBOutlet NSTextField $\ast$ {\bfseries message}}
+\label{interface_g_d_crash_reporter_af2f0dc7a41038bac75f4d504ef9e75af}
+
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_crash_reporter_a68faa785ab392fd266eb182464f974cf}{
+id \hyperlink{interface_g_d_crash_reporter_a68faa785ab392fd266eb182464f974cf}{delegate}}
+\label{interface_g_d_crash_reporter_a68faa785ab392fd266eb182464f974cf}
+
+\begin{DoxyCompactList}\small\item\em The delegate for this crash reporter. \item\end{DoxyCompactList}\item 
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_crash_reporter_a4d6febfc475539bfbde40d2662abaad7}{userDefaultsPrefix}
+\begin{DoxyCompactList}\small\item\em A user defaults key prefix. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_aac4ef6432c30deadb25a7b8bbecc936e}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_crash_reporter_aac4ef6432c30deadb25a7b8bbecc936e}{pythonBinLocation}}
+\label{interface_g_d_crash_reporter_aac4ef6432c30deadb25a7b8bbecc936e}
+
+\begin{DoxyCompactList}\small\item\em The python binary location (default is /usr/bin/python). \item\end{DoxyCompactList}\item 
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_crash_reporter_a1e124e291a81c89405432cdccffcbb15}{pythonSendFileScriptLocation}
+\begin{DoxyCompactList}\small\item\em The python sendcrashreport.pyc file location. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_aa466f07385578729c4edb249075e82e5}{
+BOOL \hyperlink{interface_g_d_crash_reporter_aa466f07385578729c4edb249075e82e5}{hasCrash}}
+\label{interface_g_d_crash_reporter_aa466f07385578729c4edb249075e82e5}
+
+\begin{DoxyCompactList}\small\item\em Whether or not a crash report is available. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a922f5439064019cacf7f3289e676d4fc}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_crash_reporter_a922f5439064019cacf7f3289e676d4fc}{windowTitle}}
+\label{interface_g_d_crash_reporter_a922f5439064019cacf7f3289e676d4fc}
+
+\begin{DoxyCompactList}\small\item\em The window title to use for the nib. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a49a7683ee87241ea65d1b96cd0b5a565}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_crash_reporter_a49a7683ee87241ea65d1b96cd0b5a565}{crashMessage}}
+\label{interface_g_d_crash_reporter_a49a7683ee87241ea65d1b96cd0b5a565}
+
+\begin{DoxyCompactList}\small\item\em The crash message to display in the window. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_ad0a36e6854ffadd6104e30bbb1050791}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_crash_reporter_ad0a36e6854ffadd6104e30bbb1050791}{companyName}}
+\label{interface_g_d_crash_reporter_ad0a36e6854ffadd6104e30bbb1050791}
+
+\begin{DoxyCompactList}\small\item\em The company name to display (if crashMessage is not used). \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_crash_reporter_a2555f6e1895ecb60ed3e2454c259ae42}{
+BOOL \hyperlink{interface_g_d_crash_reporter_a2555f6e1895ecb60ed3e2454c259ae42}{deleteCrashReport}}
+\label{interface_g_d_crash_reporter_a2555f6e1895ecb60ed3e2454c259ae42}
+
+\begin{DoxyCompactList}\small\item\em Whether or not the crash report should be deleted after it's reported. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_crash_reporter}{GDCrashReporter} is a controller that implements post-\/trauma-\/pre-\/usage crash reporting. 
+
+\subsection{Property Documentation}
+\hypertarget{interface_g_d_crash_reporter_a1e124e291a81c89405432cdccffcbb15}{
+\index{GDCrashReporter@{GDCrashReporter}!pythonSendFileScriptLocation@{pythonSendFileScriptLocation}}
+\index{pythonSendFileScriptLocation@{pythonSendFileScriptLocation}!GDCrashReporter@{GDCrashReporter}}
+\subsubsection[{pythonSendFileScriptLocation}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf NSString} $\ast$) pythonSendFileScriptLocation\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, copy\mbox{]}}}}
+\label{interface_g_d_crash_reporter_a1e124e291a81c89405432cdccffcbb15}
+
+
+The python sendcrashreport.pyc file location. Default is taken from getting a resource path from NSBundle. \hypertarget{interface_g_d_crash_reporter_a4d6febfc475539bfbde40d2662abaad7}{
+\index{GDCrashReporter@{GDCrashReporter}!userDefaultsPrefix@{userDefaultsPrefix}}
+\index{userDefaultsPrefix@{userDefaultsPrefix}!GDCrashReporter@{GDCrashReporter}}
+\subsubsection[{userDefaultsPrefix}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf NSString} $\ast$) userDefaultsPrefix\hspace{0.3cm}{\ttfamily  \mbox{[}read, write, copy\mbox{]}}}}
+\label{interface_g_d_crash_reporter_a4d6febfc475539bfbde40d2662abaad7}
+
+
+A user defaults key prefix. This is used when saving the last crash found so that it's only reported once. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_crash_reporter_8h}{GDCrashReporter.h}\item 
+source/GDCrashReporter.m\end{DoxyCompactItemize}

@@ -1,0 +1,294 @@
+\hypertarget{interface_g_d_carbon_event}{
+\section{GDCarbonEvent Class Reference}
+\label{interface_g_d_carbon_event}\index{GDCarbonEvent@{GDCarbonEvent}}
+}
+
+
+The \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} is an object wrapper for using carbon events.  
+
+
+{\ttfamily \#import $<$GDCarbonEvent.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_g_d_carbon_event_a71262006d04ebd860b73e24a63dd0aa0}{initWithCoder:}
+\begin{DoxyCompactList}\small\item\em Initialize this \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with a coder. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_af27ec25443a878f8d2a729a42a00f7d2}{encodeWithCoder:}
+\begin{DoxyCompactList}\small\item\em Writes the keyCode, and modifierFlags to the coder. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_a06f5898aa490cf71399ea4f62f6b3d73}{setHotKeySignature:}
+\begin{DoxyCompactList}\small\item\em Set the hotkey signature for a carbon hot key event. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_aa9d6d67191763d051b809abaf50ec6b0}{setHotKeyId:}
+\begin{DoxyCompactList}\small\item\em Set the hotkey id for a carbon hot key event. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_adf3c1ed22030d170153cedc92b69d981}{
+(int) -\/ \hyperlink{interface_g_d_carbon_event_adf3c1ed22030d170153cedc92b69d981}{hotKeyId}}
+\label{interface_g_d_carbon_event_adf3c1ed22030d170153cedc92b69d981}
+
+\begin{DoxyCompactList}\small\item\em The hotkey id. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_ae4c7f30d07acf8e89dc778dde1dedc8d}{setEventClass:}
+\begin{DoxyCompactList}\small\item\em Sets the event class for a carbon event. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_ab62393c9ce0c0d7caed4dbe9f59dad04}{setEventKind:}
+\begin{DoxyCompactList}\small\item\em Set's the event kind for a carbon event. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_a4e873892d751951433ef76ae3de88fad}{setEventClass:andEventKind:}
+\begin{DoxyCompactList}\small\item\em Set the event class and event kind for a carbon event. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_aeef71147d2ade9d185211c84816ff88d}{
+(NSUInteger) -\/ \hyperlink{interface_g_d_carbon_event_aeef71147d2ade9d185211c84816ff88d}{cocoaModifierKeys}}
+\label{interface_g_d_carbon_event_aeef71147d2ade9d185211c84816ff88d}
+
+\begin{DoxyCompactList}\small\item\em Returns the modifier keys converted into a cocoa modifier int. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a852143928db268680e507f464807c659}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_a852143928db268680e507f464807c659}{install}}
+\label{interface_g_d_carbon_event_a852143928db268680e507f464807c659}
+
+\begin{DoxyCompactList}\small\item\em Installs the event. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a7d966ae0c8dde52ce77e43daf777921d}{
+(void) -\/ \hyperlink{interface_g_d_carbon_event_a7d966ae0c8dde52ce77e43daf777921d}{uninstall}}
+\label{interface_g_d_carbon_event_a7d966ae0c8dde52ce77e43daf777921d}
+
+\begin{DoxyCompactList}\small\item\em Uninstalls the event. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_a4639c12245fe48e533ec792b3f89d90e}{invoke}
+\begin{DoxyCompactList}\small\item\em Performs the callback action desired, either target/action or notification. \item\end{DoxyCompactList}\item 
+(id) -\/ \hyperlink{interface_g_d_carbon_event_a8826878465bd97dd2aab07a7cef13b40}{initWithEventClass:andEventKind:}
+\begin{DoxyCompactList}\small\item\em Initialize with event class, and event kind. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_a33e3feb0ec56180d02e170e8bf213b6c}{setNotificationName:andNotificationCenter:}
+\begin{DoxyCompactList}\small\item\em Set the notification name, and notification center if you want this event to post notifications. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_af2ae15b5b721c80a99c6fd84fc5fc23e}{setAction:andTarget:}
+\begin{DoxyCompactList}\small\item\em Set the action and target for this event if you want the callback to call a selector. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_carbon_event_a0140fa16d6e2987aa2437f6e56a8269d}{setKeyCode:andFlags:areFlagsCocoa:}
+\begin{DoxyCompactList}\small\item\em Set keycode, and modifier flags, optionally tell it that the flags were cocoa and need to be converted to carbon modifier flags. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a140777cec8832d843cf2147ca31d552d}{
+(\hyperlink{class_n_s_string}{NSString} $\ast$) -\/ \hyperlink{interface_g_d_carbon_event_a140777cec8832d843cf2147ca31d552d}{keyString}}
+\label{interface_g_d_carbon_event_a140777cec8832d843cf2147ca31d552d}
+
+\begin{DoxyCompactList}\small\item\em This returns a string that represents the value of the keyCode, and modifier keys all added together: keyCode+modifiers. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) + \hyperlink{interface_g_d_carbon_event_aa9b7f189c2fdbe7d0424803cd3e7f936}{disposeOfLookupManager}
+\begin{DoxyCompactList}\small\item\em Disposes of an internal static lookup dictionary that's used for all GDCarbonEvents. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_carbon_event_a6e9b1a253f2df29a0b15fa278033b7fc}{
+Boolean \hyperlink{interface_g_d_carbon_event_a6e9b1a253f2df29a0b15fa278033b7fc}{isInstalled}}
+\label{interface_g_d_carbon_event_a6e9b1a253f2df29a0b15fa278033b7fc}
+
+\begin{DoxyCompactList}\small\item\em Whether or not the event is installed with the carbon event manager. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_aaecdb5a2e5158162b9034486f9d81fc5}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_carbon_event_aaecdb5a2e5158162b9034486f9d81fc5}{sigString}}
+\label{interface_g_d_carbon_event_aaecdb5a2e5158162b9034486f9d81fc5}
+
+\begin{DoxyCompactList}\small\item\em The event signature string. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_af21ea340387a4216427700e68575c897}{
+EventHandlerRef \hyperlink{interface_g_d_carbon_event_af21ea340387a4216427700e68575c897}{eventRef}}
+\label{interface_g_d_carbon_event_af21ea340387a4216427700e68575c897}
+
+\begin{DoxyCompactList}\small\item\em An event handler reference. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a61a5c0e615568c3f8b6982ed66b6bc32}{
+EventHandlerUPP \hyperlink{interface_g_d_carbon_event_a61a5c0e615568c3f8b6982ed66b6bc32}{handlerUPP}}
+\label{interface_g_d_carbon_event_a61a5c0e615568c3f8b6982ed66b6bc32}
+
+\begin{DoxyCompactList}\small\item\em A function pointer to the internal callback (Universal Precedure Pointer). \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a5e43acd8e1c5dcc539edadf461425191}{
+EventTypeSpec \hyperlink{interface_g_d_carbon_event_a5e43acd8e1c5dcc539edadf461425191}{eventSpec}}
+\label{interface_g_d_carbon_event_a5e43acd8e1c5dcc539edadf461425191}
+
+\begin{DoxyCompactList}\small\item\em Describes the class and kind of event. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_ad7e473b493411729e0e27dfcb3793e2c}{
+EventHotKeyRef \hyperlink{interface_g_d_carbon_event_ad7e473b493411729e0e27dfcb3793e2c}{hotKeyRef}}
+\label{interface_g_d_carbon_event_ad7e473b493411729e0e27dfcb3793e2c}
+
+\begin{DoxyCompactList}\small\item\em A reference to a global hot key event. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a2006adab113bc7d35181e186a0881127}{
+EventHotKeyID \hyperlink{interface_g_d_carbon_event_a2006adab113bc7d35181e186a0881127}{hotKeyId}}
+\label{interface_g_d_carbon_event_a2006adab113bc7d35181e186a0881127}
+
+\begin{DoxyCompactList}\small\item\em A global hot key event id. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_carbon_event_a6a1d5951550d087504bd446380ec90eb}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_carbon_event_a6a1d5951550d087504bd446380ec90eb}{keyChar}}
+\label{interface_g_d_carbon_event_a6a1d5951550d087504bd446380ec90eb}
+
+\begin{DoxyCompactList}\small\item\em An \hyperlink{class_n_s_string}{NSString} for the key char -\/ like 'W', 'F', etc. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a5820e6b5f9552f7202f7d6608b93cda0}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_carbon_event_a5820e6b5f9552f7202f7d6608b93cda0}{notificationName}}
+\label{interface_g_d_carbon_event_a5820e6b5f9552f7202f7d6608b93cda0}
+
+\begin{DoxyCompactList}\small\item\em The notification name, if this carbon event is posting to a notification center. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_aab9901af8082c9a5b68340bf6df42dc5}{
+NSNotificationCenter $\ast$ \hyperlink{interface_g_d_carbon_event_aab9901af8082c9a5b68340bf6df42dc5}{notificationCenter}}
+\label{interface_g_d_carbon_event_aab9901af8082c9a5b68340bf6df42dc5}
+
+\begin{DoxyCompactList}\small\item\em The nofication center to post to. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a1ab5a6cf85131499d75d62cee6b5be57}{
+SEL \hyperlink{interface_g_d_carbon_event_a1ab5a6cf85131499d75d62cee6b5be57}{action}}
+\label{interface_g_d_carbon_event_a1ab5a6cf85131499d75d62cee6b5be57}
+
+\begin{DoxyCompactList}\small\item\em Selector to callback, if this event is NOT posting to a notification center. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_aedcfcd101bf6650ae61b6aa4ef8312a2}{
+id \hyperlink{interface_g_d_carbon_event_aedcfcd101bf6650ae61b6aa4ef8312a2}{target}}
+\label{interface_g_d_carbon_event_aedcfcd101bf6650ae61b6aa4ef8312a2}
+
+\begin{DoxyCompactList}\small\item\em The target for the selector. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_abb0d08625c02fc6321a72519deb924cb}{
+int \hyperlink{interface_g_d_carbon_event_abb0d08625c02fc6321a72519deb924cb}{keyCode}}
+\label{interface_g_d_carbon_event_abb0d08625c02fc6321a72519deb924cb}
+
+\begin{DoxyCompactList}\small\item\em ASCII Key code for carbon event HotKey. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a8556b9bb2d4bcfdcb3c684321c0abd45}{
+int \hyperlink{interface_g_d_carbon_event_a8556b9bb2d4bcfdcb3c684321c0abd45}{modifierFlags}}
+\label{interface_g_d_carbon_event_a8556b9bb2d4bcfdcb3c684321c0abd45}
+
+\begin{DoxyCompactList}\small\item\em Modifier keys for a carbon hot key event (cmdKey, optionKey, shiftKey, optionKey, controlKey, kFunctionKeyCharCode). \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_carbon_event_a545cce7eee552212ce52a920bb3b0de1}{
+NSDictionary $\ast$ \hyperlink{interface_g_d_carbon_event_a545cce7eee552212ce52a920bb3b0de1}{userInfo}}
+\label{interface_g_d_carbon_event_a545cce7eee552212ce52a920bb3b0de1}
+
+\begin{DoxyCompactList}\small\item\em User info dict that get's passed back to the callback, or passed as userInfo in the notification. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} is an object wrapper for using carbon events. This also wraps up creating carbon global hot key events.
+
+\begin{DoxySeeAlso}{See also}
+\href{http://dbachrach.com/blog/2005/11/28/program-global-hotkeys-in-cocoa-easily/}{\tt http://dbachrach.com/blog/2005/11/28/program-\/global-\/hotkeys-\/in-\/cocoa-\/easily/} 
+
+\href{http://cocoasamurai.blogspot.com/2009/03/global-keyboard-shortcuts-with-carbon.html}{\tt http://cocoasamurai.blogspot.com/2009/03/global-\/keyboard-\/shortcuts-\/with-\/carbon.html} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_carbon_event_aa9b7f189c2fdbe7d0424803cd3e7f936}{
+\index{GDCarbonEvent@{GDCarbonEvent}!disposeOfLookupManager@{disposeOfLookupManager}}
+\index{disposeOfLookupManager@{disposeOfLookupManager}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{disposeOfLookupManager}]{\setlength{\rightskip}{0pt plus 5cm}+ (void) disposeOfLookupManager }}
+\label{interface_g_d_carbon_event_aa9b7f189c2fdbe7d0424803cd3e7f936}
+
+
+Disposes of an internal static lookup dictionary that's used for all GDCarbonEvents. You only need to use this if you use a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent}, then stop using it and need to be sure all memory associated with a \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} is freed. \hypertarget{interface_g_d_carbon_event_af27ec25443a878f8d2a729a42a00f7d2}{
+\index{GDCarbonEvent@{GDCarbonEvent}!encodeWithCoder:@{encodeWithCoder:}}
+\index{encodeWithCoder:@{encodeWithCoder:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{encodeWithCoder:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) encodeWithCoder: (NSCoder $\ast$) {\em coder}}}
+\label{interface_g_d_carbon_event_af27ec25443a878f8d2a729a42a00f7d2}
+
+
+Writes the keyCode, and modifierFlags to the coder. It doesn't write anything else in the coder.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em coder}]An NSCoder. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_a71262006d04ebd860b73e24a63dd0aa0}{
+\index{GDCarbonEvent@{GDCarbonEvent}!initWithCoder:@{initWithCoder:}}
+\index{initWithCoder:@{initWithCoder:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{initWithCoder:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithCoder: (NSCoder $\ast$) {\em coder}}}
+\label{interface_g_d_carbon_event_a71262006d04ebd860b73e24a63dd0aa0}
+
+
+Initialize this \hyperlink{interface_g_d_carbon_event}{GDCarbonEvent} with a coder. It only sets up the keyCode, and modifierFlags from the coder. You need to continue initializing the object to setup action/target and other parameters.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em coder}]An NSCoder. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_a8826878465bd97dd2aab07a7cef13b40}{
+\index{GDCarbonEvent@{GDCarbonEvent}!initWithEventClass:andEventKind:@{initWithEventClass:andEventKind:}}
+\index{initWithEventClass:andEventKind:@{initWithEventClass:andEventKind:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{initWithEventClass:andEventKind:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithEventClass: (FourCharCode) {\em eventClass}\/ andEventKind: (NSUInteger) {\em eventKind}}}
+\label{interface_g_d_carbon_event_a8826878465bd97dd2aab07a7cef13b40}
+
+
+Initialize with event class, and event kind. 
+\begin{DoxyParams}{Parameters}
+\item[{\em eventClass}]An event class. \item[{\em eventKind}]An event kind. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_a4639c12245fe48e533ec792b3f89d90e}{
+\index{GDCarbonEvent@{GDCarbonEvent}!invoke@{invoke}}
+\index{invoke@{invoke}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{invoke}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) invoke }}
+\label{interface_g_d_carbon_event_a4639c12245fe48e533ec792b3f89d90e}
+
+
+Performs the callback action desired, either target/action or notification. Target/selector takes precedence if both target/sel and notifications are set. \hypertarget{interface_g_d_carbon_event_af2ae15b5b721c80a99c6fd84fc5fc23e}{
+\index{GDCarbonEvent@{GDCarbonEvent}!setAction:andTarget:@{setAction:andTarget:}}
+\index{setAction:andTarget:@{setAction:andTarget:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{setAction:andTarget:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setAction: (SEL) {\em action}\/ andTarget: (id) {\em target}}}
+\label{interface_g_d_carbon_event_af2ae15b5b721c80a99c6fd84fc5fc23e}
+
+
+Set the action and target for this event if you want the callback to call a selector. 
+\begin{DoxyParams}{Parameters}
+\item[{\em action}]The action to call. \item[{\em target}]The target that contains the selector. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_ae4c7f30d07acf8e89dc778dde1dedc8d}{
+\index{GDCarbonEvent@{GDCarbonEvent}!setEventClass:@{setEventClass:}}
+\index{setEventClass:@{setEventClass:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{setEventClass:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setEventClass: (FourCharCode) {\em eventClass}}}
+\label{interface_g_d_carbon_event_ae4c7f30d07acf8e89dc778dde1dedc8d}
+
+
+Sets the event class for a carbon event. 
+\begin{DoxyParams}{Parameters}
+\item[{\em eventClass}]An event class. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_a4e873892d751951433ef76ae3de88fad}{
+\index{GDCarbonEvent@{GDCarbonEvent}!setEventClass:andEventKind:@{setEventClass:andEventKind:}}
+\index{setEventClass:andEventKind:@{setEventClass:andEventKind:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{setEventClass:andEventKind:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setEventClass: (FourCharCode) {\em eventClass}\/ andEventKind: (NSUInteger) {\em eventKind}}}
+\label{interface_g_d_carbon_event_a4e873892d751951433ef76ae3de88fad}
+
+
+Set the event class and event kind for a carbon event. 
+\begin{DoxyParams}{Parameters}
+\item[{\em eventClass}]An event class. \item[{\em eventKind}]An event kind. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_ab62393c9ce0c0d7caed4dbe9f59dad04}{
+\index{GDCarbonEvent@{GDCarbonEvent}!setEventKind:@{setEventKind:}}
+\index{setEventKind:@{setEventKind:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{setEventKind:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setEventKind: (NSUInteger) {\em eventKind}}}
+\label{interface_g_d_carbon_event_ab62393c9ce0c0d7caed4dbe9f59dad04}
+
+
+Set's the event kind for a carbon event. 
+\begin{DoxyParams}{Parameters}
+\item[{\em eventKind}]An event kind. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_aa9d6d67191763d051b809abaf50ec6b0}{
+\index{GDCarbonEvent@{GDCarbonEvent}!setHotKeyId:@{setHotKeyId:}}
+\index{setHotKeyId:@{setHotKeyId:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{setHotKeyId:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setHotKeyId: (int) {\em kid}}}
+\label{interface_g_d_carbon_event_aa9d6d67191763d051b809abaf50ec6b0}
+
+
+Set the hotkey id for a carbon hot key event. 
+\begin{DoxyParams}{Parameters}
+\item[{\em kid}]The hotkey id. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_a06f5898aa490cf71399ea4f62f6b3d73}{
+\index{GDCarbonEvent@{GDCarbonEvent}!setHotKeySignature:@{setHotKeySignature:}}
+\index{setHotKeySignature:@{setHotKeySignature:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{setHotKeySignature:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setHotKeySignature: ({\bf NSString} $\ast$) {\em signature}}}
+\label{interface_g_d_carbon_event_a06f5898aa490cf71399ea4f62f6b3d73}
+
+
+Set the hotkey signature for a carbon hot key event. 
+\begin{DoxyParams}{Parameters}
+\item[{\em signature}]An \hyperlink{class_n_s_string}{NSString} to use for the signature -\/ this should be at max 4 characters -\/ it's converted into a FourCharCode. \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_a0140fa16d6e2987aa2437f6e56a8269d}{
+\index{GDCarbonEvent@{GDCarbonEvent}!setKeyCode:andFlags:areFlagsCocoa:@{setKeyCode:andFlags:areFlagsCocoa:}}
+\index{setKeyCode:andFlags:areFlagsCocoa:@{setKeyCode:andFlags:areFlagsCocoa:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{setKeyCode:andFlags:areFlagsCocoa:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setKeyCode: (NSUInteger) {\em code}\/ andFlags: (NSUInteger) {\em flags}\/ areFlagsCocoa: (Boolean) {\em cocoaFlags}}}
+\label{interface_g_d_carbon_event_a0140fa16d6e2987aa2437f6e56a8269d}
+
+
+Set keycode, and modifier flags, optionally tell it that the flags were cocoa and need to be converted to carbon modifier flags. 
+\begin{DoxyParams}{Parameters}
+\item[{\em code}]The key char code. \item[{\em flags}]Any modifier flags (0 if none). \item[{\em cocoaFlags}]Whether or not the flags came from the cocoa representation or modifier flags, if so they will be converted to carbon \end{DoxyParams}
+\hypertarget{interface_g_d_carbon_event_a33e3feb0ec56180d02e170e8bf213b6c}{
+\index{GDCarbonEvent@{GDCarbonEvent}!setNotificationName:andNotificationCenter:@{setNotificationName:andNotificationCenter:}}
+\index{setNotificationName:andNotificationCenter:@{setNotificationName:andNotificationCenter:}!GDCarbonEvent@{GDCarbonEvent}}
+\subsubsection[{setNotificationName:andNotificationCenter:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setNotificationName: ({\bf NSString} $\ast$) {\em name}\/ andNotificationCenter: (NSNotificationCenter $\ast$) {\em center}}}
+\label{interface_g_d_carbon_event_a33e3feb0ec56180d02e170e8bf213b6c}
+
+
+Set the notification name, and notification center if you want this event to post notifications. 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]The notification name to post. \item[{\em center}]The NSNotificationCenter to post to. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_carbon_event_8h}{GDCarbonEvent.h}\item 
+source/GDCarbonEvent.m\end{DoxyCompactItemize}

@@ -1,0 +1,54 @@
+\hypertarget{interface_g_d_sound_controller}{
+\section{GDSoundController Class Reference}
+\label{interface_g_d_sound_controller}\index{GDSoundController@{GDSoundController}}
+}
+
+
+The \hyperlink{interface_g_d_sound_controller}{GDSoundController} is a controller used to play and manage sounds.  
+
+
+{\ttfamily \#import $<$GDSoundController.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_sound_controller_a1020b0b1338ec729ff9e48323e7acba4}{
+(void) -\/ \hyperlink{interface_g_d_sound_controller_a1020b0b1338ec729ff9e48323e7acba4}{clearCache}}
+\label{interface_g_d_sound_controller_a1020b0b1338ec729ff9e48323e7acba4}
+
+\begin{DoxyCompactList}\small\item\em Clears cache of sounds that were played once and retained for later use. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_sound_controller_a009c1e9ecced1205b51df6fe76917a43}{
+(void) -\/ \hyperlink{interface_g_d_sound_controller_a009c1e9ecced1205b51df6fe76917a43}{pop}}
+\label{interface_g_d_sound_controller_a009c1e9ecced1205b51df6fe76917a43}
+
+\begin{DoxyCompactList}\small\item\em Play the \char`\"{}Pop\char`\"{} sound at default volume. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_sound_controller_a4dbc2b7f0f5b95d0639f986aee05390b}{popAtVolume:}
+\begin{DoxyCompactList}\small\item\em Play the \char`\"{}Pop\char`\"{} sound at the specified volume. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_sound_controller_a1d9e081d1cb465861cd1fd5a58629fc3}{
+NSSound $\ast$ {\bfseries popSound}}
+\label{interface_g_d_sound_controller_a1d9e081d1cb465861cd1fd5a58629fc3}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_sound_controller}{GDSoundController} is a controller used to play and manage sounds. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_sound_controller_a4dbc2b7f0f5b95d0639f986aee05390b}{
+\index{GDSoundController@{GDSoundController}!popAtVolume:@{popAtVolume:}}
+\index{popAtVolume:@{popAtVolume:}!GDSoundController@{GDSoundController}}
+\subsubsection[{popAtVolume:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) popAtVolume: (float) {\em \_\-volume}}}
+\label{interface_g_d_sound_controller_a4dbc2b7f0f5b95d0639f986aee05390b}
+
+
+Play the \char`\"{}Pop\char`\"{} sound at the specified volume. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-volume}]The desired volume (0-\/1). \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_sound_controller_8h}{GDSoundController.h}\item 
+source/GDSoundController.m\end{DoxyCompactItemize}

@@ -1,0 +1,87 @@
+\hypertarget{interface_g_d_base_window}{
+\section{GDBaseWindow Class Reference}
+\label{interface_g_d_base_window}\index{GDBaseWindow@{GDBaseWindow}}
+}
+
+
+The \hyperlink{interface_g_d_base_window}{GDBaseWindow} is a base NSWindow that contains common things for gdkit.  
+
+
+{\ttfamily \#import $<$GDBaseWindow.h$>$}Inheritance diagram for GDBaseWindow::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{interface_g_d_base_window}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_window_a61dafd2fdc44f40feab4f517ec0443cd}{
+(void) -\/ \hyperlink{interface_g_d_base_window_a61dafd2fdc44f40feab4f517ec0443cd}{setGDRefs}}
+\label{interface_g_d_base_window_a61dafd2fdc44f40feab4f517ec0443cd}
+
+\begin{DoxyCompactList}\small\item\em A hook you can use to set references to properties on a \char`\"{}gd\char`\"{} instance. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_window_a6fb74f03aaa52cabb4f4492363299377}{lazyInit}
+\begin{DoxyCompactList}\small\item\em A hook you can override to do some lazy initialization. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_window_ab930dfe89ec95507a18c42195b2619cc}{lazyInitWithGD:}
+\begin{DoxyCompactList}\small\item\em Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_window_aca77773c0363f56af6e2586ae60c6d7d}{keyDown:}
+\begin{DoxyCompactList}\small\item\em Used to see if either \char`\"{}\mbox{[}self delegate\mbox{]} or \char`\"{}self respond to special selectors (like onEscapeKey:). \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_window_a7c6c34f29356d23e861917432eec617c}{
+IBOutlet id \hyperlink{interface_g_d_base_window_a7c6c34f29356d23e861917432eec617c}{gd}}
+\label{interface_g_d_base_window_a7c6c34f29356d23e861917432eec617c}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_application_controller}{GDApplicationController} or a \hyperlink{interface_g_d_document}{GDDocument}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_window_a446a42ac7f6e6bbab6f16a6d27eb139b}{
+IBOutlet id \hyperlink{interface_g_d_base_window_a446a42ac7f6e6bbab6f16a6d27eb139b}{externalNibController}}
+\label{interface_g_d_base_window_a446a42ac7f6e6bbab6f16a6d27eb139b}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_external_nib_controller}{GDExternalNibController}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_base_window}{GDBaseWindow} is a base NSWindow that contains common things for gdkit. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_base_window_aca77773c0363f56af6e2586ae60c6d7d}{
+\index{GDBaseWindow@{GDBaseWindow}!keyDown:@{keyDown:}}
+\index{keyDown:@{keyDown:}!GDBaseWindow@{GDBaseWindow}}
+\subsubsection[{keyDown:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) keyDown: (NSEvent $\ast$) {\em theEvent}}}
+\label{interface_g_d_base_window_aca77773c0363f56af6e2586ae60c6d7d}
+
+
+Used to see if either \char`\"{}\mbox{[}self delegate\mbox{]} or \char`\"{}self respond to special selectors (like onEscapeKey:). Those methods are called when the right key is pressed.
+
+Currently this method checks for these:
+
+
+\begin{DoxyItemize}
+\item order: \mbox{[}self delegate\mbox{]},self $|$ selector: onEscapeKey: 
+\end{DoxyItemize}\hypertarget{interface_g_d_base_window_a6fb74f03aaa52cabb4f4492363299377}{
+\index{GDBaseWindow@{GDBaseWindow}!lazyInit@{lazyInit}}
+\index{lazyInit@{lazyInit}!GDBaseWindow@{GDBaseWindow}}
+\subsubsection[{lazyInit}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInit }}
+\label{interface_g_d_base_window_a6fb74f03aaa52cabb4f4492363299377}
+
+
+A hook you can override to do some lazy initialization. This is called last after any lazyInitWith(...) method is called. \hypertarget{interface_g_d_base_window_ab930dfe89ec95507a18c42195b2619cc}{
+\index{GDBaseWindow@{GDBaseWindow}!lazyInitWithGD:@{lazyInitWithGD:}}
+\index{lazyInitWithGD:@{lazyInitWithGD:}!GDBaseWindow@{GDBaseWindow}}
+\subsubsection[{lazyInitWithGD:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInitWithGD: (id) {\em \_\-gd}}}
+\label{interface_g_d_base_window_ab930dfe89ec95507a18c42195b2619cc}
+
+
+Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. This just sets the \char`\"{}gd\char`\"{} property.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_base_window_8h}{GDBaseWindow.h}\item 
+source/GDBaseWindow.m\end{DoxyCompactItemize}

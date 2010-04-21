@@ -1,0 +1,111 @@
+commit 16cc14ec62461c34c94294459fd2bdeec33920cb
+tree 6f6a2b53221c7232b4846107f4a8251ba08f1a50
+parent 88985be7d6a4712e7c23723acaf72dbc322c1172
+author Aaron Smith &lt;aaron@macendeavor.com> 1261353646 -0800
+committer Aaron Smith &lt;aaron@macendeavor.com> 1261353646 -0800
+
+    updates
+
+diff --git a/Info.plist b/Info.plist
+index becf9d9..6b981a4 100644
+--- a/Info.plist
++++ b/Info.plist
+@@ -42,7 +42,7 @@
+ 	&lt;key>CFBundleSignature&lt;/key>
+ 	&lt;string>????&lt;/string>
+ 	&lt;key>CFBundleVersion&lt;/key>
+-	&lt;string>4984&lt;/string>
++	&lt;string>4990&lt;/string>
+ 	&lt;key>LSMinimumSystemVersion&lt;/key>
+ 	&lt;string>${MACOSX_DEPLOYMENT_TARGET}&lt;/string>
+ 	&lt;key>NSMainNibFile&lt;/key>
+diff --git a/plain/GITYBOT_ERRORS b/plain/GITYBOT_ERRORS
+index 34e46d8..d7e1bdd 100644
+--- a/plain/GITYBOT_ERRORS
++++ b/plain/GITYBOT_ERRORS
+@@ -1,4 +1,9 @@
+ -------------------------------
++The push to command through this error: Gity Error: git had an exit code greater than 1: 128 fatal: remote error: 
++You can't push to git://github.com/dmmalam/oh-my-zsh.git
++Use git@github.com:dmmalam/oh-my-zsh.git
++
++-------------------------------
+ The current branch command through this error: list index out of range
+ Gity Version: 0.1.9.3484
+ git version 1.6.5.2
+diff --git a/src/NSFileHandleAdditions.h b/src/NSFileHandleAdditions.h
+index de74a9c..07142a0 100644
+--- a/src/NSFileHandleAdditions.h
++++ b/src/NSFileHandleAdditions.h
+@@ -2,9 +2,9 @@
+ 
+ #import &lt;Cocoa/Cocoa.h>
+ 
+-@interface NSFileHandle (Additions)
++//@interface NSFileHandle (Additions)
+ 
+-- (id) initWithFile:(NSString *) file;
+-- (id) initWithTruncatedFile:(NSString *) file;
++//- (id) initWithFile:(NSString *) file;
++//- (id) initWithTruncatedFile:(NSString *) file;
+ 
+-@end
++//@end
+diff --git a/src/NSFileHandleAdditions.m b/src/NSFileHandleAdditions.m
+index 0f56e90..000c352 100644
+--- a/src/NSFileHandleAdditions.m
++++ b/src/NSFileHandleAdditions.m
+@@ -2,9 +2,9 @@
+ 
+ #import "NSFileHandleAdditions.h"
+ 
+-@implementation NSFileHandle (Additions)
++//@implementation NSFileHandle (Additions)
+ 
+-- (id) initWithFile:(NSString *) file {
++/*- (id) initWithFile:(NSString *) file {
+ 	NSFileManager * fileManager = [NSFileManager defaultManager];
+ 	if(![fileManager fileExistsAtPath:file]) return nil;
+ 	int fd = open([file UTF8String],O_RDWR|O_CREAT, S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH|S_IWOTH);
+@@ -18,7 +18,7 @@
+ 	if(self = [self initWithFileDescriptor:fd closeOnDealloc:true]) {}
+ 	else close(fd);
+ 	return self;
+-}
++}*/
+ 
+ 
+-@end
++//@end
+diff --git a/src/main.m b/src/main.m
+index f4a4dd4..cca57a3 100644
+--- a/src/main.m
++++ b/src/main.m
+@@ -1,14 +1,6 @@
+-//
+-//  main.m
+-//  gitty
+-//
+-//  Created by Aaron Smith on 9/15/09.
+-//  Copyright 2009 Mccann Worldgroup. All rights reserved.
+-//
+ 
+ #import &lt;Cocoa/Cocoa.h>
+ 
+-int main(int argc, char *argv[])
+-{
++int main(int argc, char *argv[]) {
+     return NSApplicationMain(argc, (const char **) argv);
+ }
+diff --git a/versioning/_version b/versioning/_version
+index 26eb1ea..eb6e20f 100755
+--- a/versioning/_version
++++ b/versioning/_version
+@@ -1,4 +1,4 @@
+ 0
+ 2
+ 9
+-4984
+\ No newline at end of file
++4990
+\ No newline at end of file

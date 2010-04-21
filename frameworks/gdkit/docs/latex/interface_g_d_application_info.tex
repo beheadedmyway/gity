@@ -1,0 +1,59 @@
+\hypertarget{interface_g_d_application_info}{
+\section{GDApplicationInfo Class Reference}
+\label{interface_g_d_application_info}\index{GDApplicationInfo@{GDApplicationInfo}}
+}
+
+
+The \hyperlink{interface_g_d_application_info}{GDApplicationInfo} is a an object used to store application information in a dictionary like manner.  
+
+
+{\ttfamily \#import $<$GDApplicationInfo.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_application_info_aac751787b64c2db4a74cd3bec895effd}{
+(void) -\/ \hyperlink{interface_g_d_application_info_aac751787b64c2db4a74cd3bec895effd}{loadDefaultInfoPlist}}
+\label{interface_g_d_application_info_aac751787b64c2db4a74cd3bec895effd}
+
+\begin{DoxyCompactList}\small\item\em Loads the main bundle's info dictionary and adds in those key/vals to this dictionary. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_info_a3fff09fcb4eaa3b220b2f256e2140e28}{
+(void) -\/ \hyperlink{interface_g_d_application_info_a3fff09fcb4eaa3b220b2f256e2140e28}{loadPlist:}}
+\label{interface_g_d_application_info_a3fff09fcb4eaa3b220b2f256e2140e28}
+
+\begin{DoxyCompactList}\small\item\em Loads in a plist and merges it's key/vals into this dictionary. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_application_info_afba1d7c0c55aa48a3a1b02a9ddc0423b}{
+(\hyperlink{interface_g_d_application_info}{GDApplicationInfo} $\ast$) + \hyperlink{interface_g_d_application_info_afba1d7c0c55aa48a3a1b02a9ddc0423b}{instanceFromDefaultPlist}}
+\label{interface_g_d_application_info_afba1d7c0c55aa48a3a1b02a9ddc0423b}
+
+\begin{DoxyCompactList}\small\item\em Returns an autoreleased instance, and has already loaded the main bundle's info dictionary. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_info_a45127ada54398199fa7a42290f177414}{
+(\hyperlink{interface_g_d_application_info}{GDApplicationInfo} $\ast$) + \hyperlink{interface_g_d_application_info_a45127ada54398199fa7a42290f177414}{instanceFromLoadingPlist:}}
+\label{interface_g_d_application_info_a45127ada54398199fa7a42290f177414}
+
+\begin{DoxyCompactList}\small\item\em Returns an autoreleased instance that was loaded from a plist. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_application_info_a6df621702dd9fc8a51e3bb1b2c9bdb2b}{
+NSMutableDictionary $\ast$ \hyperlink{interface_g_d_application_info_a6df621702dd9fc8a51e3bb1b2c9bdb2b}{dictionary}}
+\label{interface_g_d_application_info_a6df621702dd9fc8a51e3bb1b2c9bdb2b}
+
+\begin{DoxyCompactList}\small\item\em The dictionary exposed through composition. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_application_info}{GDApplicationInfo} is a an object used to store application information in a dictionary like manner. It uses an NSMutableDictionary internally through composition.
+
+You can use this to extend, or write extensions to GDKit, and if any of those extensions require some type of configiration, it can be specified through this dictionary manually in code, or by loading in a plist.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{interface_g_d_model}{GDModel} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_application_info_8h}{GDApplicationInfo.h}\item 
+source/GDApplicationInfo.m\end{DoxyCompactItemize}

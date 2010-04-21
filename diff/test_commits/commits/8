@@ -1,0 +1,31 @@
+commit a1bb8f45f1590f812badceea0b7c120074ec3e85
+tree 3ce41a927bcca4baa26680cc33c79aa15fdc4795
+parent e25e2b4201716a912b29397515a858238497dbdd
+parent 527b9d704d929a2fff2f9bf1c5e2856725c1416d
+author Junio C Hamano <gitster@pobox.com> 1260990571 -0800
+committer Junio C Hamano <gitster@pobox.com> 1260996435 -0800
+
+    Merge branch 'maint' to sync with 1.6.5.7
+    
+    * maint:
+      Git 1.6.5.7
+      worktree: don't segfault with an absolute pathspec without a work tree
+      ignore unknown color configuration
+      help.autocorrect: do not run a command if the command given is junk
+      Illustrate "filter" attribute with an example
+
+diff --cc diff.c
+index d952686,72f25b5..08bbd3e
+--- a/diff.c
++++ b/diff.c
+@@@ -61,9 -59,7 +61,9 @@@ static int parse_diff_color_slot(const 
+  		return DIFF_COMMIT;
+  	if (!strcasecmp(var+ofs, "whitespace"))
+  		return DIFF_WHITESPACE;
+ +	if (!strcasecmp(var+ofs, "func"))
+ +		return DIFF_FUNCINFO;
+- 	die("bad config variable '%s'", var);
++ 	return -1;
+  }
+  
+  static int git_config_rename(const char *var, const char *value)

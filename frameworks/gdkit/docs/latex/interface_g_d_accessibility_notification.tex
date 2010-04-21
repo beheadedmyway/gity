@@ -1,0 +1,96 @@
+\hypertarget{interface_g_d_accessibility_notification}{
+\section{GDAccessibilityNotification Class Reference}
+\label{interface_g_d_accessibility_notification}\index{GDAccessibilityNotification@{GDAccessibilityNotification}}
+}
+
+
+The \hyperlink{interface_g_d_accessibility_notification}{GDAccessibilityNotification} is the object passed to your selecter or notification handler from a \hyperlink{interface_g_d_accessibility_observer}{GDAccessibilityObserver}.  
+
+
+{\ttfamily \#import $<$GDAccessibilityNotification.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_g_d_accessibility_notification_a79fa1997f1e26f0f63f4b2e16ec4a7b8}{initWithElement:forNotification:withUserInfo:}
+\begin{DoxyCompactList}\small\item\em Designated initializeer -\/ inits with required parameters. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_accessibility_notification_a2dcdd48bb0572d48810026fed1577b9c}{setElement:}
+\begin{DoxyCompactList}\small\item\em Set the element that triggered the notification. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_notification_a42032ceba7149feb17257ecf48d909b6}{
+(AXUIElementRef) -\/ \hyperlink{interface_g_d_accessibility_notification_a42032ceba7149feb17257ecf48d909b6}{element}}
+\label{interface_g_d_accessibility_notification_a42032ceba7149feb17257ecf48d909b6}
+
+\begin{DoxyCompactList}\small\item\em Get the element. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_accessibility_notification_ac44eebad792940c9f430ab0274f0dedf}{setUserInfo:}
+\begin{DoxyCompactList}\small\item\em Set the user info dictionary. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_notification_a9059901212d03aa11d436831be560777}{
+(NSDictionary $\ast$) -\/ \hyperlink{interface_g_d_accessibility_notification_a9059901212d03aa11d436831be560777}{userInfo}}
+\label{interface_g_d_accessibility_notification_a9059901212d03aa11d436831be560777}
+
+\begin{DoxyCompactList}\small\item\em Get the user info dict. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_accessibility_notification_a8b20d367e858a860e134618752493f0c}{
+AXUIElementRef \hyperlink{interface_g_d_accessibility_notification_a8b20d367e858a860e134618752493f0c}{element}}
+\label{interface_g_d_accessibility_notification_a8b20d367e858a860e134618752493f0c}
+
+\begin{DoxyCompactList}\small\item\em The AXUIElementRef that triggered the notification. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_accessibility_notification_a0fd79497e2441128299e3f1f98324451}{
+NSDictionary $\ast$ \hyperlink{interface_g_d_accessibility_notification_a0fd79497e2441128299e3f1f98324451}{userInfo}}
+\label{interface_g_d_accessibility_notification_a0fd79497e2441128299e3f1f98324451}
+
+\begin{DoxyCompactList}\small\item\em User info dictionary. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_accessibility_notification_a3a35ac62a068bf9ea55170e1abc55bc9}{
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_accessibility_notification_a3a35ac62a068bf9ea55170e1abc55bc9}{notification}}
+\label{interface_g_d_accessibility_notification_a3a35ac62a068bf9ea55170e1abc55bc9}
+
+\begin{DoxyCompactList}\small\item\em The notification name that was triggered. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_accessibility_notification}{GDAccessibilityNotification} is the object passed to your selecter or notification handler from a \hyperlink{interface_g_d_accessibility_observer}{GDAccessibilityObserver}. You shouldn't use this directly.
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{interface_g_d_accessibility_observer}{GDAccessibilityObserver} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_accessibility_notification_a79fa1997f1e26f0f63f4b2e16ec4a7b8}{
+\index{GDAccessibilityNotification@{GDAccessibilityNotification}!initWithElement:forNotification:withUserInfo:@{initWithElement:forNotification:withUserInfo:}}
+\index{initWithElement:forNotification:withUserInfo:@{initWithElement:forNotification:withUserInfo:}!GDAccessibilityNotification@{GDAccessibilityNotification}}
+\subsubsection[{initWithElement:forNotification:withUserInfo:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithElement: (AXUIElementRef) {\em element}\/ forNotification: ({\bf NSString} $\ast$) {\em notification}\/ withUserInfo: (NSDictionary $\ast$) {\em userInfo}}}
+\label{interface_g_d_accessibility_notification_a79fa1997f1e26f0f63f4b2e16ec4a7b8}
+
+
+Designated initializeer -\/ inits with required parameters. 
+\begin{DoxyParams}{Parameters}
+\item[{\em element}]An AXUIElementRef \item[{\em notification}]The accessibility notification to subscribe to. \item[{\em userInfo}]An optional user info dictionary that get's passed back to your handler. \end{DoxyParams}
+\hypertarget{interface_g_d_accessibility_notification_a2dcdd48bb0572d48810026fed1577b9c}{
+\index{GDAccessibilityNotification@{GDAccessibilityNotification}!setElement:@{setElement:}}
+\index{setElement:@{setElement:}!GDAccessibilityNotification@{GDAccessibilityNotification}}
+\subsubsection[{setElement:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setElement: (AXUIElementRef) {\em element}}}
+\label{interface_g_d_accessibility_notification_a2dcdd48bb0572d48810026fed1577b9c}
+
+
+Set the element that triggered the notification. 
+\begin{DoxyParams}{Parameters}
+\item[{\em element}]An AXUIElementRef \end{DoxyParams}
+\hypertarget{interface_g_d_accessibility_notification_ac44eebad792940c9f430ab0274f0dedf}{
+\index{GDAccessibilityNotification@{GDAccessibilityNotification}!setUserInfo:@{setUserInfo:}}
+\index{setUserInfo:@{setUserInfo:}!GDAccessibilityNotification@{GDAccessibilityNotification}}
+\subsubsection[{setUserInfo:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) setUserInfo: (NSDictionary $\ast$) {\em userInfow}}}
+\label{interface_g_d_accessibility_notification_ac44eebad792940c9f430ab0274f0dedf}
+
+
+Set the user info dictionary. 
+\begin{DoxyParams}{Parameters}
+\item[{\em userInfow}]The user info dictionary. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_accessibility_notification_8h}{GDAccessibilityNotification.h}\item 
+source/GDAccessibilityNotification.m\end{DoxyCompactItemize}

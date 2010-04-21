@@ -1,0 +1,124 @@
+\hypertarget{interface_g_d_a_s_l_log}{
+\section{GDASLLog Class Reference}
+\label{interface_g_d_a_s_l_log}\index{GDASLLog@{GDASLLog}}
+}
+
+
+The \hyperlink{interface_g_d_a_s_l_log}{GDASLLog} is a wrapper around Apple's system log facility (man asl).  
+
+
+{\ttfamily \#import $<$GDASLLog.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_g_d_a_s_l_log_ac9553b0e41554a4d75a35f6bd5280956}{initWithSender:facility:connectImmediately:}
+\begin{DoxyCompactList}\small\item\em Designated initializer -\/ inits with required parameters. \item\end{DoxyCompactList}\item 
+(int) -\/ \hyperlink{interface_g_d_a_s_l_log_a60c2903d8fb00b34fafe5c2c1965f811}{setLogFile:}
+\begin{DoxyCompactList}\small\item\em Set's a log file to write all logs to. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_a1f3385d376fb7243873adf46b79facf2}{
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_a1f3385d376fb7243873adf46b79facf2}{alert:}}
+\label{interface_g_d_a_s_l_log_a1f3385d376fb7243873adf46b79facf2}
+
+\begin{DoxyCompactList}\small\item\em Alert message. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_a98676521adaed96dbd633ec3ebd255f8}{
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_a98676521adaed96dbd633ec3ebd255f8}{critical:}}
+\label{interface_g_d_a_s_l_log_a98676521adaed96dbd633ec3ebd255f8}
+
+\begin{DoxyCompactList}\small\item\em Critical message. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_ae3d6cd86743062c53dd2a2b741242014}{
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_ae3d6cd86743062c53dd2a2b741242014}{debug:}}
+\label{interface_g_d_a_s_l_log_ae3d6cd86743062c53dd2a2b741242014}
+
+\begin{DoxyCompactList}\small\item\em Debug message. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_a2cfa69bcac4badada4bc2dacd2850c57}{
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_a2cfa69bcac4badada4bc2dacd2850c57}{emergency:}}
+\label{interface_g_d_a_s_l_log_a2cfa69bcac4badada4bc2dacd2850c57}
+
+\begin{DoxyCompactList}\small\item\em Emergency message. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_a693aa01fa3cd8a43f44022b2b30ed0a4}{
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_a693aa01fa3cd8a43f44022b2b30ed0a4}{error:}}
+\label{interface_g_d_a_s_l_log_a693aa01fa3cd8a43f44022b2b30ed0a4}
+
+\begin{DoxyCompactList}\small\item\em Error message. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_a854a1868088c1842b017fe71879627cc}{
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_a854a1868088c1842b017fe71879627cc}{info:}}
+\label{interface_g_d_a_s_l_log_a854a1868088c1842b017fe71879627cc}
+
+\begin{DoxyCompactList}\small\item\em Info message. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_a8f0a314a961761637d9efb27cc39f8ee}{
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_a8f0a314a961761637d9efb27cc39f8ee}{notice:}}
+\label{interface_g_d_a_s_l_log_a8f0a314a961761637d9efb27cc39f8ee}
+
+\begin{DoxyCompactList}\small\item\em Notice message. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_a261eb6ea891b0a8accf4569883c3beaf}{
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_a261eb6ea891b0a8accf4569883c3beaf}{warning:}}
+\label{interface_g_d_a_s_l_log_a261eb6ea891b0a8accf4569883c3beaf}
+
+\begin{DoxyCompactList}\small\item\em Warning message. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_a_s_l_log_ae49db911364a0162197ad1044126c664}{close}
+\begin{DoxyCompactList}\small\item\em Close this log. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_a_s_l_log_aa69c49b2936c65539d487acfbac9185d}{
+int \hyperlink{interface_g_d_a_s_l_log_aa69c49b2936c65539d487acfbac9185d}{fd}}
+\label{interface_g_d_a_s_l_log_aa69c49b2936c65539d487acfbac9185d}
+
+\begin{DoxyCompactList}\small\item\em File descriptor for log file. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_ab29df9174c1a01a320b089b589fa731e}{
+aslclient \hyperlink{interface_g_d_a_s_l_log_ab29df9174c1a01a320b089b589fa731e}{client}}
+\label{interface_g_d_a_s_l_log_ab29df9174c1a01a320b089b589fa731e}
+
+\begin{DoxyCompactList}\small\item\em Apple Sys Log client. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_a_s_l_log_a59dd6d166636c172e8c6a2b06d550e42}{
+\hyperlink{interface_g_d_a_s_l_log_manager}{GDASLLogManager} $\ast$ \hyperlink{interface_g_d_a_s_l_log_a59dd6d166636c172e8c6a2b06d550e42}{manager}}
+\label{interface_g_d_a_s_l_log_a59dd6d166636c172e8c6a2b06d550e42}
+
+\begin{DoxyCompactList}\small\item\em The log manager. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_a_s_l_log_af52ec0d7d7a656c095fc8af8d7035065}{
+Boolean \hyperlink{interface_g_d_a_s_l_log_af52ec0d7d7a656c095fc8af8d7035065}{logToStdOut}}
+\label{interface_g_d_a_s_l_log_af52ec0d7d7a656c095fc8af8d7035065}
+
+\begin{DoxyCompactList}\small\item\em Whether or not to log all messages to stdout as well. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_a_s_l_log}{GDASLLog} is a wrapper around Apple's system log facility (man asl). 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_a_s_l_log_ae49db911364a0162197ad1044126c664}{
+\index{GDASLLog@{GDASLLog}!close@{close}}
+\index{close@{close}!GDASLLog@{GDASLLog}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) close }}
+\label{interface_g_d_a_s_l_log_ae49db911364a0162197ad1044126c664}
+
+
+Close this log. If you call close directly this log won't work anymore -\/ it's called when this object is deallocated. \hypertarget{interface_g_d_a_s_l_log_ac9553b0e41554a4d75a35f6bd5280956}{
+\index{GDASLLog@{GDASLLog}!initWithSender:facility:connectImmediately:@{initWithSender:facility:connectImmediately:}}
+\index{initWithSender:facility:connectImmediately:@{initWithSender:facility:connectImmediately:}!GDASLLog@{GDASLLog}}
+\subsubsection[{initWithSender:facility:connectImmediately:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithSender: ({\bf NSString} $\ast$) {\em sender}\/ facility: ({\bf NSString} $\ast$) {\em facility}\/ connectImmediately: (Boolean) {\em connectImmediately}}}
+\label{interface_g_d_a_s_l_log_ac9553b0e41554a4d75a35f6bd5280956}
+
+
+Designated initializer -\/ inits with required parameters. Here's an extracted example: 
+\begin{DoxyCode}
+ GDASLLog * log = [[GDASLLog alloc] initWithSender:@"MyAppName" facility:@"my.com
+      pany.AppName" connectImmediately:TRUE];
+ [log setLogFile:@"/var/log/MyApp"];
+ [log info:@"TEST"];
+\end{DoxyCode}
+ \hypertarget{interface_g_d_a_s_l_log_a60c2903d8fb00b34fafe5c2c1965f811}{
+\index{GDASLLog@{GDASLLog}!setLogFile:@{setLogFile:}}
+\index{setLogFile:@{setLogFile:}!GDASLLog@{GDASLLog}}
+\subsubsection[{setLogFile:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (int) setLogFile: ({\bf NSString} $\ast$) {\em filePath}}}
+\label{interface_g_d_a_s_l_log_a60c2903d8fb00b34fafe5c2c1965f811}
+
+
+Set's a log file to write all logs to. If a log file isn't set the logs aren't stored, they're still visible in the console. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_a_s_l_log_8h}{GDASLLog.h}\item 
+source/GDASLLog.m\end{DoxyCompactItemize}

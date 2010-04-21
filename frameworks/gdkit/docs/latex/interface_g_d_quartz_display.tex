@@ -1,0 +1,175 @@
+\hypertarget{interface_g_d_quartz_display}{
+\section{GDQuartzDisplay Class Reference}
+\label{interface_g_d_quartz_display}\index{GDQuartzDisplay@{GDQuartzDisplay}}
+}
+
+
+The \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} represents a display and wraps Core Graphics quartz display functions.  
+
+
+{\ttfamily \#import $<$GDQuartzDisplay.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(id) -\/ \hyperlink{interface_g_d_quartz_display_ac7ce19beffef302365fa541937a9eb9a}{initWithPoint:}
+\begin{DoxyCompactList}\small\item\em Initializes a \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} from a point. \item\end{DoxyCompactList}\item 
+(id) -\/ \hyperlink{interface_g_d_quartz_display_a9bd1f8110df39a9e04cdb50baba92627}{initWithRect:}
+\begin{DoxyCompactList}\small\item\em Initializes a \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} from a rect. \item\end{DoxyCompactList}\item 
+(id) -\/ \hyperlink{interface_g_d_quartz_display_add090bbaebeff9ba7f5298cd2e50a991}{initWithDirectDisplayID:}
+\begin{DoxyCompactList}\small\item\em Initialize a \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} from a CGDirectDisplayID. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a188bab8691a7761bd307b0a8eea740e9}{
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_a188bab8691a7761bd307b0a8eea740e9}{isMainDisplay}}
+\label{interface_g_d_quartz_display_a188bab8691a7761bd307b0a8eea740e9}
+
+\begin{DoxyCompactList}\small\item\em Check if this display is the main display. \item\end{DoxyCompactList}\item 
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_a39d3da702afebd2da2ede0eb04a62140}{isActive}
+\begin{DoxyCompactList}\small\item\em Check whether or not an NSSize is considered fullscreen in this display's size. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a56c59d1b9a59d561c17fad9e11aeb11b}{
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_a56c59d1b9a59d561c17fad9e11aeb11b}{isAlwaysInMirrorSet}}
+\label{interface_g_d_quartz_display_a56c59d1b9a59d561c17fad9e11aeb11b}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this display is always in a mirrored set. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_aef3641e248198c71e9986da1cb95e4fd}{
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_aef3641e248198c71e9986da1cb95e4fd}{isSleeping}}
+\label{interface_g_d_quartz_display_aef3641e248198c71e9986da1cb95e4fd}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this display is sleeping. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a0d9416aa68b00e02a2f264e0d23b54b7}{
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_a0d9416aa68b00e02a2f264e0d23b54b7}{isInMirrorSet}}
+\label{interface_g_d_quartz_display_a0d9416aa68b00e02a2f264e0d23b54b7}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this display is in a mirrored set. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_adc2198bd2eed56613fa482f801a15594}{
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_adc2198bd2eed56613fa482f801a15594}{isOnline}}
+\label{interface_g_d_quartz_display_adc2198bd2eed56613fa482f801a15594}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this display is online (active, mirrored, or sleeping). \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_afde1a1aa00226a92789bccd2a63aa349}{
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_afde1a1aa00226a92789bccd2a63aa349}{isStereo}}
+\label{interface_g_d_quartz_display_afde1a1aa00226a92789bccd2a63aa349}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this display is running stereo graphics mode. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a9b3e770afec22fd9ab1935e7f4bc49ed}{
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_a9b3e770afec22fd9ab1935e7f4bc49ed}{isPrimaryDisplayInMirrorSet}}
+\label{interface_g_d_quartz_display_a9b3e770afec22fd9ab1935e7f4bc49ed}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this display is the primary display in a mirror set. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a4fedac12c3792dbe475cbaaba74deb2c}{
+(\hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} $\ast$) -\/ \hyperlink{interface_g_d_quartz_display_a4fedac12c3792dbe475cbaaba74deb2c}{mirrorsDisplay}}
+\label{interface_g_d_quartz_display_a4fedac12c3792dbe475cbaaba74deb2c}
+
+\begin{DoxyCompactList}\small\item\em The display that this display is mirroring (check against isInMirrorSet). \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a4b56a5c85db98835d9cf99ba37dd35b5}{
+(\hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} $\ast$) -\/ \hyperlink{interface_g_d_quartz_display_a4b56a5c85db98835d9cf99ba37dd35b5}{primaryDisplay}}
+\label{interface_g_d_quartz_display_a4b56a5c85db98835d9cf99ba37dd35b5}
+
+\begin{DoxyCompactList}\small\item\em Get the primary display from a mirror set. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a8d2404630706fe36fba7d3f89a79d5f1}{
+(double) -\/ \hyperlink{interface_g_d_quartz_display_a8d2404630706fe36fba7d3f89a79d5f1}{rotation}}
+\label{interface_g_d_quartz_display_a8d2404630706fe36fba7d3f89a79d5f1}
+
+\begin{DoxyCompactList}\small\item\em Get the display rotation. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a939b7ffc9aee2a320ead6ac704e78192}{
+(NSSize) -\/ \hyperlink{interface_g_d_quartz_display_a939b7ffc9aee2a320ead6ac704e78192}{millimeterSize}}
+\label{interface_g_d_quartz_display_a939b7ffc9aee2a320ead6ac704e78192}
+
+\begin{DoxyCompactList}\small\item\em Get's the display size in millimeters. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a1318d67ffa7ce11c10b6a412925efa17}{
+(NSSize) -\/ \hyperlink{interface_g_d_quartz_display_a1318d67ffa7ce11c10b6a412925efa17}{pixelSize}}
+\label{interface_g_d_quartz_display_a1318d67ffa7ce11c10b6a412925efa17}
+
+\begin{DoxyCompactList}\small\item\em Get's the display size in pixels. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a9b5b39ebbf5c452804731e5cde084c89}{
+(NSRect) -\/ \hyperlink{interface_g_d_quartz_display_a9b5b39ebbf5c452804731e5cde084c89}{bounds}}
+\label{interface_g_d_quartz_display_a9b5b39ebbf5c452804731e5cde084c89}
+
+\begin{DoxyCompactList}\small\item\em The displays' bounds. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a36021706831a10ff68d7688377a806b5}{
+(NSScreen $\ast$) -\/ \hyperlink{interface_g_d_quartz_display_a36021706831a10ff68d7688377a806b5}{screen}}
+\label{interface_g_d_quartz_display_a36021706831a10ff68d7688377a806b5}
+
+\begin{DoxyCompactList}\small\item\em Returns an NSScreen instance for the screen that this \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} represents. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a5b167a92538bb68f5f70281ebb107ee7}{
+(Boolean) -\/ \hyperlink{interface_g_d_quartz_display_a5b167a92538bb68f5f70281ebb107ee7}{usesOpenGLAcceleration}}
+\label{interface_g_d_quartz_display_a5b167a92538bb68f5f70281ebb107ee7}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this display uses OpenGL acceleration. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(NSMutableArray $\ast$) + \hyperlink{interface_g_d_quartz_display_af590fc7b76cf0a54981edd0537919f7b}{activeDisplays}
+\begin{DoxyCompactList}\small\item\em Returns an array of CGQuartzDisplay instances which are all of the active displays attached. \item\end{DoxyCompactList}\item 
+(NSMutableArray $\ast$) + \hyperlink{interface_g_d_quartz_display_a8ef6d0040c82d777cfaae1f33f4a09fe}{onlineDisplays}
+\begin{DoxyCompactList}\small\item\em Returns an array of CGQuartzDisplay instances which are all of the online displays. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_quartz_display_a16f647bc65285d316c90e6e6909641aa}{
+(\hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} $\ast$) + \hyperlink{interface_g_d_quartz_display_a16f647bc65285d316c90e6e6909641aa}{mainDisplay}}
+\label{interface_g_d_quartz_display_a16f647bc65285d316c90e6e6909641aa}
+
+\begin{DoxyCompactList}\small\item\em Returns the display that is considered the \char`\"{}Main Display\char`\"{}, this is the display id associated with CGMainDisplayID. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_quartz_display_a0ff4eaf16075197719219a4eb1d21d47}{
+CGDirectDisplayID \hyperlink{interface_g_d_quartz_display_a0ff4eaf16075197719219a4eb1d21d47}{displayId}}
+\label{interface_g_d_quartz_display_a0ff4eaf16075197719219a4eb1d21d47}
+
+\begin{DoxyCompactList}\small\item\em The hardware display id. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} represents a display and wraps Core Graphics quartz display functions. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_quartz_display_af590fc7b76cf0a54981edd0537919f7b}{
+\index{GDQuartzDisplay@{GDQuartzDisplay}!activeDisplays@{activeDisplays}}
+\index{activeDisplays@{activeDisplays}!GDQuartzDisplay@{GDQuartzDisplay}}
+\subsubsection[{activeDisplays}]{\setlength{\rightskip}{0pt plus 5cm}+ (NSMutableArray $\ast$) activeDisplays }}
+\label{interface_g_d_quartz_display_af590fc7b76cf0a54981edd0537919f7b}
+
+
+Returns an array of CGQuartzDisplay instances which are all of the active displays attached. These are displays that can be drawn to. \hypertarget{interface_g_d_quartz_display_add090bbaebeff9ba7f5298cd2e50a991}{
+\index{GDQuartzDisplay@{GDQuartzDisplay}!initWithDirectDisplayID:@{initWithDirectDisplayID:}}
+\index{initWithDirectDisplayID:@{initWithDirectDisplayID:}!GDQuartzDisplay@{GDQuartzDisplay}}
+\subsubsection[{initWithDirectDisplayID:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithDirectDisplayID: (CGDirectDisplayID) {\em ddid}}}
+\label{interface_g_d_quartz_display_add090bbaebeff9ba7f5298cd2e50a991}
+
+
+Initialize a \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} from a CGDirectDisplayID. 
+\begin{DoxyParams}{Parameters}
+\item[{\em ddid}]A CGDirectDisplayID. \end{DoxyParams}
+\hypertarget{interface_g_d_quartz_display_ac7ce19beffef302365fa541937a9eb9a}{
+\index{GDQuartzDisplay@{GDQuartzDisplay}!initWithPoint:@{initWithPoint:}}
+\index{initWithPoint:@{initWithPoint:}!GDQuartzDisplay@{GDQuartzDisplay}}
+\subsubsection[{initWithPoint:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithPoint: (NSPoint) {\em point}}}
+\label{interface_g_d_quartz_display_ac7ce19beffef302365fa541937a9eb9a}
+
+
+Initializes a \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} from a point. It uses this point to find the display that contains that point. \hypertarget{interface_g_d_quartz_display_a9bd1f8110df39a9e04cdb50baba92627}{
+\index{GDQuartzDisplay@{GDQuartzDisplay}!initWithRect:@{initWithRect:}}
+\index{initWithRect:@{initWithRect:}!GDQuartzDisplay@{GDQuartzDisplay}}
+\subsubsection[{initWithRect:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (id) initWithRect: (NSRect) {\em rect}}}
+\label{interface_g_d_quartz_display_a9bd1f8110df39a9e04cdb50baba92627}
+
+
+Initializes a \hyperlink{interface_g_d_quartz_display}{GDQuartzDisplay} from a rect. It uses this rect to find the display that contains that rect. \hypertarget{interface_g_d_quartz_display_a39d3da702afebd2da2ede0eb04a62140}{
+\index{GDQuartzDisplay@{GDQuartzDisplay}!isActive@{isActive}}
+\index{isActive@{isActive}!GDQuartzDisplay@{GDQuartzDisplay}}
+\subsubsection[{isActive}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (Boolean) isActive }}
+\label{interface_g_d_quartz_display_a39d3da702afebd2da2ede0eb04a62140}
+
+
+Check whether or not an NSSize is considered fullscreen in this display's size. 
+\begin{DoxyItemize}
+\item (Boolean) isSizeWindowedFullscreen:(NSSize) size; Whether or not this display is active. (drawable) 
+\end{DoxyItemize}\hypertarget{interface_g_d_quartz_display_a8ef6d0040c82d777cfaae1f33f4a09fe}{
+\index{GDQuartzDisplay@{GDQuartzDisplay}!onlineDisplays@{onlineDisplays}}
+\index{onlineDisplays@{onlineDisplays}!GDQuartzDisplay@{GDQuartzDisplay}}
+\subsubsection[{onlineDisplays}]{\setlength{\rightskip}{0pt plus 5cm}+ (NSMutableArray $\ast$) onlineDisplays }}
+\label{interface_g_d_quartz_display_a8ef6d0040c82d777cfaae1f33f4a09fe}
+
+
+Returns an array of CGQuartzDisplay instances which are all of the online displays. These are active, mirrored, or sleeping displays. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_quartz_display_8h}{GDQuartzDisplay.h}\item 
+source/GDQuartzDisplay.m\end{DoxyCompactItemize}

@@ -1,0 +1,189 @@
+\hypertarget{interface_g_d_application_controller}{
+\section{GDApplicationController Class Reference}
+\label{interface_g_d_application_controller}\index{GDApplicationController@{GDApplicationController}}
+}
+
+
+The \hyperlink{interface_g_d_application_controller}{GDApplicationController} is an application controller for non-\/document based cocoa applications.  
+
+
+{\ttfamily \#import $<$GDApplicationController.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{interface_g_d_application_controller_a2cbdfaa697915ca8b6ff10badce9d978}{lazyInitWithModel:mainMenu:modals:operations:windows:drawers:views:sounds:contexts:}
+\begin{DoxyCompactList}\small\item\em Designated {\bfseries lazy} initializer to provide values for all needed properties. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_application_controller_aa052dc548b3c87861b1c4b0ccd4eb44e}{initApplication}
+\begin{DoxyCompactList}\small\item\em A hook you should use to initialize your applications' \char`\"{}gd\char`\"{} properties, and call \mbox{[}self lazyInitWithModel:mainMenu:modals:operations:windows:drawers:views:sounds:\mbox{]}. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_application_controller_aeb11e53b580e91da5d776b4adc4523a3}{initModel}
+\begin{DoxyCompactList}\small\item\em A hook to initialize a \hyperlink{interface_g_d_model}{GDModel}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a5f47fab7f969d31ff7ea9556e2420b79}{
+(void) -\/ \hyperlink{interface_g_d_application_controller_a5f47fab7f969d31ff7ea9556e2420b79}{initControllers}}
+\label{interface_g_d_application_controller_a5f47fab7f969d31ff7ea9556e2420b79}
+
+\begin{DoxyCompactList}\small\item\em A hook to initializes any other controllers (maybe external nib controllers) your using -\/ make sure they also get lazyInited as well. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_ace751aad934d79ef3f6bd2115aea17c2}{
+(void) -\/ \hyperlink{interface_g_d_application_controller_ace751aad934d79ef3f6bd2115aea17c2}{initWindows}}
+\label{interface_g_d_application_controller_ace751aad934d79ef3f6bd2115aea17c2}
+
+\begin{DoxyCompactList}\small\item\em A hook to initialize any windows. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_application_controller_aa966d71f7f1a9dea72eec302da43bf92}{initViews}
+\begin{DoxyCompactList}\small\item\em A hook to initialize any views -\/ this is specifically for initializing views that don't have \char`\"{}gd\char`\"{} references from nib creation time. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a4add147ee3457d405b3ea8f33af37ef4}{
+(void) -\/ \hyperlink{interface_g_d_application_controller_a4add147ee3457d405b3ea8f33af37ef4}{startApplication}}
+\label{interface_g_d_application_controller_a4add147ee3457d405b3ea8f33af37ef4}
+
+\begin{DoxyCompactList}\small\item\em A hook to start your application -\/ this is called after all initialization logic hooks. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_application_controller_a102ba452810353ac8e89ebc8cbb6e5c7}{
+BOOL \hyperlink{interface_g_d_application_controller_a102ba452810353ac8e89ebc8cbb6e5c7}{awokeFromNib}}
+\label{interface_g_d_application_controller_a102ba452810353ac8e89ebc8cbb6e5c7}
+
+\begin{DoxyCompactList}\small\item\em Whether or not this application has awoken from a nib. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_af0df472a85cabe1d033dd058c0396d55}{
+IBOutlet id \hyperlink{interface_g_d_application_controller_af0df472a85cabe1d033dd058c0396d55}{views}}
+\label{interface_g_d_application_controller_af0df472a85cabe1d033dd058c0396d55}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_view_controller}{GDViewController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_ae4698e32ace2b64232ac1f10206af972}{
+IBOutlet id \hyperlink{interface_g_d_application_controller_ae4698e32ace2b64232ac1f10206af972}{wins}}
+\label{interface_g_d_application_controller_ae4698e32ace2b64232ac1f10206af972}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_window_controller}{GDWindowController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a8fef9df1eb5a6fc1ed86f842de80cc1a}{
+IBOutlet id \hyperlink{interface_g_d_application_controller_a8fef9df1eb5a6fc1ed86f842de80cc1a}{drawers}}
+\label{interface_g_d_application_controller_a8fef9df1eb5a6fc1ed86f842de80cc1a}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_drawer_controller}{GDDrawerController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_acd7487a3a40c310be110a7da0cc7e43b}{
+IBOutlet id \hyperlink{interface_g_d_application_controller_acd7487a3a40c310be110a7da0cc7e43b}{contexts}}
+\label{interface_g_d_application_controller_acd7487a3a40c310be110a7da0cc7e43b}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_context_menu_controller}{GDContextMenuController}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_application_controller_aac0c5d9ff693706078dabbc316c95227}{
+id \hyperlink{interface_g_d_application_controller_aac0c5d9ff693706078dabbc316c95227}{model}}
+\label{interface_g_d_application_controller_aac0c5d9ff693706078dabbc316c95227}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_model}{GDModel}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a191fdb308f362c9b22b587641ca31867}{
+id \hyperlink{interface_g_d_application_controller_a191fdb308f362c9b22b587641ca31867}{operations}}
+\label{interface_g_d_application_controller_a191fdb308f362c9b22b587641ca31867}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_operations_controller}{GDOperationsController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a438b851d7ffa93d65a1622b730387a68}{
+id \hyperlink{interface_g_d_application_controller_a438b851d7ffa93d65a1622b730387a68}{mainMenu}}
+\label{interface_g_d_application_controller_a438b851d7ffa93d65a1622b730387a68}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_main_menu_controller}{GDMainMenuController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a06ac28d5b7d35d9f233f3beffb9ffd1a}{
+id \hyperlink{interface_g_d_application_controller_a06ac28d5b7d35d9f233f3beffb9ffd1a}{modals}}
+\label{interface_g_d_application_controller_a06ac28d5b7d35d9f233f3beffb9ffd1a}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_modal_controller}{GDModalController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a4342870dc6cbf38b13adada68e581b8e}{
+id \hyperlink{interface_g_d_application_controller_a4342870dc6cbf38b13adada68e581b8e}{sounds}}
+\label{interface_g_d_application_controller_a4342870dc6cbf38b13adada68e581b8e}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_sound_controller}{GDSoundController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a75cd5598e919796e01a7ddb924d166c3}{
+id \hyperlink{interface_g_d_application_controller_a75cd5598e919796e01a7ddb924d166c3}{views}}
+\label{interface_g_d_application_controller_a75cd5598e919796e01a7ddb924d166c3}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_view_controller}{GDViewController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_aa68380e437079f25cb30cf70076aa802}{
+id \hyperlink{interface_g_d_application_controller_aa68380e437079f25cb30cf70076aa802}{wins}}
+\label{interface_g_d_application_controller_aa68380e437079f25cb30cf70076aa802}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_window_controller}{GDWindowController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_aa55ba579d6944e1c1a1f676311d5936a}{
+id \hyperlink{interface_g_d_application_controller_aa55ba579d6944e1c1a1f676311d5936a}{drawers}}
+\label{interface_g_d_application_controller_aa55ba579d6944e1c1a1f676311d5936a}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_drawer_controller}{GDDrawerController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_application_controller_a50925f7412e0af96fc963edcbe03fdce}{
+id \hyperlink{interface_g_d_application_controller_a50925f7412e0af96fc963edcbe03fdce}{contexts}}
+\label{interface_g_d_application_controller_a50925f7412e0af96fc963edcbe03fdce}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_context_menu_controller}{GDContextMenuController}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_application_controller}{GDApplicationController} is an application controller for non-\/document based cocoa applications. {\bfseries This class is also the NSWindowDelegate and NSApplicationDelegate}
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{interface_g_d_document}{GDDocument} For the document based cocoa application controller. 
+
+You should look at the example in gdkit/examples/CocoaApp\_\-NonDocument/ 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_application_controller_aa052dc548b3c87861b1c4b0ccd4eb44e}{
+\index{GDApplicationController@{GDApplicationController}!initApplication@{initApplication}}
+\index{initApplication@{initApplication}!GDApplicationController@{GDApplicationController}}
+\subsubsection[{initApplication}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) initApplication }}
+\label{interface_g_d_application_controller_aa052dc548b3c87861b1c4b0ccd4eb44e}
+
+
+A hook you should use to initialize your applications' \char`\"{}gd\char`\"{} properties, and call \mbox{[}self lazyInitWithModel:mainMenu:modals:operations:windows:drawers:views:sounds:\mbox{]}. You should call \mbox{[}super lazyInitWithModel(...)\mbox{]} as the last call.
+
+This method calls the other initializers:
+
+
+\begin{DoxyCode}
+ [self initModel];
+ [self initControllers];
+ [self initWindows];
+ [self initViews];
+ [self startApplication];
+\end{DoxyCode}
+ \hypertarget{interface_g_d_application_controller_aeb11e53b580e91da5d776b4adc4523a3}{
+\index{GDApplicationController@{GDApplicationController}!initModel@{initModel}}
+\index{initModel@{initModel}!GDApplicationController@{GDApplicationController}}
+\subsubsection[{initModel}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) initModel }}
+\label{interface_g_d_application_controller_aeb11e53b580e91da5d776b4adc4523a3}
+
+
+A hook to initialize a \hyperlink{interface_g_d_model}{GDModel}. This is a good place to initialize A \hyperlink{interface_g_d_application_info}{GDApplicationInfo} instance and save it on the model. \hypertarget{interface_g_d_application_controller_aa966d71f7f1a9dea72eec302da43bf92}{
+\index{GDApplicationController@{GDApplicationController}!initViews@{initViews}}
+\index{initViews@{initViews}!GDApplicationController@{GDApplicationController}}
+\subsubsection[{initViews}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) initViews }}
+\label{interface_g_d_application_controller_aa966d71f7f1a9dea72eec302da43bf92}
+
+
+A hook to initialize any views -\/ this is specifically for initializing views that don't have \char`\"{}gd\char`\"{} references from nib creation time. IE: calling lazyInitWithGD:
+
+\begin{DoxySeeAlso}{See also}
+\hyperlink{interface_g_d_base_object}{GDBaseObject} 
+\end{DoxySeeAlso}
+\hypertarget{interface_g_d_application_controller_a2cbdfaa697915ca8b6ff10badce9d978}{
+\index{GDApplicationController@{GDApplicationController}!lazyInitWithModel:mainMenu:modals:operations:windows:drawers:views:sounds:contexts:@{lazyInitWithModel:mainMenu:modals:operations:windows:drawers:views:sounds:contexts:}}
+\index{lazyInitWithModel:mainMenu:modals:operations:windows:drawers:views:sounds:contexts:@{lazyInitWithModel:mainMenu:modals:operations:windows:drawers:views:sounds:contexts:}!GDApplicationController@{GDApplicationController}}
+\subsubsection[{lazyInitWithModel:mainMenu:modals:operations:windows:drawers:views:sounds:contexts:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInitWithModel: (id) {\em \_\-model}\/ mainMenu: (id) {\em \_\-mainMenu}\/ modals: (id) {\em \_\-modals}\/ operations: (id) {\em \_\-operations}\/ windows: (id) {\em \_\-windows}\/ drawers: (id) {\em \_\-drawers}\/ views: (id) {\em \_\-views}\/ sounds: (id) {\em \_\-sounds}\/ contexts: (id) {\em \_\-contexts}}}
+\label{interface_g_d_application_controller_a2cbdfaa697915ca8b6ff10badce9d978}
+
+
+Designated {\bfseries lazy} initializer to provide values for all needed properties. {\bfseries nil's are ok}.
+
+All parameters are sent {\bfseries \mbox{[}obj performSelector:@selector(lazyInitWithGD:) withObject:self\mbox{]}}
+
+{\bfseries All parameters are retained, so please send in autoreleased instances.}
+
+If you send in any objects that are already properties (from IBOutlets) they are not retained, but they are sent the designated lazy initializer.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-model}]A \hyperlink{interface_g_d_model}{GDModel} or subclassed instance. \item[{\em \_\-modals}]A \hyperlink{interface_g_d_modal_controller}{GDModalController} or subclassed instance. \item[{\em \_\-operations}]A \hyperlink{interface_g_d_operations_controller}{GDOperationsController} or subclassed instance. \item[{\em \_\-windows}]A \hyperlink{interface_g_d_window_controller}{GDWindowController} or subclassed instance. \item[{\em \_\-drawers}]A \hyperlink{interface_g_d_drawer_controller}{GDDrawerController} or subclassed instance. \item[{\em \_\-views}]A \hyperlink{interface_g_d_view_controller}{GDViewController} or subclassed instance. \item[{\em \_\-sounds}]A \hyperlink{interface_g_d_sound_controller}{GDSoundController} or subclassed instance. \item[{\em \_\-contexts}]A \hyperlink{interface_g_d_context_menu_controller}{GDContextMenuController} or subclassed instance.\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{interface_g_d_base_object}{GDBaseObject} 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_application_controller_8h}{GDApplicationController.h}\item 
+source/GDApplicationController.m\end{DoxyCompactItemize}

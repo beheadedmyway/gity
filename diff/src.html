@@ -1,0 +1,37 @@
+<html>
+<head>
+	<link rel="stylesheet" href="diff.css" type="text/css" media="screen" charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="gity.js"></script>
+	<script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(startDiff);
+	</script>
+</head>
+<body>
+<textarea id="diff" class="difftextarea">
+diff --cc hello
+index 7f39ab4,bde7983..0000000
+--- a/hello
++++ b/hello
+@@@ -1,11 -1,4 +1,18 @@@
+++&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+ +affffffffssffffffadsasdasdfdddsdxdfasdfdaasdxfdxdxddadsfaddasdfdsfdffff
+ +xffsdadffffdx
+ +affffffssffffffadsdsdxdfdxdxdxddadsfadddsfdffff
+ +xffffx
+ +afffadsxfxxxadsfadsfdffff
+ +xfx
+ +afadsfxxxadsfadsfd
+ +f
+ +aadsfxxxadsfadsfd
+ +aadsfadsfadsf
+ +sdfasdf
+++=======
++ asfdfasdf
++ afffffffffff9999997234ffffffsfsffffffadsasdasddfddffdsdxdfasdfdaasdxfdxdxddadsfaddasdfdsfdffff
++ xfddd4344fsdadffdffddadsfx
++ asfdf
+++&gt;&gt;&gt;&gt;&gt;&gt;&gt; conflict
+</textarea>
+<pre><code id='updateddiff'></code></pre>
+</body>

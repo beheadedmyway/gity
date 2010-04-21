@@ -1,0 +1,76 @@
+<html>
+<head>
+	<link rel="stylesheet" href="diff.css" type="text/css" media="screen" charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="gity.js"></script>
+	<script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(startCommit);
+	</script>
+</head>
+<body>
+<div class="firstFileHeader" style="border-bottom:solid 1px #DDD;">
+	commit details
+</div>
+<div id="commitDetailsContainer" style="margin-top:10px">
+	<table class="commitDetails" id="commitDetailsTable">
+	</table>
+</div>
+<div id="extendedMessageContainer">
+	<div class="fileHeader" style="padding-left:9px;background-color:#F7F7F7;color:black;border-bottom:solid 1px #DDD;font-size:9px;line-height:18px;height:18px;">
+		commit message
+	</div>
+	<div id="commitMessageContainer" style="margin-top:10px">
+	</div>
+</div>
+<a name="index"></a>
+<div id="commitIndex">
+<div class="fileHeader" style="padding-left:9px;background-color:#F7F7F7;color:black;border-bottom:solid 1px #DDD;font-size:9px;line-height:18px;height:18px;">
+	affected files
+</div>
+</div>
+<div id="fileStatusesContainer" style="margin-top:10px;">
+</div>
+<textarea id="commitDetails" class="hidden">
+commit 47344eee9b980a7cf2a08d040ff3dd38c6cd82ec
+tree dbf1766dc8f04e86e89ead119427729e96504c09
+parent 8eb65d96718e442173604d1f76ec3a925b567ea7
+parent a80e82f6ee79a0b1ad42781af79bc76628ec90e9
+author Junio C Hamano <gitster@pobox.com> 1260401922 -0800
+committer Junio C Hamano <gitster@pobox.com> 1260401922 -0800
+
+    Merge git://git.kernel.org/pub/scm/gitk/gitk
+
+    * git://git.kernel.org/pub/scm/gitk/gitk:
+      gitk: Fix selection of tags
+      gitk: Default to the system colours on Windows
+      gitk: Update Japanese translation
+      gitk: Fix "git gui blame" invocation when called from top-level directory
+      gitk: Disable checkout of remote branches
+      gitk: Improve appearance of radiobuttons and checkbuttons
+      gitk: Skip translation of "wrong Tcl version" message
+      gitk: Add Japanese translation
+      gitk: Use the --submodule option for displaying diffs when available
+      gitk: Fix diffing committed -> staged (typo in diffcmd)
+      gitk: Add configuration for UI colour scheme
+      gitk: Don't compare fake children when comparing commits
+      gitk: Show diff of commits at end of compare-commits output
+      gitk: Add a user preference to enable/disable use of themed widgets
+      gitk: Fix errors in the theme patch
+      gitk: Use themed tk widgets
+      gitk: Restore scrolling position of diff pane on back/forward in history
+
+diff --cc gitk-git/gitk
+index a0214b7,364c7a8..364c7a8
+mode 100644,100755..100644
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+diff --cc gitk-git/po/ja.po
+index 0000000,c0c92ad..c0c92ad
+mode 000000,100644..100644
+--- a/gitk-git/po/ja.po
++++ b/gitk-git/po/ja.po
+</textarea>
+<textarea id="diff" class="difftextarea">
+</textarea>
+<pre id="diffpre"><code id='updateddiff'></code></pre>
+</body>

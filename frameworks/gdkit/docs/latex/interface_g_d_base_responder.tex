@@ -1,0 +1,70 @@
+\hypertarget{interface_g_d_base_responder}{
+\section{GDBaseResponder Class Reference}
+\label{interface_g_d_base_responder}\index{GDBaseResponder@{GDBaseResponder}}
+}
+
+
+The \hyperlink{interface_g_d_base_responder}{GDBaseResponder} is a base NSResponder that implements base key down functionality for the most commonly used operations.  
+
+
+{\ttfamily \#import $<$GDBaseResponder.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_responder_aa823aa31d254329111901d4e4c281b0d}{
+(void) -\/ \hyperlink{interface_g_d_base_responder_aa823aa31d254329111901d4e4c281b0d}{setGDRefs}}
+\label{interface_g_d_base_responder_aa823aa31d254329111901d4e4c281b0d}
+
+\begin{DoxyCompactList}\small\item\em A hook you can use to set references to properties on a \char`\"{}gd\char`\"{} instance. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_responder_a41c0ac5bc661491a77d3e92cbdb1ba27}{lazyInit}
+\begin{DoxyCompactList}\small\item\em A hook you can override to do some lazy initialization. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_responder_a395637f6f067d9d84ec073bd3b1af0ac}{lazyInitWithGD:}
+\begin{DoxyCompactList}\small\item\em Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_responder_a23446728999e7c6b783eb6787fe3a3b8}{
+(void) -\/ \hyperlink{interface_g_d_base_responder_a23446728999e7c6b783eb6787fe3a3b8}{keyDown:}}
+\label{interface_g_d_base_responder_a23446728999e7c6b783eb6787fe3a3b8}
+
+\begin{DoxyCompactList}\small\item\em Used to catch some very common key down sequences and call methods on self when they occur. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_responder_a5d40b8266ef769de6ffd002daa34ca7a}{
+(void) -\/ \hyperlink{interface_g_d_base_responder_a5d40b8266ef769de6ffd002daa34ca7a}{onEscapeKey:}}
+\label{interface_g_d_base_responder_a5d40b8266ef769de6ffd002daa34ca7a}
+
+\begin{DoxyCompactList}\small\item\em When the escape key has been pressed. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_responder_ac61a7cc1f627bfdba1648fca84532383}{
+id \hyperlink{interface_g_d_base_responder_ac61a7cc1f627bfdba1648fca84532383}{gd}}
+\label{interface_g_d_base_responder_ac61a7cc1f627bfdba1648fca84532383}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_application_controller}{GDApplicationController} or a \hyperlink{interface_g_d_document}{GDDocument}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_base_responder}{GDBaseResponder} is a base NSResponder that implements base key down functionality for the most commonly used operations. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_base_responder_a41c0ac5bc661491a77d3e92cbdb1ba27}{
+\index{GDBaseResponder@{GDBaseResponder}!lazyInit@{lazyInit}}
+\index{lazyInit@{lazyInit}!GDBaseResponder@{GDBaseResponder}}
+\subsubsection[{lazyInit}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInit }}
+\label{interface_g_d_base_responder_a41c0ac5bc661491a77d3e92cbdb1ba27}
+
+
+A hook you can override to do some lazy initialization. This is called last after any lazyInitWith(...) method is called. \hypertarget{interface_g_d_base_responder_a395637f6f067d9d84ec073bd3b1af0ac}{
+\index{GDBaseResponder@{GDBaseResponder}!lazyInitWithGD:@{lazyInitWithGD:}}
+\index{lazyInitWithGD:@{lazyInitWithGD:}!GDBaseResponder@{GDBaseResponder}}
+\subsubsection[{lazyInitWithGD:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInitWithGD: (id) {\em \_\-gd}}}
+\label{interface_g_d_base_responder_a395637f6f067d9d84ec073bd3b1af0ac}
+
+
+Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. This just sets the \char`\"{}gd\char`\"{} property.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_base_responder_8h}{GDBaseResponder.h}\item 
+source/GDBaseResponder.m\end{DoxyCompactItemize}

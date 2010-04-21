@@ -1,0 +1,70 @@
+\hypertarget{interface_g_d_app_expiration}{
+\section{GDAppExpiration Class Reference}
+\label{interface_g_d_app_expiration}\index{GDAppExpiration@{GDAppExpiration}}
+}
+
+
+The \hyperlink{interface_g_d_app_expiration}{GDAppExpiration} is a utility that can manage app expirations for a couple situations.  
+
+
+{\ttfamily \#import $<$GDAppExpiration.h$>$}\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_app_expiration_aac7c6e13809353b9af00da775cc3b98e}{
+(Boolean) -\/ \hyperlink{interface_g_d_app_expiration_aac7c6e13809353b9af00da775cc3b98e}{hasExceededMaxLaunches}}
+\label{interface_g_d_app_expiration_aac7c6e13809353b9af00da775cc3b98e}
+
+\begin{DoxyCompactList}\small\item\em Whether or not the application has been launched more then the maximum allowed times. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_app_expiration_aa96390cb48868a64b0fc3748e2d1c7e3}{
+(Boolean) -\/ \hyperlink{interface_g_d_app_expiration_aa96390cb48868a64b0fc3748e2d1c7e3}{hasClientExpired}}
+\label{interface_g_d_app_expiration_aa96390cb48868a64b0fc3748e2d1c7e3}
+
+\begin{DoxyCompactList}\small\item\em Whether or not the client has expired after a certain number of days. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_app_expiration_ad3ed743ed4d283f1c681e57b8ea9d3ab}{
+(void) -\/ \hyperlink{interface_g_d_app_expiration_ad3ed743ed4d283f1c681e57b8ea9d3ab}{applicationLaunched}}
+\label{interface_g_d_app_expiration_ad3ed743ed4d283f1c681e57b8ea9d3ab}
+
+\begin{DoxyCompactList}\small\item\em Increments the launch count. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_app_expiration_a61eb4d1818fa8870854b295b3e55c5e4}{
+(Boolean) + \hyperlink{interface_g_d_app_expiration_a61eb4d1818fa8870854b295b3e55c5e4}{isBetaExpired}}
+\label{interface_g_d_app_expiration_a61eb4d1818fa8870854b295b3e55c5e4}
+
+\begin{DoxyCompactList}\small\item\em Whether or not a Beta app has expired. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_app_expiration_a9bc9471e0873ff739bb72dc712191d84}{
+short \hyperlink{interface_g_d_app_expiration_a9bc9471e0873ff739bb72dc712191d84}{launchCount}}
+\label{interface_g_d_app_expiration_a9bc9471e0873ff739bb72dc712191d84}
+
+\begin{DoxyCompactList}\small\item\em The number of times the application has launched. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_app_expiration_af296a6893a09fe93c13e98081b79b122}{
+short \hyperlink{interface_g_d_app_expiration_af296a6893a09fe93c13e98081b79b122}{maxLaunches}}
+\label{interface_g_d_app_expiration_af296a6893a09fe93c13e98081b79b122}
+
+\begin{DoxyCompactList}\small\item\em The maximum number of application launches. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_app_expiration_a59855dcd3ed7c19529284358771eea78}{
+short \hyperlink{interface_g_d_app_expiration_a59855dcd3ed7c19529284358771eea78}{runsForDays}}
+\label{interface_g_d_app_expiration_a59855dcd3ed7c19529284358771eea78}
+
+\begin{DoxyCompactList}\small\item\em How many days the app should run for. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_app_expiration}{GDAppExpiration} is a utility that can manage app expirations for a couple situations. It manages a few situations -\/ first when the app is in Beta, and it needs to expire a certain amount of days after the application was compiled -\/ like 45 days or something. This is a hard compiled in date in the app.
+
+Another option -\/ keep track of when an application expires on the client machine, after a thresh-\/hold like 15 days.
+
+And the last option -\/ keep track of the number of times an application has launched, and whether or not it exceeds a thresh-\/hold.
+
+{\bfseries Macros:}\par
+ {\itshape GDAppBetaExpires\/} -\/ Define this to indicate the a expiration date should be compiled in for \char`\"{}Beta\char`\"{} expirations.\par
+ {\itshape GDAppBetaExpiresAfter\/} -\/ The number of days before the beta app expires -\/ the default is 45. {\itshape GDAppExpiresAfterLaunches\/} -\/ The maximum number of application launches before the app is considered expired -\/ the default is 15. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_app_expiration_8h}{GDAppExpiration.h}\item 
+source/GDAppExpiration.m\end{DoxyCompactItemize}

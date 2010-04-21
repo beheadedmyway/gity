@@ -1,0 +1,607 @@
+commit e74f43f9b702ccb88ee83e28de13ccfaebc4abf2
+tree ae30da1b3a75cb017064b497cf5a59d5c30e9b6b
+parent 902f235378cb2b2f6dd5dd664b9630c95321f0ae
+parent ac10a85785baee56bb4a04ad5f847d15ffba0893
+author Junio C Hamano <gitster@pobox.com> 1261864996 -0800
+committer Junio C Hamano <gitster@pobox.com> 1261864996 -0800
+
+    Merge branch 'sr/vcs-helper'
+    
+    * sr/vcs-helper:
+      tests: handle NO_PYTHON setting
+      builtin-push: don't access freed transport->url
+      Add Python support library for remote helpers
+      Basic build infrastructure for Python scripts
+      Allow helpers to report in "list" command that the ref is unchanged
+      Fix various memory leaks in transport-helper.c
+      Allow helper to map private ref names into normal names
+      Add support for "import" helper command
+      Allow specifying the remote helper in the url
+      Add a config option for remotes to specify a foreign vcs
+      Allow fetch to modify refs
+      Use a function to determine whether a remote is valid
+      Allow programs to not depend on remotes having urls
+      Fix memory leak in helper method for disconnect
+    
+    Conflicts:
+    	Documentation/git-remote-helpers.txt
+    	Makefile
+    	builtin-ls-remote.c
+    	builtin-push.c
+    	transport-helper.c
+
+diff --cc Documentation/git-remote-helpers.txt
+index 8beb42d,f4b6a5a..5cfdc0c
+--- a/Documentation/git-remote-helpers.txt
++++ b/Documentation/git-remote-helpers.txt
+@@@ -63,22 -43,17 +63,33 @@@ suitably updated
+  +
+  Supported if the helper has the "fetch" capability.
+  
+ +'push' +<src>:<dst>::
+ +	Pushes the given <src> commit or branch locally to the
+ +	remote branch described by <dst>.  A batch sequence of
+ +	one or more push commands is terminated with a blank line.
+ ++
+ +Zero or more protocol options may be entered after the last 'push'
+ +command, before the batch's terminating blank line.
+ ++
+ +When the push is complete, outputs one or more 'ok <dst>' or
+ +'error <dst> <why>?' lines to indicate success or failure of
+ +each pushed ref.  The status report output is terminated by
+ +a blank line.  The option field <why> may be quoted in a C
+ +style string if it contains an LF.
+ ++
+ +Supported if the helper has the "push" capability.
+ +
++ 'import' <name>::
++ 	Produces a fast-import stream which imports the current value
++ 	of the named ref. It may additionally import other refs as
++ 	needed to construct the history efficiently. The script writes
++ 	to a helper-specific private namespace. The value of the named
++ 	ref should be written to a location in this namespace derived
++ 	by applying the refspecs from the "refspec" capability to the
++ 	name of the ref.
++ +
++ Supported if the helper has the "import" capability.
++ 
+  If a fatal error occurs, the program writes the error message to
+  stderr and exits. The caller should expect that a suitable error
+  message has been printed if the child closes the connection without
+@@@ -93,50 -68,26 +104,67 @@@ CAPABILITIE
+  'fetch'::
+  	This helper supports the 'fetch' command.
+  
+ +'option'::
+ +	This helper supports the option command.
+ +
+ +'push'::
+ +	This helper supports the 'push' command.
+ +
++ 'import'::
++ 	This helper supports the 'import' command.
++ 
++ 'refspec' 'spec'::
++ 	When using the import command, expect the source ref to have
++ 	been written to the destination ref. The earliest applicable
++ 	refspec takes precedence. For example
++ 	"refs/heads/*:refs/svn/origin/branches/*" means that, after an
++ 	"import refs/heads/name", the script has written to
++ 	refs/svn/origin/branches/name. If this capability is used at
++ 	all, it must cover all refs reported by the list command; if
++ 	it is not used, it is effectively "*:*"
++ 
+  REF LIST ATTRIBUTES
+  -------------------
+  
+ +'for-push'::
+ +	The caller wants to use the ref list to prepare push
+ +	commands.  A helper might chose to acquire the ref list by
+ +	opening a different type of connection to the destination.
+ +
++ 'unchanged'::
++ 	This ref is unchanged since the last import or fetch, although
++ 	the helper cannot necessarily determine what value that produced.
++ 
+ +OPTIONS
+ +-------
+ +'option verbosity' <N>::
+ +	Change the level of messages displayed by the helper.
+ +	When N is 0 the end-user has asked the process to be
+ +	quiet, and the helper should produce only error output.
+ +	N of 1 is the default level of verbosity, higher values
+ +	of N correspond to the number of -v flags passed on the
+ +	command line.
+ +
+ +'option progress' \{'true'|'false'\}::
+ +	Enable (or disable) progress messages displayed by the
+ +	transport helper during a command.
+ +
+ +'option depth' <depth>::
+ +	Deepen the history of a shallow repository.
+ +
+ +'option followtags' \{'true'|'false'\}::
+ +	If enabled the helper should automatically fetch annotated
+ +	tag objects if the object the tag points at was transferred
+ +	during the fetch command.  If the tag is not fetched by
+ +	the helper a second fetch command will usually be sent to
+ +	ask for the tag specifically.  Some helpers may be able to
+ +	use this option to avoid a second network connection.
+ +
+ +'option dry-run' \{'true'|'false'\}:
+ +	If true, pretend the operation completed successfully,
+ +	but don't actually change any repository data.	For most
+ +	helpers this only applies to the 'push', if supported.
+ +
+  Documentation
+  -------------
+  Documentation by Daniel Barkalow.
+diff --cc Makefile
+index 4a1e5bc,b437252..fd4919c
+--- a/Makefile
++++ b/Makefile
+@@@ -1566,11 -1520,35 +1582,41 @@@ $(patsubst %.perl,%,$(SCRIPT_PERL)) git
+  	mv $@+ $@
+  endif # NO_PERL
+  
+++
+ +ifdef JSMIN
+ +gitweb/gitweb.min.js: gitweb/gitweb.js
+ +	$(QUIET_GEN)$(JSMIN) <$< >$@
+ +endif # JSMIN
+ +
++ ifndef NO_PYTHON
++ $(patsubst %.py,%,$(SCRIPT_PYTHON)): GIT-CFLAGS
++ $(patsubst %.py,%,$(SCRIPT_PYTHON)): % : %.py
++ 	$(QUIET_GEN)$(RM) $@ $@+ && \
++ 	INSTLIBDIR=`MAKEFLAGS= $(MAKE) -C git_remote_helpers -s \
++ 		--no-print-directory prefix='$(prefix_SQ)' DESTDIR='$(DESTDIR_SQ)' \
++ 		instlibdir` && \
++ 	sed -e '1{' \
++ 	    -e '	s|#!.*python|#!$(PYTHON_PATH_SQ)|' \
++ 	    -e '}' \
++ 	    -e 's|^import sys.*|&; \\\
++ 	           import os; \\\
++ 	           sys.path[0] = os.environ.has_key("GITPYTHONLIB") and \\\
++ 	                         os.environ["GITPYTHONLIB"] or \\\
++ 	                         "@@INSTLIBDIR@@"|' \
++ 	    -e 's|@@INSTLIBDIR@@|'"$$INSTLIBDIR"'|g' \
++ 	    $@.py >$@+ && \
++ 	chmod +x $@+ && \
++ 	mv $@+ $@
++ else # NO_PYTHON
++ $(patsubst %.py,%,$(SCRIPT_PYTHON)): % : unimplemented.sh
++ 	$(QUIET_GEN)$(RM) $@ $@+ && \
++ 	sed -e '1s|#!.*/sh|#!$(SHELL_PATH_SQ)|' \
++ 	    -e 's|@@REASON@@|NO_PYTHON=$(NO_PYTHON)|g' \
++ 	    unimplemented.sh >$@+ && \
++ 	chmod +x $@+ && \
++ 	mv $@+ $@
++ endif # NO_PYTHON
++ 
+  configure: configure.ac
+  	$(QUIET_GEN)$(RM) $@ $<+ && \
+  	sed -e 's/@@GIT_VERSION@@/$(GIT_VERSION)/g' \
+diff --cc builtin-fetch.c
+index 5b7db61,013a6ba..8654fa7
+--- a/builtin-fetch.c
++++ b/builtin-fetch.c
+@@@ -819,9 -694,22 +822,9 @@@ static int fetch_one(struct remote *rem
+  	if (!remote)
+  		die("Where do you want to fetch from today?");
+  
+- 	transport = transport_get(remote, remote->url[0]);
++ 	transport = transport_get(remote, NULL);
+  	if (verbosity >= 2)
+ -		transport->verbose = 1;
+ +		transport->verbose = verbosity <= 3 ? verbosity : 3;
+  	if (verbosity < 0)
+  		transport->verbose = -1;
+  	if (upload_pack)
+diff --cc builtin-ls-remote.c
+index b5bad0c,d625df2..70f5622
+--- a/builtin-ls-remote.c
++++ b/builtin-ls-remote.c
+@@@ -86,10 -86,10 +86,10 @@@ int cmd_ls_remote(int argc, const char 
+  			pattern[j - i] = p;
+  		}
+  	}
+ -	remote = nongit ? NULL : remote_get(dest);
+ -	if (remote && !remote->url_nr)
+ +	remote = remote_get(dest);
+ +	if (!remote->url_nr)
+  		die("remote %s has no configured URL", dest);
+- 	transport = transport_get(remote, remote->url[0]);
++ 	transport = transport_get(remote, NULL);
+  	if (uploadpack != NULL)
+  		transport_set_option(transport, TRANS_OPT_UPLOADPACK, uploadpack);
+  
+diff --cc transport-helper.c
+index 5078c71,c87530e..11f3d7e
+--- a/transport-helper.c
++++ b/transport-helper.c
+@@@ -5,16 -5,17 +5,21 @@@
+  #include "commit.h"
+  #include "diff.h"
+  #include "revision.h"
+ +#include "quote.h"
++ #include "remote.h"
+  
+  struct helper_data
+  {
+  	const char *name;
+  	struct child_process *helper;
+ -	unsigned fetch : 1;
+ -	unsigned import : 1;
+ +	FILE *out;
+ +	unsigned fetch : 1,
+++		import : 1,
+ +		option : 1,
+ +		push : 1;
++ 	/* These go from remote name (as in "list") to private name */
++ 	struct refspec *refspecs;
++ 	int refspec_nr;
+  };
+  
+  static struct child_process *get_helper(struct transport *transport)
+@@@ -22,6 -23,10 +27,9 @@@
+  	struct helper_data *data = transport->data;
+  	struct strbuf buf = STRBUF_INIT;
+  	struct child_process *helper;
+ -	FILE *file;
++ 	const char **refspecs = NULL;
++ 	int refspec_nr = 0;
++ 	int refspec_alloc = 0;
+  
+  	if (data->helper)
+  		return data->helper;
+@@@ -51,11 -56,25 +59,29 @@@
+  			break;
+  		if (!strcmp(buf.buf, "fetch"))
+  			data->fetch = 1;
+ +		if (!strcmp(buf.buf, "option"))
+ +			data->option = 1;
+ +		if (!strcmp(buf.buf, "push"))
+ +			data->push = 1;
++ 		if (!strcmp(buf.buf, "import"))
++ 			data->import = 1;
++ 		if (!data->refspecs && !prefixcmp(buf.buf, "refspec ")) {
++ 			ALLOC_GROW(refspecs,
++ 				   refspec_nr + 1,
++ 				   refspec_alloc);
++ 			refspecs[refspec_nr++] = strdup(buf.buf + strlen("refspec "));
++ 		}
++ 	}
++ 	if (refspecs) {
++ 		int i;
++ 		data->refspec_nr = refspec_nr;
++ 		data->refspecs = parse_fetch_refspec(refspec_nr, refspecs);
++ 		for (i = 0; i < refspec_nr; i++) {
++ 			free((char *)refspecs[i]);
++ 		}
++ 		free(refspecs);
+  	}
++ 	strbuf_release(&buf);
+  	return data->helper;
+  }
+  
+@@@ -75,89 -93,21 +101,98 @@@ static int disconnect_helper(struct tra
+  	return 0;
+  }
+  
+ +static const char *unsupported_options[] = {
+ +	TRANS_OPT_UPLOADPACK,
+ +	TRANS_OPT_RECEIVEPACK,
+ +	TRANS_OPT_THIN,
+ +	TRANS_OPT_KEEP
+ +	};
+ +static const char *boolean_options[] = {
+ +	TRANS_OPT_THIN,
+ +	TRANS_OPT_KEEP,
+ +	TRANS_OPT_FOLLOWTAGS
+ +	};
+ +
+ +static int set_helper_option(struct transport *transport,
+ +			  const char *name, const char *value)
+ +{
+ +	struct helper_data *data = transport->data;
+ +	struct child_process *helper = get_helper(transport);
+ +	struct strbuf buf = STRBUF_INIT;
+ +	int i, ret, is_bool = 0;
+ +
+ +	if (!data->option)
+ +		return 1;
+ +
+ +	for (i = 0; i < ARRAY_SIZE(unsupported_options); i++) {
+ +		if (!strcmp(name, unsupported_options[i]))
+ +			return 1;
+ +	}
+ +
+ +	for (i = 0; i < ARRAY_SIZE(boolean_options); i++) {
+ +		if (!strcmp(name, boolean_options[i])) {
+ +			is_bool = 1;
+ +			break;
+ +		}
+ +	}
+ +
+ +	strbuf_addf(&buf, "option %s ", name);
+ +	if (is_bool)
+ +		strbuf_addstr(&buf, value ? "true" : "false");
+ +	else
+ +		quote_c_style(value, &buf, NULL, 0);
+ +	strbuf_addch(&buf, '\n');
+ +
+ +	if (write_in_full(helper->in, buf.buf, buf.len) != buf.len)
+ +		die_errno("cannot send option to %s", data->name);
+ +
+ +	strbuf_reset(&buf);
+ +	if (strbuf_getline(&buf, data->out, '\n') == EOF)
+ +		exit(128); /* child died, message supplied already */
+ +
+ +	if (!strcmp(buf.buf, "ok"))
+ +		ret = 0;
+ +	else if (!prefixcmp(buf.buf, "error")) {
+ +		ret = -1;
+ +	} else if (!strcmp(buf.buf, "unsupported"))
+ +		ret = 1;
+ +	else {
+ +		warning("%s unexpectedly said: '%s'", data->name, buf.buf);
+ +		ret = 1;
+ +	}
+ +	strbuf_release(&buf);
+ +	return ret;
+ +}
+ +
+ +static void standard_options(struct transport *t)
+ +{
+ +	char buf[16];
+ +	int n;
+ +	int v = t->verbose;
+ +	int no_progress = v < 0 || (!t->progress && !isatty(1));
+ +
+ +	set_helper_option(t, "progress", !no_progress ? "true" : "false");
+ +
+ +	n = snprintf(buf, sizeof(buf), "%d", v + 1);
+ +	if (n >= sizeof(buf))
+ +		die("impossibly large verbosity value");
+ +	set_helper_option(t, "verbosity", buf);
+ +}
+ +
++ static int release_helper(struct transport *transport)
++ {
++ 	struct helper_data *data = transport->data;
++ 	free_refspec(data->refspec_nr, data->refspecs);
++ 	data->refspecs = NULL;
++ 	disconnect_helper(transport);
++ 	free(transport->data);
++ 	return 0;
++ }
++ 
+  static int fetch_with_fetch(struct transport *transport,
+- 			    int nr_heads, const struct ref **to_fetch)
++ 			    int nr_heads, struct ref **to_fetch)
+  {
+ -	struct child_process *helper = get_helper(transport);
+ -	FILE *file = xfdopen(helper->out, "r");
+ +	struct helper_data *data = transport->data;
+  	int i;
+  	struct strbuf buf = STRBUF_INIT;
+  
+@@@ -217,135 -206,24 +311,151 @@@ static int fetch(struct transport *tran
+  	return -1;
+  }
+  
+ +static int push_refs(struct transport *transport,
+ +		struct ref *remote_refs, int flags)
+ +{
+ +	int force_all = flags & TRANSPORT_PUSH_FORCE;
+ +	int mirror = flags & TRANSPORT_PUSH_MIRROR;
+ +	struct helper_data *data = transport->data;
+ +	struct strbuf buf = STRBUF_INIT;
+ +	struct child_process *helper;
+ +	struct ref *ref;
+ +
+ +	if (!remote_refs)
+ +		return 0;
+ +
+ +	helper = get_helper(transport);
+ +	if (!data->push)
+ +		return 1;
+ +
+ +	for (ref = remote_refs; ref; ref = ref->next) {
+ +		if (ref->peer_ref)
+ +			hashcpy(ref->new_sha1, ref->peer_ref->new_sha1);
+ +		else if (!mirror)
+ +			continue;
+ +
+ +		ref->deletion = is_null_sha1(ref->new_sha1);
+ +		if (!ref->deletion &&
+ +			!hashcmp(ref->old_sha1, ref->new_sha1)) {
+ +			ref->status = REF_STATUS_UPTODATE;
+ +			continue;
+ +		}
+ +
+ +		if (force_all)
+ +			ref->force = 1;
+ +
+ +		strbuf_addstr(&buf, "push ");
+ +		if (!ref->deletion) {
+ +			if (ref->force)
+ +				strbuf_addch(&buf, '+');
+ +			if (ref->peer_ref)
+ +				strbuf_addstr(&buf, ref->peer_ref->name);
+ +			else
+ +				strbuf_addstr(&buf, sha1_to_hex(ref->new_sha1));
+ +		}
+ +		strbuf_addch(&buf, ':');
+ +		strbuf_addstr(&buf, ref->name);
+ +		strbuf_addch(&buf, '\n');
+ +	}
+ +	if (buf.len == 0)
+ +		return 0;
+ +
+ +	transport->verbose = flags & TRANSPORT_PUSH_VERBOSE ? 1 : 0;
+ +	standard_options(transport);
+ +
+ +	if (flags & TRANSPORT_PUSH_DRY_RUN) {
+ +		if (set_helper_option(transport, "dry-run", "true") != 0)
+ +			die("helper %s does not support dry-run", data->name);
+ +	}
+ +
+ +	strbuf_addch(&buf, '\n');
+ +	if (write_in_full(helper->in, buf.buf, buf.len) != buf.len)
+ +		exit(128);
+ +
+ +	ref = remote_refs;
+ +	while (1) {
+ +		char *refname, *msg;
+ +		int status;
+ +
+ +		strbuf_reset(&buf);
+ +		if (strbuf_getline(&buf, data->out, '\n') == EOF)
+ +			exit(128); /* child died, message supplied already */
+ +		if (!buf.len)
+ +			break;
+ +
+ +		if (!prefixcmp(buf.buf, "ok ")) {
+ +			status = REF_STATUS_OK;
+ +			refname = buf.buf + 3;
+ +		} else if (!prefixcmp(buf.buf, "error ")) {
+ +			status = REF_STATUS_REMOTE_REJECT;
+ +			refname = buf.buf + 6;
+ +		} else
+ +			die("expected ok/error, helper said '%s'\n", buf.buf);
+ +
+ +		msg = strchr(refname, ' ');
+ +		if (msg) {
+ +			struct strbuf msg_buf = STRBUF_INIT;
+ +			const char *end;
+ +
+ +			*msg++ = '\0';
+ +			if (!unquote_c_style(&msg_buf, msg, &end))
+ +				msg = strbuf_detach(&msg_buf, NULL);
+ +			else
+ +				msg = xstrdup(msg);
+ +			strbuf_release(&msg_buf);
+ +
+ +			if (!strcmp(msg, "no match")) {
+ +				status = REF_STATUS_NONE;
+ +				free(msg);
+ +				msg = NULL;
+ +			}
+ +			else if (!strcmp(msg, "up to date")) {
+ +				status = REF_STATUS_UPTODATE;
+ +				free(msg);
+ +				msg = NULL;
+ +			}
+ +			else if (!strcmp(msg, "non-fast forward")) {
+ +				status = REF_STATUS_REJECT_NONFASTFORWARD;
+ +				free(msg);
+ +				msg = NULL;
+ +			}
+ +		}
+ +
+ +		if (ref)
+ +			ref = find_ref_by_name(ref, refname);
+ +		if (!ref)
+ +			ref = find_ref_by_name(remote_refs, refname);
+ +		if (!ref) {
+ +			warning("helper reported unexpected status of %s", refname);
+ +			continue;
+ +		}
+ +
+ +		ref->status = status;
+ +		ref->remote_status = msg;
+ +	}
+ +	strbuf_release(&buf);
+ +	return 0;
+ +}
+ +
++ static int has_attribute(const char *attrs, const char *attr) {
++ 	int len;
++ 	if (!attrs)
++ 		return 0;
++ 
++ 	len = strlen(attr);
++ 	for (;;) {
++ 		const char *space = strchrnul(attrs, ' ');
++ 		if (len == space - attrs && !strncmp(attrs, attr, len))
++ 			return 1;
++ 		if (!*space)
++ 			return 0;
++ 		attrs = space + 1;
++ 	}
++ }
++ 
+  static struct ref *get_refs_list(struct transport *transport, int for_push)
+  {
+ +	struct helper_data *data = transport->data;
+  	struct child_process *helper;
+  	struct ref *ret = NULL;
+  	struct ref **tail = &ret;
+@@@ -395,10 -278,8 +511,10 @@@ int transport_helper_init(struct transp
+  	data->name = name;
+  
+  	transport->data = data;
+ +	transport->set_option = set_helper_option;
+  	transport->get_refs_list = get_refs_list;
+  	transport->fetch = fetch;
+ +	transport->push_refs = push_refs;
+- 	transport->disconnect = disconnect_helper;
++ 	transport->disconnect = release_helper;
+  	return 0;
+  }
+diff --cc transport.c
+index 7362ec0,5d814b5..3eea836
+--- a/transport.c
++++ b/transport.c
+@@@ -784,12 -812,27 +784,30 @@@ struct transport *transport_get(struct 
+  {
+  	struct transport *ret = xcalloc(1, sizeof(*ret));
+  
+ +	if (!remote)
+ +		die("No remote provided to transport_get()");
+ +
+  	ret->remote = remote;
++ 
++ 	if (!url && remote && remote->url)
++ 		url = remote->url[0];
+  	ret->url = url;
+  
++ 	/* maybe it is a foreign URL? */
++ 	if (url) {
++ 		const char *p = url;
++ 
++ 		while (isalnum(*p))
++ 			p++;
++ 		if (!prefixcmp(p, "::"))
++ 			remote->foreign_vcs = xstrndup(url, p - url);
++ 	}
++ 
++ 	if (remote && remote->foreign_vcs) {
++ 		transport_helper_init(ret, remote->foreign_vcs);
++ 		return ret;
++ 	}
++ 
+  	if (!prefixcmp(url, "rsync:")) {
+  		ret->get_refs_list = get_refs_via_rsync;
+  		ret->fetch = fetch_objs_via_rsync;
+diff --cc transport.h
+index e4e6177,503db11..9e74406
+--- a/transport.h
++++ b/transport.h
+@@@ -23,9 -56,13 +56,13 @@@ struct transport 
+  	int (*push_refs)(struct transport *transport, struct ref *refs, int flags);
+  	int (*push)(struct transport *connection, int refspec_nr, const char **refspec, int flags);
+  
++ 	/** get_refs_list(), fetch(), and push_refs() can keep
++ 	 * resources (such as a connection) reserved for futher
++ 	 * use. disconnect() releases these resources.
++ 	 **/
+  	int (*disconnect)(struct transport *connection);
+  	char *pack_lockfile;
+ -	signed verbose : 2;
+ +	signed verbose : 3;
+  	/* Force progress even if the output is not a tty */
+  	unsigned progress : 1;
+  };

@@ -1,0 +1,112 @@
+\hypertarget{interface_g_d_base_view}{
+\section{GDBaseView Class Reference}
+\label{interface_g_d_base_view}\index{GDBaseView@{GDBaseView}}
+}
+
+
+The \hyperlink{interface_g_d_base_view}{GDBaseView} is a base \hyperlink{class_n_s_view}{NSView} that contains helper methods for many view needs.  
+
+
+{\ttfamily \#import $<$GDBaseView.h$>$}Inheritance diagram for GDBaseView::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3cm]{interface_g_d_base_view}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_view_a711eaa2b50c00552ea871775ce48e18a}{
+(void) -\/ \hyperlink{interface_g_d_base_view_a711eaa2b50c00552ea871775ce48e18a}{setGDRefs}}
+\label{interface_g_d_base_view_a711eaa2b50c00552ea871775ce48e18a}
+
+\begin{DoxyCompactList}\small\item\em A hook you can use to set references to properties on a \char`\"{}gd\char`\"{} instance. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_view_a640709524ac271aad9feda48f742b8fa}{lazyInit}
+\begin{DoxyCompactList}\small\item\em A hook you can override to do some lazy initialization. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_view_acadad5bd5ffc83d3c9b34c54461b2f4a}{lazyInitWithGD:}
+\begin{DoxyCompactList}\small\item\em Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_view_abbf4c6090a17bfd07713de55b0904e0d}{showInView:}
+\begin{DoxyCompactList}\small\item\em Show this view inside of another view. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_view_a837e3c859782a32d3c7c9270e99dd673}{
+(void) -\/ \hyperlink{interface_g_d_base_view_a837e3c859782a32d3c7c9270e99dd673}{showMaximizedInView:}}
+\label{interface_g_d_base_view_a837e3c859782a32d3c7c9270e99dd673}
+
+\begin{DoxyCompactList}\small\item\em Sets this views frame to match the other views frame, then shows this view in the other view. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_base_view_adc1a971ea59f4d48174901c94c48e8a0}{showInView:withAdjustments:}
+\begin{DoxyCompactList}\small\item\em A quick shortcut to show this view inside of another view, when you know that some minor adjustments need to be made. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_base_view_a61c39a91d3844a860a2a7351e61aee0e}{
+IBOutlet id \hyperlink{interface_g_d_base_view_a61c39a91d3844a860a2a7351e61aee0e}{gd}}
+\label{interface_g_d_base_view_a61c39a91d3844a860a2a7351e61aee0e}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_application_controller}{GDApplicationController} or a \hyperlink{interface_g_d_document}{GDDocument}. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_base_view_aeb77c9580ca6da0892bd407ae19ef79c}{
+IBOutlet id \hyperlink{interface_g_d_base_view_aeb77c9580ca6da0892bd407ae19ef79c}{externalNibController}}
+\label{interface_g_d_base_view_aeb77c9580ca6da0892bd407ae19ef79c}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{interface_g_d_external_nib_controller}{GDExternalNibController}. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_base_view}{GDBaseView} is a base \hyperlink{class_n_s_view}{NSView} that contains helper methods for many view needs. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_base_view_a640709524ac271aad9feda48f742b8fa}{
+\index{GDBaseView@{GDBaseView}!lazyInit@{lazyInit}}
+\index{lazyInit@{lazyInit}!GDBaseView@{GDBaseView}}
+\subsubsection[{lazyInit}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInit }}
+\label{interface_g_d_base_view_a640709524ac271aad9feda48f742b8fa}
+
+
+A hook you can override to do some lazy initialization. This is called last after any lazyInitWith(...) method is called. \hypertarget{interface_g_d_base_view_acadad5bd5ffc83d3c9b34c54461b2f4a}{
+\index{GDBaseView@{GDBaseView}!lazyInitWithGD:@{lazyInitWithGD:}}
+\index{lazyInitWithGD:@{lazyInitWithGD:}!GDBaseView@{GDBaseView}}
+\subsubsection[{lazyInitWithGD:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) lazyInitWithGD: (id) {\em \_\-gd}}}
+\label{interface_g_d_base_view_acadad5bd5ffc83d3c9b34c54461b2f4a}
+
+
+Lazy init this object with a \hyperlink{interface_g_d_document}{GDDocument}, or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. This just sets the \char`\"{}gd\char`\"{} property.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-gd}]A \hyperlink{interface_g_d_document}{GDDocument} or \hyperlink{interface_g_d_application_controller}{GDApplicationController}. \end{DoxyParams}
+\hypertarget{interface_g_d_base_view_abbf4c6090a17bfd07713de55b0904e0d}{
+\index{GDBaseView@{GDBaseView}!showInView:@{showInView:}}
+\index{showInView:@{showInView:}!GDBaseView@{GDBaseView}}
+\subsubsection[{showInView:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) showInView: ({\bf NSView} $\ast$) {\em view}}}
+\label{interface_g_d_base_view_abbf4c6090a17bfd07713de55b0904e0d}
+
+
+Show this view inside of another view. No frame adjustments are made. \hypertarget{interface_g_d_base_view_adc1a971ea59f4d48174901c94c48e8a0}{
+\index{GDBaseView@{GDBaseView}!showInView:withAdjustments:@{showInView:withAdjustments:}}
+\index{showInView:withAdjustments:@{showInView:withAdjustments:}!GDBaseView@{GDBaseView}}
+\subsubsection[{showInView:withAdjustments:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) showInView: ({\bf NSView} $\ast$) {\em view}\/ withAdjustments: (NSRect) {\em \_\-adjust}}}
+\label{interface_g_d_base_view_adc1a971ea59f4d48174901c94c48e8a0}
+
+
+A quick shortcut to show this view inside of another view, when you know that some minor adjustments need to be made. This method looks like this: 
+\begin{DoxyCode}
+ - (void) showInView:(NSView *) view withAdjustments:(NSRect) _adjust {
+     NSRect newFrame=[view frame];
+     newFrame.size.width+=_adjust.size.width;
+     newFrame.size.width+=_adjust.size.height;
+     newFrame.origin.x+=_adjust.origin.x;
+     newFrame.origin.y+=_adjust.origin.y;
+     [self setFrame:newFrame];
+     [view addSubview:self];
+ }
+\end{DoxyCode}
+
+
+So you can use this to your advantage: 
+\begin{DoxyCode}
+ [myView showInView:otherView withAdjustments:NSMakeRect(10,-5,-10,10)];
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_base_view_8h}{GDBaseView.h}\item 
+source/GDBaseView.m\end{DoxyCompactItemize}

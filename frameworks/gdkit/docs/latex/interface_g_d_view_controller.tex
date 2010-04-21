@@ -1,0 +1,57 @@
+\hypertarget{interface_g_d_view_controller}{
+\section{GDViewController Class Reference}
+\label{interface_g_d_view_controller}\index{GDViewController@{GDViewController}}
+}
+
+
+The \hyperlink{interface_g_d_view_controller}{GDViewController} is a controller you should use to expose references to views, and methods to control those views in any way.  
+
+
+{\ttfamily \#import $<$GDViewController.h$>$}Inheritance diagram for GDViewController::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{interface_g_d_view_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{interface_g_d_view_controller_a03b39c29a143a38b171dcf311384e4df}{loadViewsInNibNamed:}
+\begin{DoxyCompactList}\small\item\em Loads a nib that contains some views this controller can use. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_n_s_string}{NSString} $\ast$ \hyperlink{interface_g_d_view_controller_a46123f01096710058753b5e97c70e6ab}{lastLoadedNibName}
+\begin{DoxyCompactList}\small\item\em The last loaded nib's name. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_view_controller}{GDViewController} is a controller you should use to expose references to views, and methods to control those views in any way. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_view_controller_a03b39c29a143a38b171dcf311384e4df}{
+\index{GDViewController@{GDViewController}!loadViewsInNibNamed:@{loadViewsInNibNamed:}}
+\index{loadViewsInNibNamed:@{loadViewsInNibNamed:}!GDViewController@{GDViewController}}
+\subsubsection[{loadViewsInNibNamed:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) loadViewsInNibNamed: ({\bf NSString} $\ast$) {\em \_\-nibName}}}
+\label{interface_g_d_view_controller_a03b39c29a143a38b171dcf311384e4df}
+
+
+Loads a nib that contains some views this controller can use. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-nibName}]The nib name to load. \end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{interface_g_d_view_controller_a46123f01096710058753b5e97c70e6ab}{
+\index{GDViewController@{GDViewController}!lastLoadedNibName@{lastLoadedNibName}}
+\index{lastLoadedNibName@{lastLoadedNibName}!GDViewController@{GDViewController}}
+\subsubsection[{lastLoadedNibName}]{\setlength{\rightskip}{0pt plus 5cm}-\/ ({\bf NSString}$\ast$) {\bf lastLoadedNibName}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{interface_g_d_view_controller_a46123f01096710058753b5e97c70e6ab}
+
+
+The last loaded nib's name. This can be useful if you need to do different logic on awakeFromNib. 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_view_controller_8h}{GDViewController.h}\item 
+source/GDViewController.m\end{DoxyCompactItemize}

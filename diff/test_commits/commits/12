@@ -1,0 +1,265 @@
+commit eae7d64a2da085d7aed0671149611e417ca794e3
+tree 2f4c0bf4a1154d8639d36d798f7eaa94631f635f
+parent 3cb1f9c9820357812a9f17df92008c8838cbc1fc
+parent b53bb301f5781b05fb59891128db21a331dca032
+author Paul Mackerras <paulus@samba.org> 1252136043 +1000
+committer Paul Mackerras <paulus@samba.org> 1252136043 +1000
+
+    Merge branch 'master' into dev
+
+diff --cc gitk
+index 082fa77,8c08310..9d8afd8
+--- a/gitk
++++ b/gitk
+@@@ -2204,16 -2138,16 +2206,16 @@@ proc makewindow {} 
+      lappend entries $sstring
+      trace add variable searchstring write incrsearch
+      pack $sstring -side left -expand 1 -fill x
+ -    radiobutton .bleft.mid.diff -text [mc "Diff"] \
+ +    ${NS}::radiobutton .bleft.mid.diff -text [mc "Diff"] \
+  	-command changediffdisp -variable diffelide -value {0 0}
+ -    radiobutton .bleft.mid.old -text [mc "Old version"] \
+ +    ${NS}::radiobutton .bleft.mid.old -text [mc "Old version"] \
+  	-command changediffdisp -variable diffelide -value {0 1}
+ -    radiobutton .bleft.mid.new -text [mc "New version"] \
+ +    ${NS}::radiobutton .bleft.mid.new -text [mc "New version"] \
+  	-command changediffdisp -variable diffelide -value {1 0}
+ -    label .bleft.mid.labeldiffcontext -text "      [mc "Lines of context"]: "
+ +    ${NS}::label .bleft.mid.labeldiffcontext -text "      [mc "Lines of context"]: "
+      pack .bleft.mid.diff .bleft.mid.old .bleft.mid.new -side left
+      spinbox .bleft.mid.diffcontext -width 5 -font textfont \
+- 	-from 1 -increment 1 -to 10000000 \
++ 	-from 0 -increment 1 -to 10000000 \
+  	-validate all -validatecommand "diffcontextvalidate %P" \
+  	-textvariable diffcontextstring
+      .bleft.mid.diffcontext set $diffcontext
+@@@ -2603,7 -2520,8 +2605,8 @@@ proc savestuff {w} 
+      global viewname viewfiles viewargs viewargscmd viewperm nextviewnum
+      global cmitmode wrapcomment datetimeformat limitdiffs
+      global colors bgcolor fgcolor diffcolors diffcontext selectbgcolor
+ -    global autoselect extdifftool perfile_attrs markbgcolor
+ +    global autoselect extdifftool perfile_attrs markbgcolor use_ttk
++     global hideremotes
+  
+      if {$stuffsaved} return
+      if {![winfo viewable .]} return
+@@@ -3892,19 -3831,19 +3941,19 @@@ proc editview {} 
+  
+  proc vieweditor {top n title} {
+      global newviewname newviewopts viewfiles bgcolor
+ -    global known_view_options
+ +    global known_view_options NS
+  
+ -    toplevel $top
+ +    ttk_toplevel $top
+-     wm title $top $title
++     wm title $top [concat $title [mc "-- criteria for selecting revisions"]]
+      make_transient $top .
+  
+      # View name
+ -    frame $top.nfr
+ -    label $top.nl -text [mc "View Name:"]
+ -    entry $top.name -width 20 -textvariable newviewname($n)
+ +    ${NS}::frame $top.nfr
+-     ${NS}::label $top.nl -text [mc "Name"]
+++    ${NS}::label $top.nl -text [mc "View Name"]
+ +    ${NS}::entry $top.name -width 20 -textvariable newviewname($n)
+      pack $top.nfr -in $top -fill x -pady 5 -padx 3
+-     pack $top.nl -in $top.nfr -side left -padx {0 30}
+-     pack $top.name -in $top.nfr -side left
++     pack $top.nl -in $top.nfr -side left -padx {0 5}
++     pack $top.name -in $top.nfr -side left -padx {0 25}
+  
+      # View options
+      set cframe $top.nfr
+@@@ -3920,20 -3859,34 +3969,34 @@@
+  	if {$flags eq "+" || $flags eq "*"} {
+  	    set cframe $top.fr$cnt
+  	    incr cnt
+ -	    frame $cframe
+ +	    ${NS}::frame $cframe
+  	    pack $cframe -in $top -fill x -pady 3 -padx 3
+  	    set cexpand [expr {$flags eq "*"}]
++         } elseif {$flags eq ".." || $flags eq "*."} {
++ 	    set cframe $top.fr$cnt
++ 	    incr cnt
+ -	    frame $cframe
+++	    ${NS}::frame $cframe
++ 	    pack $cframe -in $top -fill x -pady 3 -padx [list 15 3]
++ 	    set cexpand [expr {$flags eq "*."}]
+  	} else {
+  	    set lxpad 5
+  	}
+  
+- 	if {$type eq "b"} {
++ 	if {$type eq "l"} {
+ -            label $cframe.l_$id -text $title
+++            ${NS}::label $cframe.l_$id -text $title
++             pack $cframe.l_$id -in $cframe -side left -pady [list 3 0] -anchor w
++ 	} elseif {$type eq "b"} {
+ -	    checkbutton $cframe.c_$id -text $title -variable newviewopts($n,$id)
+ +	    ${NS}::checkbutton $cframe.c_$id -text $title -variable newviewopts($n,$id)
+  	    pack $cframe.c_$id -in $cframe -side left \
+  		-padx [list $lxpad 0] -expand $cexpand -anchor w
++ 	} elseif {[regexp {^r(\d+)$} $type type sz]} {
++ 	    regexp {^(.*_)} $id uselessvar button_id
+ -	    radiobutton $cframe.c_$id -text $title -variable newviewopts($n,$button_id) -value $sz
+++	    ${NS}::radiobutton $cframe.c_$id -text $title -variable newviewopts($n,$button_id) -value $sz
++ 	    pack $cframe.c_$id -in $cframe -side left \
++ 		-padx [list $lxpad 0] -expand $cexpand -anchor w
+  	} elseif {[regexp {^t(\d+)$} $type type sz]} {
+ -	    message $cframe.l_$id -aspect 1500 -text $title
+ -	    entry $cframe.e_$id -width $sz -background $bgcolor \
+ +	    ${NS}::label $cframe.l_$id -text $title
+ +	    ${NS}::entry $cframe.e_$id -width $sz -background $bgcolor \
+  		-textvariable newviewopts($n,$id)
+  	    pack $cframe.l_$id -in $cframe -side left -padx [list $lxpad 0]
+  	    pack $cframe.e_$id -in $cframe -side left -expand 1 -fill x
+@@@ -3943,27 -3896,26 +4006,26 @@@
+  		-textvariable newviewopts($n,$id)
+  	    pack $cframe.l_$id -in $cframe -side top -pady [list 3 0] -anchor w
+  	    pack $cframe.e_$id -in $cframe -side top -fill x
++ 	} elseif {$type eq "path"} {
+ -	    message $top.l -aspect 1500 -text $title
+++	    ${NS}::label $top.l -text $title
++ 	    pack $top.l -in $top -side top -pady [list 3 0] -anchor w -padx 3
++ 	    text $top.t -width 40 -height 5 -background $bgcolor -font uifont
++ 	    if {[info exists viewfiles($n)]} {
++ 		foreach f $viewfiles($n) {
++ 		    $top.t insert end $f
++ 		    $top.t insert end "\n"
++ 		}
++ 		$top.t delete {end - 1c} end
++ 		$top.t mark set insert 0.0
++ 	    }
++ 	    pack $top.t -in $top -side top -pady [list 0 5] -fill both -expand 1 -padx 3
+  	}
+      }
+  
+-     # Path list
+-     ${NS}::label $top.l \
+- 	-text [mc "Enter files and directories to include, one per line:"]
+-     pack $top.l -in $top -side top -pady [list 7 0] -anchor w -padx 3
+-     text $top.t -width 40 -height 5 -background $bgcolor -font uifont
+-     if {[info exists viewfiles($n)]} {
+- 	foreach f $viewfiles($n) {
+- 	    $top.t insert end $f
+- 	    $top.t insert end "\n"
+- 	}
+- 	$top.t delete {end - 1c} end
+- 	$top.t mark set insert 0.0
+-     }
+-     pack $top.t -in $top -side top -pady [list 0 5] -fill both -expand 1 -padx 3
+ -    frame $top.buts
+ -    button $top.buts.ok -text [mc "OK"] -command [list newviewok $top $n]
+ -    button $top.buts.apply -text [mc "Apply (F5)"] -command [list newviewok $top $n 1]
+ -    button $top.buts.can -text [mc "Cancel"] -command [list destroy $top]
+ +    ${NS}::frame $top.buts
+ +    ${NS}::button $top.buts.ok -text [mc "OK"] -command [list newviewok $top $n]
+ +    ${NS}::button $top.buts.apply -text [mc "Apply (F5)"] -command [list newviewok $top $n 1]
+ +    ${NS}::button $top.buts.can -text [mc "Cancel"] -command [list destroy $top]
+      bind $top <Control-Return> [list newviewok $top $n]
+      bind $top <F5> [list newviewok $top $n 1]
+      bind $top <Escape> [list destroy $top]
+@@@ -10522,55 -10400,61 +10595,58 @@@ proc doprefs {} 
+  	return
+      }
+      foreach v {maxwidth maxgraphpct showneartags showlocalchanges \
+- 		   limitdiffs tabstop perfile_attrs} {
++ 		   limitdiffs tabstop perfile_attrs hideremotes} {
+  	set oldprefs($v) [set $v]
+      }
+ -    toplevel $top
+ +    ttk_toplevel $top
+      wm title $top [mc "Gitk preferences"]
+      make_transient $top .
+ -    label $top.ldisp -text [mc "Commit list display options"]
+ +    ${NS}::label $top.ldisp -text [mc "Commit list display options"]
+      grid $top.ldisp - -sticky w -pady 10
+ -    label $top.spacer -text " "
+ -    label $top.maxwidthl -text [mc "Maximum graph width (lines)"] \
+ -	-font optionfont
+ +    ${NS}::label $top.spacer -text " "
+ +    ${NS}::label $top.maxwidthl -text [mc "Maximum graph width (lines)"]
+      spinbox $top.maxwidth -from 0 -to 100 -width 4 -textvariable maxwidth
+      grid $top.spacer $top.maxwidthl $top.maxwidth -sticky w
+ -    label $top.maxpctl -text [mc "Maximum graph width (% of pane)"] \
+ -	-font optionfont
+ +    ${NS}::label $top.maxpctl -text [mc "Maximum graph width (% of pane)"]
+      spinbox $top.maxpct -from 1 -to 100 -width 4 -textvariable maxgraphpct
+      grid x $top.maxpctl $top.maxpct -sticky w
+ -    checkbutton $top.showlocal -text [mc "Show local changes"] \
+ -	-font optionfont -variable showlocalchanges
+ +    ${NS}::checkbutton $top.showlocal -text [mc "Show local changes"] \
+ +	-variable showlocalchanges
+      grid x $top.showlocal -sticky w
+ -    checkbutton $top.autoselect -text [mc "Auto-select SHA1"] \
+ -	-font optionfont -variable autoselect
+ +    ${NS}::checkbutton $top.autoselect -text [mc "Auto-select SHA1"] \
+ +	-variable autoselect
+      grid x $top.autoselect -sticky w
+  
+ -    label $top.ddisp -text [mc "Diff display options"]
+ +    ${NS}::label $top.ddisp -text [mc "Diff display options"]
+      grid $top.ddisp - -sticky w -pady 10
+ -    label $top.tabstopl -text [mc "Tab spacing"] -font optionfont
+ +    ${NS}::label $top.tabstopl -text [mc "Tab spacing"]
+      spinbox $top.tabstop -from 1 -to 20 -width 4 -textvariable tabstop
+      grid x $top.tabstopl $top.tabstop -sticky w
+ -    checkbutton $top.ntag -text [mc "Display nearby tags"] \
+ -	-font optionfont -variable showneartags
+ +    ${NS}::checkbutton $top.ntag -text [mc "Display nearby tags"] \
+ +	-variable showneartags
+      grid x $top.ntag -sticky w
+ -    checkbutton $top.hideremotes -text [mc "Hide remote refs"] \
+ -	-font optionfont -variable hideremotes
+++    ${NS}::checkbutton $top.hideremotes -text [mc "Hide remote refs"] \
+++	-variable hideremotes
++     grid x $top.hideremotes -sticky w
+ -    checkbutton $top.ldiff -text [mc "Limit diffs to listed paths"] \
+ -	-font optionfont -variable limitdiffs
+ +    ${NS}::checkbutton $top.ldiff -text [mc "Limit diffs to listed paths"] \
+ +	-variable limitdiffs
+      grid x $top.ldiff -sticky w
+ -    checkbutton $top.lattr -text [mc "Support per-file encodings"] \
+ -	-font optionfont -variable perfile_attrs
+ +    ${NS}::checkbutton $top.lattr -text [mc "Support per-file encodings"] \
+ +	-variable perfile_attrs
+      grid x $top.lattr -sticky w
+  
+ -    entry $top.extdifft -textvariable extdifftool
+ -    frame $top.extdifff
+ -    label $top.extdifff.l -text [mc "External diff tool" ] -font optionfont \
+ -	-padx 10
+ -    button $top.extdifff.b -text [mc "Choose..."] -font optionfont \
+ -	-command choose_extdiff
+ +    ${NS}::entry $top.extdifft -textvariable extdifftool
+ +    ${NS}::frame $top.extdifff
+ +    ${NS}::label $top.extdifff.l -text [mc "External diff tool" ]
+ +    ${NS}::button $top.extdifff.b -text [mc "Choose..."] -command choose_extdiff
+      pack $top.extdifff.l $top.extdifff.b -side left
+ -    grid x $top.extdifff $top.extdifft -sticky w
+ +    pack configure $top.extdifff.l -padx 10
+ +    grid x $top.extdifff $top.extdifft -sticky ew
+  
+ -    label $top.cdisp -text [mc "Colors: press to choose"]
+ +    ${NS}::label $top.cdisp -text [mc "Colors: press to choose"]
+      grid $top.cdisp - -sticky w -pady 10
+      label $top.bg -padx 40 -relief sunk -background $bgcolor
+ -    button $top.bgbut -text [mc "Background"] -font optionfont \
+ +    ${NS}::button $top.bgbut -text [mc "Background"] \
+  	-command [list choosecolor bgcolor {} $top.bg [mc "background"] setbg]
+      grid x $top.bgbut $top.bg -sticky w
+      label $top.fg -padx 40 -relief sunk -background $fgcolor
+@@@ -11291,10 -11171,7 +11372,11 @@@ set nullid2 "00000000000000000000000000
+  set nullfile "/dev/null"
+  
+  set have_tk85 [expr {[package vcompare $tk_version "8.5"] >= 0}]
+ +if {![info exists use_ttk]} {
+ +    set use_ttk [llength [info commands ::ttk::style]]
+ +}
+ +set NS [expr {$use_ttk ? "ttk" : ""}]
++ set git_version [join [lrange [split [lindex [exec git version] end] .] 0 2] .]
+  
+  set runq {}
+  set history {}

@@ -1,0 +1,16 @@
+diff --git a/assets/gitui.psd b/assets/gitui.psd
+index a779764..6f75636 100644
+Binary files a/assets/gitui.psd and b/assets/gitui.psd differ
+diff --git a/Info.plist b/Info.plist
+index 1b9c694..be545f3 100644
+--- a/Info.plist
++++ b/Info.plist
+@@ -42,7 +42,7 @@
+ 	<key>CFBundleSignature</key>
+ 	<string>????</string>
+ 	<key>CFBundleVersion</key>
+-	<string>2345</string>
++	<string>2347</string>
+ 	<key>LSMinimumSystemVersion</key>
+ 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
+ 	<key>NSMainNibFile</key>

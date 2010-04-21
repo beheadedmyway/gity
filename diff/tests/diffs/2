@@ -1,0 +1,31 @@
+diff --git a/src/GTOperationsController.m b/src/GTOperationsController.m
+index b27216b..2f07884 100644
+--- a/src/GTOperationsController.m
++++ b/src/GTOperationsController.m
+@@ -740,7 +740,7 @@ static GTModalController * modals;
+ 
+ - (void) runSubmoduleSyncForSubmodule:(NSString *) _submodule {
+ 	if(allCanceled || networkOpsCancelled) return;
+-	[status showStatusIndicatorWithLabel:@"Syncing submodule, please wait"];
++	[status showStatusIndicatorWithLabel:@"Synchronizing submodule, please wait"];
+ 	GTOpSubmoduleSync * o = [[[GTOpSubmoduleSync alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+ 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+ 	[o setCompletionBlock:^{
+@@ -773,7 +773,7 @@ static GTModalController * modals;
+ 
+ - (void) runSubmoduleUpdateAll {
+ 	if(allCanceled || networkOpsCancelled) return;
+-	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
++	[status showStatusIndicatorWithLabel:@"Updating all submodules, please wait"];
+ 	GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+ 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+ 	[o setCompletionBlock:^{
+@@ -784,7 +784,7 @@ static GTModalController * modals;
+ 
+ - (void) runSubmoduleInitAll {
+ 	if(allCanceled || networkOpsCancelled) return;
+-	[status showStatusIndicatorWithLabel:@"Pulling submodule, please wait"];
++	[status showStatusIndicatorWithLabel:@"Initializing all submodules, please wait"];
+ 	GTOpInitializeSubs * o = [[[GTOpInitializeSubs alloc] initWithGD:gd] autorelease];
+ 	NSOperationQueue * q = [self createCancelableQueueWithNetworkOperation:o];
+ 	[o setCompletionBlock:^{

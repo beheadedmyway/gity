@@ -1,0 +1,7 @@
+diff --git a/file with space.txt b/file with space.txt
+index e69de29..e8bf82c 100644
+--- a/file with space.txt	
++++ b/file with space.txt	
+@@ -0,0 +1 @@
++testing 
+\ No newline at end of file

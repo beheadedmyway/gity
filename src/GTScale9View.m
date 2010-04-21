@@ -1,0 +1,131 @@
+// Copyright Aaron Smith 2009
+// 
+// This file is part of Gity.
+// 
+// Gity is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// Gity is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with Gity. If not, see <http://www.gnu.org/licenses/>.
+
+#import "GTScale9View.h"
+
+@implementation GTScale9View
+@synthesize sourceImage;
+
+- (void) setTopLeftPoint:(NSPoint) tlPoint andBottomRightPoint:(NSPoint) brPoint {
+	topLeftPoint = tlPoint;
+	bottomRightPoint = brPoint;
+}
+
+- (void) drawRect:(NSRect) dirtyRect {
+	if(sourceImage is nil) return;
+	if(!topLeftPoint.x || !bottomRightPoint.x) return;
+	
+	NSSize sourceSize = [[self sourceImage] size];
+	//Top left
+	NSRect topLeftTileRect = NSMakeRect(0, 0, topLeftPoint.x, sourceSize.height - topLeftPoint.y);
+	NSRect topLeftCutRect = NSMakeRect(0, topLeftPoint.y, topLeftTileRect.size.width, topLeftTileRect.size.height);
+	//TopRight
+	NSRect topRightTileRect = NSMakeRect(0,0, sourceSize.width - bottomRightPoint.x, topLeftTileRect.size.height);
+	NSRect topRightCutRect = NSMakeRect(sourceSize.width - topRightTileRect.size.width, topLeftPoint.y, topRightTileRect.size.width, topRightTileRect.size.height);
+	//Top
+	NSRect topTileRect = NSMakeRect(0, 0, sourceSize.width - topLeftTileRect.size.width - topRightTileRect.size.width, topLeftTileRect.size.height);
+	NSRect topCutRect = NSMakeRect(topLeftPoint.x, topLeftPoint.y, topTileRect.size.width, topTileRect.size.height);
+	//Bottom Left
+	NSRect bottomLeftTileRect = NSMakeRect(0, 0, topLeftCutRect.size.width, bottomRightPoint.y);
+	NSRect bottomLeftCutRect = NSMakeRect(0, 0, bottomLeftTileRect.size.width, bottomLeftTileRect.size.height);
+	//Bottom Right
+	NSRect bottomRightTileRect = NSMakeRect(0,0, topRightCutRect.size.width, bottomLeftTileRect.size.height);
+	NSRect bottomRightCutRect = NSMakeRect(topRightCutRect.origin.x, 0, bottomRightTileRect.size.width , bottomRightTileRect.size.height );
+	//Bottom
+	NSRect bottomTileRect = NSMakeRect(0,0, topTileRect.size.width, bottomLeftTileRect.size.height);
+	NSRect bottomCutRect = NSMakeRect(topCutRect.origin.x, 0, bottomTileRect.size.width, bottomTileRect.size.height);
+	//left
+	NSRect leftTileRect = NSMakeRect(0, 0, bottomLeftTileRect.size.width, sourceSize.height - topTileRect.size.height - bottomTileRect.size.height);
+	NSRect leftCutRect = NSMakeRect(0, bottomRightPoint.y, leftTileRect.size.width, leftTileRect.size.height);
+	//right
+	NSRect rightTileRect = NSMakeRect(0, 0, topRightCutRect.size.width, leftCutRect.size.height);
+	NSRect rightCutRect = NSMakeRect(bottomRightPoint.x, bottomRightPoint.y, rightTileRect.size.width, rightTileRect.size.height);
+	//center
+	NSRect centerTileRect = NSMakeRect(0, 0, topTileRect.size.width, leftTileRect.size.height);
+	NSRect centerCutRect = NSMakeRect(topCutRect.origin.x, bottomRightPoint.y, centerTileRect.size.width, centerTileRect.size.height);
+	
+	NSImage *topLeft = [[NSImage alloc] initWithSize:topLeftTileRect.size];
+	[topLeft lockFocus];
+	[[self sourceImage] drawInRect:topLeftTileRect fromRect:topLeftCutRect operation:NSCompositeCopy fraction:1.0];
+	[topLeft unlockFocus];
+	
+	NSImage *top = [[NSImage alloc] initWithSize:topTileRect.size];
+	[top lockFocus];
+	[[self sourceImage] drawInRect:topTileRect fromRect:topCutRect operation:NSCompositeCopy fraction:1.0];
+	[top unlockFocus];
+	
+	NSImage *topRight = [[NSImage alloc] initWithSize:topRightTileRect.size];
+	[topRight lockFocus];
+	[[self sourceImage] drawInRect:topRightTileRect fromRect:topRightCutRect operation:NSCompositeSourceOver fraction:1.0];
+	[topRight unlockFocus];
+	
+	//setup center section, left, right
+	NSImage *left = [[NSImage alloc] initWithSize:leftTileRect.size];
+	[left lockFocus];
+	[[self sourceImage] drawInRect:leftTileRect fromRect:leftCutRect operation:NSCompositeCopy fraction:1.0];
+	[left unlockFocus];
+	
+	NSImage * cntr = [[NSImage alloc] initWithSize:centerTileRect.size];
+	[cntr lockFocus];
+	[[self sourceImage] drawInRect:centerTileRect fromRect:centerCutRect operation:NSCompositeCopy fraction:1.0];
+	[cntr unlockFocus];
+	
+	NSImage *right = [[NSImage alloc] initWithSize:rightTileRect.size];
+	[right lockFocus];
+	[[self sourceImage] drawInRect:rightTileRect fromRect:rightCutRect operation:NSCompositeCopy fraction:1.0];
+	[right unlockFocus];
+	
+	NSImage *bottomLeft = [[NSImage alloc] initWithSize:bottomLeftTileRect.size];
+	[bottomLeft lockFocus];
+	[[self sourceImage] drawInRect:bottomLeftTileRect fromRect:bottomLeftCutRect operation:NSCompositeCopy fraction:1.0];
+	[bottomLeft unlockFocus];
+	
+	NSImage *bottom = [[NSImage alloc] initWithSize:bottomTileRect.size];
+	[bottom lockFocus];
+	[[self sourceImage] drawInRect:bottomTileRect fromRect:bottomCutRect operation:NSCompositeCopy fraction:1.0];
+	[bottom unlockFocus];
+	
+	NSImage *bottomRight = [[NSImage alloc] initWithSize:bottomRightTileRect.size];
+	[bottomRight lockFocus];
+	[[self sourceImage] drawInRect:bottomRightTileRect fromRect:bottomRightCutRect operation:NSCompositeCopy fraction:1.0];
+	[bottomRight unlockFocus];
+	
+	NSDrawNinePartImage(NSMakeRect(0,0,[self bounds].size.width,[self frame].size.height),topLeft,top,topRight,left,cntr,right,bottomLeft,bottom,bottomRight,NSCompositeSourceAtop,1.0,NO);
+	
+	[topLeft release];
+	[top release];
+	[topRight release];
+	[left release];
+	[cntr release];
+	[right release];
+	[bottomLeft release];
+	[bottom release];
+	[bottomRight release];
+	
+	[super drawRect:dirtyRect];
+}
+
+- (void) dealloc {
+	#ifdef GT_PRINT_DEALLOCS
+	printf("DEALLOC GTScale9View\n");
+	#endif
+	[self setTopLeftPoint:NSMakePoint(0,0) andBottomRightPoint:NSMakePoint(0,0)];
+	GDRelease(sourceImage);
+	[super dealloc];
+}
+
+@end

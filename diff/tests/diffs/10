@@ -1,0 +1,119 @@
+diff --git a/diff/content/filebg.png b/diff/content/filebg.png
+new file mode 100644
+index 0000000..3c9a394
+Binary files /dev/null and b/diff/content/filebg.png differ
+diff --git a/diff/content/filebg2.png b/diff/content/filebg2.png
+new file mode 100644
+index 0000000..d692464
+Binary files /dev/null and b/diff/content/filebg2.png differ
+diff --git a/diff/content/gity.js b/diff/content/gity.js
+new file mode 100755
+index 0000000..e75a185
+--- /dev/null
++++ b/diff/content/gity.js
+@@ -0,0 +1,104 @@
++function startDiff()
++{
++	var diff=$("#diff")
++	var safeDiff=diff.val().replace(/&lt;/g, "&lt;");
++	$("#updateddiff").html(safeDiff);
++	highlightDiffs();
++}
++
++function highlightDiffs()
++{
++	var diffs=$("#updateddiff");
++	var diffn=0;
++	for(diffn;diffn&lt;diffs.length;diffn++)
++	{
++		var diff=diffs[diffn];
++		var content=diff.innerHTML.replace(/\t/g, "    ");
++		var line1 = "";
++		var line2 = "";
++		var diffContent = "";
++		var lines = content.split('\n');
++		var hunk_start_line_1 = -1;
++		var hunk_start_line_2 = -1;
++		var firstHunkHeader = true;
++		var firstFileLine = true;
++		var header = false;
++		var lineno=0;
++		for(lineno;lineno&lt;lines.length;lineno++)
++		{
++			var l=lines[lineno];
++			var firstChar=l.charAt(0);
++			
++			if(firstChar != "d" && firstChar != "+" && firstChar != "-" && firstChar != "@" && firstChar != " ") continue;
++			
++			/*if(l.indexOf("index") == 0)
++			{
++				nl = lines[lineno+1]
++				if(nl.indexOf("Binary") == 0)
++				{
++					diffContent+='&lt;div class="line">Binary file has changes&lt;/div>';
++					lineno++;
++				}
++				continue;
++			}*/
++			
++			if(header)
++			{
++				if(firstChar=="+"||firstChar=="-") continue;
++			}
++			if(firstChar=="d")
++			{
++				header=true;
++				line1+='\n';
++				line2+='\n';
++				pieces=l.split(" ")
++				file=pieces[pieces.length-1];
++				file = file.replace("b/","");
++				firstHunkHeader=true;
++				if(firstFileLine) diffContent+='&lt;div class="firstFileHeader">'+file+'&lt;/div>';
++				else diffContent+='&lt;div class="fileHeader">'+file+'&lt;/div>';
++				firstFileLine=false;
++				continue;
++			}
++			if(firstChar=="+")
++			{
++				//highlight trailing whitespace
++				if(m=l.match(/\s+$/)) l=l.replace(/\s+$/,"&lt;span class='whitespace line'>"+m+"&lt;/span>");
++				line1+="\n";
++				line2+=++hunk_start_line_2+"\n";
++				diffContent+="&lt;div class='addline line'>"+l+"&lt;/div>";
++			}
++			if (firstChar=="-")
++			{
++				line1+=++hunk_start_line_1+"\n";
++				line2+="\n";
++				diffContent+="&lt;div class='delline line'>"+l+"&lt;/div>";
++			}
++			if(firstChar == "@")
++			{
++				header=false;
++				if(m=l.match(/@@ \-([0-9]+),\d+ \+(\d+),\d+ @@/))
++				{
++					hunk_start_line_1=parseInt(m[1])-1;
++					hunk_start_line_2=parseInt(m[2])-1;
++				}
++				line1+="\n";
++				line2+="\n";
++				if(firstHunkHeader) diffContent+="&lt;div class='firsthunkheader'>"+l+"&lt;/div>";
++				else diffContent+="&lt;div class='hunkheader'>"+l+"&lt;/div>";
++				firstHunkHeader=false;
++			}
++			if(firstChar == " ")
++			{
++				line1 += ++hunk_start_line_1 + "\n";
++				line2 += ++hunk_start_line_2 + "\n";
++				diffContent += "&lt;span class='line'>" + l + "&lt;/span>\n";
++			}
++		}
++		diff.innerHTML="&lt;table class='diff' width='100%'>&lt;td width='100%' class='test'>&lt;pre class='test'>" + diffContent + "&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>";
++	}
++}
++
++/**
++modified on nov 16 2009.
++**/
+\ No newline at end of file

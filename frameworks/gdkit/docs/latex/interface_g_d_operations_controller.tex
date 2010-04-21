@@ -1,0 +1,114 @@
+\hypertarget{interface_g_d_operations_controller}{
+\section{GDOperationsController Class Reference}
+\label{interface_g_d_operations_controller}\index{GDOperationsController@{GDOperationsController}}
+}
+
+
+The \hyperlink{interface_g_d_operations_controller}{GDOperationsController} is a controller you should use to expose methods to run \hyperlink{interface_g_d_base_operation}{GDBaseOperation} instances.  
+
+
+{\ttfamily \#import $<$GDOperationsController.h$>$}Inheritance diagram for GDOperationsController::\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2cm]{interface_g_d_operations_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_operations_controller_a083affae2df92d8426d7824cfd3aa4c5}{
+(void) -\/ \hyperlink{interface_g_d_operations_controller_a083affae2df92d8426d7824cfd3aa4c5}{cancelAll}}
+\label{interface_g_d_operations_controller_a083affae2df92d8426d7824cfd3aa4c5}
+
+\begin{DoxyCompactList}\small\item\em Cancel's all operations in the \char`\"{}cancelables\char`\"{} property. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_operations_controller_ac387e516835185c6e49528528d8455ce}{addToCancelables:}
+\begin{DoxyCompactList}\small\item\em Add an object to the list of cancelables. \item\end{DoxyCompactList}\item 
+(void) -\/ \hyperlink{interface_g_d_operations_controller_aa4811a04380d3870e3827ae33db9ac35}{removeFromCancelables:}
+\begin{DoxyCompactList}\small\item\em Remove an object from the list of cancelables. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_g_d_operations_controller_addf60c6ff56a45e68fbbf3cc70d83bc7}{
+BOOL \hyperlink{interface_g_d_operations_controller_addf60c6ff56a45e68fbbf3cc70d83bc7}{cancelingAll}}
+\label{interface_g_d_operations_controller_addf60c6ff56a45e68fbbf3cc70d83bc7}
+
+\begin{DoxyCompactList}\small\item\em Whether or not the operation controller is currently canceling all operations; a flag for thread safety. \item\end{DoxyCompactList}\item 
+\hypertarget{interface_g_d_operations_controller_adb30469e41f2c32e20b631fd8fb7a33d}{
+NSMutableArray $\ast$ \hyperlink{interface_g_d_operations_controller_adb30469e41f2c32e20b631fd8fb7a33d}{cancelables}}
+\label{interface_g_d_operations_controller_adb30469e41f2c32e20b631fd8fb7a33d}
+
+\begin{DoxyCompactList}\small\item\em An array used to store running operations or queues which can be canceled when cancelAll is called. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{interface_g_d_operations_controller}{GDOperationsController} is a controller you should use to expose methods to run \hyperlink{interface_g_d_base_operation}{GDBaseOperation} instances. This helps break apart logic by making sure your operations use libdispatch (GCD).
+
+Generally you want to expose a method (with optional parameters) that just kick of an instance of an \hyperlink{interface_g_d_base_operation}{GDBaseOperation}.
+
+Set completion blocks on the operations which call a \char`\"{}complete\char`\"{} method on this operation controller, which in turn trigger the callback.
+
+Here's an example: 
+\begin{DoxyCode}
+ // these are inside of your subclassed GDOperationsController:
+ - (void) runSomeOperationWithCallback:(GDCallback *) _callback {
+        [_callback retain];
+        GDBaseOperation * op = [[[GDBaseOperation alloc] init] autorelease];
+        NSOperationQueue * q = [[NSOperationQueue alloc] init];
+        [self addToCancelables:q];
+        [op setCompletionBlock:^{
+                [self removeFromCancelables:q];
+                [q release];
+                [self onMyOperationComplete:_callback];
+                [_callback autorelease];
+        }];
+        [q addOperation:op];
+ }
+ 
+ - (void) onMyOperationComplete:(GDCallback) _callback {
+        //...do something.
+        [_callback execute];
+ }
+ 
+ // somewhere else:
+ - (void) someMethod {
+        GDCallback * cb = [[[GDCallback alloc] initWithTarget:self andAction:@sel
+      ector(onOperationComplete)] autorelease];
+        [cb setExecutesOnMainThread:true];
+        [[gd operations] runSomeOperationWithCallback:cb];
+ }
+ 
+ - (void) onOperationComplete {
+        NSLog(@"finished operation");
+ }
+\end{DoxyCode}
+
+
+You should also keep track of all running operations and queues and make sure they can be canceled. For a catch all generic way you can use the addToCancelables: and removeFromCancelables: methods. If you add more logic and canceling behavior make sure to override the cancelAll method, write your own logic, then call \mbox{[}super cancelAll\mbox{]}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{interface_g_d_operations_controller_ac387e516835185c6e49528528d8455ce}{
+\index{GDOperationsController@{GDOperationsController}!addToCancelables:@{addToCancelables:}}
+\index{addToCancelables:@{addToCancelables:}!GDOperationsController@{GDOperationsController}}
+\subsubsection[{addToCancelables:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) addToCancelables: (id) {\em \_\-obj}}}
+\label{interface_g_d_operations_controller_ac387e516835185c6e49528528d8455ce}
+
+
+Add an object to the list of cancelables. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-obj}]An NSOperation, or NSOperationQueue; or any subclasses like \hyperlink{interface_g_d_base_operation}{GDBaseOperation}, etc. \end{DoxyParams}
+\hypertarget{interface_g_d_operations_controller_aa4811a04380d3870e3827ae33db9ac35}{
+\index{GDOperationsController@{GDOperationsController}!removeFromCancelables:@{removeFromCancelables:}}
+\index{removeFromCancelables:@{removeFromCancelables:}!GDOperationsController@{GDOperationsController}}
+\subsubsection[{removeFromCancelables:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) removeFromCancelables: (id) {\em \_\-obj}}}
+\label{interface_g_d_operations_controller_aa4811a04380d3870e3827ae33db9ac35}
+
+
+Remove an object from the list of cancelables. 
+\begin{DoxyParams}{Parameters}
+\item[{\em \_\-obj}]An NSOperation, or NSOperationQueue; or any subclasses like \hyperlink{interface_g_d_base_operation}{GDBaseOperation}, etc. \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+source/\hyperlink{_g_d_operations_controller_8h}{GDOperationsController.h}\item 
+source/GDOperationsController.m\end{DoxyCompactItemize}

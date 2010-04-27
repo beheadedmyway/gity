@@ -100,6 +100,7 @@
 		0768A1E010F3141900951EB1 /* stateDropDownArrowOver.png in Resources */ = {isa = PBXBuildFile; fileRef = 0768A1DC10F3141900951EB1 /* stateDropDownArrowOver.png */; };
 		0768A1E110F3141900951EB1 /* stateDropDownNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 0768A1DD10F3141900951EB1 /* stateDropDownNormal.png */; };
 		0768A1E210F3141900951EB1 /* stateDropDownOver.png in Resources */ = {isa = PBXBuildFile; fileRef = 0768A1DE10F3141900951EB1 /* stateDropDownOver.png */; };
+		0768B61B11865D5F005F5727 /* GDKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075B3F73117D226500A1836C /* GDKit.framework */; };
 		077146091060A0B200D6230C /* GTGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 077146081060A0B200D6230C /* GTGradientView.m */; };
 		0771460C1060A0BE00D6230C /* GTSolidColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0771460B1060A0BE00D6230C /* GTSolidColorView.m */; };
 		0771460F1060A25B00D6230C /* GTWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 0771460E1060A25B00D6230C /* GTWindow.m */; };
@@ -364,6 +365,13 @@
 			containerPortal = 075B3F34117D21EF00A1836C /* gdkit.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 0720BF38102F4A4700FB009B;
+			remoteInfo = GDKit;
+		};
+		0768B61911865D56005F5727 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 075B3F34117D21EF00A1836C /* gdkit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0720BF37102F4A4700FB009B;
 			remoteInfo = GDKit;
 		};
 		0785B157117E9AA100073FA2 /* PBXContainerItemProxy */ = {
@@ -972,6 +980,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0768B61B11865D5F005F5727 /* GDKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1957,6 +1966,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0768B61A11865D56005F5727 /* PBXTargetDependency */,
 			);
 			name = gity;
 			productName = gity;
@@ -2537,6 +2547,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0768B61A11865D56005F5727 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GDKit;
+			targetProxy = 0768B61911865D56005F5727 /* PBXContainerItemProxy */;
+		};
 		0785B158117E9AA100073FA2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GDKit;
@@ -2745,9 +2760,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
+					"\"$(SRCROOT)/frameworks/gdkit/build/Release/\"",
+					"\"$(SRCROOT)/frameworks/\"",
 					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
-					"\"$(SRCROOT)/frameworks/gdkit/build/Release\"",
+					"$(inherited)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -2755,6 +2771,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/frameworks\"";
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "src/vendor src";
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (
@@ -2775,14 +2792,16 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
+					"\"$(SRCROOT)/frameworks/gdkit/build/Release/\"",
+					"\"$(SRCROOT)/frameworks/\"",
 					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
-					"\"$(SRCROOT)/frameworks/gdkit/build/Release\"",
+					"$(inherited)",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/frameworks\"";
 				INCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "src/vendor src";
 				INSTALL_PATH = /usr/local/bin;
 				OTHER_LDFLAGS = (

@@ -12,5 +12,6 @@ git/
 src/.DS_Store
 gitty.xcodeproj/aaronsmith.pbxuser
 !scripts/yui/build/
-!frameworks/gdkit/build/
+frameworks/gdkit/build/
 frameworks/gdkit/build/gdkit.build/
+python/*.pyc

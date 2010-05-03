@@ -28,6 +28,7 @@ try:
 	branch=sanitize_str(options.misc[1])
 	command="%s %s %s refs/heads/%s:refs/heads/%s" % (options.git,"push",remote,branch,branch)
 	rcode,stout,sterr=run_command(command)
+	if cant_push_to_newer_remote(sterr): exit(91)
 	if cant_push_to(sterr): exit(90)
 	if server_hung_up(sterr): exit(85)
 	if server_unreachable(sterr): exit(86)

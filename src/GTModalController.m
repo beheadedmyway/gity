@@ -74,6 +74,9 @@ static NSUserDefaults * defaults = nil;
 		case 90:
 			[self runCantPushToRemote];
 			break;
+		case 91:
+			[self runCantPushToNewerRemote];
+			break;
 		default:
 			break;
 	}
@@ -91,6 +94,14 @@ static NSUserDefaults * defaults = nil;
 - (void) runCantPushToRemote {
 	NSRunAlertPanel(NSLocalizedStringFromTable(@"Push Error",@"Localized",@"push error msg"),
 					NSLocalizedStringFromTable(@"This remote can't be pushed to.",@"Localized",@"push error msg description"),
+					NSLocalizedStringFromTable(@"OK",@"Localized",@"ok button label"),
+					nil,
+					nil);
+}
+
+- (void) runCantPushToNewerRemote {
+	NSRunAlertPanel(NSLocalizedStringFromTable(@"Push Error",@"Localized",@"push error msg"),
+					NSLocalizedStringFromTable(@"This remote can't be pushed to.  Please merge the remote changes before pushing again. ",@"Localized",@"push newer error msg description"),
 					NSLocalizedStringFromTable(@"OK",@"Localized",@"ok button label"),
 					nil,
 					nil);

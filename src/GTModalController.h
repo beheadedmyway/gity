@@ -74,6 +74,7 @@
 - (void) runWorkingTreeDirtyForCherry;
 - (void) runHasRemoteAlready;
 - (void) runCantPushToRemote;
+- (void) runCantPushToNewerRemote;
 - (void) runBranchDoesntPointToCommit;
 - (void) runCantFindTextmateBinary;
 - (void) runInstalledTMBundle;

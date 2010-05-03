@@ -24,8 +24,16 @@ def not_on_branch(msg):
 	if msg.find("Not currently on any branch") > -1: return True
 	return False
 
+def misc_error_occurred(sterr):
+	if sterr.find("error: ") > -1: return True
+	return False
+
 def cant_push_to(sterr):
 	if sterr.find("You can\'t push to") > -1: return True
+	return False
+
+def cant_push_to_newer_remote(sterr):
+	if sterr.find("error: failed to push some refs") > -1: return True
 	return False
 
 def no_such_section(sterr):

@@ -26,6 +26,7 @@ errors=open(".git/vendor/gity/tmp/errors","r")
 content=errors.read()
 errors.close()
 try:
+	exit(0)
 	msg=MIMEText(content)
 	msg['Subject'] = "Gity Bot: Error"
 	mailServer=smtplib.SMTP("smtp.gmail.com",587)

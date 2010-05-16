@@ -136,7 +136,7 @@ def is_empty(s):
 
 def server_unreachable(msg):
 	if msg.find("Cannot access URL") > -1: return True
-	if msg.find("fatal: unable to connect" > -1: return True
+	if msg.find("fatal: unable to connect") > -1: return True
 	return False
 
 def exit_if_server_unreachable(sterr):

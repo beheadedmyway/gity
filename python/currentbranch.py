@@ -60,7 +60,7 @@ def try_until_success(loops):
 			else:raise
 try:
 	sleeps=0
-	while(os.path.exists(".git/index.lock") && sleeps < 5):
+	while(os.path.exists(".git/index.lock") and sleeps<5):
 		sleeps+=1
 		time.sleep(.2)
 	if(os.path.exists(".git/index.lock")):os.unlink(".git/index.lock")

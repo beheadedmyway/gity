@@ -28,6 +28,7 @@ except Exception,e:
 	exit(84)
 
 try:
+	exit(0)
 	commit_file=commit_report_file()
 	if not os.path.exists(commit_file): exit(0)
 	msg=MIMEMultipart()

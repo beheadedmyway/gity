@@ -28,6 +28,7 @@ except Exception,e:
 	exit(84)
 
 try:
+	exit(0)
 	diff_file=diff_report_file()
 	if not os.path.exists(diff_file): exit(0)
 	msg=MIMEMultipart()

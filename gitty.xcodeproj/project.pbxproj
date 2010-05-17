@@ -2191,7 +2191,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\nenv > plain/env";
+			shellScript = "#!/bin/sh\nenv > env";
 		};
 		0785127710A41EEE0049D7CB /* Remove .git slash vendor */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2760,9 +2760,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SRCROOT)/frameworks/gdkit/build/Release/\"",
+					"\"$(SRCROOT)/frameworks/gdkit/build/Debug/\"",
 					"\"$(SRCROOT)/frameworks/\"",
-					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
 					"$(inherited)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2794,7 +2793,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/frameworks/gdkit/build/Release/\"",
 					"\"$(SRCROOT)/frameworks/\"",
-					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
 					"$(inherited)",
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -2822,9 +2820,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SRCROOT)/frameworks/gdkit/build/Release/\"",
+					"\"$(SRCROOT)/frameworks/gdkit/build/Debug/\"",
 					"\"$(SRCROOT)/frameworks\"",
-					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
 					"$(inherited)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2862,7 +2859,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)/frameworks/gdkit/build/Release/\"",
 					"\"$(SRCROOT)/frameworks\"",
-					"\"$(DEVELOPER_DIR)/Local/Frameworks\"",
 					"$(inherited)",
 				);
 				GCC_ENABLE_OBJC_GC = unsupported;

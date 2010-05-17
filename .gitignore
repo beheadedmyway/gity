@@ -14,4 +14,10 @@ gitty.xcodeproj/aaronsmith.pbxuser
 !scripts/yui/build/
 frameworks/gdkit/build/
 frameworks/gdkit/build/gdkit.build/
+frameworks/gdkit/python/*.pyc
 python/*.pyc
+python/__nyi/*.pyc
+python/__old/*.pyc
+python/__test/*.pyc
+python/simplejson/*.pyc
+env

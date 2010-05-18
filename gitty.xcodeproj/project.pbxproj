@@ -357,6 +357,7 @@
 		8D15AC310486D014006FF6A4 /* GittyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* GittyDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		CA13385411A1F91C00FDE018 /* env in Resources */ = {isa = PBXBuildFile; fileRef = CA13385311A1F91C00FDE018 /* env */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -525,7 +526,6 @@
 		075AB92610EB2143003BB907 /* GTTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTTextFieldCell.m; path = src/GTTextFieldCell.m; sourceTree = "<group>"; };
 		075AB96B10EB25B1003BB907 /* GTTableHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTTableHeaderCell.h; path = src/GTTableHeaderCell.h; sourceTree = "<group>"; };
 		075AB96C10EB25B1003BB907 /* GTTableHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTTableHeaderCell.m; path = src/GTTableHeaderCell.m; sourceTree = "<group>"; };
-		075ABE7F10EC8A97003BB907 /* env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = env; path = plain/env; sourceTree = "<group>"; };
 		075B3F34117D21EF00A1836C /* gdkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = gdkit.xcodeproj; path = frameworks/gdkit/gdkit.xcodeproj; sourceTree = "<group>"; };
 		0764EC0710CCFC0D00BF0147 /* GTOpMergeRemoteBranch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTOpMergeRemoteBranch.h; path = src/GTOpMergeRemoteBranch.h; sourceTree = "<group>"; };
 		0764EC0810CCFC0D00BF0147 /* GTOpMergeRemoteBranch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTOpMergeRemoteBranch.m; path = src/GTOpMergeRemoteBranch.m; sourceTree = "<group>"; };
@@ -973,6 +973,7 @@
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Gity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA13385311A1F91C00FDE018 /* env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = env; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1371,7 +1372,7 @@
 		077145E510609E3600D6230C /* Plain */ = {
 			isa = PBXGroup;
 			children = (
-				075ABE7F10EC8A97003BB907 /* env */,
+				CA13385311A1F91C00FDE018 /* env */,
 			);
 			name = Plain;
 			sourceTree = "<group>";
@@ -2145,6 +2146,7 @@
 				0768A1E110F3141900951EB1 /* stateDropDownNormal.png in Resources */,
 				0768A1E210F3141900951EB1 /* stateDropDownOver.png in Resources */,
 				07DEF6E61101809D006E8A54 /* Giveaway.xib in Resources */,
+				CA13385411A1F91C00FDE018 /* env in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

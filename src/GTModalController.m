@@ -54,6 +54,14 @@ static NSUserDefaults * defaults = nil;
 	[cloneRepoController show];
 }
 
+- (void) runModalForError:(NSString *) errorMessage {
+	NSRunAlertPanel(NSLocalizedStringFromTable(@"Unknown Error",@"Localized",@"unknown error msg"),
+					errorMessage,
+					NSLocalizedStringFromTable(@"OK",@"Localized",@"ok button label"),
+					nil,
+					nil);	
+}
+
 - (void) runModalFromCode:(NSInteger) code {
 	switch (code) {
 		case 85:

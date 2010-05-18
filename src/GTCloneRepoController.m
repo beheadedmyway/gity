@@ -160,11 +160,14 @@ static NSFileManager * fileman;
 	[modals runCloneTimedOut];
 }
 
-- (void) onCloneError:(NSInteger) code {
+- (void) onCloneError:(NSInteger) code withOutput:(NSString *) message {
 	errored=true;
 	[statusWindow orderOut:nil];
 	[statusProgress stopAnimation:self];
-	[modals runModalFromCode:code];
+	if (message)
+		[modals runModalForError:message];
+	else
+		[modals runModalFromCode:code];
 }
 
 - (void) cloneComplete {

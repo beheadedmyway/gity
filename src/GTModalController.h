@@ -92,6 +92,7 @@
 - (void) runConfigNeedsSectionError;
 - (void) cloneRepo;
 - (void) runConflictedStateForCheckout;
+- (void) runModalForError:(NSString *) errorMessage;
 - (void) runModalFromCode:(NSInteger) code;
 - (void) runRemoteEndHungUp;
 - (void) runNoDefaultRemote;

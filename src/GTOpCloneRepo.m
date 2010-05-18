@@ -46,6 +46,7 @@
 
 - (void) setArguments {
 	readsSTDOUT=true;
+	readsSTDERR=true;
 	[args addObject:[GTPythonScripts getCloneRepoScript]];
 	if([self isCancelled]) return;
 	[args addObject:[@"-g " stringByAppendingString:[git gitExecPath]]];
@@ -65,8 +66,8 @@ cleanup:
 
 - (void) taskComplete {
 	NSInteger res = [task terminationStatus];
-	if(res > 84) {
-		[cloneController onCloneError:res];
+	if(res >= 84) {
+		[cloneController onCloneError:res withOutput:sterr];
 		done=true;
 		return;
 	}

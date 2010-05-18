@@ -43,7 +43,7 @@
 	GTScale9Control * chooseDestination;
 }
 
-- (void) onCloneError:(NSInteger) code;
+- (void) onCloneError:(NSInteger) code withOutput:(NSString *) message;
 - (void) initButtons;
 - (void) show;
 - (void) reset;

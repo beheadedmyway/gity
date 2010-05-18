@@ -39,6 +39,7 @@ try:
 	exit_if_server_unreachable(sterr)
 	exit_if_server_hungup(sterr)
 	rcode_for_git_exit(rcode,sterr)
+	os.chdir(repo_to_open);
 	command="%s %s -r" % (options.git,"branch")
 	rcode,stout,sterr=run_command(command)
 	rcode_for_git_exit(rcode,sterr)

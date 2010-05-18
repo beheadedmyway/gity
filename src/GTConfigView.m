@@ -91,19 +91,24 @@
 }
 
 - (id) tableView:(NSTableView *) table objectValueForTableColumn:(NSTableColumn *) column row:(NSInteger) index {
+	if (index <= -1 || index >= [configs count])
+		return nil;
+	
 	if([[column identifier] isEqual:@"key"]) return [(NSMutableArray*)[configs objectAtIndex:index] objectAtIndex:0];
 	else return [(NSMutableArray*)[configs objectAtIndex:index] objectAtIndex:1];
 	return nil;
 }
 
 - (void) tableView:(NSTableView *) table setObjectValue:(id) object forTableColumn:(NSTableColumn *) column row:(NSInteger) index {
-	NSString * key;
-	NSString * value;
-	NSMutableArray * a = (NSMutableArray *)[configs objectAtIndex:index];
-	if(index > [configs count]) {
+	NSString * key = nil;
+	NSString * value = nil;
+	
+	if(index >= [configs count]) {
 		[configs addObject:[NSMutableArray arrayWithObjects:@"",@"",nil]];
 		return;
 	}
+
+	NSMutableArray * a = (NSMutableArray *)[configs objectAtIndex:index];
 	if([[column identifier] isEqual:@"key"]) {
 		[a replaceObjectAtIndex:0 withObject:object];
 		value=[a objectAtIndex:1];
@@ -118,8 +123,11 @@
 	}
 	if([[column identifier] isEqual:@"value"]) {
 		if(![key isEqual:@""] and ![value isEqual:@""] and ![value isEqual:lastKeysValue]) {
-			if([key isMatchedByRegex:@"^[a-zA-Z0-9_]+[\.].*+"]) [operations runWriteConfigForKey:key andValue:value isGlobal:[self isOnGlobalConfig]];
-			else [modals runConfigNeedsSectionError];
+			NSString *regex = @"^[a-zA-Z0-9_]+[\\.].*+";
+			if([key isMatchedByRegex:regex]) 
+				[operations runWriteConfigForKey:key andValue:value isGlobal:[self isOnGlobalConfig]];
+			else 
+				[modals runConfigNeedsSectionError];
 		}
 	}
 	[self releaseLastKeysValue];

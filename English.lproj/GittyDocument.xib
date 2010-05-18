@@ -16,11 +16,12 @@
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>762</string>
-				<string>1.2.5</string>
+				<string>1.2.2</string>
 			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="5"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -89,12 +90,15 @@
 				<string key="NSWindowClass">GTWindow</string>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
+				<string key="NSWindowContentMinSize">{924, 605}</string>
 				<object class="NSView" key="NSWindowView" id="568628114">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{924, 605}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
+				<string key="NSMinSize">{924, 627}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
 			<object class="NSWindowTemplate" id="241833154">
@@ -2825,13 +2829,13 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{789, 778}, {163, 96}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{165, 285}, {924, 605}}</string>
+					<string>{{150, 374}, {924, 605}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{165, 285}, {924, 605}}</string>
+					<string>{{150, 374}, {924, 605}}</string>
 					<integer value="1"/>
 					<string>{{201, 387}, {507, 413}}</string>
-					<boolean value="NO"/>
-					<string>{924, 402}</string>
+					<boolean value="YES"/>
+					<string>{924, 605}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 				</object>

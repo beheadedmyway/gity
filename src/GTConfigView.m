@@ -118,7 +118,7 @@
 	}
 	if([[column identifier] isEqual:@"value"]) {
 		if(![key isEqual:@""] and ![value isEqual:@""] and ![value isEqual:lastKeysValue]) {
-			if([key isMatchedByRegex:@"^[a-zA-Z0-9_]+[\\.].*+"]) [operations runWriteConfigForKey:key andValue:value isGlobal:[self isOnGlobalConfig]];
+			if([key isMatchedByRegex:@"^[a-zA-Z0-9_]+[\.].*+"]) [operations runWriteConfigForKey:key andValue:value isGlobal:[self isOnGlobalConfig]];
 			else [modals runConfigNeedsSectionError];
 		}
 	}

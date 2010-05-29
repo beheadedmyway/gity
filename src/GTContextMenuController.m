@@ -471,10 +471,13 @@
 
 - (void) initSubmodulesMenu {
 	submodulesMenu=[[NSMenu alloc] init];
+	
 	[submodulesMenu addItem:subsPull];
 	[submodulesMenu addItem:subsUpdate];
 	[submodulesMenu addItem:subsSync];
 	[submodulesMenu addItem:subsDelete];
+	[submodulesMenu addItem:[NSMenuItem separatorItem]];
+	[submodulesMenu addItem:subsOpenWithGitty];
 }
 
 - (void) initSubmodulesMenuItems {

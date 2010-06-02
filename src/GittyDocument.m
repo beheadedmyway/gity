@@ -168,7 +168,21 @@ static NSWindow * lastMainWindow;
 	[stateBarView show];
 	[activeBranchView show];
 	[customWindowTitleController update];
+	
+	// Setup FSEvents so we know when files get changed.
+	fileEvents = [[SCEvents alloc] init];
+	fileEvents.delegate = self;
+	fileEvents.ignoreEventsFromSubDirs = NO;
+	fileEvents.notificationLatency = 1.0;
+	fileEvents.excludedPaths = [NSArray arrayWithObject:[[[self fileURL] path] stringByAppendingPathComponent:@".git/vendor/gity/tmp/"]];
+	[fileEvents startWatchingPaths:[NSArray arrayWithObject:[[self fileURL] path]]];
+	
 	[self waitForWindow];
+}
+
+- (void)pathWatcher:(SCEvents *)pathWatcher eventOccurred:(SCEvent *)event
+{
+	[self updateAfterWindowBecameActive];
 }
 
 - (BOOL) windowShouldClose:(id) sender {
@@ -200,7 +214,8 @@ static NSWindow * lastMainWindow;
 	if(lastMainWindow == gtwindow) return;
 	[mainMenuHelper invalidate];
 	lastMainWindow=gtwindow;
-	[self updateAfterWindowBecameActive];
+	// we're using FSEvents now, this shouldn't be needed anymore.
+	//[self updateAfterWindowBecameActive];
 }
 
 - (void) updateAfterWindowBecameActive {
@@ -260,7 +275,8 @@ static NSWindow * lastMainWindow;
 		started=true;
 		return;
 	}
-	if(lastMainWindow==gtwindow) [self updateAfterWindowBecameActive];
+	// we're using FSEvents now, this shouldn't be needed.
+	//if(lastMainWindow==gtwindow) [self updateAfterWindowBecameActive];
 }
 
 #pragma mark view and document methods.
@@ -995,6 +1011,8 @@ static NSWindow * lastMainWindow;
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GittyDocument\n");
 	#endif
+	[fileEvents stopWatchingPaths];
+	[fileEvents release];
 	if(lastMainWindow==gtwindow)lastMainWindow=nil;
 	justLaunched=false;
 	runningExpiredModal=false;

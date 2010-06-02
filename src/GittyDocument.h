@@ -50,8 +50,10 @@
 #import "GTHistoryView.h"
 #import "GTHistoryDetailsContainerView.h"
 #import "GTAdvancedDiffView.h"
+#import "SCEvents.h"
+#import "SCEventListenerProtocol.h"
 
-@interface GittyDocument : NSDocument <NSWindowDelegate> {
+@interface GittyDocument : NSDocument <NSWindowDelegate, SCEventListenerProtocol> {
 	BOOL isSourceListHidden;
 	BOOL commitAfterAdd;
 	BOOL fixingConflict;
@@ -95,6 +97,7 @@
 	GTSoundController * sounds;
 	GTOperationsController * operations;
 	GTContextMenuController * contextMenus;
+	SCEvents * fileEvents;
 }
 
 #pragma mark properties

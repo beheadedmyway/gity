@@ -180,7 +180,7 @@ static NSWindow * lastMainWindow;
 	[self waitForWindow];
 }
 
-- (void)pathWatcher:(SCEvents *)pathWatcher eventOccurred:(SCEvent *)event
+- (void)pathWatcher:(SCEvents *)pathWatcher multipleEventsOccurred:(NSArray *)events
 {
 	[self updateAfterWindowBecameActive];
 }

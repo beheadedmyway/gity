@@ -182,7 +182,7 @@ static NSWindow * lastMainWindow;
 
 - (void)pathWatcher:(SCEvents *)pathWatcher multipleEventsOccurred:(NSArray *)events
 {
-	[self updateAfterWindowFilesChanged];
+	[self updateAfterFilesChanged];
 }
 
 - (BOOL) windowShouldClose:(id) sender {
@@ -218,9 +218,10 @@ static NSWindow * lastMainWindow;
 	//[self updateAfterWindowBecameActive];
 }
 
-- (void) updateAfterWindowFilesChanged {
+- (void) updateAfterFilesChanged {
 	// lets make sure this is on the main thread due to FSEvents
 	if ([NSThread isMainThread]) {
+		needsFileUpdates = YES;
 		if([self isCurrentViewConfigView]) {
 			if([configView isOnGlobalConfig]) 
 				[operations runGetGlobalConfigs];
@@ -231,10 +232,11 @@ static NSWindow * lastMainWindow;
 			[historyView invalidate];
 		} else {
 			[operations runRefreshOperation];
+			needsFileUpdates = NO;
 		}
 	} else {
 		// lets call it on the main thread.
-		[self performSelectorOnMainThread:@selector(updateAfterWindowFilesChanged) withObject:nil waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(updateAfterFilesChanged) withObject:nil waitUntilDone:NO];
 	}
 
 }
@@ -353,6 +355,8 @@ static NSWindow * lastMainWindow;
 	if(_invalidateDiffView) [diffView invalidate];
 	[mainMenuHelper invalidate];
 	[contextMenus invalidate];
+	if (needsFileUpdates)
+		[self updateAfterFilesChanged];
 }
 
 - (void) showRemoteViewForRemote:(NSString *) remote {

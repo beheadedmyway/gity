@@ -305,7 +305,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 			}
             
             SCEvent *event = [SCEvent eventWithEventId:eventIds[i] eventDate:[NSDate date] eventPath:eventPath eventFlag:eventFlags[i]];
-                
+			[events addObject:event];
             if ([[pathWatcher delegate] respondsToSelector:@selector(pathWatcher:eventOccurred:)]) {
                 [[pathWatcher delegate] pathWatcher:pathWatcher eventOccurred:event];
             }
@@ -316,9 +316,10 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
         }
     }
 	
-	if ([[pathWatcher delegate] respondsToSelector:@selector(pathWatcher:multipleEventsOccurred:)]) {
-		[[pathWatcher delegate] pathWatcher:pathWatcher multipleEventsOccurred:events];
-	}
+	if ([events count] > 0)
+		if ([[pathWatcher delegate] respondsToSelector:@selector(pathWatcher:multipleEventsOccurred:)]) {
+			[[pathWatcher delegate] pathWatcher:pathWatcher multipleEventsOccurred:events];
+		}
 	
 	
 }

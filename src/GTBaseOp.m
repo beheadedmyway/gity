@@ -53,9 +53,14 @@ static NSDictionary * environ;
 		done=true;
 		return;
 	}
-	NSData * content = [s readDataToEndOfFile];
-	if(!stoutEncoding) stoutEncoding = NSUTF8StringEncoding;
-	stout = [[NSString alloc] initWithData:content encoding:stoutEncoding];
+	@try {
+		NSData * content = [s readDataToEndOfFile];
+		if(!stoutEncoding) stoutEncoding = NSUTF8StringEncoding;
+		stout = [[NSString alloc] initWithData:content encoding:stoutEncoding];
+	}
+	@catch (NSException * e) {
+		// sometimes there's no stderr, so this is ok.
+	}
 }
 
 - (void) readSTDERR {

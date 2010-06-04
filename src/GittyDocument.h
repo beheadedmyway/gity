@@ -61,6 +61,7 @@
 	BOOL isTerminatingFromSessionExpired;
 	BOOL justLaunched;
 	BOOL runningExpiredModal;
+	BOOL needsFileUpdates;
 	NSString * _tmpBranchStartName;
 	NSString * _tmpTagStartPoint;
 	NSString * _tmpUnknownError;
@@ -222,7 +223,7 @@
 - (void) toggleDeletedFiles:(id) sender;
 - (void) tryToShowUnknownError;
 - (void) unknownErrorFromOperation:(NSString *) error;
-- (void) updateAfterWindowFilesChanged;
+- (void) updateAfterFilesChanged;
 - (void) waitForWindow;
 - (void) windowReady;
 - (BOOL) isCurrentViewActiveBranchView;

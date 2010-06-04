@@ -182,7 +182,7 @@ static NSWindow * lastMainWindow;
 
 - (void)pathWatcher:(SCEvents *)pathWatcher multipleEventsOccurred:(NSArray *)events
 {
-	[self updateAfterWindowBecameActive];
+	[self updateAfterWindowFilesChanged];
 }
 
 - (BOOL) windowShouldClose:(id) sender {
@@ -218,7 +218,7 @@ static NSWindow * lastMainWindow;
 	//[self updateAfterWindowBecameActive];
 }
 
-- (void) updateAfterWindowBecameActive {
+- (void) updateAfterWindowFilesChanged {
 	// lets make sure this is on the main thread due to FSEvents
 	if ([NSThread isMainThread]) {
 		if([self isCurrentViewConfigView]) {
@@ -234,7 +234,7 @@ static NSWindow * lastMainWindow;
 		}
 	} else {
 		// lets call it on the main thread.
-		[self performSelectorOnMainThread:@selector(updateAfterWindowBecameActive) withObject:nil waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(updateAfterWindowFilesChanged) withObject:nil waitUntilDone:NO];
 	}
 
 }

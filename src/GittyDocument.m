@@ -219,15 +219,24 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) updateAfterWindowBecameActive {
-	if([self isCurrentViewConfigView]) {
-		if([configView isOnGlobalConfig]) [operations runGetGlobalConfigs];
-		else [operations runGetConfigs];
-	}
-	else if([self isCurrentViewHistoryView]) {
-		[historyView invalidate];
+	// lets make sure this is on the main thread due to FSEvents
+	if ([NSThread isMainThread]) {
+		if([self isCurrentViewConfigView]) {
+			if([configView isOnGlobalConfig]) 
+				[operations runGetGlobalConfigs];
+			else 
+				[operations runGetConfigs];
+		}
+		else if([self isCurrentViewHistoryView]) {
+			[historyView invalidate];
+		} else {
+			[operations runRefreshOperation];
+		}
 	} else {
-		[operations runRefreshOperation];
+		// lets call it on the main thread.
+		[self performSelectorOnMainThread:@selector(updateAfterWindowBecameActive) withObject:nil waitUntilDone:NO];
 	}
+
 }
 
 - (void) waitForWindow {

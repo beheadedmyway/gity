@@ -61,7 +61,7 @@
 	if(readsSTDERR) [self readSTDERR];
 	[task waitUntilExit];
 cleanup:
-	[self taskComplete];
+	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
 }
 
 - (void) taskComplete {

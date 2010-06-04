@@ -47,7 +47,8 @@
 	[task launch];
 	[task waitUntilExit];
 cleanup:
-	[self taskComplete];
+	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
+
 }
 
 - (void) taskComplete {

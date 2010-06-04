@@ -1065,7 +1065,7 @@ static NSInteger operationRunCount = 0;
 - (void) onLoadHistoryComplete {
 	if(allCanceled) return;
 	[self incrementRunCount];
-	[gd onHistoryLoaded];
+	[gd performSelectorOnMainThread:@selector(onHistoryLoaded) withObject:nil waitUntilDone:false];
 }
 
 - (void) onFetchComplete {
@@ -1107,13 +1107,13 @@ static NSInteger operationRunCount = 0;
 - (void) onPrepareDiffingComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGotLooseObjectsCount];
+	[gd performSelectorOnMainThread:@selector(onGotLooseObjectsCount) withObject:nil waitUntilDone:false];
 }
 
 - (void) onGetLooseObjectsComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGotLooseObjectsCount];
+	[gd performSelectorOnMainThread:@selector(onGotLooseObjectsCount) withObject:nil waitUntilDone:false];
 }
 
 - (void) onOpenFileMergeComplete {
@@ -1266,13 +1266,13 @@ static NSInteger operationRunCount = 0;
 - (void) onGetRemoteTagsComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGotRemoteTags];
+	[gd performSelectorOnMainThread:@selector(onGotRemoteTags) withObject:nil waitUntilDone:false];
 }
 
 - (void) onGetRemoteBranchesComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGotRemoteBranches];
+	[gd performSelectorOnMainThread:@selector(onGotRemoteBranches) withObject:nil waitUntilDone:false];
 }
 
 - (void) onNewTrackingBranchComplete {
@@ -1296,14 +1296,16 @@ static NSInteger operationRunCount = 0;
 - (void) onGetGlobalConfigsComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGetGlobalConfigsComplete];
+	[gd performSelectorOnMainThread:@selector(onGetGlobalConfigsComplete) withObject:nil waitUntilDone:true];
+
 	isRunningGetConfig = false;
 }
 
 - (void) onGetConfigsComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGetConfigsComplete];
+	[gd performSelectorOnMainThread:@selector(onGetConfigsComplete) withObject:nil waitUntilDone:true];
+
 	isRunningGetConfig = false;
 }
 

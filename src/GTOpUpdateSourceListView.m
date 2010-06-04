@@ -20,9 +20,14 @@
 
 @implementation GTOpUpdateSourceListView
 
+- (void) update {
+	[[gd sourceListView] update];
+}
+
 - (void) main {
 	if([self isCancelled]) return;
-	[[gd sourceListView] update];
+	[self performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:YES];
+
 	done = true;
 }
 

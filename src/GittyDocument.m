@@ -520,6 +520,8 @@ static NSWindow * lastMainWindow;
 		commitAfterAdd=false;
 	}
 	[sourceListView update];
+	// update the history...
+	[historyView invalidate];
 }
 
 - (void) onRefreshMetaOperationComplete {

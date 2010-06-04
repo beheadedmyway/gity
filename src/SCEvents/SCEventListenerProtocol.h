@@ -32,11 +32,19 @@
 
 @protocol SCEventListenerProtocol
 
+@optional
+
 /**
  * Conforming objects' implementation of this method will be called whenever an
  * event occurs. The instance of SCEvents which received the event and the event
  * itself are passed as parameters.
  */
 - (void)pathWatcher:(SCEvents *)pathWatcher eventOccurred:(SCEvent *)event;
+
+/**
+ * This method will get called after all events have been processed in a given queue.
+ */
+
+- (void)pathWatcher:(SCEvents *)pathWatcher multipleEventsOccurred:(NSArray *)events;
 
 @end

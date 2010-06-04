@@ -255,6 +255,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 {
     NSUInteger i;
     BOOL shouldIgnore = NO;
+	NSMutableArray *events = [[[NSMutableArray alloc] initWithCapacity:numEvents] autorelease];
     
     SCEvents *pathWatcher = (SCEvents *)clientCallBackInfo;
     
@@ -314,6 +315,12 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
             }
         }
     }
+	
+	if ([[pathWatcher delegate] conformsToProtocol:@protocol(SCEventListenerProtocol)]) {
+		[[pathWatcher delegate] pathWatcher:pathWatcher multipleEventsOccurred:events];
+	}
+	
+	
 }
 
 @end

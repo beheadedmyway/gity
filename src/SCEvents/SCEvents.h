@@ -56,7 +56,7 @@
 @property (readwrite, retain) NSMutableArray *watchedPaths;
 @property (readwrite, retain) NSMutableArray *excludedPaths;
 
-+ (id)sharedPathWatcher;
+//+ (id)sharedPathWatcher;
 
 - (BOOL)flushEventStreamSync;
 - (BOOL)flushEventStreamAsync;

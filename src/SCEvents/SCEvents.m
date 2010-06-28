@@ -39,7 +39,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 
 @end
 
-static SCEvents *_sharedPathWatcher = nil;
+//static SCEvents *_sharedPathWatcher = nil;
 
 @implementation SCEvents
 
@@ -54,7 +54,7 @@ static SCEvents *_sharedPathWatcher = nil;
 /**
  * Returns the shared singleton instance of SCEvents.
  */
-+ (id)sharedPathWatcher
+/*+ (id)sharedPathWatcher
 {
     @synchronized(self) {
         if (_sharedPathWatcher == nil) {
@@ -63,12 +63,12 @@ static SCEvents *_sharedPathWatcher = nil;
     }
     
     return _sharedPathWatcher;
-}
+}*/
 
 /**
  * allocWithZone:
  */
-+ (id)allocWithZone:(NSZone *)zone
+/*+ (id)allocWithZone:(NSZone *)zone
 {
     @synchronized(self) {
         if (_sharedPathWatcher == nil) {
@@ -80,7 +80,7 @@ static SCEvents *_sharedPathWatcher = nil;
     
 	// On subsequent allocation attempts return nil
     return nil;
-}
+}*/
 
 /**
  * Initializes an instance of SCEvents setting its default values.

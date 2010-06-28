@@ -176,12 +176,14 @@ static NSInteger operationRunCount = 0;
 }
 
 - (void) removeOpQueueFromCancelables:(NSOperationQueue *) q {
-	[cancelables removeObject:q];
+	if (cancelables)
+		[cancelables removeObject:q];
 }
 
 - (void) releaseAndRemoveQFromCancelables:(NSOperationQueue *) q {
-	[cancelables removeObject:q];
-	[q release];
+	if (cancelables)
+		[cancelables removeObject:q];
+	[q release];		
 }
 
 - (NSOperationQueue *) createCancelableQueueWithNetworkOperation:(NSOperation *) op {
@@ -1511,7 +1513,8 @@ static NSInteger operationRunCount = 0;
 	for(i;i<[cancelables count];i++) {
 		[[cancelables objectAtIndex:i] cancelAllOperations];
 	}
-	GDRelease(cancelables);
+	// this will get taken care of in dealloc.
+	//GDRelease(cancelables);
 }
 
 - (void) cancelNetworkOperations {
@@ -1520,7 +1523,8 @@ static NSInteger operationRunCount = 0;
 	for(i;i<[networkCancelables count];i++) {
 		[[networkCancelables objectAtIndex:i] cancelAllOperations];
 	}
-	GDRelease(networkCancelables);
+	// this will get taken care of in dealloc.
+	//GDRelease(networkCancelables);
 }
 
 - (void) dealloc {

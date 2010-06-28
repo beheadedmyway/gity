@@ -59,7 +59,7 @@ static NSDictionary * environ;
 		stout = [[NSString alloc] initWithData:content encoding:stoutEncoding];
 	}
 	@catch (NSException * e) {
-		// sometimes there's no stderr, so this is ok.
+		// sometimes there's no stdout, so this is ok.
 	}
 }
 
@@ -69,8 +69,13 @@ static NSDictionary * environ;
 		done=true;
 		return;
 	}
-	NSData * content = [s readDataToEndOfFile];
-	sterr = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+	@try {
+		NSData * content = [s readDataToEndOfFile];
+		sterr = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];		
+	}
+	@catch (NSException * e) {
+		// sometimes there's no stderr, so this is ok.
+	}
 }
 
 - (void) updateArguments {

@@ -38,7 +38,8 @@ NSDistantObject * createProxy() {
 	return nil;
 }
 
-void usage() {
+void usage() 
+{
 	printf("Usage: gity\n");
 	exit(0);
 }

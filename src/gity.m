@@ -27,9 +27,8 @@ NSDistantObject * createProxy() {
 	NSDistantObject * proxy = connect();
 	if(proxy) return proxy;
 	[[NSWorkspace sharedWorkspace] launchAppWithBundleIdentifier:@"com.macendeavor.Gity" options:NSWorkspaceLaunchAsync additionalEventParamDescriptor:nil launchIdentifier:nil];
-	int c = 0;
-	for(c; proxy == nil && c<50; c++) {
-		if(proxy = connect()) break;
+	for(int c = 0; proxy == nil && c<50; c++) {
+		if((proxy = connect())) break;
 		usleep(15000);
 	}
 	if(proxy) return proxy;

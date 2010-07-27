@@ -48,11 +48,12 @@
 
 - (BOOL) textView:(NSTextView *) aTextView doCommandBySelector:(SEL) aSelector {
 	NSEvent * event = [NSApp currentEvent];
-	if(([event modifierFlags] & NSCommandKeyMask)) {
+	if(([event modifierFlags] & NSCommandKeyMask) && ([event keyCode] == 36 /* enter */)) {
 		[self performSelectorOnMainThread:@selector(onok:) withObject:nil waitUntilDone:false];
-		return true;
+		return YES;
 	}
-	return FALSE;
+	return NO;
+	//return FALSE;
 }
 
 - (void) initButtons {

@@ -63,8 +63,10 @@ static NSApplication * app;
 	activeStatus = kGTStatus;
 	[workingProgress startAnimation:nil];
 	[NSApplication detachDrawingThread:@selector(startAnimation:) toTarget:workingProgress withObject:nil];
-	[app beginSheet:workingWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
-	[workingWindow makeKeyAndOrderFront:nil];
+	if ([gtwindow isMainWindow])
+		[app beginSheet:workingWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
+	// this is really annoying.  lets nix it.
+	//[workingWindow makeKeyAndOrderFront:nil];
 }
 
 - (void) showStartupIndicator {

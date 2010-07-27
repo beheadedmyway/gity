@@ -218,6 +218,11 @@
 - (void) webView:(WebView *) sender didFinishLoadForFrame:(WebFrame *) frame {
 }
 
+- (void)loadHTMLString:(NSString *)html
+{
+	[[webView mainFrame] loadHTMLString:html baseURL:nil];
+}
+
 - (void) onCommitLoaded {
 	if(![webView superview]) [self showWebView];
 	NSThread * c = [NSThread currentThread];
@@ -226,7 +231,7 @@
 	[self showWebView];
 	[webView setFrameLoadDelegate:self];
 	[[webView mainFrame] performSelectorOnMainThread:@selector(stopLoading) withObject:nil waitUntilDone:true];
-	[[webView mainFrame] performSelectorOnMainThread:@selector(loadHTMLString:baseURL:) withObject:[commitLoadInfo parsedCommitDetails] waitUntilDone:true];
+	[self performSelectorOnMainThread:@selector(loadHTMLString:) withObject:[commitLoadInfo parsedCommitDetails] waitUntilDone:true];
 	[self setWebkitRefs];
 	[mainMenuHelper invalidateViewMenu];
 	if(reInvalidate){

@@ -215,12 +215,22 @@
 	curSHA=[[commit hash] copy];
 }
 
-- (void) webView:(WebView *) sender didFinishLoadForFrame:(WebFrame *) frame {
-}
-
 - (void)loadHTMLString:(NSString *)html
 {
-	[[webView mainFrame] loadHTMLString:html baseURL:nil];
+	WebFrame *mainFrame = [webView mainFrame];
+	[mainFrame loadHTMLString:html baseURL:nil];
+}
+
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
+{
+	// this needs to be done on loadFinish otherwise, we end up with
+	// an empty commit log.
+	[self setWebkitRefs];
+	[mainMenuHelper invalidateViewMenu];
+	if(reInvalidate){
+		reInvalidate=false;
+		[self invalidate];
+	}
 }
 
 - (void) onCommitLoaded {
@@ -232,12 +242,6 @@
 	[webView setFrameLoadDelegate:self];
 	[[webView mainFrame] performSelectorOnMainThread:@selector(stopLoading) withObject:nil waitUntilDone:true];
 	[self performSelectorOnMainThread:@selector(loadHTMLString:) withObject:[commitLoadInfo parsedCommitDetails] waitUntilDone:true];
-	[self setWebkitRefs];
-	[mainMenuHelper invalidateViewMenu];
-	if(reInvalidate){
-		reInvalidate=false;
-		[self invalidate];
-	}
 }
 
 - (void) sendCommitBugReport {

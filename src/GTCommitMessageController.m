@@ -108,7 +108,13 @@
 		[target performSelector:action];
 	//[operations runCommitOperation];
 	//[self disposeNibs];
-	[operations runAddFilesOperation];
+	if (addBeforeCommit)
+		[operations runAddFilesOperation];
+	else
+	{
+		[operations runCommitOperation];
+		[self disposeNibs];
+	}
 }
 
 - (BOOL) shouldSignoff {

@@ -37,7 +37,7 @@ static NSWindow * lastMainWindow;
 @synthesize statusBarView;
 @synthesize activeBranchView;
 @synthesize advancedDiffView;
-@synthesize customWindowTitleController;
+//@synthesize customWindowTitleController;
 @synthesize git;
 @synthesize gitd;
 @synthesize status;
@@ -145,7 +145,7 @@ static NSWindow * lastMainWindow;
 	[fetchTags lazyInitWithGD:self];
 	[historySearch lazyInitWithGD:self];
 	[[modals cloneRepoController] lazyInitWithGD:self];
-	[customWindowTitleController lazyInitWithGD:self];
+	//[customWindowTitleController lazyInitWithGD:self];
 	[contentHSplitView lazyInitWithGD:self];
 	[diffView lazyInitWithGD:self];
 	[splitContentView lazyInitWithGD:self];
@@ -167,7 +167,7 @@ static NSWindow * lastMainWindow;
 	[sourceListView show];
 	[stateBarView show];
 	[activeBranchView show];
-	[customWindowTitleController update];
+	//[customWindowTitleController update];
 	
 	// Setup FSEvents so we know when files get changed.
 	fileEvents = [[SCEvents alloc] init];
@@ -200,13 +200,6 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) windowDidBecomeMain:(NSNotification *) notification {
-	if([gtwindow title] neq nilstring) {
-		NSString * title = [[gtwindow title] copy];
-		[gtwindow setRepresentedURL:nil];
-		[gtwindow setTitle:nilstring];
-		[[NSApplication sharedApplication] addWindowsItem:gtwindow title:title filename:false];
-		[title release];
-	}
 	if(justLaunched) {
 		justLaunched=false;
 		return;

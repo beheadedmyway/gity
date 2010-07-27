@@ -88,7 +88,7 @@
 	IBOutlet GTUnknownErrorController * unknownError;
 	IBOutlet GTSingleInputController * singleInput;
 	IBOutlet GTNewRemoteController * newRemote;
-	IBOutlet GTCustomTitleController * customWindowTitleController;
+	//IBOutlet GTCustomTitleController * customWindowTitleController;
 	IBOutlet GTNewSubmoduleController * newSubmodule;
 	IBOutlet GTHistorySearchController * historySearch;
 	IBOutlet GTAdvancedDiffView * advancedDiffView;
@@ -107,7 +107,7 @@
 @property (readonly,nonatomic) BOOL isSourceListHidden;
 @property (readonly,nonatomic) IBOutlet GTWindow * gtwindow;
 @property (readonly,nonatomic) IBOutlet GTActiveBranchView * activeBranchView;
-@property (readonly,nonatomic) IBOutlet GTCustomTitleController * customWindowTitleController;
+//@property (readonly,nonatomic) IBOutlet GTCustomTitleController * customWindowTitleController;
 @property (readonly,nonatomic) IBOutlet GTSourceListView * sourceListView;
 @property (readonly,nonatomic) IBOutlet GTSplitContentView * splitContentView;
 @property (readonly,nonatomic) IBOutlet GTHistoryView * historyView;

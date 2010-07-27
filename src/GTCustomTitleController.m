@@ -23,7 +23,7 @@
 @synthesize windowTitle;
 
 - (void) update {
-	NSString * path = [[gd fileURL] path];
+	/*NSString * path = [[gd fileURL] path];
 	if(!path) path = @"/Untitled";
 	NSArray * pieces = [path pathComponents];
 	NSInteger last = [pieces count] - 1;
@@ -37,7 +37,7 @@
 	[title setAttributedStringValue:wtitle];
 	float newx = ((windowFrame.size.width - titleSize.width) / 2) + (padding / 2);
 	[title setFrame:NSMakeRect(newx,windowFrame.size.height-titleSize.height-7,titleSize.width+2,titleSize.height+2)];
-	[[[gtwindow contentView] superview] addSubview:title];
+	[[[gtwindow contentView] superview] addSubview:title];*/
 }
 
 - (void) dealloc {

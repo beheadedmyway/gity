@@ -21,6 +21,7 @@
 
 @implementation GTCommitMessageController
 @synthesize commitMessageValue;
+@synthesize addBeforeCommit;
 
 - (void) awakeFromNib {
 	if(messageField is nil) return;
@@ -103,9 +104,11 @@
 		return;
 	}
 	commitMessageValue = [val copy];
-	if(target) [target performSelector:action];
-	[operations runCommitOperation];
-	[self disposeNibs];
+	if(target) 
+		[target performSelector:action];
+	//[operations runCommitOperation];
+	//[self disposeNibs];
+	[operations runAddFilesOperation];
 }
 
 - (BOOL) shouldSignoff {

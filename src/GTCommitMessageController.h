@@ -30,9 +30,11 @@
 	IBOutlet NSTextField * label;
 	IBOutlet NSButton * signoff;
 	NSString * commitMessageValue;
+	BOOL addBeforeCommit;
 }
 
 @property (readonly,nonatomic) NSString * commitMessageValue;
+@property (assign, nonatomic) BOOL addBeforeCommit;
 
 - (void) focus;
 - (BOOL) shouldSignoff;

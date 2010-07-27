@@ -512,9 +512,18 @@ static NSWindow * lastMainWindow;
 	[mainMenuHelper invalidate];
 	[contextMenus invalidate];
 	//[self adjustMinWindowSize];
-	if(commitAfterAdd) {
+	/*if(commitAfterAdd) {
 		[commit focus];
 		commitAfterAdd=false;
+	}*/
+	if (commit.addBeforeCommit)
+	{
+		if([gitd stagedFilesCount] >= 1)
+			[operations runCommitOperation];
+		else
+			NSBeep();
+		commit.addBeforeCommit = false;
+		[commit disposeNibs];
 	}
 	[sourceListView update];
 	// update the history...
@@ -596,7 +605,16 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) onGitAddComplete {
-	if(commitAfterAdd) [self gitCommit:nil];
+	//if(commitAfterAdd) [self gitCommit:nil];
+	/*if (commit.addBeforeCommit)
+	{
+		if([gitd stagedFilesCount] >= 1)
+			[operations runCommitOperation];
+		else
+			NSBeep();
+	}
+	commit.addBeforeCommit = false;
+	[commit disposeNibs];*/
 }
 
 #pragma mark search helper methods
@@ -659,10 +677,16 @@ static NSWindow * lastMainWindow;
 	[operations runAddFilesOperation];
 }
 
-- (void) gitAddAndCommit:(id) sender {
+/*- (void) gitAddAndCommit:(id) sender {
 	if([activeBranchView selectedFilesCount] < 1) return;
 	commitAfterAdd=true;
 	[operations runAddFilesOperation];
+}*/
+
+- (void) gitAddAndCommit:(id) sender {
+	if([activeBranchView selectedFilesCount] < 1) return;
+	commit.addBeforeCommit=true;
+	[self gitCommit:nil];
 }
 
 - (void) gitPackRefs:(id) sender {
@@ -679,7 +703,7 @@ static NSWindow * lastMainWindow;
 		[modals runConflictedStateForCheckout];
 		return;
 	}
-	if([gitd stagedFilesCount] < 1 && !commitAfterAdd) {
+	if([gitd stagedFilesCount] < 1 && !commit.addBeforeCommit) {
 		NSBeep();
 		return;
 	}

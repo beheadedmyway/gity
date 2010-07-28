@@ -176,14 +176,22 @@ static NSInteger operationRunCount = 0;
 }
 
 - (void) removeOpQueueFromCancelables:(NSOperationQueue *) q {
-	if (cancelables)
-		[cancelables removeObject:q];
+	@synchronized(self)
+	{
+		if (cancelables)
+			if ([cancelables containsObject:q])
+				[cancelables removeObject:q];
+	}
 }
 
 - (void) releaseAndRemoveQFromCancelables:(NSOperationQueue *) q {
-	if (cancelables)
-		[cancelables removeObject:q];
-	[q release];		
+	@synchronized(self)
+	{
+		if (cancelables)
+			if ([cancelables containsObject:q])
+				[cancelables removeObject:q];
+		[q release];
+	}
 }
 
 - (NSOperationQueue *) createCancelableQueueWithNetworkOperation:(NSOperation *) op {

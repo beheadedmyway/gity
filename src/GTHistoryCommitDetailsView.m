@@ -76,7 +76,7 @@
 	GTGitCommit * commit = [historyView selectedItem];
 	if(commit is nil) return;
 	NSSavePanel * sp = [NSSavePanel savePanel];
-	NSString * projectTitle = [[gd customWindowTitleController] windowTitle];
+	NSString * projectTitle = [gd displayName];
 	NSString * projWithUn = [projectTitle stringByAppendingString:@"_"];
 	NSString * suggest = [projWithUn stringByAppendingString:[[commit abbrevHash] stringByAppendingString:@".tar.gz"]];
 	[sp setNameFieldStringValue:suggest];
@@ -95,7 +95,7 @@
 	GTGitCommit * commit = [historyView selectedItem];
 	if(commit is nil) return;
 	NSSavePanel * sp = [NSSavePanel savePanel];
-	NSString * projectTitle = [[gd customWindowTitleController] windowTitle];
+	NSString * projectTitle = [gd displayName];
 	NSString * projWithUn = [projectTitle stringByAppendingString:@"_"];
 	NSString * suggest = [projWithUn stringByAppendingString:[[commit abbrevHash] stringByAppendingString:@".zip"]];
 	[sp setNameFieldStringValue:suggest];

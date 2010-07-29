@@ -225,6 +225,19 @@ static NSInteger operationRunCount = 0;
 	}];
 }
 
+- (void) runCommitOperationWithFiles:(NSArray *)files {
+	if(allCanceled) return;
+	if(isRunningCommit) return;
+	isRunningCommit=true;
+	[status showSpinner];
+	GTOpCommit * commit = [[[GTOpCommit alloc] initWithGD:gd andFiles:files] autorelease];
+	NSOperationQueue * q = [self createCancelableQueueWithOperation:commit];
+	[commit setCompletionBlock:^{
+		[self releaseAndRemoveQFromCancelables:q];
+		[self onCommitComplete];
+	}];
+}
+
 - (void) runCommitOperation {
 	if(allCanceled) return;
 	if(isRunningCommit) return;

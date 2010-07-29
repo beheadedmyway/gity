@@ -512,19 +512,8 @@ static NSWindow * lastMainWindow;
 	[mainMenuHelper invalidate];
 	[contextMenus invalidate];
 	//[self adjustMinWindowSize];
-	/*if(commitAfterAdd) {
-		[commit focus];
-		commitAfterAdd=false;
-	}*/
 	if (commit.addBeforeCommit)
-	{
-		if([gitd stagedFilesCount] >= 1)
-			[operations runCommitOperation];
-		else
-			NSBeep();
-		commit.addBeforeCommit = false;
-		[commit disposeNibs];
-	}
+		[commit finishTwoStageCommit];
 	[sourceListView update];
 	// update the history...
 	[historyView invalidate];

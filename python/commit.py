@@ -27,8 +27,10 @@ try:
 	if not os.path.exists(commitfile):raise Exception("Gitty Error: The tmp commitmsg file doesn't exist.")
 	signoff=False
 	if options.misc and len(options.misc)>0: signoff=True
-	if signoff: command="%s %s %s"%(options.git,"commit -s -F",commitfile)
-	else: command="%s %s %s"%(options.git,"commit -F",commitfile)
+	if signoff: command="%s %s %s"%(options.git,"commit -s -F ",commitfile)
+	else: command="%s %s %s"%(options.git,"commit -F ",commitfile)
+
+	if checkfiles(options): command+=" "+make_file_list_for_git(options.files)
 	rcode,stout,sterr=run_command(command)
 	rcode_for_git_exit(rcode,sterr)
 	exit(0)

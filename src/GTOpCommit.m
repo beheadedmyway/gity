@@ -18,9 +18,23 @@
 #import "GTOpCommit.h"
 #import "GittyDocument.h"
 
+@interface GTOpCommit(internal)
+- (void) setArgumentsAndFiles:(NSArray *)files;
+@end
+
 @implementation GTOpCommit
 
-- (void) setArguments {
+- (id) initWithGD:(GittyDocument *) _gd andFiles:(NSArray *)files {
+	if(self=[super initWithGD:_gd]) {
+		args=[[NSMutableArray alloc] init];
+		readsSTDERR=true;
+		[self initializeTask];
+		[self setArgumentsAndFiles:files];
+	}
+	return self;
+}
+
+- (void) setArgumentsAndFiles:(NSArray *)files {
 	if([self isCancelled]) return;
 	[self setArgumentsWithPythonScript:[GTPythonScripts commitScript] setArgsOnTask:false];
 	if([self isCancelled]) return;
@@ -31,7 +45,16 @@
 	[fileHandle writeData:commitMessage];
 	[fileHandle release];
 	if([[gd commit] shouldSignoff]) [args addObject:@"-m1"];
+	if (files && [files count] > 0) {
+		for (int i = 0; i < [files count]; i++) {
+			[args addObject:[@"-f " stringByAppendingString:[files objectAtIndex:i]]];
+		}
+	}
 	[task setArguments:args];
+}
+
+- (void) setArguments {
+	[self setArgumentsAndFiles:nil];
 }
 
 @end

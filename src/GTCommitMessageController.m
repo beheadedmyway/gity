@@ -106,15 +106,22 @@
 	commitMessageValue = [val copy];
 	if(target) 
 		[target performSelector:action];
-	//[operations runCommitOperation];
-	//[self disposeNibs];
+	fileSelection = [[[gd activeBranchView] selectedFiles] copy];
 	if (addBeforeCommit)
 		[operations runAddFilesOperation];
 	else
 	{
-		[operations runCommitOperation];
-		[self disposeNibs];
+		[self finishTwoStageCommit];
 	}
+}
+
+- (void) finishTwoStageCommit {
+	if ([gd.gitd stagedFilesCount] >= 1)
+		[operations runCommitOperationWithFiles:fileSelection];
+	else
+		NSBeep();
+	self.addBeforeCommit = false;
+	[self disposeNibs];
 }
 
 - (BOOL) shouldSignoff {
@@ -130,6 +137,8 @@
 - (void) disposeNibs {
 	label=nil;
 	messageField=nil;
+	[fileSelection release];
+	fileSelection = nil;
 	GDRelease(commitMessageValue);
 	[super disposeNibs];
 }

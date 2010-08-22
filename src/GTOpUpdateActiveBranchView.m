@@ -21,9 +21,13 @@
 
 @implementation GTOpUpdateActiveBranchView
 
+- (void) update {
+	[[gd activeBranchView] update];
+}
+
 - (void) main {
 	if([self isCancelled]) return;
-	[[gd activeBranchView] update];
+	[self performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:YES];
 	done=true;
 }
 

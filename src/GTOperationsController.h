@@ -140,6 +140,7 @@
 - (void) runRefreshStatusOperation;
 - (void) runAddFilesOperation;
 - (void) runCommitOperation;
+- (void) runCommitOperationWithFiles:(NSArray *)files;
 - (void) runRemoveFilesOperation;
 - (void) runDestageOperation;
 - (void) runDiscardChangesOperation;

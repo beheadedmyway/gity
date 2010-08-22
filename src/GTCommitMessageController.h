@@ -30,12 +30,16 @@
 	IBOutlet NSTextField * label;
 	IBOutlet NSButton * signoff;
 	NSString * commitMessageValue;
+	BOOL addBeforeCommit;
+	NSArray * fileSelection;
 }
 
 @property (readonly,nonatomic) NSString * commitMessageValue;
+@property (assign, nonatomic) BOOL addBeforeCommit;
 
 - (void) focus;
 - (BOOL) shouldSignoff;
 - (void) updateMessageFieldAttributes;
+- (void) finishTwoStageCommit;
 
 @end

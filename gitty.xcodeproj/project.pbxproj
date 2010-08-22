@@ -358,6 +358,8 @@
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		CA13385411A1F91C00FDE018 /* env in Resources */ = {isa = PBXBuildFile; fileRef = CA13385311A1F91C00FDE018 /* env */; };
+		CABCA82711B6C52D00EB8EEA /* SCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CABCA81C11B6C52D00EB8EEA /* SCEvent.m */; };
+		CABCA82811B6C52D00EB8EEA /* SCEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CABCA81F11B6C52D00EB8EEA /* SCEvents.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -974,6 +976,11 @@
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Gity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA13385311A1F91C00FDE018 /* env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = env; sourceTree = "<group>"; };
+		CABCA81B11B6C52D00EB8EEA /* SCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEvent.h; sourceTree = "<group>"; };
+		CABCA81C11B6C52D00EB8EEA /* SCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEvent.m; sourceTree = "<group>"; };
+		CABCA81D11B6C52D00EB8EEA /* SCEventListenerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEventListenerProtocol.h; sourceTree = "<group>"; };
+		CABCA81E11B6C52D00EB8EEA /* SCEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEvents.h; sourceTree = "<group>"; };
+		CABCA81F11B6C52D00EB8EEA /* SCEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEvents.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1380,6 +1387,7 @@
 		07A04373106E010B00B21AB9 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				CABCA81711B6C52D00EB8EEA /* SCEvents */,
 				07DA106F10BF300300F7170D /* cocoafob */,
 				07A04375106E011600B21AB9 /* json */,
 				07F691E3108275E8006464DA /* sourcelist */,
@@ -1952,6 +1960,19 @@
 				07C616D110B291F500C71C86 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CABCA81711B6C52D00EB8EEA /* SCEvents */ = {
+			isa = PBXGroup;
+			children = (
+				CABCA81B11B6C52D00EB8EEA /* SCEvent.h */,
+				CABCA81C11B6C52D00EB8EEA /* SCEvent.m */,
+				CABCA81D11B6C52D00EB8EEA /* SCEventListenerProtocol.h */,
+				CABCA81E11B6C52D00EB8EEA /* SCEvents.h */,
+				CABCA81F11B6C52D00EB8EEA /* SCEvents.m */,
+			);
+			name = SCEvents;
+			path = src/SCEvents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2543,6 +2564,8 @@
 				07DEF7A11104FB4B006E8A54 /* GTAdvancedDiffView.m in Sources */,
 				07DEF7A41104FBB2006E8A54 /* GTTileView.m in Sources */,
 				07DEF7C41104FFC0006E8A54 /* GTAdvancedDiffTileView.m in Sources */,
+				CABCA82711B6C52D00EB8EEA /* SCEvent.m in Sources */,
+				CABCA82811B6C52D00EB8EEA /* SCEvents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2891,6 +2914,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2904,6 +2928,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;

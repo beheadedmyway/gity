@@ -136,18 +136,20 @@ try:
 	
 	output["refs"]={}
 	if len(refs) > 0:
-		gitcommand="rev-parse"
-		command="%s %s %s"%(options.git,gitcommand, " ".join(refs))
-		rcode,stout,sterr=run_command(command)
-		rcode_for_git_exit(rcode,sterr)
-		res=re.split("\n",stout)
-		refshas={}
-		if len(res) > 0:
-			res.pop()
-			for line in res:
-				sha=sanitize_str(line)
-				refshas[refs.pop(0)]=sha
-		output["refs"]=refshas
+		try:
+			gitcommand="rev-parse"
+			command="%s %s %s"%(options.git,gitcommand, " ".join(refs))
+			rcode,stout,sterr=run_command(command)
+			rcode_for_git_exit(rcode,sterr)
+			res=re.split("\n",stout)
+			refshas={}
+			if len(res) > 0:
+				res.pop()
+				for line in res:
+					sha=sanitize_str(line)
+					refshas[refs.pop(0)]=sha
+			output["refs"]=refshas
+		except Exception, e: pass
 	
 	#default remotes
 	rcode,stout,sterr=result_for_default_configs(options.git)
@@ -170,7 +172,7 @@ try:
 	statusFile.close()
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The meta status command through this error: " + str(e))
+	sys.stderr.write("The meta status command threw this error: " + str(e))
 	sys.stderr.write("\ncommand: %s" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)

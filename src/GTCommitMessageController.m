@@ -21,6 +21,7 @@
 
 @implementation GTCommitMessageController
 @synthesize commitMessageValue;
+@synthesize addBeforeCommit;
 
 - (void) awakeFromNib {
 	if(messageField is nil) return;
@@ -48,11 +49,12 @@
 
 - (BOOL) textView:(NSTextView *) aTextView doCommandBySelector:(SEL) aSelector {
 	NSEvent * event = [NSApp currentEvent];
-	if(([event modifierFlags] & NSCommandKeyMask)) {
+	if(([event modifierFlags] & NSCommandKeyMask) && ([event keyCode] == 36 /* enter */)) {
 		[self performSelectorOnMainThread:@selector(onok:) withObject:nil waitUntilDone:false];
-		return true;
+		return YES;
 	}
-	return FALSE;
+	return NO;
+	//return FALSE;
 }
 
 - (void) initButtons {
@@ -102,8 +104,23 @@
 		return;
 	}
 	commitMessageValue = [val copy];
-	if(target) [target performSelector:action];
-	[operations runCommitOperation];
+	if(target) 
+		[target performSelector:action];
+	fileSelection = [[[gd activeBranchView] selectedFiles] copy];
+	if (addBeforeCommit)
+		[operations runAddFilesOperation];
+	else
+	{
+		[self finishTwoStageCommit];
+	}
+}
+
+- (void) finishTwoStageCommit {
+	if ([gd.gitd stagedFilesCount] >= 1)
+		[operations runCommitOperationWithFiles:fileSelection];
+	else
+		NSBeep();
+	self.addBeforeCommit = false;
 	[self disposeNibs];
 }
 
@@ -120,6 +137,8 @@
 - (void) disposeNibs {
 	label=nil;
 	messageField=nil;
+	[fileSelection release];
+	fileSelection = nil;
 	GDRelease(commitMessageValue);
 	[super disposeNibs];
 }

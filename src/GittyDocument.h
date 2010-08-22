@@ -50,8 +50,10 @@
 #import "GTHistoryView.h"
 #import "GTHistoryDetailsContainerView.h"
 #import "GTAdvancedDiffView.h"
+#import "SCEvents.h"
+#import "SCEventListenerProtocol.h"
 
-@interface GittyDocument : NSDocument <NSWindowDelegate> {
+@interface GittyDocument : NSDocument <NSWindowDelegate, SCEventListenerProtocol> {
 	BOOL isSourceListHidden;
 	BOOL commitAfterAdd;
 	BOOL fixingConflict;
@@ -59,6 +61,7 @@
 	BOOL isTerminatingFromSessionExpired;
 	BOOL justLaunched;
 	BOOL runningExpiredModal;
+	BOOL needsFileUpdates;
 	NSString * _tmpBranchStartName;
 	NSString * _tmpTagStartPoint;
 	NSString * _tmpUnknownError;
@@ -85,7 +88,7 @@
 	IBOutlet GTUnknownErrorController * unknownError;
 	IBOutlet GTSingleInputController * singleInput;
 	IBOutlet GTNewRemoteController * newRemote;
-	IBOutlet GTCustomTitleController * customWindowTitleController;
+	//IBOutlet GTCustomTitleController * customWindowTitleController;
 	IBOutlet GTNewSubmoduleController * newSubmodule;
 	IBOutlet GTHistorySearchController * historySearch;
 	IBOutlet GTAdvancedDiffView * advancedDiffView;
@@ -95,6 +98,7 @@
 	GTSoundController * sounds;
 	GTOperationsController * operations;
 	GTContextMenuController * contextMenus;
+	SCEvents * fileEvents;
 }
 
 #pragma mark properties
@@ -103,7 +107,7 @@
 @property (readonly,nonatomic) BOOL isSourceListHidden;
 @property (readonly,nonatomic) IBOutlet GTWindow * gtwindow;
 @property (readonly,nonatomic) IBOutlet GTActiveBranchView * activeBranchView;
-@property (readonly,nonatomic) IBOutlet GTCustomTitleController * customWindowTitleController;
+//@property (readonly,nonatomic) IBOutlet GTCustomTitleController * customWindowTitleController;
 @property (readonly,nonatomic) IBOutlet GTSourceListView * sourceListView;
 @property (readonly,nonatomic) IBOutlet GTSplitContentView * splitContentView;
 @property (readonly,nonatomic) IBOutlet GTHistoryView * historyView;
@@ -219,7 +223,7 @@
 - (void) toggleDeletedFiles:(id) sender;
 - (void) tryToShowUnknownError;
 - (void) unknownErrorFromOperation:(NSString *) error;
-- (void) updateAfterWindowBecameActive;
+- (void) updateAfterFilesChanged;
 - (void) waitForWindow;
 - (void) windowReady;
 - (BOOL) isCurrentViewActiveBranchView;

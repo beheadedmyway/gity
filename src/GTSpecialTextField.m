@@ -26,7 +26,7 @@
 			return true;
 		}
 	}
-	return false;
+	return [super performKeyEquivalent:theEvent];
 }
 
 @end

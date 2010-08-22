@@ -176,12 +176,22 @@ static NSInteger operationRunCount = 0;
 }
 
 - (void) removeOpQueueFromCancelables:(NSOperationQueue *) q {
-	[cancelables removeObject:q];
+	@synchronized(self)
+	{
+		if (cancelables)
+			if ([cancelables containsObject:q])
+				[cancelables removeObject:q];
+	}
 }
 
 - (void) releaseAndRemoveQFromCancelables:(NSOperationQueue *) q {
-	[cancelables removeObject:q];
-	[q release];
+	@synchronized(self)
+	{
+		if (cancelables)
+			if ([cancelables containsObject:q])
+				[cancelables removeObject:q];
+		[q release];
+	}
 }
 
 - (NSOperationQueue *) createCancelableQueueWithNetworkOperation:(NSOperation *) op {
@@ -212,6 +222,19 @@ static NSInteger operationRunCount = 0;
 	[adds setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
 		[self onAddFilesComplete];
+	}];
+}
+
+- (void) runCommitOperationWithFiles:(NSArray *)files {
+	if(allCanceled) return;
+	if(isRunningCommit) return;
+	isRunningCommit=true;
+	[status showSpinner];
+	GTOpCommit * commit = [[[GTOpCommit alloc] initWithGD:gd andFiles:files] autorelease];
+	NSOperationQueue * q = [self createCancelableQueueWithOperation:commit];
+	[commit setCompletionBlock:^{
+		[self releaseAndRemoveQFromCancelables:q];
+		[self onCommitComplete];
 	}];
 }
 
@@ -1065,7 +1088,7 @@ static NSInteger operationRunCount = 0;
 - (void) onLoadHistoryComplete {
 	if(allCanceled) return;
 	[self incrementRunCount];
-	[gd onHistoryLoaded];
+	[gd performSelectorOnMainThread:@selector(onHistoryLoaded) withObject:nil waitUntilDone:false];
 }
 
 - (void) onFetchComplete {
@@ -1107,13 +1130,13 @@ static NSInteger operationRunCount = 0;
 - (void) onPrepareDiffingComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGotLooseObjectsCount];
+	[gd performSelectorOnMainThread:@selector(onGotLooseObjectsCount) withObject:nil waitUntilDone:false];
 }
 
 - (void) onGetLooseObjectsComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGotLooseObjectsCount];
+	[gd performSelectorOnMainThread:@selector(onGotLooseObjectsCount) withObject:nil waitUntilDone:false];
 }
 
 - (void) onOpenFileMergeComplete {
@@ -1266,13 +1289,13 @@ static NSInteger operationRunCount = 0;
 - (void) onGetRemoteTagsComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGotRemoteTags];
+	[gd performSelectorOnMainThread:@selector(onGotRemoteTags) withObject:nil waitUntilDone:false];
 }
 
 - (void) onGetRemoteBranchesComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGotRemoteBranches];
+	[gd performSelectorOnMainThread:@selector(onGotRemoteBranches) withObject:nil waitUntilDone:false];
 }
 
 - (void) onNewTrackingBranchComplete {
@@ -1296,14 +1319,16 @@ static NSInteger operationRunCount = 0;
 - (void) onGetGlobalConfigsComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGetGlobalConfigsComplete];
+	[gd performSelectorOnMainThread:@selector(onGetGlobalConfigsComplete) withObject:nil waitUntilDone:true];
+
 	isRunningGetConfig = false;
 }
 
 - (void) onGetConfigsComplete {
 	if(allCanceled) return;
 	[status hideSpinner];
-	[gd onGetConfigsComplete];
+	[gd performSelectorOnMainThread:@selector(onGetConfigsComplete) withObject:nil waitUntilDone:true];
+
 	isRunningGetConfig = false;
 }
 
@@ -1509,7 +1534,8 @@ static NSInteger operationRunCount = 0;
 	for(i;i<[cancelables count];i++) {
 		[[cancelables objectAtIndex:i] cancelAllOperations];
 	}
-	GDRelease(cancelables);
+	// this will get taken care of in dealloc.
+	//GDRelease(cancelables);
 }
 
 - (void) cancelNetworkOperations {
@@ -1518,7 +1544,8 @@ static NSInteger operationRunCount = 0;
 	for(i;i<[networkCancelables count];i++) {
 		[[networkCancelables objectAtIndex:i] cancelAllOperations];
 	}
-	GDRelease(networkCancelables);
+	// this will get taken care of in dealloc.
+	//GDRelease(networkCancelables);
 }
 
 - (void) dealloc {

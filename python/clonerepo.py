@@ -30,7 +30,7 @@ try:
 	if clone_into: command="%s %s %s %s"%(options.git,"clone",sanitize_str(options.repo),".")
 	else:
 		command="%s %s %s"%(options.git,"clone",sanitize_str(options.repo))
-		match=re.search("([a-zA-Z0-9_]*)\.git",options.repo)
+		match=re.search("([-a-zA-Z0-9_]*)\.git",options.repo)
 		repo=match.group(1)
 		repo_to_open=destination+"/"+repo
 	rcode,stout,sterr=run_command(command)
@@ -40,6 +40,11 @@ try:
 	exit_if_server_hungup(sterr)
 	rcode_for_git_exit(rcode,sterr)
 	os.chdir(repo_to_open);
+	if sterr.find("You appear to have cloned an empty repository") > -1:
+		try:
+			command="%s %s --allow-empty -m 'New repository'"%(options.git,"commit")
+			rcode,stout,sterr=run_command(command)
+		except Exception,e: pass
 	command="%s %s -r" % (options.git,"branch")
 	rcode,stout,sterr=run_command(command)
 	rcode_for_git_exit(rcode,sterr)
@@ -61,7 +66,7 @@ try:
 	sys.stdout.write(repo_to_open)
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The clone repo command through this error: " + str(e))
+	sys.stderr.write("The clone repo command threw this error: " + str(e))
 	sys.stderr.write("\ncommand: %s" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)

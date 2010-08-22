@@ -165,7 +165,7 @@ static NSNotificationCenter * center;
 		[tableView setDelegate:self];
 		[tableView setDataSource:self];
 		hasSetDelegate=true;
-	} else [tableView reloadData];
+	} else [tableView reloadData];		
 }
 
 - (void) search:(NSString *) _term {

@@ -8,7 +8,7 @@ email [aaron@macendeavor.com] [email] with any questions
 - `source/GDOperationsController.m/h` - the operations controller is what manages all asynchronous git operations
 
 ##POINTS OF INTEREST FOR PYTHON CODE##
-- The `GTOperationsController` runs python scripts in python/*
+- The `GTOperationsController` runs python scripts in `python/*`
 
 ##POINTS OF INTEREST FOR HISTORY AND DIFFING##
 - `diff/commit.html` (testing harness for a history commit)

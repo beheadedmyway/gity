@@ -3,6 +3,7 @@ Gity - The Mac Client for Git
 Initial Gity Version Written by Aaron Smith from gngrwzrd.com
 Contributions from:
 Brandon Sneed
+Mark Szymanski
 
 ##POINTS OF INTEREST FOR OBJ-C CODE##
 - `source/GTDocumentController.m/h` - document controller for document based app

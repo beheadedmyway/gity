@@ -4,7 +4,6 @@ Initial Gity Version Written by Aaron Smith from gngrwzrd.com
 Contributions from:
 Brandon Sneed
 
-
 ##POINTS OF INTEREST FOR OBJ-C CODE##
 -source/GTDocumentController.m/h - document controller for document based app
 -source/GittyDocument.m/h - this is the main controller for each separate document that get's opened.

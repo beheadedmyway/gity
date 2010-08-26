@@ -24,7 +24,7 @@
 	if([self isCancelled]) return;
 	//[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(reallyShow) userInfo:nil repeats:false];
 	//sleep(2);
-	[self reallyShow];
+	[self performSelectorOnMainThread:@selector(reallyShow) withObject:nil waitUntilDone:YES];
 }
 
 - (void) reallyShow {

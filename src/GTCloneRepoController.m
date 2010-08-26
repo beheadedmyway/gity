@@ -183,6 +183,7 @@ static NSFileManager * fileman;
 	}
 	[cloneRepo release];
 	openPath=nil;
+	errored=false;
 }
 
 - (void) dealloc {

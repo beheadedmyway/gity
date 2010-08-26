@@ -76,7 +76,7 @@
 	GTGitCommit * commit = [historyView selectedItem];
 	if(commit is nil) return;
 	NSSavePanel * sp = [NSSavePanel savePanel];
-	NSString * projectTitle = [[gd customWindowTitleController] windowTitle];
+	NSString * projectTitle = [gd displayName];
 	NSString * projWithUn = [projectTitle stringByAppendingString:@"_"];
 	NSString * suggest = [projWithUn stringByAppendingString:[[commit abbrevHash] stringByAppendingString:@".tar.gz"]];
 	[sp setNameFieldStringValue:suggest];
@@ -95,7 +95,7 @@
 	GTGitCommit * commit = [historyView selectedItem];
 	if(commit is nil) return;
 	NSSavePanel * sp = [NSSavePanel savePanel];
-	NSString * projectTitle = [[gd customWindowTitleController] windowTitle];
+	NSString * projectTitle = [gd displayName];
 	NSString * projWithUn = [projectTitle stringByAppendingString:@"_"];
 	NSString * suggest = [projWithUn stringByAppendingString:[[commit abbrevHash] stringByAppendingString:@".zip"]];
 	[sp setNameFieldStringValue:suggest];
@@ -215,7 +215,22 @@
 	curSHA=[[commit hash] copy];
 }
 
-- (void) webView:(WebView *) sender didFinishLoadForFrame:(WebFrame *) frame {
+- (void)loadHTMLString:(NSString *)html
+{
+	WebFrame *mainFrame = [webView mainFrame];
+	[mainFrame loadHTMLString:html baseURL:nil];
+}
+
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
+{
+	// this needs to be done on loadFinish otherwise, we end up with
+	// an empty commit log.
+	[self setWebkitRefs];
+	[mainMenuHelper invalidateViewMenu];
+	if(reInvalidate){
+		reInvalidate=false;
+		[self invalidate];
+	}
 }
 
 - (void) onCommitLoaded {
@@ -226,13 +241,7 @@
 	[self showWebView];
 	[webView setFrameLoadDelegate:self];
 	[[webView mainFrame] performSelectorOnMainThread:@selector(stopLoading) withObject:nil waitUntilDone:true];
-	[[webView mainFrame] performSelectorOnMainThread:@selector(loadHTMLString:baseURL:) withObject:[commitLoadInfo parsedCommitDetails] waitUntilDone:true];
-	[self setWebkitRefs];
-	[mainMenuHelper invalidateViewMenu];
-	if(reInvalidate){
-		reInvalidate=false;
-		[self invalidate];
-	}
+	[self performSelectorOnMainThread:@selector(loadHTMLString:) withObject:[commitLoadInfo parsedCommitDetails] waitUntilDone:true];
 }
 
 - (void) sendCommitBugReport {

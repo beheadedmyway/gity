@@ -46,8 +46,8 @@
 	if(done)goto cleanup;
 	[task waitUntilExit];
 	if(done) goto cleanup;
-	[self validateResult];
-	[self taskComplete];
+	[self performSelectorOnMainThread:@selector(validateResult) withObject:nil waitUntilDone:YES];
+	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
 cleanup:
 	GDRelease(task);
 	close([[task standardOutput] fileDescriptor]);

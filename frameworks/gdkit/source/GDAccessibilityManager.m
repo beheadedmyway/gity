@@ -92,7 +92,8 @@ static GDAccessibilityManager * inst;
 	}
 	if([result wasSuccess]) {
 		[result setResult:res];
-		CFRelease(res);
+        if (res)
+            CFRelease(res);
 	}
 	return result;
 }

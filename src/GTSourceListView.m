@@ -61,6 +61,9 @@ static GTDocumentController * doc;
 		wasStashExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListStashExpanded"] integerValue];
 		wasRemoteBranchesExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListRemoteBranchesExpanded"] integerValue];
 	}
+	
+	[sourceListView setDoubleAction:@selector(doubleClickAction:)];
+	
 	if(center is nil) center=[NSNotificationCenter defaultCenter];
 	[center addObserver:self selector:@selector(onWindowResized) name:NSWindowDidResizeNotification object:[gd gtwindow]];
 }
@@ -167,6 +170,11 @@ static GTDocumentController * doc;
 	GTSourceListItem * item = [sourceListView itemAtRow:[sourceListView clickedRow]];
 	if(item == nil) item = [sourceListView itemAtRow:[sourceListView selectedRow]];
 	return item;
+}
+
+- (void) doubleClickAction:(id)sender {
+	if ([[self selectedItem] isChildOfSubmodules])
+		[self openSubmoduleWithGity:nil];
 }
 
 - (void) branchCheckout:(id) sender {
@@ -602,6 +610,10 @@ static GTDocumentController * doc;
 	GTSourceListItem * gitem = (GTSourceListItem *) item;
 	if(item == nil) return [rootItem itemAtIndex:index];
 	return [gitem itemAtIndex:index];
+}
+
+- (BOOL)outlineView:(NSOutlineView *)outlineView shouldEditTableColumn:(NSTableColumn *)tableColumn item:(id)item {
+	return NO;
 }
 
 - (NSInteger) outlineView:(NSOutlineView *) outlineView numberOfChildrenOfItem:(id) item {

@@ -26,6 +26,7 @@
 }
 
 - (void) awakeFromNib {
+	[super awakeFromNib];
 	[self setContentBorderThickness:22 forEdge:NSMinYEdge];
 }
 

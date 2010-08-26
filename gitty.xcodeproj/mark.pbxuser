@@ -1,0 +1,103 @@
+// !$*UTF8*$!
+{
+	07C4223E10968AD100D3F494 /* Pre Flight Scripts */ = {
+		activeExec = 0;
+	};
+	07D046DF109E2243005D5ED4 /* gity */ = {
+		activeExec = 0;
+		executables = (
+			4D9D42FA12219350008ACC51 /* gity */,
+		);
+	};
+	2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 4D9D42FA12219350008ACC51 /* gity */;
+		activeTarget = 07D046DF109E2243005D5ED4 /* gity */;
+		codeSenseManager = 4D9D430B12219358008ACC51 /* Code sense */;
+		executables = (
+			4D9D42FA12219350008ACC51 /* gity */,
+			4D9D42FB12219350008ACC51 /* Gitty */,
+		);
+		perUserDictionary = {
+			PBXPerProjectTemplateStateSaveDate = 304190288;
+			PBXWorkspaceStateSaveDate = 304190288;
+		};
+		sourceControlManager = 4D9D430A12219358008ACC51 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	4D9D42FA12219350008ACC51 /* gity */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = gity;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	4D9D42FB12219350008ACC51 /* Gitty */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Gitty;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	4D9D430A12219358008ACC51 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	4D9D430B12219358008ACC51 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	8D15AC270486D014006FF6A4 /* Gitty */ = {
+		activeExec = 0;
+		executables = (
+			4D9D42FB12219350008ACC51 /* Gitty */,
+		);
+	};
+}

@@ -21,4 +21,6 @@
 @interface GTOpCommit : GTBasePythonTaskOperation {
 }
 
+- (id) initWithGD:(GittyDocument *) _gd andFiles:(NSArray *)files;
+
 @end

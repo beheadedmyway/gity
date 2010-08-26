@@ -37,7 +37,7 @@ static NSWindow * lastMainWindow;
 @synthesize statusBarView;
 @synthesize activeBranchView;
 @synthesize advancedDiffView;
-@synthesize customWindowTitleController;
+//@synthesize customWindowTitleController;
 @synthesize git;
 @synthesize gitd;
 @synthesize status;
@@ -145,7 +145,7 @@ static NSWindow * lastMainWindow;
 	[fetchTags lazyInitWithGD:self];
 	[historySearch lazyInitWithGD:self];
 	[[modals cloneRepoController] lazyInitWithGD:self];
-	[customWindowTitleController lazyInitWithGD:self];
+	//[customWindowTitleController lazyInitWithGD:self];
 	[contentHSplitView lazyInitWithGD:self];
 	[diffView lazyInitWithGD:self];
 	[splitContentView lazyInitWithGD:self];
@@ -167,8 +167,22 @@ static NSWindow * lastMainWindow;
 	[sourceListView show];
 	[stateBarView show];
 	[activeBranchView show];
-	[customWindowTitleController update];
+	//[customWindowTitleController update];
+	
+	// Setup FSEvents so we know when files get changed.
+	fileEvents = [[SCEvents alloc] init];
+	fileEvents.delegate = self;
+	fileEvents.ignoreEventsFromSubDirs = NO;
+	fileEvents.notificationLatency = 1.0;
+	fileEvents.excludedPaths = [NSArray arrayWithObject:[[[self fileURL] path] stringByAppendingPathComponent:@".git/vendor/gity/tmp/"]];
+	[fileEvents startWatchingPaths:[NSArray arrayWithObject:[[self fileURL] path]]];
+	
 	[self waitForWindow];
+}
+
+- (void)pathWatcher:(SCEvents *)pathWatcher multipleEventsOccurred:(NSArray *)events
+{
+	[self updateAfterFilesChanged];
 }
 
 - (BOOL) windowShouldClose:(id) sender {
@@ -186,13 +200,6 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) windowDidBecomeMain:(NSNotification *) notification {
-	if([gtwindow title] neq nilstring) {
-		NSString * title = [[gtwindow title] copy];
-		[gtwindow setRepresentedURL:nil];
-		[gtwindow setTitle:nilstring];
-		[[NSApplication sharedApplication] addWindowsItem:gtwindow title:title filename:false];
-		[title release];
-	}
 	if(justLaunched) {
 		justLaunched=false;
 		return;
@@ -200,19 +207,31 @@ static NSWindow * lastMainWindow;
 	if(lastMainWindow == gtwindow) return;
 	[mainMenuHelper invalidate];
 	lastMainWindow=gtwindow;
-	[self updateAfterWindowBecameActive];
+	// we're using FSEvents now, this shouldn't be needed anymore.
+	//[self updateAfterWindowBecameActive];
 }
 
-- (void) updateAfterWindowBecameActive {
-	if([self isCurrentViewConfigView]) {
-		if([configView isOnGlobalConfig]) [operations runGetGlobalConfigs];
-		else [operations runGetConfigs];
-	}
-	else if([self isCurrentViewHistoryView]) {
-		[historyView invalidate];
+- (void) updateAfterFilesChanged {
+	// lets make sure this is on the main thread due to FSEvents
+	if ([NSThread isMainThread]) {
+		needsFileUpdates = YES;
+		if([self isCurrentViewConfigView]) {
+			if([configView isOnGlobalConfig]) 
+				[operations runGetGlobalConfigs];
+			else 
+				[operations runGetConfigs];
+		}
+		else if([self isCurrentViewHistoryView]) {
+			[historyView invalidate];
+		} else {
+			[operations runRefreshOperation];
+			needsFileUpdates = NO;
+		}
 	} else {
-		[operations runRefreshOperation];
+		// lets call it on the main thread.
+		[self performSelectorOnMainThread:@selector(updateAfterFilesChanged) withObject:nil waitUntilDone:NO];
 	}
+
 }
 
 - (void) waitForWindow {
@@ -260,7 +279,8 @@ static NSWindow * lastMainWindow;
 		started=true;
 		return;
 	}
-	if(lastMainWindow==gtwindow) [self updateAfterWindowBecameActive];
+	// we're using FSEvents now, this shouldn't be needed.
+	//if(lastMainWindow==gtwindow) [self updateAfterWindowBecameActive];
 }
 
 #pragma mark view and document methods.
@@ -328,6 +348,8 @@ static NSWindow * lastMainWindow;
 	if(_invalidateDiffView) [diffView invalidate];
 	[mainMenuHelper invalidate];
 	[contextMenus invalidate];
+	if (needsFileUpdates)
+		[self updateAfterFilesChanged];
 }
 
 - (void) showRemoteViewForRemote:(NSString *) remote {
@@ -490,11 +512,11 @@ static NSWindow * lastMainWindow;
 	[mainMenuHelper invalidate];
 	[contextMenus invalidate];
 	//[self adjustMinWindowSize];
-	if(commitAfterAdd) {
-		[commit focus];
-		commitAfterAdd=false;
-	}
+	if (commit.addBeforeCommit)
+		[commit finishTwoStageCommit];
 	[sourceListView update];
+	// update the history...
+	[historyView invalidate];
 }
 
 - (void) onRefreshMetaOperationComplete {
@@ -572,7 +594,16 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) onGitAddComplete {
-	if(commitAfterAdd) [self gitCommit:nil];
+	//if(commitAfterAdd) [self gitCommit:nil];
+	/*if (commit.addBeforeCommit)
+	{
+		if([gitd stagedFilesCount] >= 1)
+			[operations runCommitOperation];
+		else
+			NSBeep();
+	}
+	commit.addBeforeCommit = false;
+	[commit disposeNibs];*/
 }
 
 #pragma mark search helper methods
@@ -635,10 +666,16 @@ static NSWindow * lastMainWindow;
 	[operations runAddFilesOperation];
 }
 
-- (void) gitAddAndCommit:(id) sender {
+/*- (void) gitAddAndCommit:(id) sender {
 	if([activeBranchView selectedFilesCount] < 1) return;
 	commitAfterAdd=true;
 	[operations runAddFilesOperation];
+}*/
+
+- (void) gitAddAndCommit:(id) sender {
+	if([activeBranchView selectedFilesCount] < 1) return;
+	commit.addBeforeCommit=true;
+	[self gitCommit:nil];
 }
 
 - (void) gitPackRefs:(id) sender {
@@ -655,7 +692,7 @@ static NSWindow * lastMainWindow;
 		[modals runConflictedStateForCheckout];
 		return;
 	}
-	if([gitd stagedFilesCount] < 1 && !commitAfterAdd) {
+	if([gitd stagedFilesCount] < 1 && !commit.addBeforeCommit) {
 		NSBeep();
 		return;
 	}
@@ -995,6 +1032,8 @@ static NSWindow * lastMainWindow;
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GittyDocument\n");
 	#endif
+	[fileEvents stopWatchingPaths];
+	[fileEvents release];
 	if(lastMainWindow==gtwindow)lastMainWindow=nil;
 	justLaunched=false;
 	runningExpiredModal=false;

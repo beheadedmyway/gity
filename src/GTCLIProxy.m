@@ -18,6 +18,7 @@
 #import "GTCLIProxy.h"
 
 @implementation GTCLIProxy
+
 @synthesize connection;
 
 - (void) connect {

@@ -136,6 +136,15 @@
 	[self setSourceImage:nil];
 }
 
+- (BOOL) isEventInViewBounds:(NSEvent *)event
+{
+	NSPoint eventLocation = [event locationInWindow];
+	NSPoint localPoint = [self convertPoint:eventLocation fromView:nil];
+	if (NSPointInRect(localPoint, [self bounds]))
+		return TRUE;
+	return FALSE;
+}
+
 - (void) viewDidMoveToWindow {
 	trackingTag = [self addTrackingRect:[self bounds] owner:self userData:nil assumeInside:NO];
 }
@@ -180,6 +189,8 @@
 }
 
 - (void) mouseUp:(NSEvent *) theEvent {
+	if (![self isEventInViewBounds:theEvent])
+		return;
 	if([self isPushButton] && pushedDown) return;
 	mdown=false;
 	if([self icon]) [self setSourceIcon:[self icon]];

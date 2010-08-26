@@ -63,8 +63,10 @@ static NSApplication * app;
 	activeStatus = kGTStatus;
 	[workingProgress startAnimation:nil];
 	[NSApplication detachDrawingThread:@selector(startAnimation:) toTarget:workingProgress withObject:nil];
-	[app beginSheet:workingWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
-	[workingWindow makeKeyAndOrderFront:nil];
+	if ([gtwindow isMainWindow])
+		[app beginSheet:workingWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
+	// this is really annoying.  lets nix it.
+	//[workingWindow makeKeyAndOrderFront:nil];
 }
 
 - (void) showStartupIndicator {
@@ -113,16 +115,22 @@ static NSApplication * app;
 }
 
 - (void) hideSpinner {
-	if(spinnerStack) {
-		if([spinnerStack count] > 0) [spinnerStack removeLastObject];
-		if([spinnerStack count] > 0) return;
+	if ([NSThread isMainThread])
+	{
+		if(spinnerStack) {
+			if([spinnerStack count] > 0) [spinnerStack removeLastObject];
+			if([spinnerStack count] > 0) return;
+		}
+		[spinner removeFromSuperview];
+		[spinner stopAnimation:nil];		
+	} else {
+		[self performSelectorOnMainThread:@selector(hideSpinner) withObject:nil waitUntilDone:YES];
 	}
-	[spinner removeFromSuperview];
-	[spinner stopAnimation:nil];
+
 }
 
 - (void) hide {
-	[self sheetDidEnd:nil];
+	[self performSelectorOnMainThread:@selector(sheetDidEnd:) withObject:nil waitUntilDone:NO];
 }
 
 - (void) updateWorkingLabel:(NSString *) label {

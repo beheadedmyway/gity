@@ -1,6 +1,9 @@
 Gity - The Mac Client for Git
 
-email [aaron@macendeavor.com] [email] with any questions
+##CREDITS##
+- Initial Gity Version Written by Aaron Smith from gngrwzrd.com
+- Brandon Sneed
+- Mark Szymanski
 
 ##POINTS OF INTEREST FOR OBJ-C CODE##
 - `source/GTDocumentController.m/h` - document controller for document based app
@@ -23,5 +26,3 @@ email [aaron@macendeavor.com] [email] with any questions
 ##XCODE BUILDING NOTES##
 - The project will build directly after a checkout.
 - Gity will only build with 10.6 SDK
-
-[email]: mailto:aaron@macendeavor.com

@@ -26,5 +26,3 @@ Gity - The Mac Client for Git
 ##XCODE BUILDING NOTES##
 - The project will build directly after a checkout.
 - Gity will only build with 10.6 SDK
-
-[email]: mailto:aaron@macendeavor.com

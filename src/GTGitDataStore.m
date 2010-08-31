@@ -28,10 +28,10 @@
 @synthesize looseObjects;
 @synthesize activeBranchName;
 @synthesize allFiles;
+@synthesize stagedFiles;
 @synthesize modifiedFiles;
 @synthesize untrackedFiles;
 @synthesize deletedFiles;
-@synthesize stagedFiles;
 @synthesize branchNames;
 @synthesize remotes;
 @synthesize tagNames;

@@ -29,7 +29,7 @@
 
 - (void) setArguments {
 	if([self isCancelled]) return;
-	[self setArgumentsWithPythonScript:[GTPythonScripts newSubmodule] setArgsOnTask:false];
+	[self setArgumentsWithPythonScript:[GTPythonScripts performNewSubmodule] setArgsOnTask:false];
 	[args addObject:[@"-m " stringByAppendingString:submoduleURL]];
 	[args addObject:[@"-m " stringByAppendingString:localDir]];
 	[args addObject:[@"-m " stringByAppendingString:submoduleName]];

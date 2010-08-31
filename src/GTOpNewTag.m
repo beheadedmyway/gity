@@ -27,7 +27,7 @@
 
 - (void) setArguments {
 	if([self isCancelled]) return;
-	[self setArgumentsWithPythonScript:[GTPythonScripts newTag] setArgsOnTask:true];
+	[self setArgumentsWithPythonScript:[GTPythonScripts performNewTag] setArgsOnTask:true];
 	[args addObject:[@"-m " stringByAppendingString:tagName]];
 	[args addObject:[@"-m " stringByAppendingString:tagStart]];
 	[self updateArguments];

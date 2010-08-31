@@ -27,7 +27,7 @@
 
 - (void) setArguments {
 	if([self isCancelled]) return;
-	[self setArgumentsWithPythonScript:[GTPythonScripts newTrackingBranch] setArgsOnTask:true];
+	[self setArgumentsWithPythonScript:[GTPythonScripts performNewTrackingBranch] setArgsOnTask:true];
 	[args addObject:[@"-m " stringByAppendingString:branchName]];
 	[args addObject:[@"-m " stringByAppendingString:remoteBranchName]];
 	[args addObject:[@"-m " stringByAppendingString:remoteName]];

@@ -72,7 +72,6 @@
 				selectRect.origin.y += NSHeight(selectRect) - 1.0;
 				selectRect.size.height = 1.0;
 				NSRectFill(selectRect);
-				lastSelectedRow = NSNotFound;
 			}
 			break;
 		}

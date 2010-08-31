@@ -28,7 +28,7 @@
 
 - (void) setArguments {
 	if([self isCancelled]) return;
-	[self setArgumentsWithPythonScript:[GTPythonScripts newStash] setArgsOnTask:false];
+	[self setArgumentsWithPythonScript:[GTPythonScripts performNewStash] setArgsOnTask:false];
 	[args addObject:[[@"-m \"" stringByAppendingString:stashName] stringByAppendingString:@"\""]];
 	[self updateArguments];
 }

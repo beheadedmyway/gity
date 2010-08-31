@@ -55,6 +55,7 @@
 }
 
 - (void) main {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
 	if([self isCancelled]) goto cleanup;
 	[task launch];
 	if(readsSTDOUT) [self readSTDOUT];
@@ -62,6 +63,7 @@
 	[task waitUntilExit];
 cleanup:
 	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
+	[pool drain];
 }
 
 - (void) taskComplete {

@@ -32,6 +32,7 @@
 }
 
 - (void) main {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
 	if(done) goto cleanup;
 	NSString * fileName = [[[gd git] gitProjectPath] stringByAppendingString:[GTJSONFiles diffReport]];
 	NSFileHandle * fileToWrite = [[NSFileHandle alloc] initWithTruncatedFile:fileName];
@@ -43,6 +44,7 @@
 	[fileToWrite release];
 	[super main];
 cleanup:
+	[pool drain];
 	return;
 }
 

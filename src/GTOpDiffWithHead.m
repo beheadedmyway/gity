@@ -20,7 +20,11 @@
 @implementation GTOpDiffWithHead
 
 - (void) main {
-	if([self isCancelled]) return;
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
+	if([self isCancelled]) {
+		[pool drain];
+		return;
+	}
 	task = [[NSTask alloc] init];
 	[task setLaunchPath:@"/usr/bin/opendiff"];
 	NSMutableArray * a = [NSMutableArray array];
@@ -28,6 +32,7 @@
 	[a addObject:@"/Users/aaronsmith/dev/_projects/_git/gitty/src/GTModalController.m"];
 	[task setArguments:a];
 	[task launch];
+	[pool drain];
 }
 
 @end

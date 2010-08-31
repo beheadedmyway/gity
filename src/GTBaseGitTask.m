@@ -37,6 +37,7 @@
 }
 
 - (void) main {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
 	if(done)goto cleanup;
 	[task launch];
 	//NSLog(@"%@",[self class]);
@@ -52,6 +53,7 @@ cleanup:
 	GDRelease(task);
 	close([[task standardOutput] fileDescriptor]);
 	done=true;
+	[pool drain];
 	return;
 }
 

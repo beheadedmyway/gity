@@ -198,19 +198,28 @@ static NSInteger operationRunCount = 0;
 	NSOperationQueue * q = [[NSOperationQueue alloc] init];
 	[q setMaxConcurrentOperationCount:25];
 	[q addOperation:op];
-	[cancelables addObject:q];
-	[networkCancelables addObject:q];
+	@synchronized(self)
+	{
+		[cancelables addObject:q];
+		[networkCancelables addObject:q];
+	}
 	return q;
 }
 
 - (void) removeOpQueueFromCancelablesAndNetworkCancelables:(NSOperationQueue *) q {
-	[cancelables removeObject:q];
-	[networkCancelables removeObject:q];
+	@synchronized(self)
+	{
+		[cancelables removeObject:q];
+		[networkCancelables removeObject:q];
+	}
 }
 
 - (void) releaseAndRemoveQFromCancelablesAndNetworkCancelables:(NSOperationQueue *) q {
-	[networkCancelables removeObject:q];
-	[q release];
+	@synchronized(self)
+	{
+		[networkCancelables removeObject:q];
+		[q release];
+	}
 }
 
 - (void) runAddFilesOperation {

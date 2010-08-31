@@ -18,8 +18,7 @@
 	}
 	if(!_launch) return nil;
 	[[NSWorkspace sharedWorkspace] launchAppWithBundleIdentifier:_bundleIdentifier options:NSWorkspaceLaunchAsync additionalEventParamDescriptor:nil launchIdentifier:nil];
-	int c=0;
-	for(c;proxy==nil && c<50; c++) {
+	for(int c = 0;proxy==nil && c<50; c++) {
 		proxy=[self connectWithName:_connectionName];
 		if(proxy)break;
 		usleep(15000);

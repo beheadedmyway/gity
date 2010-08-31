@@ -39,6 +39,7 @@
 	NSData * data = [commitContent dataUsingEncoding:NSUTF8StringEncoding];
 	if(done) goto cleanup;
 	[fileToWrite writeData:data];
+	[fileToWrite closeFile];
 	[fileToWrite release];
 	[super main];
 cleanup:

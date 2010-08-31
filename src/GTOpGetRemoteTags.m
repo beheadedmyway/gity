@@ -31,6 +31,7 @@
 	if([self isCancelled]) return;
 	NSFileHandle * read = [[task standardOutput] fileHandleForReading];
 	NSData * data = [read readDataToEndOfFile];
+	[read closeFile];
 	NSString * remoteTagNamesJson = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray * tags = [NSMutableArray arrayWithArray:[json objectWithString:remoteTagNamesJson error:nil]];

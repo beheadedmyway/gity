@@ -952,6 +952,7 @@ static NSInteger operationRunCount = 0;
 	[task launch];
 	NSFileHandle * output = [[task standardOutput] fileHandleForReading];
 	NSData * content = [output readDataToEndOfFile];
+	[output closeFile];
 	[task waitUntilExit];
 	NSString * diffContent = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
 	NSString * replaced1 = [diffContent stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];

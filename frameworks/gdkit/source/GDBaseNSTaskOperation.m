@@ -53,6 +53,7 @@
 	NSFileHandle * fh = [[NSFileHandle alloc] initWithTruncatedFile:filePathToWriteTo];
 	NSData * content = [writeFileContents dataUsingEncoding:stringEncoding];
 	[fh writeData:content];
+	[fh closeFile];
 	[fh release];
 	fh=nil;
 }
@@ -60,12 +61,14 @@
 - (void) readSTDOUT {
 	NSFileHandle * s=[[task standardOutput] fileHandleForReading];
 	NSData * content=[s readDataToEndOfFile];
+	[s closeFile];
 	stout=[[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
 }
 
 - (void) readSTDERR {
 	NSFileHandle * s=[[task standardError] fileHandleForReading];
 	NSData * content=[s readDataToEndOfFile];
+	[s closeFile];
 	sterr=[[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
 }
 

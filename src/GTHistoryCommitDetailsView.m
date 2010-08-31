@@ -178,6 +178,7 @@
 	NSString * path = [[NSBundle mainBundle] pathForResource:@"cancelOut" ofType:@"png" inDirectory:nil];
 	NSFileHandle * fh = [NSFileHandle fileHandleForReadingAtPath:path];
 	NSData * content = [fh readDataToEndOfFile];
+	[fh closeFile];
 	commitTemplate = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
 }
 

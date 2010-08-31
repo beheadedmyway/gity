@@ -199,6 +199,7 @@ using namespace std;
 		[commits addObject:commit];
 		[commit release];
 	}
+	[handle closeFile];
 }
 
 - (void) taskComplete {

@@ -128,6 +128,7 @@
 	GDRelease(children);
 	GDRelease(name);
 	GDRelease(label);
+	GDRelease(data);
 	isGroupItem=false;
 	index=0;
 	[super dealloc];

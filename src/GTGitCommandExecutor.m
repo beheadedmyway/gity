@@ -110,6 +110,7 @@ static GTModalController * modals;
 	
 	NSFileHandle * fout = [[task standardOutput] fileHandleForReading];
 	NSData * data = [fout readDataToEndOfFile];
+	[fout closeFile];
 	NSString * versionSTDOUT = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
 	NSArray * pieces = [versionSTDOUT componentsSeparatedByString:@" "];

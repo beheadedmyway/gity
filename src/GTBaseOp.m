@@ -55,6 +55,7 @@ static NSDictionary * environ;
 	}
 	@try {
 		NSData * content = [s readDataToEndOfFile];
+		[s closeFile];
 		if(!stoutEncoding) stoutEncoding = NSUTF8StringEncoding;
 		stout = [[NSString alloc] initWithData:content encoding:stoutEncoding];
 	}
@@ -71,6 +72,7 @@ static NSDictionary * environ;
 	}
 	@try {
 		NSData * content = [s readDataToEndOfFile];
+		[s closeFile];
 		sterr = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];		
 	}
 	@catch (NSException * e) {

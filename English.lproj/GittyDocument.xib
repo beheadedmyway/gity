@@ -21,6 +21,9 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="100387"/>
+			<integer value="100382"/>
+			<integer value="100385"/>
 			<integer value="6"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -911,7 +914,7 @@
 				<double key="NSMaxValue">100</double>
 			</object>
 			<object class="NSCustomView" id="704706191">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -938,10 +941,11 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{508, 261}</string>
+				<reference key="NSSuperview"/>
 				<string key="NSClassName">GTDiffView</string>
 			</object>
 			<object class="NSCustomView" id="785681642">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -973,12 +977,14 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{881, 20}</string>
+				<reference key="NSSuperview"/>
 				<string key="NSClassName">GTDiffBarDiffStateView</string>
 			</object>
 			<object class="NSCustomView" id="53445593">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{163, 96}</string>
+				<reference key="NSSuperview"/>
 				<string key="NSClassName">GTDiffContentView</string>
 			</object>
 			<object class="NSCustomView" id="273224473">
@@ -1267,9 +1273,11 @@
 				<string key="NSClassName">GTAdvancedDiffView</string>
 			</object>
 			<object class="NSCustomView" id="662916130">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{163, 96}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<string key="NSClassName">GTAdvancedDiffTileView</string>
 			</object>
 		</object>
@@ -2723,11 +2731,11 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{604, 12}, {508, 261}}</string>
+					<string>{{1157, 73}, {508, 261}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{431, 423}, {365, 27}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{158, 311}, {881, 20}}</string>
+					<string>{{216, 307}, {881, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{497, 735}, {163, 96}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2958,27 +2966,40 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>cancelButton</string>
 							<string>label</string>
 							<string>messageField</string>
+							<string>okButton</string>
 							<string>signoff</string>
+							<string>stateView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>GTScale9Control</string>
 							<string>NSTextField</string>
 							<string>NSTextView</string>
+							<string>GTScale9Control</string>
 							<string>NSButton</string>
+							<string>GTDiffBarDiffStateView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>cancelButton</string>
 							<string>label</string>
 							<string>messageField</string>
+							<string>okButton</string>
 							<string>signoff</string>
+							<string>stateView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">cancelButton</string>
+								<string key="candidateClassName">GTScale9Control</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">label</string>
 								<string key="candidateClassName">NSTextField</string>
@@ -2988,8 +3009,16 @@
 								<string key="candidateClassName">NSTextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">okButton</string>
+								<string key="candidateClassName">GTScale9Control</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">signoff</string>
 								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">stateView</string>
+								<string key="candidateClassName">GTDiffBarDiffStateView</string>
 							</object>
 						</object>
 					</object>
@@ -3761,11 +3790,38 @@
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
+					<string key="className">GTScale9Control</string>
+					<string key="superclassName">GTScaledButtonControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">src/GTScale9Control.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
 					<string key="className">GTScale9View</string>
 					<string key="superclassName">GTGittyView</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">src/GTScale9View.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTScaledButtonControl</string>
+					<string key="superclassName">NSControl</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">target</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">target</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">target</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">src/GTScaledButtonControl.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

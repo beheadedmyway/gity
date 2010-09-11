@@ -21,7 +21,7 @@ Gity - The Mac Client for Git
 
 ##OTHER RANDOM NOTES##
 - Registration has been disabled and taken out of the menu.
-- The default sparkle implementation is left in still hitting my server. The URL is in the Info.plist file for the project.
+- The default sparkle implementation is left in still hitting my server. The URL is in the `Info.plist` file for the project.
 
 ##XCODE BUILDING NOTES##
 - The project will build directly after a checkout.

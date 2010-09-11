@@ -1,7 +1,7 @@
 Gity - The Mac Client for Git
 
 ##CREDITS##
-- Initial Gity Version Written by [Aaron Smith](gngrwzrd.com)
+- Initial Gity Version Written by [Aaron Smith] [aaronsmith]
 - Brandon Sneed
 - [Mark Szymanski] [markszymanski]
 
@@ -28,3 +28,4 @@ Gity - The Mac Client for Git
 - Gity will only build with 10.6 SDK
 
 [markszymanski]: http://mrminimalist.nfshost.com
+[aaronsmith]: http://gngrwzrd.com/

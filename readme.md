@@ -1,9 +1,9 @@
 Gity - The Mac Client for Git
 
 ##CREDITS##
-- Initial Gity Version Written by Aaron Smith from gngrwzrd.com
-- Brandon Sneed
-- Mark Szymanski
+- Initial Gity Version Written by [Aaron Smith](gngrwzrd.com)
+- [Brandon Sneed] [brandonsneed]
+- [Mark Szymanski] [markszymanski]
 
 ##POINTS OF INTEREST FOR OBJ-C CODE##
 - `source/GTDocumentController.m/h` - document controller for document based app
@@ -26,3 +26,6 @@ Gity - The Mac Client for Git
 ##XCODE BUILDING NOTES##
 - The project will build directly after a checkout.
 - Gity will only build with 10.6 SDK
+
+[brandonsneed]: http://brandonsneed.com/
+[markszymanski]: http://mrminimalist.nfshost.com

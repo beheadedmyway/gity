@@ -11,6 +11,7 @@ release/
 git/
 src/.DS_Store
 gitty.xcodeproj/aaronsmith.pbxuser
+gitty.xcodeproj/*.pbxuser
 !scripts/yui/build/
 frameworks/gdkit/build/
 frameworks/gdkit/build/gdkit.build/

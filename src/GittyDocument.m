@@ -170,19 +170,19 @@ static NSWindow * lastMainWindow;
 	//[customWindowTitleController update];
 	
 	// Setup FSEvents so we know when files get changed.
-	fileEvents = [[SCEvents alloc] init];
+	/*fileEvents = [[SCEvents alloc] init];
 	fileEvents.delegate = self;
 	fileEvents.ignoreEventsFromSubDirs = NO;
 	fileEvents.notificationLatency = 1.0;
 	fileEvents.excludedPaths = [NSArray arrayWithObject:[[[self fileURL] path] stringByAppendingPathComponent:@".git/vendor/gity/tmp/"]];
-	[fileEvents startWatchingPaths:[NSArray arrayWithObject:[[self fileURL] path]]];
+	[fileEvents startWatchingPaths:[NSArray arrayWithObject:[[self fileURL] path]]];*/
 	
 	[self waitForWindow];
 }
 
 - (void)pathWatcher:(SCEvents *)pathWatcher multipleEventsOccurred:(NSArray *)events
 {
-	[self updateAfterFilesChanged];
+	[self updateAfterFilesChanged:nil];
 }
 
 - (BOOL) windowShouldClose:(id) sender {
@@ -208,10 +208,10 @@ static NSWindow * lastMainWindow;
 	[mainMenuHelper invalidate];
 	lastMainWindow=gtwindow;
 	// we're using FSEvents now, this shouldn't be needed anymore.
-	//[self updateAfterWindowBecameActive];
+	[self updateAfterFilesChanged:nil];
 }
 
-- (void) updateAfterFilesChanged {
+- (void) updateAfterFilesChanged:(id)sender {
 	// lets make sure this is on the main thread due to FSEvents
 	if ([NSThread isMainThread]) {
 		needsFileUpdates = YES;
@@ -229,7 +229,7 @@ static NSWindow * lastMainWindow;
 		}
 	} else {
 		// lets call it on the main thread.
-		[self performSelectorOnMainThread:@selector(updateAfterFilesChanged) withObject:nil waitUntilDone:NO];
+		[self performSelectorOnMainThread:@selector(updateAfterFilesChanged:) withObject:nil waitUntilDone:NO];
 	}
 
 }
@@ -349,7 +349,7 @@ static NSWindow * lastMainWindow;
 	[mainMenuHelper invalidate];
 	[contextMenus invalidate];
 	if (needsFileUpdates)
-		[self updateAfterFilesChanged];
+		[self updateAfterFilesChanged:nil];
 }
 
 - (void) showRemoteViewForRemote:(NSString *) remote {

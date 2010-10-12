@@ -358,6 +358,16 @@
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		CA13385411A1F91C00FDE018 /* env in Resources */ = {isa = PBXBuildFile; fileRef = CA13385311A1F91C00FDE018 /* env */; };
+		CA98465112644ACC008129E2 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464712644ACC008129E2 /* add.png */; };
+		CA98465212644ACC008129E2 /* addcommit.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464812644ACC008129E2 /* addcommit.png */; };
+		CA98465312644ACC008129E2 /* branch.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464912644ACC008129E2 /* branch.png */; };
+		CA98465412644ACC008129E2 /* changes.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464A12644ACC008129E2 /* changes.png */; };
+		CA98465512644ACC008129E2 /* commit.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464B12644ACC008129E2 /* commit.png */; };
+		CA98465612644ACC008129E2 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464C12644ACC008129E2 /* history.png */; };
+		CA98465712644ACC008129E2 /* pull.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464D12644ACC008129E2 /* pull.png */; };
+		CA98465812644ACC008129E2 /* push.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464E12644ACC008129E2 /* push.png */; };
+		CA98465912644ACC008129E2 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464F12644ACC008129E2 /* refresh.png */; };
+		CA98465A12644ACC008129E2 /* stash.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98465012644ACC008129E2 /* stash.png */; };
 		CABCA82711B6C52D00EB8EEA /* SCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CABCA81C11B6C52D00EB8EEA /* SCEvent.m */; };
 		CABCA82811B6C52D00EB8EEA /* SCEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CABCA81F11B6C52D00EB8EEA /* SCEvents.m */; };
 /* End PBXBuildFile section */
@@ -976,6 +986,16 @@
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Gity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA13385311A1F91C00FDE018 /* env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = env; sourceTree = "<group>"; };
+		CA98464712644ACC008129E2 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		CA98464812644ACC008129E2 /* addcommit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addcommit.png; sourceTree = "<group>"; };
+		CA98464912644ACC008129E2 /* branch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branch.png; sourceTree = "<group>"; };
+		CA98464A12644ACC008129E2 /* changes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = changes.png; sourceTree = "<group>"; };
+		CA98464B12644ACC008129E2 /* commit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commit.png; sourceTree = "<group>"; };
+		CA98464C12644ACC008129E2 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
+		CA98464D12644ACC008129E2 /* pull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pull.png; sourceTree = "<group>"; };
+		CA98464E12644ACC008129E2 /* push.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = push.png; sourceTree = "<group>"; };
+		CA98464F12644ACC008129E2 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		CA98465012644ACC008129E2 /* stash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stash.png; sourceTree = "<group>"; };
 		CABCA81B11B6C52D00EB8EEA /* SCEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEvent.h; sourceTree = "<group>"; };
 		CABCA81C11B6C52D00EB8EEA /* SCEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEvent.m; sourceTree = "<group>"; };
 		CABCA81D11B6C52D00EB8EEA /* SCEventListenerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEventListenerProtocol.h; sourceTree = "<group>"; };
@@ -1840,6 +1860,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CA98464612644ACC008129E2 /* toolbar */,
 				079AC8531099642700931C8C /* AlertAccessoryViews.xib */,
 				07F4670E10660D140059F611 /* blackButton2.png */,
 				07F46844106612530059F611 /* blackButton2Down.png */,
@@ -1960,6 +1981,24 @@
 				07C616D110B291F500C71C86 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA98464612644ACC008129E2 /* toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				CA98464712644ACC008129E2 /* add.png */,
+				CA98464812644ACC008129E2 /* addcommit.png */,
+				CA98464912644ACC008129E2 /* branch.png */,
+				CA98464A12644ACC008129E2 /* changes.png */,
+				CA98464B12644ACC008129E2 /* commit.png */,
+				CA98464C12644ACC008129E2 /* history.png */,
+				CA98464D12644ACC008129E2 /* pull.png */,
+				CA98464E12644ACC008129E2 /* push.png */,
+				CA98464F12644ACC008129E2 /* refresh.png */,
+				CA98465012644ACC008129E2 /* stash.png */,
+			);
+			name = toolbar;
+			path = assets/toolbar;
 			sourceTree = "<group>";
 		};
 		CABCA81711B6C52D00EB8EEA /* SCEvents */ = {
@@ -2175,6 +2214,16 @@
 				0768A1E210F3141900951EB1 /* stateDropDownOver.png in Resources */,
 				07DEF6E61101809D006E8A54 /* Giveaway.xib in Resources */,
 				CA13385411A1F91C00FDE018 /* env in Resources */,
+				CA98465112644ACC008129E2 /* add.png in Resources */,
+				CA98465212644ACC008129E2 /* addcommit.png in Resources */,
+				CA98465312644ACC008129E2 /* branch.png in Resources */,
+				CA98465412644ACC008129E2 /* changes.png in Resources */,
+				CA98465512644ACC008129E2 /* commit.png in Resources */,
+				CA98465612644ACC008129E2 /* history.png in Resources */,
+				CA98465712644ACC008129E2 /* pull.png in Resources */,
+				CA98465812644ACC008129E2 /* push.png in Resources */,
+				CA98465912644ACC008129E2 /* refresh.png in Resources */,
+				CA98465A12644ACC008129E2 /* stash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

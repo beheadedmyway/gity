@@ -30,7 +30,7 @@
 #import "GTCLIProxy.h"
 #import "GTRegistrationController.h"
 
-@interface GTDocumentController : NSDocumentController {
+@interface GTDocumentController : NSDocumentController <NSApplicationDelegate> {
 	IBOutlet SUUpdater * sparkle;
 	GTGitCommandExecutor * git;
 	GTOperationsController * operations;

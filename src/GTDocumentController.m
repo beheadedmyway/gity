@@ -44,6 +44,18 @@ static NSString * gityVersion;
 	return self;
 }
 
+#pragma mark NSApplicationDelegate
+
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification
+{
+	NSArray *documents = [self documents];
+	for (GittyDocument *document in documents)
+	{
+		if ([document respondsToSelector:@selector(updateAfterFilesChanged:)])
+			[document updateAfterFilesChanged:nil];
+	}
+}
+
 #pragma mark version info
 + (NSString *) gityVersion {
 	return gityVersion;

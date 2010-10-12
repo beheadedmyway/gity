@@ -223,7 +223,7 @@
 - (void) toggleDeletedFiles:(id) sender;
 - (void) tryToShowUnknownError;
 - (void) unknownErrorFromOperation:(NSString *) error;
-- (void) updateAfterFilesChanged;
+- (void) updateAfterFilesChanged:(id)sender;
 - (void) waitForWindow;
 - (void) windowReady;
 - (BOOL) isCurrentViewActiveBranchView;

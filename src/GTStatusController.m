@@ -102,7 +102,7 @@ static NSApplication * app;
 	[spinnerStack addObject:@""];
 	[spinner setToolTip:@""];
 	[spinner startAnimation:nil];
-	[spinner setFrame:NSMakeRect([gtwindow frame].size.width-16,[gtwindow frame].size.height-16,10,10)];
+	[spinner setFrame:NSMakeRect([gtwindow frame].size.width-46,[gtwindow frame].size.height-16,10,10)];
 	[[[gtwindow contentView] superview] addSubview:spinner];
 }
 
@@ -110,7 +110,7 @@ static NSApplication * app;
 	[spinnerStack addObject:@""];
 	[spinner setToolTip:tooltip];
 	[spinner startAnimation:nil];
-	[spinner setFrame:NSMakeRect([gtwindow frame].size.width-16,[gtwindow frame].size.height-16,10,10)];
+	[spinner setFrame:NSMakeRect([gtwindow frame].size.width-46,[gtwindow frame].size.height-16,10,10)];
 	[[[gtwindow contentView] superview] addSubview:spinner];
 }
 

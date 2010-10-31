@@ -1,6 +1,6 @@
 
 #import <Cocoa/Cocoa.h>
-#import "GDBaseObject.h";
+#import "GDBaseObject.h"
 
 /**
  * @file GDModalController.h

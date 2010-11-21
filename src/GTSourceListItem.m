@@ -24,6 +24,7 @@
 @synthesize parent;
 @synthesize index;
 @synthesize data;
+@synthesize image;
 
 - (id) init {
 	self=[super init];
@@ -118,6 +119,29 @@
 
 - (NSString *) description {
 	return [@"[GTSourceListItem: " stringByAppendingString:[name stringByAppendingString:@"]"]];
+}
+
+- (NSImage *)image {
+	NSImage *result = nil;
+	if ([self isChildOfRemotes])
+		result = [NSImage imageNamed:@"network.png"];
+	else
+	if ([self isChildOfTags])
+		result = [NSImage imageNamed:@"tag.png"];
+	else
+	if ([self isChildOfBranches])
+		result = [NSImage imageNamed:@"branches.png"];
+	else
+	if ([self isChildOfRemoteBranches])
+		result = [NSImage imageNamed:@"branches.png"];
+	else
+	if ([self isChildOfSubmodules])
+		result = [NSImage imageNamed:@"submodule.png"];
+		
+	if (result)
+		[result setFlipped:YES];
+	
+	return result;
 }
 
 - (void) dealloc {

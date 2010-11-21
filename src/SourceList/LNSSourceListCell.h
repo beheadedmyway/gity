@@ -11,6 +11,7 @@
 }
 
 @property (retain,nonatomic) GTSourceListItem * objectValue;
+
 - (void) clearFirstRect;
 
 @end

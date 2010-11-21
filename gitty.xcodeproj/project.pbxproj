@@ -2299,7 +2299,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\nenv > env";
+			shellScript = "#!/bin/sh\n/usr/bin/env > env";
 		};
 		0785127710A41EEE0049D7CB /* Remove .git slash vendor */ = {
 			isa = PBXShellScriptBuildPhase;

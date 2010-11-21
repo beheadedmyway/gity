@@ -51,13 +51,13 @@
 	[self addSubview:dropDown];
 }
 
-- (void) updateButtonWithTitle:(NSString *) _title {
+/*- (void) updateButtonWithTitle:(NSString *) _title {
 	NSRect sf = [self frame];
 	//update title.
 	int nw;
 	[dropDown setFrame:NSMakeRect(sf.origin.x,sf.origin.y,nw,sf.size.height)];
 	//[self updateIconPosition];
-}
+}*/ // appears to be unused.
 	 
 - (void) updateIconPosition {
 	if(!hasSetIcon) {

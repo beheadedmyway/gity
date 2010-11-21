@@ -128,8 +128,8 @@
 }
 
 + (void) updateLicenseRunStatus:(BOOL) _isRunningWithValidLicense;
-- (NSOperationQueue * ) createCancelableQueueWithOperation:(NSOperation *) op;
-- (NSOperationQueue * ) createCancelableQueueWithNetworkOperation:(NSOperation *) op;
+- (NSOperationQueue * ) newCancelableQueueWithOperation:(NSOperation *) op;
+- (NSOperationQueue * ) newCancelableQueueWithNetworkOperation:(NSOperation *) op;
 - (void) removeOpQueueFromCancelables:(NSOperationQueue *) q;
 - (void) removeOpQueueFromCancelablesAndNetworkCancelables:(NSOperationQueue *) q;
 - (void) releaseAndRemoveQFromCancelables:(NSOperationQueue *) q;

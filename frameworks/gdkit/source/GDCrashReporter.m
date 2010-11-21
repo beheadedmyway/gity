@@ -117,6 +117,7 @@
 	[NSBundle loadNibNamed:@"CrashReport" owner:self];
 	NSFileHandle * fh = [NSFileHandle fileHandleForReadingAtPath:crashFile];
 	NSData * data = [fh readDataToEndOfFile];
+	[fh closeFile];
 	NSString * crashContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	[[[details textStorage] mutableString] appendString:crashContent];
 	[crashContent release];
@@ -175,6 +176,7 @@
 		NSFileHandle * tmp = [NSFileHandle tmpFile:tmpFileName];
 		NSData * cdata = [comms dataUsingEncoding:NSUTF8StringEncoding];
 		[tmp writeData:cdata];
+		[tmp closeFile];
 		[args addObject:[@"-c " stringByAppendingString:tmpFileName]];
 	}
 	[task setArguments:args];

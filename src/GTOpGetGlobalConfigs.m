@@ -30,6 +30,7 @@
 	NSFileHandle * read = [[NSFileHandle alloc] initWithFile:file];
 	if(read is nil) return;
 	NSData * data = [read readDataToEndOfFile];
+	[read closeFile];
 	NSString * dataJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray * status = [NSMutableArray arrayWithArray:[json objectWithString:dataJSON error:nil]];

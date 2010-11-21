@@ -92,6 +92,7 @@
 	IBOutlet GTNewSubmoduleController * newSubmodule;
 	IBOutlet GTHistorySearchController * historySearch;
 	IBOutlet GTAdvancedDiffView * advancedDiffView;
+	IBOutlet NSToolbar *toolbar;
 	GTGitDataStore * gitd;
 	GTMainMenuHelper * mainMenuHelper;
 	GTGitCommandExecutor * git;
@@ -99,6 +100,7 @@
 	GTOperationsController * operations;
 	GTContextMenuController * contextMenus;
 	SCEvents * fileEvents;
+	BOOL userClosedWindow;
 }
 
 #pragma mark properties
@@ -223,7 +225,7 @@
 - (void) toggleDeletedFiles:(id) sender;
 - (void) tryToShowUnknownError;
 - (void) unknownErrorFromOperation:(NSString *) error;
-- (void) updateAfterFilesChanged;
+- (void) updateAfterFilesChanged:(id)sender;
 - (void) waitForWindow;
 - (void) windowReady;
 - (BOOL) isCurrentViewActiveBranchView;

@@ -21,7 +21,7 @@
 
 - (void) setArguments {
 	if([self isCancelled]) return;
-	[self setArgumentsWithPythonScript:[GTPythonScripts newEmptyBranch] setArgsOnTask:true];
+	[self setArgumentsWithPythonScript:[GTPythonScripts performNewEmptyBranch] setArgsOnTask:true];
 	[args addObject:[@"-m " stringByAppendingString:branchName]];
 	[self updateArguments];
 }

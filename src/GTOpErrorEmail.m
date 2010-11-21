@@ -33,6 +33,7 @@
 	NSFileHandle * fileHandle = [[NSFileHandle alloc] initWithTruncatedFile:file];
 	NSData * errorMsg = [errors dataUsingEncoding:NSUTF8StringEncoding];
 	[fileHandle writeData:errorMsg];
+	[fileHandle closeFile];
 	[fileHandle release];
 	[self updateArguments];
 }

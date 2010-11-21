@@ -27,6 +27,8 @@
 	NSString * label;
 	NSMutableArray * children;
 	GTSourceListItem * parent;
+	
+	NSImage *image;
 }
 
 @property (copy,nonatomic) id data;
@@ -35,6 +37,7 @@
 @property (retain,nonatomic) GTSourceListItem * parent;
 @property (assign,nonatomic) BOOL isGroupItem;
 @property (assign,nonatomic) NSInteger index;
+@property (readonly,nonatomic) NSImage *image;
 
 - (void) addChild:(GTSourceListItem *) child;
 - (void) removeChild:(GTSourceListItem *) child;

@@ -21,10 +21,15 @@
 @implementation GTOpShowStatusForDetailLoad
 
 - (void) main {
-	if([self isCancelled]) return;
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	if([self isCancelled]) {
+		[pool drain];
+		return;
+	}
 	//[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(reallyShow) userInfo:nil repeats:false];
 	//sleep(2);
 	[self performSelectorOnMainThread:@selector(reallyShow) withObject:nil waitUntilDone:YES];
+	[pool drain];
 }
 
 - (void) reallyShow {

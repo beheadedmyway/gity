@@ -10,8 +10,7 @@
 	CGDisplayCount count;
 	CGDisplayErr e = CGGetActiveDisplayList(kGDMaxDisplays,ids,&count);
 	if(e > 0) return nil;
-	int i = 0;
-	for(i;i < count; i++) {
+	for(int i = 0;i < count; i++) {
 		GDQuartzDisplay * dis = [[[GDQuartzDisplay alloc] initWithDirectDisplayID:(CGDirectDisplayID)ids[i]] autorelease];
 		if(dis != nil) [res addObject:dis];
 	}
@@ -24,8 +23,7 @@
 	CGDisplayCount count;
 	CGDisplayErr e = CGGetOnlineDisplayList(kGDMaxDisplays,ids,&count);
 	if(e > 0) return nil;
-	int i = 0;
-	for(i;i < count; i++) {
+	for(int i = 0;i < count; i++) {
 		GDQuartzDisplay * dis = [[[GDQuartzDisplay alloc] initWithDirectDisplayID:(CGDirectDisplayID)ids[i]] autorelease];
 		if(dis != nil) [res addObject:dis];
 	}

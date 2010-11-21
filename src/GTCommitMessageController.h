@@ -31,6 +31,7 @@
 	IBOutlet NSButton * signoff;
 	NSString * commitMessageValue;
 	BOOL addBeforeCommit;
+	BOOL readyToCommit;
 	NSArray * fileSelection;
 }
 

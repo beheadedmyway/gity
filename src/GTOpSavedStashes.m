@@ -28,6 +28,7 @@
 	if([self isCancelled]) return;
 	NSFileHandle * read = [[task standardOutput] fileHandleForReading];
 	NSData * data = [read readDataToEndOfFile];
+	[read closeFile];
 	NSString * rawJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray	* final = [NSMutableArray arrayWithArray:[json objectWithString:rawJSON error:nil]];

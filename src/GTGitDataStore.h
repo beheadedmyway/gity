@@ -85,7 +85,7 @@
 @property (retain) NSMutableArray * modifiedFiles;
 @property (retain) NSMutableArray * untrackedFiles;
 @property (retain) NSMutableArray * deletedFiles;
-@property (retain) NSMutableArray * stagedFiles;
+@property (retain, readonly) NSMutableArray * stagedFiles;
 @property (retain) NSMutableArray * stageAddedFiles;
 @property (retain) NSMutableArray * stageDeletedFiles;
 @property (retain) NSMutableArray * stageModifiedFiles;

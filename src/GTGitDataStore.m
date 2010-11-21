@@ -28,10 +28,10 @@
 @synthesize looseObjects;
 @synthesize activeBranchName;
 @synthesize allFiles;
+@synthesize stagedFiles;
 @synthesize modifiedFiles;
 @synthesize untrackedFiles;
 @synthesize deletedFiles;
-@synthesize stagedFiles;
 @synthesize branchNames;
 @synthesize remotes;
 @synthesize tagNames;
@@ -235,6 +235,7 @@
 	NSString * path = [[NSBundle mainBundle] pathForResource:@"cancelDown" ofType:@"png" inDirectory:nil];
 	NSFileHandle * fh = [NSFileHandle fileHandleForReadingAtPath:path];
 	NSData * content = [fh readDataToEndOfFile];
+	[fh closeFile];
 	diffTemplate = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
 }
 

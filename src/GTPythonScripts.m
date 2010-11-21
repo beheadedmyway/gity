@@ -117,23 +117,23 @@ static NSBundle * bundle;
 	return [bundle pathForResource:@"deletetag" ofType:@"pyc" inDirectory:@"python"];
 }
 
-+ (NSString *) newEmptyBranch {
++ (NSString *) performNewEmptyBranch {
 	return [bundle pathForResource:@"emptybranch" ofType:@"pyc" inDirectory:@"python"];
 }
 
-+ (NSString *) newStash {
++ (NSString *) performNewStash {
 	return [bundle pathForResource:@"newstash" ofType:@"pyc" inDirectory:@"python"];
 }
 
-+ (NSString *) newBranch {
++ (NSString *) performNewBranch {
 	return [bundle pathForResource:@"newbranch" ofType:@"pyc" inDirectory:@"python"];
 }
 
-+ (NSString *) newTag {
++ (NSString *) performNewTag {
 	return [bundle pathForResource:@"newtag" ofType:@"pyc" inDirectory:@"python"];
 }
 
-+ (NSString *) newRemote {
++ (NSString *) performNewRemote {
 	return [bundle pathForResource:@"newremote" ofType:@"pyc" inDirectory:@"python"];
 }
 
@@ -185,7 +185,7 @@ static NSBundle * bundle;
 	return [bundle pathForResource:@"garbagecollect" ofType:@"pyc" inDirectory:@"python"];
 }
 
-+ (NSString *) newTrackingBranch {
++ (NSString *) performNewTrackingBranch {
 	return [bundle pathForResource:@"newtrackbranch" ofType:@"pyc" inDirectory:@"python"];
 }
 
@@ -241,7 +241,7 @@ static NSBundle * bundle;
 	return [bundle pathForResource:@"ignoreextension" ofType:@"pyc" inDirectory:@"python"];
 }
 
-+ (NSString *) newSubmodule {
++ (NSString *) performNewSubmodule {
 	return [bundle pathForResource:@"submoduleadd" ofType:@"pyc" inDirectory:@"python"];
 }
 

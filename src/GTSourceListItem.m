@@ -24,6 +24,7 @@
 @synthesize parent;
 @synthesize index;
 @synthesize data;
+@synthesize image;
 
 - (id) init {
 	self=[super init];
@@ -120,6 +121,29 @@
 	return [@"[GTSourceListItem: " stringByAppendingString:[name stringByAppendingString:@"]"]];
 }
 
+- (NSImage *)image {
+	NSImage *result = nil;
+	if ([self isChildOfRemotes])
+		result = [NSImage imageNamed:@"network.png"];
+	else
+	if ([self isChildOfTags])
+		result = [NSImage imageNamed:@"tag.png"];
+	else
+	if ([self isChildOfBranches])
+		result = [NSImage imageNamed:@"branches.png"];
+	else
+	if ([self isChildOfRemoteBranches])
+		result = [NSImage imageNamed:@"branches.png"];
+	else
+	if ([self isChildOfSubmodules])
+		result = [NSImage imageNamed:@"submodule.png"];
+		
+	if (result)
+		[result setFlipped:YES];
+	
+	return result;
+}
+
 - (void) dealloc {
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GTSourceListItem\n");
@@ -128,6 +152,7 @@
 	GDRelease(children);
 	GDRelease(name);
 	GDRelease(label);
+	GDRelease(data);
 	isGroupItem=false;
 	index=0;
 	[super dealloc];

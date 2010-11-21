@@ -28,7 +28,7 @@
 
 - (void) setArguments {
 	if([self isCancelled]) return;
-	[self setArgumentsWithPythonScript:[GTPythonScripts newRemote] setArgsOnTask:false];
+	[self setArgumentsWithPythonScript:[GTPythonScripts performNewRemote] setArgsOnTask:false];
 	[args addObject:[@"-m " stringByAppendingString:remoteName]];
 	[args addObject:[@"-m " stringByAppendingString:remoteURL]];
 	[self updateArguments];

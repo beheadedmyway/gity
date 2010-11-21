@@ -280,7 +280,7 @@ static GTDocumentController * doc;
 }
 
 - (void) gitPull:(id) sender {
-	GTSourceListItem * item = [self selectedItem];
+ 	GTSourceListItem * item = [self selectedItem];
 	if([gitd isConflicted]) {
 		NSBeep();
 		[modals runConflictedStateForCheckout];

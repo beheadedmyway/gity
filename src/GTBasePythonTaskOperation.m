@@ -18,6 +18,7 @@
 #import "GTBasePythonTaskOperation.h"
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
+#import <GDKit/macros.h>
 
 @implementation GTBasePythonTaskOperation
 
@@ -62,6 +63,7 @@
 }
 
 - (void) main {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	if(done) goto cleanup;
 	[task launch];
 	if(readsSTDOUT) [self readSTDOUT];
@@ -75,6 +77,7 @@
 	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
 cleanup:
 	done=true;
+	[pool drain];
 	return;
 }
 

@@ -67,6 +67,11 @@
 	inset.size.height = titleSize.height;
 	inset.origin.y = NSMinY(cellFrame) + (NSHeight(cellFrame) - titleSize.height) / 2.0;
 	
+	if (item.image) {
+		[item.image drawInRect:NSMakeRect(inset.origin.x, cellFrame.origin.y + 4, 12, 12) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:0.7];
+		inset.origin.x += 16;
+	}
+	
 	if(highlighted) [attrs setValue:[fontManager convertFont:font toHaveTrait:NSBoldFontMask] forKey:NSFontAttributeName];
 	[attrs setValue:[NSColor colorWithDeviceRed:.3 green:.3 blue:.3 alpha:1] forKey:NSForegroundColorAttributeName];
 	[title drawInRect:inset withAttributes:attrs];

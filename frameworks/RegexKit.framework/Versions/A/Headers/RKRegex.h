@@ -76,9 +76,9 @@ extern "C" {
 
 + (BOOL)isValidRegexString:(NSString * const)regexString options:(const RKCompileOption)options;
 + (id)regexWithRegexString:(NSString * const)regexString options:(const RKCompileOption)options;
-+ (id)regexWithRegexString:(NSString * const RK_C99(restrict))regexString library:(NSString * const RK_C99(restrict))libraryString options:(const RKCompileOption)libraryOptions error:(NSError **)error;
-- (id)initWithRegexString:(NSString * const RK_C99(restrict))regexString options:(const RKCompileOption)options;
-- (id)initWithRegexString:(NSString * const RK_C99(restrict))regexString library:(NSString * const RK_C99(restrict))library options:(const RKCompileOption)libraryOptions error:(NSError **)error;
++ (id)regexWithRegexString:(NSString * const)regexString library:(NSString * const)libraryString options:(const RKCompileOption)libraryOptions error:(NSError **)error;
+- (id)initWithRegexString:(NSString * const)regexString options:(const RKCompileOption)options;
+- (id)initWithRegexString:(NSString * const)regexString library:(NSString * const)library options:(const RKCompileOption)libraryOptions error:(NSError **)error;
 - (NSString *)regexString;
 - (RKCompileOption)compileOption;
 
@@ -87,8 +87,8 @@ extern "C" {
 - (BOOL)isValidCaptureName:(NSString * const)captureNameString;
 - (RKUInteger)captureIndexForCaptureName:(NSString * const)captureNameString;
 - (NSString *)captureNameForCaptureIndex:(const RKUInteger)captureIndex;
-- (RKUInteger)captureIndexForCaptureName:(NSString * const RK_C99(restrict))captureNameString inMatchedRanges:(const NSRange * const RK_C99(restrict))matchedRanges;
-- (RKUInteger)captureIndexForCaptureName:(NSString * const RK_C99(restrict))captureNameString inMatchedRanges:(const NSRange * const RK_C99(restrict))matchedRanges error:(NSError **)error;
+- (RKUInteger)captureIndexForCaptureName:(NSString * const)captureNameString inMatchedRanges:(const NSRange * const)matchedRanges;
+- (RKUInteger)captureIndexForCaptureName:(NSString * const)captureNameString inMatchedRanges:(const NSRange * const)matchedRanges error:(NSError **)error;
 
 - (BOOL)matchesCharacters:(const void * const RK_C99(restrict))matchCharacters length:(const RKUInteger)length inRange:(const NSRange)searchRange options:(const RKMatchOption)options;
 - (NSRange)rangeForCharacters:(const void * const RK_C99(restrict))matchCharacters length:(const RKUInteger)length inRange:(const NSRange)searchRange captureIndex:(const RKUInteger)captureIndex options:(const RKMatchOption)options;

@@ -177,6 +177,16 @@ static NSWindow * lastMainWindow;
 	fileEvents.excludedPaths = [NSArray arrayWithObject:[[[self fileURL] path] stringByAppendingPathComponent:@".git/vendor/gity/tmp/"]];
 	[fileEvents startWatchingPaths:[NSArray arrayWithObject:[[self fileURL] path]]];*/
 	
+	NSMutableDictionary *documents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"] mutableCopy];
+	if (!documents)
+		documents = [[NSMutableDictionary alloc] init];
+	if (documents) {
+		[documents setValue:[NSNumber numberWithBool:YES] forKey:[[self fileURL] absoluteString]];
+		[[NSUserDefaults standardUserDefaults] setValue:documents forKey:@"lastDocuments"];
+	}	
+	[documents release];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
 	[self waitForWindow];
 }
 
@@ -190,10 +200,23 @@ static NSWindow * lastMainWindow;
 	NSInteger res = [self shouldCloseNow];
 	if(res == NSCancelButton) return false;
 	[self persistWindowState];
+	userClosedWindow = YES;
 	return true;
 }
 
 - (void) windowWillClose:(NSNotification *) notification {
+	if (userClosedWindow)
+	{
+		NSMutableDictionary *documents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"] mutableCopy];
+		if (!documents)
+			documents = [[NSMutableDictionary alloc] init];
+		if (documents) {
+			[documents removeObjectForKey:[[self fileURL] absoluteString]];
+			[[NSUserDefaults standardUserDefaults] setValue:documents forKey:@"lastDocuments"];
+		}
+		[documents release];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}	
 	[operations cancelAll];
 	[historyView removeObservers];
 	[sourceListView removeObservers];

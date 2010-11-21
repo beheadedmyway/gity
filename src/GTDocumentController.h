@@ -36,6 +36,7 @@
 	GTOperationsController * operations;
 	GTCLIProxy * cliproxy;
 	GTRegistrationController * registration;
+	BOOL applicationHasStarted;
 }
 
 @property (readonly,nonatomic) GTRegistrationController * registration;

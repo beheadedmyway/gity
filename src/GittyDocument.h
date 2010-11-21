@@ -100,6 +100,7 @@
 	GTOperationsController * operations;
 	GTContextMenuController * contextMenus;
 	SCEvents * fileEvents;
+	BOOL userClosedWindow;
 }
 
 #pragma mark properties

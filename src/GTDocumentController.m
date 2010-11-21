@@ -33,6 +33,7 @@ static NSString * gityVersion;
 
 - (id) init {
 	if(self=[super init]) {
+		applicationHasStarted = NO;
 		git=[[GTGitCommandExecutor alloc] init];
 		operations=[[GTOperationsController alloc] init];
 		cliproxy=[[GTCLIProxy alloc] init];
@@ -266,6 +267,18 @@ static NSString * gityVersion;
 	[self updateGityVersion];
 	[cliproxy setDocument:self];
 	[cliproxy connect];
+	
+	// reload last document at startup.
+	NSDictionary *documents = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"];
+	if (documents) {
+		NSArray *keys = [documents allKeys];
+		for (NSString *urlString in keys)
+		{
+			NSError *error = nil;
+			NSURL *url = [NSURL URLWithString:urlString];
+			[self openDocumentWithContentsOfURL:url display:YES error:&error];
+		}
+	}	
 }
 
 - (BOOL) applicationShouldOpenUntitledFile:(NSApplication *) sender {

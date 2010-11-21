@@ -358,6 +358,10 @@
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		CA13385411A1F91C00FDE018 /* env in Resources */ = {isa = PBXBuildFile; fileRef = CA13385311A1F91C00FDE018 /* env */; };
+		CA2DBC831297B8F500831420 /* network.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC821297B8F500831420 /* network.png */; };
+		CA2DBC8D1297BA8C00831420 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC8C1297BA8C00831420 /* tag.png */; };
+		CA2DBC931297BBD500831420 /* submodule.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC921297BBD500831420 /* submodule.png */; };
+		CA2DBCB71297C55B00831420 /* branches.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBCB61297C55B00831420 /* branches.png */; };
 		CA98465112644ACC008129E2 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464712644ACC008129E2 /* add.png */; };
 		CA98465212644ACC008129E2 /* addcommit.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464812644ACC008129E2 /* addcommit.png */; };
 		CA98465312644ACC008129E2 /* branch.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464912644ACC008129E2 /* branch.png */; };
@@ -370,6 +374,7 @@
 		CA98465A12644ACC008129E2 /* stash.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98465012644ACC008129E2 /* stash.png */; };
 		CABCA82711B6C52D00EB8EEA /* SCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CABCA81C11B6C52D00EB8EEA /* SCEvent.m */; };
 		CABCA82811B6C52D00EB8EEA /* SCEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CABCA81F11B6C52D00EB8EEA /* SCEvents.m */; };
+		CABE68591299080C00CCAD60 /* remoteBranches.png in Resources */ = {isa = PBXBuildFile; fileRef = CABE68581299080C00CCAD60 /* remoteBranches.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -986,6 +991,10 @@
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Gity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA13385311A1F91C00FDE018 /* env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = env; sourceTree = "<group>"; };
+		CA2DBC821297B8F500831420 /* network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = network.png; sourceTree = "<group>"; };
+		CA2DBC8C1297BA8C00831420 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
+		CA2DBC921297BBD500831420 /* submodule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submodule.png; sourceTree = "<group>"; };
+		CA2DBCB61297C55B00831420 /* branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branches.png; sourceTree = "<group>"; };
 		CA98464712644ACC008129E2 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		CA98464812644ACC008129E2 /* addcommit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addcommit.png; sourceTree = "<group>"; };
 		CA98464912644ACC008129E2 /* branch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branch.png; sourceTree = "<group>"; };
@@ -1001,6 +1010,7 @@
 		CABCA81D11B6C52D00EB8EEA /* SCEventListenerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEventListenerProtocol.h; sourceTree = "<group>"; };
 		CABCA81E11B6C52D00EB8EEA /* SCEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEvents.h; sourceTree = "<group>"; };
 		CABCA81F11B6C52D00EB8EEA /* SCEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEvents.m; sourceTree = "<group>"; };
+		CABE68581299080C00CCAD60 /* remoteBranches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remoteBranches.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1860,6 +1870,7 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CA2DBBDF12978B1800831420 /* sourceList */,
 				CA98464612644ACC008129E2 /* toolbar */,
 				079AC8531099642700931C8C /* AlertAccessoryViews.xib */,
 				07F4670E10660D140059F611 /* blackButton2.png */,
@@ -1981,6 +1992,19 @@
 				07C616D110B291F500C71C86 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA2DBBDF12978B1800831420 /* sourceList */ = {
+			isa = PBXGroup;
+			children = (
+				CA2DBC821297B8F500831420 /* network.png */,
+				CA2DBC8C1297BA8C00831420 /* tag.png */,
+				CA2DBC921297BBD500831420 /* submodule.png */,
+				CA2DBCB61297C55B00831420 /* branches.png */,
+				CABE68581299080C00CCAD60 /* remoteBranches.png */,
+			);
+			name = sourceList;
+			path = assets/sourceList;
 			sourceTree = "<group>";
 		};
 		CA98464612644ACC008129E2 /* toolbar */ = {
@@ -2224,6 +2248,11 @@
 				CA98465812644ACC008129E2 /* push.png in Resources */,
 				CA98465912644ACC008129E2 /* refresh.png in Resources */,
 				CA98465A12644ACC008129E2 /* stash.png in Resources */,
+				CA2DBC831297B8F500831420 /* network.png in Resources */,
+				CA2DBC8D1297BA8C00831420 /* tag.png in Resources */,
+				CA2DBC931297BBD500831420 /* submodule.png in Resources */,
+				CA2DBCB71297C55B00831420 /* branches.png in Resources */,
+				CABE68591299080C00CCAD60 /* remoteBranches.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

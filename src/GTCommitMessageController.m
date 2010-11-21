@@ -30,7 +30,13 @@
 	[super awakeFromNib];
 }
 
+- (void) show {
+	readyToCommit = NO;
+	[super show];
+}
+
 - (void) showAsSheet {
+	readyToCommit = NO;
 	[super showAsSheet];
 	[self focus];
 	[self updateMessageFieldAttributes];
@@ -106,6 +112,7 @@
 	commitMessageValue = [val copy];
 	if(target) 
 		[target performSelector:action];
+	readyToCommit = YES;
 	fileSelection = [[[gd activeBranchView] selectedFiles] copy];
 	if (addBeforeCommit)
 		[operations runAddFilesOperation];
@@ -116,6 +123,9 @@
 }
 
 - (void) finishTwoStageCommit {
+	if (!readyToCommit)
+		return;
+	
 	if ([gd.gitd stagedFilesCount] >= 1)
 		[operations runCommitOperationWithFiles:fileSelection];
 	else

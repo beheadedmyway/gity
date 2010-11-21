@@ -161,16 +161,16 @@
 	};
 	074F71F010D7842C00CBC121 /* GDModalController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1452, 782}}";
-			sepNavSelRange = "{189, 0}";
-			sepNavVisRange = "{0, 309}";
+			sepNavIntBoundsRect = "{{0, 0}, {761, 288}}";
+			sepNavSelRange = "{49, 0}";
+			sepNavVisRange = "{0, 135}";
 		};
 	};
 	074F71F110D7842C00CBC121 /* GDModalController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1526, 937}}";
-			sepNavSelRange = "{115, 0}";
-			sepNavVisRange = "{0, 217}";
+			sepNavIntBoundsRect = "{{0, 0}, {761, 240}}";
+			sepNavSelRange = "{94, 0}";
+			sepNavVisRange = "{59, 158}";
 			sepNavWindowFrame = "{{61, 597}, {750, 534}}";
 		};
 	};
@@ -576,6 +576,33 @@
 			sepNavVisRange = "{0, 526}";
 		};
 	};
+	07EA8793127E0FE5003A3E46 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 074F71F110D7842C00CBC121 /* GDModalController.m */;
+		name = "GDModalController.m: 6";
+		rLen = 0;
+		rLoc = 94;
+		rType = 0;
+		vrLen = 158;
+		vrLoc = 59;
+	};
+	07EA8794127E0FE5003A3E46 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 074F71F010D7842C00CBC121 /* GDModalController.h */;
+		rLen = 0;
+		rLoc = 9223372036854775806;
+		rType = 0;
+	};
+	07EA8795127E0FE5003A3E46 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 074F71F010D7842C00CBC121 /* GDModalController.h */;
+		name = "GDModalController.h: 3";
+		rLen = 0;
+		rLoc = 49;
+		rType = 0;
+		vrLen = 135;
+		vrLoc = 0;
+	};
 	07F472F810D3B16400BADB21 /* GDBaseObject.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1525, 1088}}";
@@ -903,8 +930,13 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 294018625;
-			PBXWorkspaceStateSaveDate = 294018625;
+			PBXPerProjectTemplateStateSaveDate = 310250992;
+			PBXWorkspaceStateSaveDate = 310250992;
+		};
+		perUserProjectItems = {
+			07EA8793127E0FE5003A3E46 /* PBXTextBookmark */ = 07EA8793127E0FE5003A3E46 /* PBXTextBookmark */;
+			07EA8794127E0FE5003A3E46 /* PBXTextBookmark */ = 07EA8794127E0FE5003A3E46 /* PBXTextBookmark */;
+			07EA8795127E0FE5003A3E46 /* PBXTextBookmark */ = 07EA8795127E0FE5003A3E46 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 0720BF31102F4A4100FB009B /* Source Control */;
 		userBuildSettings = {

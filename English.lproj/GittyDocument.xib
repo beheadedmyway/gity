@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10F569</string>
-		<string key="IBDocument.InterfaceBuilderVersion">804</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.InterfaceBuilderVersion">823</string>
+		<string key="IBDocument.AppKitVersion">1038.35</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -15,13 +15,14 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>804</string>
+				<string>823</string>
 				<string>1.2.5</string>
 			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="100564"/>
+			<integer value="100175"/>
+			<integer value="5"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -922,7 +923,7 @@
 				<string key="NSClassName">GTConfigView</string>
 			</object>
 			<object class="NSCustomView" id="401974075">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">4370</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1046,6 +1047,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{111, 299}</string>
+				<reference key="NSSuperview"/>
 				<string key="NSClassName">GTSourceListView</string>
 			</object>
 			<object class="NSCustomView" id="608541104">
@@ -2206,6 +2208,14 @@
 					</object>
 					<int key="connectionID">100585</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">toolbar</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="730171165"/>
+					</object>
+					<int key="connectionID">100587</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -2557,11 +2567,6 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 							<reference ref="286655491"/>
 						</object>
 						<reference key="parent" ref="466875986"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">100177</int>
-						<reference key="object" ref="286655491"/>
-						<reference key="parent" ref="155986599"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">100238</int>
@@ -3114,6 +3119,11 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 						<reference key="object" ref="126878317"/>
 						<reference key="parent" ref="730171165"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100177</int>
+						<reference key="object" ref="286655491"/>
+						<reference key="parent" ref="155986599"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -3271,14 +3281,19 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 					<string>100563.toolbarItem.selectable</string>
 					<string>100564.IBPluginDependency</string>
 					<string>100565.IBPluginDependency</string>
+					<string>100565.designableToolbarItemIdentifier</string>
 					<string>100566.IBPluginDependency</string>
+					<string>100566.designableToolbarItemIdentifier</string>
 					<string>100567.IBPluginDependency</string>
+					<string>100567.designableToolbarItemIdentifier</string>
 					<string>100568.IBPluginDependency</string>
 					<string>100569.IBPluginDependency</string>
 					<string>100570.IBPluginDependency</string>
 					<string>100571.IBPluginDependency</string>
+					<string>100571.designableToolbarItemIdentifier</string>
 					<string>100571.toolbarItem.selectable</string>
 					<string>100572.IBPluginDependency</string>
+					<string>100572.designableToolbarItemIdentifier</string>
 					<string>100572.toolbarItem.selectable</string>
 					<string>5.IBEditorWindowLastContentRect</string>
 					<string>5.IBPluginDependency</string>
@@ -3364,7 +3379,7 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>GTTextFieldCell</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{165, 168}, {807, 361}}</string>
+					<string>{{329, 168}, {807, 361}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3433,7 +3448,7 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{789, 778}, {163, 96}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{464, 569}, {616, 227}}</string>
+					<string>{{1019, 789}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3443,18 +3458,23 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>addIdentifier</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>commitIdentifier</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>addCommitIdentifier</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>changesIdentifier</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>historyIdentifier</string>
 					<boolean value="YES"/>
-					<string>{{310, 191}, {924, 605}}</string>
+					<string>{{865, 184}, {924, 605}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{310, 191}, {924, 605}}</string>
+					<string>{{865, 184}, {924, 605}}</string>
 					<integer value="1"/>
 					<string>{{201, 387}, {507, 413}}</string>
 					<boolean value="YES"/>
@@ -3479,7 +3499,7 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">100585</int>
+			<int key="maxID">100587</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -5445,6 +5465,7 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 							<string>stateBarView</string>
 							<string>status</string>
 							<string>statusBarView</string>
+							<string>toolbar</string>
 							<string>unknownError</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -5471,6 +5492,7 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 							<string>GTStateBarView</string>
 							<string>GTStatusController</string>
 							<string>GTStatusBarView</string>
+							<string>NSToolbar</string>
 							<string>GTUnknownErrorController</string>
 						</object>
 					</object>
@@ -5500,6 +5522,7 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 							<string>stateBarView</string>
 							<string>status</string>
 							<string>statusBarView</string>
+							<string>toolbar</string>
 							<string>unknownError</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -5591,6 +5614,10 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 							<object class="IBToOneOutletInfo">
 								<string key="name">statusBarView</string>
 								<string key="candidateClassName">GTStatusBarView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">toolbar</string>
+								<string key="candidateClassName">NSToolbar</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">unknownError</string>
@@ -6445,15 +6472,15 @@ NEE1QTBCNTVFhpKEmJmZmoHtAIGcA4aGA</bytes>
 				<string>{9, 8}</string>
 				<string>{7, 2}</string>
 				<string>{32, 32}</string>
+				<string>{72, 72}</string>
+				<string>{72, 72}</string>
+				<string>{72, 72}</string>
 				<string>{56, 56}</string>
+				<string>{72, 72}</string>
 				<string>{56, 56}</string>
-				<string>{56, 56}</string>
-				<string>{56, 56}</string>
-				<string>{56, 56}</string>
-				<string>{56, 56}</string>
-				<string>{56, 56}</string>
-				<string>{56, 56}</string>
-				<string>{56, 56}</string>
+				<string>{72, 72}</string>
+				<string>{72, 72}</string>
+				<string>{72, 72}</string>
 				<string>{56, 56}</string>
 			</object>
 		</object>

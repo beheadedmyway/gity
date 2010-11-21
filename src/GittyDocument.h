@@ -92,6 +92,7 @@
 	IBOutlet GTNewSubmoduleController * newSubmodule;
 	IBOutlet GTHistorySearchController * historySearch;
 	IBOutlet GTAdvancedDiffView * advancedDiffView;
+	IBOutlet NSToolbar *toolbar;
 	GTGitDataStore * gitd;
 	GTMainMenuHelper * mainMenuHelper;
 	GTGitCommandExecutor * git;

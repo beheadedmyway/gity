@@ -262,6 +262,19 @@ static NSWindow * lastMainWindow;
 	if(wframe.size.width < frame.size.width) [gtwindow setFrame:frame display:true];
 }
 
+- (BOOL)validateToolbarItem:(NSToolbarItem *)theItem
+{
+	if ([[theItem itemIdentifier] isEqualToString:@"addIdentifier"] ||
+		[[theItem itemIdentifier] isEqualToString:@"addCommitIdentifier"] ||
+		[[theItem itemIdentifier] isEqualToString:@"commitIdentifier"])
+	{
+		if([activeBranchView selectedFilesCount] < 1) return NO;
+		return YES;
+	}
+	
+	return YES;
+}
+
 #pragma custom getters
 - (GTModalController *) modals {
 	return modals;
@@ -332,6 +345,7 @@ static NSWindow * lastMainWindow;
 
 - (void) showActiveBranchWithDiffUpdate:(BOOL) _invalidateDiffView forceIfAlreadyActive:(BOOL) _force {
 	if([self isCurrentViewActiveBranchView] && !_force) return;
+	[toolbar setSelectedItemIdentifier:@"changesIdentifier"];
 	[advancedDiffView hide];
 	[historyView hide];
 	[historyDetailsContainerView hide];
@@ -372,6 +386,7 @@ static NSWindow * lastMainWindow;
 	if([sourceListView wasJustUpdated]) return;
 	BOOL shouldInvalidateHistory = false;
 	BOOL shouldDoShow = false;
+	[toolbar setSelectedItemIdentifier:@"historyIdentifier"];
 	if(![[historyView currentRef] isEqual:_refName]) {
 		[historyView setHistoryRefName:_refName];
 		shouldInvalidateHistory=true;

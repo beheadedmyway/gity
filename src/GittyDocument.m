@@ -553,6 +553,7 @@ static NSWindow * lastMainWindow;
 	if (commit.addBeforeCommit)
 		[commit finishTwoStageCommit];
 	[sourceListView update];
+	[operations runGetCommitsAheadWithoutSpinner];
 	// update the history...
 	[historyView invalidate];
 }

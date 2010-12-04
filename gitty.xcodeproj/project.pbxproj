@@ -357,7 +357,6 @@
 		8D15AC310486D014006FF6A4 /* GittyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* GittyDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		CA13385411A1F91C00FDE018 /* env in Resources */ = {isa = PBXBuildFile; fileRef = CA13385311A1F91C00FDE018 /* env */; };
 		CA2DBC831297B8F500831420 /* network.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC821297B8F500831420 /* network.png */; };
 		CA2DBC8D1297BA8C00831420 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC8C1297BA8C00831420 /* tag.png */; };
 		CA2DBC931297BBD500831420 /* submodule.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC921297BBD500831420 /* submodule.png */; };
@@ -2237,7 +2236,6 @@
 				0768A1E110F3141900951EB1 /* stateDropDownNormal.png in Resources */,
 				0768A1E210F3141900951EB1 /* stateDropDownOver.png in Resources */,
 				07DEF6E61101809D006E8A54 /* Giveaway.xib in Resources */,
-				CA13385411A1F91C00FDE018 /* env in Resources */,
 				CA98465112644ACC008129E2 /* add.png in Resources */,
 				CA98465212644ACC008129E2 /* addcommit.png in Resources */,
 				CA98465312644ACC008129E2 /* branch.png in Resources */,
@@ -2955,7 +2953,7 @@
 				);
 				PRODUCT_NAME = Gity;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "i386 x86_64";
 			};
@@ -2987,7 +2985,7 @@
 				);
 				PRODUCT_NAME = Gity;
 				RUN_CLANG_STATIC_ANALYZER = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "i386 x86_64";
 			};

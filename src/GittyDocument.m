@@ -17,6 +17,7 @@
 
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
+#import "GTQuickLookItem.h"
 
 static BOOL started;
 static GTDocumentController * doc;
@@ -518,6 +519,11 @@ static NSWindow * lastMainWindow;
 	[mainMenuHelper invalidate];
 	[contextMenus invalidateActiveBranchViewMenus];
 	[diffView invalidate];
+	
+	if ([[QLPreviewPanel sharedPreviewPanel] isVisible])
+	{
+		[self quickLook:nil];
+	}
 }
 
 - (void) onHistoryViewSelectionChange {
@@ -923,6 +929,60 @@ static NSWindow * lastMainWindow;
 	[task release];
 	task=nil;
 	[args release];
+}
+
+- (void) openFile:(id) sender {
+	NSMutableArray * files = [activeBranchView selectedFiles];
+	if([files count] > 1 or [files count] < 1) {
+		NSBeep();
+		return;
+	}
+	NSWorkspace * workspace = [NSWorkspace sharedWorkspace];
+	NSString * fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
+	[workspace openFile:fullPath];
+}
+
+- (NSInteger)numberOfPreviewItemsInPreviewPanel:(QLPreviewPanel *)panel
+{
+	return 1;
+}
+
+- (id <QLPreviewItem>)previewPanel:(QLPreviewPanel *)panel previewItemAtIndex:(NSInteger)index
+{
+	NSMutableArray * files = [activeBranchView selectedFiles];
+	if([files count] > 1 or [files count] < 1) {
+		return [[[GTQuickLookItem alloc] initWithPath:nil] autorelease];;
+	}
+	NSString * fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
+	
+	return [[[GTQuickLookItem alloc] initWithPath:fullPath] autorelease];
+}
+
+- (BOOL)acceptsPreviewPanelControl:(QLPreviewPanel *)panel
+{
+	return YES;
+}
+
+- (void)beginPreviewPanelControl:(QLPreviewPanel *)panel
+{
+}
+
+- (void)endPreviewPanelControl:(QLPreviewPanel *)panel
+{
+}
+
+- (void) quickLook:(id) sender {
+	NSMutableArray * files = [activeBranchView selectedFiles];
+	if([files count] > 1 or [files count] < 1) {
+		NSBeep();
+		return;
+	}
+	
+	[[QLPreviewPanel sharedPreviewPanel] updateController];
+	[[QLPreviewPanel sharedPreviewPanel] setDataSource:self];
+	[[QLPreviewPanel sharedPreviewPanel] reloadData];
+	[[QLPreviewPanel sharedPreviewPanel] refreshCurrentPreviewItem];
+	[[QLPreviewPanel sharedPreviewPanel] makeKeyAndOrderFront:nil];
 }
 
 - (void) openInFinder:(id) sender {

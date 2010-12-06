@@ -47,9 +47,11 @@
 	NSMenuItem * gitIgnoreItem;
 	NSMenuItem * gitIgnoreContainer;
 	NSMenuItem * gitIgnoreExension;
-	NSMenuItem * moveToTrash;
+	NSMenuItem * openFile;
+	NSMenuItem * quickLook;
 	NSMenuItem * openInFinder;
 	NSMenuItem * openContainerInFinder;
+	NSMenuItem * moveToTrash;
 	
 	//source list "branch item" context menu
 	NSMenu * branchActionsMenu;

@@ -281,8 +281,6 @@
 	#ifdef GT_PRINT_EXTENDED_DEALLOCS
 	printf("DEALLOC GTGitFile\n");
 	#endif
-	if ([filename isEqualToString:@".gitignore"])
-		NSLog(@"DELETED!!!");
 	GDRelease(filename);
 	[super dealloc];
 }

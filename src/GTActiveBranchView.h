@@ -32,18 +32,25 @@
 @class GTDocumentController;
 @class GittyDocument;
 
-@interface GTActiveBranchView : GTGittyView <NSTableViewDelegate,NSTableViewDataSource,NSMenuDelegate> {
+@interface GTActiveBranchView : GTGittyView <NSTableViewDelegate,NSTableViewDataSource,NSOutlineViewDelegate,NSOutlineViewDataSource,NSMenuDelegate> {
 	BOOL hasSetTableProperties;
 	NSString * lastSearchTerm;
 	NSMutableArray * files;
+	NSMutableDictionary * fileDirectory;
 	NSMutableArray * filesCopy;
 	IBOutlet NSTableView * tableView;
+	IBOutlet NSOutlineView * outlineView;
+	IBOutlet NSScrollView * outlineContainer;
 	GTStatusBarView * statusBarView;
 	GTSplitContentView * splitContentView;
 	GTDiffView * diffView;
+	BOOL useOutline;
+	NSMutableArray *expandedItems;
 }
 
-@property (copy,nonatomic) NSMutableArray * files;
+@property (retain, nonatomic) NSMutableDictionary *fileDirectory;
+@property (retain, nonatomic) NSMutableArray * files;
+@property (assign, nonatomic) BOOL useOutline;
 
 - (void) activateTableView;
 - (void) clearSearch;

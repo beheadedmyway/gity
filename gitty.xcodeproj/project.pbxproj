@@ -362,6 +362,9 @@
 		CA2DBC8D1297BA8C00831420 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC8C1297BA8C00831420 /* tag.png */; };
 		CA2DBC931297BBD500831420 /* submodule.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC921297BBD500831420 /* submodule.png */; };
 		CA2DBCB71297C55B00831420 /* branches.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBCB61297C55B00831420 /* branches.png */; };
+		CA92311312ACE80700349047 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA92311212ACE80700349047 /* QuickLook.framework */; };
+		CA92311712ACE91600349047 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA92311612ACE91600349047 /* Quartz.framework */; };
+		CA92314012ACEFE800349047 /* GTQuickLookItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CA92313F12ACEFE800349047 /* GTQuickLookItem.m */; };
 		CA98465112644ACC008129E2 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464712644ACC008129E2 /* add.png */; };
 		CA98465212644ACC008129E2 /* addcommit.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464812644ACC008129E2 /* addcommit.png */; };
 		CA98465312644ACC008129E2 /* branch.png in Resources */ = {isa = PBXBuildFile; fileRef = CA98464912644ACC008129E2 /* branch.png */; };
@@ -995,6 +998,10 @@
 		CA2DBC8C1297BA8C00831420 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
 		CA2DBC921297BBD500831420 /* submodule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submodule.png; sourceTree = "<group>"; };
 		CA2DBCB61297C55B00831420 /* branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branches.png; sourceTree = "<group>"; };
+		CA92311212ACE80700349047 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		CA92311612ACE91600349047 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		CA92313E12ACEFE800349047 /* GTQuickLookItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTQuickLookItem.h; sourceTree = "<group>"; };
+		CA92313F12ACEFE800349047 /* GTQuickLookItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTQuickLookItem.m; sourceTree = "<group>"; };
 		CA98464712644ACC008129E2 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		CA98464812644ACC008129E2 /* addcommit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addcommit.png; sourceTree = "<group>"; };
 		CA98464912644ACC008129E2 /* branch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branch.png; sourceTree = "<group>"; };
@@ -1035,6 +1042,8 @@
 				07D7F49C10A3C36900348AFE /* SystemConfiguration.framework in Frameworks */,
 				07C616D210B291F500C71C86 /* WebKit.framework in Frameworks */,
 				075B3FB7117D264E00A1836C /* GDKit.framework in Frameworks */,
+				CA92311312ACE80700349047 /* QuickLook.framework in Frameworks */,
+				CA92311712ACE91600349047 /* Quartz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1790,6 +1799,8 @@
 				07F48768106AFAA70059F611 /* GTStyles.m */,
 				07F48A0E106B59280059F611 /* GTSysHelper.m */,
 				07D2446410AFE9F0007BB68A /* GTViewLayoutHelper.m */,
+				CA92313E12ACEFE800349047 /* GTQuickLookItem.h */,
+				CA92313F12ACEFE800349047 /* GTQuickLookItem.m */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -1834,6 +1845,8 @@
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				077145E510609E3600D6230C /* Plain */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
+				CA92311212ACE80700349047 /* QuickLook.framework */,
+				CA92311612ACE91600349047 /* Quartz.framework */,
 			);
 			name = gitty;
 			sourceTree = "<group>";
@@ -2651,6 +2664,7 @@
 				07DEF7C41104FFC0006E8A54 /* GTAdvancedDiffTileView.m in Sources */,
 				CABCA82711B6C52D00EB8EEA /* SCEvent.m in Sources */,
 				CABCA82811B6C52D00EB8EEA /* SCEvents.m in Sources */,
+				CA92314012ACEFE800349047 /* GTQuickLookItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2955,7 +2969,7 @@
 				);
 				PRODUCT_NAME = Gity;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "i386 x86_64";
 			};

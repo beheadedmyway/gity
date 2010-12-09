@@ -24,6 +24,8 @@
 
 @interface GTGitCommandExecutor : NSObject {
 	NSString * gitProjectPath;
+	NSString *gitExecPath;
+
 }
 
 @property (copy,nonatomic) NSString * gitProjectPath;

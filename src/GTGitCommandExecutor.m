@@ -17,14 +17,13 @@
 
 #import "GTGitCommandExecutor.h"
 
-static NSString * gitExecPath;
 static NSMutableDictionary * environment;
 static NSUserDefaults * defaults;
 static NSFileManager * fileManager;
 static GTModalController * modals;
 
 @implementation GTGitCommandExecutor
-@synthesize gitProjectPath;
+@synthesize gitProjectPath, gitExecPath;
 
 - (id) init {
 	if(self = [super init]) {

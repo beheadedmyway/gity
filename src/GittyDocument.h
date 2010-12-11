@@ -16,6 +16,8 @@
 // along with Gity. If not, see <http://www.gnu.org/licenses/>.
 
 #import <Cocoa/Cocoa.h>
+#import <QuickLook/QuickLook.h>
+#import <Quartz/Quartz.h>
 #import <GDKit/GDKit.h>
 #import "defs.h"
 #import "GTCallback.h"
@@ -53,7 +55,7 @@
 #import "SCEvents.h"
 #import "SCEventListenerProtocol.h"
 
-@interface GittyDocument : NSDocument <NSWindowDelegate, SCEventListenerProtocol> {
+@interface GittyDocument : NSDocument <NSWindowDelegate, SCEventListenerProtocol, QLPreviewPanelDataSource> {
 	BOOL isSourceListHidden;
 	BOOL commitAfterAdd;
 	BOOL fixingConflict;
@@ -199,6 +201,8 @@
 - (void) onHistoryLoaded;
 - (void) onHistorySearch;
 - (void) onClearSearch;
+- (void) openFile:(id) sender;
+- (void) quickLook:(id) sender;
 - (void) openInFinder:(id) sender;
 - (void) openContainingFolder:(id) sender;
 - (void) persistWindowState;

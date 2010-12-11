@@ -843,9 +843,12 @@
 	[activeBranchActionsMenu addItem:gitIgnoreExension];
 	[activeBranchActionsMenu addItem:gitIgnoreContainer];
 	[activeBranchActionsMenu addItem:[NSMenuItem separatorItem]];
-	[activeBranchActionsMenu addItem:moveToTrash];
+	[activeBranchActionsMenu addItem:openFile];
+	[activeBranchActionsMenu addItem:quickLook];
 	[activeBranchActionsMenu addItem:openInFinder];
 	[activeBranchActionsMenu addItem:openContainerInFinder];
+	[activeBranchActionsMenu addItem:[NSMenuItem separatorItem]];
+	[activeBranchActionsMenu addItem:moveToTrash];
 	[activeBranchActionsMenu setDelegate:self];
 }
 
@@ -895,10 +898,17 @@
 	[gitIgnoreItem setTarget:gd];
 	[gitIgnoreItem setAction:@selector(gitIgnore:)];
 	
-	moveToTrash = [[NSMenuItem alloc] init];
-	[moveToTrash setTitle:@"Move to Trash"];
-	[moveToTrash setTarget:gd];
-	[moveToTrash setAction:@selector(moveToTrash:)];
+	openFile = [[NSMenuItem alloc] init];
+	[openFile setTitle:@"Open File"];
+	[openFile setTarget:gd];
+	[openFile setAction:@selector(openFile:)];
+	
+	quickLook = [[NSMenuItem alloc] init];
+	[quickLook setTitle:@"Quick Look"];
+	[quickLook setTarget:gd];
+	[quickLook setAction:@selector(quickLook:)];
+	[quickLook setKeyEquivalentModifierMask:0];
+	[quickLook setKeyEquivalent:@" "];
 	
 	openInFinder = [[NSMenuItem alloc] init];
 	[openInFinder setTitle:@"Reveal in Finder"];
@@ -909,6 +919,11 @@
 	[openContainerInFinder setTitle:@"Show Containing Folder in Finder"];
 	[openContainerInFinder setTarget:gd];
 	[openContainerInFinder setAction:@selector(openContainingFolder:)];
+	
+	moveToTrash = [[NSMenuItem alloc] init];
+	[moveToTrash setTitle:@"Move to Trash"];
+	[moveToTrash setTarget:gd];
+	[moveToTrash setAction:@selector(moveToTrash:)];
 	
 	gitIgnoreExension = [[NSMenuItem alloc] init];
 	[gitIgnoreExension setTitle:@"Ignore Files With Extension"];

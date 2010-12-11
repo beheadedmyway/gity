@@ -23,10 +23,8 @@
 
 - (GTGitFile *) copyWithZone:(NSZone *) zone {
 	GTGitFile * cp = [[GTGitFile alloc] init];
-	[cp setType:type];
-	NSString * filenm = [filename copyWithZone:zone];
-	[cp setFilename:filenm];
-	[filenm release];
+	cp.type = type;
+	cp.filename = [[filename copyWithZone:zone] autorelease];
 	return cp;
 }
 
@@ -47,6 +45,16 @@
 
 - (NSString *) shortFilename {
 	return filename;
+}
+
+- (NSString *) pathComponentAtIndex:(NSUInteger)index isPath:(BOOL *)isPath
+{
+	NSArray *items = [filename pathComponents];
+	if (isPath)
+		*isPath = ([items count] - 1 != index);
+	if (index > [items count] - 1)
+		return nil;
+	return [[[items objectAtIndex:index] copy] autorelease];
 }
 
 - (id) initWithFilename:(NSString *) _filename andType:(int) _type {

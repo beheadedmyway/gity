@@ -65,5 +65,6 @@ typedef enum {
 - (NSString *) statusImageFilename;
 - (NSString *) selectedStatusImageFilename;
 - (NSString *) shortFilename;
+- (NSString *) pathComponentAtIndex:(NSUInteger)index isPath:(BOOL *)isPath;
 
 @end

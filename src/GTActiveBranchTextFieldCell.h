@@ -16,9 +16,12 @@
 // along with Gity. If not, see <http://www.gnu.org/licenses/>.
 
 #import <Cocoa/Cocoa.h>
+#import "GTGitFile.h"
 
 @interface GTActiveBranchTextFieldCell : NSTextFieldCell {
-
+	GTGitFile *file;
 }
+
+@property (nonatomic, assign) GTGitFile *file;
 
 @end

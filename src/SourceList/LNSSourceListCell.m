@@ -83,7 +83,7 @@
 	}
 	
 	if(isActiveBranch) {
-		NSRect r = [slv convertRect:cellFrame toView:nil];
+		NSRect r = [slv convertRect:cellFrame toView:[[controlView enclosingScrollView] contentView]];
 		NSImage * i = [NSImage imageNamed:@"currentBranch.png"];
 		
 		if([window firstResponder] == controlView && [window isMainWindow] && [window isKeyWindow] && highlighted) i = [NSImage imageNamed:@"currentBranchHighlighted.png"];
@@ -92,7 +92,7 @@
 		[i setFlipped:[controlView isFlipped]];
 		
 		float newx = cellFrame.origin.x + cellFrame.size.width - 26;
-		float newy = [controlView frame].size.height - r.origin.y + 6;
+		float newy = r.origin.y + 3;
 		if(isScrollbarShown) newx += 4;
 		//if(highlighted) newy += 1;
 		[i drawAtPoint:NSMakePoint(newx,newy) fromRect:NSMakeRect(0,0,14,13) operation:NSCompositeSourceOver fraction:1];

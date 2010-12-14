@@ -1844,8 +1844,6 @@
 				2A37F4AFFDCFA73011CA2CEA /* Other Sources */,
 				077145E510609E3600D6230C /* Plain */,
 				19C28FB0FE9D524F11CA2CBB /* Products */,
-				CA92311212ACE80700349047 /* QuickLook.framework */,
-				CA92311612ACE91600349047 /* Quartz.framework */,
 			);
 			name = gitty;
 			sourceTree = "<group>";
@@ -1997,6 +1995,8 @@
 				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
 				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
 				07DA118A10BF313300F7170D /* libcrypto.0.9.8.dylib */,
+				CA92311612ACE91600349047 /* Quartz.framework */,
+				CA92311212ACE80700349047 /* QuickLook.framework */,
 				0717660E1128DE6D00E0A6B3 /* RegexKit.framework */,
 				07CDE0D0109FEF5100B0A99A /* Security.framework */,
 				071766101128DE6D00E0A6B3 /* Sparkle.framework */,

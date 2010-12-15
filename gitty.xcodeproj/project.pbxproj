@@ -1880,55 +1880,17 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CA2DBBDF12978B1800831420 /* sourceList */,
-				CA98464612644ACC008129E2 /* toolbar */,
+				355AA2AF12B85F91004AAACA /* Images */,
 				079AC8531099642700931C8C /* AlertAccessoryViews.xib */,
-				07F4670E10660D140059F611 /* blackButton2.png */,
-				07F46844106612530059F611 /* blackButton2Down.png */,
-				07F46839106611B70059F611 /* blackButton2Over.png */,
-				07714E6F10635C6900D6230C /* blackButtonNoShadow.png */,
-				0771507F10636DCD00D6230C /* blackButtonNoShadowDown.png */,
-				077157B01064738300D6230C /* blackButtonNoShadowOver2.png */,
-				07DA0B4510BB8E9700F7170D /* bugIconDown.png */,
-				07DA0B4610BB8E9700F7170D /* bugIconNormal.png */,
-				07DA0B4710BB8E9700F7170D /* bugIconOver.png */,
-				0785107410A3DBC70049D7CB /* cancelNormal.png */,
-				078510F010A3DF4E0049D7CB /* cancelOver.png */,
 				077147BD1060BDF900D6230C /* CloneRepository.xib */,
 				07DDA3FB1071F67300DA6C4E /* com.macendeavor.Gity.Agent.plist */,
 				07DD9FD11071A72000DA6C4E /* CommitMessage.xib */,
-				07C414DB1093FADA00D3F494 /* configAddDown.png */,
-				07C414021093F41F00D3F494 /* configAddNormal.png */,
-				07C414DC1093FADA00D3F494 /* configAddOver.png */,
-				07C414D21093FA6F00D3F494 /* configRemoveDown.png */,
-				07C414031093F41F00D3F494 /* configRemoveNormal.png */,
-				07C414C91093F9EF00D3F494 /* configRemoveOver.png */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.html */,
-				07E62837108C550600963F2A /* currentBranch.png */,
-				072CE2C210914C0F009064CF /* currentBranchHighlighted.png */,
-				072CE2CD10914C75009064CF /* currentBranchNotFocused.png */,
-				0738D7ED10BA0D1C004A0164 /* diagonalStripes2.png */,
-				07D23CF410AEAD52007BB68A /* diffSelectorArrowDown.png */,
-				07D23CF510AEAD52007BB68A /* diffSelectorArrowNormal.png */,
-				07D246A110B0002E007BB68A /* diffSelectorArrowOver.png */,
-				07D23CED10AEACDA007BB68A /* diffSelectorDown.png */,
-				07D23CEE10AEACDA007BB68A /* diffSelectorNormal.png */,
-				07D23CEF10AEACDA007BB68A /* diffSelectorOver.png */,
-				07D23CF610AEAD52007BB68A /* diffVS.png */,
 				07C422881096901F00D3F494 /* dsa_pub.pem */,
 				07DE05571092F03B0040EB12 /* FetchTags.xib */,
-				07C413401093ED5400D3F494 /* fileStatusConflictedHighlighted.png */,
-				07C413411093ED5400D3F494 /* fileStatusConflictedNormal.png */,
-				07F4677110660E170059F611 /* folderIcon.png */,
 				1DDD58280DA1D0D100B32029 /* GittyDocument.xib */,
 				07DEF6E41101809D006E8A54 /* Giveaway.xib */,
 				0764EE2B10CE3E3800BF0147 /* HistoryAdvancedSearch.xib */,
-				074F72CA10D89BE300CBC121 /* historyDetailsNormal.png */,
-				074F72CB10D89BE300CBC121 /* historyDetailsOver.png */,
-				074F72CC10D89BE300CBC121 /* historyDetailsSelected.png */,
-				074F72CD10D89BE300CBC121 /* historyDetailsTreeNormal.png */,
-				074F72CE10D89BE300CBC121 /* historyDetailsTreeOver.png */,
-				074F72CF10D89BE300CBC121 /* historyDetailsTreeSelected.png */,
 				07C422E8109699A500D3F494 /* icon.icns */,
 				8D15AC360486D014006FF6A4 /* Info.plist */,
 				07C4224810968B3A00D3F494 /* Localized.strings */,
@@ -1940,6 +1902,73 @@
 				07DA0F6210BF235000F7170D /* Registration.xib */,
 				07DA8C0F10A8033400864A22 /* SimpleCommits.xib */,
 				07E61964108AFE1700963F2A /* SingleInput.xib */,
+				07C4197C1094517900D3F494 /* TmpMenus.xib */,
+				07C96CC610730FE900E7F7DD /* UnknownError.xib */,
+				07FBCAD110B7E9FB00D4E829 /* UnusedInterface.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
+				0717660A1128DE6D00E0A6B3 /* BWToolkitFramework.framework */,
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
+				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
+				07DA118A10BF313300F7170D /* libcrypto.0.9.8.dylib */,
+				CA92311612ACE91600349047 /* Quartz.framework */,
+				CA92311212ACE80700349047 /* QuickLook.framework */,
+				0717660E1128DE6D00E0A6B3 /* RegexKit.framework */,
+				07CDE0D0109FEF5100B0A99A /* Security.framework */,
+				071766101128DE6D00E0A6B3 /* Sparkle.framework */,
+				07D7F49B10A3C36900348AFE /* SystemConfiguration.framework */,
+				07C616D110B291F500C71C86 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		355AA2AF12B85F91004AAACA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				07F4670E10660D140059F611 /* blackButton2.png */,
+				07F46844106612530059F611 /* blackButton2Down.png */,
+				07F46839106611B70059F611 /* blackButton2Over.png */,
+				07714E6F10635C6900D6230C /* blackButtonNoShadow.png */,
+				0771507F10636DCD00D6230C /* blackButtonNoShadowDown.png */,
+				077157B01064738300D6230C /* blackButtonNoShadowOver2.png */,
+				07DA0B4510BB8E9700F7170D /* bugIconDown.png */,
+				07DA0B4610BB8E9700F7170D /* bugIconNormal.png */,
+				07DA0B4710BB8E9700F7170D /* bugIconOver.png */,
+				0785107410A3DBC70049D7CB /* cancelNormal.png */,
+				078510F010A3DF4E0049D7CB /* cancelOver.png */,
+				07C414DB1093FADA00D3F494 /* configAddDown.png */,
+				07C414021093F41F00D3F494 /* configAddNormal.png */,
+				07C414DC1093FADA00D3F494 /* configAddOver.png */,
+				07C414D21093FA6F00D3F494 /* configRemoveDown.png */,
+				07C414031093F41F00D3F494 /* configRemoveNormal.png */,
+				07C414C91093F9EF00D3F494 /* configRemoveOver.png */,
+				07E62837108C550600963F2A /* currentBranch.png */,
+				072CE2C210914C0F009064CF /* currentBranchHighlighted.png */,
+				072CE2CD10914C75009064CF /* currentBranchNotFocused.png */,
+				0738D7ED10BA0D1C004A0164 /* diagonalStripes2.png */,
+				07D23CF410AEAD52007BB68A /* diffSelectorArrowDown.png */,
+				07D23CF510AEAD52007BB68A /* diffSelectorArrowNormal.png */,
+				07D246A110B0002E007BB68A /* diffSelectorArrowOver.png */,
+				07D23CED10AEACDA007BB68A /* diffSelectorDown.png */,
+				07D23CEE10AEACDA007BB68A /* diffSelectorNormal.png */,
+				07D23CEF10AEACDA007BB68A /* diffSelectorOver.png */,
+				07D23CF610AEAD52007BB68A /* diffVS.png */,
+				07C413401093ED5400D3F494 /* fileStatusConflictedHighlighted.png */,
+				07C413411093ED5400D3F494 /* fileStatusConflictedNormal.png */,
+				07F4677110660E170059F611 /* folderIcon.png */,
+				074F72CA10D89BE300CBC121 /* historyDetailsNormal.png */,
+				074F72CB10D89BE300CBC121 /* historyDetailsOver.png */,
+				074F72CC10D89BE300CBC121 /* historyDetailsSelected.png */,
+				074F72CD10D89BE300CBC121 /* historyDetailsTreeNormal.png */,
+				074F72CE10D89BE300CBC121 /* historyDetailsTreeOver.png */,
+				074F72CF10D89BE300CBC121 /* historyDetailsTreeSelected.png */,
 				07DA0B4810BB8E9700F7170D /* smallSquareButtonDown.png */,
 				07DA0B4910BB8E9700F7170D /* smallSquareButtonNormal.png */,
 				07DA0B4A10BB8E9700F7170D /* smallSquareButtonOver.png */,
@@ -1977,33 +2006,12 @@
 				07D04226109D2A1D005D5ED4 /* statusSubmoduleStagedNormal.png */,
 				07F68C0310813CDF006464DA /* statusUntrackedNormal.png */,
 				07F68C0210813CDF006464DA /* statusUntrackedNormalHighlighted.png */,
-				07C4197C1094517900D3F494 /* TmpMenus.xib */,
 				07561CEB10E60857003E07DA /* toolbarPull.png */,
 				07561C7110E4D046003E07DA /* toolbarPush.png */,
-				07C96CC610730FE900E7F7DD /* UnknownError.xib */,
-				07FBCAD110B7E9FB00D4E829 /* UnusedInterface.xib */,
+				CA98464612644ACC008129E2 /* toolbar */,
+				CA2DBBDF12978B1800831420 /* sourceList */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
-				0717660A1128DE6D00E0A6B3 /* BWToolkitFramework.framework */,
-				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
-				13E42FBA07B3F13500E4EEF1 /* CoreData.framework */,
-				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
-				07DA118A10BF313300F7170D /* libcrypto.0.9.8.dylib */,
-				CA92311612ACE91600349047 /* Quartz.framework */,
-				CA92311212ACE80700349047 /* QuickLook.framework */,
-				0717660E1128DE6D00E0A6B3 /* RegexKit.framework */,
-				07CDE0D0109FEF5100B0A99A /* Security.framework */,
-				071766101128DE6D00E0A6B3 /* Sparkle.framework */,
-				07D7F49B10A3C36900348AFE /* SystemConfiguration.framework */,
-				07C616D110B291F500C71C86 /* WebKit.framework */,
-			);
-			name = Frameworks;
+			name = Images;
 			sourceTree = "<group>";
 		};
 		CA2DBBDF12978B1800831420 /* sourceList */ = {

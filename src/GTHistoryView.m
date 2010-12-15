@@ -19,7 +19,6 @@
 #import "GTOperationsController.h"
 #import "GittyDocument.h"
 
-static NSNotificationCenter * center;
 
 @implementation GTHistoryView
 @synthesize commits;
@@ -27,11 +26,11 @@ static NSNotificationCenter * center;
 @synthesize loadInfo;
 
 - (void) awakeFromNib {
-	hasSetDelegate=false;
-	hasObserver=false;
-	loadInfo=[[GTGitCommitLoadInfo alloc] init];
-	selectedFirst=false;
-	if(center is nil) center=[NSNotificationCenter defaultCenter];
+	hasSetDelegate = false;
+	hasObserver = false;
+	loadInfo = [[GTGitCommitLoadInfo alloc] init];
+	selectedFirst = false;
+
 	[self updateTableHeaderCells];
 }
 
@@ -51,7 +50,7 @@ static NSNotificationCenter * center;
 	[self adjustColumnSizes];
 	if(!hasObserver) {
 		hasObserver=true;
-		[center addObserver:self selector:@selector(onWindowResized) name:NSWindowDidResizeNotification object:[gd gtwindow]];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onWindowResized) name:NSWindowDidResizeNotification object:[gd gtwindow]];
 	}
 }
 
@@ -203,7 +202,7 @@ static NSNotificationCenter * center;
 }
 
 - (void) removeObservers {
-	[center removeObserver:self name:NSWindowDidResizeNotification object:[gd gtwindow]];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:[gd gtwindow]];
 }
 
 - (void) dealloc {

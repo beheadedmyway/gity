@@ -19,29 +19,23 @@
 #import "GittyDocument.h"
 #import <GDKit/GDKit.h>
 
-static GTModalController * modals;
-static NSUserDefaults * defaults;
-static NSString * gityVersion;
+static NSString *gityVersion;
 
 @implementation GTDocumentController
+
 @synthesize registration;
 
 #pragma mark initializers
-+ (void) initialize {
-	modals=[GTModalController sharedInstance];
-}
 
 - (id) init {
-	if(self=[super init]) {
+	if(self = [super init]) {
 		applicationHasStarted = NO;
-		git=[[GTGitCommandExecutor alloc] init];
-		operations=[[GTOperationsController alloc] init];
-		cliproxy=[[GTCLIProxy alloc] init];
-		registration=[[GTRegistrationController alloc] init];
-		[GTPythonScripts initMainBundle];
-		if(defaults is nil) defaults=[NSUserDefaults standardUserDefaults];
-		if(modals is nil) modals=[GTModalController sharedInstance];
+		git = [[GTGitCommandExecutor alloc] init];
+		operations = [[GTOperationsController alloc] init];
+		cliproxy = [[GTCLIProxy alloc] init];
+		registration = [[GTRegistrationController alloc] init];
 	}
+
 	return self;
 }
 
@@ -71,12 +65,12 @@ static NSString * gityVersion;
 
 #pragma mark modal triggers
 - (void) askForUpdates {
-	NSString * isInDefaults = [defaults objectForKey:@"GTGityHasPromptedToCheckForUpdates"];
+	NSString * isInDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:@"GTGityHasPromptedToCheckForUpdates"];
 	if(isInDefaults == nil) {
-		[defaults setObject:@"1" forKey:@"GTGityHasPromptedToCheckForUpdates"];
-		NSInteger res = [modals runShouldCheckForUpdates];
-		if(res == NSOKButton) [defaults setBool:true forKey:@"GTGityCheckForUpdates"];
-		[defaults synchronize];
+		[[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"GTGityHasPromptedToCheckForUpdates"];
+		NSInteger res = [[GTModalController sharedInstance] runShouldCheckForUpdates];
+		if(res == NSOKButton) [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"GTGityCheckForUpdates"];
+		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 }
 
@@ -88,7 +82,7 @@ static NSString * gityVersion;
 	NSString * bndl = [[NSBundle mainBundle] pathForResource:@"Gity.tmbundle" ofType:@""];
 	[fm createDirectoryAtPath:path2 withIntermediateDirectories:true attributes:nil error:nil];
 	[fm copyItemAtPath:bndl toPath:path error:nil];
-	[modals runInstalledTMBundle];
+	[[GTModalController sharedInstance] runInstalledTMBundle];
 }
 
 - (void) showRegistration:(id) sender {
@@ -107,8 +101,8 @@ static NSString * gityVersion;
 	}@catch(NSException * e){}
 	int res=[op runModal];
 	if(res==NSCancelButton) return;
-	[defaults setObject:[op filename] forKey:kGTGitExecutablePathKey];
-	[defaults synchronize];
+	[[NSUserDefaults standardUserDefaults] setObject:[op filename] forKey:kGTGitExecutablePathKey];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 	NSRunAlertPanel(@"Restart Gity",@"Please restart Gity for the changes to take effect.",@"OK",nil,nil);
 }
 
@@ -132,7 +126,7 @@ static NSString * gityVersion;
 	[[NSWorkspace sharedWorkspace] bringCurrentApplicationToFront];
 	NSString * realGitPath = [git gitProjectPathFromRevParse:path];
 	if(realGitPath == nil) {
-		[modals runNotAGitRepoAlert];
+		[[GTModalController sharedInstance] runNotAGitRepoAlert];
 		return;
 	}
 	NSURL * nurl = [NSURL fileURLWithPath:realGitPath isDirectory:true];
@@ -180,16 +174,16 @@ static NSString * gityVersion;
 }
 
 - (void) resetPrompts:(id) sender {
-	[defaults removeObjectForKey:@"GTGityHasPromptedToCheckForUpdates"];
-	[defaults setBool:false forKey:kGTIgnoreCommitsAhead];
-	[defaults setBool:false forKey:@"kGTRemindToQuitFileMerge"];
-	[defaults setBool:false forKey:kGTWarnAboutLooseObjects];
-	[defaults setBool:false forKey:@"kGTPromptForCherryPick"];
-	[defaults synchronize];
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"GTGityHasPromptedToCheckForUpdates"];
+	[[NSUserDefaults standardUserDefaults] setBool:false forKey:kGTIgnoreCommitsAhead];
+	[[NSUserDefaults standardUserDefaults] setBool:false forKey:@"kGTRemindToQuitFileMerge"];
+	[[NSUserDefaults standardUserDefaults] setBool:false forKey:kGTWarnAboutLooseObjects];
+	[[NSUserDefaults standardUserDefaults] setBool:false forKey:@"kGTPromptForCherryPick"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) updateMuteStatus {
-	BOOL muted = [defaults boolForKey:@"GTMutePopSounds"];
+	BOOL muted = [[NSUserDefaults standardUserDefaults] boolForKey:@"GTMutePopSounds"];
 	NSMenu * mainMenu = [[NSApplication sharedApplication] mainMenu];
 	NSMenu * gitty = [[mainMenu itemWithTag:0] submenu];
 	NSMenuItem * mutedItem = [gitty itemWithTag:4];
@@ -199,15 +193,15 @@ static NSString * gityVersion;
 - (void) mutePopSounds:(id) sender {
 	NSMenuItem * item = (NSMenuItem *) sender;
 	[item setState:![item state]];
-	[defaults setBool:[item state] forKey:@"GTMutePopSounds"];
-	[defaults synchronize];
+	[[NSUserDefaults standardUserDefaults] setBool:[item state] forKey:@"GTMutePopSounds"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) toggleStartupItem:(id) sender {
-	BOOL startup = [defaults boolForKey:@"GTRunAtStartup"];
+	BOOL startup = [[NSUserDefaults standardUserDefaults] boolForKey:@"GTRunAtStartup"];
 	if(!startup) [[NSWorkspace sharedWorkspace] installStartupLaunchdItem:@"com.macendeavor.Gity.Agent.plist"];
 	else [[NSWorkspace sharedWorkspace] uninstallStartupLaunchdItem:@"com.macendeavor.Gity.Agent.plist"];
-	[defaults setBool:!startup forKey:@"GTRunAtStartup"];
+	[[NSUserDefaults standardUserDefaults] setBool:!startup forKey:@"GTRunAtStartup"];
 	NSMenu * mainMenu = [[NSApplication sharedApplication] mainMenu];
 	NSMenu * gitty = [[mainMenu itemWithTag:0] submenu];
 	NSMenuItem * launchOnStartup = [gitty itemWithTag:3];
@@ -217,12 +211,12 @@ static NSString * gityVersion;
 - (void) toggleCheckForUpdates:(id) sender {
 	NSMenuItem * item = (NSMenuItem *)sender;
 	[item setState:![item state]];
-	[defaults setBool:[item state] forKey:@"GTGityCheckForUpdates"];
+	[[NSUserDefaults standardUserDefaults] setBool:[item state] forKey:@"GTGityCheckForUpdates"];
 	[sparkle setAutomaticallyChecksForUpdates:[item state]];
 }
 
 - (void) updateLaunchAtStartup {
-	BOOL startup = [defaults boolForKey:@"GTRunAtStartup"];
+	BOOL startup = [[NSUserDefaults standardUserDefaults] boolForKey:@"GTRunAtStartup"];
 	NSMenu * mainMenu = [[NSApplication sharedApplication] mainMenu];
 	NSMenu * gitty = [[mainMenu itemWithTag:0] submenu];
 	NSMenuItem * launchOnStartup = [gitty itemWithTag:3];
@@ -233,14 +227,14 @@ static NSString * gityVersion;
 	NSMenu * mm = [[NSApplication sharedApplication] mainMenu];
 	NSMenu * gm = [[mm itemWithTag:0] submenu];
 	NSMenuItem * sparkleItem = [gm itemWithTag:2];
-	BOOL sparkleState = [defaults boolForKey:@"GTGityCheckForUpdates"];
+	BOOL sparkleState = [[NSUserDefaults standardUserDefaults] boolForKey:@"GTGityCheckForUpdates"];
 	[sparkleItem setState:sparkleState];
 	if(sparkleState)[sparkle checkForUpdatesInBackground];
 }
 
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *) sender {
 	GittyDocument * gd = [self currentDocument];
-	if([defaults boolForKey:kGTIgnoreCommitsAhead]) return NSTerminateNow;
+	if([[NSUserDefaults standardUserDefaults] boolForKey:kGTIgnoreCommitsAhead]) return NSTerminateNow;
 	if(gd) {
 		NSInteger res = [gd shouldQuitNow];
 		if(res == NSCancelButton) return NSTerminateCancel;
@@ -295,7 +289,7 @@ static NSString * gityVersion;
 	NSString * path = [op filename];
 	NSString * realGitPath = [git gitProjectPathFromRevParse:path];
 	if(realGitPath is nil) {
-		[modals runNotAGitRepoAlert];
+		[[GTModalController sharedInstance] runNotAGitRepoAlert];
 		goto cleanup;
 	}
 	NSURL * purl = [NSURL fileURLWithPath:realGitPath];
@@ -314,7 +308,7 @@ cleanup:
 	if(res is NSCancelButton) return;
 	NSString * path = [op filename];
 	if([git isPathGitRepository:path]) {
-		[modals runAlreadyAGitRepoAlert];
+		[[GTModalController sharedInstance] runAlreadyAGitRepoAlert];
 		goto cleanup;
 	}
 	if(![git initRepositoryInPath:path]) {
@@ -331,7 +325,7 @@ cleanup:
 }
 
 - (IBAction) cloneRepo:(id) sender {
-	[modals cloneRepo];
+	[[GTModalController sharedInstance] cloneRepo];
 }
 
 - (NSString *) typeForContentsOfURL:(NSURL *) inAbsoluteURL error:(NSError **) outError {
@@ -342,14 +336,15 @@ cleanup:
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GTDocumentController\n");
 	#endif
+	
 	GDRelease(registration);
 	GDRelease(cliproxy);
 	GDRelease(operations);
 	GDRelease(git);
 	GDRelease(gityVersion);
-	modals=nil;
-	sparkle=nil;
-	defaults=nil;
+
+	sparkle = nil;
+	
 	[super dealloc];
 }
 

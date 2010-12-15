@@ -18,16 +18,20 @@
 #import "GTCloneRepoController.h"
 #import "GTDocumentController.h"
 
-static NSFileManager * fileman;
 
 @implementation GTCloneRepoController
 
 - (void) awakeFromNib {
-	if(repoURL is nil) return;
+	if(repoURL is nil) {
+		return;
+	}
+	
 	[self initButtons];
 	[repoURL setDelegate:self];
-	if(modals is nil) modals=[GTModalController sharedInstance];
-	if(fileman is nil) fileman=[NSFileManager defaultManager];
+	
+	if(modals is nil) {
+		modals = [GTModalController sharedInstance];
+	}
 }
 
 - (void) show {
@@ -112,7 +116,7 @@ static NSFileManager * fileman;
 		return;
 	}
 	BOOL isdir = false;
-	if(![fileman fileExistsAtPath:destinationPath isDirectory:&isdir]) {
+	if(![[NSFileManager defaultManager] fileExistsAtPath:destinationPath isDirectory:&isdir]) {
 		if(!isdir) [modals runCloneDestinationNotExist];
 		else [modals runCloneDestinationNotDirectory];
 	}

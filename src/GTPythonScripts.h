@@ -20,7 +20,6 @@
 @interface GTPythonScripts : NSObject {
 }
 
-+ (void) initMainBundle;
 + (NSString *) getCurrentBranchScript;
 + (NSString *) getBranchNamesScript;
 + (NSString *) getTagNamesScript;

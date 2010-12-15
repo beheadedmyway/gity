@@ -39,7 +39,6 @@
 
 - (id) initWithGD:(GittyDocument *) _gd;
 - (void) setArguments;
-- (void) setEnviron;
 - (void) initializeTask;
 - (void) taskComplete;
 - (void) validateResult;

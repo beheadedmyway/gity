@@ -19,8 +19,6 @@
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
 
-static NSApplication * app;
-
 @implementation GTStatusController
 @synthesize workingProgress;
 @synthesize workingWindow;
@@ -40,7 +38,6 @@ static NSApplication * app;
 
 - (void) lazyInitWithGD:(GittyDocument *) _gd {
 	[super lazyInitWithGD:_gd];
-	if(app is nil) app=[NSApplication sharedApplication];
 }
 
 - (void) initCancelButton {
@@ -64,7 +61,7 @@ static NSApplication * app;
 	[workingProgress startAnimation:nil];
 	[NSApplication detachDrawingThread:@selector(startAnimation:) toTarget:workingProgress withObject:nil];
 	if ([gtwindow isMainWindow])
-		[app beginSheet:workingWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
+		[[NSApplication sharedApplication] beginSheet:workingWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
 	// this is really annoying.  lets nix it.
 	//[workingWindow makeKeyAndOrderFront:nil];
 }
@@ -75,7 +72,7 @@ static NSApplication * app;
 	activeStatus=kGTStartupStatus;
 	[workingProgress startAnimation:nil];
 	[NSApplication detachDrawingThread:@selector(startAnimation:) toTarget:initialLoadIndicator withObject:nil];
-	[app beginSheet:initialLoadWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
+	[[NSApplication sharedApplication] beginSheet:initialLoadWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
 }
 
 - (void) showStatusIndicatorWithLabel:(NSString *) label {
@@ -85,7 +82,7 @@ static NSApplication * app;
 	[self updateWorkingLabel:label];
 	activeStatus = kGTStatusWithLabel;
 	[workingLabeledProgress startAnimation:nil];
-	[app beginSheet:workingLabeledWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
+	[[NSApplication sharedApplication] beginSheet:workingLabeledWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
 }
 
 - (void) showNonCancelableStatusIndicatorWithLabel:(NSString *) label {
@@ -95,7 +92,7 @@ static NSApplication * app;
 	[self updateWorkingLabel:label];
 	activeStatus = kGTStatusWithLabel;
 	[workingLabeledProgress startAnimation:nil];
-	[app beginSheet:workingLabeledWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
+	[[NSApplication sharedApplication] beginSheet:workingLabeledWindow modalForWindow:gtwindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:) contextInfo:nil];
 }
 
 - (void) showSpinner {
@@ -145,17 +142,17 @@ static NSApplication * app;
 	if(!shown) return;
 	shown=false;
 	if(activeStatus is kGTStatus) {
-		[app endSheet:workingWindow];
+		[[NSApplication sharedApplication] endSheet:workingWindow];
 		[workingWindow orderOut:nil];
 		[workingProgress stopAnimation:nil];
 	}
 	if(activeStatus is kGTStatusWithLabel) {
-		[app endSheet:workingLabeledWindow];
+		[[NSApplication sharedApplication] endSheet:workingLabeledWindow];
 		[workingLabeledWindow orderOut:nil];
 		[workingLabeledProgress stopAnimation:nil];
 	}
 	if(activeStatus is kGTStartupStatus) {
-		[app endSheet:initialLoadWindow];
+		[[NSApplication sharedApplication] endSheet:initialLoadWindow];
 		[initialLoadWindow orderOut:nil];
 		[initialLoadIndicator stopAnimation:nil];
 	}

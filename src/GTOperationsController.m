@@ -19,23 +19,22 @@
 #import "GTDocumentController.h"
 
 static BOOL isRunningWithValidLicense = false;
-static GTModalController * modals;
 static NSInteger maxOperationRunCount = 20;
 static NSInteger operationRunCount = 0;
 
 @implementation GTOperationsController
 
 + (void) updateLicenseRunStatus:(BOOL) _isRunningWithValidLicense {
-	isRunningWithValidLicense=_isRunningWithValidLicense;
+	isRunningWithValidLicense = _isRunningWithValidLicense;
 }
 
 - (id) initWithGD:(GittyDocument *) _gd {
-	self=[super initWithGD:_gd];
-	showStatusForHistoryLoadMutex=[[NSObject alloc] init];
-	status=[gd status];
+	self = [super initWithGD:_gd];
+	showStatusForHistoryLoadMutex = [[NSObject alloc] init];
+	status = [gd status];
 	cancelables = [[NSMutableArray alloc] init];
 	networkCancelables = [[NSMutableArray alloc] init];
-	if(modals is nil) modals = [GTModalController sharedInstance];
+
 	return self;
 }
 

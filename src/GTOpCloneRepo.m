@@ -37,7 +37,6 @@
 
 - (void) initializeTask {
 	if([self isCancelled]) return;
-	[self setEnviron];
 	git = [[GTGitCommandExecutor alloc] init];
 	task = [git newPythonBinTask];
 	[task setEnvironment:[self environment]];

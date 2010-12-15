@@ -19,8 +19,6 @@
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
 
-static NSDictionary * environ;
-
 @implementation GTBaseOp
 
 - (void) setArguments{}
@@ -30,62 +28,69 @@ static NSDictionary * environ;
 - (void) wasCancelled{}
 
 - (id) initWithGD:(GittyDocument *) _gd {
-	self=[self init];
-	done=false;
-	canceled=false;
-	readsSTDERR=false;
-	readsSTDOUT=false;
-	[self setEnviron];
+	self = [self init];
+	done = false;
+	canceled = false;
+	readsSTDERR = false;
+	readsSTDOUT = false;
+
 	if(![self isCancelled]) {
 		if(_gd) {
-			gd=_gd;
-			git=[gd git];
-			gitd=[gd gitd];
+			gd = _gd;
+			git = [gd git];
+			gitd = [gd gitd];
 		}
-		fileManager=[NSFileManager defaultManager];
+
+		fileManager = [NSFileManager defaultManager];
 	}
+	
 	return self;
 }
 
 - (void) readSTDOUT {
-	NSFileHandle * s = [[task standardOutput] fileHandleForReading];
+	NSFileHandle *s = [[task standardOutput] fileHandleForReading];
+
 	if([s fileDescriptor] == -1) {
-		done=true;
+		done = true;
 		return;
 	}
+	
 	@try {
-		NSData * content = [s readDataToEndOfFile];
+		NSData *content = [s readDataToEndOfFile];
 		[s closeFile];
-		if(!stoutEncoding) stoutEncoding = NSUTF8StringEncoding;
+		
+		if(!stoutEncoding) {
+			stoutEncoding = NSUTF8StringEncoding;
+		}
+		
 		stout = [[NSString alloc] initWithData:content encoding:stoutEncoding];
 	}
-	@catch (NSException * e) {
+	@catch (NSException *e) {
 		// sometimes there's no stdout, so this is ok.
 	}
 }
 
 - (void) readSTDERR {
-	NSFileHandle * s = [[task standardError] fileHandleForReading];
+	NSFileHandle *s = [[task standardError] fileHandleForReading];
+	
 	if([s fileDescriptor] == -1) {
-		done=true;
+		done = true;
 		return;
 	}
+	
 	@try {
-		NSData * content = [s readDataToEndOfFile];
+		NSData *content = [s readDataToEndOfFile];
 		[s closeFile];
+		
 		sterr = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];		
 	}
-	@catch (NSException * e) {
+	@catch (NSException *e) {
 		// sometimes there's no stderr, so this is ok.
 	}
 }
 
 - (void) updateArguments {
 	[task setArguments:args];
-}
-
-- (void) setEnviron {
-	if(environ == nil) environ = [[[NSProcessInfo processInfo] environment] retain];
 }
 
 - (BOOL) isFinished {
@@ -97,11 +102,11 @@ static NSDictionary * environ;
 }
 
 - (NSDictionary *) environment {
-	return environ;
+	return [[NSProcessInfo processInfo] environment];
 }
 
 - (void) cancel	{
-	canceled=true;
+	canceled = true;
 	[super cancel];
 }
 
@@ -109,16 +114,19 @@ static NSDictionary * environ;
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GTBaseOp\n");
 	#endif
+	
 	GDRelease(stout);
 	GDRelease(sterr);
 	GDRelease(error);
+	
 	readsSTDERR = false;
 	readsSTDOUT = false;
-	gd=nil;
-	git=nil;
-	gitd=nil;
-	done=false;
-	fileManager=nil;
+	gd = nil;
+	git = nil;
+	gitd = nil;
+	done = false;
+	fileManager = nil;
+	
 	[super dealloc];
 }
 

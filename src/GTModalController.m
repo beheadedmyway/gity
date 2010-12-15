@@ -27,7 +27,6 @@
 #import "GTCherryPickAccessoryView.h"
 
 static GTModalController * inst = nil;
-static NSUserDefaults * defaults = nil;
 
 @implementation GTModalController
 @synthesize cloneRepoController;
@@ -44,7 +43,7 @@ static NSUserDefaults * defaults = nil;
 - (id) init {
 	if(self = [super init]) {
 		cloneRepoController = [[GTCloneRepoController alloc] init];
-		if(defaults is nil) defaults = [NSUserDefaults standardUserDefaults];
+		
 		[NSBundle loadNibNamed:@"AlertAccessoryViews" owner:self];
 	}
 	return self;
@@ -238,7 +237,7 @@ static NSUserDefaults * defaults = nil;
 	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([dontAskForCommitsAhead isChecked]) {
-		[defaults setBool:true forKey:kGTIgnoreCommitsAhead];
+		[[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTIgnoreCommitsAhead];
 	}
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
 	[dontAskForCommitsAhead release];
@@ -262,7 +261,7 @@ static NSUserDefaults * defaults = nil;
 	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([dontAskForCommitsAhead isChecked]) {
-		[defaults setBool:true forKey:kGTIgnoreCommitsAhead];
+		[[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTIgnoreCommitsAhead];
 	}
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
 	[dontAskForCommitsAhead release];
@@ -286,7 +285,7 @@ static NSUserDefaults * defaults = nil;
 	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([dontAskToCloseForCommitsAhead isChecked]) {
-		[defaults setBool:true forKey:kGTIgnoreCommitsAhead];
+		[[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTIgnoreCommitsAhead];
 	}
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
 	[dontAskToCloseForCommitsAhead release];
@@ -310,7 +309,7 @@ static NSUserDefaults * defaults = nil;
 	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([dontAskToCloseForCommitsAhead isChecked]) {
-		[defaults setBool:true forKey:kGTIgnoreCommitsAhead];
+		[[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTIgnoreCommitsAhead];
 	}
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
 	[dontAskToCloseForCommitsAhead release];
@@ -318,7 +317,7 @@ static NSUserDefaults * defaults = nil;
 }
 
 - (void) runRemindQuitFileMerge {
-	if([defaults boolForKey:@"kGTRemindToQuitFileMerge"] == true) return;
+	if([[NSUserDefaults standardUserDefaults] boolForKey:@"kGTRemindToQuitFileMerge"] == true) return;
 	NSAlert * alert = [[NSAlert alloc] init];
 	[alert setMessageText:@"Quit FileMerge"];
 	[alert setInformativeText:@"Make sure you quit FileMerge when you're done. Quitting FileMerge will cleanup temporary files."];
@@ -328,8 +327,8 @@ static NSUserDefaults * defaults = nil;
 	[alert setAccessoryView:remindQuitFileMerge];
 	[alert runModal];
 	if([remindQuitFileMerge isChecked]) {
-		[defaults setBool:true forKey:@"kGTRemindToQuitFileMerge"];
-		[defaults synchronize];
+		[[NSUserDefaults standardUserDefaults] setBool:true forKey:@"kGTRemindToQuitFileMerge"];
+		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 	[remindQuitFileMerge release];
 	[alert release];
@@ -354,7 +353,7 @@ static NSUserDefaults * defaults = nil;
 }
 
 - (void) runLooseObjectCountReminder {
-	if([defaults boolForKey:kGTWarnAboutLooseObjects]) return;
+	if([[NSUserDefaults standardUserDefaults] boolForKey:kGTWarnAboutLooseObjects]) return;
 	NSAlert * alert = [[NSAlert alloc] init];
 	[alert setMessageText:@"GC Your Git Repository"];
 	[alert setInformativeText:@"This repository has over 1000 loose objects, you should probably run gc. (Repo > GC)"];
@@ -365,7 +364,7 @@ static NSUserDefaults * defaults = nil;
 	NSInteger res = [alert runModal];
 	if(res==100){}
 	[alert release];
-	if([looseObjectsReminderView isChecked]) [defaults setBool:true forKey:kGTWarnAboutLooseObjects];
+	if([looseObjectsReminderView isChecked]) [[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTWarnAboutLooseObjects];
 	[looseObjectsReminderView release];
 }
 
@@ -388,7 +387,7 @@ static NSUserDefaults * defaults = nil;
 }
 
 - (NSUInteger) runCherryPickNotice:(NSString *) _currentBranch {
-	//if([defaults boolForKey:@"kGTPromptForCherryPick"] == true) return NSOKButton;
+	//if([[NSUserDefaults standardUserDefaults] boolForKey:@"kGTPromptForCherryPick"] == true) return NSOKButton;
 	NSBeep();
 	NSString * msg = [NSString stringWithFormat:@"This creates a new commit on the current branch (%@), and applies a patch of the commit. \n\nSee \"git help cherry-pick\" for more information.",_currentBranch];
 	return NSRunAlertPanel(NSLocalizedStringFromTable(@"Cherry Pick This Commit?",@"Localized",@"cherry pick msg"),

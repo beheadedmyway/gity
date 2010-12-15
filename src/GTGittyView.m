@@ -19,16 +19,19 @@
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
 
-static NSFileManager * fileManager;
 static NSPoint tl;
 static NSPoint tr;
 
 @implementation GTGittyView
 
 - (void) awakeFromNib {
-	if(fileManager is nil)fileManager=[NSFileManager defaultManager];
-	if(!tl.x) tl=NSMakePoint(8,10);
-	if(!tr.x) tr=NSMakePoint(10,8);
+	if(!tl.x) {
+		tl = NSMakePoint(8,10);
+	}
+	
+	if(!tr.x) {
+		tr = NSMakePoint(10,8);
+	}
 }
 
 - (void) lazyInitWithGD:(GittyDocument *) _gd {

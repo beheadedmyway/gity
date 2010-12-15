@@ -23,13 +23,13 @@
 #define kGTGitExecutablePathKey @"GTGitExecPath"
 
 @interface GTGitCommandExecutor : NSObject {
-	NSString * gitProjectPath;
+	NSString *gitProjectPath;
 	NSString *gitExecPath;
-
+	NSMutableDictionary *environment;
 }
 
-@property (copy,nonatomic) NSString * gitProjectPath;
-@property (readonly,nonatomic) NSString * gitExecPath;
+@property (copy,nonatomic) NSString *gitProjectPath;
+@property (readonly,nonatomic) NSString *gitExecPath;
 
 - (void) verifyGitExecutable;
 - (void) verifyGitBinaryVersion;

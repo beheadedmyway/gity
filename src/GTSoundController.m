@@ -17,16 +17,14 @@
 
 #import "GTSoundController.h"
 
-static GTSoundController * inst;
-static NSUserDefaults * defaults;
+static GTSoundController *inst;
 
 @implementation GTSoundController
 
 + (GTSoundController *) sharedInstance {
 	@synchronized(self) {
 		if(!inst) {
-			inst=[[self alloc] init];
-			if(defaults == nil) defaults = [NSUserDefaults standardUserDefaults];
+			inst = [[self alloc] init];
 		}
 	}
 	return inst;
@@ -37,11 +35,12 @@ static NSUserDefaults * defaults;
 		pop = [[NSSound soundNamed:@"Pop"] retain];
 		[pop setVolume:0.8];
 	}
+	
 	return self;
 }
 
 - (BOOL) isMuted {
-	return [defaults boolForKey:@"GTMutePopSounds"];
+	return [[NSUserDefaults standardUserDefaults] boolForKey:@"GTMutePopSounds"];
 }
 
 - (void) pop {

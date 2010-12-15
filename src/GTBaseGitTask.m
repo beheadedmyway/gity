@@ -29,7 +29,6 @@
 
 - (void) initializeTask {
 	if([self isCancelled]) return;
-	[self setEnviron];
 	if(![git gitProjectPath]) return;
 	task=[git newGitBashTask];
 	[task setEnvironment:[self environment]];

@@ -19,9 +19,6 @@
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
 
-static NSUserDefaults * defaults;
-static NSNotificationCenter * center;
-static GTDocumentController * doc;
 
 @implementation GTSourceListView
 @synthesize scrollView;
@@ -31,28 +28,32 @@ static GTDocumentController * doc;
 
 - (void) lazyInitWithGD:(GittyDocument *) _gd {
 	[super lazyInitWithGD:_gd];
-	missingDefaultsExpandState=true;
-	wasBranchesExpanded=false;
-	wasTagsExpanded=false;
-	wasStashExpanded=false;
-	wasSubmodulesExpanded=false;
-	wasRemotesExpanded=false;
+	
+	missingDefaultsExpandState = true;
+	wasBranchesExpanded = false;
+	wasTagsExpanded = false;
+	wasStashExpanded = false;
+	wasSubmodulesExpanded = false;
+	wasRemotesExpanded = false;
+	
 	[sourceListMenuView lazyInitWithGD:_gd];
 	[sourceListView setGd:_gd];
-	doc=[GTDocumentController sharedDocumentController];
-	if(defaults is nil) defaults=[NSUserDefaults standardUserDefaults];
-	splitContentView=[gd splitContentView];
-	leftView=[[gd splitContentView] leftView];
+
+	splitContentView = [gd splitContentView];
+	leftView = [[gd splitContentView] leftView];
 	gitProjectPath = [[git gitProjectPath] copy];
-	NSDictionary * expandState = [defaults objectForKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
+	
+	NSDictionary * expandState = [[NSUserDefaults standardUserDefaults] objectForKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
+	
 	if(expandState == nil) {
-		missingDefaultsExpandState=true;
-		wasBranchesExpanded=true;
-		wasRemotesExpanded=true;
-		wasStashExpanded=true;
-		wasSubmodulesExpanded=true;
-		wasTagsExpanded=true;
-	} else {
+		missingDefaultsExpandState = true;
+		wasBranchesExpanded = true;
+		wasRemotesExpanded = true;
+		wasStashExpanded = true;
+		wasSubmodulesExpanded = true;
+		wasTagsExpanded = true;
+	} 
+	else {
 		missingDefaultsExpandState=false;
 		wasBranchesExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListBranchExpanded"] integerValue];
 		wasTagsExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListTagExpanded"] integerValue];
@@ -64,8 +65,7 @@ static GTDocumentController * doc;
 	
 	[sourceListView setDoubleAction:@selector(doubleClickAction:)];
 	
-	if(center is nil) center=[NSNotificationCenter defaultCenter];
-	[center addObserver:self selector:@selector(onWindowResized) name:NSWindowDidResizeNotification object:[gd gtwindow]];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onWindowResized) name:NSWindowDidResizeNotification object:[gd gtwindow]];
 }
 
 - (void) onWindowResized {
@@ -88,8 +88,8 @@ static GTDocumentController * doc;
 	NSSize lvs = [leftView frame].size;
 	NSString * key = [self getWidthKey];
 	if(key is nil) return;
-	[defaults setInteger:lvs.width forKey:key];
-	[defaults synchronize];
+	[[NSUserDefaults standardUserDefaults] setInteger:lvs.width forKey:key];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) persistViewState {
@@ -112,15 +112,15 @@ static GTDocumentController * doc;
 	else [expandState setValue:@"0" forKey:@"GTSourceListSubmoduleExpanded"];
 	if(wasRemoteBranchesExpanded) [expandState setValue:@"1" forKey:@"GTSourceListRemoteBranchesExpanded"];
 	else [expandState setValue:@"0" forKey:@"GTSourceListRemoteBranchesExpanded"];
-	[defaults setObject:expandState forKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
-	[defaults synchronize];
+	[[NSUserDefaults standardUserDefaults] setObject:expandState forKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 	[expandState release];
 }
 
 - (void) show {
 	NSRect lvf=[leftView frame];
 	NSString * key=[self getWidthKey];
-	int width=[defaults integerForKey:key];
+	int width=[[NSUserDefaults standardUserDefaults] integerForKey:key];
 	NSRect r;
 	if(width > 0) {
 		r = NSMakeRect(0,0,width,lvf.size.height);
@@ -520,7 +520,7 @@ static GTDocumentController * doc;
 	NSString * proj = [git gitProjectPath];
 	NSString * projsl = [proj stringByAppendingString:@"/"];
 	NSString * final = [projsl stringByAppendingString:subspec];
-	[doc openNSURLAndActivate:final];
+	[[GTDocumentController sharedDocumentController] openNSURLAndActivate:final];
 }
 
 - (void) gitDeleteSub:(id) sender {
@@ -807,7 +807,7 @@ static GTDocumentController * doc;
 }
 
 - (void) removeObservers {
-	[center removeObserver:self name:NSWindowDidResizeNotification object:[gd gtwindow]];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:[gd gtwindow]];
 }
 
 - (void) dealloc {

@@ -54,6 +54,8 @@
 #import "GTAdvancedDiffView.h"
 #import "SCEvents.h"
 #import "SCEventListenerProtocol.h"
+#import "Terminal.h"
+
 
 @interface GittyDocument : NSDocument <NSWindowDelegate, SCEventListenerProtocol, QLPreviewPanelDataSource> {
 	BOOL isSourceListHidden;
@@ -204,6 +206,7 @@
 - (void) quickLook:(id) sender;
 - (void) openInFinder:(id) sender;
 - (void) openContainingFolder:(id) sender;
+- (void) openInTerminal:(id)sender;
 - (void) persistWindowState;
 - (void) reload:(id) sender;
 - (void) resolveConflictsWithFileMerge:(id) sender;

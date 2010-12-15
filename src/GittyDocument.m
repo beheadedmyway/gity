@@ -1186,6 +1186,17 @@
 	[workspace selectFile:fullPath inFileViewerRootedAtPath:nil];
 }
 
+- (void) openInTerminal:(id)sender {
+	TerminalApplication *terminal = [SBApplication applicationWithBundleIdentifier: @"com.apple.Terminal"];
+	NSString *workingDirectory = [[git gitProjectPath] stringByAppendingString:@"/"];
+	NSString *shellCommand = [NSString stringWithFormat: @"cd \"%@\"; clear; git status", workingDirectory];
+	
+	[terminal doScript:shellCommand in:nil];
+	[NSThread sleepForTimeInterval: 0.1];
+	[terminal activate];
+}
+
+
 - (void) moveToTrash:(id) sender {
 	NSBeep();
 	

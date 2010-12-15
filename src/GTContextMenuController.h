@@ -76,6 +76,7 @@
 	NSMenuItem * defaultRemote;
 	NSMenuItem * branchDeleteAtItem;
 	NSMenuItem * branchHistoryItem;
+	NSMenuItem * terminalItem;
 	
 	//source list "stash item" menu
 	NSMenu * stashMenu;

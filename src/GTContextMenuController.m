@@ -324,10 +324,12 @@
 		[branchCheckout setEnabled:false];
 		[branchMerge setEnabled:false];
 		[branchDelete setEnabled:false];
+		[terminalItem setEnabled:true];
 	} else {
 		[branchCheckout setEnabled:true];
 		[branchMerge setEnabled:true];
 		[branchDelete setEnabled:true];
+		[terminalItem setEnabled:false];
 	}
 	
 	if([remotes count] < 1) {
@@ -438,6 +440,8 @@
 		[branchActionsMenu addItem:branchExportZip];
 		[branchActionsMenu addItem:branchExportTar];
 		[branchActionsMenu addItem:[NSMenuItem separatorItem]];
+		[branchActionsMenu addItem:terminalItem];
+		[branchActionsMenu addItem:[NSMenuItem separatorItem]];
 		[branchActionsMenu addItem:branchDelete];
 		[branchActionsMenu addItem:branchDeleteAtItem];
 		[branchActionsMenu update];
@@ -461,6 +465,8 @@
 		[branchActionsMenu addItem:[NSMenuItem separatorItem]];
 		[branchActionsMenu addItem:branchExportZip];
 		[branchActionsMenu addItem:branchExportTar];
+		[branchActionsMenu addItem:[NSMenuItem separatorItem]];
+		[branchActionsMenu addItem:terminalItem];
 		[branchActionsMenu addItem:[NSMenuItem separatorItem]];
 		[branchActionsMenu addItem:branchDelete];
 		[branchActionsMenu addItem:branchDeleteAtItem];
@@ -726,6 +732,8 @@
 	[branchActionsMenu addItem:branchExportZip];
 	[branchActionsMenu addItem:branchExportTar];
 	[branchActionsMenu addItem:[NSMenuItem separatorItem]];
+	[branchActionsMenu addItem:terminalItem];
+	[branchActionsMenu addItem:[NSMenuItem separatorItem]];
 	[branchActionsMenu addItem:branchDelete];
 	[branchActionsMenu addItem:branchDeleteAtItem];
 }
@@ -826,6 +834,12 @@
 	[branchHistoryItem setTitle:@"History"];
 	[branchHistoryItem setTarget:sourceListView];
 	[branchHistoryItem setAction:@selector(loadHistoryFromRef:)];
+	
+	terminalItem = [[NSMenuItem alloc] init];
+	[terminalItem setTitle:@"Open With Terminal"];
+	[terminalItem setAction:@selector(openInTerminal:)];
+	[terminalItem setTarget:nil];
+	
 }
 
 - (void) initActiveBranchMenu {
@@ -942,6 +956,7 @@
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GTContextMenuController\n");
 	#endif
+	
 	[gitAddItem release];
 	[gitIgnoreExension release];
 	[gitDestageItem release];
@@ -1029,6 +1044,8 @@
 	[tagHistoryItem release];
 	[branchHistoryItem release];
 	[rbHistoryItem release];
+	[terminalItem release];
+	
 	sourceListView=nil;
 	splitContentView=nil;
 	diffView=nil;

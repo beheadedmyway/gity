@@ -353,6 +353,8 @@
 		07FBCAD210B7E9FB00D4E829 /* UnusedInterface.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07FBCAD110B7E9FB00D4E829 /* UnusedInterface.xib */; };
 		1DDD582C0DA1D0D100B32029 /* GittyDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58280DA1D0D100B32029 /* GittyDocument.xib */; };
 		1DDD582D0DA1D0D100B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD582A0DA1D0D100B32029 /* MainMenu.xib */; };
+		355AA54112B96D06004AAACA /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 355AA54012B96D06004AAACA /* ScriptingBridge.framework */; };
+		355AA54C12B970C7004AAACA /* terminal.png in Resources */ = {isa = PBXBuildFile; fileRef = 355AA54B12B970C7004AAACA /* terminal.png */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.html */; };
 		8D15AC310486D014006FF6A4 /* GittyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* GittyDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -990,6 +992,9 @@
 		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = English; path = English.lproj/Credits.html; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		355AA52E12B96BC3004AAACA /* Terminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terminal.h; sourceTree = "<group>"; };
+		355AA54012B96D06004AAACA /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		355AA54B12B970C7004AAACA /* terminal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terminal.png; sourceTree = "<group>"; };
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Gity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA13385311A1F91C00FDE018 /* env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = env; sourceTree = "<group>"; };
@@ -1043,6 +1048,7 @@
 				075B3FB7117D264E00A1836C /* GDKit.framework in Frameworks */,
 				CA92311312ACE80700349047 /* QuickLook.framework in Frameworks */,
 				CA92311712ACE91600349047 /* Quartz.framework in Frameworks */,
+				355AA54112B96D06004AAACA /* ScriptingBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1425,6 +1431,7 @@
 		07A04373106E010B00B21AB9 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				355AA52D12B96B9C004AAACA /* Terminal */,
 				CABCA81711B6C52D00EB8EEA /* SCEvents */,
 				07DA106F10BF300300F7170D /* cocoafob */,
 				07A04375106E011600B21AB9 /* json */,
@@ -1921,6 +1928,7 @@
 				CA92311612ACE91600349047 /* Quartz.framework */,
 				CA92311212ACE80700349047 /* QuickLook.framework */,
 				0717660E1128DE6D00E0A6B3 /* RegexKit.framework */,
+				355AA54012B96D06004AAACA /* ScriptingBridge.framework */,
 				07CDE0D0109FEF5100B0A99A /* Security.framework */,
 				071766101128DE6D00E0A6B3 /* Sparkle.framework */,
 				07D7F49B10A3C36900348AFE /* SystemConfiguration.framework */,
@@ -2014,6 +2022,14 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		355AA52D12B96B9C004AAACA /* Terminal */ = {
+			isa = PBXGroup;
+			children = (
+				355AA52E12B96BC3004AAACA /* Terminal.h */,
+			);
+			name = Terminal;
+			sourceTree = "<group>";
+		};
 		CA2DBBDF12978B1800831420 /* sourceList */ = {
 			isa = PBXGroup;
 			children = (
@@ -2040,6 +2056,7 @@
 				CA98464E12644ACC008129E2 /* push.png */,
 				CA98464F12644ACC008129E2 /* refresh.png */,
 				CA98465012644ACC008129E2 /* stash.png */,
+				355AA54B12B970C7004AAACA /* terminal.png */,
 			);
 			name = toolbar;
 			path = assets/toolbar;
@@ -2272,6 +2289,7 @@
 				CA2DBC931297BBD500831420 /* submodule.png in Resources */,
 				CA2DBCB71297C55B00831420 /* branches.png in Resources */,
 				CABE68591299080C00CCAD60 /* remoteBranches.png in Resources */,
+				355AA54C12B970C7004AAACA /* terminal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

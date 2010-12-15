@@ -19,15 +19,9 @@
 #import "GTDocumentController.h"
 #import "GTQuickLookItem.h"
 
-static BOOL started;
-static GTDocumentController * doc;
-static GTModalController * modals;
-static NSFileManager * fileManager;
-static NSNotificationCenter * center;
-static NSUserDefaults * defaults;
-static NSWindow * lastMainWindow;
 
 @implementation GittyDocument
+
 @synthesize isSourceListHidden;
 @synthesize historyFilteredView;
 @synthesize historyView;
@@ -38,7 +32,6 @@ static NSWindow * lastMainWindow;
 @synthesize statusBarView;
 @synthesize activeBranchView;
 @synthesize advancedDiffView;
-//@synthesize customWindowTitleController;
 @synthesize git;
 @synthesize gitd;
 @synthesize status;
@@ -61,15 +54,17 @@ static NSWindow * lastMainWindow;
 @synthesize diffView;
 
 #pragma mark initializations
+
 - (void) awakeFromNib {
-	isTerminatingFromSessionExpired=false;
-	justLaunched=true;
-	runningExpiredModal=false;
-	gitd=[[GTGitDataStore alloc] initWithGD:self];
-	sounds=[GTSoundController sharedInstance];
-	contextMenus=[[GTContextMenuController alloc] initWithGD:self];
-	mainMenuHelper=[[GTMainMenuHelper alloc] initWithGD:self];
-	operations=[[GTOperationsController alloc] initWithGD:self];
+	isTerminatingFromSessionExpired = false;
+	justLaunched = true;
+	runningExpiredModal = false;
+	gitd = [[GTGitDataStore alloc] initWithGD:self];
+	sounds = [GTSoundController sharedInstance];
+	contextMenus = [[GTContextMenuController alloc] initWithGD:self];
+	mainMenuHelper = [[GTMainMenuHelper alloc] initWithGD:self];
+	operations = [[GTOperationsController alloc] initWithGD:self];
+	
 	[gitd setRefs];
 }
 
@@ -77,54 +72,88 @@ static NSWindow * lastMainWindow;
 	if(getenv("NSZombieEnabled") || getenv("NSAutoreleaseFreedObjectCheckEnabled")) {
 		NSLog(@"NSZombieEnabled/NSAutoreleaseFreedObjectCheckEnabled enabled!");
 	}
-	self=[super init];
-	if(doc is nil) doc=[GTDocumentController sharedDocumentController];
-	if(fileManager is nil) fileManager=[NSFileManager defaultManager];
-	if(modals is nil) modals=[GTModalController sharedInstance];
-	if(center is nil) center=[NSNotificationCenter defaultCenter];
-	if(defaults is nil) defaults=[NSUserDefaults standardUserDefaults];
-	git=[[GTGitCommandExecutor alloc] init];
+	
+	self = [super init];
+		
+	git = [[GTGitCommandExecutor alloc] init];
+	
 	[self initNotifications];
+	
 	return self;
 }
 
 - (void) initNotifications {
-	[center addObserver:self selector:@selector(applicationWillBecomeActive) name:NSApplicationWillBecomeActiveNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillBecomeActive) name:NSApplicationWillBecomeActiveNotification object:nil];
 }
 
 #pragma mark licensing / expiration methods.
+
 - (void) expireSession {
-	if(runningExpiredModal) return;
-	isTerminatingFromSessionExpired=true;
+	if(runningExpiredModal) {
+		return;
+	}
+	
+	isTerminatingFromSessionExpired =true;
 	runningExpiredModal=true;
+	
 	[operations cancelAll];
 	[operations cancelNetworkOperations];
-	[modals runDocumentExpired];
+	[[GTModalController sharedInstance] runDocumentExpired];
+	
 	[[NSApplication sharedApplication] terminate:nil];
 }
 
 #pragma mark window, and application helpers
+
 - (NSInteger) shouldCloseNow {
-	if(isTerminatingFromSessionExpired) return true;
-	if([gitd isHeadDetatched]) return true;
-	if([[gitd commitsAhead] isEqual:@"0"]) return true;
-	NSString * remote = [gitd defaultRemoteForBranch:[gitd activeBranchName]];
-	if([[gitd commitsAhead] isEqual:@"1"]) return [modals runCloseCommitsAheadForSingleModalWithCount:[gitd commitsAhead] andRemote:remote andBranch:[gitd activeBranchName]];
-	return [modals runCloseCommitsAheadModalWithCount:[gitd commitsAhead] andRemote:remote andBranch:[gitd activeBranchName]];
+	if(isTerminatingFromSessionExpired) {
+		return true;
+	}
+	
+	if([gitd isHeadDetatched]) {
+		return true;
+	}
+	
+	if([[gitd commitsAhead] isEqual:@"0"]) {
+		return true;
+	}
+	
+	NSString *remote = [gitd defaultRemoteForBranch:[gitd activeBranchName]];
+	
+	if([[gitd commitsAhead] isEqual:@"1"]) {
+		return [[GTModalController sharedInstance] runCloseCommitsAheadForSingleModalWithCount:[gitd commitsAhead] andRemote:remote andBranch:[gitd activeBranchName]];
+	}
+	
+	return [[GTModalController sharedInstance] runCloseCommitsAheadModalWithCount:[gitd commitsAhead] andRemote:remote andBranch:[gitd activeBranchName]];
 }
 
 - (NSInteger) shouldQuitNow {
-	if(isTerminatingFromSessionExpired) return true;
-	if([gitd isHeadDetatched]) return true;
-	if([[gitd commitsAhead] isEqual:@"0"]) return true;
-	NSString * remote = [gitd defaultRemoteForBranch:[gitd activeBranchName]];
-	if([[gitd commitsAhead] isEqual:@"1"]) return [modals runCommitsAheadForSingleModalWithCount:[gitd commitsAhead] andRemote:remote andBranch:[gitd activeBranchName]];
-	return [modals runCommitsAheadModalWithCount:[gitd commitsAhead] andRemote:remote andBranch:[gitd activeBranchName]];
+	if(isTerminatingFromSessionExpired) {
+		return true;
+	}
+	
+	if([gitd isHeadDetatched]) {
+		return true;
+	}
+	
+	if([[gitd commitsAhead] isEqual:@"0"]) {
+		return true;
+	}
+	
+	NSString *remote = [gitd defaultRemoteForBranch:[gitd activeBranchName]];
+	
+	if([[gitd commitsAhead] isEqual:@"1"]) {
+		return [[GTModalController sharedInstance] runCommitsAheadForSingleModalWithCount:[gitd commitsAhead] andRemote:remote andBranch:[gitd activeBranchName]];
+	}
+	
+	return [[GTModalController sharedInstance] runCommitsAheadModalWithCount:[gitd commitsAhead] andRemote:remote andBranch:[gitd activeBranchName]];
 }
 
 #pragma mark window delegate methods and other methods that wait or react to some window operation.
+
 - (void) windowControllerDidLoadNib:(NSWindowController *) controller {
 	[super windowControllerDidLoadNib:controller];
+	
 	[gtwindow setFrameUsingName:[git gitProjectPath]];
 	[gtwindow setDelegate:self];
 	[git setGitProjectPath:[[self fileURL] path]];
@@ -145,8 +174,7 @@ static NSWindow * lastMainWindow;
 	[newTrackBranch lazyInitWithGD:self];
 	[fetchTags lazyInitWithGD:self];
 	[historySearch lazyInitWithGD:self];
-	[[modals cloneRepoController] lazyInitWithGD:self];
-	//[customWindowTitleController lazyInitWithGD:self];
+	[[[GTModalController sharedInstance] cloneRepoController] lazyInitWithGD:self];
 	[contentHSplitView lazyInitWithGD:self];
 	[diffView lazyInitWithGD:self];
 	[splitContentView lazyInitWithGD:self];
@@ -160,32 +188,29 @@ static NSWindow * lastMainWindow;
 	[historySearch lazyInitWithGD:self];
 	[historyFilteredView lazyInitWithGD:self];
 	[advancedDiffView lazyInitWithGD:self];
+
 	topSplitView = [contentHSplitView topView];
 	bottomSplitView = [contentHSplitView bottomView];
 	rightView = [splitContentView rightView];
-	//[remoteView lazyInitWithGD:self];
+	
 	[splitContentView show];
 	[sourceListView show];
 	[stateBarView show];
 	[activeBranchView show];
-	//[customWindowTitleController update];
-	
-	// Setup FSEvents so we know when files get changed.
-	/*fileEvents = [[SCEvents alloc] init];
-	fileEvents.delegate = self;
-	fileEvents.ignoreEventsFromSubDirs = NO;
-	fileEvents.notificationLatency = 1.0;
-	fileEvents.excludedPaths = [NSArray arrayWithObject:[[[self fileURL] path] stringByAppendingPathComponent:@".git/vendor/gity/tmp/"]];
-	[fileEvents startWatchingPaths:[NSArray arrayWithObject:[[self fileURL] path]]];*/
-	
+		
 	NSMutableDictionary *documents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"] mutableCopy];
-	if (!documents)
+	
+	if (!documents) {
 		documents = [[NSMutableDictionary alloc] init];
+	}
+	
 	if (documents) {
 		[documents setValue:[NSNumber numberWithBool:YES] forKey:[[self fileURL] absoluteString]];
 		[[NSUserDefaults standardUserDefaults] setValue:documents forKey:@"lastDocuments"];
 	}	
+	
 	[documents release];
+	
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
 	[self waitForWindow];
@@ -197,27 +222,40 @@ static NSWindow * lastMainWindow;
 }
 
 - (BOOL) windowShouldClose:(id) sender {
-	if([defaults boolForKey:kGTIgnoreCommitsAhead]) return true;
+	if([[NSUserDefaults standardUserDefaults] boolForKey:kGTIgnoreCommitsAhead]) {
+		return true;
+	}
+	
 	NSInteger res = [self shouldCloseNow];
-	if(res == NSCancelButton) return false;
+	
+	if(res == NSCancelButton) {
+		return false;
+	}
+	
 	[self persistWindowState];
+	
 	userClosedWindow = YES;
+	
 	return true;
 }
 
 - (void) windowWillClose:(NSNotification *) notification {
-	if (userClosedWindow)
-	{
+	if (userClosedWindow) {
 		NSMutableDictionary *documents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"] mutableCopy];
-		if (!documents)
+		
+		if (!documents) {
 			documents = [[NSMutableDictionary alloc] init];
+		}
+		
 		if (documents) {
 			[documents removeObjectForKey:[[self fileURL] absoluteString]];
 			[[NSUserDefaults standardUserDefaults] setValue:documents forKey:@"lastDocuments"];
 		}
+		
 		[documents release];
 		[[NSUserDefaults standardUserDefaults] synchronize];
-	}	
+	}
+	
 	[operations cancelAll];
 	[historyView removeObservers];
 	[sourceListView removeObservers];
@@ -225,46 +263,61 @@ static NSWindow * lastMainWindow;
 
 - (void) windowDidBecomeMain:(NSNotification *) notification {
 	if(justLaunched) {
-		justLaunched=false;
+		justLaunched = false;
 		return;
 	}
-	if(lastMainWindow == gtwindow) return;
+		
 	[mainMenuHelper invalidate];
-	lastMainWindow=gtwindow;
+	
 	// we're using FSEvents now, this shouldn't be needed anymore.
+	
 	[self updateAfterFilesChanged:nil];
 }
 
 - (void) updateAfterFilesChanged:(id)sender {
+	
 	// lets make sure this is on the main thread due to FSEvents
+	
 	if ([NSThread isMainThread]) {
 		needsFileUpdates = YES;
+		
 		if([self isCurrentViewConfigView]) {
-			if([configView isOnGlobalConfig]) 
+			if([configView isOnGlobalConfig]) {
 				[operations runGetGlobalConfigs];
-			else 
+			}
+			else { 
 				[operations runGetConfigs];
+			}
 		}
 		else if([self isCurrentViewHistoryView]) {
 			[historyView invalidate];
-		} else {
+		} 
+		else {
 			[operations runRefreshOperation];
 			needsFileUpdates = NO;
 		}
-	} else {
+	} 
+	else {
+		
 		// lets call it on the main thread.
+		
 		[self performSelectorOnMainThread:@selector(updateAfterFilesChanged:) withObject:nil waitUntilDone:NO];
 	}
 
 }
 
 - (void) waitForWindow {
-	if(![gtwindow isVisible]) [NSTimer scheduledTimerWithTimeInterval:.001 target:self selector:@selector(waitForWindow) userInfo:nil repeats:false];
-	else [self windowReady];
+	if(![gtwindow isVisible]) {
+		[NSTimer scheduledTimerWithTimeInterval:.001 target:self selector:@selector(waitForWindow) userInfo:nil repeats:false];
+	}
+	else {
+		[self windowReady];
+	}
 }
 
 - (void) windowReady {
 	[GTOperationsController updateLicenseRunStatus:[[[GTDocumentController sharedDocumentController] registration] isRunningWithValidLicense]];
+	
 	[self runStartupOperation];
 }
 
@@ -272,55 +325,44 @@ static NSWindow * lastMainWindow;
 	[gtwindow saveFrameUsingName:[git gitProjectPath]];
 	[sourceListView saveSizeToDefaults];
 	[sourceListView persistViewState];
-	[defaults synchronize];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) adjustMinWindowSize {
 	return;
-	int h = 175;
-	float s = [stateBarView getRequiredWidth];
-	NSSize news = NSMakeSize([statusBarView getTotalButtonWidth]+125+s,h);
-	[gtwindow setMinSize:news];
-	NSRect frame = NSMakeRect([gtwindow frame].origin.x,[gtwindow frame].origin.y,news.width,[gtwindow frame].size.height);
-	NSRect wframe = [gtwindow frame];
-	if(wframe.size.width < frame.size.width) [gtwindow setFrame:frame display:true];
 }
 
 - (BOOL)validateToolbarItem:(NSToolbarItem *)theItem
 {
-	if ([[theItem itemIdentifier] isEqualToString:@"addIdentifier"] ||
-		[[theItem itemIdentifier] isEqualToString:@"addCommitIdentifier"] ||
-		[[theItem itemIdentifier] isEqualToString:@"commitIdentifier"])
-	{
-		if([activeBranchView selectedFilesCount] < 1) return NO;
-		return YES;
+	if ([[theItem itemIdentifier] isEqualToString:@"addIdentifier"] || [[theItem itemIdentifier] isEqualToString:@"addCommitIdentifier"] || [[theItem itemIdentifier] isEqualToString:@"commitIdentifier"]) {
+		if([activeBranchView selectedFilesCount] < 1) {
+			return NO;
+		}
 	}
 	
 	return YES;
 }
 
 #pragma custom getters
+
 - (GTModalController *) modals {
-	return modals;
+	return [GTModalController sharedInstance];
 }
 
 #pragma mark operations
+
 - (void) runStartupOperation {
 	[status showStartupIndicator];
 	[operations runStartupOperation];
 }
 
 #pragma mark application notifications
+
 - (void) applicationWillBecomeActive {
-	if(!started) {
-		started=true;
-		return;
-	}
-	// we're using FSEvents now, this shouldn't be needed.
-	//if(lastMainWindow==gtwindow) [self updateAfterWindowBecameActive];
 }
 
 #pragma mark view and document methods.
+
 - (BOOL) isThisDocumentForURL:(NSURL *) proposedURL {
 	return [[git gitProjectPathAsNSURL] isEqual:proposedURL];
 }
@@ -346,13 +388,20 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) reload:(id) sender {
-	if([self isCurrentViewActiveBranchView]) [operations runRefreshOperation];
-	else if([self isCurrentViewConfigView]) [configView reload];
-	else if([self isCurrentViewHistoryView]) [historyView invalidate];
+	if([self isCurrentViewActiveBranchView]) {
+		[operations runRefreshOperation];
+	}
+	else if([self isCurrentViewConfigView]) {
+		[configView reload];
+	}
+	else if([self isCurrentViewHistoryView]) {
+		[historyView invalidate];
+	}
 }
 
 - (void) showDifferView:(id) sender {
 	NSLog(@"showDifferView");
+	
 	[activeBranchView hide];
 	[historyView hide];
 	[historyDetailsContainerView hide];
@@ -369,61 +418,92 @@ static NSWindow * lastMainWindow;
 
 - (void) showActiveBranchWithDiffUpdate:(BOOL) _invalidateDiffView forceIfAlreadyActive:(BOOL) _force {
 	if([self isCurrentViewActiveBranchView] && !_force) return;
+	
 	[toolbar setSelectedItemIdentifier:@"changesIdentifier"];
 	[advancedDiffView hide];
 	[historyView hide];
 	[historyDetailsContainerView hide];
 	[configView hide];
 	[activeBranchView activateTableView];
-	if(isSourceListHidden) [contentHSplitView showInView:[gtwindow contentView] withAdjustments:NSMakeRect(0,22,0,-50)];
-	else [contentHSplitView showInView:rightView withAdjustments:NSMakeRect(0,0,0,-28)];
-	if([gitd isHeadDetatched]) [stateBarView showDetatchedHeadState];
-	else [stateBarView showActiveBranchState];
+	
+	if(isSourceListHidden) {
+		[contentHSplitView showInView:[gtwindow contentView] withAdjustments:NSMakeRect(0, 22, 0, -50)];
+	}
+	else {
+			[contentHSplitView showInView:rightView withAdjustments:NSMakeRect(0,0,0,-28)];
+	}
+	
+	if([gitd isHeadDetatched]) {
+		[stateBarView showDetatchedHeadState];
+	}
+	else {
+		[stateBarView showActiveBranchState];
+	}
+	
 	[statusBarView updateAfterViewChange];
 	[activeBranchView showInView:topSplitView];
 	[diffView showInView:bottomSplitView];
 	[statusBarView invalidateSelfFrame];
-	if(_invalidateDiffView) [diffView invalidate];
+	
+	if(_invalidateDiffView) {
+		[diffView invalidate];
+	}
+	
 	[mainMenuHelper invalidate];
 	[contextMenus invalidate];
-	if (needsFileUpdates)
+	
+	if (needsFileUpdates) {
 		[self updateAfterFilesChanged:nil];
+	}
 }
 
 - (void) showRemoteViewForRemote:(NSString *) remote {
 	return;
-	if([self isCurrentViewRemoteView]) return;
-	[advancedDiffView hide];
-	[remoteView showForRemote:remote];
-	[stateBarView showRemoteStateForRemote:remote];
-	[statusBarView hide];
-	[mainMenuHelper invalidate];
-	[contextMenus invalidate];
 }
 
 - (void) showHistory:(id) sender {
-	if([gitd isHeadDetatched]) [self showHistoryFromRef:[gitd currentAbbreviatedSha]];
-	else [self showHistoryFromRef:[gitd activeBranchName]];
+	if([gitd isHeadDetatched]) {
+		[self showHistoryFromRef:[gitd currentAbbreviatedSha]];
+	}
+	else {
+		[self showHistoryFromRef:[gitd activeBranchName]];
+	}
 }
 
 - (void) showHistoryFromRef:(NSString *) _refName {
-	if([sourceListView wasJustUpdated]) return;
+	if([sourceListView wasJustUpdated]) {
+		return;
+	}
+	
 	BOOL shouldInvalidateHistory = false;
 	BOOL shouldDoShow = false;
+	
 	[toolbar setSelectedItemIdentifier:@"historyIdentifier"];
+	
 	if(![[historyView currentRef] isEqual:_refName]) {
 		[historyView setHistoryRefName:_refName];
-		shouldInvalidateHistory=true;
+		
+		shouldInvalidateHistory = true;
 	}
-	if(![self isCurrentViewHistoryView]) shouldDoShow=true;
+	
+	if(![self isCurrentViewHistoryView]) {
+		shouldDoShow = true;
+	}
+	
 	if(shouldDoShow) {
 		[advancedDiffView hide];
 		[activeBranchView hide];
 		[statusBarView hide];
 		[diffView hide];
 		[configView hide];
-		if(isSourceListHidden) [contentHSplitView showInView:[gtwindow contentView] withAdjustments:NSMakeRect(0,22,0,-50)];
-		else [contentHSplitView showInView:rightView withAdjustments:NSMakeRect(0,0,0,-28)];
+		
+		if(isSourceListHidden) {
+			[contentHSplitView showInView:[gtwindow contentView] withAdjustments:NSMakeRect(0, 22, 0, -50)];
+		}
+		else {
+			[contentHSplitView showInView:rightView withAdjustments:NSMakeRect(0, 0, 0, -28)];
+		}
+		
 		[stateBarView showHistoryStateWithRefName:_refName];
 		[historyView showInView:topSplitView];
 		[historyDetailsContainerView showInView:bottomSplitView];
@@ -431,8 +511,12 @@ static NSWindow * lastMainWindow;
 		[contextMenus invalidate];
 		[historyView activateTableView];
 	}
+	
 	if(shouldInvalidateHistory) {
-		if(!shouldDoShow) [stateBarView showHistoryStateWithRefName:_refName];
+		if(!shouldDoShow) {
+			[stateBarView showHistoryStateWithRefName:_refName];
+		}
+		
 		[historyView invalidate];
 	}
 }
@@ -446,47 +530,59 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) toggleSourceList:(id) sender {
-	NSMenuItem * item = (NSMenuItem *) sender;
+	NSMenuItem *item = (NSMenuItem *) sender;
+	
 	if([[item title] isEqual:@"Show Source List"]) {
 		[item setTitle:@"Hide Source List"];
 		[self showSourceList];
-	} else {
+	} 
+	else {
 		[item setTitle:@"Show Source List"];
 		[self hideSourceList];
 	}
 }
 
 - (void) showSourceList {
-	isSourceListHidden=false;
+	isSourceListHidden = false;
+	
 	[contentHSplitView removeFromSuperview];
 	[[gtwindow contentView] addSubview:splitContentView];
 	[stateBarView show];
+	
 	if([self isCurrentViewActiveBranchView]) {
 		[self showActiveBranchWithDiffUpdate:false forceIfAlreadyActive:true];
-	} else if([self isCurrentViewHistoryView]) {
+	} 
+	else if([self isCurrentViewHistoryView]) {
 		[self showHistory:nil];
-	} else if([self isCurrentViewConfigView]) {
+	} 
+	else if([self isCurrentViewConfigView]) {
 		[self showConfig:nil];
 	}
 }
 
 - (void) hideSourceList {
-	isSourceListHidden=true;
+	isSourceListHidden = true;
+	
 	[splitContentView removeFromSuperview];
-	[contentHSplitView showInView:[gtwindow contentView] withAdjustments:NSMakeRect(0,22,0,-50)];
+	[contentHSplitView showInView:[gtwindow contentView] withAdjustments:NSMakeRect(0, 22, 0, -50)];
 	[stateBarView showWithHiddenSourceList];
+	
 	if([self isCurrentViewConfigView]) {
 		[configView show];
 	}
 }
 
 #pragma mark operation result, and operation callback/complete methods.
+
 - (void) unknownErrorFromOperation:(NSString *) error {
 	if(![gtwindow isVisible] || [status isShowingSheet]) {
 		GDRelease(_tmpUnknownError);
+		
 		_tmpUnknownError = [error copy];
+		
 		[self tryToShowUnknownError];
-	} else {
+	} 
+	else {
 		[unknownError showAsSheetWithError:error];
 	}
 }
@@ -494,9 +590,12 @@ static NSWindow * lastMainWindow;
 - (void) tryToShowUnknownError {
 	if(![gtwindow isVisible] || [status isShowingSheet]) {
 		[NSTimer scheduledTimerWithTimeInterval:.3 target:self selector:@selector(tryToShowUnknownError) userInfo:nil repeats:false];
-	} else {
+	} 
+	else {
 		NSBeep();
+		
 		[unknownError showAsSheetWithError:_tmpUnknownError];
+		
 		GDRelease(_tmpUnknownError);
 	}
 }
@@ -520,8 +619,7 @@ static NSWindow * lastMainWindow;
 	[contextMenus invalidateActiveBranchViewMenus];
 	[diffView invalidate];
 	
-	if ([[QLPreviewPanel sharedPreviewPanel] isVisible])
-	{
+	if ([[QLPreviewPanel sharedPreviewPanel] isVisible]) {
 		[self quickLook:nil];
 	}
 }
@@ -547,20 +645,29 @@ static NSWindow * lastMainWindow;
 
 - (void) onRefreshOperationComplete {
 	if([self isCurrentViewActiveBranchView]) {
-		if([gitd isHeadDetatched]) [stateBarView showDetatchedHeadState];
-		else [stateBarView showActiveBranchState];
+		if([gitd isHeadDetatched]) {
+			[stateBarView showDetatchedHeadState];
+		}
+		else {
+			[stateBarView showActiveBranchState];
+		}
 	}
+	
 	[statusBarView update];
 	[activeBranchView update];
 	[diffView invalidate];
 	[mainMenuHelper invalidate];
 	[contextMenus invalidate];
-	//[self adjustMinWindowSize];
-	if (commit.addBeforeCommit)
+
+	if (commit.addBeforeCommit) {
 		[commit finishTwoStageCommit];
+	}
+	
 	[sourceListView update];
 	[operations runGetCommitsAheadWithoutSpinner];
+	
 	// update the history...
+	
 	[historyView invalidate];
 }
 
@@ -571,8 +678,9 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) onGotLooseObjectsCount {
-	NSInteger lc = [gitd looseObjects];
-	if(lc > 1000) [modals runLooseObjectCountReminder];
+	if([gitd looseObjects] > 1000) {
+		[[GTModalController sharedInstance] runLooseObjectCountReminder];
+	}
 }
 
 - (void) onGetConfigsComplete {
@@ -598,7 +706,10 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) onNewRemoteComplete {
-	if([newRemote lastButtonValue] == NSCancelButton) return;
+	if([newRemote lastButtonValue] == NSCancelButton) {
+		return;
+	}
+	
 	[operations runNewRemote:[newRemote remoteNameValue] withURL:[newRemote remoteURLValue]];
 }
 
@@ -639,23 +750,20 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) onGitAddComplete {
-	//if(commitAfterAdd) [self gitCommit:nil];
-	/*if (commit.addBeforeCommit)
-	{
-		if([gitd stagedFilesCount] >= 1)
-			[operations runCommitOperation];
-		else
-			NSBeep();
-	}
-	commit.addBeforeCommit = false;
-	[commit disposeNibs];*/
 }
 
 #pragma mark search helper methods
+
 - (void) search:(NSString *) term {
-	isSearching=true;
-	if([self isCurrentViewHistoryView]) [historyView search:term];
-	if([self isCurrentViewActiveBranchView]) [activeBranchView search:term];
+	isSearching = true;
+	
+	if([self isCurrentViewHistoryView]) {
+		[historyView search:term];
+	}
+	
+	if([self isCurrentViewActiveBranchView]) {
+		[activeBranchView search:term];
+	}
 }
 
 - (void) onSearch {
@@ -663,10 +771,14 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) clearSearch {
-	isSearching=false;
+	isSearching = false;
+	
 	[historyView clearSearch];
 	[activeBranchView clearSearch];
-	if([self isCurrentViewHistoryView]) [historyDetailsContainerView invalidate];
+	
+	if([self isCurrentViewHistoryView]) {
+		[historyDetailsContainerView invalidate];
+	}
 }
 
 - (void) onClearSearch {
@@ -686,14 +798,23 @@ static NSWindow * lastMainWindow;
 }
 
 #pragma mark git* methods - these are methods that are called from other controllers, or from the main menu.
+
 - (void) gitApplyPatch:(id) sender {
-	NSOpenPanel * op = [NSOpenPanel openPanel];
+	NSOpenPanel *op = [NSOpenPanel openPanel];
+	
 	[op setCanChooseDirectories:false];
 	[op setCanChooseFiles:true];
+	
 	NSInteger res = [op runModalForTypes:[NSArray arrayWithObjects:@"patch",@"diff",nil]];
-	if(res == NSCancelButton) return;
-	NSString * patchFile = [[op filename] copy];
+	
+	if(res == NSCancelButton) {
+		return;
+	}
+	
+	NSString *patchFile = [[op filename] copy];
+	
 	[operations runPatchApplyWithFile:patchFile];
+	
 	[patchFile release];
 }
 
@@ -706,20 +827,23 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) gitAdd:(id) sender {
-	if([activeBranchView selectedFilesCount] < 1) return;
-	commitAfterAdd=false;
+	if([activeBranchView selectedFilesCount] < 1) {
+		return;
+	}
+	
+	commitAfterAdd = false;
+	
 	[operations runAddFilesOperation];
 }
 
-/*- (void) gitAddAndCommit:(id) sender {
-	if([activeBranchView selectedFilesCount] < 1) return;
-	commitAfterAdd=true;
-	[operations runAddFilesOperation];
-}*/
 
 - (void) gitAddAndCommit:(id) sender {
-	if([activeBranchView selectedFilesCount] < 1) return;
-	commit.addBeforeCommit=true;
+	if([activeBranchView selectedFilesCount] < 1) {
+		return;
+	}
+	
+	commit.addBeforeCommit = true;
+	
 	[self gitCommit:nil];
 }
 
@@ -734,19 +858,23 @@ static NSWindow * lastMainWindow;
 - (void) gitCommit:(id) sender {
 	if([gitd isConflicted]) {
 		NSBeep();
-		[modals runConflictedStateForCheckout];
+		[[GTModalController sharedInstance] runConflictedStateForCheckout];
 		return;
 	}
+	
 	if([gitd stagedFilesCount] < 1 && !commit.addBeforeCommit) {
 		NSBeep();
 		return;
 	}
+	
 	[commit showAsSheet];
 }
 
 - (void) gitRemove:(id) sender {
-	NSInteger verified = [modals verifyGitRemove];
-	if(verified == NSCancelButton) return;
+	if([[GTModalController sharedInstance] verifyGitRemove] == NSCancelButton) {
+		return;
+	}
+	
 	[operations runRemoveFilesOperation];
 }
 
@@ -775,31 +903,41 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) gitIgnore:(id) sender {
-	NSMutableArray * files = [activeBranchView selectedFiles];
+	NSMutableArray *files = [activeBranchView selectedFiles];
+	
 	if(files is nil) {
 		NSBeep();
 		return;
 	}
+	
 	[operations runIgnoreFiles:files];
 }
 
 - (void) gitIgnoreExtension:(id) sender {
-	NSString * ext = [activeBranchView getSelectedFileExtension];
-	if([ext isEqual:@""]) return;
+	NSString *ext = [activeBranchView getSelectedFileExtension];
+	
+	if([ext isEqual:@""]) {
+		return;
+	}
+	
 	[operations runIgnoreExtension:ext];
 }
 
 - (void) gitIgnoreDir:(id) sender {
-	NSMutableArray * files = [activeBranchView selectedFiles];
+	NSMutableArray *files = [activeBranchView selectedFiles];
+	
 	if(files is nil) {
 		NSBeep();
 		return;
 	}
-	NSString * f = [[files objectAtIndex:0] stringByDeletingLastPathComponent];
+	
+	NSString *f = [[files objectAtIndex:0] stringByDeletingLastPathComponent];
+	
 	if([f isEmpty]) {
 		NSBeep();
 		return;
 	}
+	
 	[operations runIgnoreFiles:[NSMutableArray arrayWithObject:[f stringByAppendingString:@"/"]]];
 }
 
@@ -813,6 +951,7 @@ static NSWindow * lastMainWindow;
 
 - (void) gitNewBranch:(NSString *) startBranch {
 	_tmpBranchStartName = [startBranch copy];
+	
 	[singleInput setSheetTitleValue:@"New Branch"];
 	[singleInput setInputLabelValue:@"Enter a name for the new branch (no spaces)"];
 	[singleInput setShowsCheckoutCheckbox:true];
@@ -821,6 +960,7 @@ static NSWindow * lastMainWindow;
 
 - (void) gitNewBranchFromActiveBranch:(id) sender {
 	_tmpBranchStartName = [[gitd activeBranchName] copy];
+	
 	[singleInput setSheetTitleValue:@"New Branch"];
 	[singleInput setInputLabelValue:@"Enter a name for the new branch (no spaces)"];
 	[singleInput setShowsCheckoutCheckbox:true];
@@ -829,6 +969,7 @@ static NSWindow * lastMainWindow;
 
 - (void) gitNewTag:(NSString *) startPoint {
 	_tmpTagStartPoint = [startPoint copy];
+	
 	[singleInput setSheetTitleValue:@"New Tag"];
 	[singleInput setInputLabelValue:@"Enter a name for the new tag (no spaces)"];
 	[singleInput showAsSheetWithCallback:self action:@selector(onNewTagComplete)];
@@ -836,6 +977,7 @@ static NSWindow * lastMainWindow;
 
 - (void) gitNewTagFromActiveBranch:(id) sender {
 	_tmpTagStartPoint = [[gitd activeBranchName] copy];
+	
 	[singleInput setSheetTitleValue:@"New Tag"];
 	[singleInput setInputLabelValue:@"Enter a name for the new tag (no spaces)"];
 	[singleInput showAsSheetWithCallback:self action:@selector(onNewTagComplete)];
@@ -844,13 +986,15 @@ static NSWindow * lastMainWindow;
 - (void) gitNewEmptyBranch:(id) sender {
 	if([gitd isConflicted]) {
 		NSBeep();
-		[modals runConflictedStateForCheckout];
+		[[GTModalController sharedInstance] runConflictedStateForCheckout];
 		return;
 	}
+	
 	if([gitd isDirty]) {
-		[modals runDirIsDirtyForEmptyBranch];
+		[[GTModalController sharedInstance] runDirIsDirtyForEmptyBranch];
 		return;
 	}
+	
 	[singleInput setSheetTitleValue:@"New Empty Branch"];
 	[singleInput setInputLabelValue:@"Enter a name for the new empty branch (no spaces)"];
 	[singleInput showAsSheetWithCallback:self action:@selector(onNewEmptyBranchComplete)];
@@ -859,9 +1003,10 @@ static NSWindow * lastMainWindow;
 - (void) gitStashLocalChanges:(id) sender {
 	if([gitd isConflicted]) {
 		NSBeep();
-		[modals runConflictedStateForCheckout];
+		[[GTModalController sharedInstance] runConflictedStateForCheckout];
 		return;
 	}
+
 	[singleInput setAllowsSpaces:true];
 	[singleInput setSheetTitleValue:@"Stash Local Changes"];
 	[singleInput setInputLabelValue:@"Enter a short description for this stash"];
@@ -893,87 +1038,114 @@ static NSWindow * lastMainWindow;
 }
 
 #pragma mark other actions.
+
 - (void) newRemoteTrackingBranch:(id) sender {
 	[newTrackBranch showAsSheetWithCallback:self action:@selector(onNewRemoteTrackBranchComplete)];
 }
 
 - (void) resolveConflictsWithFileMerge:(id) sender {
-	NSString * fle = [[activeBranchView selectedFiles] objectAtIndex:0];
-	if([activeBranchView selectedFilesCount] == 0 || [activeBranchView selectedFilesCount] > 1) return;
-	if(![fileManager fileExistsAtPath:@"/usr/bin/opendiff"]) {
-		[modals runCantFindFileMerge];
+	NSString *fle = [[activeBranchView selectedFiles] objectAtIndex:0];
+	
+	if([activeBranchView selectedFilesCount] == 0 || [activeBranchView selectedFilesCount] > 1) {
 		return;
 	}
-	[modals runRemindQuitFileMerge];
-	fixingConflict=true;
+	
+	if(![[NSFileManager defaultManager] fileExistsAtPath:@"/usr/bin/opendiff"]) {
+		[[GTModalController sharedInstance] runCantFindFileMerge];
+		return;
+	}
+	
+	[[GTModalController sharedInstance] runRemindQuitFileMerge];
+	
+	fixingConflict = true;
+	
 	[operations runOpenFileMergeForFile:fle];
 }
 
 - (void) openProjectInTextmate:(id) sender {
-	NSString * matePath = nil;
-	if([fileManager fileExistsAtPath:@"/usr/local/bin/mate"]) matePath=@"/usr/local/bin/mate";
-	else if([fileManager fileExistsAtPath:@"/usr/bin/mate"]) matePath=@"/usr/bin/mate";
-	else if([fileManager fileExistsAtPath:@"/opt/local/bin/mate"]) matePath=@"/opt/local/bin/mate";
-	else if([fileManager fileExistsAtPath:@"/bin/mate"]) matePath=@"/bin/mate";
-	else if([fileManager fileExistsAtPath:@"/usr/X11/bin/mate"]) matePath=@"/usr/X11/bin/mate";
+	NSString *matePath = nil;
+	
+	if([[NSFileManager defaultManager] fileExistsAtPath:@"/usr/local/bin/mate"]) {
+		matePath = @"/usr/local/bin/mate";
+	}
+	else if([[NSFileManager defaultManager] fileExistsAtPath:@"/usr/bin/mate"]) {
+		matePath = @"/usr/bin/mate";
+	}
+	else if([[NSFileManager defaultManager] fileExistsAtPath:@"/opt/local/bin/mate"]) {
+		matePath = @"/opt/local/bin/mate";
+	}
+	else if([[NSFileManager defaultManager] fileExistsAtPath:@"/bin/mate"]) {
+		matePath = @"/bin/mate";
+	}
+	else if([[NSFileManager defaultManager] fileExistsAtPath:@"/usr/X11/bin/mate"]) {
+		matePath = @"/usr/X11/bin/mate";
+	}
+	
 	if(matePath == nil) {
-		[modals runCantFindTextmateBinary];
+		[[GTModalController sharedInstance] runCantFindTextmateBinary];
+		
 		return;
 	}
-	NSTask * task = [[NSTask alloc] init];
-	NSMutableArray * args = [[NSMutableArray alloc] init];
+	
+	NSTask *task = [[NSTask alloc] init];
+	NSMutableArray *args = [[NSMutableArray alloc] init];
+	
 	[args addObject:[git gitProjectPath]];
+	
 	[task setLaunchPath:matePath];
 	[task setArguments:args];
 	[task launch];
 	[task waitUntilExit];
 	[task release];
-	task=nil;
+	
+	task = nil;
+	
 	[args release];
 }
 
 - (void) openFile:(id) sender {
-	NSMutableArray * files = [activeBranchView selectedFiles];
+	NSMutableArray *files = [activeBranchView selectedFiles];
+	
 	if([files count] > 1 or [files count] < 1) {
 		NSBeep();
 		return;
 	}
-	NSWorkspace * workspace = [NSWorkspace sharedWorkspace];
-	NSString * fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
+	
+	NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+	NSString *fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
+	
 	[workspace openFile:fullPath];
 }
 
-- (NSInteger)numberOfPreviewItemsInPreviewPanel:(QLPreviewPanel *)panel
-{
+- (NSInteger)numberOfPreviewItemsInPreviewPanel:(QLPreviewPanel *)panel {
 	return 1;
 }
 
-- (id <QLPreviewItem>)previewPanel:(QLPreviewPanel *)panel previewItemAtIndex:(NSInteger)index
-{
-	NSMutableArray * files = [activeBranchView selectedFiles];
+- (id <QLPreviewItem>)previewPanel:(QLPreviewPanel *)panel previewItemAtIndex:(NSInteger)index {
+	NSMutableArray *files = [activeBranchView selectedFiles];
+	
 	if([files count] > 1 or [files count] < 1) {
 		return [[[GTQuickLookItem alloc] initWithPath:nil] autorelease];;
 	}
-	NSString * fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
+	
+	NSString *fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
 	
 	return [[[GTQuickLookItem alloc] initWithPath:fullPath] autorelease];
 }
 
-- (BOOL)acceptsPreviewPanelControl:(QLPreviewPanel *)panel
-{
+- (BOOL)acceptsPreviewPanelControl:(QLPreviewPanel *)panel {
 	return YES;
 }
 
-- (void)beginPreviewPanelControl:(QLPreviewPanel *)panel
-{
+- (void)beginPreviewPanelControl:(QLPreviewPanel *)panel {
 }
 
-- (void)endPreviewPanelControl:(QLPreviewPanel *)panel
-{
+- (void)endPreviewPanelControl:(QLPreviewPanel *)panel {
 }
 
 - (void) quickLook:(id) sender {
-	NSMutableArray * files = [activeBranchView selectedFiles];
+	NSMutableArray *files = [activeBranchView selectedFiles];
+	
 	if([files count] > 1 or [files count] < 1) {
 		NSBeep();
 		return;
@@ -987,38 +1159,54 @@ static NSWindow * lastMainWindow;
 }
 
 - (void) openInFinder:(id) sender {
-	NSMutableArray * files = [activeBranchView selectedFiles];
+	NSMutableArray *files = [activeBranchView selectedFiles];
+	
 	if([files count] > 1 or [files count] < 1) {
 		NSBeep();
 		return;
 	}
-	NSWorkspace * workspace = [NSWorkspace sharedWorkspace];
-	NSString * fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
+	
+	NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+	NSString *fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
+	
 	[workspace selectFile:fullPath inFileViewerRootedAtPath:nil];
 }
 
 - (void) openContainingFolder:(id) sender {
-	NSMutableArray * files = [activeBranchView selectedFiles];
+	NSMutableArray *files = [activeBranchView selectedFiles];
+	
 	if([files count] > 1 or [files count] < 1) {
 		NSBeep();
 		return;
 	}
-	NSWorkspace * workspace = [NSWorkspace sharedWorkspace];
-	NSString * fullPath = [[[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]] stringByDeletingLastPathComponent];
+	
+	NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+	NSString *fullPath = [[[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]] stringByDeletingLastPathComponent];
+	
 	[workspace selectFile:fullPath inFileViewerRootedAtPath:nil];
 }
 
 - (void) moveToTrash:(id) sender {
 	NSBeep();
-	if([modals runMoveToTrashConfirmation] == NSCancelButton) return;
-	NSMutableArray * trash = [activeBranchView selectedFiles];
-	if(trash is nil) return;
-	NSString * fs;
-	NSString * fullPath;
+	
+	if([[GTModalController sharedInstance] runMoveToTrashConfirmation] == NSCancelButton) {
+		return;
+	}
+	
+	NSMutableArray *trash = [activeBranchView selectedFiles];
+	
+	if(trash is nil) {
+		return;
+	}
+	
+	NSString *fs;
+	NSString *fullPath;
+	
 	for(fs in trash) {
 		fullPath = [[git gitProjectPath] stringByAppendingPathComponent:fs];
 		[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation source:[fullPath stringByDeletingLastPathComponent] destination:nil files:[NSArray arrayWithObject:[fullPath lastPathComponent]] tag:NULL];
 	}
+	
 	[operations runRefreshOperation];
 }
 
@@ -1027,6 +1215,7 @@ static NSWindow * lastMainWindow;
 		NSBeep();
 		return;
 	}
+	
 	[mainMenuHelper invalidateViewMenu];
 	[statusBarView toggleAllFiles];
 	[diffView invalidate];
@@ -1037,6 +1226,7 @@ static NSWindow * lastMainWindow;
 		NSBeep();
 		return;
 	}
+	
 	[mainMenuHelper invalidateViewMenu];
 	[activeBranchView activateTableView];
 	[statusBarView toggleStagedFiles];
@@ -1047,6 +1237,7 @@ static NSWindow * lastMainWindow;
 		NSBeep();
 		return;
 	}
+	
 	[mainMenuHelper invalidateViewMenu];
 	[activeBranchView activateTableView];
 	[statusBarView toggleUntrackedFiles];
@@ -1057,6 +1248,7 @@ static NSWindow * lastMainWindow;
 		NSBeep();
 		return;
 	}
+	
 	[mainMenuHelper invalidateViewMenu];
 	[activeBranchView activateTableView];
 	[statusBarView toggleModifiedFiles];
@@ -1067,6 +1259,7 @@ static NSWindow * lastMainWindow;
 		NSBeep();
 		return;
 	}
+	
 	[mainMenuHelper invalidateViewMenu];
 	[activeBranchView activateTableView];
 	[statusBarView toggleDeletedFiles];
@@ -1077,19 +1270,28 @@ static NSWindow * lastMainWindow;
 		NSBeep();
 		return;
 	}
+	
 	[mainMenuHelper invalidateViewMenu];
 	[activeBranchView activateTableView];
 	[statusBarView toggleConflictedFiles];
 }
 
 - (void) moreContext:(id) sender {
-	if([self isCurrentViewActiveBranchView]) [diffView moreContext];
-	else [[historyDetailsContainerView barView] moreContext];
+	if([self isCurrentViewActiveBranchView]) {
+		[diffView moreContext];
+	}
+	else {
+		[[historyDetailsContainerView barView] moreContext];
+	}
 }
 
 - (void) lessContext:(id) sender {
-	if([self isCurrentViewActiveBranchView]) [diffView lessContext];
-	else [[historyDetailsContainerView barView] lessContext];
+	if([self isCurrentViewActiveBranchView]) {
+		[diffView lessContext];
+	}
+	else {
+		[[historyDetailsContainerView barView] lessContext];
+	}
 }
 
 - (void) commitDetails:(id) sender {
@@ -1101,41 +1303,54 @@ static NSWindow * lastMainWindow;
 }
 
 #pragma mark NSDocument methods
+
 - (NSString *) windowNibName {
 	return @"GittyDocument";
 }
 
 - (BOOL) readFromFileWrapper:(NSFileWrapper *) fileWrapper ofType:(NSString *) typeName error:(NSError **) outError {
 	BOOL passes = true;
-	NSString * filename = [[self fileURL] path];
-	NSString * realGitPath = [git gitProjectPathFromRevParse:filename];
-	if(realGitPath is nil) passes = false;
+	NSString *filename = [[self fileURL] path];
+	NSString *realGitPath = [git gitProjectPathFromRevParse:filename];
+	
+	if(realGitPath is nil) {
+		passes = false;
+	}
+	
 	if(!passes) {
-		if(outError is nil) return NO;
-		NSMutableDictionary * userInfo = [NSMutableDictionary dictionary];
-		[userInfo setObject:NSLocalizedStringFromTable(@"It doesn't appear to be a git repository.",@"Localized",@"not a git repo directory")
-					 forKey:NSLocalizedRecoverySuggestionErrorKey];
+		if(outError is nil) {
+			return NO;
+		}
+		
+		NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+		
+		[userInfo setObject:NSLocalizedStringFromTable(@"It doesn't appear to be a git repository.",@"Localized",@"not a git repo directory") forKey:NSLocalizedRecoverySuggestionErrorKey];
 		(*outError) = [[NSError alloc] initWithDomain:NSOSStatusErrorDomain code:0 userInfo:userInfo];
 		passes = FALSE;
 	}
+
 	if(passes) {
-		NSURL * furl = [NSURL fileURLWithPath:realGitPath isDirectory:true];
+		NSURL *furl = [NSURL fileURLWithPath:realGitPath isDirectory:true];
 		[self setFileURL:furl];
 		[git setGitProjectPath:realGitPath];
 	}
+	
 	return passes;
 }
 
 #pragma mark dealloc
+
 - (void) dealloc {
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GittyDocument\n");
 	#endif
+	
 	[fileEvents stopWatchingPaths];
 	[fileEvents release];
-	if(lastMainWindow==gtwindow)lastMainWindow=nil;
-	justLaunched=false;
-	runningExpiredModal=false;
+		
+	justLaunched = false;
+	runningExpiredModal = false;
+	
 	[operations release];
 	[contextMenus release];
 	[mainMenuHelper release];
@@ -1149,6 +1364,7 @@ static NSWindow * lastMainWindow;
 	[historyDetailsContainerView release];
 	[historyView release];
 	[advancedDiffView release];
+	
 	[super dealloc];
 }
 

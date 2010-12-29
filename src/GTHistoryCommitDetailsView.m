@@ -231,7 +231,16 @@
 	if(reInvalidate){
 		reInvalidate=false;
 		[self invalidate];
-	}
+	}	
+}
+
+- (void)webView:(WebView *)sender resource:(id)identifier didFailLoadingWithError:(NSError *)error fromDataSource:(WebDataSource *)dataSource
+{
+	// occasionally, the webview fails to follow the redirect if the user doesn't have a pic.  haven't figured out why yet.
+	// this is a workaround that will break if other external links get added.
+	DOMDocument *dom = [[webView mainFrame] DOMDocument];
+	DOMHTMLElement *gravatarElement = (DOMHTMLElement *)[dom getElementById:@"gravatarPic"];
+	[gravatarElement setAttribute:@"src" value:@"http://www.redf.net/gity/avatar.jpg"];
 }
 
 - (void) onCommitLoaded {
@@ -241,6 +250,7 @@
 	if(![c isMainThread]) return;
 	[self showWebView];
 	[webView setFrameLoadDelegate:self];
+	[webView setResourceLoadDelegate:self];
 	[[webView mainFrame] performSelectorOnMainThread:@selector(stopLoading) withObject:nil waitUntilDone:true];
 	[self performSelectorOnMainThread:@selector(loadHTMLString:) withObject:[commitLoadInfo parsedCommitDetails] waitUntilDone:true];
 }

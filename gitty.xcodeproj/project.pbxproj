@@ -359,6 +359,7 @@
 		8D15AC310486D014006FF6A4 /* GittyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* GittyDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		CA18B4C612CB47E800F34393 /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CA18B4C512CB47E800F34393 /* avatar.jpg */; };
 		CA2DBC831297B8F500831420 /* network.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC821297B8F500831420 /* network.png */; };
 		CA2DBC8D1297BA8C00831420 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC8C1297BA8C00831420 /* tag.png */; };
 		CA2DBC931297BBD500831420 /* submodule.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC921297BBD500831420 /* submodule.png */; };
@@ -998,6 +999,7 @@
 		8D15AC360486D014006FF6A4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D15AC370486D014006FF6A4 /* Gity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA13385311A1F91C00FDE018 /* env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = env; sourceTree = "<group>"; };
+		CA18B4C512CB47E800F34393 /* avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = avatar.jpg; path = assets/avatar.jpg; sourceTree = "<group>"; };
 		CA2DBC821297B8F500831420 /* network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = network.png; sourceTree = "<group>"; };
 		CA2DBC8C1297BA8C00831420 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
 		CA2DBC921297BBD500831420 /* submodule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submodule.png; sourceTree = "<group>"; };
@@ -1940,6 +1942,7 @@
 		355AA2AF12B85F91004AAACA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CA18B4C512CB47E800F34393 /* avatar.jpg */,
 				07F4670E10660D140059F611 /* blackButton2.png */,
 				07F46844106612530059F611 /* blackButton2Down.png */,
 				07F46839106611B70059F611 /* blackButton2Over.png */,
@@ -2290,6 +2293,7 @@
 				CA2DBCB71297C55B00831420 /* branches.png in Resources */,
 				CABE68591299080C00CCAD60 /* remoteBranches.png in Resources */,
 				355AA54C12B970C7004AAACA /* terminal.png in Resources */,
+				CA18B4C612CB47E800F34393 /* avatar.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

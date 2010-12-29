@@ -285,17 +285,6 @@
 	[super dealloc];
 }
 
-- (BOOL)isEqual:(id)object
-{
-	if (![object isKindOfClass:[GTGitFile class]])
-		return NO;
-
-	GTGitFile *otherFile = (GTGitFile *)object;
-	if (otherFile.filename)
-		return [self.filename isEqualToString:otherFile.filename];
-	return NO;
-}
-
 @end
 
 

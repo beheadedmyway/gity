@@ -20,15 +20,15 @@
 #import "defs.h"
 
 typedef enum {
-	kUntracked = 1,
-	kModified = 2,
-	kDeleted = 3,
-	kConflicted = 4,
-	kStageAdded = 5,
-	kStageModified = 6,
-	kStageDeleted = 7,
-	kStageConflicted = 8,
-	kNoStatus = 9
+	kUntracked = 0x1,
+	kModified = 0x2,
+	kDeleted = 0x4,
+	kConflicted = 0x8,
+	kStageAdded = 0x16,
+	kStageModified = 0x32,
+	kStageDeleted = 0x64,
+	kStageConflicted = 0x128,
+	kNoStatus = 0x0
 } GTFileStatusType;
 
 @interface GTGitFile : NSObject <NSCopying> {

@@ -46,6 +46,7 @@
 	GTDiffView * diffView;
 	BOOL useOutline;
 	NSMutableArray *expandedItems;
+	NSUInteger activeState;
 }
 
 @property (retain, nonatomic) NSMutableDictionary *fileDirectory;

@@ -33,7 +33,7 @@
 
 - (void) awakeFromNib {
 	[super awakeFromNib];
-	self.useOutline = NO;
+	self.useOutline = YES;
 	if (!self.useOutline)
 	{
 		[outlineContainer setHidden:YES];
@@ -56,11 +56,36 @@
 	[gd openFile:sender];
 }
 
-- (void)addFile:(GTGitFile *)file toDirectory:(NSMutableDictionary *)dictionary withFileIndex:(NSUInteger)fileIndex
+- (void)clearEmptyDirectories:(NSMutableDictionary *)directory
+{
+	NSMutableArray *children = [directory objectForKey:@"children"];
+	if (children)
+	{
+		NSMutableArray *toBeRemoved = [[[NSMutableArray alloc] init] autorelease];
+		for (NSMutableDictionary *dict in children)
+		{
+			NSMutableArray *subDicts = [dict objectForKey:@"children"];
+			if (subDicts)
+			{
+				[self clearEmptyDirectories:dict];
+				if ([subDicts count] == 0)
+					[toBeRemoved addObject:dict];
+			}
+		}
+		
+		for (NSMutableDictionary *dict in toBeRemoved)
+		{
+			[children removeObject:dict];
+		}
+	}
+}
+
+- (void)addFile:(GTGitFile *)file toDirectory:(NSMutableDictionary *)dictionary withFileIndex:(NSUInteger)fileIndex performFileCheck:(BOOL)fileCheck
 {
 	NSString *path = @"";
 	int index = 0;
 	NSMutableDictionary *currentDict = dictionary;
+	
 	while (path)
 	{
 		BOOL isPath = NO;
@@ -74,18 +99,57 @@
 				[currentDict setObject:children forKey:@"children"];
 			}
 			
+			NSMutableArray *staleObjects = [[[NSMutableArray alloc] init] autorelease];
 			BOOL needsNewEntry = YES;
+
 			for (NSMutableDictionary *item in children)
 			{
+				// sort of an extra catch for instances where its refreshing.
+				// since we're enumerating children, check to see if its been removed
+				// from the main file list, if so, delete it from here too.
+				GTGitFile *thefile = [item objectForKey:@"gitfile"];
+				if (thefile && fileCheck)
+				{
+					BOOL foundOne = NO;
+					for (GTGitFile *tempFile in files)
+					{
+						if ([tempFile.filename isEqualToString:thefile.filename])
+						{
+							foundOne = YES;
+							break;
+						}
+					}
+					if (!foundOne)
+						[staleObjects addObject:item];
+				}
+				/*if (file && ![files containsObject:file])
+				{
+					// queue it up for removal.
+					[staleObjects addObject:item];
+				}*/
+				
+				// if it exists, lets skip it, but update its information, just in case.
 				NSString *name = [item objectForKey:@"name"];
 				if ([name isEqualToString:path])
 				{
 					currentDict = item;
 					needsNewEntry = NO;
+					if (!isPath)
+					{
+						[item setObject:[[file copyWithZone:NSDefaultMallocZone()] autorelease] forKey:@"gitfile"];
+						[item setObject:[NSNumber numberWithUnsignedInt:fileIndex] forKey:@"fileIndex"];
+					}
 					break;
 				}
 			}
 			
+			// clear out those stale objects we found.
+			for (NSMutableDictionary *item in staleObjects)
+			{
+				[children removeObject:item];
+			}
+			
+			// it didn't exist.  we need to make a new entry for it.
 			if (needsNewEntry)
 			{
 				NSMutableDictionary *newEntry = [[[NSMutableDictionary alloc] init] autorelease];
@@ -102,23 +166,28 @@
 			index++;
 		}
 	}
+	
+	// now at this point, we may have directory markers that have no children, so lets clear those out too.
+	[self clearEmptyDirectories:fileDirectory];
 }
 
 - (void)buildFileDirectory;
 {
-	self.fileDirectory = [[NSMutableDictionary alloc] init];
+	BOOL fileCheck = YES;
+	if (!self.fileDirectory)
+	{
+		self.fileDirectory = [[NSMutableDictionary alloc] init];
+		fileCheck = NO;
+	}
 	
 	if (files)
 		for (NSUInteger i = 0; i < [files count]; i++)
 		{
 			GTGitFile *file = [files objectAtIndex:i];
-			[self addFile:file toDirectory:self.fileDirectory withFileIndex:i];		
+			[self addFile:file toDirectory:self.fileDirectory withFileIndex:i performFileCheck:fileCheck];		
 		}
 	
 	[outlineView reloadData];
-	
-	// re-expand items
-	//for (i
 }
 
 - (void)setFiles:(NSMutableArray *)fileArray
@@ -141,7 +210,10 @@
 }
 
 - (void) activateTableView {
-	[gtwindow makeFirstResponder:tableView];
+	if (useOutline)
+		[gtwindow makeFirstResponder:outlineView];
+	else
+		[gtwindow makeFirstResponder:tableView];
 }
 
 - (void) onEscapeKey:(id) sender {
@@ -271,6 +343,7 @@
 - (void) appendFiles:(NSMutableArray *) _files toArray:(NSMutableArray *) _appendTo forType:(int) _type {
 	NSMutableArray * adds = [GTGitFile createArrayOfItemsFromArray:_files ofStatusType:_type];
 	[_appendTo addObjectsFromArray:adds];
+	activeState |= _type;
 }
 
 - (void) updateFromStatusBarView {
@@ -280,6 +353,8 @@
 }
 
 - (void) update {
+	NSUInteger currentState = activeState;
+	activeState = 0;
 	NSMutableArray * tmp;
 	NSMutableArray * fls = [[NSMutableArray alloc] init];
 	BOOL addedFiles = false;
@@ -341,6 +416,11 @@
 		tmp=nil;
 	}
 	
+	// if our display state is different, lets clear the file list so it gets rebuilt.
+	// if its the same, it should just be updated.
+	if (activeState != currentState)
+		self.fileDirectory = nil;
+	
 	NSMutableArray * copy = [[NSMutableArray alloc] initWithArray:fls copyItems:true];
 	NSArray * srt = [copy sortedArrayUsingSelector:@selector(sortAscending:)];
 	NSMutableArray * sorted = [[NSMutableArray alloc] initWithArray:srt copyItems:true];
@@ -373,6 +453,7 @@
 		lastSearchTerm = [term copy];
 	}
 	NSMutableArray * newFiles = [[NSMutableArray alloc] initWithArray:[filesCopy arrayByMatchingObjectsWithRegex:term]];
+	self.fileDirectory = nil;
 	[self setFiles:newFiles];
 	[newFiles release];
 	[tableView reloadData];
@@ -380,6 +461,7 @@
 }
 
 - (void) clearSearch {
+	self.fileDirectory = nil;
 	[self setFiles:filesCopy];
 	if(lastSearchTerm) {
 		[lastSearchTerm release];

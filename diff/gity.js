@@ -539,10 +539,10 @@ function addCommitter()
 
 function addAuthorImage()
 {
-    var userPic = "http://www.gravatar.com/avatar/" + MD5(commitDetails.committerEmail) + "?s=50&d=http%3A%2F%2Fredf.net%2Fgity%2Favatar.jpg";
+    var userPic = "http://www.gravatar.com/avatar/" + MD5(commitDetails.committerEmail) + "?s=70&d=http%3A%2F%2Fredf.net%2Fgity%2Favatar.jpg";
     if(!commitDetails.authorEmail)
         userPic = "http://www.redf.net/gity/avatar.jpg";
-    commitDetailsTableContent.push("<div id='authorImage' style='text-align:left;position:absolute;top:31px;left:10px;width:70px;height:70px;'><img id='gravatarPic' style='-webkit-border-radius:8px;' src='"+userPic+"' width='70px' height='70px'></div>");
+    commitDetailsTableContent.push("<div id='authorImage' style='text-align:left;position:absolute;top:31px;left:10px;width:70px;height:70px;'><img id='gravatarPic' style='-webkit-border-radius:8px;' src='"+userPic+"' altimg='"+userPic+"' width='70px' height='70px'></div>");
 }
 
 function addAuthor()

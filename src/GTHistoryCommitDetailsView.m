@@ -240,7 +240,8 @@
 	// this is a workaround that will break if other external links get added.
 	DOMDocument *dom = [[webView mainFrame] DOMDocument];
 	DOMHTMLElement *gravatarElement = (DOMHTMLElement *)[dom getElementById:@"gravatarPic"];
-	[gravatarElement setAttribute:@"src" value:@"http://www.redf.net/gity/avatar.jpg"];
+	NSString *tryAgainImage = [gravatarElement getAttribute:@"altimg"];
+	[gravatarElement setAttribute:@"src" value:tryAgainImage];
 }
 
 - (void) onCommitLoaded {

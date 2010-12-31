@@ -57,6 +57,7 @@
 	
 	@try {
 		NSData *content = [s readDataToEndOfFile];
+		
 		[s closeFile];
 		
 		if(!stoutEncoding) {
@@ -64,6 +65,14 @@
 		}
 		
 		stout = [[NSString alloc] initWithData:content encoding:stoutEncoding];
+		
+		// Check for the case where string creation fails using UTF8 encoding.
+		// Fall back to basic ASCII encoding.
+		
+		if (!stout && content) {
+			stoutEncoding = NSASCIIStringEncoding;
+			stout = [[NSString alloc] initWithData:content encoding:stoutEncoding];
+		}					
 	}
 	@catch (NSException *e) {
 		// sometimes there's no stdout, so this is ok.

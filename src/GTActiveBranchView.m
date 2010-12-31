@@ -33,11 +33,6 @@
 
 - (void) awakeFromNib {
 	[super awakeFromNib];
-	self.useOutline = NO;
-	if (!self.useOutline)
-	{
-		[outlineContainer setHidden:YES];
-	}
 	
 	[tableView setTarget:self]; 
 	[tableView setDoubleAction:@selector(tableDoubleClickAction:)];
@@ -56,70 +51,6 @@
 	[gd openFile:sender];
 }
 
-- (void)addFile:(GTGitFile *)file toDirectory:(NSMutableDictionary *)dictionary withFileIndex:(NSUInteger)fileIndex
-{
-	NSString *path = @"";
-	int index = 0;
-	NSMutableDictionary *currentDict = dictionary;
-	while (path)
-	{
-		BOOL isPath = NO;
-		path = [file pathComponentAtIndex:index isPath:&isPath];
-		if (path)
-		{
-			NSMutableArray *children = [currentDict objectForKey:@"children"];
-			if (!children)
-			{
-				children = [[[NSMutableArray alloc] init] autorelease];
-				[currentDict setObject:children forKey:@"children"];
-			}
-			
-			BOOL needsNewEntry = YES;
-			for (NSMutableDictionary *item in children)
-			{
-				NSString *name = [item objectForKey:@"name"];
-				if ([name isEqualToString:path])
-				{
-					currentDict = item;
-					needsNewEntry = NO;
-					break;
-				}
-			}
-			
-			if (needsNewEntry)
-			{
-				NSMutableDictionary *newEntry = [[[NSMutableDictionary alloc] init] autorelease];
-				[newEntry setObject:path forKey:@"name"];
-				if (!isPath)
-				{
-					[newEntry setObject:[[file copyWithZone:NSDefaultMallocZone()] autorelease] forKey:@"gitfile"];
-					[newEntry setObject:[NSNumber numberWithUnsignedInt:fileIndex] forKey:@"fileIndex"];
-				}
-				[children addObject:newEntry];
-				currentDict = newEntry;
-			}
-			
-			index++;
-		}
-	}
-}
-
-- (void)buildFileDirectory;
-{
-	self.fileDirectory = [[NSMutableDictionary alloc] init];
-	
-	if (files)
-		for (NSUInteger i = 0; i < [files count]; i++)
-		{
-			GTGitFile *file = [files objectAtIndex:i];
-			[self addFile:file toDirectory:self.fileDirectory withFileIndex:i];		
-		}
-	
-	[outlineView reloadData];
-	
-	// re-expand items
-	//for (i
-}
 
 - (void)setFiles:(NSMutableArray *)fileArray
 {
@@ -127,8 +58,6 @@
 	files = nil;
 	if (fileArray)
 		files = [[NSMutableArray alloc] initWithArray:fileArray copyItems:YES];
-	
-	[self buildFileDirectory];
 }
 
 - (void) show {
@@ -182,43 +111,10 @@
 
 - (NSIndexSet *) getSelectedIndexSet {
 	NSIndexSet * indexes = nil;
-
-	if (useOutline)
-	{
-		if(![self isClickedRowIncludedInSelection]) 
-			indexes = [[[NSIndexSet alloc] initWithIndex:[outlineView clickedRow]] autorelease];
-		else 
-			indexes = [outlineView selectedRowIndexes];
-		
-		if ([indexes count])
-		{
-			NSMutableIndexSet *indexSet = [[[NSMutableIndexSet alloc] init] autorelease];
-			
-			// turn this into something -files- will understand.
-			NSUInteger *indexInts = malloc(sizeof(NSUInteger) * [indexes count]);
-			[indexes getIndexes:indexInts maxCount:[indexes count] inIndexRange:nil];
-			for (NSUInteger i = 0; i < [indexes count]; i++)
-			{
-				id item = [outlineView itemAtRow:indexInts[i]];
-				NSNumber *fileIndex = [item objectForKey:@"fileIndex"];
-				if (fileIndex)
-				{
-					[indexSet addIndex:[fileIndex unsignedIntValue]];
-				}
-				NSLog(@"item = %@", item);
-			}
-			free(indexInts);
-			
-			indexes = indexSet;
-		}
-	}
-	else
-	{
-		if(![self isClickedRowIncludedInSelection]) 
-			indexes = [[[NSIndexSet alloc] initWithIndex:[tableView clickedRow]] autorelease];
-		else 
-			indexes = [tableView selectedRowIndexes];
-	}
+	if(![self isClickedRowIncludedInSelection]) 
+		indexes = [[[NSIndexSet alloc] initWithIndex:[tableView clickedRow]] autorelease];
+	else 
+		indexes = [tableView selectedRowIndexes];
 	return indexes;
 }
 
@@ -349,8 +245,6 @@
 	filesCopy = [[NSMutableArray alloc] initWithArray:sorted copyItems:true];
 	
 	self.files = sorted;//[self setFiles:sorted];
-	if (useOutline)
-		[self buildFileDirectory];
 	
 	[sorted release];
 	[copy release];
@@ -373,6 +267,7 @@
 		lastSearchTerm = [term copy];
 	}
 	NSMutableArray * newFiles = [[NSMutableArray alloc] initWithArray:[filesCopy arrayByMatchingObjectsWithRegex:term]];
+	self.fileDirectory = nil;
 	[self setFiles:newFiles];
 	[newFiles release];
 	[tableView reloadData];
@@ -380,6 +275,7 @@
 }
 
 - (void) clearSearch {
+	self.fileDirectory = nil;
 	[self setFiles:filesCopy];
 	if(lastSearchTerm) {
 		[lastSearchTerm release];
@@ -438,102 +334,6 @@
 	[gd onActiveBranchViewSelectionChange];
 }
 
-- (void)outlineViewSelectionDidChange:(NSNotification *)notification
-{
-	[gd onActiveBranchViewSelectionChange];
-}
-
-- (void)outlineViewItemDidExpand:(NSNotification *)notification
-{
-	NSLog(@"notification = %@", notification);
-	NSDictionary *dict = [notification userInfo];
-	NSMutableDictionary *item = [dict objectForKey:@"NSObject"];
-	[expandedItems addObject:item];
-}
-
-- (void)outlineViewItemDidCollapse:(NSNotification *)notification
-{
-	NSLog(@"notification = %@", notification);
-	NSDictionary *dict = [notification userInfo];
-	NSMutableDictionary *item = [dict objectForKey:@"NSObject"];
-	[expandedItems removeObject:item];
-}
-
-- (NSCell *)outlineView:(NSOutlineView *)anOutlineView dataCellForTableColumn:(NSTableColumn *)column item:(id)item
-{
-	if ([[column identifier] isEqualTo:@"status"])
-	{
-		NSImageCell *cell = (NSImageCell *)[column dataCell];
-		return cell;
-	}
-	
-	if ([[column identifier] isEqualTo:@"filename"])
-	{
-		GTGitFile *	file = [item objectForKey:@"gitfile"];
-		GTActiveBranchTextFieldCell *cell = (GTActiveBranchTextFieldCell *)[column dataCell];
-		cell.file = file;
-		[cell setMenu:[contextMenus activeBranchActionsMenu]];
-	}
-	
-	return nil;
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView child:(long)index ofItem:(id)item
-{
-	if (!item)
-		item = self.fileDirectory;
-
-	NSMutableArray *children = [item objectForKey:@"children"];
-	if (children)
-	{
-		return [children objectAtIndex:index];
-	}
-	return nil;
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
-{
-	NSMutableArray *children = [item objectForKey:@"children"];
-	if ([children count])
-		return YES;
-	return NO;
-}
-
-- (long)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
-{
-	if (!item)
-		item = self.fileDirectory;
-	NSMutableArray *children = [item objectForKey:@"children"];
-	return [children count];
-}
-
-- (id)outlineView:(NSOutlineView *)anOutlineView objectValueForTableColumn:(NSTableColumn *)column byItem:(id)item
-{
-	GTGitFile *	file = [item objectForKey:@"gitfile"];
-
-	if (file)
-		[[column dataCell] setMenu:[contextMenus activeBranchActionsMenu]];
-	
-	id val = nil;
-	if ([[column identifier] isEqualTo:@"status"])
-	{
-		BOOL selected = [anOutlineView isRowSelected:[anOutlineView rowForItem:item]];
-		val = [NSImage imageNamed:@"statusNone.png"];
-		if (file)
-		{
-			if (selected) 
-				val = [NSImage imageNamed:[file selectedStatusImageFilename]];
-			else 
-				val = [NSImage imageNamed:[file statusImageFilename]];
-		}
-	} 
-	else
-	if ([[column identifier] isEqualTo:@"filename"])
-	{
-		val = [item objectForKey:@"name"];
-	}
-	return val;
-}
 
 - (void) dealloc {
 	#ifdef GT_PRINT_DEALLOCS
@@ -542,7 +342,6 @@
 	GDRelease(lastSearchTerm);
 	GDRelease(files);
 	GDRelease(filesCopy);
-	GDRelease(fileDirectory);
 	hasSetTableProperties=false;
 	statusBarView=nil;
 	diffView=nil;

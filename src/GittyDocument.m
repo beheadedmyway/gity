@@ -154,7 +154,7 @@
 - (void) windowControllerDidLoadNib:(NSWindowController *) controller {
 	[super windowControllerDidLoadNib:controller];
 	
-	[gtwindow setFrameUsingName:[git gitProjectPath]];
+	[gtwindow setFrameAutosaveName:[git gitProjectPath]];
 	[gtwindow setDelegate:self];
 	[git setGitProjectPath:[[self fileURL] path]];
 	[activeBranchView retain];
@@ -216,8 +216,6 @@
 	if(res == NSCancelButton) {
 		return false;
 	}
-	
-	[self persistWindowState];
 	
 	return true;
 }
@@ -286,13 +284,6 @@
 	[GTOperationsController updateLicenseRunStatus:[[[GTDocumentController sharedDocumentController] registration] isRunningWithValidLicense]];
 	
 	[self runStartupOperation];
-}
-
-- (void) persistWindowState {
-	[gtwindow saveFrameUsingName:[git gitProjectPath]];
-	[sourceListView saveSizeToDefaults];
-	[sourceListView persistViewState];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) adjustMinWindowSize {

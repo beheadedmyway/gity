@@ -56,13 +56,6 @@ static NSString *gityVersion;
 	return gityVersion;
 }
 
-#pragma mark window helpers
-- (void) persistWindowStates {
-	GittyDocument * gd;
-	NSArray * docs = [self documents];
-	for(gd in docs) [gd persistWindowState];
-}
-
 #pragma mark modal triggers
 - (void) askForUpdates {
 	NSString * isInDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:@"GTGityHasPromptedToCheckForUpdates"];
@@ -70,7 +63,6 @@ static NSString *gityVersion;
 		[[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"GTGityHasPromptedToCheckForUpdates"];
 		NSInteger res = [[GTModalController sharedInstance] runShouldCheckForUpdates];
 		if(res == NSOKButton) [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"GTGityCheckForUpdates"];
-		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 }
 
@@ -102,7 +94,6 @@ static NSString *gityVersion;
 	int res=[op runModal];
 	if(res==NSCancelButton) return;
 	[[NSUserDefaults standardUserDefaults] setObject:[op filename] forKey:kGTGitExecutablePathKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 	NSRunAlertPanel(@"Restart Gity",@"Please restart Gity for the changes to take effect.",@"OK",nil,nil);
 }
 
@@ -179,7 +170,6 @@ static NSString *gityVersion;
 	[[NSUserDefaults standardUserDefaults] setBool:false forKey:@"kGTRemindToQuitFileMerge"];
 	[[NSUserDefaults standardUserDefaults] setBool:false forKey:kGTWarnAboutLooseObjects];
 	[[NSUserDefaults standardUserDefaults] setBool:false forKey:@"kGTPromptForCherryPick"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) updateMuteStatus {
@@ -194,7 +184,6 @@ static NSString *gityVersion;
 	NSMenuItem * item = (NSMenuItem *) sender;
 	[item setState:![item state]];
 	[[NSUserDefaults standardUserDefaults] setBool:[item state] forKey:@"GTMutePopSounds"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) toggleStartupItem:(id) sender {
@@ -235,8 +224,6 @@ static NSString *gityVersion;
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *) sender {
 	GittyDocument * gd = [self currentDocument];
 	NSArray *documents = [self documents];
-	
-	[self persistWindowStates];
 	
 	if (documents)
 	{

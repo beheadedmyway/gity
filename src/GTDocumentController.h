@@ -42,7 +42,6 @@
 @property (readonly,nonatomic) GTRegistrationController * registration;
 
 + (NSString *) gityVersion;
-- (void) persistWindowStates;
 - (void) installTextmateBundle:(id) sender;
 - (void) changeGitBinary:(id) sender;
 - (void) showRegistration:(id) sender;

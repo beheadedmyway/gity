@@ -328,7 +328,6 @@ static GTModalController * inst = nil;
 	[alert runModal];
 	if([remindQuitFileMerge isChecked]) {
 		[[NSUserDefaults standardUserDefaults] setBool:true forKey:@"kGTRemindToQuitFileMerge"];
-		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 	[remindQuitFileMerge release];
 	[alert release];

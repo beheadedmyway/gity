@@ -112,7 +112,6 @@
 		isRunningWithValidLicense=false;
 		[defaults removeObjectForKey:kGTGityLicenseNameDefaultsKey];
 		[defaults removeObjectForKey:kGTGityLicenseDefaultsKey];
-		[defaults synchronize];
 		[modals runSavedLicenseInvalid];
 		[GTOperationsController updateLicenseRunStatus:isRunningWithValidLicense];
 	} else {
@@ -153,7 +152,6 @@
 	isRunningWithValidLicense=true;
 	[GTOperationsController updateLicenseRunStatus:isRunningWithValidLicense];
 	[GTMainMenuHelper updateRegistrationItem:isRunningWithValidLicense];
-	[defaults synchronize];
 	[self cancel:nil];
 }
 

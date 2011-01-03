@@ -84,12 +84,21 @@
 	return [@"GTGitySourceListWidth " stringByAppendingString:gitProjectPath];
 }
 
+- (void)setFrame:(NSRect)frameRect
+{
+	[super setFrame:frameRect];
+	if (gitProjectPath)
+	{
+		[self saveSizeToDefaults];
+		[self persistViewState];
+	}
+}
+
 - (void) saveSizeToDefaults {
 	NSSize lvs = [leftView frame].size;
 	NSString * key = [self getWidthKey];
 	if(key is nil) return;
 	[[NSUserDefaults standardUserDefaults] setInteger:lvs.width forKey:key];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) persistViewState {
@@ -113,7 +122,6 @@
 	if(wasRemoteBranchesExpanded) [expandState setValue:@"1" forKey:@"GTSourceListRemoteBranchesExpanded"];
 	else [expandState setValue:@"0" forKey:@"GTSourceListRemoteBranchesExpanded"];
 	[[NSUserDefaults standardUserDefaults] setObject:expandState forKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 	[expandState release];
 }
 

@@ -87,7 +87,6 @@
 		}
 		
 		[[NSUserDefaults standardUserDefaults] setObject:gitExecPath forKey:kGTGitExecutablePathKey];
-		[[NSUserDefaults standardUserDefaults] synchronize];
 	} 
 	else {
 		if([[NSFileManager defaultManager] fileExistsAtPath:@"/opt/local/bin/git"]) {
@@ -153,7 +152,6 @@
 		}
 		
 		[[NSUserDefaults standardUserDefaults] setObject:gitExecPath forKey:kGTGitExecutablePathKey];
-		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 }
 

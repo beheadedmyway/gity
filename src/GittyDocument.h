@@ -206,7 +206,6 @@
 - (void) openInFinder:(id) sender;
 - (void) openContainingFolder:(id) sender;
 - (void) openInTerminal:(id)sender;
-- (void) persistWindowState;
 - (void) reload:(id) sender;
 - (void) resolveConflictsWithFileMerge:(id) sender;
 - (void) runStartupOperation;

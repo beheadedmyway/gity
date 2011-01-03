@@ -58,11 +58,11 @@ static NSString *gityVersion;
 
 #pragma mark modal triggers
 - (void) askForUpdates {
-	NSString * isInDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:@"GTGityHasPromptedToCheckForUpdates"];
+	NSNumber * isInDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:@"GTGityHasPromptedToCheckForUpdates"];
 	if(isInDefaults == nil) {
-		[[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"GTGityHasPromptedToCheckForUpdates"];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GTGityHasPromptedToCheckForUpdates"];
 		NSInteger res = [[GTModalController sharedInstance] runShouldCheckForUpdates];
-		if(res == NSOKButton) [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"GTGityCheckForUpdates"];
+		if(res == NSOKButton) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GTGityCheckForUpdates"];
 	}
 }
 

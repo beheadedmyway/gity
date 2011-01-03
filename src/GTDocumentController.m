@@ -234,12 +234,28 @@ static NSString *gityVersion;
 
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *) sender {
 	GittyDocument * gd = [self currentDocument];
-	if([[NSUserDefaults standardUserDefaults] boolForKey:kGTIgnoreCommitsAhead]) return NSTerminateNow;
-	if(gd) {
+	NSArray *documents = [self documents];
+	
+	[self persistWindowStates];
+	
+	if (documents)
+	{
+		NSMutableArray *openDocuments = [[NSMutableArray alloc] init];
+		for (GittyDocument *document in documents)
+			[openDocuments addObject:[[document fileURL] absoluteString]];
+		[[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithArray:openDocuments] forKey:@"GTPreviousDocuments"];
+		[openDocuments release];
+	}
+
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kGTIgnoreCommitsAhead]) 
+		return NSTerminateNow;
+	
+	if (gd)
+	{
 		NSInteger res = [gd shouldQuitNow];
 		if(res == NSCancelButton) return NSTerminateCancel;
 	}
-	[self persistWindowStates];
+	
 	return NSTerminateNow;
 }
 
@@ -263,15 +279,11 @@ static NSString *gityVersion;
 	[cliproxy connect];
 	
 	// reload last document at startup.
-	NSDictionary *documents = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"];
-	if (documents) {
-		NSArray *keys = [documents allKeys];
-		for (NSString *urlString in keys)
-		{
-			NSError *error = nil;
-			NSURL *url = [NSURL URLWithString:urlString];
-			[self openDocumentWithContentsOfURL:url display:YES error:&error];
-		}
+	NSArray *documents = [[NSUserDefaults standardUserDefaults] objectForKey:@"GTPreviousDocuments"];
+	for (NSString *url in documents)
+	{
+		NSError *error = nil;
+		[self openDocumentWithContentsOfURL:[NSURL URLWithString:url] display:YES error:&error];
 	}	
 }
 

@@ -121,7 +121,7 @@
 	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListSubmoduleExpanded"];
 	if(wasRemoteBranchesExpanded) [expandState setObject:[NSNumber numberWithBool:YES] forKey:@"GTSourceListRemoteBranchesExpanded"];
 	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListRemoteBranchesExpanded"];
-	[[NSUserDefaults standardUserDefaults] setObject:expandState forKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:expandState] forKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
 	[expandState release];
 }
 

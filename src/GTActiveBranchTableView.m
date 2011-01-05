@@ -76,6 +76,10 @@
 			else [self selectRowIndexes:[NSIndexSet indexSetWithIndex:9] byExtendingSelection:true];
 			return;
 			break;
+		case 49:
+			// handle quicklook
+			[gd quickLook:self];
+			break;
 		case 51:
 			if([[self selectedRowIndexes] count] > 0) {
 				[[self delegate] performSelector:@selector(deleteAtRow)];

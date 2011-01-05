@@ -56,6 +56,7 @@
 #import "SCEventListenerProtocol.h"
 #import "Terminal.h"
 
+@class GTActiveBranchTableView;
 
 @interface GittyDocument : NSDocument <NSWindowDelegate, SCEventListenerProtocol, QLPreviewPanelDataSource> {
 	BOOL isSourceListHidden;

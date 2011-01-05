@@ -1102,6 +1102,13 @@
 }
 
 - (void) quickLook:(id) sender {
+	if ([sender isKindOfClass:[GTActiveBranchTableView class]] && [[QLPreviewPanel sharedPreviewPanel] isVisible])
+	{
+		// if the quicklook panel is up, and they hit space in the branch view, dismiss it.
+		[[QLPreviewPanel sharedPreviewPanel] orderOut:nil];
+		return;
+	}
+	
 	NSMutableArray *files = [activeBranchView selectedFiles];
 	
 	if([files count] > 1 or [files count] < 1) {

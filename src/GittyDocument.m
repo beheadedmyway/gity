@@ -18,7 +18,7 @@
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
 #import "GTQuickLookItem.h"
-
+#import "GTActiveBranchTableView.h"
 
 @implementation GittyDocument
 

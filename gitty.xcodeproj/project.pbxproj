@@ -380,6 +380,7 @@
 		CABCA82711B6C52D00EB8EEA /* SCEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CABCA81C11B6C52D00EB8EEA /* SCEvent.m */; };
 		CABCA82811B6C52D00EB8EEA /* SCEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = CABCA81F11B6C52D00EB8EEA /* SCEvents.m */; };
 		CABE68591299080C00CCAD60 /* remoteBranches.png in Resources */ = {isa = PBXBuildFile; fileRef = CABE68581299080C00CCAD60 /* remoteBranches.png */; };
+		CACB1CD212D43A5000038594 /* NSUserDefaults+Hack.m in Sources */ = {isa = PBXBuildFile; fileRef = CACB1CD112D43A5000038594 /* NSUserDefaults+Hack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1024,6 +1025,8 @@
 		CABCA81E11B6C52D00EB8EEA /* SCEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCEvents.h; sourceTree = "<group>"; };
 		CABCA81F11B6C52D00EB8EEA /* SCEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCEvents.m; sourceTree = "<group>"; };
 		CABE68581299080C00CCAD60 /* remoteBranches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remoteBranches.png; sourceTree = "<group>"; };
+		CACB1CD012D43A5000038594 /* NSUserDefaults+Hack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+Hack.h"; sourceTree = "<group>"; };
+		CACB1CD112D43A5000038594 /* NSUserDefaults+Hack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+Hack.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1467,6 +1470,8 @@
 			isa = PBXGroup;
 			children = (
 				07A0549B10708B8200B21AB9 /* GDNSString+Additions.m */,
+				CACB1CD012D43A5000038594 /* NSUserDefaults+Hack.h */,
+				CACB1CD112D43A5000038594 /* NSUserDefaults+Hack.m */,
 				07C971EE1073C86500E7F7DD /* NSFileHandleAdditions.m */,
 				074E0F5610D498DF00DCE009 /* NSTableView+Additions.m */,
 			);
@@ -2693,6 +2698,7 @@
 				CABCA82711B6C52D00EB8EEA /* SCEvent.m in Sources */,
 				CABCA82811B6C52D00EB8EEA /* SCEvents.m in Sources */,
 				CA92314012ACEFE800349047 /* GTQuickLookItem.m in Sources */,
+				CACB1CD212D43A5000038594 /* NSUserDefaults+Hack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

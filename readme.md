@@ -2,7 +2,7 @@ Gity - The Mac Client for Git
 
 ##CREDITS##
 - Initial Gity Version Written by [Aaron Smith] [aaronsmith]
-- Brandon Sneed
+- [Brandon Sneed] [bsneed]
 - [Mark Szymanski] [markszymanski]
 
 ##POINTS OF INTEREST FOR OBJ-C CODE##
@@ -29,3 +29,4 @@ Gity - The Mac Client for Git
 
 [markszymanski]: http://mrminimalist.nfshost.com
 [aaronsmith]: http://gngrwzrd.com/
+[bsneed]: http://twitter.com/bsneed

@@ -23,6 +23,7 @@
 #import "GTSourceListView.h"
 #import "GTDiffBarDiffStateView.h"
 #import "GTActiveBranchView.h"
+#import "GTHistoryView.h"
 
 @implementation GTContextMenuController
 @synthesize actionsMenu;
@@ -35,6 +36,7 @@
 @synthesize stashMenu;
 @synthesize submodulesMenu;
 @synthesize tagsMenu;
+@synthesize historyActionsMenu;
 
 - (id) initWithGD:(GittyDocument *) _gd {
 	self=[super initWithGD:_gd];
@@ -58,6 +60,8 @@
 	[self initRightDiffSelectorMenu];
 	[self initRemoteBranchesItems];
 	[self initRemoteBranchesMenu];
+	[self initHistoryActionsItems];
+	[self initHistoryActionsMenu];
 	return self;
 }
 
@@ -952,6 +956,20 @@
 	[gitMergeTool setKeyEquivalent:@"m"];
 }
 
+- (void) initHistoryActionsMenu {
+	historyActionsMenu = [[NSMenu alloc] init];
+	[historyActionsMenu setAutoenablesItems:true];
+	[historyActionsMenu addItem:checkoutCommit];
+	[activeBranchActionsMenu setDelegate:self];
+}
+
+- (void) initHistoryActionsItems {
+	checkoutCommit = [[NSMenuItem alloc] init];
+	[checkoutCommit setTitle:@"Checkout this commit"];
+	[checkoutCommit setTarget:gd];
+	[checkoutCommit setAction:@selector(gitCheckoutCommit:)];
+}
+
 - (void) dealloc {
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GTContextMenuController\n");
@@ -987,6 +1005,7 @@
 	[pushToMenu release];
 	[pullFromMenu release];
 	[defaultRemoteMenu release];
+	[historyActionsMenu release];
 	[stashPop release];
 	[stashDrop release];
 	[stashApply release];
@@ -1045,6 +1064,7 @@
 	[branchHistoryItem release];
 	[rbHistoryItem release];
 	[terminalItem release];
+	[checkoutCommit release];
 	
 	sourceListView=nil;
 	splitContentView=nil;

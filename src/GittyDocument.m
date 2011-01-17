@@ -377,6 +377,7 @@
 - (void) showActiveBranchWithDiffUpdate:(BOOL) _invalidateDiffView forceIfAlreadyActive:(BOOL) _force {
 	if([self isCurrentViewActiveBranchView] && !_force) return;
 	
+	[sourceListView selectActiveBranch];
 	[toolbar setSelectedItemIdentifier:@"changesIdentifier"];
 	[advancedDiffView hide];
 	[historyView hide];
@@ -391,12 +392,12 @@
 			[contentHSplitView showInView:rightView withAdjustments:NSMakeRect(0,0,0,-28)];
 	}
 	
-	if([gitd isHeadDetatched]) {
+	/*if([gitd isHeadDetatched]) {
 		[stateBarView showDetatchedHeadState];
 	}
-	else {
+	else {*/
 		[stateBarView showActiveBranchState];
-	}
+	//}
 	
 	[statusBarView updateAfterViewChange];
 	[activeBranchView showInView:topSplitView];
@@ -420,12 +421,16 @@
 }
 
 - (void) showHistory:(id) sender {
-	if([gitd isHeadDetatched]) {
+	/*if([gitd isHeadDetatched]) {
 		[self showHistoryFromRef:[gitd currentAbbreviatedSha]];
 	}
 	else {
 		[self showHistoryFromRef:[gitd activeBranchName]];
-	}
+	}*/
+	GTSourceListItem *item = [sourceListView selectedItem];
+	if (item.parent == sourceListView.rootItem || item.parent == sourceListView.tagsItem ||
+		item.parent == sourceListView.branchesItem || item.parent == sourceListView.remotesItem)
+		[self showHistoryFromRef:[sourceListView selectedItemName]];
 }
 
 - (void) showHistoryFromRef:(NSString *) _refName {
@@ -603,12 +608,12 @@
 
 - (void) onRefreshOperationComplete {
 	if([self isCurrentViewActiveBranchView]) {
-		if([gitd isHeadDetatched]) {
+		/*if([gitd isHeadDetatched]) {
 			[stateBarView showDetatchedHeadState];
 		}
-		else {
+		else {*/
 			[stateBarView showActiveBranchState];
-		}
+		//}
 	}
 	
 	[statusBarView update];
@@ -854,6 +859,21 @@
 
 - (void) gitCheckout:(NSString *) branch {
 	[operations runBranchCheckout:branch];
+}
+
+- (void) gitCheckoutCommit:(id) sender {
+	GTGitCommit *selectedCommit = [historyView selectedItem];
+	if (selectedCommit)
+	{
+		NSString *branch = selectedCommit.hash;
+		if ([historyView selectedRow] == 0)
+		{
+			GTSourceListItem *selectedItem = [sourceListView selectedItem];
+			if (selectedItem.parent == [sourceListView branchesItem])
+				branch = [sourceListView selectedItemName];
+		}
+		[operations runBranchCheckout:branch];
+	}
 }
 
 - (void) gitFetch:(id) sender {

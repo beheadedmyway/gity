@@ -58,6 +58,11 @@
 @property (retain,nonatomic) IBOutlet GTSourceListMenuView * sourceListMenuView;
 @property (readonly)  BOOL wasJustUpdated;
 
+@property (readonly) GTSourceListItem * rootItem;
+@property (readonly) GTSourceListItem * tagsItem;
+@property (readonly) GTSourceListItem * branchesItem;
+@property (readonly) GTSourceListItem * remotesItem;
+
 - (void) branchCheckout:(id) sender;
 - (void) branchMerge:(id) sender;
 - (void) branchPushTo:(id) sender;
@@ -96,6 +101,7 @@
 - (void) loadHistoryFromRef:(id) sender;
 - (void) showActionsMenu;
 - (void) removeObservers;
+- (void) selectActiveBranch;
 - (BOOL) isSelectedItemActiveBranch;
 - (BOOL) isScrollBarShown;
 - (NSString *) getWidthKey;

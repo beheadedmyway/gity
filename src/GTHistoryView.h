@@ -37,6 +37,7 @@
 	GTHistoryDetailsContainerView * detailsContainerView;
 	GTGitCommitLoadInfo * loadInfo;
 	NSString * lastSearchTerm;
+	NSInteger headRow;
 }
 
 @property (retain,nonatomic) NSMutableArray * commits;
@@ -59,6 +60,7 @@
 - (void) removeObservers;
 - (NSString *) currentRef;
 - (NSInteger) hasRowSelected;
+- (NSInteger) selectedRow;
 - (GTGitCommit *) selectedItem;
 
 @end

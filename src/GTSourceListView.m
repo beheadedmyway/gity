@@ -18,6 +18,7 @@
 #import "GTSourceListView.h"
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
+#import "NSOutlineView+Additions.h"
 
 
 @implementation GTSourceListView
@@ -25,6 +26,10 @@
 @synthesize sourceListView;
 @synthesize wasJustUpdated;
 @synthesize sourceListMenuView;
+@synthesize rootItem;
+@synthesize tagsItem;
+@synthesize branchesItem;
+@synthesize remotesItem;
 
 - (void) lazyInitWithGD:(GittyDocument *) _gd {
 	[super lazyInitWithGD:_gd];
@@ -172,6 +177,18 @@
 	GTSourceListItem * item = [sourceListView itemAtRow:[sourceListView clickedRow]];
 	if(item == nil) item = [sourceListView itemAtRow:[sourceListView selectedRow]];
 	return [[item name] lowercaseString];
+}
+
+- (void)selectActiveBranch
+{
+	for (GTSourceListItem *item in branchesItem.items)
+	{
+		if ([[item name] isEqual:[gitd activeBranchName]])
+		{
+			[sourceListView selectItem:item];
+			break;
+		}
+	}
 }
 
 - (GTSourceListItem *) selectedItem {

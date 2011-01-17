@@ -11,9 +11,9 @@
 			<string key="com.brandonwalkin.BWToolkit">1.2.5</string>
 		</dictionary>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
-			<integer value="100616"/>
 			<integer value="100036"/>
 			<integer value="5"/>
+			<integer value="100455"/>
 			<integer value="100073"/>
 		</array>
 		<array key="IBDocument.PluginDependencies">
@@ -1318,34 +1318,6 @@
 											<reference key="NSSuperview" ref="1033268352"/>
 										</object>
 										<array class="NSMutableArray" key="NSTableColumns">
-											<object class="NSTableColumn" id="192736144">
-												<string key="NSIdentifier">image</string>
-												<double key="NSWidth">13</double>
-												<double key="NSMinWidth">13</double>
-												<double key="NSMaxWidth">13</double>
-												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
-													<int key="NSCellFlags2">2048</int>
-													<string key="NSContents"/>
-													<reference key="NSSupport" ref="26"/>
-													<reference key="NSBackgroundColor" ref="924100756"/>
-													<reference key="NSTextColor" ref="633471953"/>
-												</object>
-												<object class="NSImageCell" key="NSDataCell" id="974970904">
-													<int key="NSCellFlags">67239424</int>
-													<int key="NSCellFlags2">33685504</int>
-													<object class="NSCustomResource" key="NSContents">
-														<string key="NSClassName">NSImage</string>
-														<string key="NSResourceName">currentBranch</string>
-													</object>
-													<reference key="NSSupport" ref="26"/>
-													<int key="NSAlign">4</int>
-													<int key="NSScale">0</int>
-													<int key="NSStyle">0</int>
-													<bool key="NSAnimates">NO</bool>
-												</object>
-												<reference key="NSTableView" ref="240835584"/>
-											</object>
 											<object class="NSTableColumn" id="342068816">
 												<string key="NSIdentifier">subject</string>
 												<double key="NSWidth">407</double>
@@ -2744,7 +2716,6 @@ Q0ZFRjg1MkUyhpKEmJmZmoGcA4GqAoaGA</bytes>
 							<reference ref="342068816"/>
 							<reference ref="682188605"/>
 							<reference ref="588775181"/>
-							<reference ref="192736144"/>
 						</array>
 						<reference key="parent" ref="1033268352"/>
 					</object>
@@ -2979,19 +2950,6 @@ Q0ZFRjg1MkUyhpKEmJmZmoGcA4GqAoaGA</bytes>
 						<reference key="object" ref="74473042"/>
 						<reference key="parent" ref="730171165"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">100616</int>
-						<reference key="object" ref="192736144"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="974970904"/>
-						</array>
-						<reference key="parent" ref="240835584"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">100618</int>
-						<reference key="object" ref="974970904"/>
-						<reference key="parent" ref="192736144"/>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3160,7 +3118,6 @@ Q0ZFRjg1MkUyhpKEmJmZmoGcA4GqAoaGA</bytes>
 				<boolean value="YES" key="100572.toolbarItem.selectable"/>
 				<string key="100613.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100614.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="100618.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBEditorWindowLastContentRect">{{394, 184}, {924, 605}}</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBWindowTemplateEditedContentRect">{{394, 184}, {924, 605}}</string>
@@ -5590,7 +5547,6 @@ Q0ZFRjg1MkUyhpKEmJmZmoGcA4GqAoaGA</bytes>
 			<string key="branch">{32, 32}</string>
 			<string key="changes">{32, 32}</string>
 			<string key="commit">{32, 32}</string>
-			<string key="currentBranch">{13, 13}</string>
 			<string key="history">{32, 32}</string>
 			<string key="pull">{32, 32}</string>
 			<string key="push">{32, 32}</string>

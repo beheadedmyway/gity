@@ -144,6 +144,9 @@
 	NSMenuItem * rightDiffPWD;
 	NSMenuItem * rightDiffStage;
 	NSMenuItem * rightDiffCommit;
+	
+	NSMenu * historyActionsMenu;
+	NSMenuItem * checkoutCommit;
 }
 
 @property (readonly,nonatomic) NSMenu * actionsMenu;
@@ -156,6 +159,7 @@
 @property (readonly,nonatomic) NSMenu * leftDiffSelectorMenu;
 @property (readonly,nonatomic) NSMenu * rightDiffSelectorMenu;
 @property (readonly,nonatomic) NSMenu * remoteBranchesMenu;
+@property (readonly,nonatomic) NSMenu * historyActionsMenu;
 
 - (void) updateActionsMenuDelegate;
 - (void) invalidate;
@@ -189,6 +193,8 @@
 - (void) initRightDiffSelectorMenu;
 - (void) initRightDiffSelectorMenuItems;
 - (void) invalidateRightDiffSelectorMenu;
+- (void) initHistoryActionsMenu;
+- (void) initHistoryActionsItems;
 - (NSMenu *) branchActionsMenu;
 
 @end

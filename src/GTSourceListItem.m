@@ -25,6 +25,7 @@
 @synthesize index;
 @synthesize data;
 @synthesize image;
+@synthesize items;
 
 - (id) init {
 	self=[super init];
@@ -117,6 +118,11 @@
 	return [children objectAtIndex:_index];
 }
 
+- (NSArray *)items
+{
+	return [NSArray arrayWithArray:children];
+}
+
 - (NSString *) description {
 	return [@"[GTSourceListItem: " stringByAppendingString:[name stringByAppendingString:@"]"]];
 }
@@ -137,6 +143,9 @@
 	else
 	if ([self isChildOfSubmodules])
 		result = [NSImage imageNamed:@"submodule.png"];
+	else
+	if ([self isChildOfStashes])
+		result = [NSImage imageNamed:@"stashes.png"];
 		
 	if (result)
 		[result setFlipped:YES];

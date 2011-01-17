@@ -93,10 +93,13 @@ try:
 	if len(res) > 0:
 		res.pop()
 		for line in res:
-			if line.find("(no branch)") > -1: continue
+			#if line.find("(no branch)") > -1: continue
 			l=sanitize_str(line)
 			l=re.sub("\*","",l)
 			l=sanitize_str(l)
+			#if line.find("(no branch)") > -1: 
+			#	branches.append("Detached Head")
+			#	continue
 			branches.append(l)
 	if len(branches)<1:branches=["master"] #the repo was just initialized.
 	output["branches"]=branches

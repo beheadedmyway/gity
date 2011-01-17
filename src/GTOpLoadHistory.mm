@@ -47,7 +47,14 @@ using namespace std;
 	if([self isCancelled]) return;
 	readsSTDOUT=true;
 	[args addObject:@"log"];
-	if([loadInfo refName]) [args addObject:[loadInfo refName]];
+	GTGitDataStore *dataStore = [gd gitd];
+	if ([loadInfo refName])
+	{
+		if ([[loadInfo refName] isEqualToString:dataStore.activeBranchName] && dataStore.isHeadDetatched)
+			[args addObject:dataStore.currentAbbreviatedSha];
+		else
+			[args addObject:[loadInfo refName]];
+	}
 	NSString * formatString;
 	if(useCPP) {
 		[args addObject:@"-z"];

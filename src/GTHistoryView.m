@@ -95,6 +95,10 @@
 	detailsContainerView=[gd historyDetailsContainerView];
 }
 
+- (NSInteger) selectedRow {
+	return [tableView selectedRow];
+}
+
 - (NSInteger) hasRowSelected {
 	return !([tableView selectedRow] is -1);
 }
@@ -164,7 +168,10 @@
 		[tableView setDelegate:self];
 		[tableView setDataSource:self];
 		hasSetDelegate=true;
-	} else [tableView reloadData];		
+	} else {
+		[tableView reloadData];		
+		headRow = -1;
+	}
 }
 
 - (void) search:(NSString *) _term {
@@ -174,22 +181,36 @@
 	[self setCommits:newCommits];
 	[newCommits release];
 	[tableView reloadData];
+	headRow = -1;
 	//[gd onSearch];
 }
 
 - (void) clearSearch {
 	[self setCommits:commitsCopy];
 	[tableView reloadData];
+	headRow = -1;
 }
 
 - (id) tableView:(NSTableView *) _tableView objectValueForTableColumn:(NSTableColumn *) _tableColumn row:(NSInteger) _row {
 	id res = nil;
 	GTGitCommit * commit=[commits objectAtIndex:_row];
+	
+	BOOL matchingHash = NO;
+	if ([commit.abbrevHash isEqualToString:[gitd currentAbbreviatedSha]])
+		matchingHash = YES;
+	
 	if([[_tableColumn identifier] isEqual:@"subject"])res=[commit subject];
 	else if([[_tableColumn identifier] isEqual:@"author"])res=[commit author];
 	else if([[_tableColumn identifier] isEqual:@"date"]) {
 		res=[[commit date] descriptionWithCalendarFormat:@"%B %e, %Y" timeZone:nil locale:nil];
 	}
+	[[_tableColumn dataCell] setMenu:[contextMenus historyActionsMenu]];
+	
+	if (matchingHash && [[_tableColumn identifier] isEqualToString:@"image"])
+	{
+		res = [NSImage imageNamed:@"currentBranch.png"];
+	}
+	
 	return res;
 }
 

@@ -27,7 +27,7 @@
 	NSString * label;
 	NSMutableArray * children;
 	GTSourceListItem * parent;
-	
+	NSArray * items;
 	NSImage *image;
 }
 

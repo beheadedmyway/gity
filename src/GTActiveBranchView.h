@@ -42,9 +42,12 @@
 	GTStatusBarView * statusBarView;
 	GTSplitContentView * splitContentView;
 	GTDiffView * diffView;
+	NSMutableDictionary * NSMutableDictionary;
+	NSMutableDictionary * fileDirectory;
+	BOOL useOutline;
 }
 
-@property (retain, nonatomic) NSMutableDictionary *fileDirectory;
+@property (retain, nonatomic) NSMutableDictionary * fileDirectory;
 @property (retain, nonatomic) NSMutableArray * files;
 @property (assign, nonatomic) BOOL useOutline;
 

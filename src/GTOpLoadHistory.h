@@ -26,6 +26,7 @@
 @interface GTOpLoadHistory : GTBaseGitTask {
 	BOOL useCPP;
 	BOOL usec;
+	BOOL detatchedHead;
 	GTGitCommitLoadInfo * loadInfo;
 	GTCallback * callback;
 	NSMutableArray * commits;

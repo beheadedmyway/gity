@@ -141,7 +141,10 @@ static float windowSpacing;
 	[self removeEverything];
 	[self invalidateSearchControl];
 	if([gitd activeBranchName] != nil) {
-		[barLabel setStringValue:[@"" stringByAppendingString:[gitd activeBranchName]]];
+		if (gitd.isHeadDetatched)
+			[barLabel setStringValue:[@"" stringByAppendingFormat:@"%@, Commit %@", [gitd activeBranchName], [gitd currentAbbreviatedSha]]];
+		else
+			[barLabel setStringValue:[@"" stringByAppendingString:[gitd activeBranchName]]];
 		[barLabel sizeToFit];
 	}
 }
@@ -161,7 +164,11 @@ static float windowSpacing;
 	[self removeEverything];
 	[self invalidateSearchControl];
 	NSString * abn = [gitd activeBranchName];
-	NSString * final = [@"History " stringByAppendingFormat:@"(%@)",abn];
+	NSString * final = nil;
+	if (gitd.isHeadDetatched)
+		final = [@"History " stringByAppendingFormat:@"%@, Commit %@", abn, [gitd currentAbbreviatedSha]];
+	else
+		final = [@"History " stringByAppendingFormat:@"(%@)",abn];
 	[barLabel setStringValue:final];
 	[barLabel sizeToFit];
 }
@@ -169,7 +176,11 @@ static float windowSpacing;
 - (void) showHistoryStateWithRefName:(NSString *) _refName {
 	[self removeEverything];
 	[self invalidateSearchControl];
-	NSString * final = [@"History " stringByAppendingFormat:@"(%@)",_refName];
+	NSString * final = nil;
+	if (gitd.isHeadDetatched && [_refName isEqualToString:[gitd activeBranchName]])
+		final = [@"History " stringByAppendingFormat:@"%@, Commit %@", _refName, [gitd currentAbbreviatedSha]];
+	else
+		final = [@"History " stringByAppendingFormat:@"(%@)",_refName];
 	[barLabel setStringValue:final];
 	[barLabel sizeToFit];
 }

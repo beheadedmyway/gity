@@ -38,6 +38,7 @@
 @property (assign,nonatomic) BOOL isGroupItem;
 @property (assign,nonatomic) NSInteger index;
 @property (readonly,nonatomic) NSImage *image;
+@property (readonly,nonatomic) NSArray *items;
 
 - (void) addChild:(GTSourceListItem *) child;
 - (void) removeChild:(GTSourceListItem *) child;

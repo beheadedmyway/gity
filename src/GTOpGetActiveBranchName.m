@@ -29,10 +29,11 @@
 - (void) taskComplete {
 	if([self isCancelled]) return;
 	if([task terminationStatus] == 79) {
-		[gitd setActiveBranchName:nil];
 		[gitd setIsHeadDetatched:true];
 		if([self isCancelled]) return;
 		[gitd setCurrentAbbreviatedSha:stout];
+		//[gitd setActiveBranchName:[gitd currentAbbreviatedSha]];
+		[gitd setActiveBranchName:@"(no branch)"];
 	} else {
 		[gitd setIsHeadDetatched:false];
 		if([self isCancelled]) return;

@@ -56,21 +56,13 @@ static NSString *gityVersion;
 	return gityVersion;
 }
 
-#pragma mark window helpers
-- (void) persistWindowStates {
-	GittyDocument * gd;
-	NSArray * docs = [self documents];
-	for(gd in docs) [gd persistWindowState];
-}
-
 #pragma mark modal triggers
 - (void) askForUpdates {
-	NSString * isInDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:@"GTGityHasPromptedToCheckForUpdates"];
+	NSNumber * isInDefaults = [[NSUserDefaults standardUserDefaults] objectForKey:@"GTGityHasPromptedToCheckForUpdates"];
 	if(isInDefaults == nil) {
-		[[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"GTGityHasPromptedToCheckForUpdates"];
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GTGityHasPromptedToCheckForUpdates"];
 		NSInteger res = [[GTModalController sharedInstance] runShouldCheckForUpdates];
-		if(res == NSOKButton) [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"GTGityCheckForUpdates"];
-		[[NSUserDefaults standardUserDefaults] synchronize];
+		if(res == NSOKButton) [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GTGityCheckForUpdates"];
 	}
 }
 
@@ -102,7 +94,6 @@ static NSString *gityVersion;
 	int res=[op runModal];
 	if(res==NSCancelButton) return;
 	[[NSUserDefaults standardUserDefaults] setObject:[op filename] forKey:kGTGitExecutablePathKey];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 	NSRunAlertPanel(@"Restart Gity",@"Please restart Gity for the changes to take effect.",@"OK",nil,nil);
 }
 
@@ -179,7 +170,6 @@ static NSString *gityVersion;
 	[[NSUserDefaults standardUserDefaults] setBool:false forKey:@"kGTRemindToQuitFileMerge"];
 	[[NSUserDefaults standardUserDefaults] setBool:false forKey:kGTWarnAboutLooseObjects];
 	[[NSUserDefaults standardUserDefaults] setBool:false forKey:@"kGTPromptForCherryPick"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) updateMuteStatus {
@@ -194,7 +184,6 @@ static NSString *gityVersion;
 	NSMenuItem * item = (NSMenuItem *) sender;
 	[item setState:![item state]];
 	[[NSUserDefaults standardUserDefaults] setBool:[item state] forKey:@"GTMutePopSounds"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) toggleStartupItem:(id) sender {
@@ -234,12 +223,26 @@ static NSString *gityVersion;
 
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *) sender {
 	GittyDocument * gd = [self currentDocument];
-	if([[NSUserDefaults standardUserDefaults] boolForKey:kGTIgnoreCommitsAhead]) return NSTerminateNow;
-	if(gd) {
+	NSArray *documents = [self documents];
+	
+	if (documents)
+	{
+		NSMutableArray *openDocuments = [[NSMutableArray alloc] init];
+		for (GittyDocument *document in documents)
+			[openDocuments addObject:[[document fileURL] absoluteString]];
+		[[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithArray:openDocuments] forKey:@"GTPreviousDocuments"];
+		[openDocuments release];
+	}
+
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:kGTIgnoreCommitsAhead]) 
+		return NSTerminateNow;
+	
+	if (gd)
+	{
 		NSInteger res = [gd shouldQuitNow];
 		if(res == NSCancelButton) return NSTerminateCancel;
 	}
-	[self persistWindowStates];
+	
 	return NSTerminateNow;
 }
 
@@ -263,15 +266,11 @@ static NSString *gityVersion;
 	[cliproxy connect];
 	
 	// reload last document at startup.
-	NSDictionary *documents = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"];
-	if (documents) {
-		NSArray *keys = [documents allKeys];
-		for (NSString *urlString in keys)
-		{
-			NSError *error = nil;
-			NSURL *url = [NSURL URLWithString:urlString];
-			[self openDocumentWithContentsOfURL:url display:YES error:&error];
-		}
+	NSArray *documents = [[NSUserDefaults standardUserDefaults] objectForKey:@"GTPreviousDocuments"];
+	for (NSString *url in documents)
+	{
+		NSError *error = nil;
+		[self openDocumentWithContentsOfURL:[NSURL URLWithString:url] display:YES error:&error];
 	}	
 }
 

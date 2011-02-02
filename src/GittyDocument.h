@@ -56,6 +56,7 @@
 #import "SCEventListenerProtocol.h"
 #import "Terminal.h"
 
+@class GTActiveBranchTableView;
 
 @interface GittyDocument : NSDocument <NSWindowDelegate, SCEventListenerProtocol, QLPreviewPanelDataSource> {
 	BOOL isSourceListHidden;
@@ -103,7 +104,6 @@
 	GTOperationsController *operations;
 	GTContextMenuController *contextMenus;
 	SCEvents *fileEvents;
-	BOOL userClosedWindow;
 }
 
 #pragma mark properties
@@ -207,7 +207,6 @@
 - (void) openInFinder:(id) sender;
 - (void) openContainingFolder:(id) sender;
 - (void) openInTerminal:(id)sender;
-- (void) persistWindowState;
 - (void) reload:(id) sender;
 - (void) resolveConflictsWithFileMerge:(id) sender;
 - (void) runStartupOperation;

@@ -18,7 +18,7 @@
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
 #import "GTQuickLookItem.h"
-
+#import "GTActiveBranchTableView.h"
 
 @implementation GittyDocument
 
@@ -154,7 +154,7 @@
 - (void) windowControllerDidLoadNib:(NSWindowController *) controller {
 	[super windowControllerDidLoadNib:controller];
 	
-	[gtwindow setFrameUsingName:[git gitProjectPath]];
+	[gtwindow setFrameAutosaveName:[git gitProjectPath]];
 	[gtwindow setDelegate:self];
 	[git setGitProjectPath:[[self fileURL] path]];
 	[activeBranchView retain];
@@ -197,22 +197,7 @@
 	[sourceListView show];
 	[stateBarView show];
 	[activeBranchView show];
-		
-	NSMutableDictionary *documents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"] mutableCopy];
-	
-	if (!documents) {
-		documents = [[NSMutableDictionary alloc] init];
-	}
-	
-	if (documents) {
-		[documents setValue:[NSNumber numberWithBool:YES] forKey:[[self fileURL] absoluteString]];
-		[[NSUserDefaults standardUserDefaults] setValue:documents forKey:@"lastDocuments"];
-	}	
-	
-	[documents release];
-	
-	[[NSUserDefaults standardUserDefaults] synchronize];
-	
+			
 	[self waitForWindow];
 }
 
@@ -232,30 +217,10 @@
 		return false;
 	}
 	
-	[self persistWindowState];
-	
-	userClosedWindow = YES;
-	
 	return true;
 }
 
 - (void) windowWillClose:(NSNotification *) notification {
-	if (userClosedWindow) {
-		NSMutableDictionary *documents = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastDocuments"] mutableCopy];
-		
-		if (!documents) {
-			documents = [[NSMutableDictionary alloc] init];
-		}
-		
-		if (documents) {
-			[documents removeObjectForKey:[[self fileURL] absoluteString]];
-			[[NSUserDefaults standardUserDefaults] setValue:documents forKey:@"lastDocuments"];
-		}
-		
-		[documents release];
-		[[NSUserDefaults standardUserDefaults] synchronize];
-	}
-	
 	[operations cancelAll];
 	[historyView removeObservers];
 	[sourceListView removeObservers];
@@ -319,13 +284,6 @@
 	[GTOperationsController updateLicenseRunStatus:[[[GTDocumentController sharedDocumentController] registration] isRunningWithValidLicense]];
 	
 	[self runStartupOperation];
-}
-
-- (void) persistWindowState {
-	[gtwindow saveFrameUsingName:[git gitProjectPath]];
-	[sourceListView saveSizeToDefaults];
-	[sourceListView persistViewState];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) adjustMinWindowSize {
@@ -419,6 +377,7 @@
 - (void) showActiveBranchWithDiffUpdate:(BOOL) _invalidateDiffView forceIfAlreadyActive:(BOOL) _force {
 	if([self isCurrentViewActiveBranchView] && !_force) return;
 	
+	[sourceListView selectActiveBranch];
 	[toolbar setSelectedItemIdentifier:@"changesIdentifier"];
 	[advancedDiffView hide];
 	[historyView hide];
@@ -433,12 +392,12 @@
 			[contentHSplitView showInView:rightView withAdjustments:NSMakeRect(0,0,0,-28)];
 	}
 	
-	if([gitd isHeadDetatched]) {
+	/*if([gitd isHeadDetatched]) {
 		[stateBarView showDetatchedHeadState];
 	}
-	else {
+	else {*/
 		[stateBarView showActiveBranchState];
-	}
+	//}
 	
 	[statusBarView updateAfterViewChange];
 	[activeBranchView showInView:topSplitView];
@@ -462,12 +421,16 @@
 }
 
 - (void) showHistory:(id) sender {
-	if([gitd isHeadDetatched]) {
+	/*if([gitd isHeadDetatched]) {
 		[self showHistoryFromRef:[gitd currentAbbreviatedSha]];
 	}
 	else {
 		[self showHistoryFromRef:[gitd activeBranchName]];
-	}
+	}*/
+	GTSourceListItem *item = [sourceListView selectedItem];
+	if (item.parent == sourceListView.rootItem || item.parent == sourceListView.tagsItem ||
+		item.parent == sourceListView.branchesItem || item.parent == sourceListView.remotesItem)
+		[self showHistoryFromRef:[sourceListView selectedItemName]];
 }
 
 - (void) showHistoryFromRef:(NSString *) _refName {
@@ -645,12 +608,12 @@
 
 - (void) onRefreshOperationComplete {
 	if([self isCurrentViewActiveBranchView]) {
-		if([gitd isHeadDetatched]) {
+		/*if([gitd isHeadDetatched]) {
 			[stateBarView showDetatchedHeadState];
 		}
-		else {
+		else {*/
 			[stateBarView showActiveBranchState];
-		}
+		//}
 	}
 	
 	[statusBarView update];
@@ -896,6 +859,21 @@
 
 - (void) gitCheckout:(NSString *) branch {
 	[operations runBranchCheckout:branch];
+}
+
+- (void) gitCheckoutCommit:(id) sender {
+	GTGitCommit *selectedCommit = [historyView selectedItem];
+	if (selectedCommit)
+	{
+		NSString *branch = selectedCommit.hash;
+		if ([historyView selectedRow] == 0)
+		{
+			GTSourceListItem *selectedItem = [sourceListView selectedItem];
+			if (selectedItem.parent == [sourceListView branchesItem])
+				branch = [sourceListView selectedItemName];
+		}
+		[operations runBranchCheckout:branch];
+	}
 }
 
 - (void) gitFetch:(id) sender {
@@ -1144,6 +1122,13 @@
 }
 
 - (void) quickLook:(id) sender {
+	if ([sender isKindOfClass:[GTActiveBranchTableView class]] && [[QLPreviewPanel sharedPreviewPanel] isVisible])
+	{
+		// if the quicklook panel is up, and they hit space in the branch view, dismiss it.
+		[[QLPreviewPanel sharedPreviewPanel] orderOut:nil];
+		return;
+	}
+	
 	NSMutableArray *files = [activeBranchView selectedFiles];
 	
 	if([files count] > 1 or [files count] < 1) {

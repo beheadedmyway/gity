@@ -18,6 +18,7 @@
 #import "GTSourceListView.h"
 #import "GittyDocument.h"
 #import "GTDocumentController.h"
+#import "NSOutlineView+Additions.h"
 
 
 @implementation GTSourceListView
@@ -25,6 +26,10 @@
 @synthesize sourceListView;
 @synthesize wasJustUpdated;
 @synthesize sourceListMenuView;
+@synthesize rootItem;
+@synthesize tagsItem;
+@synthesize branchesItem;
+@synthesize remotesItem;
 
 - (void) lazyInitWithGD:(GittyDocument *) _gd {
 	[super lazyInitWithGD:_gd];
@@ -55,12 +60,12 @@
 	} 
 	else {
 		missingDefaultsExpandState=false;
-		wasBranchesExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListBranchExpanded"] integerValue];
-		wasTagsExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListTagExpanded"] integerValue];
-		wasRemotesExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListRemoteExpanded"] integerValue];
-		wasSubmodulesExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListSubmoduleExpanded"] integerValue];
-		wasStashExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListStashExpanded"] integerValue];
-		wasRemoteBranchesExpanded = (BOOL)[[expandState objectForKey:@"GTSourceListRemoteBranchesExpanded"] integerValue];
+		wasBranchesExpanded = [[expandState objectForKey:@"GTSourceListBranchExpanded"] boolValue];
+		wasTagsExpanded = [[expandState objectForKey:@"GTSourceListTagExpanded"] boolValue];
+		wasRemotesExpanded = [[expandState objectForKey:@"GTSourceListRemoteExpanded"] boolValue];
+		wasSubmodulesExpanded = [[expandState objectForKey:@"GTSourceListSubmoduleExpanded"] boolValue];
+		wasStashExpanded = [[expandState objectForKey:@"GTSourceListStashExpanded"] boolValue];
+		wasRemoteBranchesExpanded = [[expandState objectForKey:@"GTSourceListRemoteBranchesExpanded"] boolValue];
 	}
 	
 	[sourceListView setDoubleAction:@selector(doubleClickAction:)];
@@ -84,12 +89,21 @@
 	return [@"GTGitySourceListWidth " stringByAppendingString:gitProjectPath];
 }
 
+- (void)setFrame:(NSRect)frameRect
+{
+	[super setFrame:frameRect];
+	if (gitProjectPath)
+	{
+		[self saveSizeToDefaults];
+		[self persistViewState];
+	}
+}
+
 - (void) saveSizeToDefaults {
 	NSSize lvs = [leftView frame].size;
 	NSString * key = [self getWidthKey];
 	if(key is nil) return;
 	[[NSUserDefaults standardUserDefaults] setInteger:lvs.width forKey:key];
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) persistViewState {
@@ -100,20 +114,19 @@
 	wasRemotesExpanded = [sourceListView isItemExpanded:remotesItem];
 	wasRemoteBranchesExpanded = [sourceListView isItemExpanded:remoteBranchesItem];
 	NSMutableDictionary * expandState = [[NSMutableDictionary alloc] init];
-	if(wasBranchesExpanded) [expandState setValue:@"1" forKey:@"GTSourceListBranchExpanded"];
-	else [expandState setValue:@"0" forKey:@"GTSourceListBranchExpanded"];
-	if(wasTagsExpanded) [expandState setValue:@"1" forKey:@"GTSourceListTagExpanded"];
-	else [expandState setValue:@"0" forKey:@"GTSourceListTagExpanded"];
-	if(wasRemotesExpanded) [expandState setValue:@"1" forKey:@"GTSourceListRemoteExpanded"];
-	else [expandState setValue:@"0" forKey:@"GTSourceListRemoteExpanded"];
-	if(wasStashExpanded) [expandState setValue:@"1" forKey:@"GTSourceListStashExpanded"];
-	else [expandState setValue:@"0" forKey:@"GTSourceListStashExpanded"];
-	if(wasSubmodulesExpanded) [expandState setValue:@"1" forKey:@"GTSourceListSubmoduleExpanded"];
-	else [expandState setValue:@"0" forKey:@"GTSourceListSubmoduleExpanded"];
-	if(wasRemoteBranchesExpanded) [expandState setValue:@"1" forKey:@"GTSourceListRemoteBranchesExpanded"];
-	else [expandState setValue:@"0" forKey:@"GTSourceListRemoteBranchesExpanded"];
-	[[NSUserDefaults standardUserDefaults] setObject:expandState forKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+	if(wasBranchesExpanded) [expandState setObject:[NSNumber numberWithBool:YES] forKey:@"GTSourceListBranchExpanded"];
+	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListBranchExpanded"];
+	if(wasTagsExpanded) [expandState setObject:[NSNumber numberWithBool:YES] forKey:@"GTSourceListTagExpanded"];
+	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListTagExpanded"];
+	if(wasRemotesExpanded) [expandState setObject:[NSNumber numberWithBool:YES] forKey:@"GTSourceListRemoteExpanded"];
+	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListRemoteExpanded"];
+	if(wasStashExpanded) [expandState setObject:[NSNumber numberWithBool:YES] forKey:@"GTSourceListStashExpanded"];
+	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListStashExpanded"];
+	if(wasSubmodulesExpanded) [expandState setObject:[NSNumber numberWithBool:YES] forKey:@"GTSourceListSubmoduleExpanded"];
+	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListSubmoduleExpanded"];
+	if(wasRemoteBranchesExpanded) [expandState setObject:[NSNumber numberWithBool:YES] forKey:@"GTSourceListRemoteBranchesExpanded"];
+	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListRemoteBranchesExpanded"];
+	[[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:expandState] forKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
 	[expandState release];
 }
 
@@ -164,6 +177,18 @@
 	GTSourceListItem * item = [sourceListView itemAtRow:[sourceListView clickedRow]];
 	if(item == nil) item = [sourceListView itemAtRow:[sourceListView selectedRow]];
 	return [[item name] lowercaseString];
+}
+
+- (void)selectActiveBranch
+{
+	for (GTSourceListItem *item in branchesItem.items)
+	{
+		if ([[item name] isEqual:[gitd activeBranchName]])
+		{
+			[sourceListView selectItem:item];
+			break;
+		}
+	}
 }
 
 - (GTSourceListItem *) selectedItem {

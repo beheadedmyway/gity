@@ -65,60 +65,79 @@ static NSInteger operationRunCount = 0;
 }
 
 - (void) runStartupOperation {
-	if(isRunningStartup) return;
-	if(allCanceled) return;
+	if(isRunningStartup || allCanceled) {
+		return;
+	}		
+	
 	isRunningStartup = true;
-	NSOperation * op = [[NSOperation alloc] init];
+	
+	NSOperation *op = [[[NSOperation alloc] init] autorelease];
+	
 	[op setCompletionBlock:^{
-		[op release];
+		for (NSOperation *dependentOperation in [op dependencies]) {
+			[dependentOperation release];
+		}
+		
 		[self onStartupOperationComplete];
 	}];
-	GTOpMetaStatus * meta = [[[GTOpMetaStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetFiles * allFiles = [[[GTOpGetFiles alloc] initWithGD:gd] autorelease];
-	GTOpStatus * stat = [[[GTOpStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetActiveBranchName * activeBranchName = [[[GTOpGetActiveBranchName alloc] initWithGD:gd] autorelease];
+	
+	GTOpMetaStatus *meta = [[[GTOpMetaStatus alloc] initWithGD:gd] autorelease];
+	GTOpGetFiles *allFiles = [[[GTOpGetFiles alloc] initWithGD:gd] autorelease];
+	GTOpStatus *stat = [[[GTOpStatus alloc] initWithGD:gd] autorelease];
+	GTOpGetActiveBranchName *activeBranchName = [[[GTOpGetActiveBranchName alloc] initWithGD:gd] autorelease];
+	
 	[op addDependency:allFiles];
 	[op addDependency:stat];
 	[op addDependency:meta];
 	[op addDependency:activeBranchName];
-	NSOperationQueue * q = [[NSOperationQueue alloc] init];
-	[q setMaxConcurrentOperationCount:25];
+	
+	NSOperationQueue *q = [[[NSOperationQueue alloc] init] autorelease];
+	
 	[q addOperation:op];
 	[q addOperation:allFiles];
 	[q addOperation:activeBranchName];
 	[q addOperation:stat];
-	[q addOperation:meta];
-	[cancelables addObject:q];
-	[q release];
+	[q addOperation:meta];	
 }
 
 - (void) runRefreshOperation {
-	if(isRunningRefresh) return;
-	if(allCanceled) return;
+	if(isRunningRefresh) 
+		return;
+	
+	if(allCanceled) 
+		return;
+	
 	isRunningRefresh = true;
+	
 	[status showSpinner];
-	NSOperation * op = [[NSOperation alloc] init];
+	
+	NSOperation *op = [[[NSOperation alloc] init] autorelease];
+	
 	[op setCompletionBlock:^{
-		[op release];
+		for (NSOperation *dp in [op dependencies]) {
+			[dp release];
+		}
+		
 		[self onRefreshOperationComplete];
 	}];
-	GTOpMetaStatus * meta = [[[GTOpMetaStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetFiles * allFiles = [[[GTOpGetFiles alloc] initWithGD:gd] autorelease];
-	GTOpStatus * stat = [[[GTOpStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetActiveBranchName * activeBranchName = [[[GTOpGetActiveBranchName alloc] initWithGD:gd] autorelease];
+	
+	GTOpMetaStatus *meta = [[[GTOpMetaStatus alloc] initWithGD:gd] autorelease];
+	GTOpGetFiles *allFiles = [[[GTOpGetFiles alloc] initWithGD:gd] autorelease];
+	GTOpStatus *stat = [[[GTOpStatus alloc] initWithGD:gd] autorelease];
+	GTOpGetActiveBranchName *activeBranchName = [[[GTOpGetActiveBranchName alloc] initWithGD:gd] autorelease];
+	
 	[op addDependency:stat];
 	[op addDependency:allFiles];
 	[op addDependency:meta];
 	[op addDependency:activeBranchName];
-	NSOperationQueue * q = [[NSOperationQueue alloc] init];
-	[q setMaxConcurrentOperationCount:25];
+	
+	NSOperationQueue *q = [[[NSOperationQueue alloc] init] autorelease];
+	
 	[q addOperation:op];
 	[q addOperation:stat];
 	[q addOperation:allFiles];
 	[q addOperation:meta];
-	[q addOperation:activeBranchName];
-	[cancelables addObject:q];
-	[q release];
+	[q addOperation:activeBranchName];	
 }
 
 - (void) runRefreshStatusOperation {

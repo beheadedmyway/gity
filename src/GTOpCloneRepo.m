@@ -49,7 +49,7 @@
 	[args addObject:[GTPythonScripts getCloneRepoScript]];
 	if([self isCancelled]) return;
 	[args addObject:[@"-g " stringByAppendingString:[git gitExecPath]]];
-	[args addObject:[@"-r " stringByAppendingString:repoURL]];
+	[args addObject:[NSString stringWithFormat:@"-r \"%@\"", repoURL]];
 	[task setArguments:args];
 }
 

@@ -31,11 +31,25 @@ try:
 	else: command="%s %s %s"%(options.git,"commit -F ",commitfile)
 
 	if checkfiles(options): command+=" "+make_file_list_for_git(options.files)
-	rcode,stout,sterr=run_command(command)
-	rcode_for_git_exit(rcode,sterr)
+	try:
+		rcode,stout,sterr=run_command(command)
+		rcode_for_git_exit(rcode,sterr)
+	except Exception,e:
+		if sterr.find("cannot do a partial commit during a merge") > -1:
+			try:
+				command="%s %s %s"%(options.git,"commit -F ",commitfile)
+				rcode,stout,sterr=run_command(command)
+			except Exception,e: 
+				sys.stderr.write("The fallback commit command threw this error: " + str(e))
+				sys.stderr.write("\ncommand: %s" % command)
+				log_gity_version(options.gityversion)
+				log_gitv(options.git)
+				exit(84);
+		else:
+			pass
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The commit command through this error: " + str(e))
+	sys.stderr.write("The commit command threw this error: " + str(e))
 	sys.stderr.write("\ncommand: %s" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)

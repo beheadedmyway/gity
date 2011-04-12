@@ -22,6 +22,8 @@
 - (id) initWithGD:(GittyDocument *)_gd andBranchForCheckout:(NSString *) _branch {
 	branch=[_branch copy];
 	self=[super initWithGD:_gd];
+    readsSTDOUT=true;
+    readsSTDERR=true;
 	return self;
 }
 
@@ -31,6 +33,30 @@
 	[args addObject:[@"-m " stringByAppendingString:branch]];
 	[self updateArguments];
 }
+
+- (void) main {
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
+	if([self isCancelled]) goto cleanup;
+	[task launch];
+	if(readsSTDOUT) [self readSTDOUT];
+	if(readsSTDERR) [self readSTDERR];
+	[task waitUntilExit];
+cleanup:
+	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
+	[pool drain];
+}
+
+- (void) taskComplete {
+	NSInteger res = [task terminationStatus];
+    if (res >= 84) {
+		done=true;
+		[[gd modals] runModalFromCode:res];
+		return;
+	}
+	//pathToOpen=[stout copy];
+	done=true;
+}
+
 
 - (void) dealloc {
 	#ifdef GT_PRINT_DEALLOCS

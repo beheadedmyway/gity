@@ -939,7 +939,6 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = GDKit;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				VALID_ARCHS = "i386 ppc ppc64 x86_64";
 			};
 			name = Debug;
 		};
@@ -975,7 +974,6 @@
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SKIP_INSTALL = YES;
 				STRIP_STYLE = debugging;
-				VALID_ARCHS = "i386 ppc ppc64 x86_64";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1014,21 +1012,22 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
 		1DEB91B308733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Users/aaronsmith/dev/xcode/scr/10.5;
 				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};

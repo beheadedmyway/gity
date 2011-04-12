@@ -232,7 +232,7 @@
 		[gitDestageItem setEnabled:false];
 		[gitAddAndCommitItem setEnabled:false];
 		[gitRemoveItem setEnabled:false];
-		[gitDiscardChangesItem setEnabled:false];
+		[gitDiscardChangesItem setEnabled:true];
 	}
 }
 
@@ -263,7 +263,7 @@
 		[newEmptyBranch setEnabled:false];
 		[newStash setEnabled:false];
 		[branchReset setEnabled:false];
-		[branchDiscardNonStagedChanges setEnabled:false];
+		[branchDiscardNonStagedChanges setEnabled:true];
 	} else {
 		[newBranch setEnabled:true];
 		[newTag setEnabled:true];

@@ -84,9 +84,18 @@ static GTModalController * inst = nil;
 		case 91:
 			[self runCantPushToNewerRemote];
 			break;
+        case 92:
+            [self runWouldOverwriteChanges];
 		default:
 			break;
 	}
+}
+
+- (void) runWouldOverwriteChanges {
+	NSRunAlertPanel(NSLocalizedStringFromTable(@"Checkout Aborted",@"Localized",@"would overwrite msg"),
+					NSLocalizedStringFromTable(@"Your local changes would be overwritten by checkout.  Commit or stash your changes and try again.",@"Localized",@"would overwrite msg description"),
+					NSLocalizedStringFromTable(@"OK",@"Localized",@"ok button label"),
+					nil,nil);
 }
 
 - (void) runHasRemoteAlready {
@@ -421,6 +430,13 @@ static GTModalController * inst = nil;
 - (void) runConfigNeedsSectionError {
 	NSRunAlertPanel(NSLocalizedStringFromTable(@"Config Key Incorrect",@"Localized",@"config key incorrect msg"),
 					NSLocalizedStringFromTable(@"Config keys must contain a section and name. (section.varname)",@"Localized",@"config key incorrect msg description"),
+					NSLocalizedStringFromTable(@"OK",@"Localized",@"ok button label"),
+					nil,nil);
+}
+
+- (void) runSelectFilesFirst {
+	NSRunAlertPanel(NSLocalizedStringFromTable(@"No Files Selected",@"Localized",@"resolve conflicts msg"),
+					NSLocalizedStringFromTable(@"You've got to select some files if you want to commit them. :D",@"Localized",@"select files msg description"),
 					NSLocalizedStringFromTable(@"OK",@"Localized",@"ok button label"),
 					nil,nil);
 }

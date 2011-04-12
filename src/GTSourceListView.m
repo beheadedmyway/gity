@@ -240,6 +240,26 @@
 	[operations runFetchRemoteBranch:branch];
 }
 
+- (BOOL)hasDefaultRemoteForBranch:(NSString *)branch
+{
+    BOOL result = [gitd hasDefaultRemoteForBranch:branch];
+    
+    if (!result)
+    {
+        int remotesCount = [gitd remotesCount];
+        if (remotesCount == 1)
+        {
+            // if there's only one, lets set it to the only remote.
+            NSString *origin = [[gitd remoteNames] objectAtIndex:0];
+            [gitd setDefaultRemote:origin forBranch:[branch lowercaseString]];
+            [[gd operations] runSetDefaultRemote:origin forBranch:branch];
+            result = [gitd hasDefaultRemoteForBranch:branch];
+        }
+    }
+
+    return result;
+}
+
 - (void) gitPush:(id) sender {
 	GTSourceListItem * item = [self selectedItem];
 	if([gitd isConflicted]) {
@@ -247,7 +267,7 @@
 		[modals runConflictedStateForCheckout];
 		return;
 	}
-	if(![gitd hasDefaultRemoteForBranch:[item name]]) {
+	if(![self hasDefaultRemoteForBranch:[item name]]) {
 		[modals runNoDefaultRemote];
 		return;
 	}
@@ -262,7 +282,7 @@
 		return;
 	}
 	NSString * branch = [gitd activeBranchName];
-	if(![gitd hasDefaultRemoteForBranch:branch]) {
+	if(![self hasDefaultRemoteForBranch:branch]) {
 		[modals runNoDefaultRemote];
 		return;
 	}
@@ -277,7 +297,7 @@
 		return;
 	}
 	NSString * branch = [gitd activeBranchName];
-	if(![gitd hasDefaultRemoteForBranch:branch]) {
+	if(![self hasDefaultRemoteForBranch:branch]) {
 		[modals runNoDefaultRemote];
 		return;
 	}
@@ -296,7 +316,7 @@
 		return;
 	}
 	NSString * branch = [gitd activeBranchName];
-	if(![gitd hasDefaultRemoteForBranch:branch]) {
+	if(![self hasDefaultRemoteForBranch:branch]) {
 		[modals runNoDefaultRemote];
 		return;
 	}
@@ -311,7 +331,7 @@
 		[modals runConflictedStateForCheckout];
 		return;
 	}
-	if(![gitd hasDefaultRemoteForBranch:[item name]]) {
+	if(![self hasDefaultRemoteForBranch:[item name]]) {
 		[modals runNoDefaultRemote];
 		return;
 	}
@@ -501,7 +521,7 @@
 		[modals runDirIsDirtyForRebase];
 		return;
 	}
-	if(![gitd hasDefaultRemoteForBranch:[item name]]) {
+	if(![self hasDefaultRemoteForBranch:[item name]]) {
 		[modals runNoDefaultRemote];
 		return;
 	}

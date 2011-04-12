@@ -533,7 +533,21 @@ static NSInteger operationRunCount = 0;
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:pull];
 	[pull setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
-		[self onPullFromComplete];
+        
+        // if there are submodules, lets update them too.
+        if ([gitd submodules] && [[gitd submodules] count] > 0 && !allCanceled && !networkOpsCancelled)
+        {
+            [status hide];
+            [status showStatusIndicatorWithLabel:@"Updating submodules"];
+            GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+            NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
+            [o setCompletionBlock:^{
+                [self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
+                [self onSubmoduleUpdateAllComplete];
+            }];
+        }
+        else
+            [self onPullFromComplete];
 	}];
 }
 

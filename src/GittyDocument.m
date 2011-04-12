@@ -293,7 +293,7 @@
 - (BOOL)validateToolbarItem:(NSToolbarItem *)theItem
 {
 	if ([[theItem itemIdentifier] isEqualToString:@"addIdentifier"] || [[theItem itemIdentifier] isEqualToString:@"addCommitIdentifier"] || [[theItem itemIdentifier] isEqualToString:@"commitIdentifier"]) {
-		if([activeBranchView selectedFilesCount] < 1) {
+		if([activeBranchView selectedFilesCount] < 1 || [gitd isHeadDetatched]) {
 			return NO;
 		}
 	}
@@ -802,9 +802,11 @@
 
 - (void) gitAddAndCommit:(id) sender {
 	if([activeBranchView selectedFilesCount] < 1) {
+        NSBeep();
+        [[GTModalController sharedInstance] runSelectFilesFirst];
 		return;
 	}
-	
+    
 	commit.addBeforeCommit = true;
 	
 	[self gitCommit:nil];
@@ -819,6 +821,7 @@
 }
 
 - (void) gitCommit:(id) sender {
+    
 	if([gitd isConflicted]) {
 		NSBeep();
 		[[GTModalController sharedInstance] runConflictedStateForCheckout];
@@ -826,7 +829,7 @@
 	}
 	
 	if([gitd stagedFilesCount] < 1 && !commit.addBeforeCommit) {
-		NSBeep();
+		[self gitAddAndCommit:nil];
 		return;
 	}
 	

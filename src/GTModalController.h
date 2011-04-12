@@ -71,6 +71,7 @@
 - (NSInteger) runShouldCheckForUpdates;
 - (NSInteger) runReportCommitBugNotice;
 - (NSUInteger) runCherryPickNotice:(NSString *) _currentBranch;
+- (void) runWouldOverwriteChanges;
 - (void) runWorkingTreeDirtyForCherry;
 - (void) runHasRemoteAlready;
 - (void) runCantPushToRemote;
@@ -91,6 +92,7 @@
 - (void) runCloneTimedOut;
 - (void) runConfigNeedsSectionError;
 - (void) cloneRepo;
+- (void) runSelectFilesFirst;
 - (void) runConflictedStateForCheckout;
 - (void) runModalForError:(NSString *) errorMessage;
 - (void) runModalFromCode:(NSInteger) code;

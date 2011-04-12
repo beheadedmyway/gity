@@ -27,6 +27,8 @@ try:
 	command="%s %s %s"%(options.git,"checkout",sanitize_str(str(options.misc[0])))
 	rcode,stout,sterr=run_command(command)
 	rcode_for_git_exit(rcode,sterr)
+	if sterr.find("would be overwritten by checkout") > -1:
+		exit(92)
 	exit(0)
 except Exception, e:
 	sys.stderr.write("The checkout branch command through this error: " + str(e))

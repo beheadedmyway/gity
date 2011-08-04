@@ -2150,6 +2150,7 @@
 			isa = PBXProject;
 			buildConfigurationList = C05733CB08A9546B00998B17 /* Build configuration list for PBXProject "gitty" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -2423,7 +2424,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd python/\n/usr/bin/python __compile.py";
+			shellScript = "cd python/\n/usr/bin/python2.6 __compile.py";
 		};
 		07D03D4A109BDAEA005D5ED4 /* Delete TMP Python Files */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -42,7 +42,6 @@
 	GTStatusBarView * statusBarView;
 	GTSplitContentView * splitContentView;
 	GTDiffView * diffView;
-	NSMutableDictionary * NSMutableDictionary;
 	NSMutableDictionary * fileDirectory;
 	BOOL useOutline;
 }

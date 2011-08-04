@@ -278,7 +278,7 @@ cleanup:
 		[task setCurrentDirectoryPath:gitProjectPath];
 	}
 	
-	[task setLaunchPath:@"/usr/bin/python"];
+	[task setLaunchPath:@"/usr/bin/python2.6"];
 	
 	return task;
 }

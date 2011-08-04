@@ -282,6 +282,7 @@ static NSString *gityVersion;
 	NSOpenPanel * op = [[NSOpenPanel alloc] init];
 	[op setCanChooseFiles:false];
 	[op setCanChooseDirectories:true];
+    [op setResolvesAliases:YES];
 	[op setTitle:@"Open A Git Repository"];
 	NSInteger res = [op runModal];
 	if(res is  NSCancelButton) return;

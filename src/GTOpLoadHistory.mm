@@ -67,6 +67,9 @@ using namespace std;
 	//BOOL showSign = [rev hasLeftRight];
 	//if(showSign) formatString = [formatString stringByAppendingString:@"\01%m"];
 	[args addObject:formatString];
+    
+    // safety addition in case there's a filename w/ the same name as the branch.
+    [args addObject:@"--"];
 	
 	//if([loadInfo after]) [args addObject:[@"--after=" stringByAppendingString:[loadInfo afterDateAsTimeIntervalString]]];
 	//if([loadInfo before]) [args addObject:[@"--before=" stringByAppendingString:[loadInfo beforeDateAsTimeIntervalString]]];

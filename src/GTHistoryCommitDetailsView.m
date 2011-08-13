@@ -264,6 +264,8 @@
 	[commitLoadInfo setParsedCommitDetails:nil];
 	[webView removeFromSuperview];
     [webView setUIDelegate:nil];
+    [webView setFrameLoadDelegate:nil];
+    [webView setResourceLoadDelegate:nil];
 	[webView release];
 	webView=nil;
 }

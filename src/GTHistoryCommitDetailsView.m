@@ -263,6 +263,7 @@
 - (void) disposeWebkit {
 	[commitLoadInfo setParsedCommitDetails:nil];
 	[webView removeFromSuperview];
+    [webView setUIDelegate:nil];
 	[webView release];
 	webView=nil;
 }

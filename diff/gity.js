@@ -27,8 +27,10 @@ var linkCount = 0;
 var isCommitDetails=false;
 var commitDetails={}
 var commitDetailsTable;
+var authorImageContainer;
 var commitDetailFiles = {};
 var commitDetailsTableContent = [];
+var authorImageContent = [];
 
 /**
 *
@@ -250,15 +252,19 @@ function startDiff()
 function startCommit()
 {
 	commitDetailsTableContent=[];
+    authorImageContent=[];
 	commitDetailFiles['changed']=[];
 	commitDetailFiles['removed']=[];
 	commitDetailFiles['new']=[];
 	commitDetailFiles['renamed']=[];
+	authorImageContainer=$("#authorImageContainer");
 	commitDetailsTable=$("#commitDetailsTable");
 	commitRawMessageDiv=$("#commitMessageContainer");
 	isCommitDetails=true;
 	parseCommitDetails();
+    
     addAuthorImage();
+
 	addAuthor();
 	addCommitter();
 	addDate();
@@ -267,6 +273,7 @@ function startCommit()
 	addSHA();
 	//addTree();
 	addParents();
+    
 	//addOptions();
 	//addDiff();
 	addRawMessage();
@@ -278,6 +285,7 @@ function startCommit()
 function updateCommitTableContent()
 {
 	commitDetailsTable.append(commitDetailsTableContent.join(""));
+    authorImageContainer.append(authorImageContent.join(""));
 }
 
 function exportTar()
@@ -534,25 +542,31 @@ function addCommitter()
 {
 	if(commitDetails.author == commitDetails.committer) return;
 	if(commitDetails.committerEmail) commitDetailsTableContent.push("<tr><td class='detailItemLabel' style='width:79px;'>Committer:</td><td class='detailItem'>"+commitDetails.committer+" &lt;<a href='mailto:"+commitDetails.committerEmail+"'>"+commitDetails.committerEmail+"</a>&gt;</td></tr>");
-	else commitDetailsTableContent.push("<tr><td class='detailItemLabel'>Committer:</td><td class='detailItem'>"+commitDetails.committer+"</td></tr>");
+	else commitDetailsTableContent.push("<tr><td class='detailItemLabel'>Committer:</td><td class='detailItem'>"+commitDetails.committer+"</td></tr><br/>");
 }
 
-function addAuthorImage()
-{
-    var userPic = "http://www.gravatar.com/avatar/" + MD5(commitDetails.committerEmail) + "?s=70&d=http%3A%2F%2Fredf.net%2Fgity%2Favatar.jpg";
-    if(!commitDetails.authorEmail)
-        userPic = "http://www.redf.net/gity/avatar.jpg";
+/*function addAuthorImage() {
+    var userPic = (commitDetails.authorEmail)
+        ? "http://www.gravatar.com/avatar/" + MD5(commitDetails.committerEmail) + "?s=70&d=http%3A%2F%2Fredf.net%2Fgity%2Favatar.jpg"
+        : "http://www.redf.net/gity/avatar.jpg";
+        
     commitDetailsTableContent.push("<div id='authorImage' style='text-align:left;position:absolute;top:31px;left:10px;width:70px;height:70px;'><img id='gravatarPic' style='-webkit-border-radius:8px;' src='"+userPic+"' altimg='"+userPic+"' width='70px' height='70px'></div>");
+}*/
+
+function addAuthorImage() {
+    var emailMD5 = MD5(commitDetails.committerEmail)
+        
+    authorImageContent.push("<img src='http://www.gravatar.com/avatar/" + emailMD5 + ".jpg?s=70&d=http%3A%2F%2Fredf.net%2Fgity%2Favatar.jpg' width='70px' height='70px' style='position:absolute;left:10px;top:0px;-webkit-border-radius:8px;'>");
 }
 
 function addAuthor()
 {
 	if(commitDetails.authorEmail)
     {
-        commitDetailsTableContent.push("<tr><td class='detailItemLabel'>Author:</td><td class='detailItem'>"+commitDetails.author+" &lt;<a href='mailto:"+commitDetails.authorEmail+"'>"+commitDetails.authorEmail+"</a>&gt;</td></tr>");
+        commitDetailsTableContent.push("<tr><td class='detailItemLabel'>Author:</td><td class='detailItem'>"+commitDetails.author+" &lt;<a href='mailto:"+commitDetails.authorEmail+"'>"+commitDetails.authorEmail+"</a>&gt;</td></tr><br/>");
     }
 	else 
-        commitDetailsTableContent.push("<tr><td class='detailItemLabel'>Author:</td><td class='detailItem'>"+commitDetails.author+"</td></tr>");
+        commitDetailsTableContent.push("<tr><td class='detailItemLabel'>Author:</td><td class='detailItem'>"+commitDetails.author+"</td></tr><br/>");
 }
 
 function addDate()
@@ -560,13 +574,13 @@ function addDate()
 	//default date.toString() Friday February 13th 2009, 00:27:23pm (GMT-0800 PST)
 	//mine: Friday February 13th 2009 @ 12:27:23am (GMT-0800 PST)
 	var ds=commitDetails.date.format("ddd mmmm dS yyyy @ hh:MM:sstt ('GMT'o Z)");
-	commitDetailsTableContent.push("<tr><td class='detailItemLabel'>Date:</td><td class='detailItem'>"+ ds +"</td></tr>");
+	commitDetailsTableContent.push("<tr><td class='detailItemLabel'>Date:</td><td class='detailItem'>"+ ds +"</td></tr><br/>");
 }
 
 function addSubject()
 {
 	if(!commitDetails.subject) return;
-	commitDetailsTableContent.push("<tr><td class='detailItemLabel' valign='top'>Subject:</td><td class='detailItem subjectItem'><b>"+commitDetails.subject+"</b></td></tr>");
+	commitDetailsTableContent.push("<tr><td class='detailItemLabel' valign='top'>Subject:</td><td class='detailItem subjectItem'><b>"+commitDetails.subject+"</b></td></tr><br/>");
 }
 
 function clearExtendedMessage()

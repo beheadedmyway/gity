@@ -37,7 +37,7 @@
 		[webView removeFromSuperview];
 		[webView release];
 	}
-	webView=[[WebView alloc] initWithFrame:[self frame]];
+    webView=[[WebView alloc] initWithFrame:[self frame]];
 	[webView setUIDelegate:self];
 	[webView setAutoresizingMask:[self autoresizingMask]];
 }
@@ -231,17 +231,16 @@
 	if(reInvalidate){
 		reInvalidate=false;
 		[self invalidate];
-	}	
+	}
+}
+
+- (NSURLRequest *)webView:(WebView *)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(WebDataSource *)dataSource
+{
+    return request;
 }
 
 - (void)webView:(WebView *)sender resource:(id)identifier didFailLoadingWithError:(NSError *)error fromDataSource:(WebDataSource *)dataSource
 {
-	// occasionally, the webview fails to follow the redirect if the user doesn't have a pic.  haven't figured out why yet.
-	// this is a workaround that will break if other external links get added.
-	DOMDocument *dom = [[webView mainFrame] DOMDocument];
-	DOMHTMLElement *gravatarElement = (DOMHTMLElement *)[dom getElementById:@"gravatarPic"];
-	NSString *tryAgainImage = [gravatarElement getAttribute:@"altimg"];
-	[gravatarElement setAttribute:@"src" value:tryAgainImage];
 }
 
 - (void) onCommitLoaded {

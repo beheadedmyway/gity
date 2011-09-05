@@ -340,7 +340,7 @@ static GDAccessibilityManager * inst;
 	return self;
 }
 
-- (void) release{
+- (oneway void) release{
 }
 
 @end

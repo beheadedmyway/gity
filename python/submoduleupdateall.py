@@ -24,7 +24,7 @@ except Exception,e:
 command=""
 try:
 	from _argv import *
-	command="%s %s" % (options.git,"submodule update --init")
+	command="%s %s" % (options.git,"submodule update --init --recursive")
 	rcode,stout,sterr=run_command(command)
 	exit_if_server_unreachable(sterr)
 	exit_if_server_hungup(sterr)

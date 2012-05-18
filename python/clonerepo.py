@@ -27,9 +27,9 @@ try:
 	repo_to_open=destination
 	clone_into=True
 	if len(os.listdir(destination)) > 0: clone_into=False
-	if clone_into: command="%s %s %s %s"%(options.git,"clone",sanitize_str(options.repo),".")
+	if clone_into: command="%s %s %s %s"%(options.git,"clone --recursive",sanitize_str(options.repo),".")
 	else:
-		command="%s %s %s"%(options.git,"clone",sanitize_str(options.repo))
+		command="%s %s %s"%(options.git,"clone --recursive",sanitize_str(options.repo))
 		match=re.search("([-a-zA-Z0-9_]*)\.git",options.repo)
 		repo=match.group(1)
 		repo_to_open=destination+"/"+repo

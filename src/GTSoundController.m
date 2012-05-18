@@ -69,6 +69,6 @@ static GTSoundController *inst;
 - (id) autorelease {
 	return self;
 }
-- (void) release {}
+- (oneway void) release {}
 
 @end

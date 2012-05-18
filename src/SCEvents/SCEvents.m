@@ -110,7 +110,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 
 - (id)autorelease { return self; }
 
-- (void)release { }
+- (oneway void)release { }
 
 /**
  * Flushes the event stream synchronously by sending events that have already 

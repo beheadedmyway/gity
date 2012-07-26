@@ -22,8 +22,11 @@
 
 - (void) showAsSheetWithError:(NSString *) error {
 	if([window isSheet]) {
-		NSString * e = [[[errorField stringValue] stringByAppendingString:@"\n---------------\n"] stringByAppendingString:error];
-		[errorField setStringValue:e];
+        if (error)
+        {
+            NSString * e = [[[errorField stringValue] stringByAppendingString:@"\n---------------\n"] stringByAppendingString:error];
+            [errorField setStringValue:e];
+        }
 	} else {
 		[self loadNibs];
 		[errorField setStringValue:error];

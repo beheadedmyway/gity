@@ -111,7 +111,11 @@
 }
 
 - (NSDictionary *) environment {
-	return [[NSProcessInfo processInfo] environment];
+	NSMutableDictionary *env = [[[[NSProcessInfo processInfo] environment] mutableCopy] autorelease];
+    NSString *gitConfigPath = [git gitConfigPath];
+    if (gitConfigPath)
+        [env setObject:[git gitConfigPath] forKey:@"gitConfigPath"];
+    return env;
 }
 
 - (void) cancel	{

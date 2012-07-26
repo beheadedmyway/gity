@@ -23,7 +23,7 @@ except Exception,e:
 command=""
 try:
 	from _argv import *
-	commitfile=".git/vendor/gity/tmp/commitmsg"
+	commitfile=os.environ['gitConfigPath'] + "/vendor/gity/tmp/commitmsg"
 	if not os.path.exists(commitfile):raise Exception("Gitty Error: The tmp commitmsg file doesn't exist.")
 	signoff=False
 	if options.misc and len(options.misc)>0: signoff=True

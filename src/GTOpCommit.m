@@ -39,7 +39,7 @@
 	[self setArgumentsWithPythonScript:[GTPythonScripts commitScript] setArgsOnTask:false];
 	if([self isCancelled]) return;
 	NSString * message = [[gd commit] commitMessageValue];
-	NSString * file = [[git gitProjectPath] stringByAppendingString:@"/.git/vendor/gity/tmp/commitmsg"];
+	NSString * file = [NSString stringWithFormat:@"%@%@", [git gitConfigPath], @"/vendor/gity/tmp/commitmsg"];
 	NSFileHandle * fileHandle = [[NSFileHandle alloc] initWithTruncatedFile:file];
 	NSData * commitMessage = [message dataUsingEncoding:NSUTF8StringEncoding];
 	[fileHandle writeData:commitMessage];

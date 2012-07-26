@@ -26,7 +26,7 @@
 
 - (void) taskComplete {
 	if([self isCancelled]) return;
-	NSString * file = [[git gitProjectPath] stringByAppendingString:[GTJSONFiles configsFile]];
+	NSString * file = [NSString stringWithFormat:@"%@%@", [git gitConfigPath], [GTJSONFiles configsFile]];
 	NSFileHandle * read = [[NSFileHandle alloc] initWithFile:file];
 	if(read is nil) return;
 	NSData * data = [read readDataToEndOfFile];

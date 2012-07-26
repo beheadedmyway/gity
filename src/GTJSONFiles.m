@@ -20,63 +20,63 @@
 @implementation GTJSONFiles
 
 + (NSString *) allFiles {
-	return @"/.git/vendor/gity/tmp/allfiles.json";
+	return @"/vendor/gity/tmp/allfiles.json";
 }
 
 + (NSString *) untrackedFiles {
-	return @"/.git/vendor/gity/tmp/untrackedfiles.json";
+	return @"/vendor/gity/tmp/untrackedfiles.json";
 }
 
 + (NSString *) modifiedFiles {
-	return @"/.git/vendor/gity/tmp/modifiedfiles.json";
+	return @"/vendor/gity/tmp/modifiedfiles.json";
 }
 
 + (NSString *) deletedFiles {
-	return @"/.git/vendor/gity/tmp/deletedfiles.json";
+	return @"/vendor/gity/tmp/deletedfiles.json";
 }
 
 + (NSString *) stageModifiedFiles {
-	return @"/.git/vendor/gity/tmp/stagemodifiedfiles.json";
+	return @"/vendor/gity/tmp/stagemodifiedfiles.json";
 }
 
 + (NSString *) stageAddedFiles {
-	return @"/.git/vendor/gity/tmp/stageaddedfiles.json";
+	return @"/vendor/gity/tmp/stageaddedfiles.json";
 }
 
 + (NSString *) stageDeletedFiles {
-	return @"/.git/vendor/gity/tmp/stagedeletedfiles.json";
+	return @"/vendor/gity/tmp/stagedeletedfiles.json";
 }
 
 + (NSString *) stageRenamedFiles {
-	return @"/.git/vendor/gity/tmp/stagerenamedfiles.json";
+	return @"/vendor/gity/tmp/stagerenamedfiles.json";
 }
 
 + (NSString *) statusFile {
-	return @"/.git/vendor/gity/tmp/status.json";
+	return @"/vendor/gity/tmp/status.json";
 }
 
 + (NSString *) metaStatusFile {
-	return @"/.git/vendor/gity/tmp/metastatus.json";
+	return @"/vendor/gity/tmp/metastatus.json";
 }
 
 + (NSString *) configsFile {
-	return @"/.git/vendor/gity/tmp/configs.json";
+	return @"/vendor/gity/tmp/configs.json";
 }
 
 + (NSString *) globalConfigsFile {
-	return @"/.git/vendor/gity/tmp/globalconfigs.json";
+	return @"/vendor/gity/tmp/globalconfigs.json";
 }
 
 + (NSString *) diff {
-	return @"/.git/vendor/gity/tmp/diff.html";
+	return @"/vendor/gity/tmp/diff.html";
 }
 
 + (NSString *) diffReport {
-	return @"/.git/vendor/gity/tmp/diffreport";
+	return @"/vendor/gity/tmp/diffreport";
 }
 
 + (NSString *) commitReport {
-	return @"/.git/vendor/gity/tmp/commitreport";
+	return @"/vendor/gity/tmp/commitreport";
 }
 
 @end

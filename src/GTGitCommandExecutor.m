@@ -19,7 +19,7 @@
 
 @implementation GTGitCommandExecutor
 
-@synthesize gitProjectPath, gitExecPath;
+@synthesize gitProjectPath, gitConfigPath, gitExecPath;
 
 - (id) init {
 	if(self = [super init]) {
@@ -172,12 +172,22 @@
 	[fout closeFile];
 	
 	NSString *versionSTDOUT = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    // ie: git version 1.7.6 (Apple Git-13.1)  // remove everything at ( and onward.
+    NSRange subvendorMarker = [versionSTDOUT rangeOfString:@"("];
+    if (subvendorMarker.location != NSNotFound)
+    {
+        NSString *oldString = versionSTDOUT;
+        versionSTDOUT = [[oldString substringToIndex:subvendorMarker.location] retain];
+        [oldString release];
+    }
+	
 	NSArray *pieces = [versionSTDOUT componentsSeparatedByString:@" "];
 	
 	if([pieces count] < 2) {
 		goto cleanup;
 	}
-	
+    
 	NSString *versionString = [pieces lastObject];
 	NSArray *versionPieces = [versionString componentsSeparatedByString:@"."];
 
@@ -236,12 +246,26 @@ cleanup:
 	NSFileHandle *fout = [[task standardOutput] fileHandleForReading];
 	NSData *data = [fout readDataToEndOfFile];
 	NSString *path = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    [gitConfigPath release];
+    gitConfigPath = nil;
 	
 	if([path isEqual:@".git\n"]) {
 		[path release];
 		[task release];
+        gitConfigPath = [[proposedPath stringByAppendingPathComponent:@"/.git"] retain];
 		return proposedPath;
 	}
+    
+    gitConfigPath = [[path stringByReplacingOccurrencesOfString:@"\n" withString:@""] retain];
+
+    // this takes into account newer git version's handling of submodules
+    if ([path rangeOfString:@".git/modules"].location != NSNotFound) {
+        NSString *newPath = [gitConfigPath stringByReplacingOccurrencesOfString:@"/.git/modules" withString:@""];
+		[path release];
+		[task release];
+		return newPath;        
+    }
 	
 	[path autorelease];
 	[task release];
@@ -351,6 +375,7 @@ cleanup:
 	#endif
 	
 	GDRelease(gitProjectPath);
+    GDRelease(gitConfigPath);
 	GDRelease(environment);
 	
 	[super dealloc];

@@ -34,6 +34,9 @@ try:
 	if not no_such_section(sterr): rcode_for_git_exit(rcode,sterr)
 	command="%s %s %s" % (options.git,"rm --cached",submodule)
 	rcode,stout,sterr=run_command(command)
+# remove the .git/modules/... gitconfig crud for the newer git rev's.
+	command="rm -rf .git/modules/" + submodule
+	rcode,stout,sterr=run_command(command)
 	rcode_for_git_exit(rcode,sterr)
 	exit(0)
 except Exception, e:

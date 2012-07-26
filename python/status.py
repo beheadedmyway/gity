@@ -124,7 +124,7 @@ try:
 	allfiles['stage_add'] = files
 	
 	make_vendor_tmp_dir()
-	statusFile=open(".git/vendor/gity/tmp/status.json","w")
+	statusFile=open(os.environ['gitConfigPath'] + "/vendor/gity/tmp/status.json","w")
 	statusFile.write(json.dumps(allfiles))
 	statusFile.close()
 	exit(0)

@@ -438,7 +438,11 @@ static NSInteger operationRunCount = 0;
 - (void) runNewBranch:(NSString *) branchName fromStartBranch:(NSString *) startBranch checkoutNewBranch:(BOOL) checksOut {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpNewBranch * branch = [[[GTOpNewBranch alloc] initWithGD:gd andBranchName:branchName andStartBranchName:startBranch] autorelease];
+	GTOpNewBranch * branch = nil;
+    if (gitd.isHeadDetatched)
+        branch = [[[GTOpNewBranch alloc] initWithGD:gd andBranchName:branchName andStartBranchName:gitd.currentAbbreviatedSha] autorelease];
+    else 
+        branch = [[[GTOpNewBranch alloc] initWithGD:gd andBranchName:branchName andStartBranchName:startBranch] autorelease];
 	[branch setChecksOutBranch:checksOut];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:branch];
 	[branch setCompletionBlock:^{

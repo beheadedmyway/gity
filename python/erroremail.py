@@ -22,7 +22,7 @@ try:
 except Exception,e:
 	sys.stderr.write(str(e))
 	exit(84)
-errors=open(".git/vendor/gity/tmp/errors","r")
+errors=open(os.environ['gitConfigPath'] + "/vendor/gity/tmp/errors","r")
 content=errors.read()
 errors.close()
 try:

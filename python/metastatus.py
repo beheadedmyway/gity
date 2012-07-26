@@ -170,7 +170,7 @@ try:
 	output["default_remotes"]=dremotes
 	
 	make_vendor_tmp_dir()
-	statusFile=open(".git/vendor/gity/tmp/metastatus.json","w")
+	statusFile=open(os.environ['gitConfigPath'] + "/vendor/gity/tmp/metastatus.json","w")
 	statusFile.write(json.dumps(output))
 	statusFile.close()
 	exit(0)

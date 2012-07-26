@@ -36,7 +36,7 @@ try:
 		if not a[0]: continue
 		configs.append([sanitize_str(a[0]),sanitize_str(a[1])])
 	make_vendor_tmp_dir()
-	configsfile = open(".git/vendor/gity/tmp/globalconfigs.json","w")
+	configsfile = open(os.environ['gitConfigPath'] + "/vendor/gity/tmp/globalconfigs.json","w")
 	configsfile.write(json.dumps(configs))
 	configsfile.close()
 	exit(0)

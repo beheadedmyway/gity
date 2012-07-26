@@ -58,7 +58,7 @@ try:
 	
 	a=template_content.split("@content@")
 	final=stout.join(a)
-	tmp=open(".git/vendor/gity/tmp/diff.html","w")
+	tmp=open(os.environ['gitConfigPath'] + "/vendor/gity/tmp/diff.html","w")
 	tmp.write(final)
 	tmp.close()
 	exit(0)

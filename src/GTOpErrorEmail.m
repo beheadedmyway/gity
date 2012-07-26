@@ -29,7 +29,7 @@
 	if([self isCancelled]) return;
 	[self setArgumentsWithPythonScript:[GTPythonScripts emailErrorsScript] setArgsOnTask:false];
 	if([self isCancelled]) return;
-	NSString * file = [[git gitProjectPath] stringByAppendingString:@"/.git/vendor/gity/tmp/errors"];
+	NSString * file = [NSString stringWithFormat:@"%@%@", [git gitConfigPath], @"/vendor/gity/tmp/errors"];
 	NSFileHandle * fileHandle = [[NSFileHandle alloc] initWithTruncatedFile:file];
 	NSData * errorMsg = [errors dataUsingEncoding:NSUTF8StringEncoding];
 	[fileHandle writeData:errorMsg];

@@ -30,4 +30,9 @@
 	[gitd setCommitsAhead:stout];
 }
 
+- (NSUInteger)length
+{
+    return 0;
+}
+
 @end

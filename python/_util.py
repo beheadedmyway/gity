@@ -113,7 +113,7 @@ def run_free_command(cmd):
 	process=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE,shell=True)
 
 def make_vendor_tmp_dir():
-	try: os.makedirs(".git/vendor/gity/tmp/")
+	try: os.makedirs(os.environ['gitConfigPath'] + "/vendor/gity/tmp/")
 	except Exception, e: pass
 
 def make_gitignore():
@@ -121,10 +121,10 @@ def make_gitignore():
 	except Exception, e: pass
 
 def diff_report_file():
-	return ".git/vendor/gity/tmp/diffreport"
+	return os.environ['gitConfigPath'] + "/vendor/gity/tmp/diffreport"
 
 def commit_report_file():
-	return ".git/vendor/gity/tmp/commitreport"
+	return os.environ['gitConfigPath'] + "/vendor/gity/tmp/commitreport"
 
 def sanitize_str(s):
 	if not s: raise Exception("Gity Error: A null strung came in through sanitize str")

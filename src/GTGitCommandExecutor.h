@@ -25,10 +25,12 @@
 @interface GTGitCommandExecutor : NSObject {
 	NSString *gitProjectPath;
 	NSString *gitExecPath;
+    NSString *gitConfigPath;
 	NSMutableDictionary *environment;
 }
 
 @property (copy,nonatomic) NSString *gitProjectPath;
+@property (readonly,nonatomic) NSString *gitConfigPath;
 @property (readonly,nonatomic) NSString *gitExecPath;
 
 - (void) verifyGitExecutable;

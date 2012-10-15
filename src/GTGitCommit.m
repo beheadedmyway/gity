@@ -29,6 +29,7 @@
 @synthesize body;
 @synthesize notes;
 @synthesize parsedCommitDetails;
+@synthesize graph;
 
 - (GTGitCommit *) copyWithZone:(NSZone *) zone {
 	GTGitCommit * cp = [[GTGitCommit alloc] init];
@@ -39,6 +40,7 @@
 	[cp setSubject:[self subject]];
 	[cp setBody:[self body]];
 	[cp setNotes:[self notes]];
+    [cp setGraph:[self graph]];
 	NSTimeInterval ti = [[self date] timeIntervalSince1970];
 	NSDate * dt = [[NSDate alloc] initWithTimeIntervalSince1970:ti];
 	[cp setDate:dt];
@@ -71,6 +73,7 @@
 	GDRelease(body);
 	GDRelease(notes);
 	GDRelease(parsedCommitDetails);
+    GDRelease(graph);
 	[super dealloc];
 }
 

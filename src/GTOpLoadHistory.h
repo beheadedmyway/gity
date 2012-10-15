@@ -24,15 +24,13 @@
 #import "GTGitCommit.h"
 
 @interface GTOpLoadHistory : GTBaseGitTask {
-	BOOL useCPP;
-	BOOL usec;
 	BOOL detatchedHead;
 	GTGitCommitLoadInfo * loadInfo;
-	GTCallback * callback;
+	//GTCallback * callback;
 	NSMutableArray * commits;
 }
 
-- (id) initWithGD:(GittyDocument *) _gd andLoadInfo:(GTGitCommitLoadInfo *) _loadInfo andCallback:(GTCallback *) _callback;
+//- (id) initWithGD:(GittyDocument *) _gd andLoadInfo:(GTGitCommitLoadInfo *) _loadInfo andCallback:(GTCallback *) _callback;
 - (id) initWithGD:(GittyDocument *) _gd andLoadInfo:(GTGitCommitLoadInfo *) _loadInfo;
 - (void) readSTDOUTC;
 - (void) readSTDOUTCPP;

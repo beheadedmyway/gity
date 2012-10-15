@@ -32,6 +32,7 @@
 	NSString * body;
 	NSString * notes;
 	NSString * parsedCommitDetails;
+    NSString * graph;
 }
 
 @property (retain,nonatomic) NSDate * date;
@@ -45,6 +46,7 @@
 @property (copy,nonatomic) NSString * body;
 @property (copy,nonatomic) NSString * notes;
 @property (copy,nonatomic) NSString * parsedCommitDetails;
+@property (copy,nonatomic) NSString * graph;
 
 - (BOOL) isMatchedByRegex:(id) aRegex;
 

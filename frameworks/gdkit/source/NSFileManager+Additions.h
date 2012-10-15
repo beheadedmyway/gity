@@ -16,12 +16,6 @@
 @interface NSFileManager (GDAdditions)
 
 /**
- * Returns a path to a folder, creating the folder if
- * it doesn't exist.
- */
-- (NSString *) pathToFolderOfType:(const OSType) folderType shouldCreateFolder:(BOOL) create;
-
-/**
  * Returns a path to the application support path.
  */
 - (NSString *) applicationSupportFolder;

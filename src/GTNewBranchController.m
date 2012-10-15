@@ -19,7 +19,7 @@
 #import "GittyDocument.h"
 
 @implementation GTNewBranchController
-@synthesize newBranchValue;
+@synthesize branchValue;
 
 - (void) reset {
 	if(newBranchName)[newBranchName setStringValue:@""];
@@ -62,7 +62,7 @@
 		NSBeep();
 		return;
 	}
-	newBranchValue=[[newBranchName stringValue] copy];
+	branchValue=[[newBranchName stringValue] copy];
 	if(target) [target performSelector:action];
 	[self disposeNibs];
 }
@@ -77,7 +77,7 @@
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GTNewBranchController\n");
 	#endif
-	[newBranchValue release];
+	[branchValue release];
 	[self disposeNibs];
 	[super dealloc];
 }

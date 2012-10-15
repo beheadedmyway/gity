@@ -24,12 +24,12 @@
 @synthesize pathToOpen;
 
 - (id) initWithRepoURL:(NSString *) url inDir:(NSString *) _dir {
+	self=[super init];
 	done=false;
 	canceled=false;
 	args = [[NSMutableArray alloc] init];
 	repoURL = [url copy];
 	dir = [_dir copy];
-	self=[super init];
 	[self initializeTask];
 	[self setArguments];
 	return self;

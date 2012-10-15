@@ -22,7 +22,7 @@
 - (id) initWithGD:(GittyDocument *) _gd andKey:(NSString *) _key isGlobal:(BOOL) _isGlobal {
 	key=[_key copy];
 	isGlobal=_isGlobal;
-	[super initWithGD:_gd];
+	self = [super initWithGD:_gd];
 	return self;
 }
 

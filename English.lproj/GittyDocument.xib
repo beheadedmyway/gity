@@ -2,44 +2,47 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">11A511</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1617</string>
-		<string key="IBDocument.AppKitVersion">1138</string>
-		<string key="IBDocument.HIToolboxVersion">566.00</string>
+		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.AppKitVersion">1187.34</string>
+		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">1617</string>
+			<string key="NS.object.0">2843</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>NSSliderCell</string>
-			<string>NSToolbarItem</string>
-			<string>NSToolbarFlexibleSpaceItem</string>
 			<string>NSCustomObject</string>
-			<string>NSSplitView</string>
-			<string>NSTableView</string>
-			<string>NSSlider</string>
 			<string>NSCustomView</string>
 			<string>NSImageCell</string>
-			<string>NSSearchField</string>
-			<string>NSTextField</string>
-			<string>NSSearchFieldCell</string>
-			<string>NSToolbarSeparatorItem</string>
-			<string>NSWindowTemplate</string>
-			<string>NSTextFieldCell</string>
-			<string>NSTableColumn</string>
 			<string>NSOutlineView</string>
-			<string>NSView</string>
-			<string>NSToolbarSpaceItem</string>
-			<string>NSToolbar</string>
-			<string>NSScrollView</string>
 			<string>NSProgressIndicator</string>
+			<string>NSScrollView</string>
 			<string>NSScroller</string>
+			<string>NSSearchField</string>
+			<string>NSSearchFieldCell</string>
+			<string>NSSlider</string>
+			<string>NSSliderCell</string>
+			<string>NSSplitView</string>
+			<string>NSTableColumn</string>
 			<string>NSTableHeaderView</string>
+			<string>NSTableView</string>
+			<string>NSTextField</string>
+			<string>NSTextFieldCell</string>
+			<string>NSToolbar</string>
+			<string>NSToolbarFlexibleSpaceItem</string>
+			<string>NSToolbarItem</string>
+			<string>NSToolbarSeparatorItem</string>
+			<string>NSToolbarSpaceItem</string>
+			<string>NSView</string>
+			<string>NSWindowTemplate</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 		</array>
-		<dictionary class="NSMutableDictionary" key="IBDocument.Metadata"/>
+		<object class="NSMutableDictionary" key="IBDocument.Metadata">
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
+		</object>
 		<array class="NSMutableArray" key="IBDocument.RootObjects" id="580458321">
 			<object class="NSCustomObject" id="512844837">
 				<string key="NSClassName">GittyDocument</string>
@@ -305,7 +308,7 @@
 							<nil key="NSToolbarItemView"/>
 							<object class="NSCustomResource" key="NSToolbarItemImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">NSToolbarCustomizeToolbarItemImage</string>
+								<string key="NSResourceName">NSToolbarCustomize</string>
 							</object>
 							<nil key="NSToolbarItemTarget"/>
 							<string key="NSToolbarItemAction">runToolbarCustomizationPalette:</string>
@@ -420,7 +423,7 @@
 						<reference ref="159719212"/>
 						<reference ref="755339535"/>
 					</array>
-					<array class="NSMutableArray" key="NSToolbarIBDefaultItems">
+					<array key="NSToolbarIBDefaultItems">
 						<reference ref="848171757"/>
 						<reference ref="126878317"/>
 						<reference ref="13069968"/>
@@ -444,6 +447,7 @@
 					<int key="NSvFlags">256</int>
 					<string key="NSFrameSize">{924, 605}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{924, 683}</string>
@@ -466,7 +470,6 @@
 						<object class="NSProgressIndicator" id="633686830">
 							<reference key="NSNextResponder" ref="403320212"/>
 							<int key="NSvFlags">1292</int>
-							<object class="NSPSMatrix" key="NSDrawMatrix"/>
 							<string key="NSFrame">{{11, 7}, {174, 12}}</string>
 							<reference key="NSSuperview" ref="403320212"/>
 							<int key="NSpiFlags">16650</int>
@@ -495,7 +498,6 @@
 						<object class="NSProgressIndicator" id="611512772">
 							<reference key="NSNextResponder" ref="441685811"/>
 							<int key="NSvFlags">1292</int>
-							<object class="NSPSMatrix" key="NSDrawMatrix"/>
 							<string key="NSFrame">{{11, 7}, {174, 12}}</string>
 							<reference key="NSSuperview" ref="441685811"/>
 							<int key="NSpiFlags">16650</int>
@@ -524,7 +526,6 @@
 						<object class="NSProgressIndicator" id="434839650">
 							<reference key="NSNextResponder" ref="530911938"/>
 							<int key="NSvFlags">1292</int>
-							<object class="NSPSMatrix" key="NSDrawMatrix"/>
 							<string key="NSFrame">{{11, 9}, {174, 12}}</string>
 							<reference key="NSSuperview" ref="530911938"/>
 							<int key="NSpiFlags">16650</int>
@@ -537,7 +538,7 @@
 							<reference key="NSSuperview" ref="530911938"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="509151992">
-								<int key="NSCellFlags">68288064</int>
+								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272892928</int>
 								<string key="NSContents">Caching</string>
 								<object class="NSFont" key="NSSupport">
@@ -565,6 +566,7 @@
 									</object>
 								</object>
 							</object>
+							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
 					</array>
 					<string key="NSFrameSize">{196, 47}</string>
@@ -633,7 +635,7 @@
 								<reference key="NSSuperview" ref="128991713"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSTextFieldCell" key="NSCell" id="567863950">
-									<int key="NSCellFlags">68288064</int>
+									<int key="NSCellFlags">68157504</int>
 									<int key="NSCellFlags2">272630784</int>
 									<string key="NSContents">Remote URL</string>
 									<object class="NSFont" key="NSSupport" id="741762274">
@@ -645,6 +647,7 @@
 									<reference key="NSBackgroundColor" ref="546261090"/>
 									<reference key="NSTextColor" ref="754308598"/>
 								</object>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 							</object>
 							<object class="NSTextField" id="274057183">
 								<reference key="NSNextResponder" ref="128991713"/>
@@ -653,7 +656,7 @@
 								<reference key="NSSuperview" ref="128991713"/>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSTextFieldCell" key="NSCell" id="211497801">
-									<int key="NSCellFlags">-1804468671</int>
+									<int key="NSCellFlags">-1804599231</int>
 									<int key="NSCellFlags2">272630784</int>
 									<string key="NSContents"/>
 									<reference key="NSSupport" ref="741762274"/>
@@ -675,6 +678,7 @@
 										<reference key="NSColor" ref="18194957"/>
 									</object>
 								</object>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 							</object>
 						</array>
 						<string key="NSFrame">{{15, 165}, {777, 182}}</string>
@@ -703,6 +707,8 @@
 										<string key="NSFrameSize">{602, 343}</string>
 										<reference key="NSSuperview" ref="677466587"/>
 										<bool key="NSEnabled">YES</bool>
+										<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+										<bool key="NSControlAllowsExpansionToolTips">YES</bool>
 										<object class="NSTableHeaderView" key="NSHeaderView" id="526826530">
 											<reference key="NSNextResponder" ref="111814224"/>
 											<int key="NSvFlags">256</int>
@@ -723,7 +729,7 @@
 												<double key="NSMinWidth">40</double>
 												<double key="NSMaxWidth">1000</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents">Key</string>
 													<object class="NSFont" key="NSSupport" id="26">
@@ -743,7 +749,7 @@
 													</object>
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="417884513">
-													<int key="NSCellFlags">337772096</int>
+													<int key="NSCellFlags">337641536</int>
 													<int key="NSCellFlags2">133120</int>
 													<string key="NSContents">Text Cell</string>
 													<reference key="NSSupport" ref="26"/>
@@ -767,7 +773,7 @@
 												<double key="NSMinWidth">40</double>
 												<double key="NSMaxWidth">1000</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents">Value</string>
 													<reference key="NSSupport" ref="26"/>
@@ -775,7 +781,7 @@
 													<reference key="NSTextColor" ref="633471953"/>
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="204764520">
-													<int key="NSCellFlags">337772096</int>
+													<int key="NSCellFlags">337641536</int>
 													<int key="NSCellFlags2">133120</int>
 													<string key="NSContents">Text Cell</string>
 													<reference key="NSSupport" ref="26"/>
@@ -826,6 +832,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{587, 17}, {15, 328}}</string>
 								<reference key="NSSuperview" ref="828908931"/>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="828908931"/>
 								<string key="NSAction">_doScroller:</string>
 								<double key="NSCurValue">37</double>
@@ -836,6 +843,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{0, 345}, {587, 15}}</string>
 								<reference key="NSSuperview" ref="828908931"/>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="828908931"/>
 								<string key="NSAction">_doScroller:</string>
@@ -865,6 +873,9 @@
 						<reference key="NSContentView" ref="677466587"/>
 						<reference key="NSHeaderClipView" ref="111814224"/>
 						<bytes key="NSScrollAmts">QSAAAEEgAABBiAAAQYgAAA</bytes>
+						<double key="NSMinMagnification">0.25</double>
+						<double key="NSMaxMagnification">4</double>
+						<double key="NSMagnification">1</double>
 					</object>
 				</array>
 				<string key="NSFrameSize">{602, 360}</string>
@@ -885,9 +896,11 @@
 									<object class="NSOutlineView" id="466875986">
 										<reference key="NSNextResponder" ref="141725129"/>
 										<int key="NSvFlags">4370</int>
-										<string key="NSFrameSize">{111, 299}</string>
+										<string key="NSFrameSize">{111.5, 299}</string>
 										<reference key="NSSuperview" ref="141725129"/>
 										<bool key="NSEnabled">YES</bool>
+										<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+										<bool key="NSControlAllowsExpansionToolTips">YES</bool>
 										<object class="_NSCornerView" key="NSCornerView">
 											<nil key="NSNextResponder"/>
 											<int key="NSvFlags">-2147483392</int>
@@ -899,7 +912,7 @@
 												<double key="NSMinWidth">81.38916015625</double>
 												<double key="NSMaxWidth">1000</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents">Header Title</string>
 													<object class="NSFont" key="NSSupport">
@@ -914,7 +927,7 @@
 													<reference key="NSTextColor" ref="633471953"/>
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="286655491">
-													<int key="NSCellFlags">337772096</int>
+													<int key="NSCellFlags">337641536</int>
 													<int key="NSCellFlags2">2048</int>
 													<reference key="NSSupport" ref="26"/>
 													<reference key="NSControlView" ref="466875986"/>
@@ -971,6 +984,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{-100, -100}, {15, 284}}</string>
 								<reference key="NSSuperview" ref="223210023"/>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="223210023"/>
 								<string key="NSAction">_doScroller:</string>
 								<double key="NSPercent">0.90977442264556885</double>
@@ -980,6 +994,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{-100, -100}, {96, 15}}</string>
 								<reference key="NSSuperview" ref="223210023"/>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="223210023"/>
 								<string key="NSAction">_doScroller:</string>
@@ -994,6 +1009,9 @@
 						<reference key="NSHScroller" ref="870404724"/>
 						<reference key="NSContentView" ref="141725129"/>
 						<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
+						<double key="NSMinMagnification">0.25</double>
+						<double key="NSMaxMagnification">4</double>
+						<double key="NSMagnification">1</double>
 					</object>
 				</array>
 				<string key="NSFrameSize">{111, 299}</string>
@@ -1023,6 +1041,8 @@
 										<string key="NSFrameSize">{450, 306}</string>
 										<reference key="NSSuperview" ref="253071190"/>
 										<bool key="NSEnabled">YES</bool>
+										<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+										<bool key="NSControlAllowsExpansionToolTips">YES</bool>
 										<object class="_NSCornerView" key="NSCornerView">
 											<nil key="NSNextResponder"/>
 											<int key="NSvFlags">-2147483392</int>
@@ -1035,7 +1055,7 @@
 												<double key="NSMinWidth">20</double>
 												<double key="NSMaxWidth">1000</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents"/>
 													<reference key="NSSupport" ref="26"/>
@@ -1046,9 +1066,8 @@
 													<reference key="NSTextColor" ref="633471953"/>
 												</object>
 												<object class="NSImageCell" key="NSDataCell" id="735759168">
-													<int key="NSCellFlags">67239424</int>
+													<int key="NSCellFlags">134217728</int>
 													<int key="NSCellFlags2">33554432</int>
-													<reference key="NSSupport" ref="741762274"/>
 													<int key="NSAlign">0</int>
 													<int key="NSScale">0</int>
 													<int key="NSStyle">0</int>
@@ -1065,7 +1084,7 @@
 												<double key="NSMinWidth">10</double>
 												<double key="NSMaxWidth">3.4028230607370965e+38</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents"/>
 													<reference key="NSSupport" ref="26"/>
@@ -1078,7 +1097,7 @@
 													<reference key="NSTextColor" ref="633471953"/>
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="690622858">
-													<int key="NSCellFlags">67239488</int>
+													<int key="NSCellFlags">67108928</int>
 													<int key="NSCellFlags2">133120</int>
 													<string key="NSContents">Text Cell</string>
 													<reference key="NSSupport" ref="26"/>
@@ -1121,6 +1140,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{435, 0}, {15, 291}}</string>
 								<reference key="NSSuperview" ref="797046273"/>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="797046273"/>
 								<string key="NSAction">_doScroller:</string>
 								<double key="NSPercent">0.95098042488098145</double>
@@ -1130,6 +1150,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{0, 291}, {435, 15}}</string>
 								<reference key="NSSuperview" ref="797046273"/>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="797046273"/>
 								<string key="NSAction">_doScroller:</string>
@@ -1145,6 +1166,9 @@
 						<reference key="NSHScroller" ref="578961453"/>
 						<reference key="NSContentView" ref="253071190"/>
 						<bytes key="NSScrollAmts">QSAAAEEgAABBoAAAQaAAAA</bytes>
+						<double key="NSMinMagnification">0.25</double>
+						<double key="NSMaxMagnification">4</double>
+						<double key="NSMagnification">1</double>
 					</object>
 				</array>
 				<string key="NSFrameSize">{450, 306}</string>
@@ -1161,7 +1185,7 @@
 						<reference key="NSSuperview" ref="287791344"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSearchFieldCell" key="NSCell" id="490079089">
-							<int key="NSCellFlags">343014976</int>
+							<int key="NSCellFlags">342884416</int>
 							<int key="NSCellFlags2">268600320</int>
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="26"/>
@@ -1171,20 +1195,20 @@
 							<reference key="NSBackgroundColor" ref="685923038"/>
 							<reference key="NSTextColor" ref="754308598"/>
 							<object class="NSButtonCell" key="NSSearchButtonCell">
-								<int key="NSCellFlags">130560</int>
+								<int key="NSCellFlags">0</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents">search</string>
 								<reference key="NSControlView" ref="634950771"/>
 								<string key="NSAction">_searchFieldSearch:</string>
 								<reference key="NSTarget" ref="490079089"/>
-								<int key="NSButtonFlags">138690815</int>
+								<int key="NSButtonFlags">138690560</int>
 								<int key="NSButtonFlags2">0</int>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
 							</object>
 							<object class="NSButtonCell" key="NSCancelButtonCell">
-								<int key="NSCellFlags">130560</int>
+								<int key="NSCellFlags">0</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents">clear</string>
 								<array class="NSMutableArray" key="NSAccessibilityOverriddenAttributes">
@@ -1196,7 +1220,7 @@
 								<reference key="NSControlView" ref="634950771"/>
 								<string key="NSAction">_searchFieldCancel:</string>
 								<reference key="NSTarget" ref="490079089"/>
-								<int key="NSButtonFlags">138690815</int>
+								<int key="NSButtonFlags">138690560</int>
 								<int key="NSButtonFlags2">0</int>
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
@@ -1204,6 +1228,7 @@
 							</object>
 							<int key="NSMaximumRecents">255</int>
 						</object>
+						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 					</object>
 					<object class="NSTextField" id="12659243">
 						<reference key="NSNextResponder" ref="287791344"/>
@@ -1212,7 +1237,7 @@
 						<reference key="NSSuperview" ref="287791344"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="654670558">
-							<int key="NSCellFlags">68288064</int>
+							<int key="NSCellFlags">68157504</int>
 							<int key="NSCellFlags2">272630784</int>
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="741762274"/>
@@ -1223,6 +1248,7 @@
 								<bytes key="NSRGB">MSAxIDEAA</bytes>
 							</object>
 						</object>
+						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 					</object>
 				</array>
 				<string key="NSFrameSize">{792, 28}</string>
@@ -1237,7 +1263,6 @@
 			<object class="NSProgressIndicator" id="66486849">
 				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">1289</int>
-				<object class="NSPSMatrix" key="NSDrawMatrix"/>
 				<string key="NSFrameSize">{16, 16}</string>
 				<int key="NSpiFlags">20746</int>
 				<double key="NSMaxValue">100</double>
@@ -1282,7 +1307,7 @@
 						<reference key="NSSuperview" ref="785681642"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSliderCell" key="NSCell" id="974301777">
-							<int key="NSCellFlags">-2080244224</int>
+							<int key="NSCellFlags">-2080374784</int>
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents"/>
 							<reference key="NSSupport" ref="741762274"/>
@@ -1296,6 +1321,7 @@
 							<bool key="NSAllowsTickMarkValuesOnly">NO</bool>
 							<bool key="NSVertical">NO</bool>
 						</object>
+						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 					</object>
 				</array>
 				<string key="NSFrameSize">{881, 20}</string>
@@ -1308,7 +1334,7 @@
 				<string key="NSClassName">GTDiffContentView</string>
 			</object>
 			<object class="NSCustomView" id="273224473">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSScrollView" id="1033268352">
@@ -1325,6 +1351,8 @@
 										<string key="NSFrameSize">{630, 338}</string>
 										<reference key="NSSuperview" ref="811975569"/>
 										<bool key="NSEnabled">YES</bool>
+										<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+										<bool key="NSControlAllowsExpansionToolTips">YES</bool>
 										<object class="NSTableHeaderView" key="NSHeaderView" id="967450224">
 											<reference key="NSNextResponder" ref="386183798"/>
 											<int key="NSvFlags">256</int>
@@ -1345,7 +1373,7 @@
 												<double key="NSMinWidth">40</double>
 												<double key="NSMaxWidth">2000</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents">Subject</string>
 													<reference key="NSSupport" ref="26"/>
@@ -1356,7 +1384,7 @@
 													<reference key="NSTextColor" ref="633471953"/>
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="218119721">
-													<int key="NSCellFlags">337772096</int>
+													<int key="NSCellFlags">337641536</int>
 													<int key="NSCellFlags2">133120</int>
 													<string key="NSContents">Text Cell</string>
 													<reference key="NSSupport" ref="26"/>
@@ -1374,7 +1402,7 @@
 												<double key="NSMinWidth">40</double>
 												<double key="NSMaxWidth">1000</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents">Author</string>
 													<reference key="NSSupport" ref="26"/>
@@ -1382,7 +1410,7 @@
 													<reference key="NSTextColor" ref="633471953"/>
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="58807713">
-													<int key="NSCellFlags">337772096</int>
+													<int key="NSCellFlags">337641536</int>
 													<int key="NSCellFlags2">133120</int>
 													<string key="NSContents">Text Cell</string>
 													<reference key="NSSupport" ref="26"/>
@@ -1400,7 +1428,7 @@
 												<double key="NSMinWidth">10</double>
 												<double key="NSMaxWidth">3.4028234663852886e+38</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
-													<int key="NSCellFlags">75628096</int>
+													<int key="NSCellFlags">75497536</int>
 													<int key="NSCellFlags2">2048</int>
 													<string key="NSContents">Date</string>
 													<reference key="NSSupport" ref="26"/>
@@ -1408,7 +1436,7 @@
 													<reference key="NSTextColor" ref="633471953"/>
 												</object>
 												<object class="NSTextFieldCell" key="NSDataCell" id="1058775253">
-													<int key="NSCellFlags">337772096</int>
+													<int key="NSCellFlags">337641536</int>
 													<int key="NSCellFlags2">133120</int>
 													<string key="NSContents">Text Cell</string>
 													<reference key="NSSupport" ref="26"/>
@@ -1450,6 +1478,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{616, 17}, {15, 323}}</string>
 								<reference key="NSSuperview" ref="1033268352"/>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="1033268352"/>
 								<string key="NSAction">_doScroller:</string>
 								<double key="NSPercent">0.95562130177514792</double>
@@ -1459,6 +1488,7 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{1, 340}, {615, 15}}</string>
 								<reference key="NSSuperview" ref="1033268352"/>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="1033268352"/>
 								<string key="NSAction">_doScroller:</string>
@@ -1487,16 +1517,17 @@
 						<reference key="NSHScroller" ref="159862923"/>
 						<reference key="NSContentView" ref="811975569"/>
 						<reference key="NSHeaderClipView" ref="386183798"/>
-						<reference key="NSCornerView" ref="779702046"/>
 						<bytes key="NSScrollAmts">QSAAAEEgAABBgAAAQYAAAA</bytes>
+						<double key="NSMinMagnification">0.25</double>
+						<double key="NSMaxMagnification">4</double>
+						<double key="NSMagnification">1</double>
 					</object>
 				</array>
 				<string key="NSFrameSize">{630, 354}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">GTHistoryView</string>
 			</object>
 			<object class="NSCustomView" id="763098121">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSCustomView" id="146598474">
@@ -1504,7 +1535,6 @@
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{0, 241}, {545, 1}}</string>
 						<reference key="NSSuperview" ref="763098121"/>
-						<int key="NSViewLayerContentsRedrawPolicy">2</int>
 						<string key="NSClassName">GTLineView</string>
 					</object>
 					<object class="NSCustomView" id="140043895">
@@ -1512,7 +1542,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{545, 242}</string>
 						<reference key="NSSuperview" ref="763098121"/>
-						<int key="NSViewLayerContentsRedrawPolicy">2</int>
 						<string key="NSClassName">NSView</string>
 					</object>
 					<object class="NSCustomView" id="45445342">
@@ -1524,10 +1553,9 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{3, 0}, {64, 21}}</string>
 								<reference key="NSSuperview" ref="45445342"/>
-								<int key="NSViewLayerContentsRedrawPolicy">2</int>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSliderCell" key="NSCell" id="394444998">
-									<int key="NSCellFlags">-2080244224</int>
+									<int key="NSCellFlags">-2080374784</int>
 									<int key="NSCellFlags2">0</int>
 									<string key="NSContents"/>
 									<reference key="NSSupport" ref="741762274"/>
@@ -1541,17 +1569,15 @@
 									<bool key="NSAllowsTickMarkValuesOnly">NO</bool>
 									<bool key="NSVertical">NO</bool>
 								</object>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 							</object>
 						</array>
 						<string key="NSFrame">{{0, 241}, {545, 22}}</string>
 						<reference key="NSSuperview" ref="763098121"/>
-						<int key="NSViewLayerContentsRedrawPolicy">2</int>
 						<string key="NSClassName">GTHistoryBarView</string>
 					</object>
 				</array>
 				<string key="NSFrameSize">{545, 263}</string>
-				<reference key="NSSuperview"/>
-				<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				<string key="NSClassName">GTHistoryDetailsContainerView</string>
 			</object>
 			<object class="NSCustomView" id="173385885">
@@ -1567,10 +1593,9 @@
 				<string key="NSClassName">GTHistoryCommitTreeView</string>
 			</object>
 			<object class="NSCustomView" id="757367587">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{163, 96}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSClassName">GTHistoryCommitDetailsView</string>
 			</object>
 			<object class="NSCustomView" id="702909849">
@@ -1594,14 +1619,6 @@
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="275939982"/>
-						<reference key="destination" ref="512844837"/>
-					</object>
-					<int key="connectionID">17</int>
-				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">window</string>
@@ -1644,67 +1661,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">tableView</string>
-						<reference key="source" ref="432832840"/>
-						<reference key="destination" ref="667379516"/>
-					</object>
-					<int key="connectionID">100084</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">workingWindow</string>
-						<reference key="source" ref="840316269"/>
-						<reference key="destination" ref="719248951"/>
-					</object>
-					<int key="connectionID">100097</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">workingProgress</string>
-						<reference key="source" ref="840316269"/>
-						<reference key="destination" ref="611512772"/>
-					</object>
-					<int key="connectionID">100098</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">workingLabeledProgress</string>
-						<reference key="source" ref="840316269"/>
-						<reference key="destination" ref="434839650"/>
-					</object>
-					<int key="connectionID">100099</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">workingLabeledWindow</string>
-						<reference key="source" ref="840316269"/>
-						<reference key="destination" ref="915576796"/>
-					</object>
-					<int key="connectionID">100100</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">workingLabel</string>
-						<reference key="source" ref="840316269"/>
-						<reference key="destination" ref="247507022"/>
-					</object>
-					<int key="connectionID">100101</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">status</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="840316269"/>
 					</object>
 					<int key="connectionID">100102</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">spinner</string>
-						<reference key="source" ref="840316269"/>
-						<reference key="destination" ref="66486849"/>
-					</object>
-					<int key="connectionID">100113</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1724,51 +1685,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">barLabel</string>
-						<reference key="source" ref="287791344"/>
-						<reference key="destination" ref="12659243"/>
-					</object>
-					<int key="connectionID">100150</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">searchField</string>
-						<reference key="source" ref="287791344"/>
-						<reference key="destination" ref="634950771"/>
-					</object>
-					<int key="connectionID">100153</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">sourceListView</string>
-						<reference key="source" ref="401974075"/>
-						<reference key="destination" ref="466875986"/>
-					</object>
-					<int key="connectionID">100179</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">scrollView</string>
-						<reference key="source" ref="401974075"/>
-						<reference key="destination" ref="223210023"/>
-					</object>
-					<int key="connectionID">100180</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">sourceListView</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="401974075"/>
 					</object>
 					<int key="connectionID">100181</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">sourceListMenuView</string>
-						<reference key="source" ref="401974075"/>
-						<reference key="destination" ref="608541104"/>
-					</object>
-					<int key="connectionID">100245</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1785,14 +1706,6 @@
 						<reference key="destination" ref="220800999"/>
 					</object>
 					<int key="connectionID">100251</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">tableView</string>
-						<reference key="source" ref="149980437"/>
-						<reference key="destination" ref="609528118"/>
-					</object>
-					<int key="connectionID">100272</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1820,14 +1733,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">scale9View</string>
-						<reference key="source" ref="531651113"/>
-						<reference key="destination" ref="128991713"/>
-					</object>
-					<int key="connectionID">100320</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">fetchTags</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="684498157"/>
@@ -1852,22 +1757,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">initialLoadWindow</string>
-						<reference key="source" ref="840316269"/>
-						<reference key="destination" ref="241833154"/>
-					</object>
-					<int key="connectionID">100341</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">initialLoadIndicator</string>
-						<reference key="source" ref="840316269"/>
-						<reference key="destination" ref="633686830"/>
-					</object>
-					<int key="connectionID">100342</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">contentHSplitView</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="974971666"/>
@@ -1884,54 +1773,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">diffBarView</string>
-						<reference key="source" ref="704706191"/>
-						<reference key="destination" ref="720764182"/>
-					</object>
-					<int key="connectionID">100380</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">diffStateView</string>
-						<reference key="source" ref="720764182"/>
-						<reference key="destination" ref="785681642"/>
-					</object>
-					<int key="connectionID">100384</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">diffContentView</string>
-						<reference key="source" ref="704706191"/>
-						<reference key="destination" ref="53445593"/>
-					</object>
-					<int key="connectionID">100386</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">contentContainer</string>
-						<reference key="source" ref="704706191"/>
-						<reference key="destination" ref="438744966"/>
-					</object>
-					<int key="connectionID">100388</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">lineView</string>
-						<reference key="source" ref="704706191"/>
-						<reference key="destination" ref="611980984"/>
-					</object>
-					<int key="connectionID">100390</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">contextSlider</string>
-						<reference key="source" ref="785681642"/>
-						<reference key="destination" ref="665743117"/>
-					</object>
-					<int key="connectionID">100431</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">historyView</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="273224473"/>
@@ -1940,67 +1781,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">barView</string>
-						<reference key="source" ref="763098121"/>
-						<reference key="destination" ref="45445342"/>
-					</object>
-					<int key="connectionID">100465</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">contentContainer</string>
-						<reference key="source" ref="763098121"/>
-						<reference key="destination" ref="140043895"/>
-					</object>
-					<int key="connectionID">100466</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">historyDetailsContainerView</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="763098121"/>
 					</object>
 					<int key="connectionID">100467</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">lineView</string>
-						<reference key="source" ref="763098121"/>
-						<reference key="destination" ref="146598474"/>
-					</object>
-					<int key="connectionID">100469</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">tileView</string>
-						<reference key="source" ref="763098121"/>
-						<reference key="destination" ref="173385885"/>
-					</object>
-					<int key="connectionID">100471</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">tableView</string>
-						<reference key="source" ref="273224473"/>
-						<reference key="destination" ref="240835584"/>
-					</object>
-					<int key="connectionID">100472</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">treeView</string>
-						<reference key="source" ref="763098121"/>
-						<reference key="destination" ref="442596270"/>
-					</object>
-					<int key="connectionID">100475</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">detailsView</string>
-						<reference key="source" ref="763098121"/>
-						<reference key="destination" ref="757367587"/>
-					</object>
-					<int key="connectionID">100476</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2020,35 +1805,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">contextSlider</string>
-						<reference key="source" ref="45445342"/>
-						<reference key="destination" ref="43726492"/>
-					</object>
-					<int key="connectionID">100518</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">advancedDiffView</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="678923743"/>
 					</object>
 					<int key="connectionID">100522</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">tileView</string>
-						<reference key="source" ref="678923743"/>
-						<reference key="destination" ref="662916130"/>
-					</object>
-					<int key="connectionID">100524</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="730171165"/>
-						<reference key="destination" ref="512844837"/>
-					</object>
-					<int key="connectionID">100573</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -2129,6 +1890,270 @@
 						<reference key="destination" ref="74473042"/>
 					</object>
 					<int key="connectionID">100615</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="275939982"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">17</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">barLabel</string>
+						<reference key="source" ref="287791344"/>
+						<reference key="destination" ref="12659243"/>
+					</object>
+					<int key="connectionID">100150</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">searchField</string>
+						<reference key="source" ref="287791344"/>
+						<reference key="destination" ref="634950771"/>
+					</object>
+					<int key="connectionID">100153</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tableView</string>
+						<reference key="source" ref="432832840"/>
+						<reference key="destination" ref="667379516"/>
+					</object>
+					<int key="connectionID">100084</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workingWindow</string>
+						<reference key="source" ref="840316269"/>
+						<reference key="destination" ref="719248951"/>
+					</object>
+					<int key="connectionID">100097</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workingProgress</string>
+						<reference key="source" ref="840316269"/>
+						<reference key="destination" ref="611512772"/>
+					</object>
+					<int key="connectionID">100098</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workingLabeledProgress</string>
+						<reference key="source" ref="840316269"/>
+						<reference key="destination" ref="434839650"/>
+					</object>
+					<int key="connectionID">100099</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workingLabeledWindow</string>
+						<reference key="source" ref="840316269"/>
+						<reference key="destination" ref="915576796"/>
+					</object>
+					<int key="connectionID">100100</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">workingLabel</string>
+						<reference key="source" ref="840316269"/>
+						<reference key="destination" ref="247507022"/>
+					</object>
+					<int key="connectionID">100101</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">spinner</string>
+						<reference key="source" ref="840316269"/>
+						<reference key="destination" ref="66486849"/>
+					</object>
+					<int key="connectionID">100113</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">initialLoadWindow</string>
+						<reference key="source" ref="840316269"/>
+						<reference key="destination" ref="241833154"/>
+					</object>
+					<int key="connectionID">100341</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">initialLoadIndicator</string>
+						<reference key="source" ref="840316269"/>
+						<reference key="destination" ref="633686830"/>
+					</object>
+					<int key="connectionID">100342</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">sourceListView</string>
+						<reference key="source" ref="401974075"/>
+						<reference key="destination" ref="466875986"/>
+					</object>
+					<int key="connectionID">100179</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">scrollView</string>
+						<reference key="source" ref="401974075"/>
+						<reference key="destination" ref="223210023"/>
+					</object>
+					<int key="connectionID">100180</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">sourceListMenuView</string>
+						<reference key="source" ref="401974075"/>
+						<reference key="destination" ref="608541104"/>
+					</object>
+					<int key="connectionID">100245</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tableView</string>
+						<reference key="source" ref="149980437"/>
+						<reference key="destination" ref="609528118"/>
+					</object>
+					<int key="connectionID">100272</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">scale9View</string>
+						<reference key="source" ref="531651113"/>
+						<reference key="destination" ref="128991713"/>
+					</object>
+					<int key="connectionID">100320</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">diffBarView</string>
+						<reference key="source" ref="704706191"/>
+						<reference key="destination" ref="720764182"/>
+					</object>
+					<int key="connectionID">100380</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">diffContentView</string>
+						<reference key="source" ref="704706191"/>
+						<reference key="destination" ref="53445593"/>
+					</object>
+					<int key="connectionID">100386</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">contentContainer</string>
+						<reference key="source" ref="704706191"/>
+						<reference key="destination" ref="438744966"/>
+					</object>
+					<int key="connectionID">100388</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">lineView</string>
+						<reference key="source" ref="704706191"/>
+						<reference key="destination" ref="611980984"/>
+					</object>
+					<int key="connectionID">100390</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">diffStateView</string>
+						<reference key="source" ref="720764182"/>
+						<reference key="destination" ref="785681642"/>
+					</object>
+					<int key="connectionID">100384</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">contextSlider</string>
+						<reference key="source" ref="785681642"/>
+						<reference key="destination" ref="665743117"/>
+					</object>
+					<int key="connectionID">100431</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tableView</string>
+						<reference key="source" ref="273224473"/>
+						<reference key="destination" ref="240835584"/>
+					</object>
+					<int key="connectionID">100472</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">barView</string>
+						<reference key="source" ref="763098121"/>
+						<reference key="destination" ref="45445342"/>
+					</object>
+					<int key="connectionID">100465</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">contentContainer</string>
+						<reference key="source" ref="763098121"/>
+						<reference key="destination" ref="140043895"/>
+					</object>
+					<int key="connectionID">100466</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">lineView</string>
+						<reference key="source" ref="763098121"/>
+						<reference key="destination" ref="146598474"/>
+					</object>
+					<int key="connectionID">100469</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tileView</string>
+						<reference key="source" ref="763098121"/>
+						<reference key="destination" ref="173385885"/>
+					</object>
+					<int key="connectionID">100471</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">treeView</string>
+						<reference key="source" ref="763098121"/>
+						<reference key="destination" ref="442596270"/>
+					</object>
+					<int key="connectionID">100475</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">detailsView</string>
+						<reference key="source" ref="763098121"/>
+						<reference key="destination" ref="757367587"/>
+					</object>
+					<int key="connectionID">100476</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">contextSlider</string>
+						<reference key="source" ref="45445342"/>
+						<reference key="destination" ref="43726492"/>
+					</object>
+					<int key="connectionID">100518</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tileView</string>
+						<reference key="source" ref="678923743"/>
+						<reference key="destination" ref="662916130"/>
+					</object>
+					<int key="connectionID">100524</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="730171165"/>
+						<reference key="destination" ref="512844837"/>
+					</object>
+					<int key="connectionID">100573</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3139,19 +3164,1095 @@
 			<nil key="sourceID"/>
 			<int key="maxID">100618</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">BWTexturedSlider</string>
+					<string key="superclassName">NSSlider</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BWTexturedSlider.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">BWTexturedSliderCell</string>
+					<string key="superclassName">NSSliderCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BWTexturedSliderCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTActiveBranchTableView</string>
+					<string key="superclassName">NSTableView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTActiveBranchTableView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTActiveBranchTextFieldCell</string>
+					<string key="superclassName">NSTextFieldCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTActiveBranchTextFieldCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTActiveBranchView</string>
+					<string key="superclassName">GTGittyView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="outlineContainer">NSScrollView</string>
+						<string key="tableView">NSTableView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="outlineContainer">
+							<string key="name">outlineContainer</string>
+							<string key="candidateClassName">NSScrollView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tableView">
+							<string key="name">tableView</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTActiveBranchView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTAdvancedDiffTileView</string>
+					<string key="superclassName">GTTileView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTAdvancedDiffTileView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTAdvancedDiffView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">tileView</string>
+						<string key="NS.object.0">GTTileView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">tileView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">tileView</string>
+							<string key="candidateClassName">GTTileView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTAdvancedDiffView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTBaseExternalNibController</string>
+					<string key="superclassName">NSResponder</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">window</string>
+						<string key="NS.object.0">GTWindow</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">window</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">window</string>
+							<string key="candidateClassName">GTWindow</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTBaseExternalNibController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTBaseObject</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTBaseObject.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTBaseView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTBaseView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTCommitMessageController</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="label">NSTextField</string>
+						<string key="messageField">NSTextView</string>
+						<string key="signoff">NSButton</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="label">
+							<string key="name">label</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="messageField">
+							<string key="name">messageField</string>
+							<string key="candidateClassName">NSTextView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="signoff">
+							<string key="name">signoff</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTCommitMessageController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTConfigView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">tableView</string>
+						<string key="NS.object.0">NSTableView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">tableView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">tableView</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTConfigView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTContentHSplitView</string>
+					<string key="superclassName">GTSplitView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTContentHSplitView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTDiffBarDiffStateView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">contextSlider</string>
+						<string key="NS.object.0">BWTexturedSlider</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">contextSlider</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">contextSlider</string>
+							<string key="candidateClassName">BWTexturedSlider</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTDiffBarDiffStateView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTDiffBarLoadCommitsProgressView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">progress</string>
+						<string key="NS.object.0">NSProgressIndicator</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">progress</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">progress</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTDiffBarLoadCommitsProgressView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTDiffBarSelectStateView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">centerLabel</string>
+						<string key="NS.object.0">GTInsetLabelView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">centerLabel</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">centerLabel</string>
+							<string key="candidateClassName">GTInsetLabelView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTDiffBarSelectStateView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTDiffBarView</string>
+					<string key="superclassName">GTGradientView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="diffStateView">GTDiffBarDiffStateView</string>
+						<string key="loadCommitsProgressView">GTDiffBarLoadCommitsProgressView</string>
+						<string key="selectorStateView">GTDiffBarSelectStateView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="diffStateView">
+							<string key="name">diffStateView</string>
+							<string key="candidateClassName">GTDiffBarDiffStateView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="loadCommitsProgressView">
+							<string key="name">loadCommitsProgressView</string>
+							<string key="candidateClassName">GTDiffBarLoadCommitsProgressView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="selectorStateView">
+							<string key="name">selectorStateView</string>
+							<string key="candidateClassName">GTDiffBarSelectStateView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTDiffBarView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTDiffCommitSelectorView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTDiffCommitSelectorView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTDiffContentView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTDiffContentView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTDiffView</string>
+					<string key="superclassName">GTGittyView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="commitSelectorView">GTDiffCommitSelectorView</string>
+						<string key="contentContainer">NSView</string>
+						<string key="diffBarView">GTDiffBarView</string>
+						<string key="diffContentView">GTDiffContentView</string>
+						<string key="lineView">GTLineView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="commitSelectorView">
+							<string key="name">commitSelectorView</string>
+							<string key="candidateClassName">GTDiffCommitSelectorView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="contentContainer">
+							<string key="name">contentContainer</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="diffBarView">
+							<string key="name">diffBarView</string>
+							<string key="candidateClassName">GTDiffBarView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="diffContentView">
+							<string key="name">diffContentView</string>
+							<string key="candidateClassName">GTDiffContentView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lineView">
+							<string key="name">lineView</string>
+							<string key="candidateClassName">GTLineView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTDiffView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTFetchTagsController</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="notAtRemote">NSTextField</string>
+						<string key="remoteTag">NSPopUpButton</string>
+						<string key="sourceRemote">NSPopUpButton</string>
+						<string key="spinner">NSProgressIndicator</string>
+						<string key="tagBox">NSBox</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="notAtRemote">
+							<string key="name">notAtRemote</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="remoteTag">
+							<string key="name">remoteTag</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sourceRemote">
+							<string key="name">sourceRemote</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="spinner">
+							<string key="name">spinner</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tagBox">
+							<string key="name">tagBox</string>
+							<string key="candidateClassName">NSBox</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTFetchTagsController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTGittyView</string>
+					<string key="superclassName">GTBaseView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTGittyView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTGradientView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTGradientView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistoryBarView</string>
+					<string key="superclassName">GTGradientView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">contextSlider</string>
+						<string key="NS.object.0">NSSlider</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">contextSlider</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">contextSlider</string>
+							<string key="candidateClassName">NSSlider</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistoryBarView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistoryCommitDetailsView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistoryCommitDetailsView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistoryCommitTreeView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistoryCommitTreeView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistoryDetailsContainerView</string>
+					<string key="superclassName">GTGittyView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="barView">GTHistoryBarView</string>
+						<string key="contentContainer">NSView</string>
+						<string key="detailsView">GTHistoryCommitDetailsView</string>
+						<string key="lineView">GTLineView</string>
+						<string key="tileView">GTHistoryTileView</string>
+						<string key="treeView">GTHistoryCommitTreeView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="barView">
+							<string key="name">barView</string>
+							<string key="candidateClassName">GTHistoryBarView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="contentContainer">
+							<string key="name">contentContainer</string>
+							<string key="candidateClassName">NSView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="detailsView">
+							<string key="name">detailsView</string>
+							<string key="candidateClassName">GTHistoryCommitDetailsView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lineView">
+							<string key="name">lineView</string>
+							<string key="candidateClassName">GTLineView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tileView">
+							<string key="name">tileView</string>
+							<string key="candidateClassName">GTHistoryTileView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="treeView">
+							<string key="name">treeView</string>
+							<string key="candidateClassName">GTHistoryCommitTreeView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistoryDetailsContainerView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistorySearchController</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="after">NSDatePicker</string>
+						<string key="authorContains">NSTextField</string>
+						<string key="before">NSDatePicker</string>
+						<string key="matchAll">NSButton</string>
+						<string key="messageContains">NSTextView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="after">
+							<string key="name">after</string>
+							<string key="candidateClassName">NSDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="authorContains">
+							<string key="name">authorContains</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="before">
+							<string key="name">before</string>
+							<string key="candidateClassName">NSDatePicker</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="matchAll">
+							<string key="name">matchAll</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="messageContains">
+							<string key="name">messageContains</string>
+							<string key="candidateClassName">NSTextView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistorySearchController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistorySearchFilteredView</string>
+					<string key="superclassName">GTSolidColorView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistorySearchFilteredView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistoryTileView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistoryTileView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistoryView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">tableView</string>
+						<string key="NS.object.0">NSTableView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">tableView</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">tableView</string>
+							<string key="candidateClassName">NSTableView</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistoryView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistoryViewTableView</string>
+					<string key="superclassName">NSTableView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistoryViewTableView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTInsetLabelView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTInsetLabelView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTLineView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTLineView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTNewBranchController</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="newBranchLabel">NSTextField</string>
+						<string key="newBranchName">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="newBranchLabel">
+							<string key="name">newBranchLabel</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newBranchName">
+							<string key="name">newBranchName</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTNewBranchController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTNewRemoteController</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">help:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">help:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">help:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="help">NSButton</string>
+						<string key="remoteName">NSTextField</string>
+						<string key="remoteURL">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="help">
+							<string key="name">help</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="remoteName">
+							<string key="name">remoteName</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="remoteURL">
+							<string key="name">remoteURL</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTNewRemoteController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTNewSubmoduleController</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="submoduleDestination">GTSpecialTextField</string>
+						<string key="submoduleName">GTSpecialTextField</string>
+						<string key="submoduleURL">GTSpecialTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="submoduleDestination">
+							<string key="name">submoduleDestination</string>
+							<string key="candidateClassName">GTSpecialTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="submoduleName">
+							<string key="name">submoduleName</string>
+							<string key="candidateClassName">GTSpecialTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="submoduleURL">
+							<string key="name">submoduleURL</string>
+							<string key="candidateClassName">GTSpecialTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTNewSubmoduleController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTNuRemoteTrackBranch</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="localBranchName">GTSpecialTextField</string>
+						<string key="notAtRemote">NSTextField</string>
+						<string key="remoteBox">NSBox</string>
+						<string key="remoteBranch">NSPopUpButton</string>
+						<string key="sourceRemote">NSPopUpButton</string>
+						<string key="spinner">NSProgressIndicator</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="localBranchName">
+							<string key="name">localBranchName</string>
+							<string key="candidateClassName">GTSpecialTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="notAtRemote">
+							<string key="name">notAtRemote</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="remoteBox">
+							<string key="name">remoteBox</string>
+							<string key="candidateClassName">NSBox</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="remoteBranch">
+							<string key="name">remoteBranch</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sourceRemote">
+							<string key="name">sourceRemote</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="spinner">
+							<string key="name">spinner</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTNuRemoteTrackBranch.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTRemoteView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">scale9View</string>
+						<string key="NS.object.0">GTScale9View</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">scale9View</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">scale9View</string>
+							<string key="candidateClassName">GTScale9View</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTRemoteView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTScale9View</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTScale9View.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTSingleInputController</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="checkout">NSButton</string>
+						<string key="input">NSTextField</string>
+						<string key="inputLabel">NSTextField</string>
+						<string key="sheetTitle">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="checkout">
+							<string key="name">checkout</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="input">
+							<string key="name">input</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="inputLabel">
+							<string key="name">inputLabel</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sheetTitle">
+							<string key="name">sheetTitle</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTSingleInputController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTSolidColorView</string>
+					<string key="superclassName">GTBaseView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTSolidColorView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTSourceListMenuView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTSourceListMenuView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTSourceListView</string>
+					<string key="superclassName">GTGittyView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="scrollView">NSScrollView</string>
+						<string key="sourceListMenuView">GTSourceListMenuView</string>
+						<string key="sourceListView">LNSSourceListView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="scrollView">
+							<string key="name">scrollView</string>
+							<string key="candidateClassName">NSScrollView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sourceListMenuView">
+							<string key="name">sourceListMenuView</string>
+							<string key="candidateClassName">GTSourceListMenuView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sourceListView">
+							<string key="name">sourceListView</string>
+							<string key="candidateClassName">LNSSourceListView</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTSourceListView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTSpecialTextField</string>
+					<string key="superclassName">NSTextField</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTSpecialTextField.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTSplitContentView</string>
+					<string key="superclassName">GTSplitView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTSplitContentView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTSplitView</string>
+					<string key="superclassName">NSSplitView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTSplitView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTStateBarView</string>
+					<string key="superclassName">GTTopBlackGradientView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="barLabel">NSTextField</string>
+						<string key="searchField">NSSearchField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="barLabel">
+							<string key="name">barLabel</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="searchField">
+							<string key="name">searchField</string>
+							<string key="candidateClassName">NSSearchField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTStateBarView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTStatusBarView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTStatusBarView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTStatusController</string>
+					<string key="superclassName">GTBaseObject</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="initialLoadIndicator">NSProgressIndicator</string>
+						<string key="initialLoadWindow">NSWindow</string>
+						<string key="spinner">NSProgressIndicator</string>
+						<string key="workingLabel">NSTextField</string>
+						<string key="workingLabeledProgress">NSProgressIndicator</string>
+						<string key="workingLabeledWindow">NSWindow</string>
+						<string key="workingProgress">NSProgressIndicator</string>
+						<string key="workingWindow">NSWindow</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="initialLoadIndicator">
+							<string key="name">initialLoadIndicator</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="initialLoadWindow">
+							<string key="name">initialLoadWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="spinner">
+							<string key="name">spinner</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workingLabel">
+							<string key="name">workingLabel</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workingLabeledProgress">
+							<string key="name">workingLabeledProgress</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workingLabeledWindow">
+							<string key="name">workingLabeledWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workingProgress">
+							<string key="name">workingProgress</string>
+							<string key="candidateClassName">NSProgressIndicator</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="workingWindow">
+							<string key="name">workingWindow</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTStatusController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTTextFieldCell</string>
+					<string key="superclassName">NSTextFieldCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTTextFieldCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTTileView</string>
+					<string key="superclassName">GTGittyView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTTileView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTTopBlackGradientView</string>
+					<string key="superclassName">GTGradientView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTTopBlackGradientView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTUnknownErrorController</string>
+					<string key="superclassName">GTBaseExternalNibController</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">errorField</string>
+						<string key="NS.object.0">NSTextField</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">errorField</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">errorField</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTUnknownErrorController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTWindow</string>
+					<string key="superclassName">NSWindow</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTWindow.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GittyDocument</string>
+					<string key="superclassName">NSDocument</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="activeBranchView">GTActiveBranchView</string>
+						<string key="advancedDiffView">GTAdvancedDiffView</string>
+						<string key="commit">GTCommitMessageController</string>
+						<string key="configView">GTConfigView</string>
+						<string key="contentHSplitView">GTContentHSplitView</string>
+						<string key="diffView">GTDiffView</string>
+						<string key="fetchTags">GTFetchTagsController</string>
+						<string key="gtwindow">GTWindow</string>
+						<string key="historyDetailsContainerView">GTHistoryDetailsContainerView</string>
+						<string key="historyFilteredView">GTHistorySearchFilteredView</string>
+						<string key="historySearch">GTHistorySearchController</string>
+						<string key="historyView">GTHistoryView</string>
+						<string key="newRemote">GTNewRemoteController</string>
+						<string key="newSubmodule">GTNewSubmoduleController</string>
+						<string key="newTrackBranch">GTNuRemoteTrackBranch</string>
+						<string key="remoteView">GTRemoteView</string>
+						<string key="singleInput">GTSingleInputController</string>
+						<string key="sourceListView">GTSourceListView</string>
+						<string key="splitContentView">GTSplitContentView</string>
+						<string key="stateBarView">GTStateBarView</string>
+						<string key="status">GTStatusController</string>
+						<string key="statusBarView">GTStatusBarView</string>
+						<string key="toolbar">NSToolbar</string>
+						<string key="unknownError">GTUnknownErrorController</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="activeBranchView">
+							<string key="name">activeBranchView</string>
+							<string key="candidateClassName">GTActiveBranchView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="advancedDiffView">
+							<string key="name">advancedDiffView</string>
+							<string key="candidateClassName">GTAdvancedDiffView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="commit">
+							<string key="name">commit</string>
+							<string key="candidateClassName">GTCommitMessageController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="configView">
+							<string key="name">configView</string>
+							<string key="candidateClassName">GTConfigView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="contentHSplitView">
+							<string key="name">contentHSplitView</string>
+							<string key="candidateClassName">GTContentHSplitView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="diffView">
+							<string key="name">diffView</string>
+							<string key="candidateClassName">GTDiffView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="fetchTags">
+							<string key="name">fetchTags</string>
+							<string key="candidateClassName">GTFetchTagsController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="gtwindow">
+							<string key="name">gtwindow</string>
+							<string key="candidateClassName">GTWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="historyDetailsContainerView">
+							<string key="name">historyDetailsContainerView</string>
+							<string key="candidateClassName">GTHistoryDetailsContainerView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="historyFilteredView">
+							<string key="name">historyFilteredView</string>
+							<string key="candidateClassName">GTHistorySearchFilteredView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="historySearch">
+							<string key="name">historySearch</string>
+							<string key="candidateClassName">GTHistorySearchController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="historyView">
+							<string key="name">historyView</string>
+							<string key="candidateClassName">GTHistoryView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newRemote">
+							<string key="name">newRemote</string>
+							<string key="candidateClassName">GTNewRemoteController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newSubmodule">
+							<string key="name">newSubmodule</string>
+							<string key="candidateClassName">GTNewSubmoduleController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="newTrackBranch">
+							<string key="name">newTrackBranch</string>
+							<string key="candidateClassName">GTNuRemoteTrackBranch</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="remoteView">
+							<string key="name">remoteView</string>
+							<string key="candidateClassName">GTRemoteView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="singleInput">
+							<string key="name">singleInput</string>
+							<string key="candidateClassName">GTSingleInputController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sourceListView">
+							<string key="name">sourceListView</string>
+							<string key="candidateClassName">GTSourceListView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="splitContentView">
+							<string key="name">splitContentView</string>
+							<string key="candidateClassName">GTSplitContentView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="stateBarView">
+							<string key="name">stateBarView</string>
+							<string key="candidateClassName">GTStateBarView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="status">
+							<string key="name">status</string>
+							<string key="candidateClassName">GTStatusController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="statusBarView">
+							<string key="name">statusBarView</string>
+							<string key="candidateClassName">GTStatusBarView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="toolbar">
+							<string key="name">toolbar</string>
+							<string key="candidateClassName">NSToolbar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="unknownError">
+							<string key="name">unknownError</string>
+							<string key="candidateClassName">GTUnknownErrorController</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GittyDocument.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">LNSSourceListColumn</string>
+					<string key="superclassName">NSTableColumn</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/LNSSourceListColumn.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">LNSSourceListView</string>
+					<string key="superclassName">NSOutlineView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/LNSSourceListView.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
+		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencies">
+			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
+			<real value="1060" key="NS.object.0"/>
+		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1060" key="NS.object.0"/>
+			<real value="1070" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NSMenuCheckmark">{9, 8}</string>
-			<string key="NSMenuMixedState">{7, 2}</string>
-			<string key="NSToolbarCustomizeToolbarItemImage">{32, 32}</string>
+			<string key="NSMenuCheckmark">{11, 11}</string>
+			<string key="NSMenuMixedState">{10, 3}</string>
+			<string key="NSToolbarCustomize">{32, 32}</string>
 			<string key="branch">{32, 32}</string>
 			<string key="changes">{32, 32}</string>
 			<string key="commit">{32, 32}</string>

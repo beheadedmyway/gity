@@ -56,7 +56,6 @@
 #import "GDCallback.h"
 #import "GDDocument.h"
 #import "GDDocumentController.h"
-#import "GDGestalt.h"
 #import "GDMainMenuController.h"
 #import "GDModalController.h"
 #import "GDOperationsController.h"

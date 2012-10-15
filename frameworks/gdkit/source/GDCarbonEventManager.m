@@ -65,7 +65,8 @@ static GDCarbonEventManager * inst = nil;
 		return;
 	}
 	@synchronized(self) {
-		NSUInteger index = (NSUInteger)[[eventInstallQueueDict valueForKey:key] key];
+        EventKeyWrapper *keyWrapper = [eventInstallQueueDict valueForKey:key];
+		NSUInteger index = (NSUInteger)[keyWrapper key];
 		if(index) [eventInstallQueueArray replaceObjectAtIndex:index withObject:event];
 		else {
 			NSUInteger last = [eventInstallQueueArray count];
@@ -91,7 +92,8 @@ static GDCarbonEventManager * inst = nil;
 		return;
 	}
 	@synchronized(self) {
-		NSUInteger index = (NSUInteger)[[group valueForKey:key] key];
+        EventKeyWrapper *keyWrapper = [group valueForKey:key];
+		NSUInteger index = (NSUInteger)[keyWrapper key];
 		if(index) [queueArray replaceObjectAtIndex:index withObject:event];
 		else {
 			NSUInteger last = [queueArray count];

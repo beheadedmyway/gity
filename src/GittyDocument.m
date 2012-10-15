@@ -767,8 +767,10 @@
 	
 	[op setCanChooseDirectories:false];
 	[op setCanChooseFiles:true];
+    
+    [op setAllowedFileTypes:[NSArray arrayWithObjects:@"patch",@"diff",nil]];
 	
-	NSInteger res = [op runModalForTypes:[NSArray arrayWithObjects:@"patch",@"diff",nil]];
+	NSInteger res = [op runModal];
 	
 	if(res == NSCancelButton) {
 		return;

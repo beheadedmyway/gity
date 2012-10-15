@@ -26,20 +26,20 @@ using namespace std;
 @implementation GTOpLoadHistory
 
 - (id) initWithGD:(GittyDocument *) _gd andLoadInfo:(GTGitCommitLoadInfo *) _loadInfo andCallback:(GTCallback *) _callback {
+	self=[super initWithGD:_gd];
 	callback=[_callback retain];
 	loadInfo=[_loadInfo retain];
 	commits=[[NSMutableArray alloc] init];
-	self=[super initWithGD:_gd];
 	return self;
 }
 
 - (id) initWithGD:(GittyDocument *) _gd andLoadInfo:(GTGitCommitLoadInfo *) _loadInfo {
+	self=[super initWithGD:_gd];
 	loadInfo=[_loadInfo retain];
 	stoutEncoding=NSASCIIStringEncoding;
 	commits=[[NSMutableArray alloc] init];
 	useCPP=true;
 	usec=false;
-	self=[super initWithGD:_gd];
 	return self;
 }
 
@@ -111,7 +111,7 @@ using namespace std;
 			commit = [[GTGitCommit alloc] init];
 			line = [NSString stringWithCString:line_buf encoding:NSUTF8StringEncoding];
 			pieces = [line componentsSeparatedByString:@":gt:"];
-			encoding = [pieces objectAtIndex:0];
+			//encoding = [pieces objectAtIndex:0];
 			asha = [pieces objectAtIndex:1];
 			sha = [pieces objectAtIndex:2];
 			parents = [[pieces objectAtIndex:3] componentsSeparatedByString:@" "];
@@ -240,7 +240,7 @@ using namespace std;
 		
 		NSString * a = [info objectAtIndex:4];
 		author = [NSString stringWithCString:[a UTF8String] encoding:commitEncoding];
-		[commit setAuthor:[info objectAtIndex:4]];
+		[commit setAuthor:author];
 		
 		time = [info objectAtIndex:6];
 		commitDate = [NSDate dateWithTimeIntervalSince1970:[time doubleValue]];

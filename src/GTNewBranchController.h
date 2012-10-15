@@ -26,10 +26,10 @@
 @interface GTNewBranchController : GTBaseExternalNibController {
 	IBOutlet NSTextField * newBranchName;
 	IBOutlet NSTextField * newBranchLabel;
-	NSString * newBranchValue;
+	NSString * branchValue;
 }
 
-@property (readonly,nonatomic) NSString * newBranchValue;
+@property (readonly,nonatomic) NSString * branchValue;
 
 - (void) initButtons;
 - (void) onok:(id) sender;

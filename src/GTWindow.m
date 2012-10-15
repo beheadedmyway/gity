@@ -20,7 +20,7 @@
 @implementation GTWindow
 
 - (id) initWithContentRect:(NSRect)contentRect styleMask:(NSUInteger)windowStyle backing:(NSBackingStoreType)bufferingType defer:(BOOL)deferCreation {
-	[super initWithContentRect:contentRect styleMask:windowStyle backing:bufferingType defer:deferCreation];
+	self = [super initWithContentRect:contentRect styleMask:windowStyle backing:bufferingType defer:deferCreation];
 	[self setAcceptsMouseMovedEvents:TRUE];
 	return self;
 }

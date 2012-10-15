@@ -4,20 +4,9 @@
 
 @implementation NSFileManager (GDAdditions)
 
-- (NSString *) pathToFolderOfType:(const OSType) folderType shouldCreateFolder:(BOOL) create {
-	FSRef ref;
-	NSString * path = nil;
-	if(FSFindFolder(kUserDomain,folderType,create,&ref) == noErr) {
-		CFURLRef url = CFURLCreateFromFSRef(kCFAllocatorSystemDefault,&ref);
-		path = (NSString *) CFURLCopyFileSystemPath(url, kCFURLPOSIXPathStyle);
-		[path autorelease];
-		CFRelease(url);
-	}
-	return path;
-}
-
 - (NSString *) applicationSupportFolder {
-	return [self pathToFolderOfType:kApplicationSupportFolderType shouldCreateFolder:YES];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) lastObject];
+    return path;
 }
 
 - (NSString *) thisApplicationsSupportFolder {

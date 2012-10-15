@@ -10,9 +10,7 @@
 @synthesize onlyBringActiveApplicationsForward;
 
 - (id) init {
-	SInt32 res;
-	Gestalt(gestaltSystemVersionMajor,&res);
-	if(res < 0x1060) {
+	if(NSAppKitVersionNumber < NSAppKitVersionNumber10_6) {
 		[NSException raise:@"GDActiveApplicationStack requires 10.6" format:@""];
 		return nil;
 	}
@@ -25,9 +23,7 @@
 }
 
 + (Boolean) isAvailable {
-	SInt32 res;
-	Gestalt(gestaltSystemVersionMajor,&res);
-	if(res < 0x1060) return FALSE;
+	if(NSAppKitVersionNumber < NSAppKitVersionNumber10_6) return FALSE;
 	return TRUE;
 }
 

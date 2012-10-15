@@ -22,7 +22,7 @@
 - (void) setArguments {
 	if([self isCancelled]) return;
 	[self setArgumentsWithPythonScript:[GTPythonScripts stashApplyScript] setArgsOnTask:true];
-	NSString * idx = [NSString stringWithFormat:@"%i",stashIndex];
+	NSString * idx = [NSString stringWithFormat:@"%li",stashIndex];
 	[args addObject:[@"-m " stringByAppendingString:idx]];
 	[self updateArguments];
 }

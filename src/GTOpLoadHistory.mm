@@ -91,7 +91,7 @@ using namespace std;
 	char line_buf[2048]; //2MB buffer
 	char * bufp = line_buf;
 	//NSMutableArray * lines = [[NSMutableArray alloc] init];
-	NSString * line, *encoding, *author, *subject, *sha, *asha;
+	NSString * line, *author, *subject, *sha, *asha;
 	NSArray * pieces, * parents;
 	NSDate * date;
 	GTGitCommit * commit;

@@ -228,7 +228,7 @@ static GTStyles * inst;
 	return self;
 }
 
-- (void) release{
+- (oneway void) release{
 }
 
 

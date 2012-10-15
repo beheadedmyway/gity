@@ -68,11 +68,11 @@
 }
 
 - (NSString *) contextValueAsString {
-	return [NSString stringWithFormat:@"%i",contextValue];
+	return [NSString stringWithFormat:@"%li",contextValue];
 }
 
 - (NSString *) diffModeAsString {
-	return [NSString stringWithFormat:@"%i",diffMode];
+	return [NSString stringWithFormat:@"%li",diffMode];
 }
 
 - (void) dealloc {

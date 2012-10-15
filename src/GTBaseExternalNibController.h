@@ -44,13 +44,13 @@
 @property (assign,nonatomic) GittyDocument * gd;
 
 - (void) awakeFromNib;
-- (void) cancel:(id) sender;
+- (IBAction) cancel:(id) sender;
 - (void) dealloc;
 - (void) disposeNibs;
 - (void) initButtons;
 - (void) lazyInitWithGD:(GittyDocument *) _gd;
 - (void) loadNibs;
-- (void) onok:(id) sender;
+- (IBAction) onok:(id) sender;
 - (void) reset;
 - (void) setRefs;
 - (void) show;

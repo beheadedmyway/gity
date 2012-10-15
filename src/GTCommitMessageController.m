@@ -103,7 +103,7 @@
 	[[window contentView] addSubview:cancel];
 }
 
-- (void) onok:(id) sender {
+- (IBAction) onok:(id) sender {
 	NSString * val = [[messageField textStorage] string];
 	if([val length] is 0) {
 		NSBeep();

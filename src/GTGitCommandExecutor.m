@@ -83,7 +83,7 @@
 				[[NSApplication sharedApplication] terminate:self];
 			}
 			
-			gitExecPath = [op filename];
+			gitExecPath = [[op URL] path];
 		}
 		
 		[[NSUserDefaults standardUserDefaults] setObject:gitExecPath forKey:kGTGitExecutablePathKey];
@@ -148,7 +148,7 @@
 				[[NSApplication sharedApplication] terminate:self];
 			}
 			
-			gitExecPath = [op filename];
+			gitExecPath = [[op URL] path];
 		}
 		
 		[[NSUserDefaults standardUserDefaults] setObject:gitExecPath forKey:kGTGitExecutablePathKey];

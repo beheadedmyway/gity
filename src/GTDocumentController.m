@@ -23,8 +23,6 @@ static NSString *gityVersion;
 
 @implementation GTDocumentController
 
-@synthesize registration;
-
 #pragma mark initializers
 
 - (id) init {
@@ -33,7 +31,6 @@ static NSString *gityVersion;
 		git = [[GTGitCommandExecutor alloc] init];
 		operations = [[GTOperationsController alloc] init];
 		cliproxy = [[GTCLIProxy alloc] init];
-		registration = [[GTRegistrationController alloc] init];
 	}
 
 	return self;
@@ -67,7 +64,7 @@ static NSString *gityVersion;
 }
 
 #pragma mark main menu actions.
-- (void) installTextmateBundle:(id) sender {
+- (IBAction) installTextmateBundle:(id) sender {
 	NSFileManager * fm = [NSFileManager defaultManager];
 	NSString * path = [@"~/Library/Application Support/Textmate/Bundles/Gity.tmbundle" stringByExpandingTildeInPath];
 	NSString * path2 = [@"~/Library/Application Support/Textmate/Bundles" stringByExpandingTildeInPath];
@@ -77,11 +74,7 @@ static NSString *gityVersion;
 	[[GTModalController sharedInstance] runInstalledTMBundle];
 }
 
-- (void) showRegistration:(id) sender {
-	[registration show];
-}
-
-- (void) changeGitBinary:(id) sender {
+- (IBAction) changeGitBinary:(id) sender {
 	NSOpenPanel * op = [NSOpenPanel openPanel];
 	[op setCanChooseFiles:true];
 	[op setTitle:@"Choose Your Git Executable"];
@@ -93,7 +86,7 @@ static NSString *gityVersion;
 	}@catch(NSException * e){}
 	int res=[op runModal];
 	if(res==NSCancelButton) return;
-	[[NSUserDefaults standardUserDefaults] setObject:[op filename] forKey:kGTGitExecutablePathKey];
+	[[NSUserDefaults standardUserDefaults] setObject:[[op URL] path] forKey:kGTGitExecutablePathKey];
 	NSRunAlertPanel(@"Restart Gity",@"Please restart Gity for the changes to take effect.",@"OK",nil,nil);
 }
 
@@ -105,11 +98,11 @@ static NSString *gityVersion;
 	gityVersion = [[sbv stringByAppendingString:bv2] retain];
 }
 
-- (void) launchGitBook:(id) sender {
+- (IBAction) launchGitBook:(id) sender {
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://book.git-scm.com/"]];
 }
 
-- (void) launchGitManPages:(id) sender {
+- (IBAction) launchGitManPages:(id) sender {
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.kernel.org/pub/software/scm/git/docs/"]];
 }
 
@@ -131,7 +124,7 @@ static NSString *gityVersion;
 	[self openDocumentWithContentsOfURL:nurl display:true error:nil];
 }
 
-- (void) installTerminalUsage:(id) sender {
+- (IBAction) installTerminalUsage:(id) sender {
 	BOOL success = false;
 	NSString * installationPath = @"/usr/local/bin/";
 	NSString * installationName = @"gity";
@@ -164,7 +157,7 @@ static NSString *gityVersion;
 	}
 }
 
-- (void) resetPrompts:(id) sender {
+- (IBAction) resetPrompts:(id) sender {
 	[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"GTGityHasPromptedToCheckForUpdates"];
 	[[NSUserDefaults standardUserDefaults] setBool:false forKey:kGTIgnoreCommitsAhead];
 	[[NSUserDefaults standardUserDefaults] setBool:false forKey:@"kGTRemindToQuitFileMerge"];
@@ -180,13 +173,13 @@ static NSString *gityVersion;
 	[mutedItem setState:muted];
 }
 
-- (void) mutePopSounds:(id) sender {
+- (IBAction) mutePopSounds:(id) sender {
 	NSMenuItem * item = (NSMenuItem *) sender;
 	[item setState:![item state]];
 	[[NSUserDefaults standardUserDefaults] setBool:[item state] forKey:@"GTMutePopSounds"];
 }
 
-- (void) toggleStartupItem:(id) sender {
+- (IBAction) toggleStartupItem:(id) sender {
 	BOOL startup = [[NSUserDefaults standardUserDefaults] boolForKey:@"GTRunAtStartup"];
 	if(!startup) [[NSWorkspace sharedWorkspace] installStartupLaunchdItem:@"com.macendeavor.Gity.Agent.plist"];
 	else [[NSWorkspace sharedWorkspace] uninstallStartupLaunchdItem:@"com.macendeavor.Gity.Agent.plist"];
@@ -197,7 +190,7 @@ static NSString *gityVersion;
 	[launchOnStartup setState:!startup];
 }
 
-- (void) toggleCheckForUpdates:(id) sender {
+- (IBAction) toggleCheckForUpdates:(id) sender {
 	NSMenuItem * item = (NSMenuItem *)sender;
 	[item setState:![item state]];
 	[[NSUserDefaults standardUserDefaults] setBool:[item state] forKey:@"GTGityCheckForUpdates"];
@@ -254,7 +247,6 @@ static NSString *gityVersion;
 						nil,nil);
 		[[NSApplication sharedApplication] terminate:nil];
 	}
-	[registration checkLicenseInUserDefaults];
 	[self askForUpdates];
 	[git verifyGitExecutable];
 	[git verifyGitBinaryVersion];
@@ -286,7 +278,7 @@ static NSString *gityVersion;
 	[op setTitle:@"Open A Git Repository"];
 	NSInteger res = [op runModal];
 	if(res is  NSCancelButton) return;
-	NSString * path = [op filename];
+	NSString * path = [[op URL] path];
 	NSString * realGitPath = [git gitProjectPathFromRevParse:path];
 	if(realGitPath is nil) {
 		[[GTModalController sharedInstance] runNotAGitRepoAlert];
@@ -306,7 +298,7 @@ cleanup:
 	[op setTitle:NSLocalizedStringFromTable(@"Initialize Directory As A Git Repository",@"Localized",@"initialize a repo open panel title")];
 	NSInteger res = [op runModal];
 	if(res is NSCancelButton) return;
-	NSString * path = [op filename];
+	NSString * path = [[op URL] path];
 	if([git isPathGitRepository:path]) {
 		[[GTModalController sharedInstance] runAlreadyAGitRepoAlert];
 		goto cleanup;
@@ -337,7 +329,6 @@ cleanup:
 	printf("DEALLOC GTDocumentController\n");
 	#endif
 	
-	GDRelease(registration);
 	GDRelease(cliproxy);
 	GDRelease(operations);
 	GDRelease(git);

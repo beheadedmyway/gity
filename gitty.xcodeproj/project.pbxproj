@@ -227,15 +227,6 @@
 		07DA0BE510BB999B00F7170D /* GTOpReportDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA0BE410BB999B00F7170D /* GTOpReportDiff.m */; };
 		07DA0C6F10BBB97100F7170D /* GTOpApplyPatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA0C6E10BBB97100F7170D /* GTOpApplyPatch.m */; };
 		07DA0F6310BF235000F7170D /* Registration.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07DA0F6210BF235000F7170D /* Registration.xib */; };
-		07DA0F7110BF255200F7170D /* GTRegistrationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA0F7010BF255200F7170D /* GTRegistrationController.m */; };
-		07DA108010BF301300F7170D /* CFobLicGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA107110BF301300F7170D /* CFobLicGenerator.m */; };
-		07DA108110BF301300F7170D /* CFobLicVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA107310BF301300F7170D /* CFobLicVerifier.m */; };
-		07DA108210BF301300F7170D /* decoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 07DA107410BF301300F7170D /* decoder.c */; };
-		07DA108310BF301300F7170D /* encoder.c in Sources */ = {isa = PBXBuildFile; fileRef = 07DA107610BF301300F7170D /* encoder.c */; };
-		07DA108410BF301300F7170D /* NSData+PECrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA107910BF301300F7170D /* NSData+PECrypt.m */; };
-		07DA108510BF301300F7170D /* NSString-Base64Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA107B10BF301300F7170D /* NSString-Base64Extensions.m */; };
-		07DA108610BF301300F7170D /* NSString+PECrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA107D10BF301300F7170D /* NSString+PECrypt.m */; };
-		07DA108710BF301300F7170D /* URLCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA107F10BF301300F7170D /* URLCommand.m */; };
 		07DA118B10BF313300F7170D /* libcrypto.0.9.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 07DA118A10BF313300F7170D /* libcrypto.0.9.8.dylib */; };
 		07DA896410A7802200864A22 /* GTOpInitializeSubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA896310A7802200864A22 /* GTOpInitializeSubs.m */; };
 		07DA896A10A7803800864A22 /* GTOpUpdateSubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 07DA896910A7803800864A22 /* GTOpUpdateSubs.m */; };
@@ -359,7 +350,6 @@
 		8D15AC310486D014006FF6A4 /* GittyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* GittyDocument.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC320486D014006FF6A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4B0FDCFA73011CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
-		CA07FD5315ACF81300AE8693 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CA07FD5215ACF81300AE8693 /* icon.icns */; };
 		CA18B4C612CB47E800F34393 /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CA18B4C512CB47E800F34393 /* avatar.jpg */; };
 		CA2D985912E4332B0009A31B /* stashes.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2D985812E4332B0009A31B /* stashes.png */; };
 		CA2D988512E43ED80009A31B /* NSOutlineView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA2D988412E43ED80009A31B /* NSOutlineView+Additions.m */; };
@@ -775,24 +765,6 @@
 		07DA0C6D10BBB97100F7170D /* GTOpApplyPatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTOpApplyPatch.h; path = src/GTOpApplyPatch.h; sourceTree = "<group>"; };
 		07DA0C6E10BBB97100F7170D /* GTOpApplyPatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTOpApplyPatch.m; path = src/GTOpApplyPatch.m; sourceTree = "<group>"; };
 		07DA0F6010BF233C00F7170D /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/Registration.xib; sourceTree = "<group>"; };
-		07DA0F6F10BF255200F7170D /* GTRegistrationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTRegistrationController.h; path = src/GTRegistrationController.h; sourceTree = "<group>"; };
-		07DA0F7010BF255200F7170D /* GTRegistrationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTRegistrationController.m; path = src/GTRegistrationController.m; sourceTree = "<group>"; };
-		07DA107010BF301300F7170D /* CFobLicGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobLicGenerator.h; path = src/cocoafob/CFobLicGenerator.h; sourceTree = "<group>"; };
-		07DA107110BF301300F7170D /* CFobLicGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobLicGenerator.m; path = src/cocoafob/CFobLicGenerator.m; sourceTree = "<group>"; };
-		07DA107210BF301300F7170D /* CFobLicVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CFobLicVerifier.h; path = src/cocoafob/CFobLicVerifier.h; sourceTree = "<group>"; };
-		07DA107310BF301300F7170D /* CFobLicVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CFobLicVerifier.m; path = src/cocoafob/CFobLicVerifier.m; sourceTree = "<group>"; };
-		07DA107410BF301300F7170D /* decoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = decoder.c; path = src/cocoafob/decoder.c; sourceTree = "<group>"; };
-		07DA107510BF301300F7170D /* decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = decoder.h; path = src/cocoafob/decoder.h; sourceTree = "<group>"; };
-		07DA107610BF301300F7170D /* encoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = encoder.c; path = src/cocoafob/encoder.c; sourceTree = "<group>"; };
-		07DA107710BF301300F7170D /* encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = encoder.h; path = src/cocoafob/encoder.h; sourceTree = "<group>"; };
-		07DA107810BF301300F7170D /* NSData+PECrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+PECrypt.h"; path = "src/cocoafob/NSData+PECrypt.h"; sourceTree = "<group>"; };
-		07DA107910BF301300F7170D /* NSData+PECrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+PECrypt.m"; path = "src/cocoafob/NSData+PECrypt.m"; sourceTree = "<group>"; };
-		07DA107A10BF301300F7170D /* NSString-Base64Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString-Base64Extensions.h"; path = "src/cocoafob/NSString-Base64Extensions.h"; sourceTree = "<group>"; };
-		07DA107B10BF301300F7170D /* NSString-Base64Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString-Base64Extensions.m"; path = "src/cocoafob/NSString-Base64Extensions.m"; sourceTree = "<group>"; };
-		07DA107C10BF301300F7170D /* NSString+PECrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+PECrypt.h"; path = "src/cocoafob/NSString+PECrypt.h"; sourceTree = "<group>"; };
-		07DA107D10BF301300F7170D /* NSString+PECrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+PECrypt.m"; path = "src/cocoafob/NSString+PECrypt.m"; sourceTree = "<group>"; };
-		07DA107E10BF301300F7170D /* URLCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLCommand.h; path = src/cocoafob/URLCommand.h; sourceTree = "<group>"; };
-		07DA107F10BF301300F7170D /* URLCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLCommand.m; path = src/cocoafob/URLCommand.m; sourceTree = "<group>"; };
 		07DA118A10BF313300F7170D /* libcrypto.0.9.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.0.9.8.dylib; path = frameworks/libcrypto.0.9.8.dylib; sourceTree = SOURCE_ROOT; };
 		07DA896210A7802200864A22 /* GTOpInitializeSubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTOpInitializeSubs.h; path = src/GTOpInitializeSubs.h; sourceTree = "<group>"; };
 		07DA896310A7802200864A22 /* GTOpInitializeSubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTOpInitializeSubs.m; path = src/GTOpInitializeSubs.m; sourceTree = "<group>"; };
@@ -1389,7 +1361,6 @@
 				07CDDE83109E75DA00B0A99A /* GTOpWithCallback.h */,
 				072CDB88108EF8E4009064CF /* GTOpWriteConfig.h */,
 				07A03F3E106DD0C300B21AB9 /* GTPythonScripts.h */,
-				07DA0F6F10BF255200F7170D /* GTRegistrationController.h */,
 				07D2342F10ABB86F007BB68A /* GTRemindQuitFileMerge.h */,
 				072CE34F1091546D009064CF /* GTRemoteView.h */,
 				07F68A30108126BE006464DA /* GTResponderHelper.h */,
@@ -1445,7 +1416,6 @@
 			children = (
 				355AA52D12B96B9C004AAACA /* Terminal */,
 				CABCA81711B6C52D00EB8EEA /* SCEvents */,
-				07DA106F10BF300300F7170D /* cocoafob */,
 				07A04375106E011600B21AB9 /* json */,
 				07F691E3108275E8006464DA /* sourcelist */,
 			);
@@ -1556,29 +1526,6 @@
 				07DA0C6E10BBB97100F7170D /* GTOpApplyPatch.m */,
 			);
 			name = patch;
-			sourceTree = "<group>";
-		};
-		07DA106F10BF300300F7170D /* cocoafob */ = {
-			isa = PBXGroup;
-			children = (
-				07DA107010BF301300F7170D /* CFobLicGenerator.h */,
-				07DA107110BF301300F7170D /* CFobLicGenerator.m */,
-				07DA107210BF301300F7170D /* CFobLicVerifier.h */,
-				07DA107310BF301300F7170D /* CFobLicVerifier.m */,
-				07DA107410BF301300F7170D /* decoder.c */,
-				07DA107510BF301300F7170D /* decoder.h */,
-				07DA107610BF301300F7170D /* encoder.c */,
-				07DA107710BF301300F7170D /* encoder.h */,
-				07DA107810BF301300F7170D /* NSData+PECrypt.h */,
-				07DA107910BF301300F7170D /* NSData+PECrypt.m */,
-				07DA107A10BF301300F7170D /* NSString-Base64Extensions.h */,
-				07DA107B10BF301300F7170D /* NSString-Base64Extensions.m */,
-				07DA107C10BF301300F7170D /* NSString+PECrypt.h */,
-				07DA107D10BF301300F7170D /* NSString+PECrypt.m */,
-				07DA107E10BF301300F7170D /* URLCommand.h */,
-				07DA107F10BF301300F7170D /* URLCommand.m */,
-			);
-			name = cocoafob;
 			sourceTree = "<group>";
 		};
 		07DEF79E1104FB3C006E8A54 /* advanced diff */ = {
@@ -1783,7 +1730,6 @@
 				07D040FB109D1552005D5ED4 /* GTNewSubmoduleController.m */,
 				072CDD3D109052DA009064CF /* GTNuRemoteTrackBranch.m */,
 				07F483281069E4E40059F611 /* GTOperationsController.m */,
-				07DA0F7010BF255200F7170D /* GTRegistrationController.m */,
 				07DA8C1410A8035200864A22 /* GTSimpleCommitsController.m */,
 				07E617FB108AF3F200963F2A /* GTSingleInputController.m */,
 				07D04005109CCBE4005D5ED4 /* GTSoundController.m */,
@@ -2311,7 +2257,6 @@
 				355AA54C12B970C7004AAACA /* terminal.png in Resources */,
 				CA18B4C612CB47E800F34393 /* avatar.jpg in Resources */,
 				CA2D985912E4332B0009A31B /* stashes.png in Resources */,
-				CA07FD5315ACF81300AE8693 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2488,10 +2433,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07DA108010BF301300F7170D /* CFobLicGenerator.m in Sources */,
-				07DA108110BF301300F7170D /* CFobLicVerifier.m in Sources */,
-				07DA108210BF301300F7170D /* decoder.c in Sources */,
-				07DA108310BF301300F7170D /* encoder.c in Sources */,
 				07A0549C10708B8200B21AB9 /* GDNSString+Additions.m in Sources */,
 				8D15AC310486D014006FF6A4 /* GittyDocument.m in Sources */,
 				0703813110A561C20095962E /* GTActionsMenuDelegate.m in Sources */,
@@ -2629,7 +2570,6 @@
 				07CDDE8A109E777A00B0A99A /* GTOpWithCallback.m in Sources */,
 				072CDB8A108EF8E4009064CF /* GTOpWriteConfig.m in Sources */,
 				07A03F40106DD0C300B21AB9 /* GTPythonScripts.m in Sources */,
-				07DA0F7110BF255200F7170D /* GTRegistrationController.m in Sources */,
 				07D2343110ABB86F007BB68A /* GTRemindQuitFileMerge.m in Sources */,
 				072CE3511091546D009064CF /* GTRemoteView.m in Sources */,
 				07F68A32108126BE006464DA /* GTResponderHelper.m in Sources */,
@@ -2664,17 +2604,13 @@
 				07F6934D10828F5B006464DA /* LNSSourceListSourceGroupCell.m in Sources */,
 				07F6934E10828F5B006464DA /* LNSSourceListView.m in Sources */,
 				8D15AC320486D014006FF6A4 /* main.m in Sources */,
-				07DA108410BF301300F7170D /* NSData+PECrypt.m in Sources */,
 				07C971EF1073C86500E7F7DD /* NSFileHandleAdditions.m in Sources */,
 				07A04383106E011600B21AB9 /* NSObject+SBJSON.m in Sources */,
-				07DA108610BF301300F7170D /* NSString+PECrypt.m in Sources */,
 				07A04384106E011600B21AB9 /* NSString+SBJSON.m in Sources */,
-				07DA108510BF301300F7170D /* NSString-Base64Extensions.m in Sources */,
 				07A04385106E011600B21AB9 /* SBJSON.m in Sources */,
 				07A04386106E011600B21AB9 /* SBJsonBase.m in Sources */,
 				07A04387106E011600B21AB9 /* SBJsonParser.m in Sources */,
 				07A04388106E011600B21AB9 /* SBJsonWriter.m in Sources */,
-				07DA108710BF301300F7170D /* URLCommand.m in Sources */,
 				074F838810CB758200C1F6E4 /* GTHistoryBarView.m in Sources */,
 				074F838B10CB758B00C1F6E4 /* GTHistoryView.m in Sources */,
 				074F839110CB75D300C1F6E4 /* GTHistoryCommitTreeView.m in Sources */,

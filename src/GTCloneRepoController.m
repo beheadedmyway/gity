@@ -127,14 +127,16 @@
 	NSOpenPanel * op = [NSOpenPanel openPanel];
 	[op setCanChooseDirectories:YES];
 	[op setCanCreateDirectories:true];
-	[op beginSheetForDirectory:NULL file:NULL modalForWindow:cloneRepoWindow modalDelegate:self didEndSelector:@selector(openDidEnd:returnCode:) contextInfo:nil];
+    [op beginSheetModalForWindow:cloneRepoWindow completionHandler:^(NSInteger result) {
+        NSOpenPanel * op = (NSOpenPanel *) sender;
+        if(result is NSFileHandlingPanelCancelButton)
+            return;
+        destinationPath = [[[op URL] path] copy];
+        [destination setStringValue:destinationPath];
+    }];
 }
 
 - (void) openDidEnd:(id) sender returnCode:(int) code {
-	NSOpenPanel * op = (NSOpenPanel *) sender;
-	if(code is NSCancelButton) return;
-	destinationPath = [[op filename] copy];
-	[destination setStringValue:destinationPath];
 }
 
 - (void) startCloning {

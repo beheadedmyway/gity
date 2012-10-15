@@ -97,7 +97,7 @@
 
 - (GTGitFile *) selectedGitFile {
 	NSIndexSet * indexes = [self getSelectedIndexSet];
-	if(indexes == nil || [indexes count] < 0) return nil;
+	if(indexes == nil || [indexes count] < 1) return nil;
 	NSArray * gtfiles = [files objectsAtIndexes:indexes];
 	if([gtfiles count] < 1) return nil;
 	return [gtfiles objectAtIndex:0];
@@ -105,7 +105,7 @@
 
 - (NSArray *) selectedGitFiles {
 	NSIndexSet * indexes = [self getSelectedIndexSet];
-	if(indexes == nil || [indexes count] < 0) return nil;
+	if(indexes == nil || [indexes count] < 1) return nil;
 	return [files objectsAtIndexes:indexes];
 }
 
@@ -120,7 +120,7 @@
 
 - (NSMutableArray *) selectedFiles {
 	NSIndexSet * indexes = [self getSelectedIndexSet];
-	if(indexes == nil || [indexes count] < 0) return nil;
+	if(indexes == nil || [indexes count] < 1) return nil;
 	NSArray * gtfiles = [files objectsAtIndexes:indexes];
 	NSMutableArray * names = [[[NSMutableArray alloc] init] autorelease];
 	GTGitFile * fl;

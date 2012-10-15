@@ -34,7 +34,7 @@
 	[args addObject:@"--pretty=raw"];
 	[args addObject:@"-M"];
 	[args addObject:@"--no-color"];
-	[args addObject:[@"-U" stringByAppendingFormat:@"%i",[loadInfo contextValue]]];
+	[args addObject:[@"-U" stringByAppendingFormat:@"%li",[loadInfo contextValue]]];
 	[args addObject:[commit hash]];
 	[self updateArguments];
 }

@@ -448,8 +448,9 @@
 					<string key="NSFrameSize">{924, 605}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
 				<string key="NSMinSize">{924, 683}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
@@ -478,7 +479,7 @@
 					</array>
 					<string key="NSFrameSize">{197, 27}</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -506,7 +507,7 @@
 					</array>
 					<string key="NSFrameSize">{197, 27}</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -571,7 +572,7 @@
 					</array>
 					<string key="NSFrameSize">{196, 47}</string>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
@@ -1701,27 +1702,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">newRemote</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="220800999"/>
-					</object>
-					<int key="connectionID">100251</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">configView</string>
 						<reference key="source" ref="512844837"/>
 						<reference key="destination" ref="149980437"/>
 					</object>
 					<int key="connectionID">100273</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">newTrackBranch</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="143830328"/>
-					</object>
-					<int key="connectionID">100297</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1746,14 +1731,6 @@
 						<reference key="destination" ref="212346755"/>
 					</object>
 					<int key="connectionID">100332</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">newSubmodule</string>
-						<reference key="source" ref="512844837"/>
-						<reference key="destination" ref="670609278"/>
-					</object>
-					<int key="connectionID">100337</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1890,6 +1867,30 @@
 						<reference key="destination" ref="74473042"/>
 					</object>
 					<int key="connectionID">100615</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">remoteController</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="220800999"/>
+					</object>
+					<int key="connectionID">100619</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">trackBranchController</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="143830328"/>
+					</object>
+					<int key="connectionID">100620</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">submoduleController</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="670609278"/>
+					</object>
+					<int key="connectionID">100621</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3162,7 +3163,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100618</int>
+			<int key="maxID">100621</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4090,6 +4091,300 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">GittyDocument</string>
 					<string key="superclassName">NSDocument</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="clearSearchHistory:">id</string>
+						<string key="commitDetails:">id</string>
+						<string key="commitTree:">id</string>
+						<string key="focusOnSearch:">id</string>
+						<string key="gitAdd:">id</string>
+						<string key="gitAddAndCommit:">id</string>
+						<string key="gitAggresiveGarbageCollect:">id</string>
+						<string key="gitApplyPatch:">id</string>
+						<string key="gitCommit:">id</string>
+						<string key="gitDestage:">id</string>
+						<string key="gitDiscardChanges:">id</string>
+						<string key="gitFetch:">id</string>
+						<string key="gitFetchTags:">id</string>
+						<string key="gitGarbageCollect:">id</string>
+						<string key="gitHardReset:">id</string>
+						<string key="gitIgnore:">id</string>
+						<string key="gitIgnoreDir:">id</string>
+						<string key="gitIgnoreExtension:">id</string>
+						<string key="gitInitializeAllSubmodules:">id</string>
+						<string key="gitNewBranchFromActiveBranch:">id</string>
+						<string key="gitNewEmptyBranch:">id</string>
+						<string key="gitNewRemote:">id</string>
+						<string key="gitNewSubmodule:">id</string>
+						<string key="gitNewTagFromActiveBranch:">id</string>
+						<string key="gitPackObjects:">id</string>
+						<string key="gitPackRefs:">id</string>
+						<string key="gitPullFromMenu:">id</string>
+						<string key="gitPushFromMenu:">id</string>
+						<string key="gitRebaseFromMenu:">id</string>
+						<string key="gitRemove:">id</string>
+						<string key="gitSoftReset:">id</string>
+						<string key="gitStashLocalChanges:">id</string>
+						<string key="gitUpdateAllSubmodules:">id</string>
+						<string key="lessContext:">id</string>
+						<string key="moreContext:">id</string>
+						<string key="moveToTrash:">id</string>
+						<string key="newRemoteTrackingBranch:">id</string>
+						<string key="openContainingFolder:">id</string>
+						<string key="openFile:">id</string>
+						<string key="openInFinder:">id</string>
+						<string key="openInTerminal:">id</string>
+						<string key="openProjectInTextmate:">id</string>
+						<string key="quickLook:">id</string>
+						<string key="reload:">id</string>
+						<string key="searchHistory:">id</string>
+						<string key="showActiveBranch:">id</string>
+						<string key="showConfig:">id</string>
+						<string key="showDifferView:">id</string>
+						<string key="showGlobalConfig:">id</string>
+						<string key="showHistory:">id</string>
+						<string key="toggleAllFiles:">id</string>
+						<string key="toggleConflictedFiles:">id</string>
+						<string key="toggleDeletedFiles:">id</string>
+						<string key="toggleModifiedFiles:">id</string>
+						<string key="toggleSourceList:">id</string>
+						<string key="toggleStagedFiles:">id</string>
+						<string key="toggleUntrackedFiles:">id</string>
+						<string key="updateAfterFilesChanged:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="clearSearchHistory:">
+							<string key="name">clearSearchHistory:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="commitDetails:">
+							<string key="name">commitDetails:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="commitTree:">
+							<string key="name">commitTree:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="focusOnSearch:">
+							<string key="name">focusOnSearch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitAdd:">
+							<string key="name">gitAdd:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitAddAndCommit:">
+							<string key="name">gitAddAndCommit:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitAggresiveGarbageCollect:">
+							<string key="name">gitAggresiveGarbageCollect:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitApplyPatch:">
+							<string key="name">gitApplyPatch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitCommit:">
+							<string key="name">gitCommit:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitDestage:">
+							<string key="name">gitDestage:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitDiscardChanges:">
+							<string key="name">gitDiscardChanges:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitFetch:">
+							<string key="name">gitFetch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitFetchTags:">
+							<string key="name">gitFetchTags:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitGarbageCollect:">
+							<string key="name">gitGarbageCollect:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitHardReset:">
+							<string key="name">gitHardReset:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitIgnore:">
+							<string key="name">gitIgnore:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitIgnoreDir:">
+							<string key="name">gitIgnoreDir:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitIgnoreExtension:">
+							<string key="name">gitIgnoreExtension:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitInitializeAllSubmodules:">
+							<string key="name">gitInitializeAllSubmodules:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitNewBranchFromActiveBranch:">
+							<string key="name">gitNewBranchFromActiveBranch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitNewEmptyBranch:">
+							<string key="name">gitNewEmptyBranch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitNewRemote:">
+							<string key="name">gitNewRemote:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitNewSubmodule:">
+							<string key="name">gitNewSubmodule:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitNewTagFromActiveBranch:">
+							<string key="name">gitNewTagFromActiveBranch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitPackObjects:">
+							<string key="name">gitPackObjects:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitPackRefs:">
+							<string key="name">gitPackRefs:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitPullFromMenu:">
+							<string key="name">gitPullFromMenu:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitPushFromMenu:">
+							<string key="name">gitPushFromMenu:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitRebaseFromMenu:">
+							<string key="name">gitRebaseFromMenu:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitRemove:">
+							<string key="name">gitRemove:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitSoftReset:">
+							<string key="name">gitSoftReset:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitStashLocalChanges:">
+							<string key="name">gitStashLocalChanges:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="gitUpdateAllSubmodules:">
+							<string key="name">gitUpdateAllSubmodules:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="lessContext:">
+							<string key="name">lessContext:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="moreContext:">
+							<string key="name">moreContext:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="moveToTrash:">
+							<string key="name">moveToTrash:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="newRemoteTrackingBranch:">
+							<string key="name">newRemoteTrackingBranch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openContainingFolder:">
+							<string key="name">openContainingFolder:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openFile:">
+							<string key="name">openFile:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openInFinder:">
+							<string key="name">openInFinder:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openInTerminal:">
+							<string key="name">openInTerminal:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="openProjectInTextmate:">
+							<string key="name">openProjectInTextmate:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="quickLook:">
+							<string key="name">quickLook:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="reload:">
+							<string key="name">reload:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="searchHistory:">
+							<string key="name">searchHistory:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showActiveBranch:">
+							<string key="name">showActiveBranch:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showConfig:">
+							<string key="name">showConfig:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showDifferView:">
+							<string key="name">showDifferView:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showGlobalConfig:">
+							<string key="name">showGlobalConfig:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showHistory:">
+							<string key="name">showHistory:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="toggleAllFiles:">
+							<string key="name">toggleAllFiles:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="toggleConflictedFiles:">
+							<string key="name">toggleConflictedFiles:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="toggleDeletedFiles:">
+							<string key="name">toggleDeletedFiles:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="toggleModifiedFiles:">
+							<string key="name">toggleModifiedFiles:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="toggleSourceList:">
+							<string key="name">toggleSourceList:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="toggleStagedFiles:">
+							<string key="name">toggleStagedFiles:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="toggleUntrackedFiles:">
+							<string key="name">toggleUntrackedFiles:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="updateAfterFilesChanged:">
+							<string key="name">updateAfterFilesChanged:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="activeBranchView">GTActiveBranchView</string>
 						<string key="advancedDiffView">GTAdvancedDiffView</string>
@@ -4103,9 +4398,7 @@
 						<string key="historyFilteredView">GTHistorySearchFilteredView</string>
 						<string key="historySearch">GTHistorySearchController</string>
 						<string key="historyView">GTHistoryView</string>
-						<string key="newRemote">GTNewRemoteController</string>
-						<string key="newSubmodule">GTNewSubmoduleController</string>
-						<string key="newTrackBranch">GTNuRemoteTrackBranch</string>
+						<string key="remoteController">GTNewRemoteController</string>
 						<string key="remoteView">GTRemoteView</string>
 						<string key="singleInput">GTSingleInputController</string>
 						<string key="sourceListView">GTSourceListView</string>
@@ -4113,7 +4406,9 @@
 						<string key="stateBarView">GTStateBarView</string>
 						<string key="status">GTStatusController</string>
 						<string key="statusBarView">GTStatusBarView</string>
+						<string key="submoduleController">GTNewSubmoduleController</string>
 						<string key="toolbar">NSToolbar</string>
+						<string key="trackBranchController">GTNuRemoteTrackBranch</string>
 						<string key="unknownError">GTUnknownErrorController</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -4165,17 +4460,9 @@
 							<string key="name">historyView</string>
 							<string key="candidateClassName">GTHistoryView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="newRemote">
-							<string key="name">newRemote</string>
+						<object class="IBToOneOutletInfo" key="remoteController">
+							<string key="name">remoteController</string>
 							<string key="candidateClassName">GTNewRemoteController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="newSubmodule">
-							<string key="name">newSubmodule</string>
-							<string key="candidateClassName">GTNewSubmoduleController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="newTrackBranch">
-							<string key="name">newTrackBranch</string>
-							<string key="candidateClassName">GTNuRemoteTrackBranch</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="remoteView">
 							<string key="name">remoteView</string>
@@ -4205,9 +4492,17 @@
 							<string key="name">statusBarView</string>
 							<string key="candidateClassName">GTStatusBarView</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="submoduleController">
+							<string key="name">submoduleController</string>
+							<string key="candidateClassName">GTNewSubmoduleController</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="toolbar">
 							<string key="name">toolbar</string>
 							<string key="candidateClassName">NSToolbar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="trackBranchController">
+							<string key="name">trackBranchController</string>
+							<string key="candidateClassName">GTNuRemoteTrackBranch</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="unknownError">
 							<string key="name">unknownError</string>

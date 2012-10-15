@@ -114,7 +114,13 @@
 	[op setCanChooseDirectories:true];
 	[op setCanCreateDirectories:true];
 	[op setCanChooseFiles:false];
-	[op beginSheetForDirectory:[git gitProjectPath] file:NULL modalForWindow:window modalDelegate:self didEndSelector:@selector(openDidEnd:returnCode:) contextInfo:nil];
+    [op setDirectoryURL:[NSURL fileURLWithPath:[git gitProjectPath]]];
+    [op beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
+        NSOpenPanel * op = (NSOpenPanel *) sender;
+        if(result is NSFileHandlingPanelCancelButton) return;
+        _submoduleDestination = [[[op URL] path] copy];
+        [submoduleDestination setStringValue:_submoduleDestination];
+    }];
 }
 
 - (BOOL) checkIfDestIsInRepo {
@@ -123,13 +129,6 @@
 	NSString * dest = [submoduleDestination stringValue];
 	if([dest isMatchedByRegex:reg]) return true;
 	return false;
-}
-
-- (void) openDidEnd:(id) sender returnCode:(int) code {
-	NSOpenPanel * op = (NSOpenPanel *) sender;
-	if(code is NSCancelButton) return;
-	_submoduleDestination = [[op filename] copy];
-	[submoduleDestination setStringValue:_submoduleDestination];
 }
 
 - (NSString *) submoduleDestination {

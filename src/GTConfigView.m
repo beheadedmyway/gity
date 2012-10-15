@@ -74,7 +74,7 @@
 	NSIndexSet * indxs = [tableView selectedRowIndexes];
 	[tableView selectRowIndexes:indxs byExtendingSelection:false];
 	if([indxs count] < 1) return;
-	NSMutableArray * tmp = [[configs objectsAtIndexes:indxs] retain];
+	NSMutableArray * tmp = [[configs objectsAtIndexes:indxs] mutableCopy];
 	[configs removeObjectsAtIndexes:indxs];
 	NSMutableArray * itm;
 	NSString * key;

@@ -80,15 +80,13 @@
 	NSString * projWithUn = [projectTitle stringByAppendingString:@"_"];
 	NSString * suggest = [projWithUn stringByAppendingString:[[commit abbrevHash] stringByAppendingString:@".tar.gz"]];
 	[sp setNameFieldStringValue:suggest];
-	[sp beginSheetForDirectory:NULL file:NULL modalForWindow:[gd gtwindow] modalDelegate:self didEndSelector:@selector(savePanelDidEndForTar:returnCode:) contextInfo:nil];
-}
-
-- (void) savePanelDidEndForTar:(NSSavePanel *) _panel returnCode:(NSInteger) res {
-	if(res == NSCancelButton) return;
-	GTGitCommit * commit = [historyView selectedItem];
-	if(commit is nil) return;
-	NSString * file = [_panel filename];
-	[operations runExportTar:file andCommit:[commit hash]];
+    [sp beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
+        if(result == NSFileHandlingPanelCancelButton) return;
+        GTGitCommit * commit = [historyView selectedItem];
+        if(commit is nil) return;
+        NSString * file = [[sp URL] path];
+        [operations runExportTar:file andCommit:[commit hash]];
+    }];
 }
 
 - (void) exportZip {
@@ -99,15 +97,13 @@
 	NSString * projWithUn = [projectTitle stringByAppendingString:@"_"];
 	NSString * suggest = [projWithUn stringByAppendingString:[[commit abbrevHash] stringByAppendingString:@".zip"]];
 	[sp setNameFieldStringValue:suggest];
-	[sp beginSheetForDirectory:NULL file:NULL modalForWindow:[gd gtwindow] modalDelegate:self didEndSelector:@selector(savePanelDidEndForZip:returnCode:) contextInfo:nil];
-}
-
-- (void) savePanelDidEndForZip:(NSSavePanel *) _panel returnCode:(NSInteger) res {
-	if(res == NSCancelButton) return;
-	GTGitCommit * commit = [historyView selectedItem];
-	if(commit is nil) return;
-	NSString * file = [_panel filename];
-	[operations runExportZip:file andCommit:[commit hash]];
+    [sp beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
+        if(result == NSFileHandlingPanelCancelButton) return;
+        GTGitCommit * commit = [historyView selectedItem];
+        if(commit is nil) return;
+        NSString * file = [[sp URL] path];
+        [operations runExportZip:file andCommit:[commit hash]];
+    }];
 }
 
 - (void) loadParent:(NSString *) _commitHash {

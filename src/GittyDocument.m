@@ -42,14 +42,14 @@
 @synthesize mainMenuHelper;
 @synthesize sourceListView;
 @synthesize splitContentView;
-@synthesize newRemote;
+@synthesize remoteController;
 @synthesize singleInput;
 @synthesize configView;
-@synthesize newTrackBranch;
+@synthesize trackBranchController;
 @synthesize remoteView;
 @synthesize fetchTags;
 @synthesize sounds;
-@synthesize newSubmodule;
+@synthesize submoduleController;
 @synthesize commitAfterAdd;
 @synthesize diffView;
 
@@ -168,10 +168,10 @@
 	[status lazyInitWithGD:self];
 	[commit lazyInitWithGD:self];
 	[singleInput lazyInitWithGD:self];
-	[newRemote lazyInitWithGD:self];
-	[newSubmodule lazyInitWithGD:self];
+	[remoteController lazyInitWithGD:self];
+	[submoduleController lazyInitWithGD:self];
 	[unknownError lazyInitWithGD:self];
-	[newTrackBranch lazyInitWithGD:self];
+	[trackBranchController lazyInitWithGD:self];
 	[fetchTags lazyInitWithGD:self];
 	[historySearch lazyInitWithGD:self];
 	[[[GTModalController sharedInstance] cloneRepoController] lazyInitWithGD:self];
@@ -239,7 +239,7 @@
 	[self updateAfterFilesChanged:nil];
 }
 
-- (void) updateAfterFilesChanged:(id)sender {
+- (IBAction) updateAfterFilesChanged:(id)sender {
 	
 	// lets make sure this is on the main thread due to FSEvents
 	
@@ -281,8 +281,6 @@
 }
 
 - (void) windowReady {
-	[GTOperationsController updateLicenseRunStatus:[[[GTDocumentController sharedDocumentController] registration] isRunningWithValidLicense]];
-	
 	[self runStartupOperation];
 }
 
@@ -341,11 +339,11 @@
 	return !([historyView superview] == nil);
 }
 
-- (void) focusOnSearch:(id) sender {
+- (IBAction) focusOnSearch:(id) sender {
 	[stateBarView focusOnSearch];
 }
 
-- (void) reload:(id) sender {
+- (IBAction) reload:(id) sender {
 	if([self isCurrentViewActiveBranchView]) {
 		[operations runRefreshOperation];
 	}
@@ -357,7 +355,7 @@
 	}
 }
 
-- (void) showDifferView:(id) sender {
+- (IBAction) showDifferView:(id) sender {
 	NSLog(@"showDifferView");
 	
 	[activeBranchView hide];
@@ -370,7 +368,7 @@
 	[advancedDiffView showInView:rightView withAdjustments:NSMakeRect(0,0,0,-28)];
 }
 
-- (void) showActiveBranch:(id) sender {
+- (IBAction) showActiveBranch:(id) sender {
 	[self showActiveBranchWithDiffUpdate:true forceIfAlreadyActive:false];
 }
 
@@ -420,7 +418,7 @@
 	return;
 }
 
-- (void) showHistory:(id) sender {
+- (IBAction) showHistory:(id) sender {
 	/*if([gitd isHeadDetatched]) {
 		[self showHistoryFromRef:[gitd currentAbbreviatedSha]];
 	}
@@ -484,15 +482,15 @@
 	}
 }
 
-- (void) showConfig:(id) sender {
+- (IBAction) showConfig:(id) sender {
 	[operations runGetConfigs];
 }
 
-- (void) showGlobalConfig:(id) sender {
+- (IBAction) showGlobalConfig:(id) sender {
 	[operations runGetGlobalConfigs];
 }
 
-- (void) toggleSourceList:(id) sender {
+- (IBAction) toggleSourceList:(id) sender {
 	NSMenuItem *item = (NSMenuItem *) sender;
 	
 	if([[item title] isEqual:@"Show Source List"]) {
@@ -569,7 +567,7 @@
 }
 
 - (void) onNewSubmoduleComplete {
-	[operations runNewSubmodule:[newSubmodule submoduleURL] inLocalDir:[newSubmodule submoduleDestination] withName:[newSubmodule submoduleName]];
+	[operations runNewSubmodule:[submoduleController submoduleURL] inLocalDir:[submoduleController submoduleDestination] withName:[submoduleController submoduleName]];
 }
 
 - (void) onStatusBarFilesToggled {
@@ -669,11 +667,11 @@
 }
 
 - (void) onNewRemoteComplete {
-	if([newRemote lastButtonValue] == NSCancelButton) {
+	if([remoteController lastButtonValue] == NSCancelButton) {
 		return;
 	}
 	
-	[operations runNewRemote:[newRemote remoteNameValue] withURL:[newRemote remoteURLValue]];
+	[operations runNewRemote:[remoteController remoteNameValue] withURL:[remoteController remoteURLValue]];
 }
 
 - (void) onNewRemoteTrackBranchComplete {
@@ -702,7 +700,7 @@
 }
 
 - (void) onGotRemoteBranches {
-	[newTrackBranch updateRemoteBranchNames];
+	[trackBranchController updateRemoteBranchNames];
 }
 
 - (void) onGotRemoteTags {
@@ -752,17 +750,17 @@
 	[stateBarView clearSearchField];
 }
 
-- (void) clearSearchHistory:(id) sender {
+- (IBAction) clearSearchHistory:(id) sender {
 	[historyFilteredView close];
 }
 
-- (void) searchHistory:(id) sender {
+- (IBAction) searchHistory:(id) sender {
 	[historySearch showAsSheet];
 }
 
 #pragma mark git* methods - these are methods that are called from other controllers, or from the main menu.
 
-- (void) gitApplyPatch:(id) sender {
+- (IBAction) gitApplyPatch:(id) sender {
 	NSOpenPanel *op = [NSOpenPanel openPanel];
 	
 	[op setCanChooseDirectories:false];
@@ -776,22 +774,23 @@
 		return;
 	}
 	
-	NSString *patchFile = [[op filename] copy];
+    NSURL *url = [op URL];
+	NSString *patchFile = [[url path] copy];
 	
 	[operations runPatchApplyWithFile:patchFile];
 	
 	[patchFile release];
 }
 
-- (void) gitGarbageCollect:(id) sender {
+- (IBAction) gitGarbageCollect:(id) sender {
 	[operations runGarbageCollect];
 }
 
--(void) gitAggresiveGarbageCollect:(id) sender {
+-(IBAction) gitAggresiveGarbageCollect:(id) sender {
 	[operations runAggressiveGarbageCollect];
 }
 
-- (void) gitAdd:(id) sender {
+- (IBAction) gitAdd:(id) sender {
 	if([activeBranchView selectedFilesCount] < 1) {
 		return;
 	}
@@ -802,7 +801,7 @@
 }
 
 
-- (void) gitAddAndCommit:(id) sender {
+- (IBAction) gitAddAndCommit:(id) sender {
 	if([activeBranchView selectedFilesCount] < 1) {
         NSBeep();
         [[GTModalController sharedInstance] runSelectFilesFirst];
@@ -814,15 +813,15 @@
 	[self gitCommit:nil];
 }
 
-- (void) gitPackRefs:(id) sender {
+- (IBAction) gitPackRefs:(id) sender {
 	[operations runPackRefs];
 }
 
-- (void) gitPackObjects:(id) sender {
+- (IBAction) gitPackObjects:(id) sender {
 	[operations runPackObjects];
 }
 
-- (void) gitCommit:(id) sender {
+- (IBAction) gitCommit:(id) sender {
     
 	if([gitd isConflicted]) {
 		NSBeep();
@@ -838,7 +837,7 @@
 	[commit showAsSheet];
 }
 
-- (void) gitRemove:(id) sender {
+- (IBAction) gitRemove:(id) sender {
 	if([[GTModalController sharedInstance] verifyGitRemove] == NSCancelButton) {
 		return;
 	}
@@ -846,19 +845,19 @@
 	[operations runRemoveFilesOperation];
 }
 
-- (void) gitHardReset:(id) sender {
+- (IBAction) gitHardReset:(id) sender {
 	[sourceListView branchHardReset:sender];
 }
 
-- (void) gitSoftReset:(id) sender {
+- (IBAction) gitSoftReset:(id) sender {
 	[sourceListView branchDiscardNonStagedChanges:sender];
 }
 
-- (void) gitDiscardChanges:(id) sender {
+- (IBAction) gitDiscardChanges:(id) sender {
 	[operations runDiscardChangesOperation];
 }
 
-- (void) gitDestage:(id) sender {
+- (IBAction) gitDestage:(id) sender {
 	[operations runDestageOperation];
 }
 
@@ -866,7 +865,7 @@
 	[operations runBranchCheckout:branch];
 }
 
-- (void) gitCheckoutCommit:(id) sender {
+- (IBAction) gitCheckoutCommit:(id) sender {
 	GTGitCommit *selectedCommit = [historyView selectedItem];
 	if (selectedCommit)
 	{
@@ -881,11 +880,11 @@
 	}
 }
 
-- (void) gitFetch:(id) sender {
+- (IBAction) gitFetch:(id) sender {
 	[operations runFetch];
 }
 
-- (void) gitIgnore:(id) sender {
+- (IBAction) gitIgnore:(id) sender {
 	NSMutableArray *files = [activeBranchView selectedFiles];
 	
 	if(files is nil) {
@@ -896,7 +895,7 @@
 	[operations runIgnoreFiles:files];
 }
 
-- (void) gitIgnoreExtension:(id) sender {
+- (IBAction) gitIgnoreExtension:(id) sender {
 	NSString *ext = [activeBranchView getSelectedFileExtension];
 	
 	if([ext isEqual:@""]) {
@@ -906,7 +905,7 @@
 	[operations runIgnoreExtension:ext];
 }
 
-- (void) gitIgnoreDir:(id) sender {
+- (IBAction) gitIgnoreDir:(id) sender {
 	NSMutableArray *files = [activeBranchView selectedFiles];
 	
 	if(files is nil) {
@@ -924,12 +923,12 @@
 	[operations runIgnoreFiles:[NSMutableArray arrayWithObject:[f stringByAppendingString:@"/"]]];
 }
 
-- (void) gitNewRemote:(id) sender {
-	[newRemote showAsSheetWithCallback:self action:@selector(onNewRemoteComplete)];
+- (IBAction) gitNewRemote:(id) sender {
+	[remoteController showAsSheetWithCallback:self action:@selector(onNewRemoteComplete)];
 }
 
-- (void) gitNewSubmodule:(id) sender {
-	[newSubmodule showAsSheetWithCallback:self action:@selector(onNewSubmoduleComplete)];
+- (IBAction) gitNewSubmodule:(id) sender {
+	[submoduleController showAsSheetWithCallback:self action:@selector(onNewSubmoduleComplete)];
 }
 
 - (void) gitNewBranch:(NSString *) startBranch {
@@ -941,7 +940,7 @@
 	[singleInput showAsSheetWithCallback:self action:@selector(onNewBranchComplete)];
 }
 
-- (void) gitNewBranchFromActiveBranch:(id) sender {
+- (IBAction) gitNewBranchFromActiveBranch:(id) sender {
 	_tmpBranchStartName = [[gitd activeBranchName] copy];
 	
 	[singleInput setSheetTitleValue:@"New Branch"];
@@ -958,7 +957,7 @@
 	[singleInput showAsSheetWithCallback:self action:@selector(onNewTagComplete)];
 }
 
-- (void) gitNewTagFromActiveBranch:(id) sender {
+- (IBAction) gitNewTagFromActiveBranch:(id) sender {
 	_tmpTagStartPoint = [[gitd activeBranchName] copy];
 	
 	[singleInput setSheetTitleValue:@"New Tag"];
@@ -966,7 +965,7 @@
 	[singleInput showAsSheetWithCallback:self action:@selector(onNewTagComplete)];
 }
 
-- (void) gitNewEmptyBranch:(id) sender {
+- (IBAction) gitNewEmptyBranch:(id) sender {
 	if([gitd isConflicted]) {
 		NSBeep();
 		[[GTModalController sharedInstance] runConflictedStateForCheckout];
@@ -983,7 +982,7 @@
 	[singleInput showAsSheetWithCallback:self action:@selector(onNewEmptyBranchComplete)];
 }
 
-- (void) gitStashLocalChanges:(id) sender {
+- (IBAction) gitStashLocalChanges:(id) sender {
 	if([gitd isConflicted]) {
 		NSBeep();
 		[[GTModalController sharedInstance] runConflictedStateForCheckout];
@@ -996,37 +995,37 @@
 	[singleInput showAsSheetWithCallback:self action:@selector(onStashComplete)];
 }
 
-- (void) gitUpdateAllSubmodules:(id) sender {
+- (IBAction) gitUpdateAllSubmodules:(id) sender {
 	[operations runSubmoduleUpdateAll];
 }
 
-- (void) gitInitializeAllSubmodules:(id) sender {
+- (IBAction) gitInitializeAllSubmodules:(id) sender {
 	[operations runSubmoduleInitAll];
 }
 
-- (void) gitPushFromMenu:(id) sender {
+- (IBAction) gitPushFromMenu:(id) sender {
 	[sourceListView gitPushFromActiveBranch];
 }
 
-- (void) gitPullFromMenu:(id) sender {
+- (IBAction) gitPullFromMenu:(id) sender {
 	[sourceListView gitPullFromActiveBranch];
 }
 
-- (void) gitRebaseFromMenu:(id) sender {
+- (IBAction) gitRebaseFromMenu:(id) sender {
 	[sourceListView gitRebaseFromActiveBranch];
 }
 
-- (void) gitFetchTags:(id) sender {
+- (IBAction) gitFetchTags:(id) sender {
 	[fetchTags showAsSheetWithCallback:self action:@selector(onFetchTagComplete)];
 }
 
 #pragma mark other actions.
 
-- (void) newRemoteTrackingBranch:(id) sender {
-	[newTrackBranch showAsSheetWithCallback:self action:@selector(onNewRemoteTrackBranchComplete)];
+- (IBAction) newRemoteTrackingBranch:(id) sender {
+	[trackBranchController showAsSheetWithCallback:self action:@selector(onNewRemoteTrackBranchComplete)];
 }
 
-- (void) resolveConflictsWithFileMerge:(id) sender {
+- (IBAction) resolveConflictsWithFileMerge:(id) sender {
 	NSString *fle = [[activeBranchView selectedFiles] objectAtIndex:0];
 	
 	if([activeBranchView selectedFilesCount] == 0 || [activeBranchView selectedFilesCount] > 1) {
@@ -1045,7 +1044,7 @@
 	[operations runOpenFileMergeForFile:fle];
 }
 
-- (void) openProjectInTextmate:(id) sender {
+- (IBAction) openProjectInTextmate:(id) sender {
 	NSString *matePath = nil;
 	
 	if([[NSFileManager defaultManager] fileExistsAtPath:@"/usr/local/bin/mate"]) {
@@ -1086,7 +1085,7 @@
 	[args release];
 }
 
-- (void) openFile:(id) sender {
+- (IBAction) openFile:(id) sender {
 	NSMutableArray *files = [activeBranchView selectedFiles];
 	
 	if([files count] > 1 or [files count] < 1) {
@@ -1126,7 +1125,7 @@
 - (void)endPreviewPanelControl:(QLPreviewPanel *)panel {
 }
 
-- (void) quickLook:(id) sender {
+- (IBAction) quickLook:(id) sender {
 	if ([sender isKindOfClass:[GTActiveBranchTableView class]] && [[QLPreviewPanel sharedPreviewPanel] isVisible])
 	{
 		// if the quicklook panel is up, and they hit space in the branch view, dismiss it.
@@ -1148,7 +1147,7 @@
 	[[QLPreviewPanel sharedPreviewPanel] makeKeyAndOrderFront:nil];
 }
 
-- (void) openInFinder:(id) sender {
+- (IBAction) openInFinder:(id) sender {
 	NSMutableArray *files = [activeBranchView selectedFiles];
 	
 	if([files count] > 1 or [files count] < 1) {
@@ -1162,7 +1161,7 @@
 	[workspace selectFile:fullPath inFileViewerRootedAtPath:nil];
 }
 
-- (void) openContainingFolder:(id) sender {
+- (IBAction) openContainingFolder:(id) sender {
 	NSMutableArray *files = [activeBranchView selectedFiles];
 	
 	if([files count] > 1 or [files count] < 1) {
@@ -1176,7 +1175,7 @@
 	[workspace selectFile:fullPath inFileViewerRootedAtPath:nil];
 }
 
-- (void) openInTerminal:(id)sender {
+- (IBAction) openInTerminal:(id)sender {
 	TerminalApplication *terminal = [SBApplication applicationWithBundleIdentifier: @"com.apple.Terminal"];
 	NSString *workingDirectory = [[git gitProjectPath] stringByAppendingString:@"/"];
 	NSString *shellCommand = [NSString stringWithFormat: @"cd \"%@\"; clear; git status", workingDirectory];
@@ -1187,7 +1186,7 @@
 }
 
 
-- (void) moveToTrash:(id) sender {
+- (IBAction) moveToTrash:(id) sender {
 	NSBeep();
 	
 	if([[GTModalController sharedInstance] runMoveToTrashConfirmation] == NSCancelButton) {
@@ -1211,7 +1210,7 @@
 	[operations runRefreshOperation];
 }
 
-- (void) toggleAllFiles:(id) sender {
+- (IBAction) toggleAllFiles:(id) sender {
 	if(![self isCurrentViewActiveBranchView]) {
 		NSBeep();
 		return;
@@ -1222,7 +1221,7 @@
 	[diffView invalidate];
 }
 
-- (void) toggleStagedFiles:(id) sender {
+- (IBAction) toggleStagedFiles:(id) sender {
 	if(![self isCurrentViewActiveBranchView]) {
 		NSBeep();
 		return;
@@ -1233,7 +1232,7 @@
 	[statusBarView toggleStagedFiles];
 }
 
-- (void) toggleUntrackedFiles:(id) sender {
+- (IBAction) toggleUntrackedFiles:(id) sender {
 	if(![self isCurrentViewActiveBranchView]) {
 		NSBeep();
 		return;
@@ -1244,7 +1243,7 @@
 	[statusBarView toggleUntrackedFiles];
 }
 
-- (void) toggleModifiedFiles:(id) sender {
+- (IBAction) toggleModifiedFiles:(id) sender {
 	if(![self isCurrentViewActiveBranchView]) {
 		NSBeep();
 		return;
@@ -1255,7 +1254,7 @@
 	[statusBarView toggleModifiedFiles];
 }
 
-- (void) toggleDeletedFiles:(id) sender {
+- (IBAction) toggleDeletedFiles:(id) sender {
 	if(![self isCurrentViewActiveBranchView]) {
 		NSBeep();
 		return;
@@ -1266,7 +1265,7 @@
 	[statusBarView toggleDeletedFiles];
 }
 
-- (void) toggleConflictedFiles:(id) sender {
+- (IBAction) toggleConflictedFiles:(id) sender {
 	if(![self isCurrentViewActiveBranchView]) {
 		NSBeep();
 		return;
@@ -1277,7 +1276,7 @@
 	[statusBarView toggleConflictedFiles];
 }
 
-- (void) moreContext:(id) sender {
+- (IBAction) moreContext:(id) sender {
 	if([self isCurrentViewActiveBranchView]) {
 		[diffView moreContext];
 	}
@@ -1286,7 +1285,7 @@
 	}
 }
 
-- (void) lessContext:(id) sender {
+- (IBAction) lessContext:(id) sender {
 	if([self isCurrentViewActiveBranchView]) {
 		[diffView lessContext];
 	}
@@ -1295,11 +1294,11 @@
 	}
 }
 
-- (void) commitDetails:(id) sender {
+- (IBAction) commitDetails:(id) sender {
 	NSLog(@"details");
 }
 
-- (void) commitTree:(id) sender {
+- (IBAction) commitTree:(id) sender {
 	NSLog(@"tree");
 }
 

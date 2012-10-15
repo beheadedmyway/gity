@@ -466,14 +466,12 @@
 	_tmpItemForExport = [item retain];
 	savePanel = [NSSavePanel savePanel];
 	[savePanel setCanCreateDirectories:true];
-	[savePanel beginSheetForDirectory:NULL file:NULL modalForWindow:[gd gtwindow] modalDelegate:self didEndSelector:@selector(savePanelDidEndForZip:returnCode:) contextInfo:nil];
-}
-
-- (void) savePanelDidEndForZip:(NSSavePanel *) panel returnCode:(NSInteger) code {
-	if(code == NSCancelButton) return;
-	[operations runExportZip:[savePanel filename] andCommit:[_tmpItemForExport name]];
-	[_tmpItemForExport release];
-	_tmpItemForExport=nil;
+    [savePanel beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
+        if(result == NSFileHandlingPanelCancelButton) return;
+        [operations runExportZip:[[savePanel URL] path] andCommit:[_tmpItemForExport name]];
+        [_tmpItemForExport release];
+        _tmpItemForExport=nil;
+    }];
 }
 
 - (void) gitExportTar {
@@ -481,13 +479,11 @@
 	_tmpItemForExport = [item retain];
 	savePanel = [NSSavePanel savePanel];
 	[savePanel setCanCreateDirectories:true];
-	[savePanel beginSheetForDirectory:NULL file:NULL modalForWindow:[gd gtwindow] modalDelegate:self didEndSelector:@selector(savePanelDidEndForTar:returnCode:) contextInfo:nil];
-}
-
-- (void) savePanelDidEndForTar:(NSSavePanel *) panel returnCode:(NSInteger) code {
-	if(code == NSCancelButton) return;
-	[operations runExportTar:[savePanel filename] andCommit:[_tmpItemForExport name]];
-	[_tmpItemForExport release];
+    [savePanel beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
+        if(result == NSFileHandlingPanelCancelButton) return;
+        [operations runExportTar:[[savePanel URL] path] andCommit:[_tmpItemForExport name]];
+        [_tmpItemForExport release];
+    }];
 }
 
 - (void) updateDefaultRemote:(id) sender {

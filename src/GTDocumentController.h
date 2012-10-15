@@ -28,35 +28,30 @@
 #import "GTSysHelper.h"
 #import "GTPythonScripts.h"
 #import "GTCLIProxy.h"
-#import "GTRegistrationController.h"
 
 @interface GTDocumentController : NSDocumentController <NSApplicationDelegate> {
 	IBOutlet SUUpdater * sparkle;
 	GTGitCommandExecutor * git;
 	GTOperationsController * operations;
 	GTCLIProxy * cliproxy;
-	GTRegistrationController * registration;
 	BOOL applicationHasStarted;
 }
 
-@property (readonly,nonatomic) GTRegistrationController * registration;
-
 + (NSString *) gityVersion;
-- (void) installTextmateBundle:(id) sender;
-- (void) changeGitBinary:(id) sender;
-- (void) showRegistration:(id) sender;
-- (void) launchGitBook:(id) sender;
-- (void) launchGitManPages:(id) sender;
+- (IBAction) installTextmateBundle:(id) sender;
+- (IBAction) changeGitBinary:(id) sender;
+- (IBAction) launchGitBook:(id) sender;
+- (IBAction) launchGitManPages:(id) sender;
 - (void) openNSURLAndActivate:(NSString *) path;
-- (void) openDocument:(id) sender;
-- (void) toggleStartupItem:(id) sender;
-- (void) toggleCheckForUpdates:(id) sender;
+- (IBAction) openDocument:(id) sender;
+- (IBAction) toggleStartupItem:(id) sender;
+- (IBAction) toggleCheckForUpdates:(id) sender;
 - (void) updateCheckForUpdates;
 - (void) updateLaunchAtStartup;
-- (void) resetPrompts:(id) sender;
-- (void) mutePopSounds:(id) sender;
+- (IBAction) resetPrompts:(id) sender;
+- (IBAction) mutePopSounds:(id) sender;
 - (void) updateMuteStatus;
-- (void) installTerminalUsage:(id) sender;
+- (IBAction) installTerminalUsage:(id) sender;
 - (void) updateGityVersion;
 - (IBAction) cloneRepo:(id) sender;
 - (IBAction) initNewRepo:(id) sender;

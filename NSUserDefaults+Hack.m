@@ -11,7 +11,7 @@
 
 @implementation NSUserDefaults(Hack)
 
-- (BOOL)synchronize
+/*- (BOOL)synchronize
 {
 	BOOL result = CFPreferencesAppSynchronize((CFStringRef)[[NSBundle mainBundle] bundleIdentifier]);
 	if (!result)
@@ -35,6 +35,6 @@
 	}
 	
 	return result;
-}
+}*/
 
 @end

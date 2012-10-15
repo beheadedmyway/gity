@@ -139,12 +139,7 @@ using namespace std;
 		GTGitCommit * commit = [[GTGitCommit alloc] init];
 		[commit setHash:shaw];
 		[commit setAbbrevHash:abbrevSha];
-		
-        //[commit setSubject:[NSString stringWithCString:subject.c_str() encoding:encoding]];
-        NSString *subjectString = [NSString stringWithCString:subject.c_str() encoding:encoding];
-        NSString *graphicString = [NSString stringWithCString:graphString.c_str() encoding:encoding];
-        [commit setSubject:[NSString stringWithFormat:@"%@%@", graphicString, subjectString]];
-        
+        [commit setSubject:[NSString stringWithCString:subject.c_str() encoding:encoding]];
 		[commit setAuthor:[NSString stringWithCString:author.c_str() encoding:encoding]];
 		[commit setDate:[NSDate dateWithTimeIntervalSince1970:time]];
         [commit setGraph:[NSString stringWithCString:graphString.c_str() encoding:encoding]];

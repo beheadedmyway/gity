@@ -165,7 +165,7 @@ def kill_dupes(arry):
 	return d.values()
 
 def raise_git_rescode_exception(rcode,sterr):
-	raise Exception("Gity Error: git had an exit code greater than 1: %s %s" % (str(rcode),str(sterr)))
+	raise Exception("Git had an exit code greater than 1: %s %s" % (str(rcode),str(sterr)))
 
 def rcode_for_git_exit(rcode,sterr):
 	if is_sterr_lock_file_error(sterr): return
@@ -173,6 +173,12 @@ def rcode_for_git_exit(rcode,sterr):
 
 def already_exists(msg):
 	return msg.find("already exists")
+
+def check_for_git_error(msg):
+    if msg.find("error:") > -1:
+        sys.stderr.write(msg)
+        return True
+    return False
 
 def server_hung_up(msg):
 	if msg.find("The remote end hung up unexpectedly") > -1: return True

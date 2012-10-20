@@ -32,6 +32,7 @@
 @class GTCherryPickAccessoryView;
 
 @interface GTModalController : GTBaseObject {
+    GTUnknownErrorController *errorSheetController;
 	GTCloneRepoController * cloneRepoController;
 	IBOutlet GTDeleteTagAccessoryView * deleteTagView;
 	IBOutlet GTDeleteBranchAccessoryView * deleteBranchView;
@@ -95,7 +96,8 @@
 - (void) runSelectFilesFirst;
 - (void) runConflictedStateForCheckout;
 - (void) runModalForError:(NSString *) errorMessage;
-- (void) runModalFromCode:(NSInteger) code;
+- (void) runModalFromCode:(NSInteger)code message:(NSString *)message document:(GittyDocument *)document;
+- (void) runModalFromCode:(NSInteger)code message:(NSString *)message;
 - (void) runRemoteEndHungUp;
 - (void) runNoDefaultRemote;
 - (void) runDirIsDirtyForEmptyBranch;

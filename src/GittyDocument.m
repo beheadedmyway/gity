@@ -536,17 +536,33 @@
 #pragma mark operation result, and operation callback/complete methods.
 
 - (void) unknownErrorFromOperation:(NSString *) error {
+    NSString *formattedError = [error stringByReplacingOccurrencesOfString:@"\n" withString:@"\n\n"];
+    
+	if(![gtwindow isVisible] || [status isShowingSheet]) {
+		GDRelease(_tmpUnknownError);
+		
+		_tmpUnknownError = [formattedError copy];
+		
+		[self tryToShowUnknownError];
+	} 
+	else {
+		[unknownError showAsSheetWithError:formattedError];
+	}
+}
+
+- (void) gitErrorFromOperation:(NSString *) error {
 	if(![gtwindow isVisible] || [status isShowingSheet]) {
 		GDRelease(_tmpUnknownError);
 		
 		_tmpUnknownError = [error copy];
 		
 		[self tryToShowUnknownError];
-	} 
+	}
 	else {
 		[unknownError showAsSheetWithError:error];
 	}
 }
+
 
 - (void) tryToShowUnknownError {
 	if(![gtwindow isVisible] || [status isShowingSheet]) {
@@ -602,6 +618,8 @@
 	[contextMenus invalidate];
 	[operations runGetCommitsAheadWithoutSpinner];
 	[self adjustMinWindowSize];
+    
+    [self reload:nil];
 }
 
 - (void) onRefreshOperationComplete {

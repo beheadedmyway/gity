@@ -176,7 +176,7 @@ try:
 	exit(0)
 except Exception, e:
 	sys.stderr.write("The meta status command threw this error: " + str(e))
-	sys.stderr.write("\ncommand: %s" % command)
+	sys.stderr.write("\ncommand: %s\n" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)
 	sys.stderr.write("\n\n\n")

@@ -1335,7 +1335,7 @@
 				<string key="NSClassName">GTDiffContentView</string>
 			</object>
 			<object class="NSCustomView" id="273224473">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSScrollView" id="1033268352">
@@ -1351,6 +1351,8 @@
 										<int key="NSvFlags">256</int>
 										<string key="NSFrameSize">{630, 338}</string>
 										<reference key="NSSuperview" ref="811975569"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="159862923"/>
 										<bool key="NSEnabled">YES</bool>
 										<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 										<bool key="NSControlAllowsExpansionToolTips">YES</bool>
@@ -1359,18 +1361,47 @@
 											<int key="NSvFlags">256</int>
 											<string key="NSFrameSize">{630, 17}</string>
 											<reference key="NSSuperview" ref="386183798"/>
+											<reference key="NSWindow"/>
+											<reference key="NSNextKeyView" ref="811975569"/>
 											<reference key="NSTableView" ref="240835584"/>
 										</object>
-										<object class="_NSCornerView" key="NSCornerView" id="779702046">
-											<reference key="NSNextResponder" ref="1033268352"/>
+										<object class="_NSCornerView" key="NSCornerView">
+											<nil key="NSNextResponder"/>
 											<int key="NSvFlags">-2147483392</int>
 											<string key="NSFrame">{{616, 0}, {16, 17}}</string>
-											<reference key="NSSuperview" ref="1033268352"/>
 										</object>
 										<array class="NSMutableArray" key="NSTableColumns">
+											<object class="NSTableColumn" id="814404238">
+												<string key="NSIdentifier">graph</string>
+												<double key="NSWidth">64</double>
+												<double key="NSMinWidth">10</double>
+												<double key="NSMaxWidth">3.4028234663852886e+38</double>
+												<object class="NSTableHeaderCell" key="NSHeaderCell">
+													<int key="NSCellFlags">75497536</int>
+													<int key="NSCellFlags2">2048</int>
+													<string key="NSContents"/>
+													<reference key="NSSupport" ref="26"/>
+													<reference key="NSBackgroundColor" ref="924100756"/>
+													<reference key="NSTextColor" ref="633471953"/>
+												</object>
+												<object class="NSTextFieldCell" key="NSDataCell" id="765044259">
+													<int key="NSCellFlags">337641537</int>
+													<int key="NSCellFlags2">272762880</int>
+													<string key="NSContents">Text</string>
+													<reference key="NSSupport" ref="26"/>
+													<string key="NSCellIdentifier">_NS:9</string>
+													<reference key="NSControlView" ref="240835584"/>
+													<reference key="NSBackgroundColor" ref="546261090"/>
+													<reference key="NSTextColor" ref="754308598"/>
+												</object>
+												<int key="NSResizingMask">3</int>
+												<bool key="NSIsResizeable">YES</bool>
+												<bool key="NSIsEditable">YES</bool>
+												<reference key="NSTableView" ref="240835584"/>
+											</object>
 											<object class="NSTableColumn" id="342068816">
 												<string key="NSIdentifier">subject</string>
-												<double key="NSWidth">407</double>
+												<double key="NSWidth">356</double>
 												<double key="NSMinWidth">40</double>
 												<double key="NSMaxWidth">2000</double>
 												<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -1469,6 +1500,7 @@
 								</array>
 								<string key="NSFrame">{{1, 17}, {630, 338}}</string>
 								<reference key="NSSuperview" ref="1033268352"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="240835584"/>
 								<reference key="NSDocView" ref="240835584"/>
 								<reference key="NSBGColor" ref="1047238636"/>
@@ -1479,6 +1511,8 @@
 								<int key="NSvFlags">-2147483392</int>
 								<string key="NSFrame">{{616, 17}, {15, 323}}</string>
 								<reference key="NSSuperview" ref="1033268352"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<reference key="NSTarget" ref="1033268352"/>
 								<string key="NSAction">_doScroller:</string>
@@ -1487,8 +1521,10 @@
 							<object class="NSScroller" id="159862923">
 								<reference key="NSNextResponder" ref="1033268352"/>
 								<int key="NSvFlags">-2147483392</int>
-								<string key="NSFrame">{{1, 340}, {615, 15}}</string>
+								<string key="NSFrame">{{1, 339}, {630, 16}}</string>
 								<reference key="NSSuperview" ref="1033268352"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="846714594"/>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								<int key="NSsFlags">1</int>
 								<reference key="NSTarget" ref="1033268352"/>
@@ -1503,16 +1539,17 @@
 								</array>
 								<string key="NSFrame">{{1, 0}, {630, 17}}</string>
 								<reference key="NSSuperview" ref="1033268352"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="967450224"/>
 								<reference key="NSDocView" ref="967450224"/>
 								<reference key="NSBGColor" ref="1047238636"/>
 								<int key="NScvFlags">4</int>
 							</object>
-							<reference ref="779702046"/>
 						</array>
 						<string key="NSFrame">{{-1, -1}, {632, 356}}</string>
 						<reference key="NSSuperview" ref="273224473"/>
-						<reference key="NSNextKeyView" ref="811975569"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="386183798"/>
 						<int key="NSsFlags">133682</int>
 						<reference key="NSVScroller" ref="846714594"/>
 						<reference key="NSHScroller" ref="159862923"/>
@@ -1525,6 +1562,9 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{630, 354}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView" ref="1033268352"/>
 				<string key="NSClassName">GTHistoryView</string>
 			</object>
 			<object class="NSCustomView" id="763098121">
@@ -1588,15 +1628,21 @@
 				<string key="NSClassName">GTHistoryTileView</string>
 			</object>
 			<object class="NSCustomView" id="442596270">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
-				<string key="NSFrame">{{41, 154}, {163, 96}}</string>
+				<string key="NSFrameSize">{163, 96}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<string key="NSClassName">GTHistoryCommitTreeView</string>
 			</object>
 			<object class="NSCustomView" id="757367587">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<string key="NSFrameSize">{163, 96}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
+				<reference key="NSNextKeyView"/>
 				<string key="NSClassName">GTHistoryCommitDetailsView</string>
 			</object>
 			<object class="NSCustomView" id="702909849">
@@ -2729,6 +2775,7 @@
 							<reference ref="342068816"/>
 							<reference ref="682188605"/>
 							<reference ref="588775181"/>
+							<reference ref="814404238"/>
 						</array>
 						<reference key="parent" ref="1033268352"/>
 					</object>
@@ -2963,6 +3010,19 @@
 						<reference key="object" ref="74473042"/>
 						<reference key="parent" ref="730171165"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100622</int>
+						<reference key="object" ref="814404238"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="765044259"/>
+						</array>
+						<reference key="parent" ref="240835584"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100625</int>
+						<reference key="object" ref="765044259"/>
+						<reference key="parent" ref="814404238"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3155,6 +3215,9 @@
 				<boolean value="YES" key="100572.toolbarItem.selectable"/>
 				<string key="100613.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100614.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="100622.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="100625.CustomClassName">GTHistoryGraphCell</string>
+				<string key="100625.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.IBWindowTemplateEditedContentRect">{{394, 184}, {924, 605}}</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3163,7 +3226,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100621</int>
+			<int key="maxID">100625</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3251,6 +3314,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">GTBaseExternalNibController</string>
 					<string key="superclassName">NSResponder</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="cancel:">id</string>
+						<string key="onok:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="cancel:">
+							<string key="name">cancel:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="onok:">
+							<string key="name">onok:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">window</string>
 						<string key="NS.object.0">GTWindow</string>
@@ -3602,6 +3679,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/GTHistoryDetailsContainerView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">GTHistoryGraphCell</string>
+					<string key="superclassName">NSTextFieldCell</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/GTHistoryGraphCell.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -4108,8 +4193,6 @@
 						<string key="gitGarbageCollect:">id</string>
 						<string key="gitHardReset:">id</string>
 						<string key="gitIgnore:">id</string>
-						<string key="gitIgnoreDir:">id</string>
-						<string key="gitIgnoreExtension:">id</string>
 						<string key="gitInitializeAllSubmodules:">id</string>
 						<string key="gitNewBranchFromActiveBranch:">id</string>
 						<string key="gitNewEmptyBranch:">id</string>
@@ -4136,6 +4219,7 @@
 						<string key="openProjectInTextmate:">id</string>
 						<string key="quickLook:">id</string>
 						<string key="reload:">id</string>
+						<string key="resolveConflictsWithFileMerge:">id</string>
 						<string key="searchHistory:">id</string>
 						<string key="showActiveBranch:">id</string>
 						<string key="showConfig:">id</string>
@@ -4214,14 +4298,6 @@
 						</object>
 						<object class="IBActionInfo" key="gitIgnore:">
 							<string key="name">gitIgnore:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="gitIgnoreDir:">
-							<string key="name">gitIgnoreDir:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="gitIgnoreExtension:">
-							<string key="name">gitIgnoreExtension:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="gitInitializeAllSubmodules:">
@@ -4326,6 +4402,10 @@
 						</object>
 						<object class="IBActionInfo" key="reload:">
 							<string key="name">reload:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="resolveConflictsWithFileMerge:">
+							<string key="name">resolveConflictsWithFileMerge:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="searchHistory:">

@@ -199,6 +199,8 @@
 	if ([commit.abbrevHash isEqualToString:[gitd currentAbbreviatedSha]])
 		matchingHash = YES;
 	
+    if ([[_tableColumn identifier] isEqual:@"graph"])res=[commit graph];
+    else
 	if([[_tableColumn identifier] isEqual:@"subject"])res=[commit subject];
 	else if([[_tableColumn identifier] isEqual:@"author"])res=[commit author];
 	else if([[_tableColumn identifier] isEqual:@"date"]) {

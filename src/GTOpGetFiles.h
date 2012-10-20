@@ -18,7 +18,6 @@
 #import <Cocoa/Cocoa.h>
 #import "GTBasePythonTaskOperation.h"
 #import "SBJSON.h"
-#import "NSFileHandleAdditions.h"
 #import "GTJSONFiles.h"
 
 @interface GTOpGetFiles : GTBasePythonTaskOperation {

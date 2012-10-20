@@ -46,5 +46,5 @@ try:
 	if options.changedir: os.chdir(options.path)
 except Exception, e:
 	glog(str(e))
-	sys.stderr.write("The _argv command through this error: " + str(e))
+	sys.stderr.write("The _argv command threw this error: " + str(e))
 	exit(8000)

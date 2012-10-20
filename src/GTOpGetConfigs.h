@@ -20,7 +20,6 @@
 #import "GTBasePythonTaskOperation.h"
 #import "GDNSString+Additions.h"
 #import "GTJSONFiles.h"
-#import "NSFileHandleAdditions.h"
 
 @interface GTOpGetConfigs : GTBasePythonTaskOperation {
 

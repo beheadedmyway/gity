@@ -35,8 +35,8 @@ try:
 			commitsahead="0"
 	sys.stdout.write(str(commitsahead))
 except Exception, e:
-	sys.stderr.write("The commits ahead command through this error: " + str(e))
-	sys.stderr.write("\ncommand: %s" % command)
+	sys.stderr.write("The commits ahead command threw this error: " + str(e))
+	sys.stderr.write("\ncommand: %s\n" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)
 	exit(84)

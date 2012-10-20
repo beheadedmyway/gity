@@ -42,6 +42,7 @@
 }
 
 @property (assign,nonatomic) GittyDocument * gd;
+@property (readonly, nonatomic) GTWindow *window;
 
 - (void) awakeFromNib;
 - (IBAction) cancel:(id) sender;

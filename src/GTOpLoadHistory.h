@@ -32,7 +32,7 @@
 
 //- (id) initWithGD:(GittyDocument *) _gd andLoadInfo:(GTGitCommitLoadInfo *) _loadInfo andCallback:(GTCallback *) _callback;
 - (id) initWithGD:(GittyDocument *) _gd andLoadInfo:(GTGitCommitLoadInfo *) _loadInfo;
-- (void) readSTDOUTC;
-- (void) readSTDOUTCPP;
+//- (void) readSTDOUTC;
+//- (void) readSTDOUTCPP;
 
 @end

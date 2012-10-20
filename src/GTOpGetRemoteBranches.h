@@ -18,7 +18,6 @@
 #import <Cocoa/Cocoa.h>
 #import "GTOpBaseRemoteTask.h"
 #import "GDNSString+Additions.h"
-#import "NSFileHandleAdditions.h"
 #import "JSON.h"
 
 @interface GTOpGetRemoteBranches : GTOpBaseRemoteTask {

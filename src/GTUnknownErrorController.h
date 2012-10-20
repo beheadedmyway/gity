@@ -21,8 +21,11 @@
 
 @interface GTUnknownErrorController : GTBaseExternalNibController {
 	IBOutlet NSTextField * errorField;
+    IBOutlet NSTextField *titleField;
 }
 
 - (void) showAsSheetWithError:(NSString *) error;
+- (void)showAsSheetWithTitle:(NSString *)title error:(NSString *)error;
+
 
 @end

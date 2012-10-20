@@ -31,5 +31,5 @@ try:
 	sys.stdout.write(json.dumps(res))
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The branches command through this error: " + str(e))
+	sys.stderr.write("The branches command threw this error: " + str(e))
 	exit(84)

@@ -41,8 +41,8 @@ try:
 	sys.stdout.write(json.dumps(finals))
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The get remote tags command through this error: " + str(e))
-	sys.stderr.write("\ncommand: %s" % command)
+	sys.stderr.write("The get remote tags command threw this error: " + str(e))
+	sys.stderr.write("\ncommand: %s\n" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)
 	exit(84)

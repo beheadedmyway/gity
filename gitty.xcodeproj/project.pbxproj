@@ -174,7 +174,6 @@
 		07C96CCB1073101C00E7F7DD /* GTUnknownErrorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C96CCA1073101C00E7F7DD /* GTUnknownErrorController.m */; };
 		07C96CF4107315CA00E7F7DD /* GTOpCloneRepo.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C96CF3107315CA00E7F7DD /* GTOpCloneRepo.m */; };
 		07C971481073C01000E7F7DD /* GTJSONFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C971471073C01000E7F7DD /* GTJSONFiles.m */; };
-		07C971EF1073C86500E7F7DD /* NSFileHandleAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C971EE1073C86500E7F7DD /* NSFileHandleAdditions.m */; };
 		07CA15CA10A967DA00685151 /* GTOpOpenFileMerge.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CA15C910A967DA00685151 /* GTOpOpenFileMerge.m */; };
 		07CDDE71109E74A000B0A99A /* GTOpFindCommitHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CDDE4D109E720B00B0A99A /* GTOpFindCommitHash.m */; };
 		07CDDE8A109E777A00B0A99A /* GTOpWithCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 07CDDE84109E75DA00B0A99A /* GTOpWithCallback.m */; };
@@ -357,6 +356,13 @@
 		CA2DBC8D1297BA8C00831420 /* tag.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC8C1297BA8C00831420 /* tag.png */; };
 		CA2DBC931297BBD500831420 /* submodule.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBC921297BBD500831420 /* submodule.png */; };
 		CA2DBCB71297C55B00831420 /* branches.png in Resources */ = {isa = PBXBuildFile; fileRef = CA2DBCB61297C55B00831420 /* branches.png */; };
+		CA890C03162BF35100BE8ACE /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA890C02162BF35100BE8ACE /* NSData+Additions.m */; };
+		CA890C06162BF3A500BE8ACE /* NSFileHandle+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA890C05162BF3A500BE8ACE /* NSFileHandle+Additions.m */; };
+		CA890C07162BFA9100BE8ACE /* NSData+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA890C02162BF35100BE8ACE /* NSData+Additions.m */; };
+		CA890C08162BFA9700BE8ACE /* NSFileHandle+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = CA890C05162BF3A500BE8ACE /* NSFileHandle+Additions.m */; };
+		CA890C14162CB5F300BE8ACE /* GTHistoryGraphCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA890C12162CB41900BE8ACE /* GTHistoryGraphCell.m */; };
+		CA890C7A1631BCF000BE8ACE /* GitErrorSheet.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA890C781631BCF000BE8ACE /* GitErrorSheet.xib */; };
+		CA890C7E1631E38E00BE8ACE /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CA890C7D1631E38E00BE8ACE /* NS(Attributed)String+Geometrics.m */; };
 		CA92311312ACE80700349047 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA92311212ACE80700349047 /* QuickLook.framework */; };
 		CA92311712ACE91600349047 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA92311612ACE91600349047 /* Quartz.framework */; };
 		CA92314012ACEFE800349047 /* GTQuickLookItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CA92313F12ACEFE800349047 /* GTQuickLookItem.m */; };
@@ -684,8 +690,6 @@
 		07C96CF3107315CA00E7F7DD /* GTOpCloneRepo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTOpCloneRepo.m; path = src/GTOpCloneRepo.m; sourceTree = "<group>"; };
 		07C971461073C01000E7F7DD /* GTJSONFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTJSONFiles.h; path = src/GTJSONFiles.h; sourceTree = "<group>"; };
 		07C971471073C01000E7F7DD /* GTJSONFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTJSONFiles.m; path = src/GTJSONFiles.m; sourceTree = "<group>"; };
-		07C971ED1073C86500E7F7DD /* NSFileHandleAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSFileHandleAdditions.h; path = src/NSFileHandleAdditions.h; sourceTree = "<group>"; };
-		07C971EE1073C86500E7F7DD /* NSFileHandleAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSFileHandleAdditions.m; path = src/NSFileHandleAdditions.m; sourceTree = "<group>"; };
 		07CA15C810A967DA00685151 /* GTOpOpenFileMerge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTOpOpenFileMerge.h; path = src/GTOpOpenFileMerge.h; sourceTree = "<group>"; };
 		07CA15C910A967DA00685151 /* GTOpOpenFileMerge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTOpOpenFileMerge.m; path = src/GTOpOpenFileMerge.m; sourceTree = "<group>"; };
 		07CDDE4C109E720B00B0A99A /* GTOpFindCommitHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTOpFindCommitHash.h; path = src/GTOpFindCommitHash.h; sourceTree = "<group>"; };
@@ -984,6 +988,15 @@
 		CA2DBC8C1297BA8C00831420 /* tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tag.png; sourceTree = "<group>"; };
 		CA2DBC921297BBD500831420 /* submodule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submodule.png; sourceTree = "<group>"; };
 		CA2DBCB61297C55B00831420 /* branches.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = branches.png; sourceTree = "<group>"; };
+		CA890C01162BF35100BE8ACE /* NSData+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Additions.h"; path = "src/NSData+Additions.h"; sourceTree = "<group>"; };
+		CA890C02162BF35100BE8ACE /* NSData+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Additions.m"; path = "src/NSData+Additions.m"; sourceTree = "<group>"; };
+		CA890C04162BF3A500BE8ACE /* NSFileHandle+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileHandle+Additions.h"; path = "src/NSFileHandle+Additions.h"; sourceTree = "<group>"; };
+		CA890C05162BF3A500BE8ACE /* NSFileHandle+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileHandle+Additions.m"; path = "src/NSFileHandle+Additions.m"; sourceTree = "<group>"; };
+		CA890C11162CB41900BE8ACE /* GTHistoryGraphCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTHistoryGraphCell.h; path = src/GTHistoryGraphCell.h; sourceTree = "<group>"; };
+		CA890C12162CB41900BE8ACE /* GTHistoryGraphCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GTHistoryGraphCell.m; path = src/GTHistoryGraphCell.m; sourceTree = "<group>"; };
+		CA890C791631BCF000BE8ACE /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/GitErrorSheet.xib; sourceTree = "<group>"; };
+		CA890C7C1631E38E00BE8ACE /* NS(Attributed)String+Geometrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NS(Attributed)String+Geometrics.h"; sourceTree = "<group>"; };
+		CA890C7D1631E38E00BE8ACE /* NS(Attributed)String+Geometrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NS(Attributed)String+Geometrics.m"; sourceTree = "<group>"; };
 		CA92311212ACE80700349047 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		CA92311612ACE91600349047 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		CA92313E12ACEFE800349047 /* GTQuickLookItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTQuickLookItem.h; sourceTree = "<group>"; };
@@ -1397,7 +1410,6 @@
 				07F6934510828F5B006464DA /* LNSSourceListColumn.h */,
 				07F6934710828F5B006464DA /* LNSSourceListSourceGroupCell.h */,
 				07F6934910828F5B006464DA /* LNSSourceListView.h */,
-				07C971ED1073C86500E7F7DD /* NSFileHandleAdditions.h */,
 				074E0F5510D498DF00DCE009 /* NSTableView+Additions.h */,
 			);
 			name = Headers;
@@ -1414,6 +1426,7 @@
 		07A04373106E010B00B21AB9 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				CA890C7B1631E38E00BE8ACE /* Extensions */,
 				355AA52D12B96B9C004AAACA /* Terminal */,
 				CABCA81711B6C52D00EB8EEA /* SCEvents */,
 				07A04375106E011600B21AB9 /* json */,
@@ -1447,9 +1460,12 @@
 			isa = PBXGroup;
 			children = (
 				07A0549B10708B8200B21AB9 /* GDNSString+Additions.m */,
+				CA890C04162BF3A500BE8ACE /* NSFileHandle+Additions.h */,
+				CA890C05162BF3A500BE8ACE /* NSFileHandle+Additions.m */,
+				CA890C01162BF35100BE8ACE /* NSData+Additions.h */,
+				CA890C02162BF35100BE8ACE /* NSData+Additions.m */,
 				CACB1CD012D43A5000038594 /* NSUserDefaults+Hack.h */,
 				CACB1CD112D43A5000038594 /* NSUserDefaults+Hack.m */,
-				07C971EE1073C86500E7F7DD /* NSFileHandleAdditions.m */,
 				074E0F5610D498DF00DCE009 /* NSTableView+Additions.m */,
 				CA2D988312E43ED80009A31B /* NSOutlineView+Additions.h */,
 				CA2D988412E43ED80009A31B /* NSOutlineView+Additions.m */,
@@ -1750,6 +1766,8 @@
 				07F475BF106738A70059F611 /* GTSearchControl.m */,
 				07F6889A108119AB006464DA /* GTSpecialTextField.m */,
 				074E0EBD10D47F1A00DCE009 /* GTHistoryViewTableView.m */,
+				CA890C11162CB41900BE8ACE /* GTHistoryGraphCell.h */,
+				CA890C12162CB41900BE8ACE /* GTHistoryGraphCell.m */,
 			);
 			name = controls;
 			sourceTree = "<group>";
@@ -1873,6 +1891,7 @@
 				07DA8C0F10A8033400864A22 /* SimpleCommits.xib */,
 				07E61964108AFE1700963F2A /* SingleInput.xib */,
 				07C4197C1094517900D3F494 /* TmpMenus.xib */,
+				CA890C781631BCF000BE8ACE /* GitErrorSheet.xib */,
 				07C96CC610730FE900E7F7DD /* UnknownError.xib */,
 				07FBCAD110B7E9FB00D4E829 /* UnusedInterface.xib */,
 			);
@@ -2006,6 +2025,16 @@
 			);
 			name = sourceList;
 			path = assets/sourceList;
+			sourceTree = "<group>";
+		};
+		CA890C7B1631E38E00BE8ACE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CA890C7C1631E38E00BE8ACE /* NS(Attributed)String+Geometrics.h */,
+				CA890C7D1631E38E00BE8ACE /* NS(Attributed)String+Geometrics.m */,
+			);
+			name = Extensions;
+			path = src/Extensions;
 			sourceTree = "<group>";
 		};
 		CA98464612644ACC008129E2 /* toolbar */ = {
@@ -2257,6 +2286,7 @@
 				355AA54C12B970C7004AAACA /* terminal.png in Resources */,
 				CA18B4C612CB47E800F34393 /* avatar.jpg in Resources */,
 				CA2D985912E4332B0009A31B /* stashes.png in Resources */,
+				CA890C7A1631BCF000BE8ACE /* GitErrorSheet.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2426,6 +2456,8 @@
 			files = (
 				07D046E6109E225B005D5ED4 /* gity.m in Sources */,
 				07D046EA109E2406005D5ED4 /* GTCLIProxy.m in Sources */,
+				CA890C03162BF35100BE8ACE /* NSData+Additions.m in Sources */,
+				CA890C06162BF3A500BE8ACE /* NSFileHandle+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2604,7 +2636,6 @@
 				07F6934D10828F5B006464DA /* LNSSourceListSourceGroupCell.m in Sources */,
 				07F6934E10828F5B006464DA /* LNSSourceListView.m in Sources */,
 				8D15AC320486D014006FF6A4 /* main.m in Sources */,
-				07C971EF1073C86500E7F7DD /* NSFileHandleAdditions.m in Sources */,
 				07A04383106E011600B21AB9 /* NSObject+SBJSON.m in Sources */,
 				07A04384106E011600B21AB9 /* NSString+SBJSON.m in Sources */,
 				07A04385106E011600B21AB9 /* SBJSON.m in Sources */,
@@ -2649,6 +2680,10 @@
 				CA92314012ACEFE800349047 /* GTQuickLookItem.m in Sources */,
 				CACB1CD212D43A5000038594 /* NSUserDefaults+Hack.m in Sources */,
 				CA2D988512E43ED80009A31B /* NSOutlineView+Additions.m in Sources */,
+				CA890C07162BFA9100BE8ACE /* NSData+Additions.m in Sources */,
+				CA890C08162BFA9700BE8ACE /* NSFileHandle+Additions.m in Sources */,
+				CA890C14162CB5F300BE8ACE /* GTHistoryGraphCell.m in Sources */,
+				CA890C7E1631E38E00BE8ACE /* NS(Attributed)String+Geometrics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2836,6 +2871,14 @@
 				2A37F4BAFDCFA73011CA2CEA /* English */,
 			);
 			name = Credits.html;
+			sourceTree = "<group>";
+		};
+		CA890C781631BCF000BE8ACE /* GitErrorSheet.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA890C791631BCF000BE8ACE /* English */,
+			);
+			name = GitErrorSheet.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

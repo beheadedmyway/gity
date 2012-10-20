@@ -32,5 +32,5 @@ try:
 	sys.stdout.write(stout.strip())
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The find commit from archive command through this error: " + str(e))
+	sys.stderr.write("The find commit from archive command threw this error: " + str(e))
 	exit(84)

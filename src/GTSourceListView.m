@@ -467,7 +467,8 @@
 	savePanel = [NSSavePanel savePanel];
 	[savePanel setCanCreateDirectories:true];
     [savePanel beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
-        if(result == NSFileHandlingPanelCancelButton) return;
+        if(result == NSFileHandlingPanelCancelButton)
+            return;
         [operations runExportZip:[[savePanel URL] path] andCommit:[_tmpItemForExport name]];
         [_tmpItemForExport release];
         _tmpItemForExport=nil;
@@ -480,7 +481,8 @@
 	savePanel = [NSSavePanel savePanel];
 	[savePanel setCanCreateDirectories:true];
     [savePanel beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
-        if(result == NSFileHandlingPanelCancelButton) return;
+        if(result == NSFileHandlingPanelCancelButton)
+            return;
         [operations runExportTar:[[savePanel URL] path] andCommit:[_tmpItemForExport name]];
         [_tmpItemForExport release];
     }];

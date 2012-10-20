@@ -17,6 +17,7 @@
 
 #import "GTUnknownErrorController.h"
 #import "GittyDocument.h"
+#import "NS(Attributed)String+Geometrics.h"
 
 @implementation GTUnknownErrorController
 
@@ -30,8 +31,41 @@
 	} else {
 		[self loadNibs];
 		[errorField setStringValue:error];
+        [self sizeToFitError];
 		[self showAsSheet];
 	}
+}
+
+- (void)showAsSheetWithTitle:(NSString *)title error:(NSString *)error;
+{
+	if([window isSheet]) {
+        if (error)
+        {
+            NSString * e = [[[errorField stringValue] stringByAppendingString:@"\n---------------\n"] stringByAppendingString:error];
+            [errorField setStringValue:e];
+        }
+	} else {
+		[self loadNibs];
+		[errorField setStringValue:error];
+        [titleField setStringValue:title];
+        [self sizeToFitError];
+		[self showAsSheet];
+	}    
+}
+
+- (void)sizeToFitError
+{
+    NSRect windowRect = window.frame;
+    NSRect textRect = errorField.frame;
+    NSSize newSize = [[errorField stringValue] sizeForWidth:textRect.size.width height:FLT_MAX font:errorField.font];
+    
+    CGFloat heightDiff = newSize.height - textRect.size.height;
+    textRect.size.height = newSize.height + 10;
+    
+    windowRect.size.height += heightDiff;
+    
+    errorField.frame = textRect;
+    [window setFrame:windowRect display:NO];
 }
 
 - (void) showAsSheet {
@@ -39,10 +73,10 @@
 	[window makeKeyAndOrderFront:nil];
 }
 
-- (void) initButtons {
+- (void) initButtons {    
 	NSPoint tl=[self getTL];
 	NSPoint tr=[self getTR];
-	ok = [[GTScale9Control alloc] initWithFrame:NSMakeRect(421,20,62,27)];
+	/*ok = [[GTScale9Control alloc] initWithFrame:NSMakeRect(421,20,62,27)];
 	NSAssert(ok!=nil,@"Assert Fail: ok!=nil, ok was indeed nil");
 	[ok sendsActionOnMouseUp:true];
 	[ok setScaledImage:[NSImage imageNamed:@"blackButton2.png"]];
@@ -55,8 +89,8 @@
 	[ok setAttributedTitlePosition:NSMakePoint(22,6)];
 	[ok setAction:@selector(onok:)];
 	[ok setTarget:self];
-	[[window contentView] addSubview:ok];
-	cancel=[[GTScale9Control alloc] initWithFrame:NSMakeRect(356,20,62,27)];
+	[[window contentView] addSubview:ok];*/
+	cancel=[[GTScale9Control alloc] initWithFrame:NSMakeRect(335,20,62,27)];
 	NSAssert(cancel!=nil,@"Assert Fail: cancel!=nil, cancel was indeed nil");
 	[cancel sendsActionOnMouseUp:true];
 	[cancel setScaledImage:[NSImage imageNamed:@"blackButton2.png"]];
@@ -64,9 +98,10 @@
 	[cancel setScaledDownImage:[NSImage imageNamed:@"blackButton2Down.png"]];
 	[cancel setTopLeftPoint:tl];
 	[cancel setBottomRightPoint:tr];
-	[cancel setAttributedTitle:[GTStyles getButtonString:@"Cancel"]];
-	[cancel setAttributedTitleDown:[GTStyles getDownButtonString:@"Cancel"]];
-	[cancel setAttributedTitlePosition:NSMakePoint(12,6)];
+	[cancel setAttributedTitle:[GTStyles getButtonString:@"OK"]];
+	[cancel setAttributedTitleDown:[GTStyles getDownButtonString:@"OK"]];
+	//[cancel setAttributedTitlePosition:NSMakePoint(12,6)];
+    [cancel setAttributedTitlePosition:NSMakePoint(22,6)];
 	[cancel setAction:@selector(cancel:)];
 	[cancel setTarget:self];
 	[[window contentView] addSubview:cancel];
@@ -81,7 +116,8 @@
 
 - (void) loadNibs {
 	if(available) return;
-	[NSBundle loadNibNamed:@"UnknownError" owner:self];
+	//[NSBundle loadNibNamed:@"UnknownError" owner:self];
+    [NSBundle loadNibNamed:@"GitErrorSheet" owner:self];
 	available=true;
 }
 

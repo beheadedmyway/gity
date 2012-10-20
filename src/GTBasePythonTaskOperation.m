@@ -82,15 +82,16 @@ cleanup:
 }
 
 - (void) validateResult {
+    NSLog(@"args = %@", args);
 	int res = [task terminationStatus];
-	if(res == 84) {
+	if(res == 84/* || res == 93*/) {
 		//NSFileHandle * ef = [[task standardError] fileHandleForReading];
 		//NSData * data = [ef readDataToEndOfFile];
 		//error = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 		//if([self isCancelled]) return;
 		[gd unknownErrorFromOperation:sterr];
 	} else if (res > 84) {
-		[[gd modals] runModalFromCode:res];
+		[[gd modals] runModalFromCode:res message:sterr document:gd];
 		//[gd runModalFromExitStatus:res];
 	}
 }

@@ -50,7 +50,7 @@ cleanup:
 	NSInteger res = [task terminationStatus];
     if (res >= 84) {
 		done=true;
-		[[gd modals] runModalFromCode:res];
+		[[gd modals] runModalFromCode:res message:sterr];
 		return;
 	}
 	//pathToOpen=[stout copy];

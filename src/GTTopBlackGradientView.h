@@ -22,3 +22,8 @@
 }
 
 @end
+
+@interface GTTopErrorGradientView : GTGradientView {
+}
+
+@end

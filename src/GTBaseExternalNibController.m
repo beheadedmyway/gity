@@ -23,6 +23,7 @@ static NSPoint tr;
 
 @implementation GTBaseExternalNibController
 @synthesize gd;
+@synthesize window;
 
 - (void) initButtons {}
 - (void) loadNibs {}

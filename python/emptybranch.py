@@ -36,7 +36,7 @@ try:
 	os.system("%s commit -m 'Initial Commit For New Branch'"%options.git)
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The empty branch command through this error: " + str(e))
-	sys.stderr.write("\ncommand: %s" % command)
+	sys.stderr.write("The empty branch command threw this error: " + str(e))
+	sys.stderr.write("\ncommand: %s\n" % command)
 	log_gity_version(options.gityversion)
 	exit(84)

@@ -41,7 +41,7 @@ try:
 				rcode,stout,sterr=run_command(command)
 			except Exception,e: 
 				sys.stderr.write("The fallback commit command threw this error: " + str(e))
-				sys.stderr.write("\ncommand: %s" % command)
+				sys.stderr.write("\ncommand: %s\n" % command)
 				log_gity_version(options.gityversion)
 				log_gitv(options.git)
 				exit(84);
@@ -50,7 +50,7 @@ try:
 	exit(0)
 except Exception, e:
 	sys.stderr.write("The commit command threw this error: " + str(e))
-	sys.stderr.write("\ncommand: %s" % command)
+	sys.stderr.write("\ncommand: %s\n" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)
 	exit(84)

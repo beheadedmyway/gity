@@ -36,8 +36,8 @@ try:
 	f.close()
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The ignore files command through this error: " + str(e))
-	sys.stderr.write("\ncommand: %s" % command)
+	sys.stderr.write("The ignore files command threw this error: " + str(e))
+	sys.stderr.write("\ncommand: %s\n" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)
 	exit(84)

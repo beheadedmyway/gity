@@ -116,8 +116,8 @@
 	[op setCanChooseFiles:false];
     [op setDirectoryURL:[NSURL fileURLWithPath:[git gitProjectPath]]];
     [op beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
-        NSOpenPanel * op = (NSOpenPanel *) sender;
-        if(result is NSFileHandlingPanelCancelButton) return;
+        if(result is NSFileHandlingPanelCancelButton)
+            return;
         _submoduleDestination = [[[op URL] path] copy];
         [submoduleDestination setStringValue:_submoduleDestination];
     }];

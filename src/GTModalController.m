@@ -25,6 +25,8 @@
 #import "GTRemindQuitFileMerge.h"
 #import "GTAlertDeleteAccessoryView.h"
 #import "GTCherryPickAccessoryView.h"
+#import "GTUnknownErrorController.h"
+#import "GittyDocument.h"
 
 static GTModalController * inst = nil;
 
@@ -53,16 +55,90 @@ static GTModalController * inst = nil;
 	[cloneRepoController show];
 }
 
+- (void)runErrorSheet:(GittyDocument *)document titleMessage:(NSString *)titleMessage errorMessage:(NSString *)errorMessage
+{
+    [errorSheetController release];
+    GTUnknownErrorController *controller = [[[GTUnknownErrorController alloc] initWithGD:document] autorelease];
+    [controller showAsSheetWithTitle:titleMessage error:errorMessage];
+    errorSheetController = [controller retain];
+}
+
+- (void)runSheetForError:(NSDictionary *)dictionary
+{
+    GittyDocument *document = [dictionary objectForKey:@"document"];
+    if(![document.gtwindow isVisible] || [document.status isShowingSheet]) {
+        [self performSelector:@selector(runSheetForError:) withObject:dictionary afterDelay:0.3];
+    }
+    else
+    {
+        NSBeep();
+        NSString *errorMessage = [dictionary objectForKey:@"message"];
+        NSString *title = [dictionary objectForKey:@"title"];
+        if (!title)
+            title = NSLocalizedStringFromTable(@"Git has reported an error.",@"Localized",@"unknown error msg");
+        NSString *formattedError = [errorMessage stringByReplacingOccurrencesOfString:@"\n" withString:@"\n\n"];
+        [self runErrorSheet:document titleMessage:title errorMessage:formattedError];
+    }
+}
+
 - (void) runModalForError:(NSString *) errorMessage {
-	NSRunAlertPanel(NSLocalizedStringFromTable(@"Unknown Error",@"Localized",@"unknown error msg"),
-					errorMessage,
+    NSString *formattedError = [errorMessage stringByReplacingOccurrencesOfString:@"\n" withString:@"\n\n"];
+    NSRunAlertPanel(NSLocalizedStringFromTable(@"Git has reported an error.",@"Localized",@"unknown error msg"),
+					formattedError,
 					NSLocalizedStringFromTable(@"OK",@"Localized",@"ok button label"),
 					nil,
 					nil);	
 }
 
-- (void) runModalFromCode:(NSInteger) code {
-	switch (code) {
+- (void) runModalFromCode:(NSInteger)code message:(NSString *)message document:(GittyDocument *)document
+{
+    NSString *title = NSLocalizedStringFromTable(@"Git has reported an error.",@"Localized",@"unknown error msg");
+    
+	switch (code)
+    {
+		case 85:
+            title = NSLocalizedStringFromTable(@"Remote Repo Not Available",@"Localized",@"remote repo not available msg");
+            message = NSLocalizedStringFromTable(@"Either you're not connected to the internet, or the server hung up unexpectedly.",@"Localized",@"remote repo not available msg description");
+			break;
+		case 86:
+            title = NSLocalizedStringFromTable(@"Server Not Available",@"Localized",@"server not available msg");
+            message = NSLocalizedStringFromTable(@"The server couldn't be connected to.",@"Localized",@"server not available msg description");
+			break;
+		case 87:
+			[self runPermissionDeniedForClone];
+			break;
+		case 88:
+			[self runHostVerificationFailed];
+			break;
+		case 89:
+            title = NSLocalizedStringFromTable(@"Merge Error",@"Localized",@"merge error msg");
+            message = NSLocalizedStringFromTable(@"The branch I tried to merge doesn't point to a commit, nothing was merged.",@"Localized",@"merge error msg description");
+			break;
+		case 90:
+            title = NSLocalizedStringFromTable(@"Push Error",@"Localized",@"push error msg");
+            message = NSLocalizedStringFromTable(@"This remote can't be pushed to.",@"Localized",@"push error msg description");
+			break;
+		case 91:
+            title = NSLocalizedStringFromTable(@"Push Error",@"Localized",@"push error msg"),
+            message = NSLocalizedStringFromTable(@"This remote can't be pushed to.  Please merge the remote changes before pushing again. ",@"Localized",@"push newer error msg description");
+			break;
+        case 92:
+            title = NSLocalizedStringFromTable(@"Checkout Aborted",@"Localized",@"would overwrite msg");
+            message = NSLocalizedStringFromTable(@"Your local changes would be overwritten by checkout.  Commit or stash your changes and try again.",@"Localized",@"would overwrite msg description");
+            break;
+        case 93:
+            // fall through with the defaults
+		default:
+			break;
+	}
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:message, @"message", document, @"document", title, @"title", nil];
+    [self runSheetForError:userInfo];
+}
+
+- (void) runModalFromCode:(NSInteger)code message:(NSString *)message
+{
+	switch (code)
+    {
 		case 85:
 			[self runRemoteEndHungUp];
 			break;
@@ -86,10 +162,12 @@ static GTModalController * inst = nil;
 			break;
         case 92:
             [self runWouldOverwriteChanges];
+            break;
 		default:
 			break;
 	}
 }
+
 
 - (void) runWouldOverwriteChanges {
 	NSRunAlertPanel(NSLocalizedStringFromTable(@"Checkout Aborted",@"Localized",@"would overwrite msg"),

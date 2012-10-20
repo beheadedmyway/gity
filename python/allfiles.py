@@ -50,8 +50,8 @@ try:
 	allfilesFile.close()
 	sys.exit(0)
 except Exception, e:
-	sys.stderr.write("The allfiles command through this error: " + str(e))
-	sys.stderr.write("\ncommand: %s" % command)
+	sys.stderr.write("The allfiles command threw this error: " + str(e))
+	sys.stderr.write("\ncommand: %s\n" % command)
 	sys.stderr.write("\nenv = %s" % os.environ['gitConfigPath'])
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)

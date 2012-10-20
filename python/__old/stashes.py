@@ -39,5 +39,5 @@ try:
 	sys.stdout.write(json.dumps(finals))
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The stashes command through this error: " + str(e))
+	sys.stderr.write("The stashes command threw this error: " + str(e))
 	exit(84)

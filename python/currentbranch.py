@@ -66,8 +66,8 @@ try:
 	if(os.path.exists(".git/index.lock")):os.unlink(".git/index.lock")
 	try_until_success(4)
 except Exception, e:
-	sys.stderr.write("The current branch command through this error: " + str(e))
-	sys.stderr.write("\ncommand: %s" % command)
+	sys.stderr.write("The current branch command threw this error: " + str(e))
+	sys.stderr.write("\ncommand: %s\n" % command)
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)
 	sys.stderr.write("\n\n\n")

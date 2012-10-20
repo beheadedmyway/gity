@@ -33,5 +33,5 @@ try:
 	rcode_for_git_exit(rcode,sterr)
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The submodule add command through this error: " + str(e))
+	sys.stderr.write("The submodule add command threw this error: " + str(e))
 	exit(84)

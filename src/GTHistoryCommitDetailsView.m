@@ -98,7 +98,8 @@
 	NSString * suggest = [projWithUn stringByAppendingString:[[commit abbrevHash] stringByAppendingString:@".zip"]];
 	[sp setNameFieldStringValue:suggest];
     [sp beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
-        if(result == NSFileHandlingPanelCancelButton) return;
+        if(result == NSFileHandlingPanelCancelButton)
+            return;
         GTGitCommit * commit = [historyView selectedItem];
         if(commit is nil) return;
         NSString * file = [[sp URL] path];

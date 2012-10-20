@@ -128,7 +128,6 @@
 	[op setCanChooseDirectories:YES];
 	[op setCanCreateDirectories:true];
     [op beginSheetModalForWindow:cloneRepoWindow completionHandler:^(NSInteger result) {
-        NSOpenPanel * op = (NSOpenPanel *) sender;
         if(result is NSFileHandlingPanelCancelButton)
             return;
         destinationPath = [[[op URL] path] copy];
@@ -173,7 +172,7 @@
 	if (message)
 		[modals runModalForError:message];
 	else
-		[modals runModalFromCode:code];
+		[modals runModalFromCode:code message:nil];
 }
 
 - (void) cloneComplete {

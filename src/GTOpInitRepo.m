@@ -54,7 +54,7 @@ cleanup:
 - (void) taskComplete {
 	NSInteger res = [task terminationStatus];
 	if(res > 84) {
-		[modals runModalFromCode:res];
+		[modals runModalFromCode:res message:sterr];
 	}
 	done = true;
 }

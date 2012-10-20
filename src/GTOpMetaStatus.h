@@ -20,7 +20,6 @@
 #import "GTBasePythonTaskOperation.h"
 #import "GTPythonScripts.h"
 #import "GTJSONFiles.h"
-#import "NSFileHandleAdditions.h"
 #import "GDNSString+Additions.h"
 
 @interface GTOpMetaStatus : GTBasePythonTaskOperation {

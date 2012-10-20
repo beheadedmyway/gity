@@ -63,7 +63,7 @@ try:
 	tmp.close()
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The diff command through this error: " + str(e))
+	sys.stderr.write("The diff command threw this error: " + str(e))
 	log_gity_version(options.gityversion)
 	log_gitv(options.git)
 	exit(84)

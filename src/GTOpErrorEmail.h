@@ -18,7 +18,6 @@
 #import <Cocoa/Cocoa.h>
 #import <GDKit/GDKit.h>
 #import "GTBasePythonTaskOperation.h"
-#import "NSFileHandleAdditions.h"
 
 @interface GTOpErrorEmail : GTBasePythonTaskOperation {
 	NSString * errors;

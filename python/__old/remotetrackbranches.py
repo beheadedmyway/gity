@@ -37,5 +37,5 @@ try:
 	sys.stdout.write(json.dumps(finals))
 	exit(0)
 except Exception, e:
-	sys.stderr.write("The remote track branches command through this error: " + str(e))
+	sys.stderr.write("The remote track branches command threw this error: " + str(e))
 	exit(84)

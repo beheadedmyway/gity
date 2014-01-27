@@ -20,7 +20,7 @@
 @interface GTStyles : NSObject {
 }
 
-+ (GTStyles *) sharedInstance;
++ (instancetype) sharedInstance;
 + (NSAttributedString *) getButtonString:(NSString *) title;
 + (NSAttributedString *) getDownButtonString:(NSString *) title;
 + (NSAttributedString *) getOverButtonString:(NSString *) title;

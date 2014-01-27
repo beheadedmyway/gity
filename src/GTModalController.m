@@ -33,13 +33,13 @@ static GTModalController * inst = nil;
 @implementation GTModalController
 @synthesize cloneRepoController;
 
-+ (GTModalController *) sharedInstance {
-	@synchronized(self) {
-		if(!inst) {
-			inst = [[self alloc] init];
-		}
-	}
-	return inst;
++ (instancetype) sharedInstance {
+    static dispatch_once_t pred;
+    static id inst = nil;
+    dispatch_once(&pred, ^{
+        inst = [[self alloc] init];
+    });
+    return inst;
 }
 
 - (id) init {
@@ -727,19 +727,5 @@ static GTModalController * inst = nil;
 - (id) copyWithZone:(NSZone *) zone {
 	return self;
 }
-
-- (id) retain {
-	return self;
-}
-
-- (NSUInteger) retainCount {
-	return UINT_MAX;
-}
-
-- (id) autorelease {
-	return self;
-}
-
-- (oneway void) release {}
 
 @end

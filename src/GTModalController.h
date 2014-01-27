@@ -45,7 +45,7 @@
 
 @property (readonly,nonatomic) GTCloneRepoController * cloneRepoController;
 
-+ (GTModalController *) sharedInstance;
++ (instancetype) sharedInstance;
 - (NSInteger) runCommitsAheadModalWithCount:(NSString *) aheadByCount andRemote:(NSString *) remote andBranch:(NSString *) branch;
 - (NSInteger) runCommitsAheadForSingleModalWithCount:(NSString *) aheadByCount andRemote:(NSString *) remote andBranch:(NSString *) branch;
 - (NSInteger) runCloseCommitsAheadModalWithCount:(NSString *) aheadByCount andRemote:(NSString *) remote andBranch:(NSString *) branch;

@@ -21,7 +21,7 @@
 	NSSound * pop;
 }
 
-+ (GTSoundController *) sharedInstance;
++ (instancetype) sharedInstance;
 - (void) pop;
 - (BOOL) isMuted;
 

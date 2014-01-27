@@ -42,8 +42,6 @@
 
 - (void) dealloc {
 	doc=nil;
-	[connection release];
-	[super dealloc];
 }
 
 @end

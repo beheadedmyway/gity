@@ -19,6 +19,7 @@
 #import "GTDocumentController.h"
 #import "GTQuickLookItem.h"
 #import "GTActiveBranchTableView.h"
+#import "GTCloneRepoController.h"
 
 @implementation GittyDocument
 
@@ -157,14 +158,6 @@
 	[gtwindow setFrameAutosaveName:[git gitProjectPath]];
 	[gtwindow setDelegate:self];
 	[git setGitProjectPath:[[self fileURL] path]];
-	[activeBranchView retain];
-	[statusBarView retain];
-	[splitContentView retain];
-	[sourceListView retain];
-	[diffView retain];
-	[historyView retain];
-	[historyDetailsContainerView retain];
-	[advancedDiffView retain];
 	[status lazyInitWithGD:self];
 	[commit lazyInitWithGD:self];
 	[singleInput lazyInitWithGD:self];
@@ -708,13 +701,11 @@
 - (void) onNewBranchComplete {
 	if([singleInput lastButtonValue] == NSCancelButton) return;
 	[operations runNewBranch:[singleInput inputValue] fromStartBranch:_tmpBranchStartName checkoutNewBranch:[singleInput wasCheckoutChecked]];
-	[_tmpBranchStartName release];
 }
 
 - (void) onNewTagComplete {
 	if([singleInput lastButtonValue] == NSCancelButton) return;
 	[operations runNewTag:[singleInput inputValue] fromStart:_tmpTagStartPoint];
-	[_tmpTagStartPoint release];
 }
 
 - (void) onGotRemoteBranches {
@@ -797,7 +788,6 @@
 	
 	[operations runPatchApplyWithFile:patchFile];
 	
-	[patchFile release];
 }
 
 - (IBAction) gitGarbageCollect:(id) sender {
@@ -1096,11 +1086,9 @@
 	[task setArguments:args];
 	[task launch];
 	[task waitUntilExit];
-	[task release];
 	
 	task = nil;
 	
-	[args release];
 }
 
 - (IBAction) openFile:(id) sender {
@@ -1125,12 +1113,12 @@
 	NSMutableArray *files = [activeBranchView selectedFiles];
 	
 	if([files count] > 1 or [files count] < 1) {
-		return [[[GTQuickLookItem alloc] initWithPath:nil] autorelease];;
+		return [[GTQuickLookItem alloc] initWithPath:nil];;
 	}
 	
 	NSString *fullPath = [[git gitProjectPath] stringByAppendingPathComponent:[files objectAtIndex:0]];
 	
-	return [[[GTQuickLookItem alloc] initWithPath:fullPath] autorelease];
+	return [[GTQuickLookItem alloc] initWithPath:fullPath];
 }
 
 - (BOOL)acceptsPreviewPanelControl:(QLPreviewPanel *)panel {
@@ -1363,27 +1351,12 @@
 	printf("DEALLOC GittyDocument\n");
 	#endif
 	
-	[fileEvents stopWatchingPaths];
-	[fileEvents release];
+	//[fileEvents stopWatchingPaths];
 		
 	justLaunched = false;
 	runningExpiredModal = false;
 	
-	[operations release];
-	[contextMenus release];
-	[mainMenuHelper release];
-	[git release];
-	[gitd release];
-	[activeBranchView release];
-	[sourceListView release];
-	[splitContentView release];
-	[statusBarView release];
-	[diffView release];
-	[historyDetailsContainerView release];
-	[historyView release];
-	[advancedDiffView release];
 	
-	[super dealloc];
 }
 
 @end

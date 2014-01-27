@@ -63,7 +63,7 @@
 }
 
 - (void) main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+@autoreleasepool {
 	if(done) goto cleanup;
 	[task launch];
 	if(readsSTDOUT) [self readSTDOUT];
@@ -77,8 +77,8 @@
 	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
 cleanup:
 	done=true;
-	[pool drain];
 	return;
+}
 }
 
 - (void) validateResult {
@@ -108,7 +108,6 @@ cleanup:
 	#endif
 	GDRelease(task);
 	GDRelease(args);
-	[super dealloc];
 }
 
 @end

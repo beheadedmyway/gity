@@ -39,7 +39,6 @@
 	printf("DEALLOC GTOpAddTrackingBranch\n");
 	#endif
 	GDRelease(remoteBranchName);
-	[super dealloc];
 }
 
 @end

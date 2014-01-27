@@ -21,7 +21,7 @@
 	 * window that is the main window from a possible collection
 	 * of other windows.
 	 */
-	NSWindow * mainWindow;
+	NSWindow * __weak mainWindow;
 }
 
 /**
@@ -30,6 +30,6 @@
  * window that is the main window from a possible collection
  * of other windows.
  */
-@property (assign,nonatomic) IBOutlet NSWindow * mainWindow;
+@property (weak,nonatomic) IBOutlet NSWindow * mainWindow;
 
 @end

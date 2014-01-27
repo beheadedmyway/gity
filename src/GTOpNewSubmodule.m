@@ -43,7 +43,6 @@
 	GDRelease(submoduleURL);
 	GDRelease(localDir);
 	GDRelease(submoduleName);
-	[super dealloc];
 }
 
 @end

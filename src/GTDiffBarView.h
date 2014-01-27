@@ -22,13 +22,13 @@
 #import "GTDiffBarLoadCommitsProgressView.h"
 
 @interface GTDiffBarView : GTGradientView {
-	IBOutlet GTDiffBarDiffStateView * diffStateView;
+	IBOutlet GTDiffBarDiffStateView * __weak diffStateView;
 	IBOutlet GTDiffBarSelectStateView * selectorStateView;
 	IBOutlet GTDiffBarLoadCommitsProgressView * loadCommitsProgressView;
 	GTInsetLabelView * leftLabel;
 }
 
-@property (readonly,nonatomic) GTDiffBarDiffStateView * diffStateView;
+@property (weak, readonly,nonatomic) GTDiffBarDiffStateView * diffStateView;
 
 - (void) showDiffState;
 - (void) showDiffSelectState;

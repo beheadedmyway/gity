@@ -27,14 +27,14 @@
 @interface GTDiffView : GTGittyView {
 	IBOutlet NSView * contentContainer;
 	IBOutlet GTLineView * lineView;
-	IBOutlet GTDiffBarView * diffBarView;
-	IBOutlet GTDiffContentView * diffContentView;
+	IBOutlet GTDiffBarView * __weak diffBarView;
+	IBOutlet GTDiffContentView * __weak diffContentView;
 	IBOutlet GTDiffCommitSelectorView * commitSelectorView;
 	GTGitDiff * diff;
 }
 
-@property (readonly,nonatomic) GTDiffContentView * diffContentView;
-@property (readonly,nonatomic) GTDiffBarView * diffBarView;
+@property (weak, readonly,nonatomic) GTDiffContentView * diffContentView;
+@property (weak, readonly,nonatomic) GTDiffBarView * diffBarView;
 
 - (void) initViews;
 - (void) showDiffCommitSelectorState;

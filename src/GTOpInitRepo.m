@@ -42,13 +42,13 @@
 }
 
 - (void) main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];		
+@autoreleasepool {		
 	if([self isCancelled]) goto cleanup;
 	[task launch];
 	[task waitUntilExit];
 cleanup:
 	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
-	[pool drain];
+}
 }
 
 - (void) taskComplete {
@@ -66,7 +66,6 @@ cleanup:
 	GDRelease(git);
 	GDRelease(dir);
 	modals = nil;
-	[super dealloc];
 }
 
 @end

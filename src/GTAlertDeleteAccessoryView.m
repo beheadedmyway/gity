@@ -27,11 +27,5 @@
 	return [checkbox state];
 }
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTAlertDeleteAccessoryView\n");
-	#endif
-	[super dealloc];
-}
 
 @end

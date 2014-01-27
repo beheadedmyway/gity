@@ -5,14 +5,14 @@
 @implementation GDSoundController
 
 - (void) pop {
-	if(popSound is nil) popSound=[[NSSound soundNamed:@"Pop"] retain];
+	if(popSound is nil) popSound=[NSSound soundNamed:@"Pop"];
 	@synchronized(self) {
 		[popSound play];
 	}
 }
 
 - (void) popAtVolume:(float) _volume {
-	if(popSound is nil) popSound=[[NSSound soundNamed:@"Pop"] retain];
+	if(popSound is nil) popSound=[NSSound soundNamed:@"Pop"];
 	@synchronized(self) {
 		float _vol = [popSound volume];
 		[popSound setVolume:_volume];
@@ -30,7 +30,6 @@
 	printf("dealloc GDSoundController\n");
 	#endif
 	[self clearCache];
-	[super dealloc];
 }
 
 @end

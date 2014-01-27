@@ -35,6 +35,6 @@
 	GDCallback * callback;
 }
 
-@property (retain,nonatomic) GDCallback * callback;
+@property (strong,nonatomic) GDCallback * callback;
 
 @end

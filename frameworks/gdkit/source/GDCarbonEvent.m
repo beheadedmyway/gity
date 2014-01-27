@@ -82,11 +82,11 @@ static OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent,
 }
 
 + (void) disposeOfLookupManager {
-	[gdceLookup release];
+	gdceLookup = nil;
 }
 
 - (void) setHotKeySignature:(NSString *) signature {
-	sigString = [signature retain];
+	sigString = signature;
 	hotKeyId.signature = fourCharCodeToOSType(sigString);
 }
 
@@ -155,11 +155,8 @@ static OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef anEvent,
 
 - (void) dealloc { //TODO: There are some ways to dispose of other Event* types. see the Carbon event manager.
 	if(isInstalled) [self uninstall];
-	[sigString release];
-	[self setNotificationName:NULL];
 	[self setKeyCode:0];
 	[self setModifierFlags:0];
-	[super dealloc];
 }
 
 @end

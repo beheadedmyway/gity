@@ -30,7 +30,6 @@
 	printf("DEALLOC GTOpBaseStashTask\n");
 	#endif
 	stashIndex=0;
-	[super dealloc];
 }
 
 @end

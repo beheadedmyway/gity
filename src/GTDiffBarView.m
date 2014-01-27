@@ -25,7 +25,7 @@
 	NSColor * color1 = [NSColor colorWithDeviceRed:0.75 green:0.75 blue:0.75 alpha:1];
 	NSColor * color2 = [NSColor colorWithDeviceRed:0.9 green:0.9 blue:0.9 alpha:1];
 	NSArray * colors = [NSArray arrayWithObjects:color1,color2,nil];
-	NSGradient * grad = [[[NSGradient alloc] initWithColors:colors] autorelease];
+	NSGradient * grad = [[NSGradient alloc] initWithColors:colors];
 	[self setGradient:grad];
 }
 
@@ -61,11 +61,5 @@
 	//if([selectorStateView superview]) [selectorStateView invalidate];*/
 }
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTDiffBarView\n");
-	#endif
-	[super dealloc];
-}
 
 @end

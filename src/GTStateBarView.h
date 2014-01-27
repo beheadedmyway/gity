@@ -35,7 +35,7 @@
 	GTScaledButtonControl * lastRightButton;
 	GTScaledButtonControl * lastLeftButton;
 	GTScale9Control * dropDown;
-	GTScale9Control * currentStateButton;
+	GTScale9Control * __weak currentStateButton;
 	GTScale9Control * configAdd;
 	GTScale9Control * configRemove;
 	GTSplitContentView * splitContentView;
@@ -43,7 +43,7 @@
 	GDTitleBarRefView * refDropDownView;
 }
 
-@property (readonly,nonatomic) GTScale9Control * currentStateButton;
+@property (weak, readonly,nonatomic) GTScale9Control * currentStateButton;
 
 - (void) showHiddenSourceListState;
 

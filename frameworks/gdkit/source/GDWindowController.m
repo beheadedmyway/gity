@@ -10,7 +10,6 @@
 	printf("dealloc GDWindowController\n");
 	#endif
 	GDRelease(mainWindow);
-	[super dealloc];
 }
 
 @end

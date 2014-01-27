@@ -24,7 +24,7 @@
 	BOOL isVertical;
 }
 
-@property (retain,nonatomic) NSColor * lineColor;
+@property (strong,nonatomic) NSColor * lineColor;
 @property (assign) BOOL isVertical;
 
 @end

@@ -22,7 +22,6 @@
 
 - (void) awakeFromNib {
 	[super awakeFromNib];
-	[contextSlider retain];
 	[contextSlider setTarget:self];
 	[contextSlider setAction:@selector(onContextSliderUpdate)];
 	[contextSlider setIntegerValue:3];
@@ -203,7 +202,6 @@
 	GDRelease(contextLabel);
 	GDRelease(bugButton);
 	GDRelease(vsimg);
-	[super dealloc];
 }
 
 @end

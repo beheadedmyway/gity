@@ -46,7 +46,7 @@
 /**
  * Singleton instance.
  */
-+ (GDASLLogManager *) sharedInstance;
++ (instancetype) sharedInstance;
 
 /**
  * Set a log object for key.

@@ -83,7 +83,6 @@
 	GDRelease(diffContent);
 	diffMode=0;
 	contextValue=0;
-	[super dealloc];
 }
 
 @end

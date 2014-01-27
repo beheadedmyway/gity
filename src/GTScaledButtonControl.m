@@ -66,72 +66,63 @@
 
 - (void) setAttributedTitle:(NSAttributedString *) title {
 	if(attributedTitle neq title) {
-		[attributedTitle release];
-		attributedTitle = [title retain];
+		attributedTitle = title;
 	}
 	[self setSourceTitle:nil];
 }
 
 - (void) setAttributedTitleDown:(NSAttributedString *) title {
 	if(attributedTitleDown neq title) {
-		[attributedTitleDown release];
-		attributedTitleDown = [title retain];
+		attributedTitleDown = title;
 	}
 	[self setSourceTitle:nil];
 }
 
 - (void) setAttributedTitleOver:(NSAttributedString *) title {
 	if(attributedTitleOver neq title) {
-		[attributedTitleOver release];
-		attributedTitleOver = [title retain];
+		attributedTitleOver = title;
 	}
 	[self setSourceTitle:nil];
 }
 
 - (void) setIcon:(NSImage *) _icon {
 	if(icon neq _icon) {
-		[icon release];
-		icon = [_icon retain];
+		icon = _icon;
 	}
 	[self setSourceIcon:nil];
 }
 
 - (void) setIconOver:(NSImage *) _icon {
 	if(iconOver neq _icon) {
-		[iconOver release];
-		iconOver = [_icon retain];
+		iconOver = _icon;
 	}
 	[self setSourceIcon:nil];
 }
 
 - (void) setIconDown:(NSImage *) _icon {
 	if(iconDown neq _icon) {
-		[iconDown release];
-		iconDown = [_icon retain];
+		iconDown = _icon;
 	}
 	[self setSourceIcon:nil];
 }
 
 - (void) setScaledImage:(NSImage *) _image {
 	if(scaledImage neq _image) {
-		[scaledImage release];
-		scaledImage = [_image retain];
+		scaledImage = _image;
 	}
 	[self setSourceImage:nil];
 }
 
 - (void) setScaledOverImage:(NSImage *) _image {
 	if(scaledOverImage neq _image) {
-		[scaledOverImage release];
-		scaledOverImage = [_image retain];
+		scaledOverImage = _image;
 	}
 	[self setSourceImage:nil];
 }
 
 - (void) setScaledDownImage:(NSImage *) _image {
 	if(scaledDownImage neq _image) {
-		[scaledDownImage release];
-		scaledDownImage = [_image retain];
+		scaledDownImage = _image;
 	}
 	[self setSourceImage:nil];
 }
@@ -257,11 +248,9 @@
 	[self setScaledOverImage:nil];
 	[self setScaledDownImage:nil];
 	[self setSourceIcon:nil];
-	[self setIcon:nil];
 	[self setIconOver:nil];
 	[self setIconDown:nil];
 	[self setSourceTitle:nil];
-	[self setAttributedTitle:nil];
 	[self setAttributedTitleOver:nil];
 	[self setAttributedTitleDown:nil];
 	[self setIsPushButton:false];
@@ -272,7 +261,6 @@
 	mdown = false;
 	pushedDown = false;
 	isPushButton = false;
-	[super dealloc];
 }
 
 @end

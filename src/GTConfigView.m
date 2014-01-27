@@ -30,7 +30,7 @@
 
 - (void) updateTableHeaders {
 	NSTableColumn * column = [tableView tableColumnWithIdentifier:@"key"];
-	GTTableHeaderCell * thc = [[[GTTableHeaderCell alloc] init] autorelease];
+	GTTableHeaderCell * thc = [[GTTableHeaderCell alloc] init];
 	[thc setTitle:@"Key"];
 	[column setHeaderCell:thc];
 }
@@ -66,7 +66,6 @@
 	NSIndexSet * indxs = [[NSIndexSet alloc] initWithIndex:[tableView numberOfRows]-1];
 	[tableView selectRowIndexes:indxs byExtendingSelection:false];
 	[tableView editColumn:0 row:[tableView numberOfRows]-1 withEvent:nil select:true];
-	[indxs release];
 }
 
 - (void) removeItem {
@@ -82,7 +81,6 @@
 		key=[itm objectAtIndex:0];
 		[[gd operations] runUnsetConfigForKey:key isGlobal:isGlobalConfig];
 	}
-	[tmp release];
 	[tableView reloadData];
 }
 
@@ -136,7 +134,7 @@
 
 - (void) updateWithGlobalConfig {
 	isGlobalConfig = true;
-	configs = [[NSMutableArray arrayWithArray:[gitd globalConfigs]] retain];
+	configs = [NSMutableArray arrayWithArray:[gitd globalConfigs]];
 	if(!setTableDelegates) {
 		[tableView setDelegate:self];
 		[tableView setDataSource:self];
@@ -146,7 +144,7 @@
 
 - (void) update {
 	isGlobalConfig=false;
-	configs=[[NSMutableArray arrayWithArray:[gitd configs]] retain];
+	configs=[NSMutableArray arrayWithArray:[gitd configs]];
 	if(!setTableDelegates) {
 		[tableView setDelegate:self];
 		[tableView setDataSource:self];
@@ -163,7 +161,6 @@
 	rightView=nil;
 	isGlobalConfig=false;
 	setTableDelegates=false;
-	[super dealloc];
 }
 
 @end

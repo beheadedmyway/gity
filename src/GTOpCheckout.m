@@ -16,6 +16,7 @@
 // along with Gity. If not, see <http://www.gnu.org/licenses/>.
 
 #import "GTOpCheckout.h"
+#import "GittyDocument.h"
 
 @implementation GTOpCheckout
 
@@ -35,7 +36,7 @@
 }
 
 - (void) main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
+@autoreleasepool {	
 	if([self isCancelled]) goto cleanup;
 	[task launch];
 	if(readsSTDOUT) [self readSTDOUT];
@@ -43,7 +44,7 @@
 	[task waitUntilExit];
 cleanup:
 	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
-	[pool drain];
+}
 }
 
 - (void) taskComplete {
@@ -63,7 +64,6 @@ cleanup:
 	printf("DEALLOC GTOpCheckout\n");
 	#endif
 	GDRelease(branch);
-	[super dealloc];
 }
 
 @end

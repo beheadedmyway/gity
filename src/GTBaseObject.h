@@ -24,14 +24,14 @@
 @class GTSoundController;
 
 @interface GTBaseObject : NSObject {
-	GittyDocument * gd;
+	GittyDocument * __weak gd;
 	GTWindow * gtwindow;
 	GTOperationsController * operations;
 	GTGitDataStore * gitd;
 	GTSoundController * sounds;
 }
 
-@property (assign,nonatomic) GittyDocument * gd;
+@property (weak,nonatomic) GittyDocument * gd;
 
 - (void) lazyInitWithGD:(GittyDocument *) _gd;
 - (void) setRefs;

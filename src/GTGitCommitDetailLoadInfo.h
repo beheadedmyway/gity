@@ -23,7 +23,7 @@
 	NSString * parsedCommitDetails;
 }
 
-@property (retain) NSString * parsedCommitDetails;
+@property (strong) NSString * parsedCommitDetails;
 @property (assign) NSInteger contextValue;
 
 @end

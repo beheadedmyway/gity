@@ -91,8 +91,7 @@
 
 - (void) setChildren:(NSMutableArray *) _children {
 	if(children	!= _children) {
-		[children release];
-		children = [_children retain];
+		children = _children;
 	}
 }
 
@@ -164,7 +163,6 @@
 	GDRelease(data);
 	isGroupItem=false;
 	index=0;
-	[super dealloc];
 }
 
 @end

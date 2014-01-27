@@ -88,9 +88,8 @@
 		//tmp=[tmp stringByAppendingString:@"  |  "];
 		message = [message stringByAppendingString:tmp];
 	}
-	if(filterInfo) [filterInfo release];
 	filterInfo=nil;
-	filterInfo=[[GTStyles getFilteredSearchLabel:message] retain];
+	filterInfo=[GTStyles getFilteredSearchLabel:message];
 	[self setNeedsDisplay:true];
 }
 
@@ -107,7 +106,6 @@
 	GDRelease(filterInfo);
 	GDRelease(lineView);
 	historyView=nil;
-	[super dealloc];
 }
 
 @end

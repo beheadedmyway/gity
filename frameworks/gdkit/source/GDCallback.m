@@ -28,10 +28,11 @@
 - (void) setupInvoker {
 	GDRelease(signature);
 	GDRelease(invoker);
-	signature=[[[self target] methodSignatureForSelector:[self action]] retain];
-	invoker=[[NSInvocation invocationWithMethodSignature:signature] retain];
+	signature=[[self target] methodSignatureForSelector:[self action]];
+	invoker=[NSInvocation invocationWithMethodSignature:signature];
 	[invoker setTarget:[self target]];
 	[invoker setSelector:[self action]];
+	[invoker retainArguments];
 }
 
 - (void) setArgs:(NSArray *) _args {
@@ -46,9 +47,11 @@
 	}
 	id arg;
 	int c=1;
-	args=[_args retain];
 	[self setupInvoker];
-	for(arg in args)[invoker setArgument:&arg atIndex:++c];
+	for(arg in args) {
+		__unsafe_unretained id unsafeArg = arg;
+		[invoker setArgument:&unsafeArg atIndex:++c];
+	}
 }
 
 - (void) execute {
@@ -72,7 +75,6 @@
 	GDRelease(signature);
 	GDRelease(target);
 	GDRelease(args);
-	[super dealloc];
 }
 
 @end

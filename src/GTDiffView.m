@@ -248,7 +248,6 @@
 	printf("DEALLOC GTDiffView\n");
 	#endif
 	GDRelease(diff);
-	[super dealloc];
 }
 
 @end

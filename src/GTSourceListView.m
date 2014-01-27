@@ -127,7 +127,6 @@
 	if(wasRemoteBranchesExpanded) [expandState setObject:[NSNumber numberWithBool:YES] forKey:@"GTSourceListRemoteBranchesExpanded"];
 	else [expandState setObject:[NSNumber numberWithBool:NO] forKey:@"GTSourceListRemoteBranchesExpanded"];
 	[[NSUserDefaults standardUserDefaults] setObject:[NSDictionary dictionaryWithDictionary:expandState] forKey:[@"GTSourceListExpandedState_" stringByAppendingString:gitProjectPath]];
-	[expandState release];
 }
 
 - (void) show {
@@ -463,28 +462,26 @@
 
 - (void) gitExportZip {
 	GTSourceListItem * item = [self selectedItem];
-	_tmpItemForExport = [item retain];
+	_tmpItemForExport = item;
 	savePanel = [NSSavePanel savePanel];
 	[savePanel setCanCreateDirectories:true];
     [savePanel beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
         if(result == NSFileHandlingPanelCancelButton)
             return;
         [operations runExportZip:[[savePanel URL] path] andCommit:[_tmpItemForExport name]];
-        [_tmpItemForExport release];
         _tmpItemForExport=nil;
     }];
 }
 
 - (void) gitExportTar {
 	GTSourceListItem * item = [self selectedItem];
-	_tmpItemForExport = [item retain];
+	_tmpItemForExport = item;
 	savePanel = [NSSavePanel savePanel];
 	[savePanel setCanCreateDirectories:true];
     [savePanel beginSheetModalForWindow:[gd gtwindow] completionHandler:^(NSInteger result) {
         if(result == NSFileHandlingPanelCancelButton)
             return;
         [operations runExportTar:[[savePanel URL] path] andCommit:[_tmpItemForExport name]];
-        [_tmpItemForExport release];
     }];
 }
 
@@ -720,7 +717,7 @@
 	rootItem=[[GTSourceListItem alloc] init];
 	[rootItem setIsGroupItem:true];
 	NSInteger remotesCount = [[gitd remotes] count];
-	NSIndexSet * selected = [[sourceListView selectedRowIndexes] retain];
+	NSIndexSet * selected = [sourceListView selectedRowIndexes];
 	
 	if([[gitd branchNames] count] > 0) {
 		branches = [gitd branchNames];
@@ -733,7 +730,6 @@
 			if([branch isEqual:[gitd activeBranchName]]) [item setName:branch andLabel:branch];
 			else [item setName:branch andLabel:branch];
 			[branchesItem addChild:item];
-			[item release];
 			item = nil;
 		}
 		[rootItem addChild:branchesItem];
@@ -746,7 +742,7 @@
 		[remoteBranchesItem setName:@"remote_branches" andLabel:@"Remote Branches"];
 		NSString * rb;
 		for(rb in remoteTrackingBranches) {
-			item = [[[GTSourceListItem alloc] init] autorelease];
+			item = [[GTSourceListItem alloc] init];
 			[item setName:rb andLabel:rb];
 			[remoteBranchesItem addChild:item];
 			item=nil;
@@ -761,7 +757,7 @@
 		[tagsItem setName:@"tags" andLabel:@"tags"];
 		NSString * tag;
 		for(tag in tags) {
-			item = [[[GTSourceListItem alloc] init] autorelease];
+			item = [[GTSourceListItem alloc] init];
 			[item setName:tag andLabel:tag];
 			[tagsItem addChild:item];
 			item=nil;
@@ -776,7 +772,7 @@
 		[remotesItem setName:@"remotes" andLabel:@"remotes"];
 		NSString * remote;
 		for(remote in remotes) {
-			item = [[[GTSourceListItem alloc] init] autorelease];
+			item = [[GTSourceListItem alloc] init];
 			[item setName:remote andLabel:remote];
 			[remotesItem addChild:item];
 			item = nil;
@@ -796,7 +792,7 @@
 		for(sub in subs) {
 			name=[sub objectForKey:@"name"];
 			//fullspec=[sub objectForKey:@"spec"];
-			item=[[[GTSourceListItem alloc] init] autorelease];
+			item=[[GTSourceListItem alloc] init];
 			[item setIndex:c];
 			[item setName:name andLabel:name];
 			[item setData:sub];
@@ -817,7 +813,7 @@
 		short c = 0;
 		for(stash in stashes) {
 			name = [stash objectForKey:@"name"];
-			item = [[[GTSourceListItem alloc] init] autorelease];
+			item = [[GTSourceListItem alloc] init];
 			[item setIndex:c];
 			[item setName:name andLabel:name];
 			[item setData:stash];
@@ -846,7 +842,6 @@
 	
 	item=nil;
 	missingDefaultsExpandState=false;
-	[selected release];
 }
 
 - (void) removeObservers {
@@ -887,7 +882,6 @@
 	}
 	GDRelease(_tmpItemForExport);
 	GDRelease(gitProjectPath);
-	[super dealloc];
 }
 
 @end

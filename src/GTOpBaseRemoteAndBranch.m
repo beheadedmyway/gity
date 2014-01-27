@@ -30,7 +30,6 @@
 	printf("DEALLOC GTOpBaseRemoteAndBranch\n");
 	#endif
 	GDRelease(remoteName);
-	[super dealloc];
 }
 
 @end

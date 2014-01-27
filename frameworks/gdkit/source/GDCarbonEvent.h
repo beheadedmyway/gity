@@ -30,7 +30,7 @@
 	NSString * notificationName;
 	NSString * keyChar;
 	NSDictionary * userInfo;
-	NSNotificationCenter * notificationCenter;
+	NSNotificationCenter * __weak notificationCenter;
 	
 	/**
 	 * Whether or not the event is installed with the carbon event manager.
@@ -83,7 +83,7 @@
 /**
  * The nofication center to post to.
  */
-@property (assign) NSNotificationCenter * notificationCenter;
+@property (weak) NSNotificationCenter * notificationCenter;
 
 /**
  * Selector to callback, if this event is NOT posting
@@ -94,7 +94,7 @@
 /**
  * The target for the selector
  */
-@property (retain) id target;
+@property (strong) id target;
 
 /**
  * ASCII Key code for carbon event HotKey
@@ -111,7 +111,7 @@
  * User info dict that get's passed back to the callback,
  * or passed as userInfo in the notification.
  */
-@property (retain) NSDictionary * userInfo;
+@property (strong) NSDictionary * userInfo;
 
 /**
  * Initialize this GDCarbonEvent with a coder. 

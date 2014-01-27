@@ -53,9 +53,9 @@
 	GTSplitContentView * splitContentView;
 }
 
-@property (retain,nonatomic) IBOutlet NSScrollView * scrollView;
-@property (retain,nonatomic) IBOutlet LNSSourceListView * sourceListView;
-@property (retain,nonatomic) IBOutlet GTSourceListMenuView * sourceListMenuView;
+@property (strong,nonatomic) IBOutlet NSScrollView * scrollView;
+@property (strong,nonatomic) IBOutlet LNSSourceListView * sourceListView;
+@property (strong,nonatomic) IBOutlet GTSourceListMenuView * sourceListMenuView;
 @property (readonly)  BOOL wasJustUpdated;
 
 @property (readonly) GTSourceListItem * rootItem;

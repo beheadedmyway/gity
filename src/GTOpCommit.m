@@ -44,7 +44,6 @@
 	NSData * commitMessage = [message dataUsingEncoding:NSUTF8StringEncoding];
 	[fileHandle writeData:commitMessage];
 	[fileHandle closeFile];
-	[fileHandle release];
 	if([[gd commit] shouldSignoff]) [args addObject:@"-m1"];
 	if (files && [files count] > 0) {
 		for (int i = 0; i < [files count]; i++) {

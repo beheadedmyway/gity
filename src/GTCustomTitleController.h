@@ -26,10 +26,10 @@
 
 @interface GTCustomTitleController : GTBaseObject {
 	IBOutlet NSTextField * title;
-	NSString * windowTitle;
+	NSString * __weak windowTitle;
 }
 
-@property (readonly,nonatomic) NSString * windowTitle;
+@property (weak, readonly,nonatomic) NSString * windowTitle;
 
 - (void) update;
 

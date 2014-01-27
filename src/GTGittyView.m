@@ -92,7 +92,6 @@ static NSPoint tr;
 	modals=nil;
 	operations=nil;
 	mainMenuHelper=nil;
-	[super dealloc];
 }
 
 @end

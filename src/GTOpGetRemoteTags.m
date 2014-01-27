@@ -35,8 +35,6 @@
 	NSString * remoteTagNamesJson = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray * tags = [NSMutableArray arrayWithArray:[json objectWithString:remoteTagNamesJson error:nil]];
-	[remoteTagNamesJson release];
-	[json release];
 	if([self isCancelled]) return;
 	[gitd setRemoteTagNames:tags];
 }

@@ -36,7 +36,6 @@
 
 - (void) dealloc {
 	GDRelease(distantProtocol);
-	[super dealloc];
 }
 
 @end

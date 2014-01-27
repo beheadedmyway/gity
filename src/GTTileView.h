@@ -22,6 +22,6 @@
 	NSImage * tileImage;
 }
 
-@property (retain,nonatomic) NSImage * tileImage;
+@property (strong,nonatomic) NSImage * tileImage;
 
 @end

@@ -162,7 +162,7 @@
 }
 
 - (NSString *) resultAsNSString {
-	return (NSString *) result;
+	return (__bridge NSString *) result;
 }
 
 - (NSValue *) resultAsNSValue {
@@ -186,7 +186,6 @@
 - (void) dealloc {
 	if(result != NULL) CFRelease(result);
 	resultCode = 0;
-	[super dealloc];
 }
 
 @end

@@ -55,7 +55,6 @@
 	#ifdef GDKIT_PRINT_DEALLOCS
 	printf("dealloc GDBaseObject\n");
 	#endif
-	[super dealloc];
 }
 
 @end

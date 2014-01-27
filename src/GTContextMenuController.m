@@ -284,7 +284,6 @@
 		[pushToMenu addItem:item];
 		[item setTarget:sourceListView];
 		[item setAction:@selector(gitPushTo:)];
-		[item release];
 		item = nil;
 	}
 	
@@ -295,7 +294,6 @@
 		[pullFromMenu addItem:item];
 		[item setTarget:sourceListView];
 		[item setAction:@selector(gitPullFrom:)];
-		[item release];
 		item = nil;
 	}
 	
@@ -306,7 +304,6 @@
 		[branchDeleteAtMenu addItem:item];
 		[item setTarget:sourceListView];
 		[item setAction:@selector(branchDeleteAt:)];
-		[item release];
 		item = nil;
 	}
 	
@@ -320,7 +317,6 @@
 		[defaultRemoteMenu addItem:item];
 		[item setTarget:sourceListView];
 		[item setAction:@selector(updateDefaultRemote:)];
-		[item release];
 		item = nil;
 	}
 	
@@ -372,7 +368,7 @@
 	
 	[tagsPushToMenu removeAllItems];
 	for(remote in remotes) {
-		item = [[[NSMenuItem alloc] init] autorelease];
+		item = [[NSMenuItem alloc] init];
 		[item setTitle:remote];
 		[item setTarget:sourceListView];
 		[item setAction:@selector(gitPushTagTo:)];
@@ -382,7 +378,7 @@
 	
 	[tagsDeleteAtMenu removeAllItems];
 	for(remote in remotes) {
-		item = [[[NSMenuItem alloc] init] autorelease];
+		item = [[NSMenuItem alloc] init];
 		[item setTitle:remote];
 		[item setTarget:sourceListView];
 		[item setAction:@selector(tagDeleteAt:)];
@@ -975,96 +971,6 @@
 	printf("DEALLOC GTContextMenuController\n");
 	#endif
 	
-	[gitAddItem release];
-	[gitIgnoreExension release];
-	[gitDestageItem release];
-	[gitDiscardChangesItem release];
-	[gitRemoveItem release];
-	[gitIgnoreItem release];
-	[gitIgnoreContainer release];
-	[moveToTrash release];
-	[openInFinder release];
-	[openContainerInFinder release];
-	[activeBranchActionsMenu release];
-	[pushItem release];
-	[pullItem release];
-	[pushTo release];
-	[pullFrom release];
-	[branchDelete release];
-	[branchRename release];
-	[branchCheckout release];
-	[branchMerge release];
-	[branchNewBranchFromThis release];
-	[branchReset release];
-	[branchDiscardNonStagedChanges release];
-	[branchTagFromHead release];
-	[branchExportZip release];
-	[branchExportTar release];
-	[defaultRemote release];
-	[branchActionsMenu release];
-	[pushToMenu release];
-	[pullFromMenu release];
-	[defaultRemoteMenu release];
-	[historyActionsMenu release];
-	[stashPop release];
-	[stashDrop release];
-	[stashApply release];
-	[stashMenu release];
-	[remotesMenu release];
-	[remotesDelete release];
-	[tagsDelete release];
-	[exportZip release];
-	[exportTar release];
-	[tagsPush release];
-	[tagsMenu release];
-	[tagsPushToMenu release];
-	[newRemoteActionsItem release];
-	[newStash release];
-	[newBranch release];
-	[newBranchFrom release];
-	[newTag release];
-	[newTagFrom release];
-	[newEmptyBranch release];
-	[exportArchiveCommit release];
-	[newBranchFromCommit release];
-	[newTagFromCommit release];
-	[newTrackingBranch release];
-	[fetchTags release];
-	[actionsMenu release];
-	[branchDeleteAtItem release];
-	[branchDeleteAtMenu release];
-	[tagsDeleteAtMenu release];	
-	[tagsDeleteAtItem release];
-	[newSubmodule release];
-	[rebasePull release];
-	[pullItemAlternate release];
-	[subsOpenWithGitty release];
-	[subsPull release];
-	[subsPush release];
-	[subsSync release];
-	[subsUpdate release];
-	[submodulesMenu release];
-	[subsDelete release];
-	[gitMergeTool release];
-	[leftDiffPWD release];
-	[leftDiffCommit release];
-	[leftDiffHEAD release];
-	[leftDiffStage release];
-	[leftDiffSelectorMenu release];
-	[rightDiffPWD release];
-	[rightDiffCommit release];
-	[rightDiffHEAD release];
-	[rightDiffStage release];
-	[rightDiffSelectorMenu release];
-	[gitAddAndCommitItem release];
-	[remoteBranchesMenu release];
-	[rbFetchItem release];
-	[rbMergeItem release];
-	[tagHistoryItem release];
-	[branchHistoryItem release];
-	[rbHistoryItem release];
-	[terminalItem release];
-	[checkoutCommit release];
 	
 	sourceListView=nil;
 	splitContentView=nil;
@@ -1072,7 +978,6 @@
 	diffStateView=nil;
 	activeBranchView=nil;
 	gd=nil;
-	[super dealloc];
 }
 
 @end

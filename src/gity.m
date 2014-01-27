@@ -47,7 +47,7 @@ int main(int argc, const char** argv) {
 	fclose(stderr);
 	fclose(stdout);
 	fclose(stdin);
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+@autoreleasepool {
 	if(argc >= 2 && (!strcmp(argv[1], "--help") || !strcmp(argv[1], "-h"))) {
 		usage();
 		exit(0);
@@ -59,6 +59,6 @@ int main(int argc, const char** argv) {
 		exit(2);
 	}
 	[proxy openWithGity:pwd];
-	[pool drain];
+}
 	return 0;
 }

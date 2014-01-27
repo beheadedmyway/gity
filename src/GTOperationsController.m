@@ -71,27 +71,27 @@ static NSInteger operationRunCount = 0;
 	
 	isRunningStartup = true;
 	
-	NSOperation *op = [[[NSOperation alloc] init] autorelease];
+	NSOperation *op = [[NSOperation alloc] init];
+	__weak typeof(op) weakOp = op;
 	
 	[op setCompletionBlock:^{
-		for (NSOperation *dependentOperation in [op dependencies]) {
-			[dependentOperation release];
+		for (NSOperation *dependentOperation in [weakOp dependencies]) {
 		}
 		
 		[self onStartupOperationComplete];
 	}];
 	
-	GTOpMetaStatus *meta = [[[GTOpMetaStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetFiles *allFiles = [[[GTOpGetFiles alloc] initWithGD:gd] autorelease];
-	GTOpStatus *stat = [[[GTOpStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetActiveBranchName *activeBranchName = [[[GTOpGetActiveBranchName alloc] initWithGD:gd] autorelease];
+	GTOpMetaStatus *meta = [[GTOpMetaStatus alloc] initWithGD:gd];
+	GTOpGetFiles *allFiles = [[GTOpGetFiles alloc] initWithGD:gd];
+	GTOpStatus *stat = [[GTOpStatus alloc] initWithGD:gd];
+	GTOpGetActiveBranchName *activeBranchName = [[GTOpGetActiveBranchName alloc] initWithGD:gd];
 	
 	[op addDependency:allFiles];
 	[op addDependency:stat];
 	[op addDependency:meta];
 	[op addDependency:activeBranchName];
 	
-	NSOperationQueue *q = [[[NSOperationQueue alloc] init] autorelease];
+	NSOperationQueue *q = [[NSOperationQueue alloc] init];
 	
 	[q addOperation:op];
 	[q addOperation:allFiles];
@@ -111,27 +111,27 @@ static NSInteger operationRunCount = 0;
 	
 	[status showSpinner];
 	
-	NSOperation *op = [[[NSOperation alloc] init] autorelease];
+	NSOperation *op = [[NSOperation alloc] init];
+	__weak typeof(op) weakOp = op;
 	
 	[op setCompletionBlock:^{
-		for (NSOperation *dp in [op dependencies]) {
-			[dp release];
+		for (NSOperation *dp in [weakOp dependencies]) {
 		}
 		
 		[self onRefreshOperationComplete];
 	}];
 	
-	GTOpMetaStatus *meta = [[[GTOpMetaStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetFiles *allFiles = [[[GTOpGetFiles alloc] initWithGD:gd] autorelease];
-	GTOpStatus *stat = [[[GTOpStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetActiveBranchName *activeBranchName = [[[GTOpGetActiveBranchName alloc] initWithGD:gd] autorelease];
+	GTOpMetaStatus *meta = [[GTOpMetaStatus alloc] initWithGD:gd];
+	GTOpGetFiles *allFiles = [[GTOpGetFiles alloc] initWithGD:gd];
+	GTOpStatus *stat = [[GTOpStatus alloc] initWithGD:gd];
+	GTOpGetActiveBranchName *activeBranchName = [[GTOpGetActiveBranchName alloc] initWithGD:gd];
 	
 	[op addDependency:stat];
 	[op addDependency:allFiles];
 	[op addDependency:meta];
 	[op addDependency:activeBranchName];
 	
-	NSOperationQueue *q = [[[NSOperationQueue alloc] init] autorelease];
+	NSOperationQueue *q = [[NSOperationQueue alloc] init];
 	
 	[q addOperation:op];
 	[q addOperation:stat];
@@ -147,11 +147,10 @@ static NSInteger operationRunCount = 0;
 	[status showSpinner];
 	NSOperation * op = [[NSOperation alloc] init];
 	[op setCompletionBlock:^{
-		[op release];
 		[self onRefreshStatusComplete];
 	}];
-	GTOpGetFiles * allFiles = [[[GTOpGetFiles alloc] initWithGD:gd] autorelease];
-	GTOpStatus * stat = [[[GTOpStatus alloc] initWithGD:gd] autorelease];
+	GTOpGetFiles * allFiles = [[GTOpGetFiles alloc] initWithGD:gd];
+	GTOpStatus * stat = [[GTOpStatus alloc] initWithGD:gd];
 	[op addDependency:stat];
 	[op addDependency:allFiles];
 	NSOperationQueue * q = [[NSOperationQueue alloc] init];
@@ -160,7 +159,6 @@ static NSInteger operationRunCount = 0;
 	[q addOperation:stat];
 	[q addOperation:allFiles];
 	[cancelables addObject:q];
-	[q release];
 }
 
 - (void) runRefreshMetaOperation {
@@ -168,12 +166,12 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	isRunningMetaRefresh = true;
 	[status showSpinner];
-	NSOperation * op = [[[NSOperation alloc] init] autorelease];
+	NSOperation * op = [[NSOperation alloc] init];
 	[op setCompletionBlock:^{
 		[self onRefreshMetaComplete];
 	}];
-	GTOpMetaStatus * meta = [[[GTOpMetaStatus alloc] initWithGD:gd] autorelease];
-	GTOpGetActiveBranchName * activeBranchName = [[[GTOpGetActiveBranchName alloc] initWithGD:gd] autorelease];
+	GTOpMetaStatus * meta = [[GTOpMetaStatus alloc] initWithGD:gd];
+	GTOpGetActiveBranchName * activeBranchName = [[GTOpGetActiveBranchName alloc] initWithGD:gd];
 	[op addDependency:meta];
 	[op addDependency:activeBranchName];
 	NSOperationQueue * q = [[NSOperationQueue alloc] init];
@@ -182,7 +180,6 @@ static NSInteger operationRunCount = 0;
 	[q addOperation:meta];
 	[q addOperation:activeBranchName];
 	[cancelables addObject:q];
-	[q release];
 }
 
 - (NSOperationQueue *) newCancelableQueueWithOperation:(NSOperation *) op {
@@ -208,7 +205,6 @@ static NSInteger operationRunCount = 0;
 		if (cancelables)
 			if ([cancelables containsObject:q])
 				[cancelables removeObject:q];
-		[q release];
 	}
 }
 
@@ -236,7 +232,6 @@ static NSInteger operationRunCount = 0;
 	@synchronized(self)
 	{
 		[networkCancelables removeObject:q];
-		[q release];
 	}
 }
 
@@ -244,7 +239,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	if(isRunningAddFiles) return;
 	isRunningAddFiles=true;
-	GTOpAddFiles * adds = [[[GTOpAddFiles alloc] initWithGD:gd] autorelease];
+	GTOpAddFiles * adds = [[GTOpAddFiles alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:adds];
 	[adds setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -257,7 +252,7 @@ static NSInteger operationRunCount = 0;
 	if(isRunningCommit) return;
 	isRunningCommit=true;
 	[status showSpinner];
-	GTOpCommit * commit = [[[GTOpCommit alloc] initWithGD:gd andFiles:files] autorelease];
+	GTOpCommit * commit = [[GTOpCommit alloc] initWithGD:gd andFiles:files];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:commit];
 	[commit setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -270,7 +265,7 @@ static NSInteger operationRunCount = 0;
 	if(isRunningCommit) return;
 	isRunningCommit=true;
 	[status showSpinner];
-	GTOpCommit * commit = [[[GTOpCommit alloc] initWithGD:gd] autorelease];
+	GTOpCommit * commit = [[GTOpCommit alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:commit];
 	[commit setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -282,7 +277,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	if(isRunningRemove) return;
 	isRunningRemove=true;
-	GTOpRemove * remove = [[[GTOpRemove alloc] initWithGD:gd] autorelease];
+	GTOpRemove * remove = [[GTOpRemove alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:remove];
 	[remove setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -294,7 +289,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	if(isRunningDestage) return;
 	isRunningDestage=true;
-	GTOpDestage * destage = [[[GTOpDestage alloc] initWithGD:gd] autorelease];
+	GTOpDestage * destage = [[GTOpDestage alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:destage];
 	[destage setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -306,7 +301,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	if(isRunningDiscard) return;
 	isRunningDiscard=true;
-	GTOpDiscardChanges * discard = [[[GTOpDiscardChanges alloc] initWithGD:gd] autorelease];
+	GTOpDiscardChanges * discard = [[GTOpDiscardChanges alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:discard];
 	[discard setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -317,7 +312,7 @@ static NSInteger operationRunCount = 0;
 - (void) runStashApply:(NSInteger) stashIndex {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpStashApply * apply = [[[GTOpStashApply alloc] initWithGD:gd andStashIndex:stashIndex] autorelease];
+	GTOpStashApply * apply = [[GTOpStashApply alloc] initWithGD:gd andStashIndex:stashIndex];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:apply];
 	[apply setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -328,7 +323,7 @@ static NSInteger operationRunCount = 0;
 - (void) runStashPop:(NSInteger) stashIndex {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpStashPop * pop = [[[GTOpStashPop alloc] initWithGD:gd andStashIndex:stashIndex] autorelease];
+	GTOpStashPop * pop = [[GTOpStashPop alloc] initWithGD:gd andStashIndex:stashIndex];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:pop];
 	[pop setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -339,7 +334,7 @@ static NSInteger operationRunCount = 0;
 - (void) runStashDelete:(NSInteger) stashIndex {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpStashDelete * delete = [[[GTOpStashDelete alloc] initWithGD:gd andStashIndex:stashIndex] autorelease];
+	GTOpStashDelete * delete = [[GTOpStashDelete alloc] initWithGD:gd andStashIndex:stashIndex];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:delete];
 	[delete setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -350,7 +345,7 @@ static NSInteger operationRunCount = 0;
 - (void) runHardReset {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpHardReset * reset = [[[GTOpHardReset alloc] initWithGD:gd] autorelease];
+	GTOpHardReset * reset = [[GTOpHardReset alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:reset];
 	[reset setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -361,7 +356,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSoftReset {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpSoftReset * reset = [[[GTOpSoftReset alloc] initWithGD:gd] autorelease];
+	GTOpSoftReset * reset = [[GTOpSoftReset alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:reset];
 	[reset setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -372,7 +367,7 @@ static NSInteger operationRunCount = 0;
 - (void) runIgnoreFiles:(NSMutableArray *) files {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpIgnoreFiles * ignore = [[[GTOpIgnoreFiles alloc] initWithGD:gd andFiles:files] autorelease];
+	GTOpIgnoreFiles * ignore = [[GTOpIgnoreFiles alloc] initWithGD:gd andFiles:files];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:ignore];
 	[ignore setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -383,7 +378,7 @@ static NSInteger operationRunCount = 0;
 - (void) runBranchCheckout:(NSString *) branch {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpCheckout * checkout = [[[GTOpCheckout alloc] initWithGD:gd andBranchForCheckout:branch] autorelease];
+	GTOpCheckout * checkout = [[GTOpCheckout alloc] initWithGD:gd andBranchForCheckout:branch];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:checkout];
 	[checkout setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -394,7 +389,7 @@ static NSInteger operationRunCount = 0;
 - (void) runBranchDelete:(NSString *) branchName {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpBranchDelete * delete = [[[GTOpBranchDelete alloc] initWithGD:gd andBranchName:branchName] autorelease];
+	GTOpBranchDelete * delete = [[GTOpBranchDelete alloc] initWithGD:gd andBranchName:branchName];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:delete];
 	[delete setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -405,7 +400,7 @@ static NSInteger operationRunCount = 0;
 - (void) runTagDelete:(NSString *) tagName {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpTagDelete * delete = [[[GTOpTagDelete alloc] initWithGD:gd andTagName:tagName] autorelease];
+	GTOpTagDelete * delete = [[GTOpTagDelete alloc] initWithGD:gd andTagName:tagName];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:delete];
 	[delete setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -416,7 +411,7 @@ static NSInteger operationRunCount = 0;
 - (void) runNewEmptyBranch:(NSString *) branchName {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpNewEmptyBranch * neb = [[[GTOpNewEmptyBranch alloc] initWithGD:gd andBranchName:branchName] autorelease];
+	GTOpNewEmptyBranch * neb = [[GTOpNewEmptyBranch alloc] initWithGD:gd andBranchName:branchName];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:neb];
 	[neb setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -427,7 +422,7 @@ static NSInteger operationRunCount = 0;
 - (void) runNewStash:(NSString *) stashName {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpNewStash * stash = [[[GTOpNewStash alloc] initWithGD:gd andStashName:stashName] autorelease];
+	GTOpNewStash * stash = [[GTOpNewStash alloc] initWithGD:gd andStashName:stashName];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:stash];
 	[stash setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -440,9 +435,9 @@ static NSInteger operationRunCount = 0;
 	[status showSpinner];
 	GTOpNewBranch * branch = nil;
     if (gitd.isHeadDetatched)
-        branch = [[[GTOpNewBranch alloc] initWithGD:gd andBranchName:branchName andStartBranchName:gitd.currentAbbreviatedSha] autorelease];
+        branch = [[GTOpNewBranch alloc] initWithGD:gd andBranchName:branchName andStartBranchName:gitd.currentAbbreviatedSha];
     else 
-        branch = [[[GTOpNewBranch alloc] initWithGD:gd andBranchName:branchName andStartBranchName:startBranch] autorelease];
+        branch = [[GTOpNewBranch alloc] initWithGD:gd andBranchName:branchName andStartBranchName:startBranch];
 	[branch setChecksOutBranch:checksOut];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:branch];
 	[branch setCompletionBlock:^{
@@ -454,7 +449,7 @@ static NSInteger operationRunCount = 0;
 - (void) runNewTag:(NSString *) tagName fromStart:(NSString *) start {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpNewTag * tag = [[[GTOpNewTag alloc] initWithGD:gd andTagName:tagName andTagStart:start] autorelease];
+	GTOpNewTag * tag = [[GTOpNewTag alloc] initWithGD:gd andTagName:tagName andTagStart:start];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:tag];
 	[tag setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -465,7 +460,7 @@ static NSInteger operationRunCount = 0;
 - (void) runNewRemote:(NSString *) _remoteName withURL:(NSString *) _url {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpNewRemote * remote = [[[GTOpNewRemote alloc] initWithGD:gd newRemoteName:_remoteName remoteURL:_url] autorelease];
+	GTOpNewRemote * remote = [[GTOpNewRemote alloc] initWithGD:gd newRemoteName:_remoteName remoteURL:_url];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:remote];
 	[remote setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -476,7 +471,7 @@ static NSInteger operationRunCount = 0;
 - (void) runDeleteRemote:(NSString *) remoteName {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpDeleteRemote * remote = [[[GTOpDeleteRemote alloc] initWithGD:gd andRemoteName:remoteName] autorelease];
+	GTOpDeleteRemote * remote = [[GTOpDeleteRemote alloc] initWithGD:gd andRemoteName:remoteName];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:remote];
 	[remote setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -487,7 +482,7 @@ static NSInteger operationRunCount = 0;
 - (void) runExportZip:(NSString *) path andCommit:(NSString *) commit {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpExportZip * export = [[[GTOpExportZip alloc] initWithGD:gd andPath:path andCommit:commit] autorelease];
+	GTOpExportZip * export = [[GTOpExportZip alloc] initWithGD:gd andPath:path andCommit:commit];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:export];
 	[export setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -498,7 +493,7 @@ static NSInteger operationRunCount = 0;
 - (void) runExportTar:(NSString *) path andCommit:(NSString *) commit {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpExportTar * export = [[[GTOpExportTar alloc] initWithGD:gd andPath:path andCommit:commit] autorelease];
+	GTOpExportTar * export = [[GTOpExportTar alloc] initWithGD:gd andPath:path andCommit:commit];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:export];
 	[export setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -509,7 +504,7 @@ static NSInteger operationRunCount = 0;
 - (void) runMergeWithBranch:(NSString *) branchName {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpMerge * merge = [[[GTOpMerge alloc] initWithGD:gd andBranchName:branchName] autorelease];
+	GTOpMerge * merge = [[GTOpMerge alloc] initWithGD:gd andBranchName:branchName];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:merge];
 	[merge setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -521,7 +516,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	networkOpsCancelled = false;
 	[status showStatusIndicatorWithLabel:[NSString stringWithFormat:@"Push: %@ -> %@",branch,remote]];
-	GTOpPushTo * push = [[[GTOpPushTo alloc] initWithGD:gd andBranchName:branch andRemoteName:remote] autorelease];
+	GTOpPushTo * push = [[GTOpPushTo alloc] initWithGD:gd andBranchName:branch andRemoteName:remote];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:push];
 	[push setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -533,7 +528,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	networkOpsCancelled = false;
 	[status showStatusIndicatorWithLabel:[NSString stringWithFormat:@"Pull: %@ <- %@",branch,remote]];
-	GTOpPullFrom * pull = [[[GTOpPullFrom alloc] initWithGD:gd andBranchName:branch andRemoteName:remote] autorelease];
+	GTOpPullFrom * pull = [[GTOpPullFrom alloc] initWithGD:gd andBranchName:branch andRemoteName:remote];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:pull];
 	[pull setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -543,7 +538,7 @@ static NSInteger operationRunCount = 0;
         {
             [status hide];
             [status showStatusIndicatorWithLabel:@"Updating submodules"];
-            GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+            GTOpUpdateSubs * o = [[GTOpUpdateSubs alloc] initWithGD:gd];
             NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
             [o setCompletionBlock:^{
                 [self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -558,7 +553,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSetDefaultRemote:(NSString *) remote forBranch:(NSString *) branch {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpSetDefaultRemote * dr = [[[GTOpSetDefaultRemote alloc] initWithGD:gd andBranchName:branch andRemoteName:remote] autorelease];
+	GTOpSetDefaultRemote * dr = [[GTOpSetDefaultRemote alloc] initWithGD:gd andBranchName:branch andRemoteName:remote];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:dr];
 	[dr setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -571,7 +566,7 @@ static NSInteger operationRunCount = 0;
 	if(isRunningGetConfig) return;
 	isRunningGetConfig = true;
 	[status showSpinner];
-	GTOpGetConfigs * configs = [[[GTOpGetConfigs alloc] initWithGD:gd] autorelease];
+	GTOpGetConfigs * configs = [[GTOpGetConfigs alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:configs];
 	[configs setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -584,7 +579,7 @@ static NSInteger operationRunCount = 0;
 	if(isRunningGetConfig) return;
 	isRunningGetConfig = true;
 	[status showSpinner];
-	GTOpGetGlobalConfigs * configs = [[[GTOpGetGlobalConfigs alloc] initWithGD:gd] autorelease];
+	GTOpGetGlobalConfigs * configs = [[GTOpGetGlobalConfigs alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:configs];
 	[configs setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -595,7 +590,7 @@ static NSInteger operationRunCount = 0;
 - (void) runWriteConfigForKey:(NSString *) key andValue:(NSString *) value isGlobal:(BOOL) _global {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpWriteConfig * write = [[[GTOpWriteConfig alloc] initWithGD:gd andKey:key andValue:value isGlobal:_global] autorelease];
+	GTOpWriteConfig * write = [[GTOpWriteConfig alloc] initWithGD:gd andKey:key andValue:value isGlobal:_global];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:write];
 	[write setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -606,7 +601,7 @@ static NSInteger operationRunCount = 0;
 - (void) runGarbageCollect {
 	if(allCanceled) return;
 	[status showStatusIndicator];
-	GTOpGarbageCollect * gc = [[[GTOpGarbageCollect alloc] initWithGD:gd] autorelease];
+	GTOpGarbageCollect * gc = [[GTOpGarbageCollect alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:gc];
 	[gc setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -617,7 +612,7 @@ static NSInteger operationRunCount = 0;
 - (void) runAggressiveGarbageCollect {
 	if(allCanceled) return;
 	[status showNonCancelableStatusIndicatorWithLabel:@"Aggressive GC - Please Wait"];
-	GTOpGarbageCollect * gc = [[[GTOpGarbageCollect alloc] initWithGD:gd] autorelease];
+	GTOpGarbageCollect * gc = [[GTOpGarbageCollect alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:gc];
 	[gc setIsAggressive:true];
 	[gc setCompletionBlock:^{
@@ -629,7 +624,7 @@ static NSInteger operationRunCount = 0;
 - (void) runNewTrackingBranchWithLocalBranch:(NSString *) _localBranch andRemoteBranch:(NSString *) _remoteBranch andRemote:(NSString *) _remote {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpAddTrackingBranch * b = [[[GTOpAddTrackingBranch alloc] initWithGD:gd andBranchName:_localBranch andRemoteName:_remote andRemoteBranchName:_remoteBranch] autorelease];
+	GTOpAddTrackingBranch * b = [[GTOpAddTrackingBranch alloc] initWithGD:gd andBranchName:_localBranch andRemoteName:_remote andRemoteBranchName:_remoteBranch];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -640,7 +635,7 @@ static NSInteger operationRunCount = 0;
 - (void) runGetRemoteBranchNamesFromRemote:(NSString *) remote {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpGetRemoteBranches * b = [[[GTOpGetRemoteBranches alloc] initWithGD:gd andRemoteName:remote] autorelease];
+	GTOpGetRemoteBranches * b = [[GTOpGetRemoteBranches alloc] initWithGD:gd andRemoteName:remote];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -651,7 +646,7 @@ static NSInteger operationRunCount = 0;
 - (void) runGetRemoteTagNamesFromRemote:(NSString *) remote {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpGetRemoteTags * b = [[[GTOpGetRemoteTags alloc] initWithGD:gd andRemoteName:remote] autorelease];
+	GTOpGetRemoteTags * b = [[GTOpGetRemoteTags alloc] initWithGD:gd andRemoteName:remote];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -662,7 +657,7 @@ static NSInteger operationRunCount = 0;
 - (void) runFetchTag:(NSString *) tag fromRemote:(NSString *) remote {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpFetchTag * b = [[[GTOpFetchTag alloc] initWithGD:gd andRemoteName:remote andTagName:tag] autorelease];
+	GTOpFetchTag * b = [[GTOpFetchTag alloc] initWithGD:gd andRemoteName:remote andTagName:tag];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -673,7 +668,7 @@ static NSInteger operationRunCount = 0;
 - (void) runPushTag:(NSString *) tag toRemote:(NSString *) remote {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpPushTagTo * b = [[[GTOpPushTagTo alloc] initWithGD:gd andRemoteName:remote andTagName:tag] autorelease];
+	GTOpPushTagTo * b = [[GTOpPushTagTo alloc] initWithGD:gd andRemoteName:remote andTagName:tag];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -684,7 +679,7 @@ static NSInteger operationRunCount = 0;
 - (void) runUnsetConfigForKey:(NSString *) key isGlobal:(BOOL) _isGlobal {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpUnsetConfig * b = [[[GTOpUnsetConfig alloc] initWithGD:gd andKey:key isGlobal:_isGlobal] autorelease];
+	GTOpUnsetConfig * b = [[GTOpUnsetConfig alloc] initWithGD:gd andKey:key isGlobal:_isGlobal];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -695,7 +690,7 @@ static NSInteger operationRunCount = 0;
 - (void) runPackRefs {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpPackRefs * b = [[[GTOpPackRefs alloc] initWithGD:gd] autorelease];
+	GTOpPackRefs * b = [[GTOpPackRefs alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -706,7 +701,7 @@ static NSInteger operationRunCount = 0;
 - (void) runPackObjects {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpPackObjects * b = [[[GTOpPackObjects alloc] initWithGD:gd] autorelease];
+	GTOpPackObjects * b = [[GTOpPackObjects alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -717,7 +712,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSendErrorEmail:(NSString *) error {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpErrorEmail * b = [[[GTOpErrorEmail alloc] initWithGD:gd andErrors:error] autorelease];
+	GTOpErrorEmail * b = [[GTOpErrorEmail alloc] initWithGD:gd andErrors:error];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -728,7 +723,7 @@ static NSInteger operationRunCount = 0;
 - (void) runInitRepoInDir:(NSString *) _dir {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpInitRepo * b = [[[GTOpInitRepo alloc] initWithTargetDir:_dir] autorelease];
+	GTOpInitRepo * b = [[GTOpInitRepo alloc] initWithTargetDir:_dir];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:b];
 	[b setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -739,7 +734,7 @@ static NSInteger operationRunCount = 0;
 - (void) runGetCommitsAhead {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpCommitsAhead * ca = [[[GTOpCommitsAhead alloc] initWithGD:gd] autorelease];
+	GTOpCommitsAhead * ca = [[GTOpCommitsAhead alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:ca];
 	[ca setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -749,7 +744,7 @@ static NSInteger operationRunCount = 0;
 
 - (void) runGetCommitsAheadWithoutSpinner {
 	if(allCanceled) return;
-	GTOpCommitsAhead * ca = [[[GTOpCommitsAhead alloc] initWithGD:gd] autorelease];
+	GTOpCommitsAhead * ca = [[GTOpCommitsAhead alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:ca];
 	[ca setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -760,7 +755,7 @@ static NSInteger operationRunCount = 0;
 - (void) runDeleteBranch:(NSString *) branch atRemote:(NSString *) remote {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpDeleteBranchAt * o = [[[GTOpDeleteBranchAt alloc] initWithGD:gd andBranchName:branch andRemoteName:remote] autorelease];
+	GTOpDeleteBranchAt * o = [[GTOpDeleteBranchAt alloc] initWithGD:gd andBranchName:branch andRemoteName:remote];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -772,7 +767,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	networkOpsCancelled=false;
 	[status showStatusIndicatorWithLabel:@"Deleting at remotes, please wait"];
-	GTOpBranchDeleteAtAllRemotes * o = [[[GTOpBranchDeleteAtAllRemotes alloc] initWithGD:gd andBranchName:branch] autorelease];
+	GTOpBranchDeleteAtAllRemotes * o = [[GTOpBranchDeleteAtAllRemotes alloc] initWithGD:gd andBranchName:branch];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -783,7 +778,7 @@ static NSInteger operationRunCount = 0;
 - (void) runDeleteTag:(NSString *) tag atRemote:(NSString *) remote {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpDeleteTagAt * o = [[[GTOpDeleteTagAt alloc] initWithGD:gd andRemoteName:remote andTagName:tag] autorelease];
+	GTOpDeleteTagAt * o = [[GTOpDeleteTagAt alloc] initWithGD:gd andRemoteName:remote andTagName:tag];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -795,7 +790,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled)return;
 	networkOpsCancelled=false;
 	[status showStatusIndicatorWithLabel:@"Deleting at remotes, please wait"];
-	GTOpTagDeleteAllRemotes * o = [[[GTOpTagDeleteAllRemotes alloc] initWithGD:gd andTagName:tag] autorelease];
+	GTOpTagDeleteAllRemotes * o = [[GTOpTagDeleteAllRemotes alloc] initWithGD:gd andTagName:tag];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -806,7 +801,7 @@ static NSInteger operationRunCount = 0;
 - (void) runIgnoreExtension:(NSString *) ext {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpIgnoreExtension * o = [[[GTOpIgnoreExtension alloc] initWithGD:gd andExtension:ext] autorelease];
+	GTOpIgnoreExtension * o = [[GTOpIgnoreExtension alloc] initWithGD:gd andExtension:ext];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -817,7 +812,7 @@ static NSInteger operationRunCount = 0;
 - (void) runNewSubmodule:(NSString *) _submoduleURL inLocalDir:(NSString *) _localDir withName:(NSString *) _submoduleName {
 	if(allCanceled || networkOpsCancelled) return;
 	[status showSpinner];
-	GTOpNewSubmodule * o = [[[GTOpNewSubmodule alloc] initWithGD:gd andSubmoduleURL:_submoduleURL andLocalDir:_localDir andName:_submoduleName] autorelease];
+	GTOpNewSubmodule * o = [[GTOpNewSubmodule alloc] initWithGD:gd andSubmoduleURL:_submoduleURL andLocalDir:_localDir andName:_submoduleName];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -828,7 +823,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSubmoduleUpdateForSubmodule:(NSString *) _submodule {
 	if(allCanceled || networkOpsCancelled) return;
 	[status showStatusIndicatorWithLabel:@"Updating submodule"];
-	GTOpSubmoduleUpdate * o = [[[GTOpSubmoduleUpdate alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+	GTOpSubmoduleUpdate * o = [[GTOpSubmoduleUpdate alloc] initWithGD:gd andSubmodule:_submodule];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -839,7 +834,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSubmoduleSyncForSubmodule:(NSString *) _submodule {
 	if(allCanceled || networkOpsCancelled) return;
 	[status showStatusIndicatorWithLabel:@"Syncing submodule"];
-	GTOpSubmoduleSync * o = [[[GTOpSubmoduleSync alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+	GTOpSubmoduleSync * o = [[GTOpSubmoduleSync alloc] initWithGD:gd andSubmodule:_submodule];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -850,7 +845,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSubmodulePushForSubmodule:(NSString *) _submodule {
 	if(allCanceled || networkOpsCancelled) return;
 	[status showStatusIndicatorWithLabel:@"Pushing submodule"];
-	GTOpSubmodulePush * o = [[[GTOpSubmodulePush alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+	GTOpSubmodulePush * o = [[GTOpSubmodulePush alloc] initWithGD:gd andSubmodule:_submodule];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -861,7 +856,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSubmodulePullForSubmodule:(NSString *) _submodule {
 	if(allCanceled || networkOpsCancelled) return;
 	[status showStatusIndicatorWithLabel:@"Pulling submodule"];
-	GTOpSubmodulePull * o = [[[GTOpSubmodulePull alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+	GTOpSubmodulePull * o = [[GTOpSubmodulePull alloc] initWithGD:gd andSubmodule:_submodule];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -872,7 +867,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSubmoduleUpdateAll {
 	if(allCanceled || networkOpsCancelled) return;
 	[status showStatusIndicatorWithLabel:@"Updating submodules"];
-	GTOpUpdateSubs * o = [[[GTOpUpdateSubs alloc] initWithGD:gd] autorelease];
+	GTOpUpdateSubs * o = [[GTOpUpdateSubs alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -883,7 +878,7 @@ static NSInteger operationRunCount = 0;
 - (void) runSubmoduleInitAll {
 	if(allCanceled || networkOpsCancelled) return;
 	[status showStatusIndicatorWithLabel:@"Initializing submodules"];
-	GTOpInitializeSubs * o = [[[GTOpInitializeSubs alloc] initWithGD:gd] autorelease];
+	GTOpInitializeSubs * o = [[GTOpInitializeSubs alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -894,7 +889,7 @@ static NSInteger operationRunCount = 0;
 - (void) runDeleteSubmodule:(NSString *) _submodule {
 	if(allCanceled || networkOpsCancelled) return;
 	[status showSpinner];
-	GTOpSubmoduleDelete * o = [[[GTOpSubmoduleDelete alloc] initWithGD:gd andSubmodule:_submodule] autorelease];
+	GTOpSubmoduleDelete * o = [[GTOpSubmoduleDelete alloc] initWithGD:gd andSubmodule:_submodule];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -906,7 +901,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled || networkOpsCancelled) return;
 	networkOpsCancelled=false;
 	[status showStatusIndicatorWithLabel:[NSString stringWithFormat:@"Rebase: %@ <- %@",branch,remote]];
-	GTOpRebaseFrom * o = [[[GTOpRebaseFrom alloc] initWithGD:gd andBranchName:branch andRemoteName:remote] autorelease];
+	GTOpRebaseFrom * o = [[GTOpRebaseFrom alloc] initWithGD:gd andBranchName:branch andRemoteName:remote];
 	NSOperationQueue * q = [self newCancelableQueueWithNetworkOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelablesAndNetworkCancelables:q];
@@ -917,7 +912,7 @@ static NSInteger operationRunCount = 0;
 - (void) runOpenFileMergeForFile:(NSString *) _file {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpOpenFileMerge * o = [[[GTOpOpenFileMerge alloc] initWithGD:gd andFileForFileMerge:_file] autorelease];
+	GTOpOpenFileMerge * o = [[GTOpOpenFileMerge alloc] initWithGD:gd andFileForFileMerge:_file];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -928,7 +923,7 @@ static NSInteger operationRunCount = 0;
 - (void) runGetLooseObjects {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpCountObjects * o = [[[GTOpCountObjects alloc] initWithGD:gd] autorelease];
+	GTOpCountObjects * o = [[GTOpCountObjects alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -939,7 +934,7 @@ static NSInteger operationRunCount = 0;
 - (void) runPrepareDiffing {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpPrepareDiffing * o = [[[GTOpPrepareDiffing alloc] initWithGD:gd] autorelease];
+	GTOpPrepareDiffing * o = [[GTOpPrepareDiffing alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -949,7 +944,7 @@ static NSInteger operationRunCount = 0;
 
 - (void) runDiff {
 	if(allCanceled) return;
-	GTOpDiff * o = [[[GTOpDiff alloc] initWithGD:gd] autorelease];
+	GTOpDiff * o = [[GTOpDiff alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -959,7 +954,7 @@ static NSInteger operationRunCount = 0;
 
 - (void) runDiffWithDiff:(GTGitDiff *) diff {
 	if(allCanceled) return;
-	GTOpDiff * o = [[[GTOpDiff alloc] initWithGD:gd] autorelease];
+	GTOpDiff * o = [[GTOpDiff alloc] initWithGD:gd];
 	[o setDiff:diff];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
@@ -996,15 +991,12 @@ static NSInteger operationRunCount = 0;
 	NSArray * parts = [_template componentsSeparatedByString:@"@content@"];
 	NSString * diffHTML = [parts componentsJoinedByString:replaced2];
 	[_diff setDiffContent:diffHTML];
-	[diffContent release];
-	[args release];
-	[task release];
 	[_target performSelector:_action withObject:nil];
 }
 
 - (void) runAsyncDiffWithDiff:(GTGitDiff *) _diff andTemplate:(NSString *) _template withCallback:(id) _target action:(SEL) _action {
 	if(allCanceled) return;
-	GTOpDirectDiff * o = [[[GTOpDirectDiff alloc] initWithGD:gd andDiff:_diff andTemplate:_template] autorelease];
+	GTOpDirectDiff * o = [[GTOpDirectDiff alloc] initWithGD:gd andDiff:_diff andTemplate:_template];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -1014,7 +1006,7 @@ static NSInteger operationRunCount = 0;
 
 - (void) runReportDiffWithDiffContent:(NSString *) _diffContent {
 	if(allCanceled) return;
-	GTOpReportDiff * o = [[[GTOpReportDiff alloc] initWithGD:gd andDiffContent:_diffContent] autorelease];
+	GTOpReportDiff * o = [[GTOpReportDiff alloc] initWithGD:gd andDiffContent:_diffContent];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -1025,7 +1017,7 @@ static NSInteger operationRunCount = 0;
 - (void) runPatchApplyWithFile:(NSString *) _patchFilePath {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpApplyPatch * o = [[[GTOpApplyPatch alloc] initWithGD:gd andDiffFilePath:_patchFilePath] autorelease];
+	GTOpApplyPatch * o = [[GTOpApplyPatch alloc] initWithGD:gd andDiffFilePath:_patchFilePath];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -1037,7 +1029,7 @@ static NSInteger operationRunCount = 0;
 	if(allCanceled) return;
 	showStatusForHistoryLoad=true;
 	[NSTimer scheduledTimerWithTimeInterval:.3 target:self selector:@selector(showStatusLoaderForHistoryLoading) userInfo:nil repeats:false];
-	GTOpLoadHistory * o = [[[GTOpLoadHistory alloc] initWithGD:gd andLoadInfo:_loadInfo] autorelease];
+	GTOpLoadHistory * o = [[GTOpLoadHistory alloc] initWithGD:gd andLoadInfo:_loadInfo];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self performSelectorOnMainThread:@selector(hideStatusLoaderForHistoryLoading) withObject:nil waitUntilDone:false];
@@ -1049,7 +1041,7 @@ static NSInteger operationRunCount = 0;
 - (void) runFetchRemoteBranch:(NSString *) _remoteBranch {
 	if(allCanceled) return;
 	[status showStatusIndicatorWithLabel:[@"Fetching " stringByAppendingString:_remoteBranch]];
-	GTOpFetchRemoteBranch * o = [[[GTOpFetchRemoteBranch alloc] initWithGD:gd andRemoteBranch:_remoteBranch] autorelease];
+	GTOpFetchRemoteBranch * o = [[GTOpFetchRemoteBranch alloc] initWithGD:gd andRemoteBranch:_remoteBranch];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -1060,7 +1052,7 @@ static NSInteger operationRunCount = 0;
 - (void) runMergeRemoteBranch:(NSString *) _remoteBranch {
 	if(allCanceled) return;
 	[status showSpinner];
-	GTOpMergeRemoteBranch * o = [[[GTOpMergeRemoteBranch alloc] initWithGD:gd andRemoteBranch:_remoteBranch] autorelease];
+	GTOpMergeRemoteBranch * o = [[GTOpMergeRemoteBranch alloc] initWithGD:gd andRemoteBranch:_remoteBranch];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -1071,7 +1063,7 @@ static NSInteger operationRunCount = 0;
 - (void) runFetch {
 	if(allCanceled) return;
 	[status showStatusIndicatorWithLabel:@"Fetching"];
-	GTOpFetch * o = [[[GTOpFetch alloc] initWithGD:gd] autorelease];
+	GTOpFetch * o = [[GTOpFetch alloc] initWithGD:gd];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -1081,21 +1073,20 @@ static NSInteger operationRunCount = 0;
 
 - (void) runLoadCommitDetailsWithCommit:(GTGitCommit *) _commit andCommitDetailsTemplate:(NSString *) _template andCommitDetailLoadInfo:(GTGitCommitDetailLoadInfo *) _loadInfo withCallback:(GDCallback *) _callback {
 	if(allCanceled) return;
-	[_callback retain];
 	[status showSpinner];
-	GTOpLoadCommitDetails * o = [[[GTOpLoadCommitDetails alloc] initWithGD:gd andCommit:_commit andCommitLoadInfo:_loadInfo andTemplate:_template] autorelease];
+	GTOpLoadCommitDetails * o = [[GTOpLoadCommitDetails alloc] initWithGD:gd andCommit:_commit andCommitLoadInfo:_loadInfo andTemplate:_template];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
+	__weak typeof(o) weakO = o;
 	[o setCompletionBlock:^{
-		if([o isCancelled]) return;
+		if([weakO isCancelled]) return;
 		[self releaseAndRemoveQFromCancelables:q];
 		[self onLoadCommitDetailsComplete:_callback];
-		[_callback release];
 	}];
 }
 
 - (void) runReportCommitWithCommitContent:(NSString *) _commitContent {
 	if(allCanceled) return;
-	GTOpReportCommit * o = [[[GTOpReportCommit alloc] initWithGD:gd andCommitContent:_commitContent] autorelease];
+	GTOpReportCommit * o = [[GTOpReportCommit alloc] initWithGD:gd andCommitContent:_commitContent];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
@@ -1105,15 +1096,13 @@ static NSInteger operationRunCount = 0;
 
 - (void) runCherryPickCommitWithSHA:(NSString *) _sha withCallback:(GDCallback *) _callback {
 	if(allCanceled) return;
-	[_callback retain];
 	[status showSpinner];
-	GTOpCherryPick * o = [[[GTOpCherryPick alloc] initWithGD:gd andHash:_sha] autorelease];
+	GTOpCherryPick * o = [[GTOpCherryPick alloc] initWithGD:gd andHash:_sha];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
 	[o setCompletionBlock:^{
 		[self releaseAndRemoveQFromCancelables:q];
 		[self onCherryPickComplete];
 		[_callback execute];
-		[_callback release];
 	}];
 }
 
@@ -1612,7 +1601,6 @@ static NSInteger operationRunCount = 0;
 	status=nil;
 	gd=nil;
 	allCanceled=false;
-	[super dealloc];
 }
 
 @end

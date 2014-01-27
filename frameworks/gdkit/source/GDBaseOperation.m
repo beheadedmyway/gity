@@ -26,7 +26,6 @@
 	GDRelease(callback);
 	done=false;
 	canceled=false;
-	[super dealloc];
 }
 
 @end

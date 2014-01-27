@@ -39,8 +39,6 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 
 @end
 
-//static SCEvents *_sharedPathWatcher = nil;
-
 @implementation SCEvents
 
 @synthesize delegate;
@@ -51,36 +49,16 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 @synthesize watchedPaths;
 @synthesize excludedPaths;
 
-/**
- * Returns the shared singleton instance of SCEvents.
- */
-/*+ (id)sharedPathWatcher
-{
-    @synchronized(self) {
-        if (_sharedPathWatcher == nil) {
-            [[self alloc] init];
-        }
-    }
-    
-    return _sharedPathWatcher;
-}*/
-
-/**
- * allocWithZone:
- */
-/*+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized(self) {
-        if (_sharedPathWatcher == nil) {
-            _sharedPathWatcher = [super allocWithZone:zone];
-            
-            return _sharedPathWatcher;
-        }
-    }
-    
-	// On subsequent allocation attempts return nil
-    return nil;
-}*/
+/*
++ (instancetype) sharedInstance {
+    static dispatch_once_t pred;
+    static id inst = nil;
+    dispatch_once(&pred, ^{
+        inst = [[self alloc] init];
+    });
+    return inst;
+}
+*/
 
 /**
  * Initializes an instance of SCEvents setting its default values.
@@ -103,14 +81,6 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
  */ 
 
 - (id)copyWithZone:(NSZone *)zone { return self; }
-
-- (id)retain { return self; }
-
-- (NSUInteger)retainCount { return NSUIntegerMax; }
-
-- (id)autorelease { return self; }
-
-- (oneway void)release { }
 
 /**
  * Flushes the event stream synchronously by sending events that have already 
@@ -193,7 +163,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 {
 	if (!isWatchingPaths) return @"The event stream is not running. Start it by calling: startWatchingPaths:";
 	
-	NSString *result = [(NSString *)FSEventStreamCopyDescription(eventStream) autorelease];
+	NSString *result = (NSString *)CFBridgingRelease(FSEventStreamCopyDescription(eventStream));
 	return result;
 }
 
@@ -216,11 +186,10 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 	// Stop the event stream if it's still running
 	if (isWatchingPaths) [self stopWatchingPaths];
         
-	[lastEvent release], lastEvent = nil;
-    [watchedPaths release], watchedPaths = nil;
-    [excludedPaths release], excludedPaths = nil;
+	lastEvent = nil;
+    watchedPaths = nil;
+    excludedPaths = nil;
     
-    [super dealloc];
 }
 
 @end
@@ -235,14 +204,14 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
     FSEventStreamContext callbackInfo;
 	
 	callbackInfo.version = 0;
-	callbackInfo.info    = (void*)self;
+	callbackInfo.info    = (__bridge void*)self;
 	callbackInfo.retain  = NULL;
 	callbackInfo.release = NULL;
 	callbackInfo.copyDescription = NULL;
 	
 	if (eventStream) FSEventStreamRelease(eventStream);
     
-    eventStream = FSEventStreamCreate(kCFAllocatorDefault, &_SCEventsCallBack, &callbackInfo, ((CFArrayRef)watchedPaths), kFSEventStreamEventIdSinceNow, notificationLatency, kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagWatchRoot);
+    eventStream = FSEventStreamCreate(kCFAllocatorDefault, &_SCEventsCallBack, &callbackInfo, ((__bridge CFArrayRef)watchedPaths), kFSEventStreamEventIdSinceNow, notificationLatency, kFSEventStreamCreateFlagUseCFTypes | kFSEventStreamCreateFlagWatchRoot);
 }
 
 /**
@@ -256,9 +225,9 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 {
     NSUInteger i;
     BOOL shouldIgnore = NO;
-	NSMutableArray *events = [[[NSMutableArray alloc] initWithCapacity:numEvents] autorelease];
+	NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:numEvents];
     
-    SCEvents *pathWatcher = (SCEvents *)clientCallBackInfo;
+    SCEvents *pathWatcher = (__bridge SCEvents *)clientCallBackInfo;
     
     for (i = 0; i < numEvents; i++) 
 	{
@@ -278,7 +247,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
          * calling this callback more frequently.
          */
         
-        NSString *eventPath = [((NSArray *)eventPaths) objectAtIndex:i];
+        NSString *eventPath = [((__bridge NSArray *)eventPaths) objectAtIndex:i];
         NSMutableArray *excludedPaths = [pathWatcher excludedPaths];
         
         // Check to see if the event should be ignored if it's path is in the exclude list
@@ -290,7 +259,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
             // sub-directories then see if the exclude paths match as a prefix of the event path.
             if ([pathWatcher ignoreEventsFromSubDirs]) {
                 for (NSString *path in [pathWatcher excludedPaths]) {
-                    if ([[(NSArray *)eventPaths objectAtIndex:i] hasPrefix:path]) {
+                    if ([[(__bridge NSArray *)eventPaths objectAtIndex:i] hasPrefix:path]) {
                         shouldIgnore = YES;
                         break;
                     }
@@ -302,7 +271,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 			
 			// If present remove the path's trailing slash
 			if ([eventPath hasSuffix:@"/"]) {
-				eventPath = [eventPath substringToIndex:([[((NSArray *)eventPaths) objectAtIndex:i] length] - 1)];
+				eventPath = [eventPath substringToIndex:([[((__bridge NSArray *)eventPaths) objectAtIndex:i] length] - 1)];
 			}
             
             SCEvent *event = [SCEvent eventWithEventId:eventIds[i] eventDate:[NSDate date] eventPath:eventPath eventFlag:eventFlags[i]];

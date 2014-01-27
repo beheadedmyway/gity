@@ -49,12 +49,12 @@
 /**
  * The arguments for the target/selector.
  */
-@property (retain,nonatomic) NSArray * args;
+@property (strong,nonatomic) NSArray * args;
 
 /**
  * The callback target.
  */
-@property (retain,nonatomic) id target;
+@property (strong,nonatomic) id target;
 
 /**
  * Whether or not this callback executes on the main thread.

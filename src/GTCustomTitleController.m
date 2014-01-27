@@ -46,7 +46,6 @@
 	#endif
 	if(title)[title removeFromSuperview];
 	GDRelease(windowTitle);
-	[super dealloc];
 }
 
 @end

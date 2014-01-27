@@ -23,7 +23,6 @@
 @synthesize right;
 
 - (void) awakeFromNib {
-	[tileView retain];
 	diff = [[GTGitDiff alloc] init];
 	[self initViews];
 }
@@ -104,7 +103,6 @@
 	GDRelease(diff);
 	GDRelease(left);
 	GDRelease(right);
-	[super dealloc];
 }
 
 @end

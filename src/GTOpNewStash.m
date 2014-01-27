@@ -38,7 +38,6 @@
 	printf("DEALLOC GTOpNewStash\n");
 	#endif
 	GDRelease(stashName);
-	[super dealloc];
 }
 
 @end

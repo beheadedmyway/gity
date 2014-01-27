@@ -40,8 +40,8 @@
 }
 
 @property (readwrite, assign) NSUInteger eventId;
-@property (readwrite, retain) NSDate *eventDate;
-@property (readwrite, retain) NSString *eventPath;
+@property (readwrite, strong) NSDate *eventDate;
+@property (readwrite, strong) NSString *eventPath;
 @property (readwrite, assign) FSEventStreamEventFlags eventFlag;
 
 + (SCEvent *)eventWithEventId:(NSUInteger)identifier eventDate:(NSDate *)date eventPath:(NSString *)path eventFlag:(FSEventStreamEventFlags)flag;

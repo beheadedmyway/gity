@@ -20,7 +20,7 @@
 @implementation GTOpBaseRemoteBranch
 
 - (id) initWithGD:(GittyDocument *) _gd andRemoteBranch:(NSString *) _remoteBranch {
-	remoteBranch=[_remoteBranch retain];
+	remoteBranch=_remoteBranch;
 	self=[super initWithGD:_gd];
 	return self;
 }
@@ -30,7 +30,6 @@
 	printf("DEALLOC GTOpBaseRemoteBranch\n");
 	#endif
 	GDRelease(remoteBranch);
-	[super dealloc];
 }
 
 @end

@@ -72,7 +72,6 @@
 					[op performSelector:@selector(setShowsHiddenFiles:) withObject:obj];
 				}
 				
-				[obj release];
 			} 
 			@catch (NSException *e) {
 			}
@@ -137,7 +136,6 @@
 					[op performSelector:@selector(setShowsHiddenFiles:) withObject:obj];
 				}
 				
-				[obj release];
 			} 
 			@catch (NSException *e) {
 			}
@@ -178,27 +176,26 @@
     if (subvendorMarker.location != NSNotFound)
     {
         NSString *oldString = versionSTDOUT;
-        versionSTDOUT = [[oldString substringToIndex:subvendorMarker.location] retain];
-        [oldString release];
+        versionSTDOUT = [oldString substringToIndex:subvendorMarker.location];
     }
 	
 	NSArray *pieces = [versionSTDOUT componentsSeparatedByString:@" "];
 	
 	if([pieces count] < 2) {
-		goto cleanup;
+		return;
 	}
     
 	NSString *versionString = [pieces lastObject];
 	NSArray *versionPieces = [versionString componentsSeparatedByString:@"."];
 
 	if([versionPieces count] < 2) {
-		goto cleanup;
+		return;
 	}
 	
 	int gitMinor = [[versionPieces objectAtIndex:1] intValue];
 	
 	if(gitMinor > 5) {
-		goto cleanup;
+		return;
 	}
 	
 	NSString *msg = @"Git Version Not Supported";
@@ -211,11 +208,6 @@
 	NSRunAlertPanel(msg, desc, @"OK", nil, nil);
 	
 	[[NSApplication sharedApplication] terminate:nil];
-
-cleanup:
-	[task release];
-	[args release];
-	[versionSTDOUT release];
 }
 
 - (NSString *) gitExecPath {
@@ -233,13 +225,11 @@ cleanup:
 	[task setCurrentDirectoryPath:proposedPath];
 	[task setArguments:args];
 	
-	[args release];
 	
 	[task launch];
 	[task waitUntilExit];
 	
 	if([task terminationStatus] == 128) {
-		[task release];
 		return nil;
 	}
 	
@@ -247,28 +237,21 @@ cleanup:
 	NSData *data = [fout readDataToEndOfFile];
 	NSString *path = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    [gitConfigPath release];
     gitConfigPath = nil;
 	
 	if([path isEqual:@".git\n"]) {
-		[path release];
-		[task release];
-        gitConfigPath = [[proposedPath stringByAppendingPathComponent:@"/.git"] retain];
+        gitConfigPath = [proposedPath stringByAppendingPathComponent:@"/.git"];
 		return proposedPath;
 	}
     
-    gitConfigPath = [[path stringByReplacingOccurrencesOfString:@"\n" withString:@""] retain];
+    gitConfigPath = [path stringByReplacingOccurrencesOfString:@"\n" withString:@""];
 
     // this takes into account newer git version's handling of submodules
     if ([path rangeOfString:@".git/modules"].location != NSNotFound) {
         NSString *newPath = [gitConfigPath stringByReplacingOccurrencesOfString:@"/.git/modules" withString:@""];
-		[path release];
-		[task release];
 		return newPath;        
     }
 	
-	[path autorelease];
-	[task release];
 	
 	return [path stringByDeletingLastPathComponent];
 }
@@ -341,7 +324,6 @@ cleanup:
 	
 	int res = [status terminationStatus];
 	
-	[status release];
 	
 	if(res > 1) {
 		return FALSE;
@@ -360,7 +342,6 @@ cleanup:
 	
 	int res = [initask terminationStatus];
 	
-	[initask release];
 	
 	if(res > 1) {
 		return false;
@@ -378,7 +359,6 @@ cleanup:
     GDRelease(gitConfigPath);
 	GDRelease(environment);
 	
-	[super dealloc];
 }
 
 @end

@@ -16,6 +16,7 @@
 // along with Gity. If not, see <http://www.gnu.org/licenses/>.
 
 #import "GTActionsMenuDelegate.h"
+#import "GTSourceListMenuView.h"
 
 @implementation GTActionsMenuDelegate
 @synthesize sourceListMenuView;
@@ -26,7 +27,6 @@
 
 - (void) dealloc {
 	GDRelease(sourceListMenuView);
-	[super dealloc];
 }
 
 @end

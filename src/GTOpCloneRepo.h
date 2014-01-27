@@ -27,10 +27,10 @@
 	NSString * repoURL;
 	NSString * dir;
 	NSString * pathToOpen;
-	GTCloneRepoController * cloneController;
+	GTCloneRepoController * __weak cloneController;
 }
 
-@property (assign,nonatomic) GTCloneRepoController * cloneController;
+@property (weak,nonatomic) GTCloneRepoController * cloneController;
 @property (readonly,nonatomic) NSString * pathToOpen;
 
 //- (id) initWithGD:(GittyDocument *) _gd andRepoURL:(NSString *) url inDir:(NSString *) dir;

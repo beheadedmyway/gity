@@ -95,7 +95,6 @@
 	}
 	if([allFiles count] < 1) {
 		hasCrash=false;
-		[allFiles release];
 		return;
 	}
 	NSSortDescriptor * dateSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"modDate" ascending:true];
@@ -109,8 +108,6 @@
 		[def setDouble:nextCrashTI forKey:udkey];
 	}
 	else hasCrash = false;
-	[dateSortDescriptor release];
-	[allFiles release];
 }
 
 - (void) show {
@@ -120,7 +117,6 @@
 	[fh closeFile];
 	NSString * crashContent = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	[[[details textStorage] mutableString] appendString:crashContent];
-	[crashContent release];
 	[window makeKeyAndOrderFront:nil];
 	[details setFont:[NSFont fontWithName:@"Lucida Grande" size:11]];
 	[window makeFirstResponder:send];
@@ -148,7 +144,6 @@
 	if(!_searchPath) return;
 	NSString * c = [_searchPath copy];
 	[searchPaths addObject:c];
-	[c release];
 }
 
 - (void) _deleteCrashReport {
@@ -180,7 +175,6 @@
 		[args addObject:[@"-c " stringByAppendingString:tmpFileName]];
 	}
 	[task setArguments:args];
-	[args release];
 	[self performSelectorInBackground:@selector(launchTask) withObject:nil];
 	[self performCrashReporterDidSendOnDelegate];
 }
@@ -191,11 +185,11 @@
 }
 
 - (void) launchTask {
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+@autoreleasepool {
 	[task launch];
 	[task waitUntilExit];
-	[pool drain];
 	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:false];
+}
 }
 
 - (IBAction) oncancel:(id) sender {
@@ -221,7 +215,6 @@
 	GDRelease(crashFile);
 	GDRelease(windowTitle);
 	GDRelease(crashMessage);
-	[super dealloc];
 }
 
 @end

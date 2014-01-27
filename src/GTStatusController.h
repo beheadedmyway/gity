@@ -34,20 +34,20 @@ typedef enum {
 	NSMutableArray * spinnerStack;
 	IBOutlet NSWindow * initialLoadWindow;
 	IBOutlet NSProgressIndicator * initialLoadIndicator;
-	IBOutlet NSWindow * workingWindow;
-	IBOutlet NSProgressIndicator * workingProgress;
-	IBOutlet NSWindow * workingLabeledWindow;
-	IBOutlet NSProgressIndicator * workingLabeledProgress;
+	IBOutlet NSWindow * __weak workingWindow;
+	IBOutlet NSProgressIndicator * __weak workingProgress;
+	IBOutlet NSWindow * __weak workingLabeledWindow;
+	IBOutlet NSProgressIndicator * __weak workingLabeledProgress;
 	IBOutlet NSProgressIndicator * spinner;
 	IBOutlet NSTextField * workingLabel;
 	GTActiveStatus activeStatus;
 	GTScaledButtonControl * indicatorCancel;
 }
 
-@property (readonly,nonatomic) IBOutlet NSWindow * workingWindow;
-@property (readonly,nonatomic) IBOutlet NSProgressIndicator * workingProgress;
-@property (readonly,nonatomic) IBOutlet NSWindow * workingLabeledWindow;
-@property (readonly,nonatomic) IBOutlet NSProgressIndicator * workingLabeledProgress;
+@property (weak, readonly,nonatomic) IBOutlet NSWindow * workingWindow;
+@property (weak, readonly,nonatomic) IBOutlet NSProgressIndicator * workingProgress;
+@property (weak, readonly,nonatomic) IBOutlet NSWindow * workingLabeledWindow;
+@property (weak, readonly,nonatomic) IBOutlet NSProgressIndicator * workingLabeledProgress;
 
 - (void) hide;
 - (BOOL) isShowingSheet;

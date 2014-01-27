@@ -20,8 +20,8 @@
 @implementation GTOpDirectDiff
 
 - (id) initWithGD:(GittyDocument *) _gd andDiff:(GTGitDiff *) _diff andTemplate:(NSString *) _template {
-	diff=[_diff retain];
-	diffTemplate=[_template retain];
+	diff=_diff;
+	diffTemplate=_template;
 	self=[super initWithGD:_gd];
 	return self;
 }
@@ -79,7 +79,6 @@
 	#endif
 	GDRelease(diff);
 	GDRelease(diffTemplate);
-	[super dealloc];
 }
 
 @end

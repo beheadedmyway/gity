@@ -19,11 +19,5 @@
 
 @implementation GTDeleteBranchAccessoryView
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTDeleteBranchAccessoryView\n");
-	#endif
-	[super dealloc];
-}
 
 @end

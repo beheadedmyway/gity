@@ -25,14 +25,13 @@
 }
 
 - (void) main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+@autoreleasepool {
 	if([self isCancelled]) {
-		[pool drain];
 		return;
 	}
 	[self performSelectorOnMainThread:@selector(update) withObject:nil waitUntilDone:YES];
 	done = true;
-	[pool drain];
+}
 }
 
 @end

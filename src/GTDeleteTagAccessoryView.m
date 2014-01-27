@@ -19,11 +19,5 @@
 
 @implementation GTDeleteTagAccessoryView
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTDeleteTagAccessoryView\n");
-	#endif
-	[super dealloc];
-}
 
 @end

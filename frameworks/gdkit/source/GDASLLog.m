@@ -98,7 +98,6 @@
 
 - (void) dealloc {
 	[self close];
-	[super dealloc];
 }
 
 @end

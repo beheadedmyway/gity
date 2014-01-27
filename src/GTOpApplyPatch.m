@@ -37,7 +37,6 @@
 	printf("DEALLOC GTOpApplyPatch\n");
 	#endif
 	GDRelease(diffFilePath);
-	[super dealloc];
 }
 
 @end

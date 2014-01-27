@@ -40,7 +40,6 @@
 	#endif
 	GDRelease(lineColor);
 	isVertical=false;
-	[super dealloc];
 }
 
 @end

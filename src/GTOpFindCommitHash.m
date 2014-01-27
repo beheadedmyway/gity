@@ -37,7 +37,6 @@
 	printf("DEALLOC GTOpFindCommitHash\n");
 	#endif
 	GDRelease(archiveFile);
-	[super dealloc];
 }
 
 @end

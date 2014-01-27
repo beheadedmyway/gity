@@ -32,7 +32,6 @@
 	#endif
 	target=nil;
 	action=nil;
-	[super dealloc];
 }
 
 @end

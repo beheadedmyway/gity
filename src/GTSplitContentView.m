@@ -62,11 +62,5 @@
 	[[self leftView] setFrame:lvf];
 }
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTSplitContentView\n");
-	#endif
-	[super dealloc];
-}
 
 @end

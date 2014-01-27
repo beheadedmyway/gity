@@ -77,9 +77,7 @@
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GTNewBranchController\n");
 	#endif
-	[branchValue release];
 	[self disposeNibs];
-	[super dealloc];
 }
 
 @end

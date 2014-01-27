@@ -43,7 +43,6 @@
 	GDRelease(key);
 	GDRelease(value);
 	isGlobal=false;
-	[super dealloc];
 }
 
 @end

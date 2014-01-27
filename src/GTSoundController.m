@@ -21,18 +21,18 @@ static GTSoundController *inst;
 
 @implementation GTSoundController
 
-+ (GTSoundController *) sharedInstance {
-	@synchronized(self) {
-		if(!inst) {
-			inst = [[self alloc] init];
-		}
-	}
-	return inst;
++ (instancetype) sharedInstance {
+    static dispatch_once_t pred;
+    static id inst = nil;
+    dispatch_once(&pred, ^{
+        inst = [[self alloc] init];
+    });
+    return inst;
 }
 
 - (id) init {
 	if(self = [super init]) {
-		pop = [[NSSound soundNamed:@"Pop"] retain];
+		pop = [NSSound soundNamed:@"Pop"];
 		[pop setVolume:0.8];
 	}
 	
@@ -60,15 +60,4 @@ static GTSoundController *inst;
 - (id) copyWithZone:(NSZone *) zone {
 	return self;
 }
-- (id) retain {
-	return self;
-}
-- (NSUInteger) retainCount {
-	return UINT_MAX;
-}
-- (id) autorelease {
-	return self;
-}
-- (oneway void) release {}
-
 @end

@@ -35,7 +35,6 @@
 	if(webView) {
 		[webView setUIDelegate:nil];
 		[webView removeFromSuperview];
-		[webView release];
 	}
     webView=[[WebView alloc] initWithFrame:[self frame]];
 	[webView setUIDelegate:self];
@@ -148,7 +147,7 @@
 		NSBeep();
 		return;
 	}
-	GDCallback * cb = [[[GDCallback alloc] initWithTarget:self andAction:@selector(onCherryPickComplete)] autorelease];
+	GDCallback * cb = [[GDCallback alloc] initWithTarget:self andAction:@selector(onCherryPickComplete)];
 	[cb setExecutesOnMainThread:true];
 	[[gd operations] runCherryPickCommitWithSHA:[commit hash] withCallback:cb];
 }
@@ -207,7 +206,7 @@
 	wasCommitNil=false;
 	if([[commit hash] isEqual:curSHA] && ![[historyDetailsContainerView barView] hasContextChanged]) return;
 	[commitLoadInfo setContextValue:[[historyDetailsContainerView barView] contextValue]];
-	GDCallback * cb = [[[GDCallback alloc] initWithTarget:self andAction:@selector(onCommitLoaded)] autorelease];
+	GDCallback * cb = [[GDCallback alloc] initWithTarget:self andAction:@selector(onCommitLoaded)];
 	waitForLoad=true;
 	[operations runLoadCommitDetailsWithCommit:commit andCommitDetailsTemplate:commitTemplate andCommitDetailLoadInfo:commitLoadInfo withCallback:cb];
 	curSHA=[[commit hash] copy];
@@ -262,7 +261,6 @@
     [webView setUIDelegate:nil];
     [webView setFrameLoadDelegate:nil];
     [webView setResourceLoadDelegate:nil];
-	[webView release];
 	webView=nil;
 }
 
@@ -276,7 +274,6 @@
 	GDRelease(curSHA);
 	historyView=nil;
 	historyDetailsContainerView=nil;
-	[super dealloc];
 }
 
 @end

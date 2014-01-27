@@ -28,7 +28,6 @@
 	[remoteBranch setEnabled:false];
 	[localBranchName setEnabled:false];
 	[localBranchName setDelegate:self];
-	[notAtRemote retain];
 	[notAtRemote removeFromSuperview];
 	branchesCache=[[NSMutableDictionary alloc] init];
 }
@@ -36,7 +35,6 @@
 - (void) initSpinner {
 	NSRect r=[spinner frame];
 	[spinner setFrame:NSMakeRect(r.origin.x,r.origin.y,10,10)];
-	[spinner retain];
 	[spinner removeFromSuperview];
 	[spinner setUsesThreadedAnimation:true];
 }
@@ -89,13 +87,11 @@
 	NSMenuItem * item = [[NSMenuItem alloc] init];
 	[item setTitle:@"Select A Remote"];
 	[sourceRemotes addItem:item];
-	[item release];
 	item=nil;
 	for(remote in remotes) {
 		item = [[NSMenuItem alloc] init];
 		[item setTitle:remote];
 		[sourceRemotes addItem:item];
-		[item release];
 		item = nil;
 	}
 	[sourceRemote setMenu:sourceRemotes];
@@ -121,14 +117,12 @@
 	NSMenuItem * item = [[NSMenuItem alloc] init];
 	[item setTitle:@"Select A Branch"];
 	[availableBranches addItem:item];
-	[item release];
 	item=nil;
 	NSString * branch;
 	for(branch in bn) {
 		item=[[NSMenuItem alloc] init];
 		[item setTitle:branch];
 		[availableBranches addItem:item];
-		[item release];
 		item=nil;
 	}
 	[remoteBranch setMenu:availableBranches];
@@ -136,7 +130,6 @@
 	[sourceRemote setEnabled:true];
 	[spinner stopAnimation:nil];
 	[spinner removeFromSuperview];
-	[availableBranches release];
 	availableBranches=nil;
 	working=false;
 }
@@ -233,7 +226,6 @@
 	printf("DEALLOC GTNuRemoteTrackBranch\n");
 	#endif
 	[self disposeNibs];
-	[super dealloc];
 }
 
 @end

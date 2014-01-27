@@ -34,9 +34,6 @@
 	NSString * dataJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray * status = [NSMutableArray arrayWithArray:[json objectWithString:dataJSON error:nil]];
-	[dataJSON release];
-	[json release];
-	[read release];
 	if([self isCancelled]) return;
 	[gitd setConfigs:status];
 }

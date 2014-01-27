@@ -31,8 +31,8 @@
 	NSString * right;
 }
 
-@property (retain) NSString * diffContent;
-@property (retain,nonatomic) NSMutableArray * filePaths;
+@property (strong) NSString * diffContent;
+@property (strong,nonatomic) NSMutableArray * filePaths;
 @property (assign,nonatomic) NSInteger contextValue;
 @property (copy,nonatomic) NSString * left;
 @property (copy,nonatomic) NSString * right;

@@ -37,7 +37,6 @@
 	printf("DEALLOC GTOpCherryPick\n");
 	#endif
 	GDRelease(hash);
-	[super dealloc];
 }
 
 @end

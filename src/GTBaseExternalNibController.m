@@ -116,10 +116,7 @@ static NSPoint tr;
 	if(window) {
 		if([window isSheet]) [[NSApplication sharedApplication] endSheet:window];
 		[window orderOut:nil];
-		[window release];
 	}
-	if(ok)[ok release];
-	if(cancel)[cancel release];
 	ok=nil;
 	cancel=nil;
 	window=nil;
@@ -130,12 +127,8 @@ static NSPoint tr;
 	target=nil;
 	action=nil;
 	available=false;
-	window=nil;
-	if(ok)[ok release];
-	if(cancel)[cancel release];
 	ok=nil;
 	cancel=nil;
-	[super dealloc];
 }
 
 @end

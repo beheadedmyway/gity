@@ -21,12 +21,12 @@ static GTStyles * inst;
 
 @implementation GTStyles
 
-+ (GTStyles *) sharedInstance {
-	@synchronized(self) {
-		if(!inst) {
-			inst = [[self alloc] init];
-		}
-    }
++ (instancetype) sharedInstance {
+    static dispatch_once_t pred;
+    static id inst = nil;
+    dispatch_once(&pred, ^{
+        inst = [[self alloc] init];
+    });
     return inst;
 }
 
@@ -36,7 +36,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:12];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getDownButtonString:(NSString *) title {
@@ -45,7 +45,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:12];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getOverButtonString:(NSString *) title {
@@ -54,7 +54,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:12];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getCustomWindowTitleString:(NSString *) title {
@@ -63,7 +63,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getRoundStatusButtonText:(NSString *) title {
@@ -72,7 +72,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getRoundStatusButtonOverText:(NSString *) title {
@@ -81,7 +81,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getRoundStatusButtonDownText:(NSString *) title {
@@ -90,7 +90,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getGrayRoundStatusButtonText:(NSString *) title {
@@ -99,7 +99,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getGrayRoundStatusButtonOverText:(NSString *) title {
@@ -108,7 +108,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getGrayRoundStatusButtonDownText:(NSString *) title {
@@ -117,7 +117,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getRedStatusButtonText:(NSString *) title {
@@ -126,7 +126,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getRedStatusButtonOverText:(NSString *) title {
@@ -135,7 +135,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getRedStatusButtonDownText:(NSString *) title {
@@ -144,7 +144,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (NSAttributedString *) getDarkerStringForInsetLabel:(NSString *) label {
@@ -153,7 +153,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:label attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:label attributes:d];
 }
 
 + (NSAttributedString *) getLighterStringForInsetLabel:(NSString *) label {
@@ -162,7 +162,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:label attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:label attributes:d];
 }
 
 + (NSAttributedString *) getSelectorNormalLabel:(NSString *) label {
@@ -171,7 +171,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:label attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:label attributes:d];
 }
 
 + (NSAttributedString *) getSelectorOverLabel:(NSString *) label {
@@ -180,7 +180,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:label attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:label attributes:d];
 }
 
 + (NSAttributedString *) getSelectorDownLabel:(NSString *) label {
@@ -189,7 +189,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:9];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:label attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:label attributes:d];
 }
 
 + (NSAttributedString *) getFilteredSearchLabel:(NSString *) title {
@@ -199,7 +199,7 @@ static GTStyles * inst;
 	NSFont * font = [NSFont fontWithName:@"Lucida Grande" size:10];
 	[d setObject:font forKey:NSFontAttributeName];
 	[d setObject:forg forKey:NSForegroundColorAttributeName];
-	return [[[NSAttributedString alloc] initWithString:title attributes:d] autorelease];
+	return [[NSAttributedString alloc] initWithString:title attributes:d];
 }
 
 + (id)allocWithZone:(NSZone *) zone {
@@ -215,21 +215,5 @@ static GTStyles * inst;
 - (id)copyWithZone:(NSZone *) zone {
 	return self;
 }
-
-- (id)retain {
-	return self;
-}
-
-- (NSUInteger) retainCount {
-	return UINT_MAX;
-}
-
-- (id) autorelease {
-	return self;
-}
-
-- (oneway void) release{
-}
-
 
 @end

@@ -22,7 +22,7 @@
 
 + (NSFileHandle *) tmpFile:(NSString *) path {
 	int fd = open([path UTF8String],O_RDWR|O_CREAT|O_TRUNC, S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH|S_IWOTH);
-	NSFileHandle * fh = [[[NSFileHandle alloc] initWithFileDescriptor:fd closeOnDealloc:true] autorelease];
+	NSFileHandle * fh = [[NSFileHandle alloc] initWithFileDescriptor:fd closeOnDealloc:true];
 	if(!fh) {
 		if(fd>-1)close(fd);
 		return nil;

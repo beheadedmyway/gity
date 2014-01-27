@@ -20,7 +20,7 @@
 @implementation GTOpIgnoreFiles
 
 - (id) initWithGD:(GittyDocument *) _gd andFiles:(NSMutableArray *) _files {
-	files = [_files retain];
+	files = _files;
 	self = [super initWithGD:_gd];
 	return self;
 }
@@ -38,7 +38,6 @@
 	printf("DEALLOC GTOpIgnoreFiles\n");
 	#endif
 	GDRelease(files);
-	[super dealloc];
 }
 
 @end

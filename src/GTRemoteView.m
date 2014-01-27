@@ -39,7 +39,6 @@
 	printf("DEALLOC GTRemoteView\n");
 	#endif
 	[self removeFromSuperview];
-	[super dealloc];
 }
 
 @end

@@ -11,7 +11,7 @@
 	CGDisplayErr e = CGGetActiveDisplayList(kGDMaxDisplays,ids,&count);
 	if(e > 0) return nil;
 	for(int i = 0;i < count; i++) {
-		GDQuartzDisplay * dis = [[[GDQuartzDisplay alloc] initWithDirectDisplayID:(CGDirectDisplayID)ids[i]] autorelease];
+		GDQuartzDisplay * dis = [[GDQuartzDisplay alloc] initWithDirectDisplayID:(CGDirectDisplayID)ids[i]];
 		if(dis != nil) [res addObject:dis];
 	}
 	return res;
@@ -24,14 +24,14 @@
 	CGDisplayErr e = CGGetOnlineDisplayList(kGDMaxDisplays,ids,&count);
 	if(e > 0) return nil;
 	for(int i = 0;i < count; i++) {
-		GDQuartzDisplay * dis = [[[GDQuartzDisplay alloc] initWithDirectDisplayID:(CGDirectDisplayID)ids[i]] autorelease];
+		GDQuartzDisplay * dis = [[GDQuartzDisplay alloc] initWithDirectDisplayID:(CGDirectDisplayID)ids[i]];
 		if(dis != nil) [res addObject:dis];
 	}
 	return res;
 }
 
 + (GDQuartzDisplay *) mainDisplay {
-	return [[[GDQuartzDisplay alloc] initWithDirectDisplayID:CGMainDisplayID()] autorelease];
+	return [[GDQuartzDisplay alloc] initWithDirectDisplayID:CGMainDisplayID()];
 }
 
 - (id) initWithPoint:(NSPoint) point {
@@ -118,13 +118,13 @@
 - (GDQuartzDisplay *) mirrorsDisplay {
 	CGDirectDisplayID mirroredDisplayID = CGDisplayMirrorsDisplay(displayId);
 	if(mirroredDisplayID == kCGNullDirectDisplay) return nil;
-	return [[[GDQuartzDisplay alloc] initWithDirectDisplayID:mirroredDisplayID] autorelease];
+	return [[GDQuartzDisplay alloc] initWithDirectDisplayID:mirroredDisplayID];
 }
 
 - (GDQuartzDisplay *) primaryDisplay {
 	CGDirectDisplayID primaryDisplayID = CGDisplayPrimaryDisplay(displayId);
 	if(primaryDisplayID == kCGNullDirectDisplay) return nil;
-	return [[[GDQuartzDisplay alloc] initWithDirectDisplayID:primaryDisplayID] autorelease];
+	return [[GDQuartzDisplay alloc] initWithDirectDisplayID:primaryDisplayID];
 }
 
 - (double) rotation {
@@ -165,7 +165,6 @@
 
 - (void) dealloc {
 	displayId = 0;
-	[super dealloc];
 }
 
 @end

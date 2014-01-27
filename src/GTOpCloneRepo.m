@@ -54,7 +54,7 @@
 }
 
 - (void) main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
+@autoreleasepool {	
 	if([self isCancelled]) goto cleanup;
 	[task launch];
 	if(readsSTDOUT) [self readSTDOUT];
@@ -62,7 +62,7 @@
 	[task waitUntilExit];
 cleanup:
 	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
-	[pool drain];
+}
 }
 
 - (void) taskComplete {
@@ -85,7 +85,6 @@ cleanup:
 	GDRelease(dir);
 	GDRelease(pathToOpen);
 	cloneController = nil;
-	[super dealloc];
 }
 
 @end

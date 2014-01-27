@@ -47,7 +47,6 @@
 	printf("DEALLOC GTTileView\n");
 	#endif
 	GDRelease(tileImage);
-	[super dealloc];
 }
 
 @end

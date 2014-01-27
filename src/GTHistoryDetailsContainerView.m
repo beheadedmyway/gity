@@ -25,7 +25,6 @@
 
 - (void) awakeFromNib {
 	[super awakeFromNib];
-	[tileView retain];
 	[self initViews];
 }
 
@@ -79,7 +78,6 @@
 	printf("DEALLOC GTHistoryDetailsContainerView\n");
 	#endif
 	GDRelease(tileView);
-	[super dealloc];
 }
 
 @end

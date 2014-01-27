@@ -84,17 +84,17 @@
 /**
  * A GDViewController.
  */
-@property (retain,nonatomic) id views;
+@property (strong,nonatomic) id views;
 	
 /**
  * A GDWindowController.
  */
-@property (retain,nonatomic) id wins;
+@property (strong,nonatomic) id wins;
 	
 /**
  * A GDDrawerController.
  */
-@property (retain,nonatomic) id drawers;
+@property (strong,nonatomic) id drawers;
 
 /**
  * A GDContextMenuController.

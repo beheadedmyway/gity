@@ -135,7 +135,7 @@
 	if([stageAddedFiles count] > 0) [files addObjectsFromArray:stageAddedFiles];
 	if([stageModifiedFiles count] > 0) [files addObjectsFromArray:stageModifiedFiles];
 	if([stageDeletedFiles count] > 0) [files addObjectsFromArray:stageDeletedFiles];
-	return [files autorelease];
+	return files;
 }
 
 - (NSInteger) stagedAddedFilesCount {
@@ -227,7 +227,6 @@
 		if([[refs objectForKey:key] isEqual:_sha]) [frefs addObject:key];
 	}
 	//if([refs count]>0)[refsCache setObject:frefs forKey:_sha];
-	[frefs autorelease];
 	return frefs;
 }
 
@@ -243,33 +242,9 @@
 	#ifdef GT_PRINT_DEALLOCS
 	printf("DEALLOC GTGitDataStore\n");
 	#endif
-	[activeBranchName release];
-	[allFiles release];
-	[modifiedFiles release];
-	[untrackedFiles release];
-	[deletedFiles release];
-	[stagedFiles release];
-	[stageAddedFiles release];
-	[stageDeletedFiles release];
-	[stageModifiedFiles release];
-	[stageRenamedFiles release];
-	[branchNames release];
-	[tagNames release];
-	[ignorePatterns release];
-	[remotes release];
-	[remoteTrackingBranches release];
-	[savedStashes release];
-	[defaultRemotes release];
-	[configs release];
-	[globalConfigs release];
-	[remoteBranchNames release];
-	[submodules release];
-	[unmergedFiles release];
-	[historyCommits release];
 	GDRelease(refsCache);
 	GDRelease(refs);
 	gd=nil;
-	[super dealloc];
 }
 
 @end

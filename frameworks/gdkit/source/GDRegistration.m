@@ -23,7 +23,6 @@
 	NSURLRequest * home = [NSURLRequest requestWithURL:u];
 	NSURLConnection * con = [[NSURLConnection alloc] initWithRequest:home delegate:NULL];
 	[defaults setBool:TRUE forKey:kGDRegistrationHasSentHome];
-	[con release];
 }
 
 - (void) saveRegistrationIntoUserDefaults:(NSString *) nameStorageKey licenseStorageKey:(NSString *) licenseStorageKey name:(NSString *) name license:(NSString *) license {
@@ -77,9 +76,5 @@
 	return [defaults objectForKey:kGDRegistrationLicenseKey];
 }
 
-- (void) dealloc {
-	[blacklist release];
-	[super dealloc];
-}
 
 @end

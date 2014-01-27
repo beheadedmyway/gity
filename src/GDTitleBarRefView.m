@@ -76,7 +76,6 @@
 	GDRelease(branchesMenuItem);
 	GDRelease(remoteBranchesMenuItem);
 	GDRelease(refMenu);
-	[super dealloc];
 }
 
 @end

@@ -39,7 +39,7 @@
 /**
  * The delegate for this crash reporter.
  */
-@property (retain,nonatomic) id delegate;
+@property (strong,nonatomic) id delegate;
 
 /**
  * A user defaults key prefix. This is used when saving the last

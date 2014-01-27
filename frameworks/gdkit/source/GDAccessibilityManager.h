@@ -65,7 +65,7 @@ typedef enum {
 /**
  * Singleton instance.
  */
-+ (GDAccessibilityManager *) sharedInstance;
++ (instancetype) sharedInstance;
 
 /**
  * Whether or not the accessibility API is on.

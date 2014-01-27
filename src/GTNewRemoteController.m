@@ -127,8 +127,6 @@
 - (void) disposeNibs {
 	[super disposeNibs];
 	lastButtonValue = NSCancelButton;
-	[_remoteNameValue release];
-	[_remoteURLValue release];
 	_remoteNameValue = nil;
 	_remoteURLValue = nil;
 }
@@ -138,7 +136,6 @@
 	printf("DEALLOC GTNewRemoteController\n");
 	#endif
 	[self disposeNibs];
-	[super dealloc];
 }
 
 @end

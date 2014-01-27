@@ -33,8 +33,6 @@
 	NSString * tagNamesJson = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray * tags = [NSMutableArray arrayWithArray:[json objectWithString:tagNamesJson error:nil]];
-	[json release];
-	[tagNamesJson release];
 	if([self isCancelled]) return;
 	[gitd setTagNames:tags];
 }

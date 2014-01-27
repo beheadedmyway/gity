@@ -103,15 +103,6 @@
 	
 	NSDrawNinePartImage(NSMakeRect(0,0,[self bounds].size.width,[self frame].size.height),topLeft,top,topRight,left,center,right,bottomLeft,bottom,bottomRight,NSCompositeSourceAtop,1.0,NO);
 	
-	[topLeft release];
-	[top release];
-	[topRight release];
-	[left release];
-	[center release];
-	[right release];
-	[bottomLeft release];
-	[bottom release];
-	[bottomRight release];
 	
 	[super drawRect:rect];
 }
@@ -121,7 +112,6 @@
 	topLeftPoint.y = 0;
 	bottomRightPoint.y = 0;
 	bottomRightPoint.y = 0;
-	[super dealloc];
 }
 
 @end

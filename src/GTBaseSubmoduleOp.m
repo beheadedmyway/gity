@@ -30,7 +30,6 @@
 	printf("DEALLOC GTBaseSubmoduleOp\n");
 	#endif
 	GDRelease(submodule);
-	[super dealloc];
 }
 
 @end

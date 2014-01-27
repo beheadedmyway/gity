@@ -37,7 +37,6 @@
 	printf("DEALLOC GTOpDeleteRemote\n");
 	#endif
 	GDRelease(remoteName);
-	[super dealloc];
 }
 
 @end

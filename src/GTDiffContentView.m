@@ -23,10 +23,10 @@
 @synthesize webView;
 
 - (void) awakeFromNib {
-	color=[[NSColor whiteColor] retain];
+	color=[NSColor whiteColor];
 	sourceColor=color;
-	darkerColor=[[NSColor colorWithDeviceRed:.88 green:.88 blue:.88 alpha:1] retain];
-	tileImage = [[NSImage imageNamed:@"diagonalStripes2.png"] retain];
+	darkerColor=[NSColor colorWithDeviceRed:.88 green:.88 blue:.88 alpha:1];
+	tileImage = [NSImage imageNamed:@"diagonalStripes2.png"];
 	[self initWebView];
 }
 
@@ -101,7 +101,6 @@
 	if(webView is nil) return;
 	[webView removeFromSuperview];
 	[diffView releaseDiffContent];
-	[webView release];
 	webView=nil;
 	[mainMenuHelper invalidateViewMenu];
 }
@@ -118,7 +117,6 @@
 	GDRelease(color);
 	diffView=nil;
 	sourceColor=nil;
-	[super dealloc];
 }
 
 @end

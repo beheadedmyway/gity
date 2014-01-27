@@ -8,7 +8,6 @@
 
 - (id) copyWithZone:(NSZone*) zone {
 	LNSSourceListCell * newCell = [super copyWithZone:zone];
-	[newCell->objectValue retain];
 	[newCell clearFirstRect];
 	return newCell;
 }
@@ -20,8 +19,7 @@
 - (void) setObjectValue:(id) value {
 	[super setObjectValue:value];
 	if(objectValue != value) {
-		[objectValue release];
-		objectValue = [value retain];
+		objectValue = value;
 		if([objectValue isKindOfClass:[GTSourceListItem class]]) {
 			[self setStringValue:[objectValue name]];
 		}
@@ -101,7 +99,6 @@
 
 - (void) dealloc {
 	GDRelease(objectValue);
-	[super dealloc];
 }
 
 @end

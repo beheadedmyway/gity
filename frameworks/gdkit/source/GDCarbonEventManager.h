@@ -59,7 +59,7 @@
 /**
  * Singleton instance.
  */
-+ (GDCarbonEventManager *) sharedInstance;
++ (instancetype) sharedInstance;
 
 /**
  * Class method to convert carbon to cocoa

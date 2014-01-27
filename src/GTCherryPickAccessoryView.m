@@ -19,11 +19,5 @@
 
 @implementation GTCherryPickAccessoryView
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTCherryPickAccessoryView\n");
-	#endif
-	[super dealloc];
-}
 
 @end

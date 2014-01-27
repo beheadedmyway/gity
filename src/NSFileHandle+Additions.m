@@ -13,7 +13,7 @@
 - (NSString *) readLine
 {
     NSData * newLineData = [@"\n" dataUsingEncoding:NSASCIIStringEncoding];
-    NSMutableData * currentData = [[[NSMutableData alloc] init] autorelease];
+    NSMutableData * currentData = [[NSMutableData alloc] init];
     NSUInteger chunkSize = 1;
     BOOL shouldReadMore = YES;
     
@@ -51,7 +51,7 @@
     if (!currentData || [currentData length] == 0)
         return nil;
     
-    NSString * line = [[[NSString alloc] initWithData:currentData encoding:NSASCIIStringEncoding] autorelease];
+    NSString * line = [[NSString alloc] initWithData:currentData encoding:NSASCIIStringEncoding];
     return line;
 }
 

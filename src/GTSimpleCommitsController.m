@@ -68,7 +68,6 @@
 	printf("DEALLOC GTSimpleCommitsController\n");
 	#endif
 	[self disposeNibs];
-	[super dealloc];
 }
 
 @end

@@ -29,7 +29,6 @@
 	printf("DEALLOC GTImageView\n");
 	#endif
 	GDRelease(img);
-	[super dealloc];
 }
 
 @end

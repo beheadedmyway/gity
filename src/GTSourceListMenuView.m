@@ -53,7 +53,6 @@
 	[action removeFromSuperview];
 	GDRelease(action);
 	GDRelease(actionsMenuDelegate);
-	[super dealloc];
 }
 
 @end

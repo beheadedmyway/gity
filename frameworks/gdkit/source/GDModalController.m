@@ -8,7 +8,6 @@
 	#ifdef GDKIT_PRINT_DEALLOCS
 	printf("dealloc GDModalController\n");
 	#endif
-	[super dealloc];
 }
 
 @end

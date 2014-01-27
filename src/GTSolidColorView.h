@@ -24,6 +24,6 @@
 	NSColor * color;
 }
 
-@property (retain,nonatomic) NSColor * color;
+@property (strong,nonatomic) NSColor * color;
 
 @end

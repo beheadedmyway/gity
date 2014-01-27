@@ -40,8 +40,8 @@
 	NSInteger headRow;
 }
 
-@property (retain,nonatomic) NSMutableArray * commits;
-@property (retain,nonatomic) NSMutableArray * commitsCopy;
+@property (strong,nonatomic) NSMutableArray * commits;
+@property (strong,nonatomic) NSMutableArray * commitsCopy;
 @property (readonly,nonatomic) GTGitCommitLoadInfo * loadInfo;
 
 - (void) activateTableView;

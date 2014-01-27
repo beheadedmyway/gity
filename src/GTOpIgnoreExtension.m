@@ -37,7 +37,6 @@
 	printf("DEALLOC GTOpIgnoreExtension\n");
 	#endif
 	GDRelease(ext);
-	[super dealloc];
 }
 
 @end

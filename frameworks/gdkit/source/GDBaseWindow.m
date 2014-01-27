@@ -36,7 +36,6 @@
 	#ifdef GDKIT_PRINT_DEALLOCS
 	printf("dealloc GDBaseWindow\n");
 	#endif
-	[super dealloc];
 }
 
 @end

@@ -147,7 +147,6 @@
 - (void) disposeNibs {
 	label=nil;
 	messageField=nil;
-	[fileSelection release];
 	fileSelection = nil;
 	GDRelease(commitMessageValue);
 	[super disposeNibs];
@@ -158,7 +157,6 @@
 	printf("DEALLOC GTCommitMessageController\n");
 	#endif
 	[self disposeNibs];
-	[super dealloc];
 }
 
 @end

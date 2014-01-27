@@ -29,7 +29,6 @@
 	if([self isCancelled]) return;
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray	* final = [NSMutableArray arrayWithArray:[json objectWithString:stout error:nil]];
-	[json release];
 	if([self isCancelled]) return;
 	[gitd setRemotes:final];
 }

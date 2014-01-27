@@ -61,9 +61,6 @@
 		
 		NSDrawThreePartImage(NSMakeRect(0,0,[self bounds].size.width,[self frame].size.height),leftSlice,centerSlice,rightSlice,false,NSCompositeSourceOver,1.0,[self isFlipped]);
 		
-		[leftSlice release];
-		[centerSlice release];
-		[rightSlice release];
 	} else {
 		NSLog(@"VERTICAL NOT IMPLEMENTED IN SCALE 3 CONTROL");
 		return;
@@ -88,9 +85,6 @@
 		
 		NSDrawThreePartImage(rect,topSlice,centerSlice,bottomSlice,true,NSCompositeSourceOver,1.0,[self isFlipped]);
 		
-		[topSlice release];
-		[centerSlice release];
-		[bottomSlice release];
 	}
 	[super drawRect:rect];
 }
@@ -99,7 +93,6 @@
 	vertical = false;
 	edgeSize.width = 0;
 	edgeSize.height = 0;
-	[super dealloc];
 }
 
 @end

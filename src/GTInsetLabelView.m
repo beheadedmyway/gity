@@ -35,7 +35,7 @@
 
 - (void) setTopLabel:(NSAttributedString *) _label {
 	GDRelease(topLabel);
-	topLabel=[_label retain];
+	topLabel=_label;
 	if(setsFrameSizeOnLabelUpdate) {
 		NSRect fra=[self frame];
 		fra.size.width=[topLabel size].width + 1;
@@ -47,7 +47,7 @@
 
 - (void) setBottomLabel:(NSAttributedString *) _label {
 	GDRelease(bottomLabel);
-	bottomLabel=[_label retain];
+	bottomLabel=_label;
 	if(setsFrameSizeOnLabelUpdate) {
 		NSRect fra=[self frame];
 		fra.size.width=[bottomLabel size].width + 1;
@@ -80,7 +80,6 @@
 	GDRelease(topLabel);
 	GDRelease(bottomLabel);
 	setsFrameSizeOnLabelUpdate=false;
-	[super dealloc];
 }
 
 @end

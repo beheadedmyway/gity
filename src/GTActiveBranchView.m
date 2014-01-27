@@ -54,7 +54,6 @@
 
 - (void)setFiles:(NSMutableArray *)fileArray
 {
-	[files release];
 	files = nil;
 	if (fileArray)
 		files = [[NSMutableArray alloc] initWithArray:fileArray copyItems:YES];
@@ -112,7 +111,7 @@
 - (NSIndexSet *) getSelectedIndexSet {
 	NSIndexSet * indexes = nil;
 	if(![self isClickedRowIncludedInSelection]) 
-		indexes = [[[NSIndexSet alloc] initWithIndex:[tableView clickedRow]] autorelease];
+		indexes = [[NSIndexSet alloc] initWithIndex:[tableView clickedRow]];
 	else 
 		indexes = [tableView selectedRowIndexes];
 	return indexes;
@@ -122,7 +121,7 @@
 	NSIndexSet * indexes = [self getSelectedIndexSet];
 	if(indexes == nil || [indexes count] < 1) return nil;
 	NSArray * gtfiles = [files objectsAtIndexes:indexes];
-	NSMutableArray * names = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray * names = [[NSMutableArray alloc] init];
 	GTGitFile * fl;
 	for(fl in gtfiles) [names addObject:[fl filename]];
 	return names;
@@ -130,7 +129,7 @@
 
 - (NSMutableArray *) allFiles {
 	GTGitFile * fl;
-	NSMutableArray * names = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray * names = [[NSMutableArray alloc] init];
 	for(fl in files) [names addObject:[fl filename]];
 	return names;
 }
@@ -184,21 +183,18 @@
 			addedFiles=true;
 			tmp=[[NSMutableArray alloc] initWithArray:[gitd stageAddedFiles] copyItems:true];
 			[self appendFiles:tmp toArray:fls forType:kStageAdded];
-			[tmp release];
 			tmp=nil;
 		}
 		if([gitd stagedModifiedFilesCount] > 0) {
 			addedFiles=true;
 			tmp=[[NSMutableArray alloc] initWithArray:[gitd stageModifiedFiles] copyItems:true];
 			[self appendFiles:tmp toArray:fls forType:kStageModified];
-			[tmp release];
 			tmp=nil;
 		}
 		if([gitd stagedDeletedFilesCount] > 0) {
 			addedFiles=true;
 			tmp=[[NSMutableArray alloc] initWithArray:[gitd stageDeletedFiles] copyItems:true];
 			[self appendFiles:tmp toArray:fls forType:kStageDeleted];
-			[tmp release];
 			tmp=nil;
 		}
 	}
@@ -206,34 +202,29 @@
 		addedFiles=true;
 		tmp=[[NSMutableArray alloc] initWithArray:[gitd untrackedFiles] copyItems:true];
 		[self appendFiles:tmp toArray:fls forType:kUntracked];
-		[tmp release];
 		tmp=nil;
 	}
 	if([statusBarView shouldShowModifiedFiles] and [gitd modifiedFilesCount] > 0) {
 		addedFiles=true;
 		tmp=[[NSMutableArray alloc] initWithArray:[gitd modifiedFiles] copyItems:true];
 		[self appendFiles:tmp toArray:fls forType:kModified];
-		[tmp release];
 		tmp=nil;
 	}
 	if([statusBarView shouldShowDeletedFiles] and [gitd deletedFilesCount] > 0) {
 		addedFiles=true;
 		tmp=[[NSMutableArray alloc] initWithArray:[gitd deletedFiles] copyItems:true];
 		[self appendFiles:tmp toArray:fls forType:kDeleted];
-		[tmp release];
 		tmp=nil;
 	}
 	if([statusBarView shouldShowConflictedFiles] and [gitd unmergedFilesCount] > 0) {
 		addedFiles=true;
 		tmp=[[NSMutableArray alloc] initWithArray:[gitd unmergedFiles] copyItems:true];
 		[self appendFiles:tmp toArray:fls forType:kConflicted];
-		[tmp release];
 		tmp=nil;
 	}
 	if(!addedFiles) {
 		tmp=[[NSMutableArray alloc] initWithArray:[gitd allFiles] copyItems:true];
 		[self appendFiles:tmp toArray:fls forType:kNoStatus];
-		[tmp release];
 		tmp=nil;
 	}
 	
@@ -241,14 +232,10 @@
 	NSArray * srt = [copy sortedArrayUsingSelector:@selector(sortAscending:)];
 	NSMutableArray * sorted = [[NSMutableArray alloc] initWithArray:srt copyItems:true];
 	
-	if(filesCopy) [filesCopy release];
 	filesCopy = [[NSMutableArray alloc] initWithArray:sorted copyItems:true];
 	
 	self.files = sorted;//[self setFiles:sorted];
 	
-	[sorted release];
-	[copy release];
-	[fls release];
 	
 	if(lastSearchTerm) {
 		[self search:lastSearchTerm];
@@ -263,13 +250,11 @@
 
 - (void) search:(NSString *) term {
 	if(lastSearchTerm neq term) {
-		[lastSearchTerm release];
 		lastSearchTerm = [term copy];
 	}
 	NSMutableArray * newFiles = [[NSMutableArray alloc] initWithArray:[filesCopy arrayByMatchingObjectsWithRegex:term]];
 	self.fileDirectory = nil;
 	[self setFiles:newFiles];
-	[newFiles release];
 	[tableView reloadData];
 	[gd onSearch];
 }
@@ -278,7 +263,6 @@
 	self.fileDirectory = nil;
 	[self setFiles:filesCopy];
 	if(lastSearchTerm) {
-		[lastSearchTerm release];
 		lastSearchTerm = nil;
 	}
 	[tableView reloadData];
@@ -346,7 +330,6 @@
 	statusBarView=nil;
 	diffView=nil;
 	splitContentView=nil;
-	[super dealloc];
 }
 
 @end

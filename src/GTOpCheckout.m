@@ -16,6 +16,7 @@
 // along with Gity. If not, see <http://www.gnu.org/licenses/>.
 
 #import "GTOpCheckout.h"
+#import "GittyDocument.h"
 
 @implementation GTOpCheckout
 

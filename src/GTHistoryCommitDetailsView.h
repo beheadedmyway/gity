@@ -40,7 +40,6 @@
 	GTGitCommitDetailLoadInfo * commitLoadInfo;
 	GTHistoryDetailsContainerView * historyDetailsContainerView;
 	GTOpShowStatusForDetailLoad * detailLoadOp;
-	NSAutoreleasePool * pool;
 }
 
 @property (readonly,nonatomic) WebView * webView;

@@ -19,6 +19,7 @@
 #import "GTDocumentController.h"
 #import "GTQuickLookItem.h"
 #import "GTActiveBranchTableView.h"
+#import "GTCloneRepoController.h"
 
 @implementation GittyDocument
 

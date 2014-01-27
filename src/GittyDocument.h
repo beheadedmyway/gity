@@ -103,6 +103,7 @@
 	GTSoundController *sounds;
 	GTOperationsController *operations;
 	GTContextMenuController *contextMenus;
+#warning fileEvents is never set!
 	SCEvents *fileEvents;
 }
 

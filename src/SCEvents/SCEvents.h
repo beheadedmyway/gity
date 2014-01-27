@@ -48,6 +48,7 @@
     NSMutableArray   *excludedPaths;          // The paths that SCEvents should ignore events from and not deliver to the delegate.
 }
 
+
 @property (readwrite, assign) id delegate;
 @property (readonly) BOOL isWatchingPaths;
 @property (readwrite, assign) BOOL ignoreEventsFromSubDirs;
@@ -56,7 +57,7 @@
 @property (readwrite, retain) NSMutableArray *watchedPaths;
 @property (readwrite, retain) NSMutableArray *excludedPaths;
 
-//+ (id)sharedPathWatcher;
+//+ (instancetype) sharedInstance;
 
 - (BOOL)flushEventStreamSync;
 - (BOOL)flushEventStreamAsync;

@@ -72,9 +72,10 @@ static NSInteger operationRunCount = 0;
 	isRunningStartup = true;
 	
 	NSOperation *op = [[[NSOperation alloc] init] autorelease];
+	__weak typeof(op) weakOp = op;
 	
 	[op setCompletionBlock:^{
-		for (NSOperation *dependentOperation in [op dependencies]) {
+		for (NSOperation *dependentOperation in [weakOp dependencies]) {
 			[dependentOperation release];
 		}
 		
@@ -112,9 +113,10 @@ static NSInteger operationRunCount = 0;
 	[status showSpinner];
 	
 	NSOperation *op = [[[NSOperation alloc] init] autorelease];
+	__weak typeof(op) weakOp = op;
 	
 	[op setCompletionBlock:^{
-		for (NSOperation *dp in [op dependencies]) {
+		for (NSOperation *dp in [weakOp dependencies]) {
 			[dp release];
 		}
 		
@@ -147,7 +149,6 @@ static NSInteger operationRunCount = 0;
 	[status showSpinner];
 	NSOperation * op = [[NSOperation alloc] init];
 	[op setCompletionBlock:^{
-		[op release];
 		[self onRefreshStatusComplete];
 	}];
 	GTOpGetFiles * allFiles = [[[GTOpGetFiles alloc] initWithGD:gd] autorelease];
@@ -1085,8 +1086,9 @@ static NSInteger operationRunCount = 0;
 	[status showSpinner];
 	GTOpLoadCommitDetails * o = [[[GTOpLoadCommitDetails alloc] initWithGD:gd andCommit:_commit andCommitLoadInfo:_loadInfo andTemplate:_template] autorelease];
 	NSOperationQueue * q = [self newCancelableQueueWithOperation:o];
+	__weak typeof(o) weakO = o;
 	[o setCompletionBlock:^{
-		if([o isCancelled]) return;
+		if([weakO isCancelled]) return;
 		[self releaseAndRemoveQFromCancelables:q];
 		[self onLoadCommitDetailsComplete:_callback];
 		[_callback release];

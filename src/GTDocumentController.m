@@ -282,12 +282,10 @@ static NSString *gityVersion;
 	NSString * realGitPath = [git gitProjectPathFromRevParse:path];
 	if(realGitPath is nil) {
 		[[GTModalController sharedInstance] runNotAGitRepoAlert];
-		goto cleanup;
+		return;
 	}
 	NSURL * purl = [NSURL fileURLWithPath:realGitPath];
 	[self openDocumentWithContentsOfURL:purl display:true error:nil];
-cleanup:
-	[op release];
 }
 
 - (IBAction) initNewRepo:(id) sender {
@@ -301,19 +299,17 @@ cleanup:
 	NSString * path = [[op URL] path];
 	if([git isPathGitRepository:path]) {
 		[[GTModalController sharedInstance] runAlreadyAGitRepoAlert];
-		goto cleanup;
+		return;
 	}
 	if(![git initRepositoryInPath:path]) {
 		NSRunAlertPanel(NSLocalizedStringFromTable(@"Error Initializing",@"Localized",@"init error"),
 							NSLocalizedStringFromTable(@"An unknown error occurred while initializing the repo",@"Localized",@"init error description"),
 							NSLocalizedStringFromTable(@"OK",@"Localized",@"ok button label"),
 							nil,nil);
-		goto cleanup;
+		return;
 	}
 	NSURL * purl = [NSURL fileURLWithPath:path];
 	[self openDocumentWithContentsOfURL:purl display:true error:nil];
-cleanup:
-	[op release];
 }
 
 - (IBAction) cloneRepo:(id) sender {

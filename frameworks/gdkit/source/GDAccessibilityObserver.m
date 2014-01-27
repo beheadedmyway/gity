@@ -24,6 +24,7 @@ static void fHandleObserverCallback(AXObserverRef observer, AXUIElementRef eleme
 		invoker = [NSInvocation invocationWithMethodSignature:selectorSignature];
 		[invoker setSelector:action];
 		[invoker setTarget:target];
+		[invoker retainArguments];
 		__unsafe_unretained id tempNotify = notify;
 		[invoker setArgument:&tempNotify atIndex:2];
 		app_pid = [accessManager forAXUIElementRefGetPID:elemnt];

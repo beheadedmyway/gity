@@ -35,25 +35,29 @@
 	if([self isCancelled]) return;
 }
 
-- (void) main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
-	if(done)goto cleanup;
-	[task launch];
-	//NSLog(@"%@",[self class]);
-	if(readsSTDOUT)[self readSTDOUT];
-	if(done)goto cleanup;
-	if(readsSTDERR)[self readSTDERR];
-	if(done)goto cleanup;
-	[task waitUntilExit];
-	if(done) goto cleanup;
-	[self performSelectorOnMainThread:@selector(validateResult) withObject:nil waitUntilDone:YES];
-	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
-cleanup:
+- (void)cleanup {
 	GDRelease(task);
 	close([[task standardOutput] fileDescriptor]);
 	done=true;
-	[pool drain];
+}
+
+- (void) main {
+@autoreleasepool {
+	if(done) return;
+	[task launch];
+	//NSLog(@"%@",[self class]);
+	if(readsSTDOUT)[self readSTDOUT];
+	if(done) {[self cleanup]; return;}
+	if(readsSTDERR)[self readSTDERR];
+	if(done) {[self cleanup]; return;}
+	[task waitUntilExit];
+	if(done) {[self cleanup]; return;}
+	[self performSelectorOnMainThread:@selector(validateResult) withObject:nil waitUntilDone:YES];
+	[self performSelectorOnMainThread:@selector(taskComplete) withObject:nil waitUntilDone:YES];
+
+	[self cleanup];
 	return;
+}
 }
 
 - (void) cancel {

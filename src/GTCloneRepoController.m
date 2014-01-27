@@ -147,9 +147,10 @@
 	cloneRepo=[[GTOpCloneRepo alloc] initWithRepoURL:cloneURL inDir:destinationPath];
 	NSOperationQueue * q = [[NSOperationQueue alloc] init];
 	[cloneRepo setCloneController:self];
+	__weak typeof(self) weakSelf = self;
 	[cloneRepo setCompletionBlock:^{
 		[q release];
-		[self cloneComplete];
+		[weakSelf cloneComplete];
 	}];
 	[q setMaxConcurrentOperationCount:25];
 	[q addOperation:cloneRepo];

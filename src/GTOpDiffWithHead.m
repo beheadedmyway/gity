@@ -20,9 +20,8 @@
 @implementation GTOpDiffWithHead
 
 - (void) main {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];	
+@autoreleasepool {
 	if([self isCancelled]) {
-		[pool drain];
 		return;
 	}
 	task = [[NSTask alloc] init];
@@ -32,7 +31,7 @@
 	[a addObject:@"/Users/aaronsmith/dev/_projects/_git/gitty/src/GTModalController.m"];
 	[task setArguments:a];
 	[task launch];
-	[pool drain];
+}
 }
 
 @end

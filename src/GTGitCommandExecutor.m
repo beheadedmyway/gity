@@ -185,20 +185,20 @@
 	NSArray *pieces = [versionSTDOUT componentsSeparatedByString:@" "];
 	
 	if([pieces count] < 2) {
-		goto cleanup;
+		return;
 	}
     
 	NSString *versionString = [pieces lastObject];
 	NSArray *versionPieces = [versionString componentsSeparatedByString:@"."];
 
 	if([versionPieces count] < 2) {
-		goto cleanup;
+		return;
 	}
 	
 	int gitMinor = [[versionPieces objectAtIndex:1] intValue];
 	
 	if(gitMinor > 5) {
-		goto cleanup;
+		return;
 	}
 	
 	NSString *msg = @"Git Version Not Supported";
@@ -211,11 +211,6 @@
 	NSRunAlertPanel(msg, desc, @"OK", nil, nil);
 	
 	[[NSApplication sharedApplication] terminate:nil];
-
-cleanup:
-	[task release];
-	[args release];
-	[versionSTDOUT release];
 }
 
 - (NSString *) gitExecPath {
@@ -267,7 +262,6 @@ cleanup:
 		return newPath;        
     }
 	
-	[path autorelease];
 	[task release];
 	
 	return [path stringByDeletingLastPathComponent];

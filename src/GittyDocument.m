@@ -1364,7 +1364,7 @@
 	printf("DEALLOC GittyDocument\n");
 	#endif
 	
-	[fileEvents stopWatchingPaths];
+	//[fileEvents stopWatchingPaths];
 	[fileEvents release];
 		
 	justLaunched = false;

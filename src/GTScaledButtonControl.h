@@ -19,7 +19,7 @@
 #import "defs.h"
 
 @interface GTScaledButtonControl : NSControl {
-	id __unsafe_unretained target;
+	id __weak target;
 	SEL action;
 	BOOL sendsOnUp;
 	BOOL mover;
@@ -44,7 +44,7 @@
 	NSImage * scaledOverImage;
 }
 
-@property (unsafe_unretained,nonatomic) id target;
+@property (weak,nonatomic) id target;
 @property (assign,nonatomic) SEL action;
 @property (assign,nonatomic) BOOL isPushButton;
 @property (strong,nonatomic) NSImage * scaledImage;

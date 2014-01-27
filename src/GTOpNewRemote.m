@@ -40,7 +40,6 @@
 	#endif
 	GDRelease(remoteName);
 	GDRelease(remoteURL);
-	[super dealloc];
 }
 
 @end

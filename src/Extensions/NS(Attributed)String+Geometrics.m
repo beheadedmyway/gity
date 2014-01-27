@@ -26,16 +26,12 @@ NSInteger gNSStringGeometricsTypesetterBehavior = NSTypesetterLatestBehavior ;
 		[layoutManager glyphRangeForTextContainer:textContainer] ;
 		
 		answer = [layoutManager usedRectForTextContainer:textContainer].size ;
-		[textStorage release] ;
-		[textContainer release] ;
 		
 		// Adjust if there is extra height for the cursor
 		NSSize extraLineSize = [layoutManager extraLineFragmentRect].size ;
 		if (extraLineSize.height > 0) {
 			answer.height -= extraLineSize.height ;
 		}
-		
-		[layoutManager release] ;
 
 		// In case we changed it above, set typesetterBehavior back
 		// to the default value.
@@ -71,7 +67,6 @@ NSInteger gNSStringGeometricsTypesetterBehavior = NSTypesetterLatestBehavior ;
 															   attributes:attributes] ;
 	answer = [astr sizeForWidth:width
 						 height:height] ;
-	[astr release] ;
 	
 	return answer ;
 }

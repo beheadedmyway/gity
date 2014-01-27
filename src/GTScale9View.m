@@ -106,15 +106,6 @@
 	
 	NSDrawNinePartImage(NSMakeRect(0,0,[self bounds].size.width,[self frame].size.height),topLeft,top,topRight,left,cntr,right,bottomLeft,bottom,bottomRight,NSCompositeSourceAtop,1.0,NO);
 	
-	[topLeft release];
-	[top release];
-	[topRight release];
-	[left release];
-	[cntr release];
-	[right release];
-	[bottomLeft release];
-	[bottom release];
-	[bottomRight release];
 	
 	[super drawRect:dirtyRect];
 }
@@ -125,7 +116,6 @@
 	#endif
 	[self setTopLeftPoint:NSMakePoint(0,0) andBottomRightPoint:NSMakePoint(0,0)];
 	GDRelease(sourceImage);
-	[super dealloc];
 }
 
 @end

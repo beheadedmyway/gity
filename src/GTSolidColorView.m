@@ -36,7 +36,6 @@
 	printf("DEALLOC GTSolidColorView\n");
 	#endif
 	GDRelease(color);
-	[super dealloc];
 }
 
 @end

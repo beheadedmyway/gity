@@ -19,11 +19,5 @@
 
 @implementation GTDontAskCommitsAheadView
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTDontAskCommitsAheadView\n");
-	#endif
-	[super dealloc];
-}
 
 @end

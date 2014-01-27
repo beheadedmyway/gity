@@ -35,7 +35,6 @@
 	#endif
 	_simpleLoadCLTarget=nil;
 	_simpleLoadCLAction=nil;
-	[super dealloc];
 }
 
 @end

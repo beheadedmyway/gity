@@ -30,7 +30,6 @@
 	printf("DEALLOC GTOpBaseBranchTask\n");
 	#endif
 	GDRelease(branchName);
-	[super dealloc];
 }
 
 @end

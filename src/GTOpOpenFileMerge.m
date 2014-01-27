@@ -38,7 +38,6 @@
 	printf("DEALLOC GTOpOpenFileMerge\n");
 	#endif
 	GDRelease(file);
-	[super dealloc];
 }
 
 @end

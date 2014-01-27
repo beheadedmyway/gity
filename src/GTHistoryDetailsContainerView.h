@@ -30,16 +30,16 @@
 
 @interface GTHistoryDetailsContainerView : GTGittyView {
 	IBOutlet NSView * contentContainer;
-	IBOutlet GTHistoryBarView * barView;
+	IBOutlet GTHistoryBarView * __weak barView;
 	IBOutlet GTHistoryCommitTreeView * treeView;
-	IBOutlet GTHistoryCommitDetailsView * detailsView;
+	IBOutlet GTHistoryCommitDetailsView * __weak detailsView;
 	IBOutlet GTLineView * lineView;
 	IBOutlet GTHistoryTileView * tileView;
 	GTHistoryView * historyView;
 }
 
-@property (assign,nonatomic) IBOutlet GTHistoryBarView * barView;
-@property (assign,nonatomic) IBOutlet GTHistoryCommitDetailsView * detailsView;
+@property (weak,nonatomic) IBOutlet GTHistoryBarView * barView;
+@property (weak,nonatomic) IBOutlet GTHistoryCommitDetailsView * detailsView;
 
 - (void) initViews;
 - (void) invalidate;

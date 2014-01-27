@@ -31,7 +31,7 @@
 	NSConnection * connection;
 }
 
-@property (retain) NSConnection * connection;
+@property (strong) NSConnection * connection;
 
 - (void) connect;
 - (void) setDocument:(id) _doc;

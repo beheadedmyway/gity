@@ -26,7 +26,6 @@
 	[self initSpinner];
 	[self updatePopUpButtons];
 	[remoteTag setEnabled:false];
-	[notAtRemote retain];
 	[notAtRemote removeFromSuperview];
 	tagCache=[[NSMutableDictionary alloc] init];
 }
@@ -34,7 +33,6 @@
 - (void) initSpinner {
 	NSRect r=[spinner frame];
 	[spinner setFrame:NSMakeRect(r.origin.x,r.origin.y,10,10)];
-	[spinner retain];
 	[spinner removeFromSuperview];
 	[spinner setUsesThreadedAnimation:true];
 }
@@ -78,13 +76,11 @@
 	NSMenuItem * item = [[NSMenuItem alloc] init];
 	[item setTitle:@"Select A Remote"];
 	[sourceRemotes addItem:item];
-	[item release];
 	item=nil;
 	for(remote in remotes) {
 		item = [[NSMenuItem alloc] init];
 		[item setTitle:remote];
 		[sourceRemotes addItem:item];
-		[item release];
 		item=nil;
 	}
 	[sourceRemote setMenu:sourceRemotes];
@@ -112,14 +108,12 @@
 	NSMenuItem * item = [[NSMenuItem alloc] init];
 	[item setTitle:@"Select A Tag"];
 	[availableTags addItem:item];
-	[item release];
 	item = nil;
 	NSString * branch;
 	for(branch in bn) {
 		item=[[NSMenuItem alloc] init];
 		[item setTitle:branch];
 		[availableTags addItem:item];
-		[item release];
 		item=nil;
 	}
 	[remoteTag setMenu:availableTags];
@@ -127,7 +121,6 @@
 	[sourceRemote setEnabled:true];
 	[spinner stopAnimation:nil];
 	[spinner removeFromSuperview];
-	[availableTags release];
 	availableTags=nil;
 	working=false;
 }
@@ -215,7 +208,6 @@
 	printf("DEALLOC GTFetchTagsController\n");
 	#endif
 	[self disposeNibs];
-	[super dealloc];
 }
 
 @end

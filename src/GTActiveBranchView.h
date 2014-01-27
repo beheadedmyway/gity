@@ -46,8 +46,8 @@
 	BOOL useOutline;
 }
 
-@property (retain, nonatomic) NSMutableDictionary * fileDirectory;
-@property (retain, nonatomic) NSMutableArray * files;
+@property (strong, nonatomic) NSMutableDictionary * fileDirectory;
+@property (strong, nonatomic) NSMutableArray * files;
 @property (assign, nonatomic) BOOL useOutline;
 
 - (void) activateTableView;

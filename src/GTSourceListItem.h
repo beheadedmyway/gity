@@ -27,18 +27,18 @@
 	NSString * label;
 	NSMutableArray * children;
 	GTSourceListItem * parent;
-	NSArray * items;
-	NSImage *image;
+	NSArray * __weak items;
+	NSImage *__weak image;
 }
 
 @property (copy,nonatomic) id data;
 @property (copy,nonatomic) NSString * name;
 @property (copy,nonatomic) NSString * label;
-@property (retain,nonatomic) GTSourceListItem * parent;
+@property (strong,nonatomic) GTSourceListItem * parent;
 @property (assign,nonatomic) BOOL isGroupItem;
 @property (assign,nonatomic) NSInteger index;
-@property (readonly,nonatomic) NSImage *image;
-@property (readonly,nonatomic) NSArray *items;
+@property (weak, readonly,nonatomic) NSImage *image;
+@property (weak, readonly,nonatomic) NSArray *items;
 
 - (void) addChild:(GTSourceListItem *) child;
 - (void) removeChild:(GTSourceListItem *) child;

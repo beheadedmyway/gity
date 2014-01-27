@@ -30,7 +30,7 @@
 	NSString * refName;
 }
 
-@property (retain) NSString * rawLogOutput;
+@property (strong) NSString * rawLogOutput;
 @property (copy,nonatomic) NSDate * before;
 @property (copy,nonatomic) NSDate * after;
 @property (copy,nonatomic) NSString * authorContains;

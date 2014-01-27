@@ -10,10 +10,10 @@ typedef enum {
 
 @interface LNSSourceListView : NSOutlineView {
 	AppearanceKind	appearance;
-	GittyDocument * gd;
+	GittyDocument * __weak gd;
 }
 
 @property (assign,nonatomic) AppearanceKind appearance;
-@property (assign,nonatomic) GittyDocument * gd;
+@property (weak,nonatomic) GittyDocument * gd;
 
 @end

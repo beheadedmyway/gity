@@ -54,7 +54,6 @@
 	NSData * content = [writeFileContents dataUsingEncoding:stringEncoding];
 	[fh writeData:content];
 	[fh closeFile];
-	[fh release];
 	fh=nil;
 }
 
@@ -85,7 +84,6 @@
 	GDRelease(stout);
 	readsSTERR=false;
 	readsSTOUT=false;
-	[super dealloc];
 }
 
 @end

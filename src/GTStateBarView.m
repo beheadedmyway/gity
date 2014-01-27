@@ -31,12 +31,10 @@ static float windowSpacing;
 
 - (void) awakeFromNib {
 	[super awakeFromNib];
-	[searchField retain];
 	[searchField setRecentsAutosaveName:@"GTRecentSearches"];
 	[[searchField cell] setPlaceholderString:@"Filter"];
 	[[searchField cell] setAction:@selector(searchOccured:)];
 	[[searchField cell] setTarget:self];
-	[barLabel retain];
 	if(!sidePadding) sidePadding = 8;
 	if(!buttonHeight) buttonHeight = 21;
 	if(!buttonSpacing) buttonSpacing = 6;
@@ -325,10 +323,8 @@ static float windowSpacing;
 	GDRelease(searchField);
 	//GDRelease(refDropDownView);
 	GDRelease(barLabel);
-	currentStateButton = nil;
 	lastLeftButton = nil;
 	lastRightButton = nil;
-	[super dealloc];
 }
 
 @end

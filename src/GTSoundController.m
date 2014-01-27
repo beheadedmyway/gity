@@ -32,7 +32,7 @@ static GTSoundController *inst;
 
 - (id) init {
 	if(self = [super init]) {
-		pop = [[NSSound soundNamed:@"Pop"] retain];
+		pop = [NSSound soundNamed:@"Pop"];
 		[pop setVolume:0.8];
 	}
 	

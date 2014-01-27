@@ -11,7 +11,6 @@
 	NSRect globalOrigin = [[[self view] window] frame];
 	[self setView:NULL];
 	if(menu != nil) [self setMenu:menu];
-	[tmpView release];
 	return NSMakePoint(globalOrigin.origin.x,globalOrigin.origin.y);
 }
 

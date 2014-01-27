@@ -36,7 +36,7 @@
 
 @interface SCEvents : NSObject 
 {
-    id <SCEventListenerProtocol> delegate;    // The delegate that SCEvents is to notify when events occur.
+    id <SCEventListenerProtocol> __unsafe_unretained delegate;    // The delegate that SCEvents is to notify when events occur.
     
     BOOL             isWatchingPaths;         // Is the events stream currently running.
     BOOL             ignoreEventsFromSubDirs; // Ignore events from sub-directories of the excluded paths. Defaults to YES.
@@ -49,13 +49,13 @@
 }
 
 
-@property (readwrite, assign) id delegate;
+@property (readwrite, unsafe_unretained) id delegate;
 @property (readonly) BOOL isWatchingPaths;
 @property (readwrite, assign) BOOL ignoreEventsFromSubDirs;
-@property (readwrite, retain) SCEvent *lastEvent;
+@property (readwrite, strong) SCEvent *lastEvent;
 @property (readwrite, assign) double notificationLatency;
-@property (readwrite, retain) NSMutableArray *watchedPaths;
-@property (readwrite, retain) NSMutableArray *excludedPaths;
+@property (readwrite, strong) NSMutableArray *watchedPaths;
+@property (readwrite, strong) NSMutableArray *excludedPaths;
 
 //+ (instancetype) sharedInstance;
 

@@ -26,7 +26,7 @@
 /**
  * An NSConnection for distributed objects.
  */
-@property (retain) NSConnection * connection;
+@property (strong) NSConnection * connection;
 
 /**
  * Connect the NSConnection using connection name.

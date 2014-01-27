@@ -23,10 +23,8 @@
 
 - (void) awakeFromNib {
 	[super awakeFromNib];
-	if(today) [today release];
-	if(past) [past release];
-	today=[[[NSDate date] dateByAddingTimeInterval:86400] retain];
-	past=[[today dateByAddingTimeInterval:-604800] retain];
+	today=[[NSDate date] dateByAddingTimeInterval:86400];
+	past=[today dateByAddingTimeInterval:-604800];
 	[before setDateValue:today];
 	[after setDateValue:past];
 	if(lastAfterDate) [after setDateValue:lastAfterDate];
@@ -86,10 +84,6 @@
 			andAuthorContains:[authorContains stringValue] 
 		   andMessageContains:[[messageContains textStorage] string]
 			andShouldMatchAll:[matchAll state]];
-	if(lastBeforeDate) [lastBeforeDate release];
-	if(lastAfterDate) [lastAfterDate release];
-	if(lastAuthorValue) [lastAuthorValue release];
-	if(lastMessageValue) [lastMessageValue release];
 	lastMessageValue=[[[messageContains textStorage] string] copy];
 	lastAuthorValue=[[authorContains stringValue] copy];
 	lastBeforeDate=[[before dateValue] copy];
@@ -112,12 +106,6 @@
 	printf("DEALLOC GTHistorySearchController\n");
 	#endif
 	[self disposeNibs];
-	if(today)[today release];
-	if(past) [past release];
-	if(lastBeforeDate) [lastBeforeDate release];
-	if(lastAfterDate) [lastAfterDate release];
-	if(lastAuthorValue) [lastAuthorValue release];
-	if(lastMessageValue) [lastMessageValue release];
 	lastMessageValue=nil;
 	lastAuthorValue=nil;
 	lastBeforeDate=nil;
@@ -125,7 +113,6 @@
 	lastMatchAll=false;
 	today=nil;
 	past=nil;
-	[super dealloc];
 }
 
 @end

@@ -47,7 +47,6 @@
 	printf("DEALLOC GTHistoryTileView\n");
 	#endif
 	GDRelease(tileImage);
-	[super dealloc];
 }
 
 @end

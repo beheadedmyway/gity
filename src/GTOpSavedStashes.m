@@ -32,8 +32,6 @@
 	NSString * rawJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray	* final = [NSMutableArray arrayWithArray:[json objectWithString:rawJSON error:nil]];
-	[rawJSON release];
-	[json release];
 	if([self isCancelled]) return;
 	[gitd setSavedStashes:final];
 }

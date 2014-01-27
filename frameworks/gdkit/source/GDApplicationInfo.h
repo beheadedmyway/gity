@@ -29,7 +29,7 @@
 	NSMutableDictionary * dictionary;
 }
 
-@property (retain,nonatomic) NSMutableDictionary * dictionary;
+@property (strong,nonatomic) NSMutableDictionary * dictionary;
 
 /**
  * Returns an autoreleased instance, and has already loaded the

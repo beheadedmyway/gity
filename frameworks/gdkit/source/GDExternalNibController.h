@@ -70,7 +70,7 @@
 	/**
 	 * A GDWindowController.
 	 */
-	IBOutlet GDWindowController * windows;
+	IBOutlet GDWindowController * __weak windows;
 }
 
 /**
@@ -81,7 +81,7 @@
 /**
  * A GDWindowController.
  */
-@property (assign,nonatomic) IBOutlet GDWindowController * windows;
+@property (weak,nonatomic) IBOutlet GDWindowController * windows;
 
 /**
  * Whether or not to dispose of nibs when a window closes.
@@ -98,7 +98,7 @@
  * some type of input nib; you'd trigger this callback, and the object
  * that got the callback would handle what was chosen from the nib.
  */
-@property (retain,nonatomic) GDCallback * callback;
+@property (strong,nonatomic) GDCallback * callback;
 
 /**
  * Disposes nibs.

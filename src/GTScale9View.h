@@ -25,7 +25,7 @@
 	NSPoint bottomRightPoint;
 }
 
-@property (retain,nonatomic) NSImage * sourceImage;
+@property (strong,nonatomic) NSImage * sourceImage;
 
 - (void) setTopLeftPoint:(NSPoint) tlPoint andBottomRightPoint:(NSPoint) brPoint;
 

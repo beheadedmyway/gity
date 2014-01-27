@@ -268,7 +268,6 @@
 	viewMenu=nil;
 	actionsMenu=nil;
 	statusMenu=nil;
-	[super dealloc];
 }
 
 @end

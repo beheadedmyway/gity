@@ -38,7 +38,6 @@
 	printf("DEALLOC GTOpNewTag\n");
 	#endif
 	GDRelease(tagStart);
-	[super dealloc];
 }
 
 @end

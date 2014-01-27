@@ -31,8 +31,8 @@
 	SEL action;
 	BOOL available;
 	BOOL working;
-	IBOutlet GTWindow * window;
-	GittyDocument * gd;
+	IBOutlet GTWindow * __weak window;
+	GittyDocument * __weak gd;
 	GTScale9Control * ok;
 	GTScale9Control * cancel;
 	GTOperationsController * operations;
@@ -41,8 +41,8 @@
 	GTGitCommandExecutor * git;
 }
 
-@property (assign,nonatomic) GittyDocument * gd;
-@property (readonly, nonatomic) GTWindow *window;
+@property (weak,nonatomic) GittyDocument * gd;
+@property (weak, readonly, nonatomic) GTWindow *window;
 
 - (void) awakeFromNib;
 - (IBAction) cancel:(id) sender;

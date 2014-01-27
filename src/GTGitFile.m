@@ -24,7 +24,7 @@
 - (GTGitFile *) copyWithZone:(NSZone *) zone {
 	GTGitFile * cp = [[GTGitFile alloc] init];
 	cp.type = type;
-	cp.filename = [[filename copyWithZone:zone] autorelease];
+	cp.filename = [filename copyWithZone:zone];
 	return cp;
 }
 
@@ -54,7 +54,7 @@
 		*isPath = ([items count] - 1 != index);
 	if (index > [items count] - 1)
 		return nil;
-	return [[[items objectAtIndex:index] copy] autorelease];
+	return [[items objectAtIndex:index] copy];
 }
 
 - (id) initWithFilename:(NSString *) _filename andType:(int) _type {
@@ -118,10 +118,9 @@
 	for (filen in _array) {
 		gf=[[GTGitFile alloc] initWithFilename:filen andType:_type];
 		[a addObject:gf];
-		[gf release];
 		gf=nil;
 	}
-	return [a autorelease];
+	return a;
 }
 
 - (BOOL) hasNoStatus {
@@ -282,7 +281,6 @@
 	printf("DEALLOC GTGitFile\n");
 	#endif
 	GDRelease(filename);
-	[super dealloc];
 }
 
 @end

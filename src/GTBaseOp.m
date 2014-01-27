@@ -111,7 +111,7 @@
 }
 
 - (NSDictionary *) environment {
-	NSMutableDictionary *env = [[[[NSProcessInfo processInfo] environment] mutableCopy] autorelease];
+	NSMutableDictionary *env = [[[NSProcessInfo processInfo] environment] mutableCopy];
     NSString *gitConfigPath = [git gitConfigPath];
     if (gitConfigPath)
         [env setObject:[git gitConfigPath] forKey:@"gitConfigPath"];
@@ -140,7 +140,6 @@
 	done = false;
 	fileManager = nil;
 	
-	[super dealloc];
 }
 
 @end

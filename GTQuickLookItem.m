@@ -15,16 +15,11 @@
 {
 	self = [super init];
 	
-	pathItem = [path retain];
+	pathItem = path;
 	
 	return self;
 }
 
-- (void)dealloc
-{
-	[pathItem release];
-	[super dealloc];
-}
 
 - (NSURL *)previewItemURL
 {

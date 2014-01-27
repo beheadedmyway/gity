@@ -111,7 +111,6 @@
 	NSString * msg = [[errorField stringValue] copy];
 	[operations runSendErrorEmail:msg];
 	[self disposeNibs];
-	[msg release];
 }
 
 - (void) loadNibs {
@@ -121,11 +120,5 @@
 	available=true;
 }
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTUnknownErrorController\n");
-	#endif
-	[super dealloc];
-}
 
 @end

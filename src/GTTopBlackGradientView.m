@@ -23,16 +23,10 @@
 	NSColor * color1 = [NSColor colorWithDeviceRed:0.133 green:0.133 blue:0.133 alpha:1.0];
 	NSColor * color2 = [NSColor colorWithDeviceRed:0.235 green:0.235 blue:0.235 alpha:1.0];
 	NSArray * colors = [NSArray arrayWithObjects:color1,color2,nil];
-	NSGradient * grad = [[[NSGradient alloc] initWithColors:colors] autorelease];
+	NSGradient * grad = [[NSGradient alloc] initWithColors:colors];
 	[self setGradient:grad];
 }
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTTopBlackGradientView\n");
-	#endif
-	[super dealloc];
-}
 
 @end
 
@@ -42,15 +36,9 @@
 	NSColor * color1 = [NSColor colorWithDeviceRed:0.333 green:0.133 blue:0.133 alpha:1.0];
 	NSColor * color2 = [NSColor colorWithDeviceRed:0.535 green:0.235 blue:0.235 alpha:1.0];
 	NSArray * colors = [NSArray arrayWithObjects:color1,color2,nil];
-	NSGradient * grad = [[[NSGradient alloc] initWithColors:colors] autorelease];
+	NSGradient * grad = [[NSGradient alloc] initWithColors:colors];
 	[self setGradient:grad];
 }
 
-- (void) dealloc {
-#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTTopBlackGradientView\n");
-#endif
-	[super dealloc];
-}
 
 @end

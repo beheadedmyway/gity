@@ -25,7 +25,7 @@
 	CGFloat angle;
 }
 
-@property (retain,nonatomic) NSGradient * gradient;
+@property (strong,nonatomic) NSGradient * gradient;
 @property (assign,nonatomic) CGFloat angle;
 
 @end

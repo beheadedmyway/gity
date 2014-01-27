@@ -28,7 +28,7 @@ using namespace std;
 
 - (id) initWithGD:(GittyDocument *) _gd andLoadInfo:(GTGitCommitLoadInfo *) _loadInfo {
 	self=[super initWithGD:_gd];
-	loadInfo=[_loadInfo retain];
+	loadInfo=_loadInfo;
 	stoutEncoding=NSASCIIStringEncoding;
 	commits=[[NSMutableArray alloc] init];
 	return self;
@@ -102,7 +102,6 @@ using namespace std;
 
         if (graph)
             [commits addObject:commit];
-		[commit release];
     }
 	[handle closeFile];
 }
@@ -118,7 +117,6 @@ using namespace std;
 	#endif
 	GDRelease(loadInfo);
 	GDRelease(commits);
-	[super dealloc];
 }
 
 @end

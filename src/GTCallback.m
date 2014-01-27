@@ -40,12 +40,10 @@
 }
 
 - (void) setupInvoker {
-	if(signature) [signature release];
-	if(invoker) [invoker release];
 	invoker=nil;
 	signature=nil;
 	signature=[[self target] methodSignatureForSelector:[self action]];
-	invoker=[[NSInvocation invocationWithMethodSignature:signature] retain];
+	invoker=[NSInvocation invocationWithMethodSignature:signature];
 	[invoker setTarget:[self target]];
 	[invoker setSelector:[self action]];
 	[invoker retainArguments];
@@ -60,7 +58,7 @@
 	if(_args is nil) return;
 	id arg;
 	int c=1;
-	args=[_args retain];
+	args=_args;
 	[self setupInvoker];
 	for(arg in args) {
 		__unsafe_unretained id unsafeArg = arg;
@@ -88,8 +86,6 @@
 	GDRelease(signature);
 	GDRelease(target);
 	action=nil;
-	[self setArgs:nil];
-	[super dealloc];
 }
 
 @end

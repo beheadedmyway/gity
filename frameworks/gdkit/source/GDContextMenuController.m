@@ -10,7 +10,6 @@
 	#ifdef GDKIT_PRINT_DEALLOCS
 	printf("dealloc GDContextMenuController\n");
 	#endif
-	[super dealloc];
 }
 
 @end

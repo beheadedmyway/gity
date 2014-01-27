@@ -40,7 +40,6 @@
 	#endif
 	GDRelease(path);
 	GDRelease(commit);
-	[super dealloc];
 }
 
 @end

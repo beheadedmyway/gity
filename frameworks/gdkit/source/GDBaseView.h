@@ -20,23 +20,23 @@
 	/**
 	 * A GDApplicationController or a GDDocument.
 	 */
-	IBOutlet id gd;
+	IBOutlet id __unsafe_unretained gd;
 	
 	/**
 	 * A GDExternalNibController.
 	 */
-	IBOutlet id externalNibController;
+	IBOutlet id __unsafe_unretained externalNibController;
 }
 
 /**
  * A GDApplicationController or a GDDocument.
  */
-@property (assign,nonatomic) IBOutlet id gd;
+@property (unsafe_unretained,nonatomic) IBOutlet id gd;
 
 /**
  * A GDExternalNibController.
  */
-@property (assign,nonatomic) IBOutlet id externalNibController;
+@property (unsafe_unretained,nonatomic) IBOutlet id externalNibController;
 
 /**
  * A hook you can use to set references to properties on

@@ -30,7 +30,6 @@
 	printf("DEALLOC GTOpBaseRemoteTask\n");
 	#endif
 	GDRelease(remoteName);
-	[super dealloc];
 }
 
 @end

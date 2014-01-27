@@ -22,7 +22,6 @@
 	#ifdef GDKIT_PRINT_DEALLOCS
 	printf("dealloc GDMainMenuController\n");
 	#endif
-	[super dealloc];
 }
 
 @end

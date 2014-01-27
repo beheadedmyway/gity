@@ -72,7 +72,6 @@
 	#endif
 	GDRelease(task);
 	GDRelease(args);
-	[super dealloc];
 }
 
 @end

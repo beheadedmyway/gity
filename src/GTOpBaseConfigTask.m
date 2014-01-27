@@ -32,7 +32,6 @@
 	#endif
 	GDRelease(key);
 	isGlobal=false;
-	[super dealloc];
 }
 
 @end

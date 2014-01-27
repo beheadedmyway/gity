@@ -22,6 +22,6 @@
 	NSImage * img;
 }
 
-@property (retain) NSImage * img;
+@property (strong) NSImage * img;
 
 @end

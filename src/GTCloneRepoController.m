@@ -149,7 +149,6 @@
 	[cloneRepo setCloneController:self];
 	__weak typeof(self) weakSelf = self;
 	[cloneRepo setCompletionBlock:^{
-		[q release];
 		[weakSelf cloneComplete];
 	}];
 	[q setMaxConcurrentOperationCount:25];
@@ -160,7 +159,6 @@
 - (void) onTimeout {
 	if(!isCloning)return;
 	[cloneRepo cancel];
-	[cloneRepo release];
 	[statusWindow orderOut:nil];
 	[statusProgress stopAnimation:self];
 	[modals runCloneTimedOut];
@@ -187,7 +185,6 @@
 		NSURL * u = [NSURL fileURLWithPath:openPath isDirectory:true];
 		[[GTDocumentController sharedDocumentController] openDocumentWithContentsOfURL:u display:true error:nil];
 	}
-	[cloneRepo release];
 	openPath=nil;
 	errored=false;
 }
@@ -201,7 +198,6 @@
 	modals=nil;
 	GDRelease(chooseDestination);
 	GDRelease(destinationPath);
-	[super dealloc];
 }
 
 @end

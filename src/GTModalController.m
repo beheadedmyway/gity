@@ -57,10 +57,9 @@ static GTModalController * inst = nil;
 
 - (void)runErrorSheet:(GittyDocument *)document titleMessage:(NSString *)titleMessage errorMessage:(NSString *)errorMessage
 {
-    [errorSheetController release];
-    GTUnknownErrorController *controller = [[[GTUnknownErrorController alloc] initWithGD:document] autorelease];
+    GTUnknownErrorController *controller = [[GTUnknownErrorController alloc] initWithGD:document];
     [controller showAsSheetWithTitle:titleMessage error:errorMessage];
-    errorSheetController = [controller retain];
+    errorSheetController = controller;
 }
 
 - (void)runSheetForError:(NSDictionary *)dictionary
@@ -318,16 +317,13 @@ static GTModalController * inst = nil;
 	[alert addButtonWithTitle:@"Yes, Quit Now"];
 	[alert addButtonWithTitle:@"No, Don't Quit Yet"];
 	[dontAskForCommitsAhead reset];
-	[dontAskForCommitsAhead retain];
 	[alert setAccessoryView:dontAskForCommitsAhead];
 	NSInteger res = [alert runModal];
-	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([dontAskForCommitsAhead isChecked]) {
 		[[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTIgnoreCommitsAhead];
 	}
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
-	[dontAskForCommitsAhead release];
 	return NSCancelButton;
 }
 
@@ -342,16 +338,13 @@ static GTModalController * inst = nil;
 	[alert addButtonWithTitle:@"Yes, Quit Now"];
 	[alert addButtonWithTitle:@"No, Don't Quit Yet"];
 	[dontAskForCommitsAhead reset];
-	[dontAskForCommitsAhead retain];
 	[alert setAccessoryView:dontAskForCommitsAhead];
 	NSInteger res = [alert runModal];
-	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([dontAskForCommitsAhead isChecked]) {
 		[[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTIgnoreCommitsAhead];
 	}
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
-	[dontAskForCommitsAhead release];
 	return NSCancelButton;
 }
 
@@ -366,16 +359,13 @@ static GTModalController * inst = nil;
 	[alert addButtonWithTitle:@"Yes, Close Anyway"];
 	[alert addButtonWithTitle:@"No, Keep It Open"];
 	[dontAskToCloseForCommitsAhead reset];
-	[dontAskToCloseForCommitsAhead retain];
 	[alert setAccessoryView:dontAskToCloseForCommitsAhead];
 	NSInteger res = [alert runModal];
-	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([dontAskToCloseForCommitsAhead isChecked]) {
 		[[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTIgnoreCommitsAhead];
 	}
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
-	[dontAskToCloseForCommitsAhead release];
 	return NSCancelButton;
 }
 
@@ -390,16 +380,13 @@ static GTModalController * inst = nil;
 	[alert addButtonWithTitle:@"Yes, Close Anyway"];
 	[alert addButtonWithTitle:@"No, Keep It Open"];
 	[dontAskToCloseForCommitsAhead reset];
-	[dontAskToCloseForCommitsAhead retain];
 	[alert setAccessoryView:dontAskToCloseForCommitsAhead];
 	NSInteger res = [alert runModal];
-	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([dontAskToCloseForCommitsAhead isChecked]) {
 		[[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTIgnoreCommitsAhead];
 	}
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
-	[dontAskToCloseForCommitsAhead release];
 	return NSCancelButton;
 }
 
@@ -410,14 +397,11 @@ static GTModalController * inst = nil;
 	[alert setInformativeText:@"Make sure you quit FileMerge when you're done. Quitting FileMerge will cleanup temporary files."];
 	[alert addButtonWithTitle:@"OK"];
 	[remindQuitFileMerge reset];
-	[remindQuitFileMerge retain];
 	[alert setAccessoryView:remindQuitFileMerge];
 	[alert runModal];
 	if([remindQuitFileMerge isChecked]) {
 		[[NSUserDefaults standardUserDefaults] setBool:true forKey:@"kGTRemindToQuitFileMerge"];
 	}
-	[remindQuitFileMerge release];
-	[alert release];
 }
 
 - (NSInteger) runDeleteTag {
@@ -427,14 +411,11 @@ static GTModalController * inst = nil;
 	[alert addButtonWithTitle:@"OK"];
 	[alert addButtonWithTitle:@"Cancel"];
 	[deleteTagView reset];
-	[deleteTagView retain];
 	[alert setAccessoryView:deleteTagView];
 	NSInteger res = [alert runModal];
-	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([deleteTagView isChecked]) return kGTAccessoryViewDeleteAll;
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
-	[deleteTagView release];
 	return NSCancelButton;
 }
 
@@ -445,13 +426,10 @@ static GTModalController * inst = nil;
 	[alert setInformativeText:@"This repository has over 1000 loose objects, you should probably run gc. (Repo > GC)"];
 	[alert addButtonWithTitle:@"OK"];
 	[looseObjectsReminderView reset];
-	[looseObjectsReminderView retain];
 	[alert setAccessoryView:looseObjectsReminderView];
 	NSInteger res = [alert runModal];
 	if(res==100){}
-	[alert release];
 	if([looseObjectsReminderView isChecked]) [[NSUserDefaults standardUserDefaults] setBool:true forKey:kGTWarnAboutLooseObjects];
-	[looseObjectsReminderView release];
 }
 
 - (NSInteger) runDeleteBranch {
@@ -461,14 +439,11 @@ static GTModalController * inst = nil;
 	[alert addButtonWithTitle:@"OK"];
 	[alert addButtonWithTitle:@"Cancel"];
 	[deleteBranchView reset];
-	[deleteBranchView retain];
 	[alert setAccessoryView:deleteBranchView];
 	NSInteger res = [alert runModal];
-	[alert release];
 	if(res == NSAlertSecondButtonReturn) return NSCancelButton;
 	if([deleteBranchView isChecked]) return kGTAccessoryViewDeleteAll;
 	if(res == NSAlertFirstButtonReturn) return NSOKButton;
-	[deleteBranchView release];
 	return NSCancelButton;
 }
 

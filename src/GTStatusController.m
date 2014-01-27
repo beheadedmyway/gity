@@ -28,7 +28,6 @@
 - (void) awakeFromNib {
 	spinnerStack=[[NSMutableArray alloc] init];
 	[spinner setUsesThreadedAnimation:true];
-	[spinner retain]; //retain here because I'm adding and removing it.
 	[workingLabeledProgress setUsesThreadedAnimation:true];
 	[workingProgress setUsesThreadedAnimation:true];
 	[initialLoadIndicator setUsesThreadedAnimation:true];
@@ -168,7 +167,6 @@
 	GDRelease(spinner);
 	activeStatus=0;
 	shown=false;
-	[super dealloc];
 }
 
 @end

@@ -27,8 +27,8 @@
 	NSMethodSignature * signature;
 }
 
-@property (retain,nonatomic) NSArray * args;
-@property (retain,nonatomic) id target;
+@property (strong,nonatomic) NSArray * args;
+@property (strong,nonatomic) id target;
 @property (assign,nonatomic) SEL action;
 
 - (void) execute;

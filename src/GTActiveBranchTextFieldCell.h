@@ -19,9 +19,9 @@
 #import "GTGitFile.h"
 
 @interface GTActiveBranchTextFieldCell : NSTextFieldCell {
-	GTGitFile *file;
+	GTGitFile *__weak file;
 }
 
-@property (nonatomic, assign) GTGitFile *file;
+@property (nonatomic, weak) GTGitFile *file;
 
 @end

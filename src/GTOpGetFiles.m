@@ -35,9 +35,6 @@
 	NSString * filesJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSMutableArray * files = [NSMutableArray arrayWithArray:[json objectWithString:filesJSON error:nil]];
-	[filesJSON release];
-	[json release];
-	[read release];
 	if([self isCancelled]) return;
 	[gitd setAllFiles:files];
 }

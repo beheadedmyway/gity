@@ -82,7 +82,6 @@ static NSString *gityVersion;
 	@try { //this line of code is trying an "undocumented" method - it's in a try catch just in case it's not available (it's been there since around 10.3).
 		NSObject * obj = [[NSObject alloc] init];
 		if([op respondsToSelector:@selector(setShowsHiddenFiles:)]) [op performSelector:@selector(setShowsHiddenFiles:) withObject:obj];
-		[obj release];
 	}@catch(NSException * e){}
 	int res=[op runModal];
 	if(res==NSCancelButton) return;
@@ -95,7 +94,7 @@ static NSString *gityVersion;
 	NSString * bv = [dic objectForKey:@"CFBundleVersion"];
 	NSString * bv2 = [@"." stringByAppendingString:bv];
 	NSString * sbv = [dic objectForKey:@"CFBundleShortVersionString"];
-	gityVersion = [[sbv stringByAppendingString:bv2] retain];
+	gityVersion = [sbv stringByAppendingString:bv2];
 }
 
 - (IBAction) launchGitBook:(id) sender {
@@ -224,7 +223,6 @@ static NSString *gityVersion;
 		for (GittyDocument *document in documents)
 			[openDocuments addObject:[[document fileURL] absoluteString]];
 		[[NSUserDefaults standardUserDefaults] setObject:[NSArray arrayWithArray:openDocuments] forKey:@"GTPreviousDocuments"];
-		[openDocuments release];
 	}
 
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kGTIgnoreCommitsAhead]) 
@@ -332,7 +330,6 @@ static NSString *gityVersion;
 
 	sparkle = nil;
 	
-	[super dealloc];
 }
 
 @end

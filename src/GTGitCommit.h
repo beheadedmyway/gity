@@ -35,9 +35,9 @@
     NSString * graph;
 }
 
-@property (retain,nonatomic) NSDate * date;
-@property (retain,nonatomic) NSArray * parents;
-@property (retain,nonatomic) NSArray * refs;
+@property (strong,nonatomic) NSDate * date;
+@property (strong,nonatomic) NSArray * parents;
+@property (strong,nonatomic) NSArray * refs;
 @property (copy,nonatomic) NSString * hash;
 @property (copy,nonatomic) NSString * abbrevHash;
 @property (copy,nonatomic) NSString * author;

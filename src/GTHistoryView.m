@@ -40,7 +40,7 @@
 
 - (void) updateTableHeaderCells {
 	NSTableColumn * subjectColumn = [tableView tableColumnWithIdentifier:@"subject"];
-	GTTableHeaderCell * thc = [[[GTTableHeaderCell alloc] init] autorelease];
+	GTTableHeaderCell * thc = [[GTTableHeaderCell alloc] init];
 	[thc setTitle:@"Subject"];
 	[subjectColumn setHeaderCell:thc];
 }
@@ -158,7 +158,6 @@
 
 - (void) update {
 	[self setCommits:[gitd historyCommits]];
-	if(commitsCopy) [commitsCopy release];
 	commitsCopy = [[NSMutableArray alloc] initWithArray:commits copyItems:true];
 	if(lastSearchTerm) {
 		[self search:lastSearchTerm];
@@ -179,7 +178,6 @@
 	lastSearchTerm=[_term copy];
 	NSMutableArray * newCommits = [[NSMutableArray alloc] initWithArray:[commitsCopy arrayByMatchingObjectsWithRegex:_term]];
 	[self setCommits:newCommits];
-	[newCommits release];
 	[tableView reloadData];
 	headRow = -1;
 	//[gd onSearch];
@@ -241,7 +239,6 @@
 	subject=nil;
 	date=nil;
 	hasSetDelegate=false;
-	[super dealloc];
 }
 
 @end

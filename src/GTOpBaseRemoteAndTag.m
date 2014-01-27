@@ -30,7 +30,6 @@
 	printf("DEALLOC GTOpBaseRemoteAndTag\n");
 	#endif
 	GDRelease(tagName);
-	[super dealloc];
 }
 
 @end

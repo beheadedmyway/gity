@@ -158,7 +158,6 @@
 	GDRelease(_submoduleName);
 	GDRelease(chooseDestination);
 	[self disposeNibs];
-	[super dealloc];
 }
 
 @end

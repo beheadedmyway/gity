@@ -112,14 +112,12 @@
 
 - (void) setSheetTitleValue:(NSString *) _title {
 	if(_sheetTitle neq _title) {
-		[_sheetTitle release];
 		_sheetTitle = [_title copy];
 	}
 }
 
 - (void) setInputLabelValue:(NSString *) _label {
 	if(_inputLabel neq _label) {
-		[_inputLabel release];
 		_inputLabel = [_label copy];
 	}
 }
@@ -138,9 +136,6 @@
 	allowsSpaces = false;
 	lastButtonValue = 0;
 	//[checkout release];
-	[_sheetTitle release];
-	[_inputLabel release];
-	[_inputValue release];
 	_sheetTitle = nil;
 	_inputLabel = nil;
 	_inputValue = nil;
@@ -151,7 +146,6 @@
 	printf("DEALLOC GTSingleInputController\n");
 	#endif
 	[self disposeNibs];
-	[super dealloc];
 }
 
 @end

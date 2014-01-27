@@ -19,10 +19,10 @@
 @class GittyDocument;
 
 @interface GTBaseView : NSView {
-	GittyDocument * gd;
+	GittyDocument * __weak gd;
 }
 
-@property (assign,nonatomic) GittyDocument * gd;
+@property (weak,nonatomic) GittyDocument * gd;
 
 - (void) hide;
 - (void) lazyInitWithGD:(GittyDocument *) _gd;

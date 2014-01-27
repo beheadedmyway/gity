@@ -33,10 +33,8 @@ static void fHandleObserverCallback(AXObserverRef observer, AXUIElementRef eleme
 		AXObserverCreate(app_pid,(void*)&fHandleObserverCallback,&observer);
 		//if(callres != kAXErrorSuccess) return nil;
 		CFRunLoopAddSource([[NSRunLoop mainRunLoop] getCFRunLoop],AXObserverGetRunLoopSource(observer),(CFStringRef)NSDefaultRunLoopMode);
-		AXObserverAddNotification(observer,element,(__bridge CFStringRef)notification,self);
+		AXObserverAddNotification(observer,element,(__bridge CFStringRef)notification,(__bridge void *)(self));
 		CFRetain(element);
-		[invoker retain];
-		[actionTarget retain];
 	}
 	return self;
 }
@@ -47,13 +45,8 @@ static void fHandleObserverCallback(AXObserverRef observer, AXUIElementRef eleme
 
 - (void) dealloc {
 	AXObserverRemoveNotification(observer,element,(__bridge CFStringRef)notification);
-	[notification release];
-	[invoker release];
-	[notify release];
-	[actionTarget release];
 	CFRelease(element);
 	CFRelease(observer);
-	[super dealloc];
 }
 
 @end

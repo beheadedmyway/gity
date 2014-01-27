@@ -19,7 +19,7 @@
 #import "defs.h"
 
 @interface GTScaledButtonControl : NSControl {
-	id target;
+	id __unsafe_unretained target;
 	SEL action;
 	BOOL sendsOnUp;
 	BOOL mover;
@@ -27,9 +27,9 @@
 	BOOL pushedDown;
 	BOOL isPushButton;
 	BOOL isPlainImageButton;
-	NSImage * sourceImage;
-	NSImage * sourceIcon;
-	NSAttributedString * sourceTitle;
+	NSImage * __weak sourceImage;
+	NSImage * __weak sourceIcon;
+	NSAttributedString * __weak sourceTitle;
 	NSTrackingRectTag trackingTag;
 	NSPoint attributedTitlePosition;
 	NSAttributedString * attributedTitleDown;
@@ -44,23 +44,23 @@
 	NSImage * scaledOverImage;
 }
 
-@property (assign,nonatomic) id target;
+@property (unsafe_unretained,nonatomic) id target;
 @property (assign,nonatomic) SEL action;
 @property (assign,nonatomic) BOOL isPushButton;
-@property (retain,nonatomic) NSImage * scaledImage;
-@property (retain,nonatomic) NSImage * scaledOverImage;
-@property (retain,nonatomic) NSImage * scaledDownImage;
-@property (retain,nonatomic) NSImage * icon;
-@property (retain,nonatomic) NSImage * iconOver;
-@property (retain,nonatomic) NSImage * iconDown;
+@property (strong,nonatomic) NSImage * scaledImage;
+@property (strong,nonatomic) NSImage * scaledOverImage;
+@property (strong,nonatomic) NSImage * scaledDownImage;
+@property (strong,nonatomic) NSImage * icon;
+@property (strong,nonatomic) NSImage * iconOver;
+@property (strong,nonatomic) NSImage * iconDown;
 @property (assign,nonatomic) NSPoint iconPosition;
-@property (retain,nonatomic) NSAttributedString * attributedTitle;
-@property (retain,nonatomic) NSAttributedString * attributedTitleOver;
-@property (retain,nonatomic) NSAttributedString * attributedTitleDown;
+@property (strong,nonatomic) NSAttributedString * attributedTitle;
+@property (strong,nonatomic) NSAttributedString * attributedTitleOver;
+@property (strong,nonatomic) NSAttributedString * attributedTitleDown;
 @property (assign,nonatomic) NSPoint attributedTitlePosition;
-@property (assign,nonatomic) NSImage * sourceImage;
-@property (assign,nonatomic) NSAttributedString * sourceTitle;
-@property (assign,nonatomic) NSImage * sourceIcon;
+@property (weak,nonatomic) NSImage * sourceImage;
+@property (weak,nonatomic) NSAttributedString * sourceTitle;
+@property (weak,nonatomic) NSImage * sourceIcon;
 @property (assign,nonatomic) BOOL isPlainImageButton;
 
 - (void) sendsActionOnMouseUp:(BOOL) sends;

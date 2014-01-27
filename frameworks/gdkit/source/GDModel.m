@@ -9,7 +9,6 @@
 	#ifdef GDKIT_PRINT_DEALLOCS
 	printf("dealloc GDModel\n");
 	#endif
-	[super dealloc];
 }
 
 @end

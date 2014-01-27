@@ -55,7 +55,6 @@
 	printf("DEALLOC GTBaseView\n");
 	#endif
 	gd=nil;
-	[super dealloc];
 }
 
 @end

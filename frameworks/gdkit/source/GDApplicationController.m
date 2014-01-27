@@ -46,23 +46,23 @@
 
 - (void) lazyInitWithModel:(id) _model mainMenu:(id) _mainMenu modals:(id) _modals operations:(id) _operations windows:(id) _windows drawers:(id) _drawers views:(id) _views sounds:(id) _sounds contexts:(id) _contexts {
 	if(drawers and drawers neq _drawers)GDRelease(drawers);
-	if(drawers is nil and _drawers neq nil)drawers=[_drawers retain];
+	if(drawers is nil and _drawers neq nil)drawers=_drawers;
 	if(views and views neq _views)GDRelease(views);
-	if(views is nil and _views neq nil)views=[_views retain];
+	if(views is nil and _views neq nil)views=_views;
 	if(model and model neq _model)GDRelease(model);
-	if(model is nil and _model neq nil)model=[_model retain];
+	if(model is nil and _model neq nil)model=_model;
 	if(modals and modals neq _modals)GDRelease(modals);
-	if(modals is nil and _modals neq nil)modals=[_modals retain];
+	if(modals is nil and _modals neq nil)modals=_modals;
 	if(sounds and sounds neq _sounds)GDRelease(sounds);
-	if(sounds is nil and _sounds neq nil)sounds=[_sounds retain];
+	if(sounds is nil and _sounds neq nil)sounds=_sounds;
 	if(operations and operations neq _operations)GDRelease(operations);
-	if(operations is nil and _operations neq nil)operations=[_operations retain];
+	if(operations is nil and _operations neq nil)operations=_operations;
 	if(mainMenu and mainMenu neq _mainMenu)GDRelease(mainMenu);
-	if(mainMenu is nil and _mainMenu neq nil)mainMenu=[_mainMenu retain];
+	if(mainMenu is nil and _mainMenu neq nil)mainMenu=_mainMenu;
 	if(wins and wins neq _windows)GDRelease(wins);
-	if(wins is nil and _windows neq nil)wins=[_windows retain];
+	if(wins is nil and _windows neq nil)wins=_windows;
 	if(contexts and contexts neq _contexts)GDRelease(contexts);
-	if(contexts is nil and _contexts neq nil)contexts=[_contexts retain];
+	if(contexts is nil and _contexts neq nil)contexts=_contexts;
 	if(drawers neq nil)[drawers performSelector:@selector(lazyInitWithGD:) withObject:self];
 	if(mainMenu neq nil)[mainMenu performSelector:@selector(lazyInitWithGD:) withObject:self];
 	if(operations neq nil)[operations performSelector:@selector(lazyInitWithGD:) withObject:self];
@@ -99,7 +99,6 @@
 	GDRelease(drawers);
 	GDRelease(contexts);
 	awokeFromNib=false;
-	[super dealloc];
 }
 
 @end

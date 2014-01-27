@@ -24,6 +24,6 @@
 	GTSourceListMenuView * sourceListMenuView;
 }
 
-@property (retain,nonatomic) GTSourceListMenuView * sourceListMenuView;
+@property (strong,nonatomic) GTSourceListMenuView * sourceListMenuView;
 
 @end

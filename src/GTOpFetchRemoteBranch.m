@@ -26,11 +26,5 @@
 	[self updateArguments];
 }
 
-- (void) dealloc {
-	#ifdef GT_PRINT_DEALLOCS
-	printf("DEALLOC GTOpFetchRemoteBranch\n");
-	#endif
-	[super dealloc];
-}
 
 @end

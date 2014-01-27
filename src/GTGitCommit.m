@@ -44,13 +44,10 @@
 	NSTimeInterval ti = [[self date] timeIntervalSince1970];
 	NSDate * dt = [[NSDate alloc] initWithTimeIntervalSince1970:ti];
 	[cp setDate:dt];
-	[dt release];
 	NSArray * pnts = [[NSArray alloc] initWithArray:[self parents] copyItems:true];
 	[cp setParents:pnts];
-	[pnts release];
 	NSArray * rfs = [[NSArray alloc] initWithArray:[self refs] copyItems:true];
 	[cp setRefs:rfs];
-	[rfs release];
 	return cp;
 }
 
@@ -74,7 +71,6 @@
 	GDRelease(notes);
 	GDRelease(parsedCommitDetails);
     GDRelease(graph);
-	[super dealloc];
 }
 
 @end

@@ -41,7 +41,6 @@
 	if(done) return;
 	[fileToWrite writeData:data];
 	[fileToWrite closeFile];
-	[fileToWrite release];
 	[super main];
 }
 }
@@ -51,7 +50,6 @@
 	printf("DEALLOC GTOpReportCommit\n");
 	#endif
 	GDRelease(commitContent);
-	[super dealloc];
 }
 
 @end

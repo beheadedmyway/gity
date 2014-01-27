@@ -41,7 +41,6 @@
 	#endif
 	GDRelease(cancelables);
 	cancelingAll=false;
-	[super dealloc];
 }
 
 @end

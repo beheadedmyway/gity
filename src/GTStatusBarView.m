@@ -100,21 +100,21 @@ static float windowSpacing;
 }
 
 - (void) invalidateLabels {
-	if(deletedFilesCount > 0 && deletedFilesLabel) [deletedFilesLabel release]; //deletedFiles
-	if(deletedFilesCount == 1) deletedFilesLabel = [[GTStyles getRoundStatusButtonText:@"(1) Deleted File"] retain];
-	if(deletedFilesCount > 1) deletedFilesLabel = [[GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Deleted Files",(int)deletedFilesCount]] retain];
-	if(untrackedFilesCount > 0 && untrackedFiles) [untrackedFilesLabel release]; //untrackedFiles
-	if(untrackedFilesCount == 1) untrackedFilesLabel = [[GTStyles getRoundStatusButtonText:@"(1) Untracked File"] retain];
-	if(untrackedFilesCount > 1) untrackedFilesLabel = [[GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Untracked Files",(int)untrackedFilesCount]] retain];
-	if(modifiedFilesCount > 0 && modifiedFilesLabel) [modifiedFilesLabel release]; //modified files
-	if(modifiedFilesCount == 1) modifiedFilesLabel = [[GTStyles getRoundStatusButtonText:@"(1) Modified File"] retain];
-	if(modifiedFilesCount > 1) modifiedFilesLabel = [[GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Modified Files",(int)modifiedFilesCount]] retain];
-	if(stagedFilesCount > 0 && stagedFilesLabel) [stagedFilesLabel release]; //staged files
-	if(stagedFilesCount == 1) stagedFilesLabel = [[GTStyles getRoundStatusButtonText:@"(1) Staged File"] retain];
-	if(stagedFilesCount > 1) stagedFilesLabel = [[GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Staged Files",(int)stagedFilesCount]] retain];
-	if(unmergedFilesCount > 0 && conflictedFilesLabel) [conflictedFilesLabel release]; //staged files
-	if(unmergedFilesCount == 1) conflictedFilesLabel = [[GTStyles getRoundStatusButtonText:@"(1) Conflicted File"] retain];
-	if(unmergedFilesCount > 1) conflictedFilesLabel = [[GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Conflicted Files",(int)unmergedFilesCount]] retain];
+	 //deletedFiles
+	if(deletedFilesCount == 1) deletedFilesLabel = [GTStyles getRoundStatusButtonText:@"(1) Deleted File"];
+	if(deletedFilesCount > 1) deletedFilesLabel = [GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Deleted Files",(int)deletedFilesCount]];
+	 //untrackedFiles
+	if(untrackedFilesCount == 1) untrackedFilesLabel = [GTStyles getRoundStatusButtonText:@"(1) Untracked File"];
+	if(untrackedFilesCount > 1) untrackedFilesLabel = [GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Untracked Files",(int)untrackedFilesCount]];
+	 //modified files
+	if(modifiedFilesCount == 1) modifiedFilesLabel = [GTStyles getRoundStatusButtonText:@"(1) Modified File"];
+	if(modifiedFilesCount > 1) modifiedFilesLabel = [GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Modified Files",(int)modifiedFilesCount]];
+	 //staged files
+	if(stagedFilesCount == 1) stagedFilesLabel = [GTStyles getRoundStatusButtonText:@"(1) Staged File"];
+	if(stagedFilesCount > 1) stagedFilesLabel = [GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Staged Files",(int)stagedFilesCount]];
+	 //staged files
+	if(unmergedFilesCount == 1) conflictedFilesLabel = [GTStyles getRoundStatusButtonText:@"(1) Conflicted File"];
+	if(unmergedFilesCount > 1) conflictedFilesLabel = [GTStyles getRoundStatusButtonText:[NSString stringWithFormat:@"(%i) Conflicted Files",(int)unmergedFilesCount]];
 }
 
 - (void) invalidateAllButtons {
@@ -254,11 +254,11 @@ static float windowSpacing;
 }
 
 - (void) updateButtonLabels {
-	deletedFilesLabel = [[GTStyles getRoundStatusButtonText:@"Deleted Files"] retain];
-	untrackedFilesLabel = [[GTStyles getRoundStatusButtonText:@"Untracked Files"] retain];
-	stagedFilesLabel = [[GTStyles getRoundStatusButtonText:@"Staged Files"] retain];
-	modifiedFilesLabel = [[GTStyles getRoundStatusButtonText:@"Modified Files"] retain];
-	conflictedFilesLabel = [[GTStyles getRoundStatusButtonText:@"Conflicted Files"] retain];
+	deletedFilesLabel = [GTStyles getRoundStatusButtonText:@"Deleted Files"];
+	untrackedFilesLabel = [GTStyles getRoundStatusButtonText:@"Untracked Files"];
+	stagedFilesLabel = [GTStyles getRoundStatusButtonText:@"Staged Files"];
+	modifiedFilesLabel = [GTStyles getRoundStatusButtonText:@"Modified Files"];
+	conflictedFilesLabel = [GTStyles getRoundStatusButtonText:@"Conflicted Files"];
 }
 
 - (NSRect) getButtonRectSizedForLabel:(NSAttributedString *) label {
@@ -467,7 +467,6 @@ static float windowSpacing;
 	GDRelease(modifiedFiles);
 	GDRelease(stagedFiles);
 	splitContentView=nil;
-	[super dealloc];
 }
 
 @end

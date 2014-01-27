@@ -13,7 +13,6 @@
 
 - (void) dealloc {
 	GDRelease(connection);
-	[super dealloc];
 }
 
 @end

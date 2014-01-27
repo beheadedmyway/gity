@@ -10,5 +10,5 @@ OSType fourCharCodeToOSType(NSString* inCode) {
 NSString * osTypeToFourCharCode(OSType inType) {
 	NSData * data = [NSData dataWithBytes:&inType length:sizeof(inType)];
 	NSString * ret = [[NSString alloc]initWithData:data encoding:NSMacOSRomanStringEncoding];
-  	return [ret autorelease];
+  	return ret;
 }

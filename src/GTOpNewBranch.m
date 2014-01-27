@@ -45,7 +45,6 @@
 	printf("DEALLOC GTOpNewBranch\n");
 	#endif
 	GDRelease(startBranchName);
-	[super dealloc];
 }
 
 @end

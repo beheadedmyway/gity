@@ -20,9 +20,9 @@
 @implementation GTOpLoadCommitDetails
 
 - (id) initWithGD:(GittyDocument *) _gd andCommit:(GTGitCommit *) _commit andCommitLoadInfo:(GTGitCommitDetailLoadInfo *) _loadInfo andTemplate:(NSString *) _template {
-	commitTemplate=[_template retain];
-	commit=[_commit retain];
-	loadInfo=[_loadInfo retain];
+	commitTemplate=_template;
+	commit=_commit;
+	loadInfo=_loadInfo;
 	self=[super initWithGD:_gd];
 	return self;
 }
@@ -55,7 +55,6 @@
 	GDRelease(commit);
 	GDRelease(commitTemplate);
 	GDRelease(loadInfo);
-	[super dealloc];
 }
 
 @end

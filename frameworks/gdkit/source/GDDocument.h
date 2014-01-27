@@ -91,22 +91,22 @@
 /**
  * A GDViewController.
  */
-@property (retain,nonatomic) IBOutlet id views;
+@property (strong,nonatomic) IBOutlet id views;
 
 /**
  * A GDWindowController.
  */
-@property (retain,nonatomic) IBOutlet id wins;
+@property (strong,nonatomic) IBOutlet id wins;
 
 /**
  * A GDDrawerController.
  */
-@property (retain,nonatomic) IBOutlet id drawers;
+@property (strong,nonatomic) IBOutlet id drawers;
 
 /**
  * A GDContextMenuController.
  */
-@property (retain,nonatomic) IBOutlet id contexts;
+@property (strong,nonatomic) IBOutlet id contexts;
 	
 /**
  * Designated <b>lazy</b> initializer to provide values for

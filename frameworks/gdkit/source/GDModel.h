@@ -27,6 +27,6 @@
 /**
  * A GDApplicationInfo.
  */
-@property (retain,nonatomic) id appInfo;
+@property (strong,nonatomic) id appInfo;
 
 @end

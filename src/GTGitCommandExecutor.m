@@ -72,7 +72,6 @@
 					[op performSelector:@selector(setShowsHiddenFiles:) withObject:obj];
 				}
 				
-				[obj release];
 			} 
 			@catch (NSException *e) {
 			}
@@ -137,7 +136,6 @@
 					[op performSelector:@selector(setShowsHiddenFiles:) withObject:obj];
 				}
 				
-				[obj release];
 			} 
 			@catch (NSException *e) {
 			}
@@ -178,8 +176,7 @@
     if (subvendorMarker.location != NSNotFound)
     {
         NSString *oldString = versionSTDOUT;
-        versionSTDOUT = [[oldString substringToIndex:subvendorMarker.location] retain];
-        [oldString release];
+        versionSTDOUT = [oldString substringToIndex:subvendorMarker.location];
     }
 	
 	NSArray *pieces = [versionSTDOUT componentsSeparatedByString:@" "];
@@ -228,13 +225,11 @@
 	[task setCurrentDirectoryPath:proposedPath];
 	[task setArguments:args];
 	
-	[args release];
 	
 	[task launch];
 	[task waitUntilExit];
 	
 	if([task terminationStatus] == 128) {
-		[task release];
 		return nil;
 	}
 	
@@ -242,27 +237,21 @@
 	NSData *data = [fout readDataToEndOfFile];
 	NSString *path = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    [gitConfigPath release];
     gitConfigPath = nil;
 	
 	if([path isEqual:@".git\n"]) {
-		[path release];
-		[task release];
-        gitConfigPath = [[proposedPath stringByAppendingPathComponent:@"/.git"] retain];
+        gitConfigPath = [proposedPath stringByAppendingPathComponent:@"/.git"];
 		return proposedPath;
 	}
     
-    gitConfigPath = [[path stringByReplacingOccurrencesOfString:@"\n" withString:@""] retain];
+    gitConfigPath = [path stringByReplacingOccurrencesOfString:@"\n" withString:@""];
 
     // this takes into account newer git version's handling of submodules
     if ([path rangeOfString:@".git/modules"].location != NSNotFound) {
         NSString *newPath = [gitConfigPath stringByReplacingOccurrencesOfString:@"/.git/modules" withString:@""];
-		[path release];
-		[task release];
 		return newPath;        
     }
 	
-	[task release];
 	
 	return [path stringByDeletingLastPathComponent];
 }
@@ -335,7 +324,6 @@
 	
 	int res = [status terminationStatus];
 	
-	[status release];
 	
 	if(res > 1) {
 		return FALSE;
@@ -354,7 +342,6 @@
 	
 	int res = [initask terminationStatus];
 	
-	[initask release];
 	
 	if(res > 1) {
 		return false;
@@ -372,7 +359,6 @@
     GDRelease(gitConfigPath);
 	GDRelease(environment);
 	
-	[super dealloc];
 }
 
 @end

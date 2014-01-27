@@ -137,7 +137,6 @@
 	isSheet=false;
 	switchingToWindow=false;
 	switchingToSheet=false;
-	[super dealloc];
 }
 
 @end

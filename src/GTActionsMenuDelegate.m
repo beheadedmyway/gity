@@ -27,7 +27,6 @@
 
 - (void) dealloc {
 	GDRelease(sourceListMenuView);
-	[super dealloc];
 }
 
 @end

@@ -42,7 +42,6 @@
 	#endif
 	GDRelease(gradient);
 	angle=0;
-	[super dealloc];
 }
 
 @end

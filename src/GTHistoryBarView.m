@@ -27,8 +27,7 @@
 	NSColor * color1 = [NSColor colorWithDeviceRed:0.75 green:0.75 blue:0.75 alpha:1];
 	NSColor * color2 = [NSColor colorWithDeviceRed:0.9 green:0.9 blue:0.9 alpha:1];
 	NSArray * colors = [NSArray arrayWithObjects:color1,color2,nil];
-	NSGradient * grad = [[[NSGradient alloc] initWithColors:colors] autorelease];
-	[contextSlider retain];
+	NSGradient * grad = [[NSGradient alloc] initWithColors:colors];
 	[contextSlider setTarget:self];
 	[contextSlider setAction:@selector(onContextSliderUpdate)];
 	[contextSlider setIntegerValue:3];
@@ -237,7 +236,6 @@
 	GDRelease(tree);
 	GDRelease(contextLabel);
 	GDRelease(contextSlider);
-	[super dealloc];
 }
 
 @end

@@ -43,8 +43,4 @@
 	[super drawInteriorWithFrame:cellFrame inView:controlView];
 }
 
-- (void)dealloc
-{
-	[super dealloc];
-}
 @end

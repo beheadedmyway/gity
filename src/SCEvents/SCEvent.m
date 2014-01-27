@@ -43,7 +43,7 @@
  */
 + (SCEvent *)eventWithEventId:(NSUInteger)identifier eventDate:(NSDate *)date eventPath:(NSString *)path eventFlag:(FSEventStreamEventFlags)flag
 {
-    return [[[SCEvent alloc] initWithEventId:identifier eventDate:date eventPath:path eventFlag:flag] autorelease];
+    return [[SCEvent alloc] initWithEventId:identifier eventDate:date eventPath:path eventFlag:flag];
 }
 
 /**
@@ -75,9 +75,8 @@
  */
 - (void)dealloc
 {
-    [eventDate release], eventDate = nil;
+    eventDate = nil;
 	
-    [super dealloc];
 }
 
 @end

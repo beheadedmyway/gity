@@ -28,8 +28,8 @@
 - (void) setupInvoker {
 	GDRelease(signature);
 	GDRelease(invoker);
-	signature=[[[self target] methodSignatureForSelector:[self action]] retain];
-	invoker=[[NSInvocation invocationWithMethodSignature:signature] retain];
+	signature=[[self target] methodSignatureForSelector:[self action]];
+	invoker=[NSInvocation invocationWithMethodSignature:signature];
 	[invoker setTarget:[self target]];
 	[invoker setSelector:[self action]];
 	[invoker retainArguments];
@@ -75,7 +75,6 @@
 	GDRelease(signature);
 	GDRelease(target);
 	GDRelease(args);
-	[super dealloc];
 }
 
 @end

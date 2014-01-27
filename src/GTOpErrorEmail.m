@@ -34,7 +34,6 @@
 	NSData * errorMsg = [errors dataUsingEncoding:NSUTF8StringEncoding];
 	[fileHandle writeData:errorMsg];
 	[fileHandle closeFile];
-	[fileHandle release];
 	[self updateArguments];
 }
 
@@ -43,7 +42,6 @@
 	printf("DEALLOC GTOpErrorEmail\n");
 	#endif
 	GDRelease(errors);
-	[super dealloc];
 }
 
 @end

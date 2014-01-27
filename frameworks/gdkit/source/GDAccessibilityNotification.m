@@ -30,8 +30,7 @@
 
 - (void) setUserInfo:(NSDictionary *) userInfow {
 	if(userInfo != userInfow) {
-		[userInfo release];
-		userInfo = [userInfow retain];
+		userInfo = userInfow;
 	}
 }
 
@@ -41,9 +40,6 @@
 
 - (void) dealloc {
 	CFRelease(element);
-	[notification release];
-	[userInfo release];
-	[super dealloc];
 }
 
 @end

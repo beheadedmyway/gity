@@ -35,9 +35,6 @@
 	NSString * statusJSON = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	SBJSON * json = [[SBJSON alloc] init];
 	NSDictionary * status = [json objectWithString:statusJSON error:nil];
-	[statusJSON release];
-	[json release];
-	[read release];
 	if([self isCancelled]) return;
 	[gitd setUntrackedFiles:[status objectForKey:@"untracked"]];
 	[gitd setModifiedFiles:[status objectForKey:@"modified"]];

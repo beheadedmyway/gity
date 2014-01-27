@@ -8,13 +8,13 @@
 + (GDApplicationInfo *) instanceFromDefaultPlist {
 	GDApplicationInfo * info = [[GDApplicationInfo alloc] init];
 	[info loadDefaultInfoPlist];
-	return [info autorelease];
+	return info;
 }
 
 + (GDApplicationInfo *) instanceFromLoadingPlist:(NSString *) _plist {
 	GDApplicationInfo * info = [[GDApplicationInfo alloc] init];
 	[info loadPlist:_plist];
-	return [info autorelease];
+	return info;
 }
 
 - (id) init {
@@ -34,7 +34,6 @@
 
 - (void) dealloc {
 	GDRelease(dictionary);
-	[super dealloc];
 }
 
 @end

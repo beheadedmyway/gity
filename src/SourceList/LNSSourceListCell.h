@@ -10,7 +10,7 @@
 	NSRect firstRect;
 }
 
-@property (retain,nonatomic) GTSourceListItem * objectValue;
+@property (strong,nonatomic) GTSourceListItem * objectValue;
 
 - (void) clearFirstRect;
 

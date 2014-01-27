@@ -63,7 +63,6 @@
 	GDRelease(after);
 	GDRelease(authorContains);
 	GDRelease(messageContains);
-	[super dealloc];
 }
 
 @end

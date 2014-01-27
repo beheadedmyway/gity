@@ -26,7 +26,6 @@
 	printf("dealloc GTGitCommitDetailLoadInfo\n");
 	#endif
 	GDRelease(parsedCommitDetails);
-	[super dealloc];
 }
 
 @end

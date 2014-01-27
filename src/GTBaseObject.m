@@ -45,7 +45,6 @@
 	operations=nil;
 	gtwindow=nil;
 	sounds=nil;
-	[super dealloc];
 }
 
 @end

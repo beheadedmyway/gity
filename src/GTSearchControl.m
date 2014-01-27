@@ -54,10 +54,8 @@
 }
 
 - (void) dealloc {
-	[searchField release];
 	searchControlRect = NSMakeRect(0,0,0,0);
 	drawn=false;
-	[super dealloc];
 }
 
 @end

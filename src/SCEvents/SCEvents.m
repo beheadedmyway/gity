@@ -163,7 +163,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 {
 	if (!isWatchingPaths) return @"The event stream is not running. Start it by calling: startWatchingPaths:";
 	
-	NSString *result = [(NSString *)FSEventStreamCopyDescription(eventStream) autorelease];
+	NSString *result = (NSString *)CFBridgingRelease(FSEventStreamCopyDescription(eventStream));
 	return result;
 }
 
@@ -186,11 +186,10 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 	// Stop the event stream if it's still running
 	if (isWatchingPaths) [self stopWatchingPaths];
         
-	[lastEvent release], lastEvent = nil;
-    [watchedPaths release], watchedPaths = nil;
-    [excludedPaths release], excludedPaths = nil;
+	lastEvent = nil;
+    watchedPaths = nil;
+    excludedPaths = nil;
     
-    [super dealloc];
 }
 
 @end
@@ -205,7 +204,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
     FSEventStreamContext callbackInfo;
 	
 	callbackInfo.version = 0;
-	callbackInfo.info    = (void*)self;
+	callbackInfo.info    = (__bridge void*)self;
 	callbackInfo.retain  = NULL;
 	callbackInfo.release = NULL;
 	callbackInfo.copyDescription = NULL;
@@ -226,7 +225,7 @@ static void _SCEventsCallBack(ConstFSEventStreamRef streamRef, void *clientCallB
 {
     NSUInteger i;
     BOOL shouldIgnore = NO;
-	NSMutableArray *events = [[[NSMutableArray alloc] initWithCapacity:numEvents] autorelease];
+	NSMutableArray *events = [[NSMutableArray alloc] initWithCapacity:numEvents];
     
     SCEvents *pathWatcher = (__bridge SCEvents *)clientCallBackInfo;
     

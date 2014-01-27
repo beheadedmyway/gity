@@ -6,12 +6,12 @@ static GDAccessibilityManager * inst;
 
 @implementation GDAccessibilityManager
 
-+ (GDAccessibilityManager *) sharedInstance {
-    @synchronized(self) {
-		if(!inst) {
-			inst=[[self alloc] init];
-		}
-    }
++ (instancetype) sharedInstance {
+    static dispatch_once_t pred;
+    static id inst = nil;
+    dispatch_once(&pred, ^{
+        inst = [[self alloc] init];
+    });
     return inst;
 }
 
@@ -51,7 +51,7 @@ static GDAccessibilityManager * inst;
 	GDAccessibilityOperationResult *result = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	CFTypeRef res = NULL;
 	AXUIElementRef sys = AXUIElementCreateSystemWide();
-	int rescode = AXUIElementCopyAttributeValue(sys,(CFStringRef)kAXFocusedApplicationAttribute,(CFTypeRef *)&res);
+	int rescode = AXUIElementCopyAttributeValue(sys,kAXFocusedApplicationAttribute,(CFTypeRef *)&res);
 	CFRelease(sys);
 	[result setResultCode:rescode];
 	if([result wasSuccess]) {
@@ -87,7 +87,7 @@ static GDAccessibilityManager * inst;
 	if(![self doesElementRef:applicationRef actAsRole:NSAccessibilityApplicationRole]) {
 		[result setResultCode:kAMIncorrectRole];
 	} else {
-		int rescode = AXUIElementCopyAttributeValue(applicationRef,(CFStringRef)NSAccessibilityFocusedWindowAttribute,(CFTypeRef *)&res);
+		int rescode = AXUIElementCopyAttributeValue(applicationRef,(__bridge CFStringRef)NSAccessibilityFocusedWindowAttribute,(CFTypeRef *)&res);
 		[result setResultCode:rescode];
 	}
 	if([result wasSuccess]) {
@@ -136,7 +136,7 @@ static GDAccessibilityManager * inst;
 	if(![self isAccessibilityEnabled]) return [self getAPIDisabledOperationResult];
 	GDAccessibilityOperationResult * res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	CFTypeRef *value = NULL;
-	int resc = AXUIElementCopyAttributeValue((AXUIElementRef)element,(CFStringRef)attribute,(CFTypeRef*)&value);
+	int resc = AXUIElementCopyAttributeValue((AXUIElementRef)element,(__bridge CFStringRef)attribute,(CFTypeRef*)&value);
 	[res setResultCode:resc];
 	if([res wasSuccess]) {
 		[res setResult:value];
@@ -149,7 +149,7 @@ static GDAccessibilityManager * inst;
 	if(![self isAccessibilityEnabled]) return [self getAPIDisabledOperationResult];
 	GDAccessibilityOperationResult * res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	CFIndex * count;
-	int resc = AXUIElementGetAttributeValueCount((AXUIElementRef)element,(CFStringRef)attribute,(CFIndex*)&count);
+	int resc = AXUIElementGetAttributeValueCount((AXUIElementRef)element,(__bridge CFStringRef)attribute,(CFIndex*)&count);
 	[res setResultCode:resc];
 	if([res wasSuccess]) [res setResult:(CFTypeRef)count];
 	return res;
@@ -160,7 +160,7 @@ static GDAccessibilityManager * inst;
 	GDAccessibilityOperationResult * res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	AXValueRef valueRef = AXValueCreate(kAXValueCGPointType,(const void *)&point);
 	if(!valueRef) return [self getCannotCreateValueOperationResult];
-	int resc = AXUIElementSetAttributeValue(element,(CFStringRef)attribute,(CFTypeRef)valueRef);
+	int resc = AXUIElementSetAttributeValue(element,(__bridge CFStringRef)attribute,(CFTypeRef)valueRef);
 	CFRelease(valueRef);
 	[res setResultCode:resc];
 	return res;
@@ -171,7 +171,7 @@ static GDAccessibilityManager * inst;
 	GDAccessibilityOperationResult * res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	AXValueRef valueRef = AXValueCreate(kAXValueCGRectType,(const void *)&rect);
 	if(!valueRef) return [self getCannotCreateValueOperationResult];
-	int resc = AXUIElementSetAttributeValue(element,(CFStringRef)attribute,(CFTypeRef)valueRef);
+	int resc = AXUIElementSetAttributeValue(element,(__bridge CFStringRef)attribute,(CFTypeRef)valueRef);
 	CFRelease(valueRef);
 	[res setResultCode:resc];
 	return res;
@@ -182,7 +182,7 @@ static GDAccessibilityManager * inst;
 	GDAccessibilityOperationResult * res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	AXValueRef valueRef = AXValueCreate(kAXValueCFRangeType,(const void *)&range);
 	if(!valueRef) return [self getCannotCreateValueOperationResult];
-	int resc = AXUIElementSetAttributeValue(element,(CFStringRef)attribute,(CFTypeRef)valueRef);
+	int resc = AXUIElementSetAttributeValue(element,(__bridge CFStringRef)attribute,(CFTypeRef)valueRef);
 	CFRelease(valueRef);
 	[res setResultCode:resc];
 	return res;
@@ -193,7 +193,7 @@ static GDAccessibilityManager * inst;
 	GDAccessibilityOperationResult * res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	AXValueRef valueRef = AXValueCreate(kAXValueCGSizeType,(const void *)&size);
 	if(!valueRef) return [self getCannotCreateValueOperationResult];
-	int resc = AXUIElementSetAttributeValue(element,(CFStringRef)attribute,(CFTypeRef)valueRef);
+	int resc = AXUIElementSetAttributeValue(element,(__bridge CFStringRef)attribute,(CFTypeRef)valueRef);
 	CFRelease(valueRef);
 	[res setResultCode:resc];
 	return res;
@@ -202,7 +202,7 @@ static GDAccessibilityManager * inst;
 - (GDAccessibilityOperationResult *) forAXUIElementRef:(AXUIElementRef) element setAttribute:(NSString *) attribute toNSString:(NSString *) string {
 	if(![self isAccessibilityEnabled]) return [self getAPIDisabledOperationResult];
 	GDAccessibilityOperationResult * res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
-	int resc = AXUIElementSetAttributeValue(element,(CFStringRef)attribute,(CFTypeRef)string);
+	int resc = AXUIElementSetAttributeValue(element,(__bridge CFStringRef)attribute,(__bridge CFTypeRef)string);
 	[res setResultCode:resc];
 	return res;
 }
@@ -226,7 +226,7 @@ static GDAccessibilityManager * inst;
 - (Boolean) isAXUIElementRef:(AXUIElementRef) element attributeSettable:(NSString *) attribute {
 	if(![self isAccessibilityEnabled]) return FALSE;
 	Boolean val = FALSE;
-	if(AXUIElementIsAttributeSettable(element,(CFStringRef)attribute,&val) != kAXErrorSuccess) {
+	if(AXUIElementIsAttributeSettable(element,(__bridge CFStringRef)attribute,&val) != kAXErrorSuccess) {
 		return FALSE;
 	}
 	return val;
@@ -234,57 +234,57 @@ static GDAccessibilityManager * inst;
 
 - (Boolean) doesElementRef:(AXUIElementRef) elementRef exposeAttribute:(NSString *) attribute {
 	if(![self isAccessibilityEnabled]) return FALSE;
-	NSArray *attributes = NULL;
+	CFArrayRef attributes = NULL;
 	Boolean does = false;
-	if(AXUIElementCopyAttributeNames(elementRef,(CFArrayRef *)&attributes) == kAXErrorSuccess) {
-		does = [attributes containsObject:attribute];
-		[attributes release];
+	if(AXUIElementCopyAttributeNames(elementRef,&attributes) == kAXErrorSuccess) {
+		does = [(__bridge NSArray *)attributes containsObject:attribute];
+		CFRelease(attributes);
 	}
 	return does;
 }
 
 - (GDAccessibilityOperationResult *) forAXUIElementRefGetAttributeNames:(AXUIElementRef) element {
 	if(![self isAccessibilityEnabled]) return [self getAPIDisabledOperationResult];
-	NSArray * result;
-	int resc = AXUIElementCopyAttributeNames(element,(CFArrayRef*)&result);
+	CFArrayRef result;
+	int resc = AXUIElementCopyAttributeNames(element,&result);
 	GDAccessibilityOperationResult *res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	[res setResultCode:resc];
 	if([res wasSuccess]) {
-		[res setResult:(CFTypeRef)result];
-		[result release];
+		[res setResult:result];
+		CFRelease(result);
 	}
 	return res;
 }
 
 - (GDAccessibilityOperationResult *) forAXUIElementRefGetActionNames:(AXUIElementRef) element {
 	if(![self isAccessibilityEnabled]) return [self getAPIDisabledOperationResult];
-	NSArray * result;
-	int resc = AXUIElementCopyActionNames(element,(CFArrayRef*)&result);
+	CFArrayRef result;
+	int resc = AXUIElementCopyActionNames(element,&result);
 	GDAccessibilityOperationResult *res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	[res setResultCode:resc];
 	if([res wasSuccess]) {
-		[res setResult:(CFTypeRef)result];
-		[result release];
+		[res setResult:result];
+		CFRelease(result);
 	}
 	return res;
 }
 
 - (GDAccessibilityOperationResult *) forAXUIElementRef:(AXUIElementRef) element getActionDescription:(NSString *) action {
 	if(![self isAccessibilityEnabled]) return [self getAPIDisabledOperationResult];
-	NSString * desc;
-	int resc = AXUIElementCopyActionDescription(element,(CFStringRef)action,(CFStringRef*)&desc);
+	CFStringRef desc;
+	int resc = AXUIElementCopyActionDescription(element,(__bridge CFStringRef)action,&desc);
 	GDAccessibilityOperationResult *res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	[res setResultCode:resc];
 	if([res wasSuccess]) {
-		[res setResult:(CFTypeRef)desc];
-		[desc release];
+		[res setResult:desc];
+		CFRelease(desc);
 	}
 	return res;
 }
 
 - (GDAccessibilityOperationResult *) forAXUIElementRef:(AXUIElementRef) element performAction:(NSString *) action {
 	if(![self isAccessibilityEnabled]) return [self getAPIDisabledOperationResult];
-	int resc = AXUIElementPerformAction(element,(CFStringRef)action);
+	int resc = AXUIElementPerformAction(element,(__bridge CFStringRef)action);
 	GDAccessibilityOperationResult * res = [[[GDAccessibilityOperationResult alloc] init] autorelease];
 	[res setResultCode:resc];
 	return res;
@@ -307,11 +307,11 @@ static GDAccessibilityManager * inst;
 }
 
 - (Boolean) isNSString:(CFTypeRef) possibleString {
-	return ([(id)possibleString isKindOfClass:[NSString class]]);
+	return ([(__bridge id)possibleString isKindOfClass:[NSString class]]);
 }
 
 - (Boolean) isNSValue:(CFTypeRef) possibleNSValue {
-	return ([(id)possibleNSValue isKindOfClass:[NSValue class]]);
+	return ([(__bridge id)possibleNSValue isKindOfClass:[NSValue class]]);
 }
 
 + (id)allocWithZone:(NSZone *) zone {
@@ -326,21 +326,6 @@ static GDAccessibilityManager * inst;
 
 - (id)copyWithZone:(NSZone *) zone {
 	return self;
-}
-
-- (id)retain {
-	return self;
-}
-
-- (NSUInteger) retainCount {
-	return UINT_MAX;
-}
-
-- (id) autorelease {
-	return self;
-}
-
-- (oneway void) release{
 }
 
 @end

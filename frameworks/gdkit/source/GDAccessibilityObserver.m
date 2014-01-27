@@ -3,7 +3,7 @@
 #import "GDAccessibilityObserver.h"
 
 static void fHandleObserverCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef notification, void * userInfo) {
-	GDAccessibilityObserver * aco = (GDAccessibilityObserver *) userInfo;
+	GDAccessibilityObserver * aco = (__bridge GDAccessibilityObserver *) userInfo;
 	[[aco invoker] invoke];
 }
 
@@ -24,14 +24,15 @@ static void fHandleObserverCallback(AXObserverRef observer, AXUIElementRef eleme
 		invoker = [NSInvocation invocationWithMethodSignature:selectorSignature];
 		[invoker setSelector:action];
 		[invoker setTarget:target];
-		[invoker setArgument:&notify atIndex:2];
+		__unsafe_unretained id tempNotify = notify;
+		[invoker setArgument:&tempNotify atIndex:2];
 		app_pid = [accessManager forAXUIElementRefGetPID:elemnt];
 		//if(app_pid < 0) return nil;
 		//callres = //TODO: Fix the callres stuff
 		AXObserverCreate(app_pid,(void*)&fHandleObserverCallback,&observer);
 		//if(callres != kAXErrorSuccess) return nil;
 		CFRunLoopAddSource([[NSRunLoop mainRunLoop] getCFRunLoop],AXObserverGetRunLoopSource(observer),(CFStringRef)NSDefaultRunLoopMode);
-		AXObserverAddNotification(observer,element,(CFStringRef)notification,self);
+		AXObserverAddNotification(observer,element,(__bridge CFStringRef)notification,self);
 		CFRetain(element);
 		[invoker retain];
 		[actionTarget retain];
@@ -44,7 +45,7 @@ static void fHandleObserverCallback(AXObserverRef observer, AXUIElementRef eleme
 }
 
 - (void) dealloc {
-	AXObserverRemoveNotification(observer,element,(CFStringRef)notification);
+	AXObserverRemoveNotification(observer,element,(__bridge CFStringRef)notification);
 	[notification release];
 	[invoker release];
 	[notify release];

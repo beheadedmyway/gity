@@ -32,6 +32,7 @@
 	invoker=[[NSInvocation invocationWithMethodSignature:signature] retain];
 	[invoker setTarget:[self target]];
 	[invoker setSelector:[self action]];
+	[invoker retainArguments];
 }
 
 - (void) setArgs:(NSArray *) _args {
@@ -46,9 +47,11 @@
 	}
 	id arg;
 	int c=1;
-	args=[_args retain];
 	[self setupInvoker];
-	for(arg in args)[invoker setArgument:&arg atIndex:++c];
+	for(arg in args) {
+		__unsafe_unretained id unsafeArg = arg;
+		[invoker setArgument:&unsafeArg atIndex:++c];
+	}
 }
 
 - (void) execute {

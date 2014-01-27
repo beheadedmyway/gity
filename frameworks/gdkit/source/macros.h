@@ -28,7 +28,7 @@
  */
 #define GDRelease(x) do{ \
 	if((x)==nil){break;} \
-	[(x) release];(x)=nil;} while(0)
+	(x)=nil;} while(0)
 
 /**
  * Prints an NSTask and it's arguments.

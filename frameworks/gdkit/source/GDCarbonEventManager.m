@@ -18,12 +18,12 @@ static GDCarbonEventManager * inst = nil;
 
 @implementation GDCarbonEventManager
 
-+ (GDCarbonEventManager *) sharedInstance {
-    @synchronized(self) {
-		if(!inst) {
-			inst = [[self alloc] init];
-		}
-    }
++ (instancetype) sharedInstance {
+    static dispatch_once_t pred;
+    static id inst = nil;
+    dispatch_once(&pred, ^{
+        inst = [[self alloc] init];
+    });
     return inst;
 }
 
@@ -227,21 +227,6 @@ static GDCarbonEventManager * inst = nil;
 
 - (id)copyWithZone:(NSZone *) zone {
 	return self;
-}
-
-- (id)retain {
-	return self;
-}
-
-- (NSUInteger) retainCount {
-	return UINT_MAX;
-}
-
-- (id) autorelease {
-	return self;
-}
-
-- (oneway void) release{
 }
 
 @end
